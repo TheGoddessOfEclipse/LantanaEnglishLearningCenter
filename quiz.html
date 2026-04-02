@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 自我考驗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body{background-color:#050b14;} .bg-neon-bg{background-color:#050b14;}
+        .neon-text-green{text-shadow:0 0 10px rgba(0,255,0,0.7),0 0 20px rgba(0,255,0,0.5);}
+        .cyber-box-green{border:1px solid #0f0;background:rgba(0,40,0,0.6);box-shadow:inset 0 0 15px rgba(0,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.3) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
+        .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0f0;}
+        .cyber-scrollbar::-webkit-scrollbar-thumb{background:#0f0;}
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0f0 !important; z-index: 50 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); background-color: rgba(0,255,0,0.05); } 100% { box-shadow: 0 0 40px #0f0, inset 0 0 30px rgba(0,255,0,0.6); transform: scale(1.08); background-color: rgba(0,255,0,0.2); } }
+    </style>
+</head>
+<body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-green selection:text-black">
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,0,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white hover:bg-red-600 py-4 font-black tracking-widest transition relative z-10 shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div v-if="isConfigMissing" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center">
+            <div class="text-6xl mb-4 animate-pulse">⚠️</div>
+            <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
+        </div>
+
+        <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
+            <div class="cyber-box-green px-4 py-2 text-neon-green font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
+        </div>
+
+        <div v-if="view === 'themeList'" class="fade-in w-full max-w-4xl mx-auto">
+            <div class="flex justify-between items-center mb-6 border-b border-green-900 pb-3">
+                <h2 class="text-lg md:text-xl font-bold tracking-widest flex items-center gap-2 text-neon-green neon-text-green">> 選擇戰場：自我考驗</h2>
+                <button @click="goHome" class="border border-green-800 text-green-600 hover:text-neon-green hover:border-neon-green px-3 py-1 text-xs font-bold tracking-widest transition">返回大廳</button>
+            </div>
+            
+            <div class="mb-6">
+                <button @click="startBossQuiz" class="w-full cyber-box-green bg-green-950/30 hover:bg-green-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(0,255,0,0.3)]" :class="highlights.themes && highlights.themes['quiz_boss'] ? 'glow-green' : ''">
+                    <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
+                    <div v-if="championsData['🎯自我考驗模式 : 🔥 2000單大魔王']" class="absolute top-0 right-0 bg-neon-yellow text-black text-[11px] md:text-xs font-black px-3 py-1 shadow-[0_0_15px_#ff0] z-10 rounded-bl-lg">👑 全服霸主 : {{ championsData['🎯自我考驗模式 : 🔥 2000單大魔王'].name }}</div>
+                    <span class="text-5xl filter drop-shadow-[0_0_15px_#0f0] group-hover:scale-110 transition-transform z-10">😈</span>
+                    <span class="text-xl font-black tracking-widest text-neon-green neon-text-green z-10">2000單大魔王・終極隨機</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button v-for="(theme, index) in themes" :key="index" @click="openTheme(theme)" class="cyber-box-green hover:bg-green-950/30 p-4 transition-all flex flex-col items-center justify-center gap-2 relative cursor-pointer min-h-[100px] group" :class="highlights.themes && highlights.themes['quiz_' + theme.name] ? 'glow-green' : ''">
+                    <div v-if="championsData['🎯自我考驗模式 : ' + theme.name]" class="absolute top-0 right-0 bg-neon-yellow text-black text-[10px] font-black px-1.5 py-0.5 z-10 rounded-bl-lg">👑 {{ championsData['🎯自我考驗模式 : ' + theme.name].name }}</div>
+                    <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-300">{{ theme.icon }}</span>
+                    <span class="text-sm font-bold tracking-wider text-center line-clamp-2 text-green-100">{{ theme.name }}</span>
+                    <span class="text-[10px] bg-black/60 px-2 py-0.5 tracking-widest border border-green-900 font-bold text-neon-green">{{ theme.words.length }} 字</span>
+                </button>
+            </div>
+        </div>
+
+        <div v-if="view === 'playing' && quizQuestions.length > 0" class="fade-in max-w-2xl mx-auto w-full">
+            <div class="flex justify-between items-center mb-4 border-b border-neon-green/30 pb-2">
+                <div class="text-neon-green tracking-widest font-bold text-sm flex items-center gap-2">> {{ activeTheme.name }} <span class="text-white hidden md:inline">|</span> <span class="text-white">進度：{{ currentQuizIndex + 1 }}/{{ quizQuestions.length }}</span><span v-if="isRetrySession" class="bg-neon-yellow text-black text-[11px] px-2 rounded font-black">再測模式</span></div>
+                <button @click="finishQuiz" class="text-neon-yellow hover:text-yellow-200 text-sm font-bold tracking-widest transition underline decoration-dashed">提早交卷</button>
+            </div>
+            
+            <div class="cyber-box-green flex flex-col items-center p-8 md:p-10 relative mb-6 bg-gradient-to-b from-green-900/20 to-black overflow-hidden">
+                <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
+                <span class="text-neon-green text-xs tracking-widest border border-neon-green px-3 py-1 mb-6 bg-black z-10 font-bold">請選出正確的中文意思</span>
+                <h1 class="text-5xl md:text-6xl font-black text-white mb-6 text-center break-all z-10 tracking-widest neon-text-green">{{ quizQuestions[currentQuizIndex].word }}</h1>
+                <button @click="playAudio(quizQuestions[currentQuizIndex].word)" class="mb-4 text-sm font-bold border border-green-700 text-green-400 px-5 py-2 hover:bg-neon-green hover:text-black transition z-10 tracking-widest">▶ 聽發音</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button v-for="(opt, idx) in quizQuestions[currentQuizIndex].options" :key="idx" @click="selectAnswer(opt)" :class="getOptionClass(opt)" class="p-5 text-xl font-bold tracking-wider transition-all duration-200 text-left relative overflow-hidden border">
+                    <span class="absolute top-1 left-2 text-[10px] opacity-40 tracking-widest font-bold">選項_0{{ idx + 1 }}</span>
+                    <div class="mt-3 text-center">{{ opt }}</div>
+                </button>
+            </div>
+            
+            <div class="flex gap-4 w-full mt-8">
+                <button @click="prevQuizQuestion" :disabled="currentQuizIndex === 0" class="flex-1 py-3 font-bold text-sm tracking-widest border border-gray-700 text-gray-500 hover:bg-gray-800 disabled:opacity-20 transition bg-black">← 上一題</button>
+                <button @click="nextQuizQuestion" :disabled="!quizQuestions[currentQuizIndex].userAnswer || currentQuizIndex === quizQuestions.length - 1" class="flex-1 py-3 font-bold text-sm tracking-widest bg-transparent border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black shadow-[inset_0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_20px_#0f0] disabled:opacity-20 transition">下一題 →</button>
+            </div>
+        </div>
+
+        <div v-if="view === 'result'" class="fade-in max-w-3xl mx-auto w-full text-center pb-10">
+            <div class="cyber-box-green p-8 md:p-12 relative overflow-hidden flex flex-col items-center bg-black/90">
+                <button v-if="!isRetrySession" @click="openLeaderboard" class="absolute top-4 right-4 bg-neon-yellow text-black px-4 py-2 text-sm font-black tracking-widest shadow-[0_0_15px_#ff0] hover:scale-105 transition">🏆 英雄榜</button>
+                <div class="text-neon-green text-sm tracking-widest mb-2 border border-neon-green px-3 py-1 inline-block mt-8 md:mt-0 font-bold">測驗完成</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-white tracking-widest neon-text-green">結算報告</h2>
+                <p class="text-green-500/70 text-sm mb-8 tracking-widest font-bold">主題：{{ activeTheme.name }} <span v-if="isRetrySession" class="text-neon-yellow font-black ml-2">(再測結果)</span></p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-8 bg-green-950/30 border border-green-900/50 py-8 px-12 w-full">
+                    <div class="flex flex-col items-center w-full md:w-1/2">
+                        <span class="text-neon-green text-sm font-bold tracking-widest mb-2">正確率</span>
+                        <span class="text-6xl font-black text-neon-green neon-text-green tracking-wider">{{ quizScore }}<span class="text-3xl text-gray-600">/{{ quizQuestions.length }}</span></span>
+                    </div>
+                    <div class="hidden md:block w-px bg-green-900/50"></div>
+                    <div class="flex flex-col items-center w-full md:w-1/2">
+                        <span class="text-neon-green text-sm font-bold tracking-widest mb-2">作答時間</span>
+                        <span class="text-4xl font-black text-neon-yellow mt-2">{{ quizTimeStr }}</span>
+                    </div>
+                </div>
+
+                <div class="mb-8 w-full border border-gray-800 p-1 bg-black">
+                    <div v-if="isSubmitting" class="text-neon-green font-bold tracking-widest text-sm bg-green-900/30 py-3 animate-pulse">> 正在為您自動上傳成績...</div>
+                    <div v-else-if="hasSubmittedScore" class="text-neon-green font-bold tracking-widest text-sm bg-green-900/20 py-3">> ✅ 成績已自動安全上傳！</div>
+                    <div v-else class="text-neon-red font-bold py-3 tracking-widest text-sm bg-red-900/20">> 上傳發生異常，請檢查網路。</div>
+                </div>
+
+                <div v-if="quizWrongItems.length > 0" class="w-full text-left bg-black border border-gray-400 p-6 mb-8 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <h3 class="text-lg font-bold border-b border-gray-500 pb-2 mb-4 text-white tracking-widest flex items-center gap-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]">
+                        [!] 錯題與未答複習 // 剩餘：{{ quizWrongItems.length }}
+                    </h3>
+                    <div class="space-y-2 max-h-72 overflow-y-auto pr-2 cyber-scrollbar">
+                        <div v-for="(item, idx) in quizWrongItems" :key="idx" class="bg-gray-900 p-3 flex justify-between items-center border-l-2 border-white">
+                            <div class="flex items-center gap-3">
+                                <button @click="playAudio(item.word)" class="text-xs border border-gray-600 hover:border-white px-2 py-1 transition text-white font-bold">▶</button>
+                                <span class="text-lg font-bold tracking-wider text-gray-200">{{ item.word }}</span>
+                                <span v-if="!item.userAnswer" class="text-xs bg-gray-800 text-gray-500 px-2 py-1 font-bold border border-gray-700">未答</span>
+                                <span v-else class="text-xs bg-gray-800 text-white border border-gray-400 px-2 py-1 font-bold drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">選錯</span>
+                            </div>
+                            <span class="text-base font-bold text-neon-green tracking-wider">{{ item.correct }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div v-else class="w-full text-xl font-black text-neon-green border border-neon-green bg-green-950/20 py-8 mb-8 tracking-widest neon-text-green">太神啦！全部答對，完美過關！💯</div>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center w-full mt-4">
+                    <button v-if="quizWrongItems.length > 0" @click="retryWrongQuestions" class="bg-transparent border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black px-8 py-4 font-bold text-lg tracking-widest w-full md:w-auto transition shadow-[0_0_10px_rgba(0,255,0,0.3)]">🎯 錯題再答</button>
+                    <button @click="openTheme(activeTheme)" class="border border-neon-green text-neon-green hover:bg-neon-green hover:text-black px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto bg-black/50">↺ {{ isRetrySession ? '完整再測一次' : '再測一次' }}</button>
+                    <button @click="goThemeList" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回目錄</button>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="showLeaderboard" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[250] p-4 fade-in">
+            <div class="cyber-box-cyan w-full max-w-lg overflow-hidden flex flex-col max-h-[85vh] bg-black">
+                <div class="p-4 bg-neon-cyan text-black flex justify-between items-center z-10 border-b-2 border-white">
+                    <h2 class="text-xl font-black tracking-widest">🏆 英雄榜 // {{ activeTheme?.name }}</h2>
+                    <button @click="showLeaderboard = false" class="text-black hover:text-white text-3xl leading-none font-bold">&times;</button>
+                </div>
+                <div class="p-6 overflow-y-auto flex-1 relative cyber-scrollbar">
+                    <div class="absolute inset-0 scanline opacity-10 pointer-events-none"></div>
+                    <div v-if="isLoadingLeaderboard" class="flex flex-col items-center justify-center py-16 gap-4">
+                        <div class="text-neon-cyan text-4xl animate-pulse font-black">...</div>
+                        <span class="text-cyan-600/70 font-bold tracking-widest text-sm">正在讀取資料...</span>
+                    </div>
+                    <div v-else-if="leaderboardData.length === 0" class="text-center py-16 text-cyan-700 font-bold tracking-widest text-base">
+                        目前還沒有人挑戰這關，<br>快成為第一個上榜的勇者！
+                    </div>
+                    <div v-else class="space-y-2 z-10 relative">
+                        <div v-for="(record, idx) in leaderboardData" :key="idx" class="flex items-center bg-gray-900/80 p-3 border border-cyan-900 hover:border-neon-cyan transition-colors group">
+                            <div class="w-10 flex justify-center items-center"><span v-if="idx === 0" class="text-xl">👑</span><span v-else class="text-sm font-black text-cyan-800">0{{ idx + 1 }}</span></div>
+                            <div class="flex-1 px-3 truncate"><div class="font-bold text-base tracking-widest text-gray-200 group-hover:text-neon-cyan truncate" :class="idx === 0 ? 'text-neon-yellow' : ''">{{ record.name }}</div></div>
+                            <div class="text-right">
+                                <div class="font-black text-neon-green text-xl tracking-wider">{{ String(record.score).includes('/') ? record.score : (record.score + '/' + activeTheme.words.length) }}</div>
+                                <div class="text-[11px] text-cyan-600 font-bold tracking-widest">{{ record.timeStr }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 border-t border-cyan-900 text-center bg-black"><button @click="showLeaderboard = false" class="text-gray-500 hover:text-neon-cyan text-sm font-bold tracking-widest w-full py-3 transition">[ 關閉排行榜 ]</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const { createApp, ref, computed, onUnmounted, onMounted } = Vue;
+        
+        createApp({
+            setup() {
+                const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
+                const savedName = localStorage.getItem('shilieu_player');
+                if (!savedName && !isConfigMissing.value) window.location.href = 'index.html';
+                const playerName = ref(savedName || '訪客');
+
+                const view = ref('themeList'); const themes = ref(ALL_THEMES_DATA); const activeTheme = ref(null);
+                const quizQuestions = ref([]); const currentQuizIndex = ref(0); const quizScore = ref(0); const quizWrongItems = ref([]); const quizStartTime = ref(0); const quizTimeStr = ref(''); 
+                let autoAdvanceTimer = null; const isRetrySession = ref(false); const isSubmitting = ref(false); const hasSubmittedScore = ref(false);
+                const showLeaderboard = ref(false); const isLoadingLeaderboard = ref(false); const leaderboardData = ref([]); const championsData = ref({});
+
+                // 🌟 即時強制廣播用變數
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+
+                const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
+                const loadChampions = () => { fetch(`${GOOGLE_API_URL}?action=getChampions`).then(res => res.json()).then(data => { championsData.value = data; }).catch(e => console.log(e)); };
+                
+                onMounted(() => { 
+                    loadChampions(); 
+                    // 🌟 監聽即時廣播
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+                });
+
+                const startBossQuiz = () => { let allWords = []; ALL_THEMES_DATA.forEach(t => allWords = allWords.concat(t.words)); openTheme({ name: "🔥 2000單大魔王", icon: "😈", words: [...allWords].sort(() => 0.5 - Math.random()).slice(0, 20) }); };
+                const openTheme = (theme) => { activeTheme.value = theme; window.scrollTo(0,0); startQuiz(theme); view.value = 'playing'; };
+
+                const startQuiz = (theme) => { isRetrySession.value = false; quizScore.value = 0; quizWrongItems.value = []; currentQuizIndex.value = 0; hasSubmittedScore.value = false; quizStartTime.value = Date.now(); clearTimeout(autoAdvanceTimer); const words = theme.words; let generatedQs = []; [...words].sort(() => 0.5 - Math.random()).forEach(w => { let options = [w.meaning]; let distractors = Array.from(new Set(words.filter(x => x.word !== w.word).map(x => x.meaning))); if (distractors.length < 3) { let all = []; ALL_THEMES_DATA.forEach(t => t.words.forEach(x => { if(x.word !== w.word) all.push(x.meaning); })); distractors = distractors.concat(Array.from(new Set(all))); } options = options.concat(distractors.sort(() => 0.5 - Math.random()).slice(0, 3)).sort(() => 0.5 - Math.random()); generatedQs.push({ word: w.word, correct: w.meaning, options: options, userAnswer: null }); }); quizQuestions.value = generatedQs; setTimeout(() => playAudio(quizQuestions.value[0].word), 300); };
+                const selectAnswer = (opt) => { const q = quizQuestions.value[currentQuizIndex.value]; if (q.userAnswer) return; q.userAnswer = opt; clearTimeout(autoAdvanceTimer); autoAdvanceTimer = setTimeout(() => { if (currentQuizIndex.value < quizQuestions.value.length - 1) { currentQuizIndex.value++; playAudio(quizQuestions.value[currentQuizIndex.value].word); } else { finishQuiz(); } }, 1000); };
+                const getOptionClass = (opt) => { const q = quizQuestions.value[currentQuizIndex.value]; if (!q.userAnswer) return 'border-gray-700 hover:border-neon-green hover:bg-green-900/30 cursor-pointer shadow-sm text-gray-300'; if (opt === q.correct) return 'bg-green-950/50 border-neon-green text-neon-green shadow-[0_0_15px_#0f0] z-10 cursor-pointer'; if (opt === q.userAnswer && opt !== q.correct) return 'bg-red-950/50 border-neon-red text-neon-red opacity-90 cursor-pointer'; return 'border-gray-800 opacity-30 bg-black cursor-pointer'; };
+                const nextQuizQuestion = () => { clearTimeout(autoAdvanceTimer); if (currentQuizIndex.value < quizQuestions.value.length - 1 && quizQuestions.value[currentQuizIndex.value].userAnswer) { currentQuizIndex.value++; playAudio(quizQuestions.value[currentQuizIndex.value].word); } };
+                const prevQuizQuestion = () => { clearTimeout(autoAdvanceTimer); if (currentQuizIndex.value > 0) { currentQuizIndex.value--; playAudio(quizQuestions.value[currentQuizIndex.value].word); } };
+
+                const finishQuiz = () => { clearTimeout(autoAdvanceTimer); const diff = Math.floor((Date.now() - quizStartTime.value) / 1000); quizTimeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; quizScore.value = quizQuestions.value.filter(q => q.userAnswer === q.correct).length; quizWrongItems.value = quizQuestions.value.filter(q => q.userAnswer !== q.correct); view.value = 'result'; window.scrollTo(0,0); submitScore(); };
+                const submitScore = () => { if (isSubmitting.value || hasSubmittedScore.value) return; isSubmitting.value = true; let tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); const ans = quizQuestions.value.filter(q => q.userAnswer !== null).length; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${quizScore.value}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(quizTimeStr.value)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`).then(res => res.json()).then(data => { isSubmitting.value = false; hasSubmittedScore.value = true; if (!isRetrySession.value) loadChampions(); }).catch(e => { isSubmitting.value = false; }); };
+                const retryWrongQuestions = () => { isRetrySession.value = true; quizQuestions.value = quizWrongItems.value.map(q => ({ word: q.word, correct: q.correct, options: [...q.options].sort(() => 0.5 - Math.random()), userAnswer: null })).sort(() => 0.5 - Math.random()); quizScore.value = 0; quizWrongItems.value = []; currentQuizIndex.value = 0; hasSubmittedScore.value = false; quizStartTime.value = Date.now(); view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(quizQuestions.value[0].word), 300); };
+                
+                const logPartialQuizSession = () => { if (!activeTheme.value || quizStartTime.value === 0 || hasSubmittedScore.value) return; const diff = Math.floor((Date.now() - quizStartTime.value) / 1000); if (diff < 3) return; const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const score = quizQuestions.value.filter(q => q.userAnswer === q.correct).length; const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); const ans = quizQuestions.value.filter(q => q.userAnswer !== null).length; const tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(timeStr)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`).catch(e=>e); hasSubmittedScore.value = true; };
+                const goThemeList = () => { logPartialQuizSession(); view.value = 'themeList'; window.scrollTo(0,0); loadChampions(); };
+                const goHome = () => { logPartialQuizSession(); window.location.href = 'index.html'; };
+                onUnmounted(() => { logPartialQuizSession(); });
+
+                const openLeaderboard = () => { showLeaderboard.value = true; isLoadingLeaderboard.value = true; leaderboardData.value = []; let targetThemeName = '🎯自我考驗模式 : ' + activeTheme.value.name; fetch(`${GOOGLE_API_URL}?action=get&theme=${encodeURIComponent(targetThemeName)}`).then(res => res.json()).then(data => { let validData = data.filter(item => item.score && !item.score.includes('X') && !item.score.includes('勝') && !item.score.includes('敗') && !item.score.includes('撤退')); validData.sort((a, b) => { let scoreA = (typeof a.score === 'string' && a.score.includes('/')) ? parseInt(a.score.split('/')[0]) : parseInt(a.score)||0; let scoreB = (typeof b.score === 'string' && b.score.includes('/')) ? parseInt(b.score.split('/')[0]) : parseInt(b.score)||0; if (scoreB !== scoreA) return scoreB - scoreA; let timeA = a.timeStr.includes('分') ? parseInt(a.timeStr.split('分')[0])*60 + parseInt(a.timeStr.split('分')[1]) : parseInt(a.timeStr); let timeB = b.timeStr.includes('分') ? parseInt(b.timeStr.split('分')[0])*60 + parseInt(b.timeStr.split('分')[1]) : parseInt(b.timeStr); return timeA - timeB; }); leaderboardData.value = validData.slice(0, 15); isLoadingLeaderboard.value = false; }).catch(e => { isLoadingLeaderboard.value = false; }); };
+                const highlights = ref({ modes: {}, themes: {} });
+                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
+
+                return { 
+                    isConfigMissing, view, playerName, themes, activeTheme, 
+                    quizQuestions, currentQuizIndex, quizScore, quizWrongItems, quizTimeStr, 
+                    selectAnswer, getOptionClass, nextQuizQuestion, prevQuizQuestion, finishQuiz, retryWrongQuestions, 
+                    isSubmitting, hasSubmittedScore, isRetrySession, championsData, startBossQuiz, openTheme, playAudio,
+                    showLeaderboard, isLoadingLeaderboard, leaderboardData, openLeaderboard,
+                    goHome, goThemeList, highlights,
+                    realtimeMsg, showRealtimeMsg // 🌟 回傳廣播
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

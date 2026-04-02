@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 隨堂小考</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body{background-color:#050b14;} .bg-neon-bg{background-color:#050b14;}
+        .neon-text-white{text-shadow:0 0 10px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);} 
+        .neon-text-red{text-shadow:0 0 10px rgba(255,0,60,0.7),0 0 20px rgba(255,0,60,0.5);}
+        .text-neon-red { color: #ff003c; }
+        .border-neon-red { border-color: #ff003c; }
+        .bg-neon-red { background-color: #ff003c; }
+        .cyber-box-white{border:1px solid #fff;background:rgba(40,40,40,0.6);box-shadow:inset 0 0 15px rgba(255,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.3) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
+        .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#fff;}
+    </style>
+</head>
+<body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-white selection:text-black">
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
+        
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-white w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white hover:bg-red-600 py-4 font-black tracking-widest transition relative z-10 shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
+            <div class="cyber-box-white px-4 py-2 text-white font-bold tracking-widest text-sm flex items-center gap-2">考生 // {{ playerName }}</div>
+        </div>
+
+        <div v-if="view === 'waiting'" class="fade-in min-h-[60vh] flex flex-col items-center justify-center max-w-lg mx-auto w-full mt-4">
+            <div class="cyber-box-white border-white bg-black/80 p-10 text-center w-full relative overflow-hidden">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-5xl mb-6 animate-bounce">📝</div>
+                <h2 class="text-3xl font-black text-white neon-text-white mb-4 tracking-widest">隨堂小考準備中</h2>
+                <p class="text-gray-400 font-bold tracking-widest mb-8">請在此畫面稍候，等待教師派發考卷。<br>⚠️ 測驗開始後，請勿切換視窗，以免被判定為作弊。</p>
+                <div class="text-xs text-neon-yellow font-bold tracking-widest animate-pulse border border-yellow-700 bg-yellow-900/30 py-2">📡 正在接收總司令部訊號...</div>
+            </div>
+            <button @click="goHome" class="mt-8 text-gray-500 hover:text-white text-sm font-bold tracking-widest transition underline decoration-dashed">返回大廳</button>
+        </div>
+
+        <div v-if="view === 'playing' && questions.length > 0" class="fade-in max-w-2xl mx-auto w-full mt-4">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-600 pb-2">
+                <div class="text-white tracking-widest font-bold text-sm flex items-center gap-2">> 📝 隨堂小考</div>
+                <div class="text-white font-bold">進度：{{ currentIndex + 1 }} / {{ questions.length }}</div>
+            </div>
+            
+            <div v-if="isCheatingWarning" class="mb-4 bg-red-900/90 border-2 border-neon-red p-4 text-center fade-in shadow-[0_0_20px_#ff003c]">
+                <h3 class="text-xl font-black text-white neon-text-red tracking-widest mb-2">⚠️ 警告：偵測到切換視窗！</h3>
+                <p class="text-sm font-bold text-red-200 tracking-widest mb-4">您的異常行為已通報給老師，並已記錄違規次數。<br>請立即完成測驗，勿再離開畫面！</p>
+                <button @click="isCheatingWarning = false" class="bg-black text-white border border-gray-500 hover:border-white px-6 py-2 font-bold tracking-widest">我了解了</button>
+            </div>
+
+            <div class="cyber-box-white flex flex-col items-center p-8 md:p-12 relative mb-6 bg-gradient-to-b from-gray-900/40 to-black overflow-hidden" :class="isCheatingWarning ? 'border-neon-red' : ''">
+                <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
+                <div class="text-gray-400 text-xs tracking-widest mb-6 font-bold border border-gray-700 px-3 py-1">請輸入此單字的「中文意思」</div>
+                <h1 class="text-5xl md:text-6xl font-black text-white mb-6 text-center z-10 tracking-widest neon-text-white">{{ questions[currentIndex].word }}</h1>
+                
+                <button @click="playAudio(questions[currentIndex].word)" class="mb-8 text-sm font-bold border border-gray-600 text-gray-400 px-5 py-2 hover:bg-white hover:text-black z-10 transition tracking-widest">▶ 聽發音</button>
+                
+                <div class="w-full max-w-md z-10 flex flex-col gap-3">
+                    <input type="text" v-model="currentInput" @keyup.enter="submitAnswer" placeholder="輸入中文後按 Enter 送出" class="w-full bg-black border-2 border-gray-500 text-white text-center text-xl font-bold p-4 focus:outline-none focus:border-white focus:shadow-[0_0_15px_rgba(255,255,255,0.5)] tracking-widest transition-all">
+                    
+                    <div class="flex gap-3 mt-2">
+                        <button @click="skipQuestion" class="flex-1 border border-gray-600 text-gray-400 hover:bg-gray-800 hover:text-white font-bold py-4 tracking-widest transition">我不會 🤷‍♂️</button>
+                        <button @click="submitAnswer" :disabled="!currentInput.trim()" class="flex-[2] bg-white text-black hover:bg-gray-300 font-black py-4 tracking-widest transition disabled:opacity-30">送出答案 ➔</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button @click="giveUpQuiz" class="text-gray-500 hover:text-red-400 text-sm font-bold tracking-widest transition underline decoration-dashed">放棄本次小考 🚪</button>
+            </div>
+        </div>
+
+        <div v-if="view === 'result'" class="fade-in max-w-2xl mx-auto w-full text-center mt-4 pb-10">
+            <div class="cyber-box-white p-8 md:p-12 relative overflow-hidden bg-black/90">
+                <div class="text-white text-sm tracking-widest mb-2 border border-white px-3 py-1 inline-block font-bold">小考結束</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-8 text-white tracking-widest neon-text-white">作答完成</h2>
+                
+                <div class="bg-gray-900 border border-gray-700 p-6 mb-8 text-left">
+                    <p class="text-gray-300 font-bold tracking-widest leading-loose text-sm md:text-base">
+                        您的考卷已交出！<br>
+                        系統會自動比對標準答案。<br>
+                        若有輸入同義詞或近似字，將被送往<span class="text-neon-cyan">「待審核區」</span>，請靜候老師的人工批改與給分。<br>
+                        最終成績將由老師公佈。
+                    </p>
+                </div>
+                
+                <div class="mb-8 w-full border border-gray-800 p-1 bg-black text-left pl-6">
+                    <div v-if="isSubmitting" class="text-neon-cyan font-bold tracking-widest text-sm bg-cyan-900/30 py-3 animate-pulse">> 正在將成績回傳至總司令部...</div>
+                    <div v-else-if="hasSubmittedScore" class="text-neon-green font-bold tracking-widest text-sm bg-green-900/20 py-3">> ✅ 成績已成功登錄至試算表！</div>
+                    <div v-else class="text-gray-500 font-bold tracking-widest text-sm bg-gray-900/20 py-3">> 正在結算成績...</div>
+                </div>
+
+                <button @click="goHome" class="w-full bg-transparent border-2 border-white text-white hover:bg-white hover:text-black py-4 font-black text-xl tracking-widest transition shadow-[0_0_15px_rgba(255,255,255,0.2)]">返回大廳</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') {
+            window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" };
+            window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }];
+            window.GOOGLE_API_URL = "";
+            window.PRONUNCIATION_DICT = {};
+        }
+
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const { createApp, ref, onMounted, onUnmounted } = Vue;
+        
+        createApp({
+            setup() {
+                const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
+                const playerName = ref(localStorage.getItem('shilieu_player') || '');
+                if (!playerName.value && !isConfigMissing.value) window.location.href = 'index.html';
+                
+                const view = ref('waiting');
+                const activeQuizData = ref(null);
+                const questions = ref([]);
+                const currentIndex = ref(0);
+                const currentInput = ref('');
+                const score = ref(0);
+                const studentId = ref((playerName.value || '訪客') + '_' + Math.floor(Math.random()*10000));
+                const hasSubmitted = ref(false);
+                const isCheatingWarning = ref(false); 
+                const customDict = ref({});
+
+                const quizStartTime = ref(0);
+                const finalTimeStr = ref('');
+                const isSubmitting = ref(false);
+                const hasSubmittedScore = ref(false);
+                const wrongWords = ref([]); 
+
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+
+                const playAudio = (text) => { 
+                    if (!text) return; 
+                    if ('speechSynthesis' in window) { 
+                        window.speechSynthesis.cancel(); 
+                        let speakText = text.replace(/\s*\(.*?\)/g, ''); 
+                        speakText = PRONUNCIATION_DICT[speakText] || speakText; 
+                        const utterance = new SpeechSynthesisUtterance(speakText); 
+                        utterance.lang = 'en-US'; 
+                        utterance.rate = 0.85; 
+                        window.speechSynthesis.speak(utterance); 
+                    } 
+                };
+
+                onMounted(() => {
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+
+                    db.ref('app_state/custom_dict').on('value', snap => {
+                        if (snap.exists()) customDict.value = snap.val();
+                    });
+
+                    db.ref('live_quiz_active').on('value', snap => {
+                        // 🌟 關鍵護盾：只要交卷了，就絕對無視 Firebase 的廣播！
+                        if (hasSubmitted.value) return;
+
+                        const data = snap.val();
+                        
+                        if (data && !activeQuizData.value) {
+                            activeQuizData.value = data;
+                            quizStartTime.value = Date.now();
+                            generateQuestions(data.themes, data.count);
+                            view.value = 'playing';
+                            db.ref(`live_quiz_active/students/${studentId.value}`).set({ 
+                                name: playerName.value, score: 0, status: 'playing', progress: 1, cheatCount: 0
+                            });
+                        } else if (!data && activeQuizData.value && view.value === 'playing') {
+                            finishQuiz(true);
+                        }
+                    });
+
+                    document.addEventListener('visibilitychange', handleVisibilityChange);
+                });
+
+                const handleVisibilityChange = () => {
+                    if (document.hidden && view.value === 'playing' && !hasSubmitted.value) {
+                        isCheatingWarning.value = true;
+                        db.ref(`live_quiz_active/students/${studentId.value}/cheatCount`).transaction(c => (c || 0) + 1);
+                    }
+                };
+
+                const generateQuestions = (themeNames, count) => {
+                    let allWords = [];
+                    if (themeNames.includes("🔥 2000單大魔王")) {
+                        ALL_THEMES_DATA.forEach(t => allWords = allWords.concat(t.words));
+                    } else {
+                        ALL_THEMES_DATA.forEach(t => {
+                            if (themeNames.includes(t.name)) allWords = allWords.concat(t.words);
+                        });
+                    }
+                    let pool = allWords.sort(() => 0.5 - Math.random()).slice(0, count);
+                    questions.value = pool;
+                    setTimeout(() => { if(questions.value.length > 0) playAudio(questions.value[0].word) }, 500);
+                };
+
+                const submitAnswer = () => {
+                    if (!currentInput.value.trim()) return;
+                    const q = questions.value[currentIndex.value];
+                    const userAns = currentInput.value.trim();
+                    const exactCorrect = q.meaning;
+                    const acceptedAns = customDict.value[q.word] || [];
+
+                    if (userAns === exactCorrect || acceptedAns.includes(userAns)) {
+                        score.value++;
+                        db.ref(`live_quiz_active/students/${studentId.value}/score`).transaction(s => (s || 0) + 1);
+                    } else {
+                        wrongWords.value.push(q.word); 
+                        const pendingId = db.ref('live_quiz_pending').push().key;
+                        db.ref(`live_quiz_pending/${pendingId}`).set({
+                            studentId: studentId.value, studentName: playerName.value,
+                            word: q.word, expected: exactCorrect, studentAnswer: userAns, timestamp: Date.now()
+                        });
+                    }
+                    moveToNextQuestion();
+                };
+
+                const skipQuestion = () => { 
+                    wrongWords.value.push(questions.value[currentIndex.value].word);
+                    moveToNextQuestion(); 
+                };
+
+                const moveToNextQuestion = () => {
+                    currentInput.value = '';
+                    if (currentIndex.value < questions.value.length - 1) {
+                        currentIndex.value++;
+                        db.ref(`live_quiz_active/students/${studentId.value}`).update({ progress: currentIndex.value + 1 });
+                        playAudio(questions.value[currentIndex.value].word);
+                    } else {
+                        finishQuiz(false);
+                    }
+                };
+
+                const giveUpQuiz = () => {
+                    if(confirm('確定要放棄這次小考嗎？您的狀態將會顯示為已放棄。')) {
+                        finishQuiz(false);
+                    }
+                };
+
+                const submitScoreToSheet = (isPassive) => {
+                    if (isSubmitting.value || hasSubmittedScore.value) return;
+                    isSubmitting.value = true;
+                    
+                    let tName = '📝隨堂小考 : ' + (activeQuizData.value ? activeQuizData.value.themes.join('+') : '綜合範圍');
+                    
+                    if (isPassive) {
+                        tName += ' (老師強制收卷)';
+                    } else if (currentIndex.value < questions.value.length - 1) {
+                        tName += ' (學生放棄)';
+                    }
+                    
+                    const actuallyWrong = wrongWords.value.join(', ') || '無';
+                    
+                    // 🌟 修正：正確計算已答題數，避免完成作答的學生少算一題
+                    const answeredCount = isPassive || (currentIndex.value < questions.value.length - 1) ? currentIndex.value : questions.value.length;
+                    
+                    fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(finalTimeStr.value)}&answered=${answeredCount}&wrongWords=${encodeURIComponent(actuallyWrong)}`)
+                    .then(res => res.json())
+                    .then(() => {
+                        isSubmitting.value = false;
+                        hasSubmittedScore.value = true;
+                    })
+                    .catch(e => {
+                        console.error(e);
+                        isSubmitting.value = false;
+                    });
+                };
+
+                const finishQuiz = (isPassive = false) => {
+                    if (hasSubmitted.value) return;
+                    hasSubmitted.value = true; // 🌟 設定為已交卷狀態，阻斷輪迴
+                    view.value = 'result';
+                    document.removeEventListener('visibilitychange', handleVisibilityChange);
+                    
+                    const diff = Math.floor((Date.now() - quizStartTime.value) / 1000);
+                    finalTimeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`;
+
+                    if (!isPassive) {
+                        db.ref(`live_quiz_active/students/${studentId.value}`).update({ 
+                            status: 'finished', 
+                            progress: questions.value.length 
+                        });
+                    }
+
+                    submitScoreToSheet(isPassive);
+                };
+
+                const goHome = () => { 
+                    window.location.href = 'index.html'; 
+                };
+                
+                onUnmounted(() => {
+                    document.removeEventListener('visibilitychange', handleVisibilityChange);
+                });
+
+                return {
+                    isConfigMissing, view, playerName, questions, currentIndex, currentInput, 
+                    submitAnswer, isCheatingWarning, goHome, skipQuestion, giveUpQuiz, playAudio,
+                    realtimeMsg, showRealtimeMsg, isSubmitting, hasSubmittedScore
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 字義盲測</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body{background-color:#050b14;} .bg-neon-bg{background-color:#050b14;}
+        .neon-text-yellow{text-shadow:0 0 10px rgba(255,255,0,0.7),0 0 20px rgba(255,255,0,0.5);} .neon-text-green{text-shadow:0 0 10px rgba(0,255,0,0.7),0 0 20px rgba(0,255,0,0.5);} .neon-text-red{text-shadow:0 0 10px rgba(255,0,60,0.7),0 0 20px rgba(255,0,60,0.5);}
+        .cyber-box-yellow{border:1px solid #ff0;background:rgba(40,40,0,0.8);box-shadow:inset 0 0 15px rgba(255,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-box-red{border:1px solid #ff003c;background:rgba(40,0,0,0.6);box-shadow:inset 0 0 15px rgba(255,0,60,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.3) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
+        .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#ff0;}
+        .cyber-scrollbar::-webkit-scrollbar-thumb{background:#ff0;}
+        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
+        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 40px #ff0, inset 0 0 30px rgba(255,255,0,0.6); transform: scale(1.08); background-color: rgba(255,255,0,0.2); } }
+        .glow-list-yellow { animation: glowListYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
+        @keyframes glowListYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 30px #ff0, inset 0 0 20px rgba(255,255,0,0.6); background-color: rgba(255,255,0,0.2); } }
+    </style>
+</head>
+<body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-yellow selection:text-black">
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(255,255,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,0,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white hover:bg-red-600 py-4 font-black tracking-widest transition relative z-10 shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div v-if="isConfigMissing" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center">
+            <div class="text-6xl mb-4 animate-pulse">⚠️</div>
+            <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
+        </div>
+
+        <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
+            <div class="cyber-box-yellow px-4 py-2 text-neon-yellow font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
+        </div>
+
+        <div v-if="view === 'setup'" class="fade-in w-full max-w-xl mx-auto mt-4">
+            <div class="flex justify-between items-center mb-6 border-b border-yellow-500/50 pb-3">
+                <h2 class="text-lg md:text-xl font-bold tracking-widest text-yellow-400 flex items-center gap-2">> 選擇盲測主題</h2>
+                <button @click="goHome" class="border border-gray-600 text-gray-400 hover:text-white px-3 py-1 text-xs font-bold tracking-widest transition">返回大廳</button>
+            </div>
+            
+            <div class="mb-6">
+                <button @click="startBossTest" class="w-full cyber-box-yellow bg-yellow-950/30 hover:bg-yellow-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,255,0,0.3)]" :class="highlights.themes && highlights.themes['blindTest_boss'] ? 'glow-yellow' : ''">
+                    <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
+                    <span class="text-5xl filter drop-shadow-[0_0_15px_#ff0] group-hover:scale-110 transition-transform z-10">😈</span>
+                    <span class="text-xl font-black tracking-widest text-neon-yellow neon-text-yellow z-10">2000單大魔王・極限隨機 50 題</span>
+                </button>
+            </div>
+            <div class="text-center text-gray-500 font-bold mb-4 tracking-widest text-sm border-b border-gray-800 pb-4">或者，自選特定範圍 👇</div>
+
+            <div class="cyber-box-yellow p-6">
+                <p class="text-sm text-yellow-300 mb-4 font-bold">請勾選您要測驗的主題（可複選），系統會隨機打亂進行盲測。</p>
+                <div class="max-h-64 overflow-y-auto overflow-x-hidden border border-yellow-900 p-2 bg-black/50 mb-6 cyber-scrollbar">
+                    <label v-for="(t, idx) in themes" :key="idx" class="flex items-center gap-3 p-3 hover:bg-yellow-900/30 cursor-pointer border-b transition" :class="highlights.themes && highlights.themes['blindTest_' + t.name] ? 'glow-list-yellow' : 'border-gray-800/50'">
+                        <input type="checkbox" v-model="selectedThemes" :value="t.name" class="w-5 h-5 accent-yellow-500">
+                        <span class="text-base font-bold text-gray-200">{{ t.name }} <span class="text-xs text-gray-500 ml-2">({{ t.words.length }} 字)</span></span>
+                    </label>
+                </div>
+                <button @click="startTest" :disabled="selectedThemes.length === 0" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-4 font-black text-xl tracking-widest disabled:opacity-30 transition shadow-[0_0_15px_rgba(255,255,0,0.5)]">🚀 產生測驗題庫</button>
+            </div>
+        </div>
+
+        <div v-if="view === 'playing'" class="fade-in max-w-2xl mx-auto w-full mt-4">
+            <div class="flex justify-between items-center mb-4 border-b border-yellow-500/30 pb-2">
+                <div class="text-yellow-400 tracking-widest font-bold text-sm flex items-center gap-2">> 🧠 字義盲測 <span v-if="isRetrySession" class="text-black font-black text-xs bg-yellow-500 px-1 ml-2">錯題重測</span></div>
+                <div class="text-white font-bold">進度：{{ currentIndex + 1 }} / {{ questions.length }}</div>
+            </div>
+            <div class="cyber-box-yellow flex flex-col items-center p-8 md:p-12 relative mb-6 bg-gradient-to-b from-yellow-900/20 to-black overflow-hidden min-h-[300px]" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red shadow-[inset_0_0_20px_rgba(255,0,60,0.2)]' : ''">
+                <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
+                <h1 class="text-5xl md:text-6xl font-black text-white mb-6 text-center z-10 tracking-widest" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'neon-text-red text-neon-red' : 'neon-text-yellow'">{{ questions[currentIndex].word }}</h1>
+                <button @click="playAudio(questions[currentIndex].word)" class="mb-8 text-sm font-bold border border-yellow-700 text-yellow-400 px-5 py-2 hover:bg-yellow-600 hover:text-black z-10 transition" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red hover:bg-neon-red' : ''">▶ 聽發音</button>
+                <div class="w-full flex flex-col items-center z-10">
+                    <div v-if="!isMeaningRevealed" @click="revealMeaning" class="cursor-pointer bg-black/60 text-yellow-600 hover:text-yellow-400 text-base font-bold py-8 px-8 border-2 border-dashed border-yellow-800 hover:border-yellow-500 w-full text-center tracking-widest transition" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-red-400 border-red-800 hover:border-neon-red hover:text-neon-red' : ''">[ 點擊顯示中文意思 ]</div>
+                    <div v-else class="w-full flex flex-col items-center fade-in">
+                        <span class="text-3xl font-bold text-neon-yellow text-center tracking-wider mb-8" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-neon-red' : ''">{{ questions[currentIndex].correct }}</span>
+                        <div class="text-xs text-gray-400 mb-2 font-bold tracking-widest">請誠實記錄：</div>
+                        <div class="flex gap-4 w-full">
+                            <button @click="markAnswer(false)" class="flex-1 border border-red-700 text-red-400 hover:bg-red-900 hover:text-white py-4 font-bold text-lg tracking-widest transition">❌ 我忘記了</button>
+                            <button @click="markAnswer(true)" class="flex-1 bg-green-700 text-white hover:bg-green-600 py-4 font-bold text-lg tracking-widest transition shadow-[0_0_15px_#0f0]">✅ 我有背熟</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button @click="finishTest" class="text-gray-500 hover:text-white text-sm font-bold tracking-widest transition w-full text-center underline decoration-dashed">提早結束測驗</button>
+        </div>
+
+        <div v-if="view === 'result'" class="fade-in max-w-3xl mx-auto w-full text-center pb-10">
+            <div class="cyber-box-yellow p-8 md:p-12 relative overflow-hidden bg-black/90" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red' : ''">
+                <div class="text-yellow-400 text-sm tracking-widest mb-2 border border-yellow-500 px-3 py-1 inline-block font-bold" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red' : ''">盲測完成</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-white tracking-widest" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'neon-text-red text-neon-red' : 'neon-text-yellow'">結算報告</h2>
+                <p class="text-yellow-300/70 text-sm mb-8 tracking-widest font-bold max-w-md mx-auto line-clamp-2" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-red-500' : ''">主題：{{ selectedThemes.join(', ') }} <span v-if="isRetrySession" class="text-neon-yellow font-black ml-2">(再測結果)</span></p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-8 bg-yellow-950/30 border border-yellow-900/50 py-8 px-12 w-full" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'bg-red-950/30 border-red-900/50' : ''">
+                    <div class="flex flex-col items-center w-full md:w-1/2">
+                        <span class="text-yellow-400 text-sm font-bold tracking-widest mb-2" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-neon-red' : ''">熟記數量</span>
+                        <span class="text-6xl font-black text-neon-green tracking-wider">{{ score }}<span class="text-3xl text-gray-600">/{{ questions.length }}</span></span>
+                    </div>
+                    <div class="hidden md:block w-px bg-yellow-900/50" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'bg-red-900/50' : ''"></div>
+                    <div class="flex flex-col items-center w-full md:w-1/2">
+                        <span class="text-yellow-400 text-sm font-bold tracking-widest mb-2" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-neon-red' : ''">作答時間</span>
+                        <span class="text-4xl font-black text-neon-yellow mt-2">{{ timeStr }}</span>
+                    </div>
+                </div>
+                
+                <div class="mb-8 w-full border border-gray-800 p-1 bg-black">
+                    <div v-if="!hasSubmittedScore" class="text-yellow-300 font-bold tracking-widest text-sm bg-yellow-900/30 py-3 animate-pulse">> 成績上傳中...</div>
+                    <div v-else class="text-neon-yellow font-bold tracking-widest text-sm bg-yellow-900/20 py-3">> ✅ 盲測成績已同步至後台！</div>
+                </div>
+
+                <div v-if="wrongItems.length > 0" class="w-full text-left bg-black border border-red-900 p-6 mb-8">
+                    <h3 class="text-lg font-bold border-b border-red-900 pb-2 mb-4 text-red-500 tracking-widest flex items-center gap-2">[!] 不熟單字清單 // 剩餘：{{ wrongItems.length }}</h3>
+                    <div class="space-y-2 max-h-72 overflow-y-auto pr-2 cyber-scrollbar">
+                        <div v-for="(item, idx) in wrongItems" :key="idx" class="bg-gray-900 p-3 flex justify-between items-center border-l-2 border-red-600">
+                            <div class="flex items-center gap-3">
+                                <button @click="playAudio(item.word)" class="text-xs border border-gray-700 hover:border-white px-2 py-1 transition text-white font-bold">▶</button>
+                                <span class="text-lg font-bold tracking-wider text-gray-200">{{ item.word }}</span>
+                                <span v-if="item.isSkipped" class="text-xs bg-gray-800 text-gray-500 px-2 py-1 font-bold">未答</span>
+                                <span v-else class="text-xs bg-red-950 text-neon-red border border-neon-red/30 px-2 py-1 font-bold">忘記了</span>
+                            </div>
+                            <span class="text-base font-bold text-yellow-500 tracking-wider">{{ item.correct }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div v-else class="w-full text-xl font-black text-neon-yellow border border-neon-yellow bg-yellow-950/20 py-8 mb-8 tracking-widest neon-text-yellow">太神啦！全部熟記，完美過關！💯</div>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center w-full mt-4">
+                    <button v-if="wrongItems.length > 0" @click="retryWrongQuestions" class="bg-yellow-500 text-black hover:bg-yellow-400 px-8 py-4 font-black text-lg tracking-widest w-full md:w-auto transition shadow-[0_0_15px_#ff0]">🎯 錯題再考一次</button>
+                    <button @click="goSetup" class="bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-900/30 px-8 py-4 font-bold text-lg tracking-widest w-full md:w-auto transition" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red hover:bg-red-900/30' : ''">↺ 回主題設定</button>
+                    <button @click="goHome" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回到大廳</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const { createApp, ref, onUnmounted, onMounted } = Vue;
+        
+        createApp({
+            setup() {
+                const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
+                const savedName = localStorage.getItem('shilieu_player');
+                if (!savedName && !isConfigMissing.value) window.location.href = 'index.html';
+                const playerName = ref(savedName || '訪客');
+
+                const view = ref('setup'); const themes = ref(ALL_THEMES_DATA); const selectedThemes = ref([]); 
+                const questions = ref([]); const currentIndex = ref(0); const isMeaningRevealed = ref(false); const score = ref(0); const wrongItems = ref([]); 
+                const startTime = ref(0); const timeStr = ref(''); const hasSubmittedScore = ref(false); const isRetrySession = ref(false);
+
+                // 🌟 即時強制廣播用變數
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+
+                const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
+
+                onMounted(() => {
+                    // 🌟 監聽即時廣播
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+                });
+
+                const startBossTest = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); let pool = allWords.sort(() => 0.5 - Math.random()).slice(0, 50); selectedThemes.value = ["🔥 2000單大魔王"]; questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+                const startTest = () => { if(selectedThemes.value.length === 0) return alert('請至少選擇一個主題！'); let pool = []; themes.value.forEach(t => { if(selectedThemes.value.includes(t.name)) pool = pool.concat(t.words); }); pool = pool.sort(() => 0.5 - Math.random()); questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+                const revealMeaning = () => { isMeaningRevealed.value = true; };
+                const markAnswer = (isCorrect) => { const q = questions.value[currentIndex.value]; if(isCorrect) { score.value++; } else { wrongItems.value.push(q); } if(currentIndex.value < questions.value.length - 1) { currentIndex.value++; isMeaningRevealed.value = false; setTimeout(() => playAudio(questions.value[currentIndex.value].word), 200); } else { finishTest(); } };
+                const finishTest = () => { for (let i = currentIndex.value; i < questions.value.length; i++) { if (i === currentIndex.value && isMeaningRevealed.value) continue; wrongItems.value.push({ ...questions.value[i], isSkipped: true }); } const diff = Math.floor((Date.now() - startTime.value) / 1000); timeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; view.value = 'result'; window.scrollTo(0,0); submitScore(); };
+                
+                const submitScore = () => { if (hasSubmittedScore.value) return; let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+'); let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(timeStr.value)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`).catch(e => console.log(e)); hasSubmittedScore.value = true; };
+                const retryWrongQuestions = () => { isRetrySession.value = true; questions.value = [...wrongItems.value].map(q => ({...q, isSkipped: false})).sort(() => 0.5 - Math.random()); score.value = 0; wrongItems.value = []; currentIndex.value = 0; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+
+                const logPartialSession = () => { if (view.value === 'playing' && startTime.value > 0 && !hasSubmittedScore.value) { const diff = Math.floor((Date.now() - startTime.value) / 1000); if (diff < 3) return; const tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+') + ' (中離)'; let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(tStr)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`).catch(e=>e); hasSubmittedScore.value = true; } };
+                const goSetup = () => { logPartialSession(); view.value = 'setup'; window.scrollTo(0,0); };
+                const goHome = () => { logPartialSession(); window.location.href = 'index.html'; };
+                onUnmounted(() => { logPartialSession(); });
+
+                const highlights = ref({ modes: {}, themes: {} });
+                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
+
+                return { 
+                    isConfigMissing, view, playerName, themes, selectedThemes, questions, currentIndex, isMeaningRevealed, score, wrongItems, timeStr, hasSubmittedScore, isRetrySession, 
+                    playAudio, startTest, revealMeaning, markAnswer, finishTest, retryWrongQuestions, goSetup, goHome, highlights, startBossTest,
+                    realtimeMsg, showRealtimeMsg // 🌟 記得回傳
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 單字卡模式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body{background-color:#050b14;} .bg-neon-bg{background-color:#050b14;}
+        .neon-text-cyan{text-shadow:0 0 10px rgba(0,255,255,0.7),0 0 20px rgba(0,255,255,0.5);}
+        .cyber-box-cyan{border:1px solid #0ff;background:rgba(0,20,40,0.6);box-shadow:inset 0 0 15px rgba(0,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-btn-cyan{background:transparent;border:2px solid #0ff;color:#0ff;text-shadow:0 0 5px #0ff;box-shadow:inset 0 0 10px rgba(0,255,255,0.3);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px); transition: all 0.3s;} 
+        .cyber-btn-cyan:hover:not(:disabled){background:#0ff;color:#000;text-shadow:none;box-shadow:0 0 20px #0ff;}
+        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.3) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
+        .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0ff;}
+        .cyber-scrollbar::-webkit-scrollbar-thumb{background:#0ff;}
+        .glow-cyan { animation: glowCyanAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0ff !important; z-index: 50 !important; }
+        @keyframes glowCyanAnim { 0% { box-shadow: 0 0 10px #0ff, inset 0 0 10px rgba(0,255,255,0.3); transform: scale(1.02); background-color: rgba(0,255,255,0.05); } 100% { box-shadow: 0 0 40px #0ff, inset 0 0 30px rgba(0,255,255,0.6); transform: scale(1.08); background-color: rgba(0,255,255,0.2); } }
+    </style>
+</head>
+<body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-cyan selection:text-black">
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white hover:bg-red-600 py-4 font-black tracking-widest transition relative z-10 shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div v-if="isConfigMissing" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center">
+            <div class="text-6xl mb-4 animate-pulse">⚠️</div>
+            <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
+        </div>
+
+        <div class="flex justify-between items-center gap-3 md:gap-4 mb-4">
+            <button v-if="view === 'playing'" @click="toggleHideMeaning" class="cyber-btn-cyan text-sm px-4 py-2 flex items-center gap-2 font-bold tracking-wider">
+                <span v-if="!isMeaningHidden">👁️ 隱藏中文</span><span v-else>🙈 顯示中文</span>
+            </button>
+            <div v-else></div>
+            <div class="cyber-box-cyan px-4 py-2 text-neon-cyan font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
+        </div>
+
+        <div v-if="view === 'themeList'" class="fade-in w-full max-w-4xl mx-auto">
+            <div class="flex justify-between items-center mb-6 border-b border-cyan-800 pb-3">
+                <h2 class="text-lg md:text-xl font-bold tracking-widest text-neon-cyan neon-text-cyan flex items-center gap-2">> 選擇主題：單字卡</h2>
+                <button @click="goHome" class="border border-cyan-800 text-cyan-600 hover:text-neon-cyan hover:border-neon-cyan px-3 py-1 text-xs font-bold tracking-widest transition">返回大廳</button>
+            </div>
+
+            <div class="mb-6">
+                <button @click="startBossMode" class="w-full cyber-box-cyan bg-cyan-950/30 hover:bg-cyan-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(0,255,255,0.3)]" :class="highlights.themes && highlights.themes['flashcard_boss'] ? 'glow-cyan' : ''">
+                    <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
+                    <span class="text-5xl filter drop-shadow-[0_0_15px_#0ff] group-hover:scale-110 transition-transform z-10">😈</span>
+                    <span class="text-xl font-black tracking-widest text-neon-cyan neon-text-cyan z-10">2000單大魔王・綜合 50 字隨機洗牌</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button v-for="(theme, index) in themes" :key="index" @click="openTheme(theme)" class="cyber-box-cyan hover:bg-cyan-950/30 p-4 transition-all flex flex-col items-center justify-center gap-2 relative cursor-pointer min-h-[100px] group" :class="highlights.themes && highlights.themes['flashcard_' + theme.name] ? 'glow-cyan' : ''">
+                    <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-300">{{ theme.icon }}</span>
+                    <span class="text-sm font-bold tracking-wider text-center line-clamp-2 text-cyan-100">{{ theme.name }}</span>
+                    <span class="text-[10px] bg-black/60 px-2 py-0.5 tracking-widest border border-cyan-900 font-bold text-neon-cyan">{{ theme.words.length }} 字</span>
+                </button>
+            </div>
+        </div>
+
+        <div v-if="view === 'playing' && activeTheme" class="fade-in max-w-3xl mx-auto w-full">
+            <div class="flex justify-between items-center mb-4 border-b border-cyan-900 pb-2">
+                <div class="text-neon-cyan tracking-widest font-bold text-sm">> 正在研讀：{{ activeTheme.name }}</div>
+                <button @click="goThemeList" class="text-cyan-600 hover:text-neon-cyan text-sm font-bold tracking-widest transition">回目錄 ✖</button>
+            </div>
+            
+            <div class="cyber-box-cyan flex flex-col items-center justify-center p-8 md:p-10 relative min-h-[40vh] mb-6 overflow-hidden bg-gradient-to-b from-cyan-900/20 to-black">
+                <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
+                <div class="absolute top-4 left-4 text-neon-cyan font-bold text-xs border border-cyan-800 px-2 py-1 bg-black/50 tracking-wider">進度：{{ activeIndex + 1 }}/{{ activeTheme.words.length }}</div>
+                <h1 class="text-5xl md:text-7xl font-black text-white neon-text-cyan mb-6 text-center mt-10 tracking-widest z-10">{{ currentWord.word }}</h1>
+                <button @click="playAudio(currentWord.word)" class="mb-8 cyber-btn-cyan text-sm px-6 py-2 z-10 font-bold">▶ 聽發音</button>
+                <div class="flex flex-col items-center gap-4 w-full z-10">
+                    <span class="text-sm text-neon-cyan bg-black/80 px-4 py-1 border border-cyan-800 tracking-widest font-bold">{{ currentWord.pos }}</span>
+                    <div v-if="isMeaningHidden && !isMeaningRevealed" @click="isMeaningRevealed = true" class="cursor-pointer bg-black/60 text-cyan-700 hover:text-neon-cyan text-sm font-bold py-6 px-8 border border-dashed border-cyan-800 hover:border-neon-cyan w-full md:w-3/4 text-center tracking-widest transition">[ 點擊顯示中文 ]</div>
+                    <span v-else class="text-3xl font-bold text-gray-200 text-center tracking-wider mt-2">{{ currentWord.meaning }}</span>
+                </div>
+                <div class="flex gap-4 w-full mt-12 z-10">
+                    <button @click="prevWord" :disabled="activeIndex === 0" class="flex-1 py-3 font-bold text-sm tracking-widest border border-cyan-900 text-cyan-700 hover:bg-cyan-900/30 hover:border-neon-cyan hover:text-neon-cyan disabled:opacity-20 transition bg-black">← 上一字</button>
+                    <button @click="nextWord" :disabled="activeIndex === activeTheme.words.length - 1" class="flex-1 py-3 font-bold text-sm tracking-widest cyber-btn-cyan disabled:opacity-20 transition">下一字 →</button>
+                </div>
+            </div>
+
+            <div class="cyber-box-cyan border-cyan-900 border overflow-hidden">
+                <div class="bg-black/80 p-3 border-b border-cyan-900 flex justify-between items-center text-sm text-neon-cyan tracking-widest font-bold">> 單字快速跳轉</div>
+                <div class="max-h-80 overflow-y-auto p-2 cyber-scrollbar bg-black/40">
+                    <div v-for="(item, idx) in activeTheme.words" :key="idx" @click="jumpToWord(idx)" class="flex justify-between items-center p-3 mb-1 cursor-pointer transition border border-transparent hover:border-cyan-800 hover:bg-cyan-900/20" :class="activeIndex === idx ? 'bg-cyan-900/40 border-neon-cyan text-neon-cyan' : 'text-gray-400'">
+                        <div class="flex items-baseline gap-4 w-1/2">
+                            <span class="text-xs font-bold w-6 text-right opacity-50">{{ idx + 1 }}.</span>
+                            <span class="text-lg font-bold tracking-wider" :class="activeIndex === idx ? 'neon-text-cyan' : ''">{{ item.word }}</span>
+                        </div>
+                        <div class="flex items-center justify-end gap-3 w-1/2">
+                            <span class="text-xs px-2 border border-gray-700 hidden md:inline-block tracking-widest font-bold">{{ item.pos }}</span>
+                            <span v-if="isMeaningHidden" class="text-sm bg-gray-800 text-gray-600 px-4 select-none tracking-widest font-bold">[隱藏中]</span>
+                            <span v-else class="text-sm truncate max-w-[120px] md:max-w-xs tracking-wider font-bold">{{ item.meaning }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
+        
+        createApp({
+            setup() {
+                const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
+                const savedName = localStorage.getItem('shilieu_player');
+                if (!savedName && !isConfigMissing.value) window.location.href = 'index.html';
+                const playerName = ref(savedName || '訪客');
+
+                const view = ref('themeList'); const themes = ref(ALL_THEMES_DATA); const activeTheme = ref(null);
+                const activeIndex = ref(0); const isMeaningHidden = ref(false); const isMeaningRevealed = ref(false); 
+                let flashcardStartTime = 0; const viewedCards = ref(new Set());
+
+                // 🌟 即時強制廣播用變數
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+
+                const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
+                const currentWord = computed(() => activeTheme.value ? activeTheme.value.words[activeIndex.value] : {});
+                const toggleHideMeaning = () => { isMeaningHidden.value = !isMeaningHidden.value; isMeaningRevealed.value = false; };
+
+                onMounted(() => {
+                    // 🌟 監聽即時廣播
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+                });
+
+                const startBossMode = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); let shuffled = [...allWords].sort(() => 0.5 - Math.random()).slice(0, 50); openTheme({ name: "🔥 2000單大魔王", icon: "😈", words: shuffled }); };
+                const openTheme = (theme) => { activeTheme.value = theme; window.scrollTo(0,0); activeIndex.value = 0; isMeaningRevealed.value = false; viewedCards.value.clear(); viewedCards.value.add(theme.words[0].word); flashcardStartTime = Date.now(); view.value = 'playing'; setTimeout(() => playAudio(theme.words[0].word), 300); };
+                const nextWord = () => { if (activeIndex.value < activeTheme.value.words.length - 1) { activeIndex.value++; isMeaningRevealed.value = false; viewedCards.value.add(activeTheme.value.words[activeIndex.value].word); playAudio(currentWord.value.word); } };
+                const prevWord = () => { if (activeIndex.value > 0) { activeIndex.value--; isMeaningRevealed.value = false; viewedCards.value.add(activeTheme.value.words[activeIndex.value].word); playAudio(currentWord.value.word); } };
+                const jumpToWord = (idx) => { activeIndex.value = idx; isMeaningRevealed.value = false; viewedCards.value.add(activeTheme.value.words[idx].word); playAudio(activeTheme.value.words[idx].word); };
+
+                const logFlashcardSession = () => { if (!activeTheme.value || flashcardStartTime === 0) return; const diff = Math.floor((Date.now() - flashcardStartTime) / 1000); if (diff < 3) return; const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const tName = '📇單字卡模式 : ' + activeTheme.value.name; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=X&total=&timeStr=${encodeURIComponent(timeStr)}&answered=${viewedCards.value.size}&wrongWords=X`).catch(e=>e); flashcardStartTime = 0; };
+                const goThemeList = () => { logFlashcardSession(); view.value = 'themeList'; window.scrollTo(0,0); };
+                const goHome = () => { logFlashcardSession(); window.location.href = 'index.html'; };
+                onUnmounted(() => { logFlashcardSession(); });
+
+                const highlights = ref({ modes: {}, themes: {} });
+                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
+
+                return { 
+                    isConfigMissing, view, playerName, themes, activeTheme, currentWord, activeIndex, isMeaningHidden, isMeaningRevealed,
+                    playAudio, toggleHideMeaning, openTheme, nextWord, prevWord, jumpToWord, goThemeList, goHome, highlights, startBossMode,
+                    realtimeMsg, showRealtimeMsg // 🌟 記得回傳
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
