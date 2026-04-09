@@ -8,6 +8,7 @@
     <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="config.js"></script>
     <style>
@@ -41,7 +42,7 @@
         </div>
 
         <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
-            <div class="cyber-box-white px-4 py-2 text-white font-bold tracking-widest text-sm flex items-center gap-2">考生 // {{ playerName }}</div>
+            <div class="cyber-box-white px-4 py-2 text-white font-bold tracking-widest text-sm flex items-center gap-2">特工 // {{ playerName }}</div>
         </div>
 
         <div v-if="view === 'waiting'" class="fade-in min-h-[60vh] flex flex-col items-center justify-center max-w-lg mx-auto w-full mt-4">
@@ -52,7 +53,7 @@
                 <p class="text-gray-400 font-bold tracking-widest mb-8">請在此畫面稍候，等待教師派發考卷。<br>⚠️ 測驗開始後，請勿切換視窗，以免被判定為作弊。</p>
                 <div class="text-xs text-neon-yellow font-bold tracking-widest animate-pulse border border-yellow-700 bg-yellow-900/30 py-2">📡 正在接收總司令部訊號...</div>
             </div>
-            <button @click="goHome" class="mt-8 text-gray-500 hover:text-white text-sm font-bold tracking-widest transition underline decoration-dashed">返回大廳</button>
+            <button @click="goHome" class="mt-8 text-gray-500 hover:text-white text-sm font-bold tracking-widest transition underline decoration-dashed">返回單字戰場</button>
         </div>
 
         <div v-if="view === 'playing' && questions.length > 0" class="fade-in max-w-2xl mx-auto w-full mt-4">
@@ -109,7 +110,7 @@
                     <div v-else class="text-gray-500 font-bold tracking-widest text-sm bg-gray-900/20 py-3">> 正在結算成績...</div>
                 </div>
 
-                <button @click="goHome" class="w-full bg-transparent border-2 border-white text-white hover:bg-white hover:text-black py-4 font-black text-xl tracking-widest transition shadow-[0_0_15px_rgba(255,255,255,0.2)]">返回大廳</button>
+                <button @click="goHome" class="w-full bg-transparent border-2 border-white text-white hover:bg-white hover:text-black py-4 font-black text-xl tracking-widest transition shadow-[0_0_15px_rgba(255,255,255,0.2)]">返回單字戰場</button>
             </div>
         </div>
     </div>
@@ -124,13 +125,13 @@
 
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
+        const auth = firebase.auth(); // 🌟 引入 Auth
         const { createApp, ref, onMounted, onUnmounted } = Vue;
         
         createApp({
             setup() {
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
-                const playerName = ref(localStorage.getItem('shilieu_player') || '');
-                if (!playerName.value && !isConfigMissing.value) window.location.href = 'index.html';
+                const playerName = ref('');
                 
                 const view = ref('waiting');
                 const activeQuizData = ref(null);
@@ -138,7 +139,7 @@
                 const currentIndex = ref(0);
                 const currentInput = ref('');
                 const score = ref(0);
-                const studentId = ref((playerName.value || '訪客') + '_' + Math.floor(Math.random()*10000));
+                const studentId = ref('');
                 const hasSubmitted = ref(false);
                 const isCheatingWarning = ref(false); 
                 const customDict = ref({});
@@ -167,6 +168,23 @@
                 };
 
                 onMounted(() => {
+                    // 🌟 核心防護：檢查登入狀態
+                    auth.onAuthStateChanged(user => {
+                        if (user) {
+                            db.ref(`app_state/users/${user.uid}`).once('value').then(snap => {
+                                if (snap.exists()) {
+                                    const profile = snap.val();
+                                    playerName.value = profile.realName || profile.studentId;
+                                    // 考試用的 ID 直接綁定真實姓名與隨機碼，避免衝突
+                                    studentId.value = playerName.value + '_' + Math.floor(Math.random()*10000);
+                                }
+                            });
+                        } else {
+                            alert('⚠️ 系統偵測到您尚未通過總部驗證，將遣返大廳！');
+                            window.location.href = 'index.html';
+                        }
+                    });
+
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) {
@@ -181,7 +199,6 @@
                     });
 
                     db.ref('live_quiz_active').on('value', snap => {
-                        // 🌟 關鍵護盾：只要交卷了，就絕對無視 Firebase 的廣播！
                         if (hasSubmitted.value) return;
 
                         const data = snap.val();
@@ -191,8 +208,11 @@
                             quizStartTime.value = Date.now();
                             generateQuestions(data.themes, data.count);
                             view.value = 'playing';
-                            db.ref(`live_quiz_active/students/${studentId.value}`).set({ 
-                                name: playerName.value, score: 0, status: 'playing', progress: 1, cheatCount: 0
+                            
+                            // 確保 studentId 已經產生
+                            const sid = studentId.value || ('訪客_' + Math.floor(Math.random()*10000));
+                            db.ref(`live_quiz_active/students/${sid}`).set({ 
+                                name: playerName.value || '未知特工', score: 0, status: 'playing', progress: 1, cheatCount: 0
                             });
                         } else if (!data && activeQuizData.value && view.value === 'playing') {
                             finishQuiz(true);
@@ -237,7 +257,7 @@
                         wrongWords.value.push(q.word); 
                         const pendingId = db.ref('live_quiz_pending').push().key;
                         db.ref(`live_quiz_pending/${pendingId}`).set({
-                            studentId: studentId.value, studentName: playerName.value,
+                            studentId: studentId.value, studentName: playerName.value || '未知特工',
                             word: q.word, expected: exactCorrect, studentAnswer: userAns, timestamp: Date.now()
                         });
                     }
@@ -279,11 +299,9 @@
                     }
                     
                     const actuallyWrong = wrongWords.value.join(', ') || '無';
-                    
-                    // 🌟 修正：正確計算已答題數，避免完成作答的學生少算一題
                     const answeredCount = isPassive || (currentIndex.value < questions.value.length - 1) ? currentIndex.value : questions.value.length;
                     
-                    fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(finalTimeStr.value)}&answered=${answeredCount}&wrongWords=${encodeURIComponent(actuallyWrong)}`)
+                    fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim() || '未知特工')}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(finalTimeStr.value)}&answered=${answeredCount}&wrongWords=${encodeURIComponent(actuallyWrong)}`)
                     .then(res => res.json())
                     .then(() => {
                         isSubmitting.value = false;
@@ -297,7 +315,7 @@
 
                 const finishQuiz = (isPassive = false) => {
                     if (hasSubmitted.value) return;
-                    hasSubmitted.value = true; // 🌟 設定為已交卷狀態，阻斷輪迴
+                    hasSubmitted.value = true; 
                     view.value = 'result';
                     document.removeEventListener('visibilitychange', handleVisibilityChange);
                     
@@ -315,7 +333,8 @@
                 };
 
                 const goHome = () => { 
-                    window.location.href = 'index.html'; 
+                    // 🌟 修正傳送門：回到單字戰場大廳
+                    window.location.href = 'vocab.html'; 
                 };
                 
                 onUnmounted(() => {
