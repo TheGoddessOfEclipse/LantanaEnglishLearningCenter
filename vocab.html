@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 單字戰場</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',orange:'#ff8c00',white:'#ffffff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body{background-color:#050b14; font-family: sans-serif;} .bg-neon-bg{background-color:#050b14;}
+        .neon-text-cyan{text-shadow:0 0 10px rgba(0,255,255,0.7),0 0 20px rgba(0,255,255,0.5);}
+        .neon-text-green{text-shadow:0 0 10px rgba(0,255,0,0.7),0 0 20px rgba(0,255,0,0.5);}
+        .neon-text-yellow{text-shadow:0 0 10px rgba(255,255,0,0.7),0 0 20px rgba(255,255,0,0.5);}
+        .neon-text-red{text-shadow:0 0 10px rgba(255,0,60,0.7),0 0 20px rgba(255,0,60,0.5);}
+        .neon-text-white{text-shadow:0 0 10px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);}
+        
+        .cyber-box-cyan{border:1px solid #0ff;background:rgba(0,20,40,0.6);box-shadow:inset 0 0 15px rgba(0,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-box-green{border:1px solid #0f0;background:rgba(0,40,0,0.6);box-shadow:inset 0 0 15px rgba(0,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-box-yellow{border:1px solid #ff0;background:rgba(40,40,0,0.6);box-shadow:inset 0 0 15px rgba(255,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-box-red{border:1px solid #ff003c;background:rgba(40,0,0,0.6);box-shadow:inset 0 0 15px rgba(255,0,60,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        .cyber-box-white{border:1px solid #fff;background:rgba(40,40,40,0.6);box-shadow:inset 0 0 15px rgba(255,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+        
+        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.2) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
+        .fade-in{animation:fadeIn 0.5s ease-out;} @keyframes fadeIn{from{opacity:0; transform: translateY(10px);}to{opacity:1; transform: translateY(0);}}
+        
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0ff;}
+
+        .glow-cyan { animation: glowCyanAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0ff !important; z-index: 50 !important; }
+        @keyframes glowCyanAnim { 0% { box-shadow: 0 0 10px #0ff, inset 0 0 10px rgba(0,255,255,0.3); transform: scale(1.02); background-color: rgba(0,255,255,0.05); } 100% { box-shadow: 0 0 40px #0ff, inset 0 0 30px rgba(0,255,255,0.6); transform: scale(1.08); background-color: rgba(0,255,255,0.2); } }
+
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0f0 !important; z-index: 50 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); background-color: rgba(0,255,0,0.05); } 100% { box-shadow: 0 0 40px #0f0, inset 0 0 30px rgba(0,255,0,0.6); transform: scale(1.08); background-color: rgba(0,255,0,0.2); } }
+
+        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
+        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 40px #ff0, inset 0 0 30px rgba(255,255,0,0.6); transform: scale(1.08); background-color: rgba(255,255,0,0.2); } }
+
+        .glow-red { animation: glowRedAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff003c !important; z-index: 50 !important; }
+        @keyframes glowRedAnim { 0% { box-shadow: 0 0 10px #ff003c, inset 0 0 10px rgba(255,0,60,0.3); transform: scale(1.02); background-color: rgba(255,0,60,0.05); } 100% { box-shadow: 0 0 40px #ff003c, inset 0 0 30px rgba(255,0,60,0.6); transform: scale(1.08); background-color: rgba(255,0,60,0.2); } }
+
+        .glow-white { animation: glowWhiteAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #fff !important; z-index: 50 !important; }
+        @keyframes glowWhiteAnim { 0% { box-shadow: 0 0 10px #fff, inset 0 0 10px rgba(255,255,255,0.3); transform: scale(1.02); background-color: rgba(255,255,255,0.05); } 100% { box-shadow: 0 0 40px #fff, inset 0 0 30px rgba(255,255,255,0.6); transform: scale(1.08); background-color: rgba(255,255,255,0.2); } }
+
+        .cyber-glitch-title {
+            position: relative; display: inline-block;
+            animation: neon-shift 8s ease-in-out infinite, flicker 5s linear infinite;
+            font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .cyber-glitch-title::before, .cyber-glitch-title::after {
+            content: '單字戰場';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
+        }
+        .cyber-glitch-title::before { color: #f0f; z-index: -1; animation: glitch-anim 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
+        .cyber-glitch-title::after { color: #0ff; z-index: -2; animation: glitch-anim-2 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse infinite; }
+        @keyframes glitch-anim {
+            0% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(2px, 2px); }
+            5% { clip-path: polygon(0 33%, 100% 33%, 100% 34%, 0 34%); transform: translate(-2px, -2px); }
+            10% { clip-path: polygon(0 50%, 100% 50%, 100% 51%, 0 51%); transform: translate(2px, -2px); }
+            15% { clip-path: polygon(0 75%, 100% 75%, 100% 76%, 0 76%); transform: translate(-2px, 2px); }
+            20% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); }
+            100% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(-1px, -1px); }
+            10% { clip-path: polygon(0 60%, 100% 60%, 100% 61%, 0 61%); transform: translate(1px, 1px); }
+            20% { clip-path: polygon(0 85%, 100% 85%, 100% 86%, 0 86%); transform: translate(-1px, 1px); }
+            30% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); }
+            100% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); }
+        }
+        @keyframes neon-shift {
+            0%, 100% { color: #fff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+            33% { color: #fff; text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; }
+            66% { color: #fff; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
+        }
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body class="bg-neon-bg text-gray-200 min-h-screen font-sans relative overflow-x-hidden selection:bg-neon-cyan selection:text-black">
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.03) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+    <div id="app" class="max-w-5xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
+        
+        <div v-if="showBrowserWarning" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 fade-in">
+            <div class="cyber-box-white w-full max-w-lg p-8 relative overflow-hidden bg-black/90 text-center border-2 border-white shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-pulse">📡</div>
+                <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-6 neon-text-white">受限環境警告</h2>
+                <div class="bg-black/80 border border-gray-700 p-6 mb-8 text-left text-sm font-bold tracking-wider leading-relaxed">
+                    偵測到您正在使用 LINE 或 社群軟體 內建瀏覽器，這將導致英文發音無法正常撥放。<br><br>
+                    請點擊右上角 <span class="text-neon-cyan">「...」</span> 並選擇 <span class="text-neon-green">「以預設瀏覽器開啟」</span> 以獲得最佳體驗。
+                </div>
+                <button @click="showBrowserWarning = false" class="w-full bg-white text-black py-4 font-black tracking-widest hover:bg-gray-300 transition">繼續使用</button>
+            </div>
+        </div>
+
+        <div v-if="showQuizNameWarning" class="fixed inset-0 z-[9000] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-yellow w-full max-w-lg p-6 md:p-8 relative overflow-hidden bg-gradient-to-b from-yellow-900/40 to-black text-center border-2 border-neon-yellow shadow-[0_0_50px_rgba(255,255,0,0.4)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-5xl mb-4 animate-bounce">🆔</div>
+                <h2 class="text-2xl font-black text-neon-yellow tracking-widest mb-4 neon-text-yellow">特工身分最後確認</h2>
+                <div class="bg-black/80 border border-yellow-800 p-5 mb-6 text-left text-sm font-bold tracking-wider leading-loose">
+                    <p class="text-gray-300 mb-4 text-center">
+                        <span class="text-neon-green">【 座號 + 真實姓名 】</span> (範例：01王大明)<br>
+                        <span class="text-gray-400 text-xs mt-1 block">※ 若您已輸入正確格式，請直接點擊下方「進入考場」。</span>
+                    </p>
+                    <label class="block text-neon-yellow mb-2 text-center text-base">您目前的名稱：</label>
+                    <input type="text" v-model="tempQuizName" @keyup.enter="updateNameAndEnterQuiz" class="w-full bg-gray-900 border-2 border-yellow-700 text-white px-4 py-3 font-bold focus:outline-none focus:border-neon-yellow text-center text-xl transition tracking-widest" placeholder="請輸入 座號+姓名">
+                    <p class="mt-4 text-xs text-neon-red leading-normal border-t border-yellow-900 pt-3">
+                        ⚠️ 若名字不正確（如使用綽號）導致老師無法識別給分，該次成績將作廢！<br>
+                        ⚠️ 進入考場後請勿切換視窗，否則將記錄違規！
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <button @click="showQuizNameWarning = false" class="flex-1 bg-gray-900 text-gray-400 py-3 font-bold border border-gray-700 hover:text-white transition">取消</button>
+                    <button @click="updateNameAndEnterQuiz" :disabled="!tempQuizName.trim()" class="flex-[2] bg-neon-yellow text-black py-3 font-black tracking-widest hover:bg-yellow-400 transition shadow-[0_0_20px_rgba(255,255,0,0.5)] disabled:opacity-50">確認並進入考場 ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white py-4 font-black tracking-widest transition shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div v-if="isConfigMissing" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center">
+            <div class="text-6xl mb-4 animate-pulse">⚠️</div>
+            <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
+            <p class="text-lg text-gray-300 font-bold leading-relaxed">請將檔案放在電腦上同一個資料夾開啟。</p>
+        </div>
+
+        <div v-if="isAuthorized" class="fade-in flex flex-col flex-1">
+            
+            <div class="mb-4 flex justify-start relative z-30 pt-2">
+                <button onclick="window.location.href='index.html'" class="text-sm font-bold tracking-widest text-cyan-400 hover:text-black transition border border-cyan-700 hover:border-neon-cyan hover:bg-neon-cyan px-4 py-2 bg-gray-900/50 flex items-center gap-2 shadow-[0_0_10px_rgba(0,255,255,0.1)]">
+                    <span class="text-lg leading-none">≪</span> 返回特工總部
+                </button>
+            </div>
+
+            <div class="flex justify-between items-start w-full mb-6 relative z-20">
+                <div class="border border-cyan-800 bg-cyan-950/30 px-3 py-1 shadow-[0_0_10px_rgba(0,255,255,0.1)] flex items-center gap-2">
+                    <span class="text-[10px] text-cyan-600 tracking-widest font-bold hidden md:inline">SYSTEM</span>
+                    <span class="text-sm text-neon-cyan font-black tracking-wider drop-shadow-[0_0_5px_#0ff]">v3.6</span>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                    <div class="cyber-box-cyan px-4 py-2 text-neon-cyan font-bold tracking-widest text-sm shadow-[0_0_10px_rgba(0,255,255,0.2)]">特工 // {{ playerName }}</div>
+                </div>
+            </div>
+
+            <div v-if="systemAnnouncement && systemAnnouncement.isEnabled && systemAnnouncement.text" class="mb-8 border border-cyan-900 bg-cyan-950/40 p-3 flex items-center gap-4 overflow-hidden">
+                <span class="text-neon-cyan font-black animate-pulse whitespace-nowrap">📢 戰區廣播</span>
+                <div class="marquee-container flex-1 overflow-hidden">
+                    <p class="text-cyan-100 font-bold tracking-widest truncate">{{ systemAnnouncement.text }}</p>
+                </div>
+            </div>
+
+            <div class="text-center mb-10 mt-4 relative z-10">
+                <div class="text-6xl mb-4 drop-shadow-[0_0_20px_#0ff] animate-pulse">🔥</div>
+                <h1 class="text-4xl md:text-5xl font-black mb-2 tracking-widest"><span class="cyber-glitch-title">單字戰場</span></h1>
+                <p class="text-cyan-600 font-bold tracking-widest text-sm">> 選擇作戰模式</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10 relative z-10">
+                <button @click="systemModes.flashcard ? navigateTo('flashcard.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.flashcard ? 'cyber-box-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights.modes?.flashcard ? 'glow-cyan' : '']">
+                    <div v-if="!systemModes.flashcard" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
+                    <div @click.stop="openInfo('flashcard')" class="absolute top-3 right-3 text-cyan-600 border border-cyan-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-cyan hover:border-neon-cyan transition z-20">?</div>
+                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300">📇</span>
+                    <h2 class="text-xl font-bold tracking-widest" :class="systemModes.flashcard ? 'text-neon-cyan' : 'text-gray-500'">單字卡模式</h2>
+                </button>
+                <button @click="systemModes.quiz ? navigateTo('quiz.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.quiz ? 'cyber-box-green hover:shadow-[0_0_30px_rgba(0,255,0,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights.modes?.quiz ? 'glow-green' : '']">
+                    <div v-if="!systemModes.quiz" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
+                    <div @click.stop="openInfo('quiz')" class="absolute top-3 right-3 text-green-600 border border-green-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-green hover:border-neon-green transition z-20">?</div>
+                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300">🎯</span>
+                    <h2 class="text-xl font-bold tracking-widest" :class="systemModes.quiz ? 'text-neon-green' : 'text-gray-500'">自我考驗</h2>
+                </button>
+                <button @click="systemModes.blindTest !== false ? navigateTo('blindTest.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.blindTest !== false ? 'cyber-box-yellow hover:shadow-[0_0_30px_rgba(255,255,0,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights.modes?.blindTest ? 'glow-yellow' : '']">
+                    <div v-if="systemModes.blindTest === false" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
+                    <div @click.stop="openInfo('blindTest')" class="absolute top-3 right-3 text-yellow-600 border border-yellow-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-yellow hover:border-neon-yellow transition z-20">?</div>
+                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300">🧠</span>
+                    <h2 class="text-xl font-bold tracking-widest" :class="systemModes.blindTest !== false ? 'text-neon-yellow' : 'text-gray-500'">字義盲測</h2>
+                </button>
+                <button @click="systemModes.battle ? navigateTo('battle.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.battle ? 'cyber-box-red hover:shadow-[0_0_30px_rgba(255,0,60,0.5)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights.modes?.battle ? 'glow-red' : '']">
+                    <div v-if="!systemModes.battle" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
+                    <div class="absolute top-0 left-0 bg-neon-red text-white font-black text-[10px] px-2 py-1 tracking-widest z-10 rounded-br-lg">PVP</div>
+                    <div @click.stop="openInfo('battle')" class="absolute top-3 right-3 text-red-600 border border-red-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-red hover:border-neon-red transition z-20">?</div>
+                    <span class="text-5xl mb-1 mt-3 filter grayscale group-hover:grayscale-0 transition-all duration-300">⚔️</span>
+                    <h2 class="text-xl font-bold tracking-widest" :class="systemModes.battle ? 'text-neon-red neon-text-red' : 'text-gray-500'">雙人死鬥</h2>
+                </button>
+            </div>
+
+            <div class="max-w-lg mx-auto w-full mb-6 relative z-10">
+                <button @click="systemModes.liveQuiz ? enterLiveQuiz() : null" class="w-full p-5 transition-all flex justify-center items-center gap-4 relative overflow-hidden group" 
+                        :class="[systemModes.liveQuiz ? 'cyber-box-white hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights.modes?.liveQuiz ? 'glow-white' : '']">
+                    <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
+                    <div v-if="!systemModes.liveQuiz" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50 drop-shadow-md">🔒</span></div>
+                    <div @click.stop="openInfo('liveQuiz')" class="absolute top-3 right-3 text-gray-400 border border-gray-500 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-white transition z-20">?</div>
+                    <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-300">📝</span>
+                    <h2 class="text-2xl font-black tracking-widest" :class="systemModes.liveQuiz ? 'text-white neon-text-white' : 'text-gray-500'">進入隨堂小考</h2>
+                </button>
+            </div>
+
+            <div class="mt-auto pt-12 pb-4 text-center w-full">
+                <div class="inline-block border-t border-gray-800/80 pt-4 px-8">
+                    <p class="text-[11px] md:text-xs text-gray-600 font-bold tracking-widest cursor-default transition">
+                        【 © 2026 本網頁為 Jason Wang 之智慧財產，非經同意，切勿隨意轉載。 】
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="showInfoModal" class="fixed inset-0 z-[500] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-cyan w-full max-w-lg p-6 md:p-8 relative bg-black/90 border border-cyan-500 shadow-[0_0_30px_rgba(0,255,255,0.2)]">
+                <button @click="closeInfo" class="absolute top-4 right-4 text-cyan-700 hover:text-neon-cyan text-2xl font-bold leading-none transition">&times;</button>
+                <div class="text-center mb-6">
+                    <span class="text-5xl block mb-4">{{ currentInfo.icon }}</span>
+                    <h2 class="text-2xl font-black tracking-widest" :class="currentInfo.color">{{ currentInfo.title }}</h2>
+                </div>
+                <div class="text-gray-300 text-sm leading-relaxed tracking-wider font-bold space-y-4">
+                    <p v-html="currentInfo.desc"></p>
+                </div>
+                <div class="mt-8 text-center">
+                    <button @click="closeInfo" class="bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 text-sm font-bold tracking-widest transition border border-gray-600">我了解了</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const auth = firebase.auth(); 
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
+                const savedName = localStorage.getItem('shilieu_player') || '';
+                const playerName = ref(savedName);
+                
+                // 🌟 取代原本的 view 狀態，純粹檢查權限
+                const isAuthorized = ref(false); 
+                
+                const systemModes = ref({ flashcard: true, quiz: true, blindTest: true, battle: true, liveQuiz: false });
+                const systemAnnouncement = ref({ text: '', isEnabled: false });
+                const highlights = ref({ modes: {}, themes: {} });
+
+                const showInfoModal = ref(false);
+                const currentInfo = ref({});
+
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+                const showBrowserWarning = ref(false);
+                
+                const showQuizNameWarning = ref(false);
+                const tempQuizName = ref('');
+
+                const infoData = {
+                    flashcard: { icon: '📇', title: '單字卡模式', color: 'text-neon-cyan', desc: '適合<span class="text-neon-cyan">初次學習或複習</span>。<br>系統會顯示英文單字與發音，您可以選擇隱藏或顯示中文意思，幫助您穩紮穩打建立單字記憶。' },
+                    quiz: { icon: '🎯', title: '自我考驗', color: 'text-neon-green', desc: '適合用來<span class="text-neon-green">驗收學習成果</span>。<br>系統會發音並顯示英文，請從四個選項中選出正確的中文意思。答錯的題目會在結算時列出，並可針對錯題反覆練習。' },
+                    blindTest: { icon: '🧠', title: '字義盲測', color: 'text-neon-yellow', desc: '最高難度的<span class="text-neon-yellow">極限記憶挑戰</span>。<br>畫面上只有英文，沒有選項！請在腦中回想中文意思，點擊後誠實記錄自己「是否背熟」。最真實的記憶力考驗！' },
+                    battle: { icon: '⚔️', title: '雙人死鬥', color: 'text-neon-red', desc: '刺激的<span class="text-neon-red">連線對戰模式</span>！<br>創建或加入房間，與同學進行即時單字搶答。答對可攻擊對手或補血，連對還會觸發 Combo 疊加傷害，活到最後的才是贏家！' },
+                    liveQuiz: { icon: '📝', title: '隨堂小考', color: 'text-white neon-text-white', desc: '由<span class="text-neon-cyan">老師在後台即時派發</span>的無預警測驗。<br>當老師開放考卷時，點擊進入作答。系統包含防切換視窗機制，若輸入非標準答案，將交由老師人工審核給分。' }
+                };
+
+                onMounted(() => {
+                    const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+                    if (ua.includes("line") || ua.includes("fban") || ua.includes("fbav") || ua.includes("instagram")) {
+                        showBrowserWarning.value = true;
+                    }
+
+                    // 🌟 核心防護網：強制登入檢查
+                    auth.onAuthStateChanged(user => {
+                        if (user) {
+                            isAuthorized.value = true;
+                            // 抓取真實姓名更新 localStorage
+                            db.ref(`app_state/users/${user.uid}`).once('value').then(snap => {
+                                if (snap.exists()) {
+                                    const profile = snap.val();
+                                    playerName.value = profile.realName || profile.studentId;
+                                    localStorage.setItem('shilieu_player', playerName.value);
+                                }
+                            });
+                        } else {
+                            // 若無登入資訊，直接踢回大門
+                            alert('⚠️ 系統偵測到您尚未通過總部驗證，將遣返大廳！');
+                            window.location.href = 'index.html';
+                        }
+                    });
+
+                    db.ref('app_state/system_settings').on('value', snap => {
+                        if (snap.exists()) {
+                            const data = snap.val();
+                            if (data.modes) systemModes.value = data.modes;
+                            if (data.announcement) systemAnnouncement.value = data.announcement;
+                            if (data.highlights) highlights.value = data.highlights;
+                        }
+                    });
+
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+                });
+
+                const navigateTo = (url) => { window.location.href = url; };
+
+                const enterLiveQuiz = () => {
+                    db.ref('live_quiz_active').once('value').then(snap => {
+                        if (snap.exists()) {
+                            tempQuizName.value = playerName.value; 
+                            showQuizNameWarning.value = true; 
+                        } else {
+                            alert('目前老師尚未派發小考考卷喔！請稍後再試。');
+                        }
+                    });
+                };
+
+                const updateNameAndEnterQuiz = () => {
+                    if (tempQuizName.value.trim()) {
+                        playerName.value = tempQuizName.value.trim();
+                        localStorage.setItem('shilieu_player', playerName.value);
+                        window.location.href = 'liveQuiz.html';
+                    }
+                };
+
+                const openInfo = (mode) => { currentInfo.value = infoData[mode]; showInfoModal.value = true; };
+                const closeInfo = () => { showInfoModal.value = false; };
+
+                return {
+                    isConfigMissing, isAuthorized, playerName, 
+                    systemModes, systemAnnouncement, highlights, navigateTo,
+                    enterLiveQuiz, updateNameAndEnterQuiz, showQuizNameWarning, tempQuizName,
+                    showInfoModal, currentInfo, openInfo, closeInfo,
+                    realtimeMsg, showRealtimeMsg, showBrowserWarning
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

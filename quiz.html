@@ -43,7 +43,10 @@
             <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
         </div>
 
-        <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
+        <div class="flex justify-between items-center mb-2">
+            <button @click="goHome" class="text-sm font-bold tracking-widest text-green-400 hover:text-black transition border border-green-700 hover:border-neon-green hover:bg-neon-green px-4 py-2 bg-gray-900/50 flex items-center gap-2 shadow-[0_0_10px_rgba(0,255,0,0.1)]">
+                <span class="text-lg leading-none">≪</span> 撤退 (返回大廳)
+            </button>
             <div class="cyber-box-green px-4 py-2 text-neon-green font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
         </div>
 
@@ -198,7 +201,6 @@
                 let autoAdvanceTimer = null; const isRetrySession = ref(false); const isSubmitting = ref(false); const hasSubmittedScore = ref(false);
                 const showLeaderboard = ref(false); const isLoadingLeaderboard = ref(false); const leaderboardData = ref([]); const championsData = ref({});
 
-                // 🌟 即時強制廣播用變數
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
@@ -206,9 +208,37 @@
                 const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
                 const loadChampions = () => { fetch(`${GOOGLE_API_URL}?action=getChampions`).then(res => res.json()).then(data => { championsData.value = data; }).catch(e => console.log(e)); };
                 
+                // 🌟 新增：啟動外部傳入的錯題復仇特訓
+                const startRetestFromStorage = (wordsArray) => {
+                    let validWords = [];
+                    // 掃描 ALL_THEMES_DATA 把這幾個單字的完整資料抓出來
+                    ALL_THEMES_DATA.forEach(t => {
+                        t.words.forEach(w => {
+                            if (wordsArray.includes(w.word)) {
+                                if (!validWords.find(vw => vw.word === w.word)) validWords.push(w);
+                            }
+                        });
+                    });
+
+                    if (validWords.length === 0) {
+                        alert("題庫中找不到這些錯題資料！");
+                        window.location.href = 'vocab.html';
+                        return;
+                    }
+
+                    const retestTheme = {
+                        name: "⚔️ 錯題復仇特訓",
+                        icon: "🎯",
+                        words: validWords
+                    };
+                    
+                    activeTheme.value = retestTheme;
+                    startQuiz(retestTheme, true); // true 代表這是一場 Retry (再測模式)
+                    view.value = 'playing';
+                };
+
                 onMounted(() => { 
                     loadChampions(); 
-                    // 🌟 監聽即時廣播
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) {
@@ -217,12 +247,52 @@
                             lastMsgTimestamp.value = val.timestamp;
                         }
                     });
+
+                    // 🌟 新增：檢查 URL 是否帶有復仇模式參數
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.get('mode') === 'retest') {
+                        const retestWordsStr = localStorage.getItem('shilieu_retest_words');
+                        if (retestWordsStr) {
+                            try {
+                                const wordsToRetest = JSON.parse(retestWordsStr);
+                                startRetestFromStorage(wordsToRetest);
+                            } catch (e) {
+                                console.log("解析錯題失敗", e);
+                            }
+                        }
+                    }
                 });
 
                 const startBossQuiz = () => { let allWords = []; ALL_THEMES_DATA.forEach(t => allWords = allWords.concat(t.words)); openTheme({ name: "🔥 2000單大魔王", icon: "😈", words: [...allWords].sort(() => 0.5 - Math.random()).slice(0, 20) }); };
-                const openTheme = (theme) => { activeTheme.value = theme; window.scrollTo(0,0); startQuiz(theme); view.value = 'playing'; };
+                const openTheme = (theme) => { activeTheme.value = theme; window.scrollTo(0,0); startQuiz(theme, false); view.value = 'playing'; };
 
-                const startQuiz = (theme) => { isRetrySession.value = false; quizScore.value = 0; quizWrongItems.value = []; currentQuizIndex.value = 0; hasSubmittedScore.value = false; quizStartTime.value = Date.now(); clearTimeout(autoAdvanceTimer); const words = theme.words; let generatedQs = []; [...words].sort(() => 0.5 - Math.random()).forEach(w => { let options = [w.meaning]; let distractors = Array.from(new Set(words.filter(x => x.word !== w.word).map(x => x.meaning))); if (distractors.length < 3) { let all = []; ALL_THEMES_DATA.forEach(t => t.words.forEach(x => { if(x.word !== w.word) all.push(x.meaning); })); distractors = distractors.concat(Array.from(new Set(all))); } options = options.concat(distractors.sort(() => 0.5 - Math.random()).slice(0, 3)).sort(() => 0.5 - Math.random()); generatedQs.push({ word: w.word, correct: w.meaning, options: options, userAnswer: null }); }); quizQuestions.value = generatedQs; setTimeout(() => playAudio(quizQuestions.value[0].word), 300); };
+                // 🌟 修改：加入 isRetest 參數來判斷是不是重測
+                const startQuiz = (theme, isRetest = false) => { 
+                    isRetrySession.value = isRetest; 
+                    quizScore.value = 0; 
+                    quizWrongItems.value = []; 
+                    currentQuizIndex.value = 0; 
+                    hasSubmittedScore.value = false; 
+                    quizStartTime.value = Date.now(); 
+                    clearTimeout(autoAdvanceTimer); 
+                    
+                    const words = theme.words; 
+                    let generatedQs = []; 
+                    [...words].sort(() => 0.5 - Math.random()).forEach(w => { 
+                        let options = [w.meaning]; 
+                        let distractors = Array.from(new Set(words.filter(x => x.word !== w.word).map(x => x.meaning))); 
+                        if (distractors.length < 3) { 
+                            let all = []; 
+                            ALL_THEMES_DATA.forEach(t => t.words.forEach(x => { if(x.word !== w.word) all.push(x.meaning); })); 
+                            distractors = distractors.concat(Array.from(new Set(all))); 
+                        } 
+                        options = options.concat(distractors.sort(() => 0.5 - Math.random()).slice(0, 3)).sort(() => 0.5 - Math.random()); 
+                        generatedQs.push({ word: w.word, correct: w.meaning, options: options, userAnswer: null }); 
+                    }); 
+                    quizQuestions.value = generatedQs; 
+                    setTimeout(() => playAudio(quizQuestions.value[0].word), 300); 
+                };
+
                 const selectAnswer = (opt) => { const q = quizQuestions.value[currentQuizIndex.value]; if (q.userAnswer) return; q.userAnswer = opt; clearTimeout(autoAdvanceTimer); autoAdvanceTimer = setTimeout(() => { if (currentQuizIndex.value < quizQuestions.value.length - 1) { currentQuizIndex.value++; playAudio(quizQuestions.value[currentQuizIndex.value].word); } else { finishQuiz(); } }, 1000); };
                 const getOptionClass = (opt) => { const q = quizQuestions.value[currentQuizIndex.value]; if (!q.userAnswer) return 'border-gray-700 hover:border-neon-green hover:bg-green-900/30 cursor-pointer shadow-sm text-gray-300'; if (opt === q.correct) return 'bg-green-950/50 border-neon-green text-neon-green shadow-[0_0_15px_#0f0] z-10 cursor-pointer'; if (opt === q.userAnswer && opt !== q.correct) return 'bg-red-950/50 border-neon-red text-neon-red opacity-90 cursor-pointer'; return 'border-gray-800 opacity-30 bg-black cursor-pointer'; };
                 const nextQuizQuestion = () => { clearTimeout(autoAdvanceTimer); if (currentQuizIndex.value < quizQuestions.value.length - 1 && quizQuestions.value[currentQuizIndex.value].userAnswer) { currentQuizIndex.value++; playAudio(quizQuestions.value[currentQuizIndex.value].word); } };
@@ -234,7 +304,13 @@
                 
                 const logPartialQuizSession = () => { if (!activeTheme.value || quizStartTime.value === 0 || hasSubmittedScore.value) return; const diff = Math.floor((Date.now() - quizStartTime.value) / 1000); if (diff < 3) return; const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const score = quizQuestions.value.filter(q => q.userAnswer === q.correct).length; const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); const ans = quizQuestions.value.filter(q => q.userAnswer !== null).length; const tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(timeStr)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`).catch(e=>e); hasSubmittedScore.value = true; };
                 const goThemeList = () => { logPartialQuizSession(); view.value = 'themeList'; window.scrollTo(0,0); loadChampions(); };
-                const goHome = () => { logPartialQuizSession(); window.location.href = 'index.html'; };
+                
+                // 🌟 修改：返回時清理快取，並導向單字大廳 (vocab.html)
+                const goHome = () => { 
+                    logPartialQuizSession(); 
+                    localStorage.removeItem('shilieu_retest_words');
+                    window.location.href = 'vocab.html'; 
+                };
                 onUnmounted(() => { logPartialQuizSession(); });
 
                 const openLeaderboard = () => { showLeaderboard.value = true; isLoadingLeaderboard.value = true; leaderboardData.value = []; let targetThemeName = '🎯自我考驗模式 : ' + activeTheme.value.name; fetch(`${GOOGLE_API_URL}?action=get&theme=${encodeURIComponent(targetThemeName)}`).then(res => res.json()).then(data => { let validData = data.filter(item => item.score && !item.score.includes('X') && !item.score.includes('勝') && !item.score.includes('敗') && !item.score.includes('撤退')); validData.sort((a, b) => { let scoreA = (typeof a.score === 'string' && a.score.includes('/')) ? parseInt(a.score.split('/')[0]) : parseInt(a.score)||0; let scoreB = (typeof b.score === 'string' && b.score.includes('/')) ? parseInt(b.score.split('/')[0]) : parseInt(b.score)||0; if (scoreB !== scoreA) return scoreB - scoreA; let timeA = a.timeStr.includes('分') ? parseInt(a.timeStr.split('分')[0])*60 + parseInt(a.timeStr.split('分')[1]) : parseInt(a.timeStr); let timeB = b.timeStr.includes('分') ? parseInt(b.timeStr.split('分')[0])*60 + parseInt(b.timeStr.split('分')[1]) : parseInt(b.timeStr); return timeA - timeB; }); leaderboardData.value = validData.slice(0, 15); isLoadingLeaderboard.value = false; }).catch(e => { isLoadingLeaderboard.value = false; }); };
@@ -248,7 +324,7 @@
                     isSubmitting, hasSubmittedScore, isRetrySession, championsData, startBossQuiz, openTheme, playAudio,
                     showLeaderboard, isLoadingLeaderboard, leaderboardData, openLeaderboard,
                     goHome, goThemeList, highlights,
-                    realtimeMsg, showRealtimeMsg // 🌟 回傳廣播
+                    realtimeMsg, showRealtimeMsg
                 };
             }
         }).mount('#app');
