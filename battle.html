@@ -8,6 +8,7 @@
     <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',orange:'#ff8c00',white:'#ffffff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="config.js"></script>
     <style>
@@ -24,8 +25,14 @@
         .fly-attack-host{animation:flyAttackHost 0.4s cubic-bezier(0.6,-0.28,0.735,0.045) forwards;color:#ff003c;text-shadow:0 0 20px #ff003c,0 0 40px #ff003c;} @keyframes flyAttackHost{0%{transform:translate(-50%,-50%) scale(1);opacity:1;}100%{left:80%;top:5%;transform:translate(-50%,-50%) scale(0.2) rotate(20deg);opacity:0.8;filter:blur(2px);}} .fly-attack-guest{animation:flyAttackGuest 0.4s cubic-bezier(0.6,-0.28,0.735,0.045) forwards;color:#ff003c;text-shadow:0 0 20px #ff003c,0 0 40px #ff003c;} @keyframes flyAttackGuest{0%{transform:translate(-50%,-50%) scale(1);opacity:1;}100%{left:20%;top:5%;transform:translate(-50%,-50%) scale(0.2) rotate(-20deg);opacity:0.8;filter:blur(2px);}} .fly-heal-host{animation:flyHealHost 0.5s ease-out forwards;color:#0f0;text-shadow:0 0 20px #0f0,0 0 50px #0f0;} @keyframes flyHealHost{0%{transform:translate(-50%,-50%) scale(1);opacity:1;filter:blur(0px);}100%{left:20%;top:5%;transform:translate(-50%,-50%) scale(1.5);opacity:0;filter:blur(8px);letter-spacing:15px;}} .fly-heal-guest{animation:flyHealGuest 0.5s ease-out forwards;color:#0f0;text-shadow:0 0 20px #0f0,0 0 50px #0f0;} @keyframes flyHealGuest{0%{transform:translate(-50%,-50%) scale(1);opacity:1;filter:blur(0px);}100%{left:80%;top:5%;transform:translate(-50%,-50%) scale(1.5);opacity:0;filter:blur(8px);letter-spacing:15px;}}
         .anim-victory-zoom{animation:victoryZoom 0.6s cubic-bezier(0.175,0.885,0.32,1.275) forwards;} @keyframes victoryZoom{0%{opacity:0;transform:scale(0.5);}100%{opacity:1;transform:scale(1);}} .anim-defeat-fade{animation:defeatFade 1s ease-out forwards;} @keyframes defeatFade{0%{opacity:0;filter:grayscale(1) brightness(0.5);transform:translateY(-20px);}100%{opacity:1;filter:grayscale(1) brightness(1);transform:translateY(0);}}
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#ff003c;}
-        .glow-red { animation: glowRedAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff003c !important; z-index: 50 !important; }
-        @keyframes glowRedAnim { 0% { box-shadow: 0 0 10px #ff003c, inset 0 0 10px rgba(255,0,60,0.3); transform: scale(1.02); background-color: rgba(255,0,60,0.05); } 100% { box-shadow: 0 0 40px #ff003c, inset 0 0 30px rgba(255,0,60,0.6); transform: scale(1.08); background-color: rgba(255,0,60,0.2); } }
+        
+        /* 🌟 教師強制發光矩陣 (紅色靜態版) */
+        .glow-matrix-red { 
+            border: 3px solid #ff003c !important; 
+            box-shadow: 0 0 20px #ff003c, 0 0 10px #ff003c, inset 0 0 15px rgba(255, 0, 60, 0.6) !important;
+            z-index: 50 !important; 
+            pointer-events: none !important; 
+        }
     </style>
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-red selection:text-white">
@@ -97,17 +104,31 @@
             </div>
 
             <div class="mb-6">
-                <button @click="createBossBattle" class="w-full cyber-box-red bg-red-950/30 hover:bg-red-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,0,60,0.3)]" :class="highlights.themes && highlights.themes['battle_boss'] ? 'glow-red' : ''">
+                <button @click="createBossBattle" class="w-full cyber-box-red bg-red-950/30 hover:bg-red-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,0,60,0.3)]">
                     <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
-                    <span class="text-5xl filter drop-shadow-[0_0_15px_#ff003c] group-hover:scale-110 transition-transform z-10">😈</span>
-                    <span class="text-xl font-black tracking-widest text-neon-red neon-text-red z-10">2000單大魔王・深淵全範圍死鬥</span>
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-neon-red/20 transition-all duration-1000 z-0" :style="{ height: bossMastery + '%' }"></div>
+                    
+                    <div v-if="highlights.themes && highlights.themes['battle_boss']" class="absolute inset-0 glow-matrix-red z-50"></div>
+
+                    <span class="text-5xl filter drop-shadow-[0_0_15px_#ff003c] group-hover:scale-110 transition-transform z-10 relative">😈</span>
+                    <span class="text-xl font-black tracking-widest text-neon-red neon-text-red z-10 relative">2000單大魔王・深淵全範圍死鬥</span>
+                    
+                    <span class="absolute bottom-2 right-4 text-neon-red text-sm font-black z-20 drop-shadow-[0_0_5px_#000]">{{ bossMastery.toFixed(1) }}% 解鎖</span>
                 </button>
             </div>
 
             <div class="grid grid-cols-3 md:grid-cols-4 gap-3">
-                <button v-for="(theme, index) in themes" :key="index" @click="createBattle(theme)" class="cyber-box-red bg-black/60 hover:bg-red-900/40 p-3 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer min-h-[90px] group" :class="highlights.themes && highlights.themes['battle_' + theme.name] ? 'glow-red' : ''">
-                    <span class="text-2xl filter grayscale group-hover:grayscale-0 transition-all duration-300">{{ theme.icon }}</span>
-                    <span class="text-xs font-bold tracking-wider text-red-100 line-clamp-2 text-center">{{ theme.name }}</span>
+                <button v-for="(theme, index) in themes" :key="index" @click="createBattle(theme)" class="cyber-box-red bg-black/60 hover:bg-red-900/40 p-3 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer min-h-[90px] group overflow-hidden relative">
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-neon-red/20 transition-all duration-1000 z-0" :style="{ height: getThemeMastery(theme) + '%' }"></div>
+                    
+                    <div v-if="highlights.themes && highlights.themes['battle_' + theme.name]" class="absolute inset-0 glow-matrix-red z-50"></div>
+
+                    <span class="text-2xl filter grayscale group-hover:grayscale-0 transition-all duration-300 z-20 relative">{{ theme.icon }}</span>
+                    <span class="text-xs font-bold tracking-wider text-red-100 line-clamp-2 text-center z-20 relative drop-shadow-[0_0_2px_#000]">{{ theme.name }}</span>
+                    
+                    <span class="absolute bottom-1 left-2 text-[10px] text-red-400 font-black z-20 drop-shadow-[0_0_2px_#000]">{{ getThemeMastery(theme).toFixed(0) }}%</span>
                 </button>
             </div>
         </div>
@@ -193,29 +214,73 @@
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
-        const { createApp, ref, onUnmounted, onMounted } = Vue;
+        const auth = firebase.auth(); // 🌟 引入 Auth 抓取精熟度
+        const { createApp, ref, onUnmounted, onMounted, computed } = Vue;
         
         createApp({
             setup() {
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
-                const savedName = localStorage.getItem('shilieu_player');
-                if (!savedName && !isConfigMissing.value) window.location.href = 'index.html';
-                const playerName = ref(savedName || '訪客');
+                const playerName = ref('未知特工');
+                const currentUserUid = ref('');
 
                 const view = ref('battleMenu'); const themes = ref(ALL_THEMES_DATA); const activeTheme = ref(null);
                 const joinRoomCode = ref(''); const activeBattleRoom = ref(''); const myRole = ref(''); const battleData = ref(null); const battleErrorMsg = ref(''); const currentBattleWord = ref(null); const battleAnswerLocked = ref(false); const isBattleCrit = ref(false); const currentBattleThemeWords = ref([]);
                 let battleListener = null; const battleStartTime = ref(0); const battleAnsweredCount = ref(0); const battleWrongWords = ref([]); const battleHasSubmitted = ref(false); const showBattleRulesModal = ref(false);
                 const isShaking = ref(false); const hostHitEffect = ref(false); const hostHealEffect = ref(false); const guestHitEffect = ref(false); const guestHealEffect = ref(false); const hostFloatText = ref(''); const guestFloatText = ref(''); const projectile = ref({ active: false, text: '', action: '', isHost: false }); let animTimers = []; const hostAnimKey = ref(0); const guestAnimKey = ref(0);
 
-                // 🌟 即時強制廣播用變數
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
+                
+                // 🌟 精熟度變數
+                const masteryData = ref({});
+                const highlights = ref({ modes: {}, themes: {} });
+
+                const getThemeMastery = (theme) => {
+                    if (!theme || !theme.words || theme.words.length === 0) return 0;
+                    let count = 0;
+                    theme.words.forEach(w => {
+                        if (masteryData.value[w.word]) count++;
+                    });
+                    return parseFloat(((count / theme.words.length) * 100).toFixed(1));
+                };
+
+                const bossMastery = computed(() => {
+                    let totalWords = 0;
+                    let masteredWords = 0;
+                    if (typeof ALL_THEMES_DATA !== 'undefined') {
+                        ALL_THEMES_DATA.forEach(t => {
+                            totalWords += t.words.length;
+                            t.words.forEach(w => {
+                                if (masteryData.value[w.word]) masteredWords++;
+                            });
+                        });
+                    }
+                    return totalWords > 0 ? parseFloat(((masteredWords / totalWords) * 100).toFixed(1)) : 0;
+                });
 
                 const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
                 
                 onMounted(() => {
-                    // 🌟 監聽即時廣播
+                    auth.onAuthStateChanged(user => {
+                        if (user) {
+                            currentUserUid.value = user.uid;
+                            playerName.value = localStorage.getItem('shilieu_player') || '未知特工';
+                            db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
+                                if (snap.exists()) {
+                                    masteryData.value = snap.val();
+                                } else {
+                                    masteryData.value = {};
+                                }
+                            });
+                        } else {
+                            if (!isConfigMissing.value) {
+                                alert('⚠️ 特工身分驗證失效，請重新登入！');
+                                window.location.href = 'index.html';
+                            }
+                        }
+                    });
+
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) {
@@ -223,6 +288,13 @@
                             showRealtimeMsg.value = true;
                             lastMsgTimestamp.value = val.timestamp;
                         }
+                    });
+
+                    db.ref('app_state/system_settings/highlights').on('value', snap => { 
+                        if (snap.exists()) { 
+                            let data = snap.val(); 
+                            highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; 
+                        } 
                     });
                 });
 
@@ -246,15 +318,14 @@
                 
                 const cancelBattle = () => { if(myRole.value === 'host' && activeBattleRoom.value) db.ref('rooms/' + activeBattleRoom.value).remove(); leaveBattleRoom(); };
                 const leaveBattleRoom = () => { if (!battleData.value || battleStartTime.value === 0 || battleHasSubmitted.value) {} else { const diff = Math.floor((Date.now() - battleStartTime.value) / 1000); if (diff >= 3) { const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const wWordStr = Array.from(new Set(battleWrongWords.value)).join(', '); const tName = '⚔️雙人死鬥模式 : ' + battleData.value.theme + ' (中離)'; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${encodeURIComponent('敗')}&total=&timeStr=${encodeURIComponent(timeStr)}&answered=${battleAnsweredCount.value}&wrongWords=${encodeURIComponent(wWordStr || '無')}`).catch(e=>e); battleHasSubmitted.value = true; } } if(battleListener) db.ref('rooms/' + activeBattleRoom.value).off('value', battleListener); battleListener = null; activeBattleRoom.value = ''; battleData.value = null; showBattleRulesModal.value = false; clearAnimTimers(); view.value = 'battleMenu'; battleStartTime.value = 0; };
-                const goHome = () => { leaveBattleRoom(); window.location.href = 'index.html'; };
+                
+                // 🌟 統一返回單字戰場大廳
+                const goHome = () => { leaveBattleRoom(); window.location.href = 'vocab.html'; };
                 onUnmounted(() => leaveBattleRoom());
-
-                const highlights = ref({ modes: {}, themes: {} });
-                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
 
                 return { 
                     isConfigMissing, view, playerName, themes, activeTheme, playAudio, joinRoomCode, activeBattleRoom, myRole, battleData, battleErrorMsg, currentBattleWord, createBattle, joinBattle, cancelBattle, leaveBattleRoom, goHome, showBattleRulesModal, dismissBattleRules, retreatFromBattle, battleAnswerLocked, handleBattleAnswer, getBattleOptionClass, isBattleCrit, battleHasSubmitted, isShaking, hostHitEffect, hostHealEffect, guestHitEffect, guestHealEffect, hostFloatText, guestFloatText, projectile, getProjectileClass, hostAnimKey, guestAnimKey, highlights, createBossBattle,
-                    realtimeMsg, showRealtimeMsg // 🌟 記得回傳
+                    realtimeMsg, showRealtimeMsg, getThemeMastery, bossMastery
                 };
             }
         }).mount('#app');

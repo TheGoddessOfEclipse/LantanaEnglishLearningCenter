@@ -8,6 +8,7 @@
     <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',white:'#ffffff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="config.js"></script>
     <style>
@@ -19,8 +20,16 @@
         .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#ff0;}
         .cyber-scrollbar::-webkit-scrollbar-thumb{background:#ff0;}
-        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
-        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 40px #ff0, inset 0 0 30px rgba(255,255,0,0.6); transform: scale(1.08); background-color: rgba(255,255,0,0.2); } }
+        
+        /* 🌟 教師強制發光矩陣 (黃色靜態版) */
+        .glow-matrix-yellow { 
+            border: 3px solid #ff0 !important; 
+            box-shadow: 0 0 20px #ff0, 0 0 10px #ff0, inset 0 0 15px rgba(255, 255, 0, 0.6) !important;
+            z-index: 50 !important; 
+            pointer-events: none !important; 
+        }
+
+        /* 保留清單項目的發光動畫 (因為它不是按鈕) */
         .glow-list-yellow { animation: glowListYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
         @keyframes glowListYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 30px #ff0, inset 0 0 20px rgba(255,255,0,0.6); background-color: rgba(255,255,0,0.2); } }
     </style>
@@ -47,33 +56,49 @@
         </div>
 
         <div class="flex justify-end items-center gap-3 md:gap-4 mb-2">
-            <div class="cyber-box-yellow px-4 py-2 text-neon-yellow font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
+            <button @click="goHome" class="text-sm font-bold tracking-widest text-yellow-400 hover:text-black transition border border-yellow-700 hover:border-neon-yellow hover:bg-neon-yellow px-4 py-2 bg-gray-900/50 flex items-center gap-2 shadow-[0_0_10px_rgba(255,255,0,0.1)] z-20 relative">
+                <span class="text-lg leading-none">≪</span> 撤退 (返回大廳)
+            </button>
+            <div class="cyber-box-yellow px-4 py-2 text-neon-yellow font-bold tracking-widest text-sm flex items-center gap-2">特工 // {{ playerName }}</div>
         </div>
 
         <div v-if="view === 'setup'" class="fade-in w-full max-w-xl mx-auto mt-4">
             <div class="flex justify-between items-center mb-6 border-b border-yellow-500/50 pb-3">
                 <h2 class="text-lg md:text-xl font-bold tracking-widest text-yellow-400 flex items-center gap-2">> 選擇盲測主題</h2>
-                <button @click="goHome" class="border border-gray-600 text-gray-400 hover:text-white px-3 py-1 text-xs font-bold tracking-widest transition">返回大廳</button>
             </div>
             
             <div class="mb-6">
-                <button @click="startBossTest" class="w-full cyber-box-yellow bg-yellow-950/30 hover:bg-yellow-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,255,0,0.3)]" :class="highlights.themes && highlights.themes['blindTest_boss'] ? 'glow-yellow' : ''">
-                    <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
-                    <span class="text-5xl filter drop-shadow-[0_0_15px_#ff0] group-hover:scale-110 transition-transform z-10">😈</span>
-                    <span class="text-xl font-black tracking-widest text-neon-yellow neon-text-yellow z-10">2000單大魔王・極限隨機 50 題</span>
+                <button @click="startBossTest" class="w-full cyber-box-yellow bg-yellow-950/30 hover:bg-yellow-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,255,0,0.3)]">
+                    <div class="absolute inset-0 scanline opacity-40 pointer-events-none z-10"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-yellow-500/30 transition-all duration-1000 z-0" :style="{ height: bossMastery + '%' }"></div>
+                    
+                    <div v-if="highlights.themes && highlights.themes['blindTest_boss']" class="absolute inset-0 glow-matrix-yellow z-50"></div>
+
+                    <span class="text-5xl filter drop-shadow-[0_0_15px_#ff0] group-hover:scale-110 transition-transform z-20 relative">😈</span>
+                    <span class="text-xl font-black tracking-widest text-neon-yellow neon-text-yellow z-20 relative">2000單大魔王・極限隨機 50 題</span>
+                    
+                    <span class="absolute bottom-2 right-4 text-neon-yellow text-sm font-black z-20 drop-shadow-[0_0_5px_#000]">{{ bossMastery.toFixed(1) }}% 解鎖</span>
                 </button>
             </div>
             <div class="text-center text-gray-500 font-bold mb-4 tracking-widest text-sm border-b border-gray-800 pb-4">或者，自選特定範圍 👇</div>
 
-            <div class="cyber-box-yellow p-6">
-                <p class="text-sm text-yellow-300 mb-4 font-bold">請勾選您要測驗的主題（可複選），系統會隨機打亂進行盲測。</p>
-                <div class="max-h-64 overflow-y-auto overflow-x-hidden border border-yellow-900 p-2 bg-black/50 mb-6 cyber-scrollbar">
-                    <label v-for="(t, idx) in themes" :key="idx" class="flex items-center gap-3 p-3 hover:bg-yellow-900/30 cursor-pointer border-b transition" :class="highlights.themes && highlights.themes['blindTest_' + t.name] ? 'glow-list-yellow' : 'border-gray-800/50'">
-                        <input type="checkbox" v-model="selectedThemes" :value="t.name" class="w-5 h-5 accent-yellow-500">
-                        <span class="text-base font-bold text-gray-200">{{ t.name }} <span class="text-xs text-gray-500 ml-2">({{ t.words.length }} 字)</span></span>
+            <div class="cyber-box-yellow p-6 relative overflow-hidden">
+                <p class="text-sm text-yellow-300 mb-4 font-bold relative z-10">請勾選您要測驗的主題（可複選），系統會隨機打亂進行盲測。</p>
+                <div class="max-h-64 overflow-y-auto overflow-x-hidden border border-yellow-900 p-2 bg-black/50 mb-6 cyber-scrollbar relative z-10">
+                    
+                    <label v-for="(t, idx) in themes" :key="idx" class="flex items-center justify-between p-3 hover:bg-yellow-900/30 cursor-pointer border-b transition relative overflow-hidden" :class="highlights.themes && highlights.themes['blindTest_' + t.name] ? 'glow-list-yellow' : 'border-gray-800/50'">
+                        
+                        <div class="absolute top-0 left-0 h-full bg-yellow-500/20 transition-all duration-1000 z-0 pointer-events-none" :style="{ width: getThemeMastery(t) + '%' }"></div>
+                        
+                        <div class="flex items-center gap-3 z-10">
+                            <input type="checkbox" v-model="selectedThemes" :value="t.name" class="w-5 h-5 accent-yellow-500">
+                            <span class="text-base font-bold text-gray-200">{{ t.name }} <span class="text-xs text-gray-500 ml-2">({{ t.words.length }} 字)</span></span>
+                        </div>
+                        <span class="text-xs text-yellow-500 font-bold z-10">{{ getThemeMastery(t).toFixed(0) }}%</span>
                     </label>
                 </div>
-                <button @click="startTest" :disabled="selectedThemes.length === 0" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-4 font-black text-xl tracking-widest disabled:opacity-30 transition shadow-[0_0_15px_rgba(255,255,0,0.5)]">🚀 產生測驗題庫</button>
+                <button @click="startTest" :disabled="selectedThemes.length === 0" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-4 font-black text-xl tracking-widest disabled:opacity-30 transition shadow-[0_0_15px_rgba(255,255,0,0.5)] relative z-10">🚀 產生測驗題庫</button>
             </div>
         </div>
 
@@ -143,7 +168,7 @@
                 <div class="flex flex-col md:flex-row gap-4 justify-center w-full mt-4">
                     <button v-if="wrongItems.length > 0" @click="retryWrongQuestions" class="bg-yellow-500 text-black hover:bg-yellow-400 px-8 py-4 font-black text-lg tracking-widest w-full md:w-auto transition shadow-[0_0_15px_#ff0]">🎯 錯題再考一次</button>
                     <button @click="goSetup" class="bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-900/30 px-8 py-4 font-bold text-lg tracking-widest w-full md:w-auto transition" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red hover:bg-red-900/30' : ''">↺ 回主題設定</button>
-                    <button @click="goHome" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回到大廳</button>
+                    <button @click="goHome" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回大廳</button>
                 </div>
             </div>
         </div>
@@ -153,28 +178,73 @@
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
-        const { createApp, ref, onUnmounted, onMounted } = Vue;
+        const auth = firebase.auth(); // 🌟 引入 Auth
+        const { createApp, ref, computed, onUnmounted, onMounted } = Vue;
         
         createApp({
             setup() {
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
-                const savedName = localStorage.getItem('shilieu_player');
-                if (!savedName && !isConfigMissing.value) window.location.href = 'index.html';
-                const playerName = ref(savedName || '訪客');
+                const playerName = ref('未知特工');
+                const currentUserUid = ref('');
 
                 const view = ref('setup'); const themes = ref(ALL_THEMES_DATA); const selectedThemes = ref([]); 
                 const questions = ref([]); const currentIndex = ref(0); const isMeaningRevealed = ref(false); const score = ref(0); const wrongItems = ref([]); 
                 const startTime = ref(0); const timeStr = ref(''); const hasSubmittedScore = ref(false); const isRetrySession = ref(false);
 
-                // 🌟 即時強制廣播用變數
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
+                
+                // 🌟 精熟度資料庫與視覺計算
+                const masteryData = ref({});
+                const highlights = ref({ modes: {}, themes: {} });
+
+                const getThemeMastery = (theme) => {
+                    if (!theme || !theme.words || theme.words.length === 0) return 0;
+                    let count = 0;
+                    theme.words.forEach(w => {
+                        if (masteryData.value[w.word]) count++;
+                    });
+                    return parseFloat(((count / theme.words.length) * 100).toFixed(1));
+                };
+
+                const bossMastery = computed(() => {
+                    let totalWords = 0;
+                    let masteredWords = 0;
+                    if (typeof ALL_THEMES_DATA !== 'undefined') {
+                        ALL_THEMES_DATA.forEach(t => {
+                            totalWords += t.words.length;
+                            t.words.forEach(w => {
+                                if (masteryData.value[w.word]) masteredWords++;
+                            });
+                        });
+                    }
+                    return totalWords > 0 ? parseFloat(((masteredWords / totalWords) * 100).toFixed(1)) : 0;
+                });
 
                 const playAudio = (text) => { if (!text) return; if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let speakText = text.replace(/\s*\(.*?\)/g, ''); speakText = PRONUNCIATION_DICT[speakText] || speakText; const utterance = new SpeechSynthesisUtterance(speakText); utterance.lang = 'en-US'; utterance.rate = 0.85; window.speechSynthesis.speak(utterance); } };
 
                 onMounted(() => {
-                    // 🌟 監聽即時廣播
+                    auth.onAuthStateChanged(user => {
+                        if (user) {
+                            currentUserUid.value = user.uid;
+                            playerName.value = localStorage.getItem('shilieu_player') || '未知特工';
+                            
+                            db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
+                                if (snap.exists()) {
+                                    masteryData.value = snap.val();
+                                } else {
+                                    masteryData.value = {};
+                                }
+                            });
+                        } else {
+                            if (!isConfigMissing.value) {
+                                alert('⚠️ 特工身分驗證失效，請重新登入！');
+                                window.location.href = 'index.html';
+                            }
+                        }
+                    });
+
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) {
@@ -183,12 +253,39 @@
                             lastMsgTimestamp.value = val.timestamp;
                         }
                     });
+
+                    db.ref('app_state/system_settings/highlights').on('value', snap => { 
+                        if (snap.exists()) { 
+                            let data = snap.val(); 
+                            highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; 
+                        } 
+                    });
                 });
 
                 const startBossTest = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); let pool = allWords.sort(() => 0.5 - Math.random()).slice(0, 50); selectedThemes.value = ["🔥 2000單大魔王"]; questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
                 const startTest = () => { if(selectedThemes.value.length === 0) return alert('請至少選擇一個主題！'); let pool = []; themes.value.forEach(t => { if(selectedThemes.value.includes(t.name)) pool = pool.concat(t.words); }); pool = pool.sort(() => 0.5 - Math.random()); questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
                 const revealMeaning = () => { isMeaningRevealed.value = true; };
-                const markAnswer = (isCorrect) => { const q = questions.value[currentIndex.value]; if(isCorrect) { score.value++; } else { wrongItems.value.push(q); } if(currentIndex.value < questions.value.length - 1) { currentIndex.value++; isMeaningRevealed.value = false; setTimeout(() => playAudio(questions.value[currentIndex.value].word), 200); } else { finishTest(); } };
+                
+                const markAnswer = (isCorrect) => { 
+                    const q = questions.value[currentIndex.value]; 
+                    if(isCorrect) { 
+                        score.value++; 
+                        // 🌟 如果盲測誠實選「有背熟」，且不是重測，則將其視為精熟！
+                        if (!isRetrySession.value && currentUserUid.value) {
+                            db.ref(`app_state/users/${currentUserUid.value}/mastery/${q.word}`).set(Date.now());
+                        }
+                    } else { 
+                        wrongItems.value.push(q); 
+                    } 
+                    if(currentIndex.value < questions.value.length - 1) { 
+                        currentIndex.value++; 
+                        isMeaningRevealed.value = false; 
+                        setTimeout(() => playAudio(questions.value[currentIndex.value].word), 200); 
+                    } else { 
+                        finishTest(); 
+                    } 
+                };
+
                 const finishTest = () => { for (let i = currentIndex.value; i < questions.value.length; i++) { if (i === currentIndex.value && isMeaningRevealed.value) continue; wrongItems.value.push({ ...questions.value[i], isSkipped: true }); } const diff = Math.floor((Date.now() - startTime.value) / 1000); timeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; view.value = 'result'; window.scrollTo(0,0); submitScore(); };
                 
                 const submitScore = () => { if (hasSubmittedScore.value) return; let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+'); let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(timeStr.value)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`).catch(e => console.log(e)); hasSubmittedScore.value = true; };
@@ -196,16 +293,15 @@
 
                 const logPartialSession = () => { if (view.value === 'playing' && startTime.value > 0 && !hasSubmittedScore.value) { const diff = Math.floor((Date.now() - startTime.value) / 1000); if (diff < 3) return; const tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+') + ' (中離)'; let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(tStr)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`).catch(e=>e); hasSubmittedScore.value = true; } };
                 const goSetup = () => { logPartialSession(); view.value = 'setup'; window.scrollTo(0,0); };
-                const goHome = () => { logPartialSession(); window.location.href = 'index.html'; };
+                
+                // 🌟 統一返回單字戰場大廳 (vocab.html)
+                const goHome = () => { logPartialSession(); window.location.href = 'vocab.html'; };
                 onUnmounted(() => { logPartialSession(); });
-
-                const highlights = ref({ modes: {}, themes: {} });
-                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
 
                 return { 
                     isConfigMissing, view, playerName, themes, selectedThemes, questions, currentIndex, isMeaningRevealed, score, wrongItems, timeStr, hasSubmittedScore, isRetrySession, 
                     playAudio, startTest, revealMeaning, markAnswer, finishTest, retryWrongQuestions, goSetup, goHome, highlights, startBossTest,
-                    realtimeMsg, showRealtimeMsg // 🌟 記得回傳
+                    realtimeMsg, showRealtimeMsg, getThemeMastery, bossMastery
                 };
             }
         }).mount('#app');

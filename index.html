@@ -39,9 +39,7 @@
                 <h1 class="text-3xl font-black mb-1 tracking-widest text-center text-white neon-text-cyan">馬纓丹 ONLINE</h1>
                 <p class="text-cyan-600 font-bold tracking-widest text-xs mb-6 text-center">>> 特工身分驗證系統</p>
 
-                <div v-if="authError" class="bg-red-900/50 border border-neon-red text-red-200 p-3 mb-6 text-sm font-bold tracking-widest text-center">
-                    ⚠️ {{ authError }}
-                </div>
+                <div v-if="authError" class="bg-red-900/50 border border-neon-red text-red-200 p-3 mb-6 text-sm font-bold tracking-widest text-center">⚠️ {{ authError }}</div>
 
                 <div v-if="authMode === 'login'" class="relative z-10 space-y-4 fade-in">
                     <div>
@@ -105,6 +103,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                
                 <div class="cyber-box-cyan p-6 md:p-8 relative bg-black/80 flex flex-col items-center md:items-start md:col-span-1">
                     <div class="absolute inset-0 scanline opacity-20 pointer-events-none"></div>
                     <div class="absolute top-0 right-0 bg-neon-cyan text-black px-3 py-1 text-xs font-black tracking-widest">ID-CARD</div>
@@ -117,9 +116,15 @@
                         <h2 class="text-2xl font-black text-white tracking-widest mb-1 drop-shadow-[0_0_5px_#fff]">{{ currentUserProfile.nickname || '載入中...' }}</h2>
                         <p class="text-cyan-400 font-bold tracking-widest text-xs mb-4">真實身分：{{ currentUserProfile.realName }}<br>學號：{{ currentUserProfile.studentId }}</p>
                         
-                        <div class="bg-black/50 border border-cyan-900 p-3 text-center mb-2">
-                            <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-1">電子郵件</div>
-                            <div class="text-xs text-gray-300 truncate">{{ currentUserProfile.email || '未提供' }}</div>
+                        <div class="mt-4 pt-4 border-t border-cyan-900 w-full">
+                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2">
+                                <span class="text-gray-400">總精熟度解鎖</span>
+                                <span class="text-neon-cyan">{{ overallProgressPercentage }}%</span>
+                            </div>
+                            <div class="w-full bg-gray-900 h-3 border border-cyan-900 relative shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] overflow-hidden">
+                                <div class="h-full bg-neon-cyan transition-all duration-1000 ease-out shadow-[0_0_10px_#0ff]" :style="{ width: overallProgressPercentage + '%' }"></div>
+                            </div>
+                            <div class="text-right text-[10px] text-gray-500 font-bold mt-1">已精熟 {{ totalMasteredCount }} / {{ totalWordsCount }} 單字</div>
                         </div>
                     </div>
                 </div>
@@ -172,6 +177,37 @@
                     <h2 class="text-xl font-black text-gray-500 tracking-widest mb-1">文法戰場</h2>
                     <p class="text-xs text-gray-600 font-bold tracking-widest">>> 敬請期待</p>
                 </button>
+            </div>
+
+            <div class="cyber-box-gray bg-gray-900/80 p-5 md:p-6 mb-8 relative z-10">
+                <div class="flex justify-between items-center mb-5 border-b border-gray-700 pb-2">
+                    <h3 class="text-lg md:text-xl font-black text-white tracking-widest flex items-center gap-2 drop-shadow-[0_0_5px_#fff]">
+                        <span class="text-2xl">🗂️</span> 單字兵器譜 (各主題精熟解析)
+                    </h3>
+                </div>
+                
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[350px] overflow-y-auto cyber-scrollbar pr-2 pb-2">
+                    
+                    <div v-for="theme in themeProgressStats" :key="theme.name" class="relative aspect-square bg-black/60 border border-gray-700 overflow-hidden flex flex-col items-center justify-center p-2 group hover:border-cyan-500 transition-colors">
+                        
+                        <div class="absolute bottom-0 left-0 w-full bg-neon-cyan/30 border-t border-neon-cyan/50 transition-all duration-1000 z-0" 
+                             :style="{ height: theme.percentage + '%' }"></div>
+                        
+                        <span class="text-3xl z-10 filter drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform mb-1">{{ theme.icon }}</span>
+                        
+                        <span class="text-[10px] md:text-xs font-bold text-gray-200 tracking-wider text-center drop-shadow-[0_0_3px_#000] z-10 line-clamp-2 leading-tight">{{ theme.name }}</span>
+                        
+                        <span class="text-base md:text-lg font-black z-10 drop-shadow-[0_0_3px_#000] mt-1 text-neon-cyan">
+                            {{ theme.percentage }}%
+                        </span>
+                        
+                        <span class="absolute bottom-1 text-[9px] text-gray-400 z-10 font-bold">{{ theme.mastered }} / {{ theme.total }}</span>
+
+                        <button v-if="theme.mastered > 0" @click.stop="resetThemeMastery(theme.name)" class="absolute top-1 right-1 text-[10px] text-gray-500 hover:text-neon-red bg-black/60 border border-transparent hover:border-neon-red px-1 rounded-sm transition tracking-widest z-20 shadow-sm" title="重置精熟度">
+                            ↺
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="cyber-box-gray bg-gray-900/80 p-5 md:p-6 mb-8 relative z-10">
@@ -244,46 +280,107 @@
                 const regData = ref({ studentId: '', realName: '', nickname: '', email: '', password: '' });
                 const loginData = ref({ studentId: '', password: '' });
                 const currentUserProfile = ref({});
+                const currentUserUid = ref('');
                 const playerName = ref('');
 
-                // 🌟 戰報與圖表變數
+                // 戰報與圖表變數
                 const myLogs = ref([]);
                 const isLoadingLogs = ref(false);
-                let chartInstance = null; // 儲存 Chart.js 實例
+                let chartInstance = null; 
 
-                // 計算屬性：總作戰次數
+                // 精熟度資料庫
+                const masteryData = ref({});
+
                 const totalMissions = computed(() => myLogs.value.length);
-                
-                // 計算屬性：過濾出有「數字成績」的紀錄 (排除 勝/敗/X)
-                const numericLogs = computed(() => {
-                    return myLogs.value.filter(log => !isNaN(parseInt(log.score)));
-                });
-
-                // 計算屬性：平均分數
+                const numericLogs = computed(() => myLogs.value.filter(log => !isNaN(parseInt(log.score))));
                 const avgScore = computed(() => {
                     if (numericLogs.value.length === 0) return '-';
                     const sum = numericLogs.value.reduce((a, b) => a + parseInt(b.score), 0);
                     return (sum / numericLogs.value.length).toFixed(1);
                 });
 
+                const totalWordsCount = computed(() => {
+                    let count = 0;
+                    if (typeof ALL_THEMES_DATA !== 'undefined') {
+                        ALL_THEMES_DATA.forEach(t => count += t.words.length);
+                    }
+                    return count > 0 ? count : 100;
+                });
+
+                const totalMasteredCount = computed(() => Object.keys(masteryData.value).length);
+                
+                const overallProgressPercentage = computed(() => {
+                    if (totalWordsCount.value === 0) return 0;
+                    return parseFloat(((totalMasteredCount.value / totalWordsCount.value) * 100).toFixed(1));
+                });
+
+                const themeProgressStats = computed(() => {
+                    if (typeof ALL_THEMES_DATA === 'undefined') return [];
+                    return ALL_THEMES_DATA.map(theme => {
+                        let themeMastered = 0;
+                        theme.words.forEach(w => {
+                            if (masteryData.value[w.word]) themeMastered++;
+                        });
+                        let percentage = theme.words.length > 0 ? parseFloat(((themeMastered / theme.words.length) * 100).toFixed(1)) : 0;
+                        return {
+                            name: theme.name,
+                            icon: theme.icon,
+                            total: theme.words.length,
+                            mastered: themeMastered,
+                            percentage: percentage
+                        };
+                    });
+                });
+
                 onMounted(() => {
                     auth.onAuthStateChanged(user => {
                         if (user) {
+                            currentUserUid.value = user.uid;
+                            
                             db.ref(`app_state/users/${user.uid}`).once('value').then(snap => {
                                 if (snap.exists()) {
                                     currentUserProfile.value = snap.val();
                                     playerName.value = currentUserProfile.value.realName || currentUserProfile.value.studentId;
                                     localStorage.setItem('shilieu_player', playerName.value);
                                     
-                                    fetchMyLogs(); // 登入後抓資料
+                                    fetchMyLogs(); 
                                 }
                             });
+
+                            db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
+                                if (snap.exists()) {
+                                    masteryData.value = snap.val();
+                                } else {
+                                    masteryData.value = {};
+                                }
+                            });
+
                             view.value = 'home';
                         } else {
                             view.value = 'auth';
                         }
                     });
                 });
+
+                // 🌟 清除特定主題精熟度
+                const resetThemeMastery = async (themeName) => {
+                    if (!confirm(`⚠️ 警告：您確定要清除【${themeName}】的所有精熟紀錄嗎？\n此操作無法復原，您必須重新在戰場上證明自己！`)) return;
+
+                    const themeObj = ALL_THEMES_DATA.find(t => t.name === themeName);
+                    if (!themeObj || !currentUserUid.value) return;
+
+                    const updates = {};
+                    themeObj.words.forEach(w => {
+                        updates[w.word] = null; 
+                    });
+
+                    try {
+                        await db.ref(`app_state/users/${currentUserUid.value}/mastery`).update(updates);
+                    } catch (e) {
+                        console.error('重置失敗', e);
+                        alert('重置失敗，請檢查網路連線。');
+                    }
+                };
 
                 const fetchMyLogs = () => {
                     if (isLoadingLogs.value || !playerName.value) return;
@@ -294,7 +391,6 @@
                         .then(data => {
                             if (Array.isArray(data)) {
                                 myLogs.value = data.filter(log => log.name === playerName.value).reverse();
-                                // 延遲一下讓 DOM 渲染完成後再畫圖表
                                 setTimeout(renderChart, 100);
                             }
                             isLoadingLogs.value = false;
@@ -305,14 +401,10 @@
                         });
                 };
 
-                // 🌟 繪製 Cyberpunk 折線圖
                 const renderChart = () => {
                     const canvas = document.getElementById('scoreChart');
                     if (!canvas) return;
-
                     if (chartInstance) chartInstance.destroy();
-
-                    // 只取最近 10 次有數字分數的紀錄，並反轉回「由舊到新」來畫圖
                     const recentData = numericLogs.value.slice(0, 10).reverse();
                     if (recentData.length === 0) return;
 
@@ -323,8 +415,6 @@
                     const scores = recentData.map(log => parseInt(log.score));
 
                     const ctx = canvas.getContext('2d');
-                    
-                    // 建立漸層色背景
                     let gradient = ctx.createLinearGradient(0, 0, 0, 200);
                     gradient.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
                     gradient.addColorStop(1, 'rgba(0, 255, 255, 0.0)');
@@ -334,46 +424,17 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: '作戰成績',
-                                data: scores,
-                                borderColor: '#0ff', // 螢光青色
-                                backgroundColor: gradient,
-                                borderWidth: 2,
-                                pointBackgroundColor: '#0ff',
-                                pointBorderColor: '#fff',
-                                pointRadius: 4,
-                                pointHoverRadius: 6,
-                                fill: true,
-                                tension: 0.3 // 讓線條平滑
+                                label: '作戰成績', data: scores, borderColor: '#0ff', backgroundColor: gradient,
+                                borderWidth: 2, pointBackgroundColor: '#0ff', pointBorderColor: '#fff',
+                                pointRadius: 4, pointHoverRadius: 6, fill: true, tension: 0.3
                             }]
                         },
                         options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: false }, // 隱藏圖例
-                                tooltip: { 
-                                    backgroundColor: 'rgba(0, 20, 40, 0.9)',
-                                    titleColor: '#0ff',
-                                    bodyColor: '#fff',
-                                    borderColor: '#0ff',
-                                    borderWidth: 1,
-                                    titleFont: { size: 10 },
-                                    bodyFont: { size: 14, weight: 'bold' }
-                                }
-                            },
+                            responsive: true, maintainAspectRatio: false,
+                            plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(0, 20, 40, 0.9)', titleColor: '#0ff', bodyColor: '#fff', borderColor: '#0ff', borderWidth: 1 } },
                             scales: {
-                                y: { 
-                                    beginAtZero: true,
-                                    grid: { color: 'rgba(255, 255, 255, 0.1)', tickLength: 0 },
-                                    ticks: { color: '#6b7280', font: { family: 'sans-serif' } },
-                                    border: { display: false }
-                                },
-                                x: { 
-                                    grid: { display: false },
-                                    ticks: { color: '#6b7280', maxRotation: 0, autoSkip: true, maxTicksLimit: 5 },
-                                    border: { color: 'rgba(255, 255, 255, 0.2)' }
-                                }
+                                y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#6b7280' }, border: { display: false } },
+                                x: { grid: { display: false }, ticks: { color: '#6b7280', maxRotation: 0, autoSkip: true, maxTicksLimit: 5 }, border: { color: 'rgba(255, 255, 255, 0.2)' } }
                             }
                         }
                     });
@@ -391,7 +452,7 @@
 
                     localStorage.setItem('shilieu_retest_words', JSON.stringify(wordsArray));
                     alert(`即將為您啟動專屬的【錯題復仇戰】！\n本次共有 ${wordsArray.length} 個單字需要消滅！`);
-                    window.location.href = 'quiz.html?mode=retest';
+                    window.location.href = 'vocab.html'; 
                 };
 
                 const formatDate = (dateStr) => {
@@ -449,6 +510,7 @@
                         localStorage.removeItem('shilieu_player');
                         currentUserProfile.value = {};
                         myLogs.value = [];
+                        masteryData.value = {};
                         if (chartInstance) chartInstance.destroy();
                     }
                 };
@@ -456,7 +518,9 @@
                 return {
                     view, authMode, authError, isAuthLoading, regData, loginData, currentUserProfile, playerName,
                     handleLogin, handleRegister, handleLogout,
-                    myLogs, numericLogs, isLoadingLogs, totalMissions, avgScore, fetchMyLogs, startRetest, formatDate, getLogScoreColor
+                    myLogs, numericLogs, isLoadingLogs, totalMissions, avgScore, fetchMyLogs, startRetest, formatDate, getLogScoreColor,
+                    totalWordsCount, totalMasteredCount, overallProgressPercentage, themeProgressStats,
+                    resetThemeMastery
                 };
             }
         }).mount('#app');
