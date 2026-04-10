@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>馬纓丹 ONLINE - 特工總部</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',bg:'#050b14'}}}}}</script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',purple:'#b026ff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -118,13 +118,20 @@
                         
                         <div class="mt-4 pt-4 border-t border-cyan-900 w-full">
                             <div class="flex justify-between text-xs font-bold tracking-widest mb-2">
-                                <span class="text-gray-400">總精熟度解鎖</span>
+                                <span class="text-gray-400">單字總精熟度</span>
                                 <span class="text-neon-cyan">{{ overallProgressPercentage }}%</span>
                             </div>
                             <div class="w-full bg-gray-900 h-3 border border-cyan-900 relative shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] overflow-hidden">
                                 <div class="h-full bg-neon-cyan transition-all duration-1000 ease-out shadow-[0_0_10px_#0ff]" :style="{ width: overallProgressPercentage + '%' }"></div>
                             </div>
-                            <div class="text-right text-[10px] text-gray-500 font-bold mt-1">已精熟 {{ totalMasteredCount }} / {{ totalWordsCount }} 單字</div>
+                            
+                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2 mt-4">
+                                <span class="text-gray-400">文法總精熟度</span>
+                                <span class="text-neon-purple">{{ overallGrammarPercentage }}%</span>
+                            </div>
+                            <div class="w-full bg-gray-900 h-3 border border-purple-900 relative shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] overflow-hidden">
+                                <div class="h-full bg-neon-purple transition-all duration-1000 ease-out shadow-[0_0_10px_#b026ff]" :style="{ width: overallGrammarPercentage + '%' }"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,9 +254,13 @@
                                             class="bg-red-950/50 text-red-400 hover:bg-neon-red hover:text-white border border-red-800 px-4 py-1.5 text-xs font-black tracking-widest transition shadow-[0_0_10px_rgba(255,0,60,0.2)]">
                                         ⚔️ 復仇 (錯題重測)
                                     </button>
-                                    <span v-else-if="log.theme.includes('文法')" class="text-xs text-cyan-500 border border-cyan-800 bg-cyan-950/30 font-bold tracking-widest px-4 py-1.5 inline-block">
-                                        📁 戰報歸檔
-                                    </span>
+                                    
+                                    <button v-else-if="log.theme.includes('文法')" 
+                                            @click="viewGrammarLog(log)" 
+                                            class="bg-cyan-950/50 text-cyan-400 hover:bg-neon-cyan hover:text-black border border-cyan-800 px-4 py-1.5 text-xs font-black tracking-widest transition shadow-[0_0_10px_rgba(0,255,255,0.2)]">
+                                        👁️ 查看戰報
+                                    </button>
+                                    
                                     <span v-else class="text-xs text-gray-600 font-bold tracking-widest px-4 py-1.5 inline-block">
                                         完美擊殺
                                     </span>
@@ -259,6 +270,27 @@
                     </table>
                 </div>
             </div>
+
+            <transition name="fade">
+                <div v-if="showLogModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+                    <div class="cyber-box-cyan w-full max-w-2xl bg-gray-900 shadow-[0_0_30px_rgba(0,255,255,0.3)] flex flex-col max-h-[85vh]">
+                        <div class="flex justify-between items-center p-4 border-b border-cyan-900/50 bg-black/50">
+                            <h3 class="text-xl font-black text-white tracking-widest text-neon-cyan">
+                                📁 {{ selectedLogContent.theme }} - 戰報明細
+                            </h3>
+                            <button @click="showLogModal = false" class="text-gray-400 hover:text-white text-3xl font-black">&times;</button>
+                        </div>
+                        <div class="p-6 overflow-y-auto cyber-scrollbar flex-1 text-gray-300 font-bold leading-loose whitespace-pre-wrap text-sm md:text-base">
+                            {{ selectedLogContent.wrongWords === 'X' || !selectedLogContent.wrongWords ? '🎉 完美擊殺！沒有錯題紀錄。' : selectedLogContent.wrongWords }}
+                        </div>
+                        <div class="p-4 border-t border-cyan-900/50 text-right bg-black/50">
+                            <button @click="showLogModal = false" class="bg-cyan-900 text-cyan-300 hover:bg-neon-cyan hover:text-black px-6 py-2 font-black tracking-widest transition shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+                                關閉視窗 (CLOSE)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </transition>
             
             <div class="mt-auto pt-6 pb-4 text-center w-full">
                 <p class="text-[11px] text-gray-600 font-bold tracking-widest">【 © 2026 本網頁為 Jason Wang 之智慧財產 】</p>
@@ -288,13 +320,15 @@
                 const currentUserUid = ref('');
                 const playerName = ref('');
 
-                // 戰報與圖表變數
+                const showLogModal = ref(false);
+                const selectedLogContent = ref({});
+
                 const myLogs = ref([]);
                 const isLoadingLogs = ref(false);
                 let chartInstance = null; 
 
-                // 精熟度資料庫
                 const masteryData = ref({});
+                const grammarMasteryData = ref({}); // 🌟 新增文法精熟度儲存
 
                 const totalMissions = computed(() => myLogs.value.length);
                 const numericLogs = computed(() => myLogs.value.filter(log => !isNaN(parseInt(log.score))));
@@ -317,6 +351,53 @@
                 const overallProgressPercentage = computed(() => {
                     if (totalWordsCount.value === 0) return 0;
                     return parseFloat(((totalMasteredCount.value / totalWordsCount.value) * 100).toFixed(1));
+                });
+
+                // 🌟 新增：計算文法精熟度 (十大主題，各佔 10%)
+                const overallGrammarPercentage = computed(() => {
+                    if (typeof window.GRAMMAR_QUESTIONS === 'undefined') return 0;
+                    const qDb = window.GRAMMAR_QUESTIONS;
+                    
+                    // 從 grammar.html 借用文法的十大主題架構
+                    const grammarThemes = [
+                        { id: 'pronouns', name: '代名詞' }, { id: 'tenses', name: '時態' }, { id: 'special_verbs', name: '特殊動詞' },
+                        { id: 'conjunctions', name: '連接詞' }, { id: 'adjectives', name: '形容詞與副詞' }, { id: 'prepositions', name: '介係詞' },
+                        { id: 'interrogatives', name: '疑問詞' }, { id: 'verbals', name: '不定詞與動名詞' }, { id: 'patterns', name: '特殊句型' },
+                        { id: 'clauses', name: '子句 (大魔王)' }
+                    ];
+
+                    // 收集一個節點底下所有問題的輔助函數
+                    const collectQs = (themeId, nodeObj) => {
+                        let qs = [];
+                        if (qDb[themeId]) qs = qs.concat(qDb[themeId]);
+                        // 如果在原始題庫中找得到子節點，需往下挖 (簡易版：抓出所有開頭符合該 themeId 的 key)
+                        Object.keys(qDb).forEach(key => {
+                            if (key.startsWith(themeId + '_') && key !== themeId) {
+                                qs = qs.concat(qDb[key]);
+                            }
+                        });
+                        return qs;
+                    };
+
+                    let totalPercentage = 0;
+
+                    grammarThemes.forEach(theme => {
+                        let themeQuestions = collectQs(theme.id);
+                        if (themeQuestions.length > 0) {
+                            let masteredCount = 0;
+                            themeQuestions.forEach(q => {
+                                const safeKey = btoa(encodeURIComponent(q.question)).replace(/[=+\/]/g, '');
+                                if (grammarMasteryData.value[safeKey]) masteredCount++;
+                            });
+                            // 該主題 10%，按比例計算
+                            totalPercentage += (masteredCount / themeQuestions.length) * 10;
+                        } else {
+                            // 若該區暫無題目，預設給滿 (或不給，這裡設定不給)
+                            totalPercentage += 0; 
+                        }
+                    });
+
+                    return parseFloat(totalPercentage.toFixed(1));
                 });
 
                 const themeProgressStats = computed(() => {
@@ -352,12 +433,14 @@
                                 }
                             });
 
+                            // 監聽單字精熟度
                             db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
-                                if (snap.exists()) {
-                                    masteryData.value = snap.val();
-                                } else {
-                                    masteryData.value = {};
-                                }
+                                masteryData.value = snap.exists() ? snap.val() : {};
+                            });
+
+                            // 🌟 監聽文法精熟度
+                            db.ref(`app_state/users/${user.uid}/grammarMastery`).on('value', snap => {
+                                grammarMasteryData.value = snap.exists() ? snap.val() : {};
                             });
 
                             view.value = 'home';
@@ -367,7 +450,6 @@
                     });
                 });
 
-                // 🌟 清除特定主題精熟度
                 const resetThemeMastery = async (themeName) => {
                     if (!confirm(`⚠️ 警告：您確定要清除【${themeName}】的所有精熟紀錄嗎？\n此操作無法復原，您必須重新在戰場上證明自己！`)) return;
 
@@ -460,6 +542,11 @@
                     window.location.href = 'vocab.html'; 
                 };
 
+                const viewGrammarLog = (log) => {
+                    selectedLogContent.value = log;
+                    showLogModal.value = true;
+                };
+
                 const formatDate = (dateStr) => {
                     if (!dateStr) return '未知時間';
                     const d = new Date(dateStr);
@@ -516,6 +603,7 @@
                         currentUserProfile.value = {};
                         myLogs.value = [];
                         masteryData.value = {};
+                        grammarMasteryData.value = {}; // 登出時清空
                         if (chartInstance) chartInstance.destroy();
                     }
                 };
@@ -525,7 +613,9 @@
                     handleLogin, handleRegister, handleLogout,
                     myLogs, numericLogs, isLoadingLogs, totalMissions, avgScore, fetchMyLogs, startRetest, formatDate, getLogScoreColor,
                     totalWordsCount, totalMasteredCount, overallProgressPercentage, themeProgressStats,
-                    resetThemeMastery
+                    resetThemeMastery,
+                    showLogModal, selectedLogContent, viewGrammarLog,
+                    overallGrammarPercentage // 🌟 輸出文法精熟度
                 };
             }
         }).mount('#app');

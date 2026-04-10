@@ -8,6 +8,7 @@
     <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',purple:'#b026ff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     
     <script src="config.js"></script>
@@ -51,7 +52,7 @@
             <div class="w-full lg:w-3/5 h-[500px] md:h-[700px] relative bg-black/60 border border-cyan-900/50 shadow-[inset_0_0_50px_rgba(0,255,255,0.05)] overflow-hidden rounded-xl">
                 <div class="absolute top-4 left-4 z-50 pointer-events-none">
                     <span class="text-xs font-bold text-cyan-700 tracking-widest animate-pulse bg-black/50 px-2 py-1 rounded shadow-md">
-                        [ 系統提示：點擊帶有 [+] 標記的衛星可深入下一層星系 ]
+                        [ 系統提示：點擊星系中心即可啟動「全領域綜合測驗」來解鎖精熟度 ]
                     </span>
                 </div>
 
@@ -63,17 +64,21 @@
                             <div class="orbit-ring" style="width: 540px; height: 216px;"></div>
                             <div class="orbit-ring" style="width: 760px; height: 304px;"></div>
 
-                            <div class="absolute transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border-4 border-neon-cyan bg-black flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(0,255,255,0.4)] z-[1000]">
-                                <span class="text-4xl mb-1 drop-shadow-[0_0_10px_#0ff]">🌐</span>
+                            <div @click="startMixedTest" class="absolute transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border-4 border-neon-cyan bg-black flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(0,255,255,0.4)] z-[1000] cursor-pointer hover:scale-110 hover:border-white transition-all group">
+                                <span class="text-4xl mb-1 drop-shadow-[0_0_10px_#0ff] group-hover:animate-pulse">🌐</span>
                                 <span class="text-white font-black tracking-widest text-sm leading-tight">國中<br>英語文法</span>
+                                <span class="absolute -bottom-6 text-[10px] text-neon-yellow font-bold bg-black/80 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">啟動全星系綜合測驗</span>
                             </div>
 
                             <div v-for="star in activeGalaxyPlanets" :key="star.id" class="absolute cursor-pointer group" :style="getPlanetStyle(star)" @click="enterSystem(star)">
-                                <div class="w-16 h-16 rounded-full border-2 bg-black flex items-center justify-center transition-transform group-hover:scale-125" :style="{ borderColor: star.color, boxShadow: `0 0 20px ${star.color}60`, backgroundColor: star.color+'20' }">
+                                <div class="w-16 h-16 rounded-full border-2 bg-black flex items-center justify-center transition-transform group-hover:scale-125" 
+                                     :style="{ borderColor: star.color, backgroundColor: star.color+'20', boxShadow: isThemeMastered(star.id) ? `0 0 30px ${star.color}, inset 0 0 15px ${star.color}` : `0 0 20px ${star.color}60` }"
+                                     :class="{ 'animate-pulse': isThemeMastered(star.id) }">
                                     <span class="text-2xl drop-shadow-md">{{ star.icon }}</span>
+                                    <span v-if="isThemeMastered(star.id)" class="absolute -top-2 -right-2 text-xs">⭐</span>
                                 </div>
                                 <div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none">
-                                    <div class="text-xs font-black text-white tracking-widest drop-shadow-[0_0_3px_#000]">{{ star.name }}</div>
+                                    <div class="text-xs font-black text-white tracking-widest drop-shadow-[0_0_3px_#000]" :class="{ 'text-neon-yellow': isThemeMastered(star.id) }">{{ star.name }}</div>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +121,8 @@
                     <h2 class="text-2xl font-black text-white tracking-widest mb-2">國中英語文法</h2>
                     <p class="text-sm text-gray-400 font-bold tracking-widest mb-8 border-b border-gray-700 pb-6 w-full leading-loose">
                         特工 <span class="text-neon-cyan">{{ playerName }}</span>，歡迎回來。<br>
-                        這裡是全英語文法宇宙的中心。<br>
-                        <span class="text-neon-yellow">請在左側點擊發光恆星，進入歷屆試題高頻考點的深度解析網路。</span>
+                        點擊中央球體可進行 <span class="text-neon-yellow">全星系綜合測驗</span>，<br>
+                        答對題目將永久提升您的文法精熟度！
                     </p>
                 </div>
 
@@ -162,7 +167,7 @@
 
                     <div v-if="isMainPlanet" class="mt-auto">
                         <button @click="startPractice" class="w-full text-black py-4 font-black tracking-widest transition text-lg border-2 hover:bg-white hover:text-black shadow-[0_0_20px_var(--btn-shadow)]" :style="{ backgroundColor: focusedCenter.color, borderColor: focusedCenter.color, '--btn-shadow': focusedCenter.color + '60' }">
-                            ⚔️ 啟動實戰模擬演習 ➔
+                            ⚔️ 局部戰術演習 (不計入精熟度) ➔
                         </button>
                     </div>
                     <div v-else class="mt-auto">
@@ -180,17 +185,18 @@
                 <span class="text-6xl mb-6 block drop-shadow-[0_0_15px_#fff] grayscale">🔒</span>
                 <h2 class="text-2xl font-black text-gray-300 mb-4 tracking-widest">此戰區尚無歷屆題庫資料</h2>
                 <p class="text-gray-500 mb-8 font-bold tracking-widest leading-loose">
-                    總司令，【{{ displayInfoNode.name }}】目前沒有攔截到相關的歷屆試題。<br>請切換至其他重點星系進行演練！
+                    總司令，此節點目前沒有攔截到相關的歷屆試題。<br>請切換至其他重點星系進行演練！
                 </p>
                 <button @click="quitPractice" class="bg-transparent border border-cyan-500 text-cyan-400 hover:bg-cyan-900 hover:text-white py-3 px-8 font-bold tracking-widest transition">
                     返回星圖導航
                 </button>
             </div>
 
-            <div v-else-if="isQuizDone" class="cyber-panel p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full max-w-2xl">
+            <div v-else-if="isQuizDone" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full">
                 <span class="text-6xl mb-4 block">🏆</span>
                 <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
-                <p class="text-gray-400 font-bold tracking-widest mb-6 border-b border-gray-700 pb-6">特工 {{ playerName }}，您的實戰數據如下：</p>
+                <p v-if="isSaving" class="text-cyan-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
+                <p v-else class="text-gray-400 font-bold tracking-widest mb-6 border-b border-gray-700 pb-6">特工 {{ playerName }}，您的實戰數據如下：</p>
                 
                 <div class="text-8xl font-black mb-2" :class="scoreColor">
                     {{ Math.round((correctCount / practiceQuestions.length) * 100) }}%
@@ -199,37 +205,62 @@
                     命中率 ( {{ correctCount }} / {{ practiceQuestions.length }} )
                 </p>
 
-                <div class="flex gap-4 justify-center">
-                    <button @click="restartPractice" class="bg-transparent border border-gray-500 text-gray-300 hover:bg-white hover:text-black py-3 px-6 font-black tracking-widest transition">
-                        🔄 重新演習
-                    </button>
-                    <button @click="quitPractice" class="bg-neon-cyan text-black py-3 px-6 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(0,255,255,0.4)]">
+                <div class="flex gap-4 justify-center mb-8">
+                    <button @click="quitPractice" class="bg-neon-cyan text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(0,255,255,0.4)]">
                         返回星圖 ➔
                     </button>
+                </div>
+
+                <div v-if="reviewList.length > 0" class="mt-8 text-left border-t border-gray-700 pt-6">
+                    <h3 class="text-xl font-black text-neon-yellow mb-4 tracking-widest flex items-center gap-2">
+                        <span>🔍</span> 錯題深度解析 (Review)
+                    </h3>
+                    <div class="space-y-4">
+                        <div v-for="(q, idx) in reviewList" :key="idx" class="bg-gray-900 border border-gray-700 p-5 rounded relative">
+                            <div class="text-gray-300 font-bold mb-3 leading-relaxed tracking-wide">
+                                <span class="text-neon-red font-black mr-2">Q:</span>{{ q.question }}
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                                <div class="bg-red-950/30 border border-red-900/50 p-3 rounded">
+                                    <span class="text-xs text-gray-500 block mb-1">❌ 你的選擇</span>
+                                    <span class="text-red-400 font-bold">{{ q.userChoice }}</span>
+                                </div>
+                                <div class="bg-green-950/30 border border-green-900/50 p-3 rounded">
+                                    <span class="text-xs text-gray-500 block mb-1">✅ 正確解答</span>
+                                    <span class="text-green-400 font-bold">{{ q.correctChoice }}</span>
+                                </div>
+                            </div>
+                            <div v-if="q.explanation" class="bg-blue-950/20 border-l-2 border-blue-500 p-3 mt-2">
+                                <span class="text-xs text-blue-400 font-black block mb-1 tracking-widest">💡 解析說明</span>
+                                <p class="text-sm text-gray-300 font-bold" v-html="formatText(q.explanation)"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div v-else class="flex flex-col h-full gap-4">
-                
                 <div class="flex items-center justify-between bg-black/60 p-4 border border-gray-700">
                     <div class="flex items-center gap-3">
-                        <span class="text-2xl drop-shadow-[0_0_8px_var(--star-color)]" :style="{'--star-color': displayInfoNode.color}">{{ displayInfoNode.icon }}</span>
+                        <span class="text-2xl drop-shadow-[0_0_8px_var(--star-color)]" :style="{'--star-color': displayInfoNode?.color || '#0ff'}">{{ displayInfoNode?.icon || '🌐' }}</span>
                         <div>
                             <div class="text-xs text-gray-400 font-bold tracking-widest">當前戰區</div>
-                            <div class="text-lg font-black text-white tracking-widest" :style="{color: displayInfoNode.color}">{{ displayInfoNode.name }}</div>
+                            <div class="text-lg font-black text-white tracking-widest" :style="{color: displayInfoNode?.color || '#0ff'}">
+                                {{ isMixedTest ? '全星系綜合精熟測驗' : displayInfoNode?.name }}
+                            </div>
                         </div>
                     </div>
                     <div class="text-right">
-                        <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-1">任務進度 MISSION PROGRESS</div>
+                        <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-1">任務進度</div>
                         <div class="text-2xl font-black text-white">
                             <span class="text-neon-cyan">{{ currentQIndex + 1 }}</span> <span class="text-gray-600 text-lg">/ {{ practiceQuestions.length }}</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4" :style="{ borderTopColor: displayInfoNode.color }">
+                <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4" :style="{ borderTopColor: displayInfoNode?.color || '#0ff' }">
                     <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-4 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full animate-pulse" :style="{ backgroundColor: displayInfoNode.color }"></span>
+                        <span class="w-2 h-2 rounded-full animate-pulse" :style="{ backgroundColor: displayInfoNode?.color || '#0ff' }"></span>
                         INTERCEPTED TRANSMISSION
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold text-white leading-relaxed tracking-wide">
@@ -277,7 +308,7 @@
 
                 <transition name="fade">
                     <div v-if="selectedOpt && !hasAnswered" class="mt-4 text-right">
-                        <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-black border-2 hover:bg-white hover:border-white shadow-[0_0_15px_var(--btn-shadow)]" :style="{ backgroundColor: displayInfoNode.color, borderColor: displayInfoNode.color, '--btn-shadow': displayInfoNode.color + '80' }">
+                        <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-black border-2 hover:bg-white hover:border-white shadow-[0_0_15px_var(--btn-shadow)]" :style="{ backgroundColor: displayInfoNode?.color || '#0ff', borderColor: displayInfoNode?.color || '#0ff', '--btn-shadow': (displayInfoNode?.color || '#0ff') + '80' }">
                             確認送出 (SUBMIT)
                         </button>
                     </div>
@@ -289,6 +320,12 @@
     </div>
 
     <script>
+        // 初始化 Firebase
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; }
+        if (!firebase.apps.length) { firebase.initializeApp(FIREBASE_CONFIG); }
+        const dbRef = firebase.database();
+        const auth = firebase.auth();
+
         const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
 
         createApp({
@@ -298,11 +335,23 @@
                 const viewHistory = ref([]);       
                 const focusedCenter = ref(null);   
                 const selectedSubStar = ref(null); 
+                
                 const playerName = ref(localStorage.getItem('shilieu_player') || '未知特工');
-                const startTime = ref(null); // 紀錄開始作戰的時間點
-                const isSaving = ref(false); //
+                const currentUserUid = ref(null);
+                const grammarMasteryData = ref({}); 
+
+                const startTime = ref(null); 
+                const isSaving = ref(false); 
                 const time = ref(0);
                 
+                const wrongQuestionsLog = ref([]); 
+                const reviewList = ref([]);        
+                const isMixedTest = ref(false);    
+                const newMasteredKeys = ref([]);   
+
+                // Firebase 安全 Key 轉換函數
+                const getSafeKey = (text) => btoa(encodeURIComponent(text)).replace(/[=+\/]/g, '');
+
                 // 📊 終極無限下潛深度文法架構庫
                 const rawGrammarStars = [
                     {
@@ -549,9 +598,21 @@
                     return text.replace(/\*\*(.*?)\*\*/g, '<span class="text-white bg-white/20 px-1 rounded shadow-sm mx-0.5">$1</span>');
                 };
 
+                // 🌟 連線 Firebase 取得特工 ID 與精熟度
+                onMounted(() => {
+                    animate();
+                    auth.onAuthStateChanged(user => {
+                        if (user) {
+                            currentUserUid.value = user.uid;
+                            dbRef.ref(`app_state/users/${user.uid}/grammarMastery`).on('value', snap => {
+                                grammarMasteryData.value = snap.exists() ? snap.val() : {};
+                            });
+                        }
+                    });
+                });
+
                 let raf;
                 const animate = () => { time.value += 0.002; raf = requestAnimationFrame(animate); };
-                onMounted(() => { animate(); });
                 onUnmounted(() => { cancelAnimationFrame(raf); });
 
                 const enterSystem = (star) => {
@@ -592,65 +653,32 @@
                     selectedSubStar.value = null;
                 };
 
-                // ==========================================
-                // 🚀 實戰引擎邏輯 (Quiz Engine)
-                // ==========================================
-                const practiceQuestions = ref([]);
-                const currentQIndex = ref(0);
-                const selectedOpt = ref(null);
-                const hasAnswered = ref(false);
-                const isCorrect = ref(false);
-                const correctCount = ref(0);
-                const isQuizDone = ref(false);
-                // 🚀 終極戰報發射器：包含真實計時與原始分數規格
-                const saveBattleLog = () => {
-                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return;
-                    isSaving.value = true;
-                    
-                    const durationMs = Date.now() - startTime.value;
-                    const totalSec = Math.floor(durationMs / 1000);
-                    const m = Math.floor(totalSec / 60);
-                    const s = totalSec % 60;
-                    const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
-                    
-                    const themeName = `文法戰場 - ${displayInfoNode.value.name}`;
-                    const totalQ = practiceQuestions.value.length;
-                    
-                    // 🚀 修正參數：score 傳數字，total 傳數字，讓後端自動組成 "8/10"
-                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
-                                     `&name=${encodeURIComponent(playerName.value)}` +
-                                     `&theme=${encodeURIComponent(themeName)}` +
-                                     `&score=${correctCount.value}` + 
-                                     `&total=${totalQ}` +
-                                     `&timeStr=${encodeURIComponent(timeStr)}` +
-                                     `&answered=${totalQ}` +
-                                     `&wrongWords=X`;
-
-                    fetch(finalUrl, { mode: 'no-cors' })
-                        .then(() => {
-                            console.log(`✅ 戰報：${correctCount.value}/${totalQ}，耗時：${timeStr}`);
-                            isSaving.value = false;
-                        })
-                        .catch(err => {
-                            console.error('❌ 失敗', err);
-                            isSaving.value = false;
-                        });
-                };
-                // 從目標節點以及其底下所有子節點中收集題目
-                const collectQuestions = (node, db) => {
-                    let questions = [];
-                    if (db[node.id]) {
-                        questions = questions.concat(db[node.id]);
-                    }
-                    if (node.children) {
-                        node.children.forEach(child => {
-                            questions = questions.concat(collectQuestions(child, db));
-                        });
-                    }
-                    return questions;
+                // 從特定節點收集所有問題
+                const collectQuestions = (themeId, qDb) => {
+                    let qs = [];
+                    if (qDb[themeId]) qs = qs.concat(qDb[themeId]);
+                    Object.keys(qDb).forEach(key => {
+                        if (key.startsWith(themeId + '_') && key !== themeId) {
+                            qs = qs.concat(qDb[key]);
+                        }
+                    });
+                    return qs;
                 };
 
-                // 洗牌演算法 (Fisher-Yates)
+                // 🌟 判斷星球是否 100% 精熟
+                const isThemeMastered = (themeId) => {
+                    if (!grammarMasteryData.value || typeof window.GRAMMAR_QUESTIONS === 'undefined') return false;
+                    const qs = collectQuestions(themeId, window.GRAMMAR_QUESTIONS);
+                    if (qs.length === 0) return false;
+                    
+                    let masteredCount = 0;
+                    qs.forEach(q => {
+                        const safeKey = getSafeKey(q.question);
+                        if (grammarMasteryData.value[safeKey]) masteredCount++;
+                    });
+                    return masteredCount === qs.length;
+                };
+
                 const shuffleArray = (array) => {
                     for (let i = array.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
@@ -659,45 +687,162 @@
                     return array;
                 };
 
+                // ==========================================
+                // 🚀 實戰引擎與戰報傳輸系統
+                // ==========================================
+                const practiceQuestions = ref([]);
+                const currentQIndex = ref(0);
+                const selectedOpt = ref(null);
+                const hasAnswered = ref(false);
+                const isCorrect = ref(false);
+                const correctCount = ref(0);
+                const isQuizDone = ref(false);
+
+                // 🎯 終極戰報發射器
+                const saveBattleLog = () => {
+                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return;
+                    isSaving.value = true;
+                    
+                    const durationMs = Date.now() - startTime.value;
+                    const totalSeconds = Math.floor(durationMs / 1000);
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                    
+                    const themeName = isMixedTest.value ? '文法大亂鬥 (解鎖精熟度)' : `文法戰場 - ${displayInfoNode.value?.name || '未知'}`;
+                    const totalQ = practiceQuestions.value.length;
+                    
+                    let wrongStr = 'X';
+                    if (wrongQuestionsLog.value.length > 0) {
+                        wrongStr = wrongQuestionsLog.value.join('\n\n--------------------\n\n');
+                        if (wrongStr.length > 1500) wrongStr = wrongStr.substring(0, 1500) + '\n\n...(字數過多省略)';
+                    }
+                    
+                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                     `&name=${encodeURIComponent(playerName.value)}` +
+                                     `&theme=${encodeURIComponent(themeName)}` +
+                                     `&score=${correctCount.value}` + 
+                                     `&total=${totalQ}` +
+                                     `&timeStr=${encodeURIComponent(timeStr)}` +
+                                     `&answered=${totalQ}` +
+                                     `&wrongWords=${encodeURIComponent(wrongStr)}`;
+
+                    fetch(finalUrl, { mode: 'no-cors' })
+                        .then(() => {
+                            console.log(`✅ 戰報已發射！`);
+                            isSaving.value = false;
+                        })
+                        .catch(err => {
+                            console.error('❌ 發射失敗', err);
+                            isSaving.value = false;
+                        });
+
+                    // 🌟 如果是綜合大亂鬥，結算時將新答對的題目存入 Firebase
+                    if (isMixedTest.value && newMasteredKeys.value.length > 0 && currentUserUid.value) {
+                        const updates = {};
+                        newMasteredKeys.value.forEach(key => updates[key] = true);
+                        dbRef.ref(`app_state/users/${currentUserUid.value}/grammarMastery`).update(updates);
+                    }
+                };
+
+                // 啟動區域戰區 (不計入精熟度)
                 const startPractice = () => {
                     const targetNode = displayInfoNode.value;
                     const db = window.GRAMMAR_QUESTIONS || {};
                     
-                    // 收集該星系底下所有的題目
-                    let rawQuestions = collectQuestions(targetNode, db);
+                    let rawQuestions = [];
+                    if (db[targetNode.id]) rawQuestions = rawQuestions.concat(db[targetNode.id]);
+                    if (targetNode.children) {
+                        targetNode.children.forEach(child => {
+                            if (db[child.id]) rawQuestions = rawQuestions.concat(db[child.id]);
+                            Object.keys(db).forEach(k => { if(k.startsWith(child.id+'_') && k!==child.id) rawQuestions=rawQuestions.concat(db[k]); });
+                        });
+                    }
                     
                     if (rawQuestions.length > 0) {
-                        // 將題目洗牌，避免學生背答案順序
                         practiceQuestions.value = shuffleArray([...rawQuestions]);
-                        currentQIndex.value = 0;
-                        selectedOpt.value = null;
-                        hasAnswered.value = false;
-                        isCorrect.value = false;
-                        correctCount.value = 0;
-                        isQuizDone.value = false;
+                        isMixedTest.value = false;
+                        resetQuizState();
                         view.value = 'practice';
-                        startTime.value = Date.now(); // 裝填彈藥完畢，按下按鈕瞬間開始計時
                     } else {
-                        // 如果該星系真的完全沒題目，還是切換畫面，但會顯示「🔒 無題庫」
                         practiceQuestions.value = [];
                         view.value = 'practice';
                     }
                 };
 
-                const currentQuestion = computed(() => {
-                    return practiceQuestions.value[currentQIndex.value] || {};
-                });
+                // 🌟 啟動全星系綜合大亂鬥 (計入精熟度)
+                const startMixedTest = () => {
+                    const db = window.GRAMMAR_QUESTIONS || {};
+                    let allQuestions = [];
+                    Object.values(db).forEach(qs => { allQuestions = allQuestions.concat(qs); });
+                    
+                    if (allQuestions.length > 0) {
+                        // 打亂後抽取 10 題
+                        practiceQuestions.value = shuffleArray([...allQuestions]).slice(0, 10);
+                        isMixedTest.value = true;
+                        newMasteredKeys.value = []; 
+                        resetQuizState();
+                        
+                        // 🎯 修正核心：將虛擬星系指派給 focusedCenter，避免唯讀當機
+                        focusedCenter.value = { id: 'mixed', name: "全領域綜合測驗", icon: "🌐", color: "#0ff" };
+                        selectedSubStar.value = null;
+                        
+                        view.value = 'practice';
+                    }
+                };
+
+                const resetQuizState = () => {
+                    currentQIndex.value = 0;
+                    selectedOpt.value = null;
+                    hasAnswered.value = false;
+                    isCorrect.value = false;
+                    correctCount.value = 0;
+                    isQuizDone.value = false;
+                    wrongQuestionsLog.value = []; 
+                    reviewList.value = [];
+                    startTime.value = Date.now(); 
+                };
+
+                const currentQuestion = computed(() => practiceQuestions.value[currentQIndex.value] || {});
 
                 const selectOption = (opt) => {
                     if (hasAnswered.value) return;
                     selectedOpt.value = opt;
                 };
 
+                // 🌟 判斷答案與錯題記錄
                 const submitAnswer = () => {
                     if (!selectedOpt.value) return;
                     hasAnswered.value = true;
                     isCorrect.value = (selectedOpt.value === currentQuestion.value.answer);
-                    if (isCorrect.value) correctCount.value++;
+                    
+                    if (isCorrect.value) {
+                        correctCount.value++;
+                        // 如果是綜合大乱鬥且答對，準備寫入 Firebase
+                        if (isMixedTest.value) {
+                            newMasteredKeys.value.push(getSafeKey(currentQuestion.value.question));
+                        }
+                    } else {
+                        // 💣 答錯時：記錄高解析度錯題 (給畫面與 Spreadsheet)
+                        const selectedIdx = currentQuestion.value.options.indexOf(selectedOpt.value);
+                        const correctIdx = currentQuestion.value.options.indexOf(currentQuestion.value.answer);
+                        const getLabel = (idx) => ['A', 'B', 'C', 'D'][idx];
+                        
+                        const qText = currentQuestion.value.question;
+                        const userAns = `${getLabel(selectedIdx)}. ${selectedOpt.value}`;
+                        const rightAns = `${getLabel(correctIdx)}. ${currentQuestion.value.answer}`;
+                        
+                        // 存給 Spreadsheet
+                        wrongQuestionsLog.value.push(`【第 ${currentQIndex.value + 1} 題】${qText}\n❌ 你的選擇：${userAns}\n✅ 正確答案：${rightAns}`);
+                        
+                        // 存給畫面顯示
+                        reviewList.value.push({
+                            question: qText,
+                            userChoice: userAns,
+                            correctChoice: rightAns,
+                            explanation: currentQuestion.value.explanation
+                        });
+                    }
                 };
 
                 const nextQuestion = () => {
@@ -708,22 +853,25 @@
                         isCorrect.value = false;
                     } else {
                         isQuizDone.value = true;
-                        saveBattleLog(); // 🎯 觸發傳輸！發送戰報！
+                        saveBattleLog(); // 觸發傳輸
                     }
                 };
 
                 const restartPractice = () => {
-                    practiceQuestions.value = shuffleArray([...practiceQuestions.value]);
-                    currentQIndex.value = 0;
-                    selectedOpt.value = null;
-                    hasAnswered.value = false;
-                    isCorrect.value = false;
-                    correctCount.value = 0;
-                    isQuizDone.value = false;
+                    if (isMixedTest.value) {
+                        startMixedTest(); // 重新抽 10 題
+                    } else {
+                        practiceQuestions.value = shuffleArray([...practiceQuestions.value]);
+                        resetQuizState();
+                    }
                 };
 
-                const quitPractice = () => {
-                    view.value = 'map';
+                // 🎯 修正核心：中止演習時，清空虛擬星系
+                const quitPractice = () => { 
+                    if (isMixedTest.value) {
+                        focusedCenter.value = null;
+                    }
+                    view.value = 'map'; 
                 };
 
                 const scoreColor = computed(() => {
@@ -737,10 +885,8 @@
                     view, systemState, focusedCenter, selectedSubStar, playerName, currentPath, isMainPlanet,
                     activeGalaxyPlanets, satellitePlanets, backgroundPlanets, displayInfoNode,
                     getPlanetStyle, enterSystem, handleSatelliteClick, selectSubStar, backUpSystem, returnToMainPlanet, formatText,
-                    // 實戰引擎對外開放變數與方法
-                    startPractice, practiceQuestions, currentQIndex, currentQuestion, selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, scoreColor,
-                    selectOption, submitAnswer, nextQuestion, restartPractice, quitPractice, 
-                    isSaving //
+                    startPractice, startMixedTest, practiceQuestions, currentQIndex, currentQuestion, selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, scoreColor,
+                    selectOption, submitAnswer, nextQuestion, restartPractice, quitPractice, isSaving, isMixedTest, reviewList, isThemeMastered
                 };
             }
         }).mount('#app');
