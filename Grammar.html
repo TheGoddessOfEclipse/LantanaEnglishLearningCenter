@@ -299,6 +299,8 @@
                 const focusedCenter = ref(null);   
                 const selectedSubStar = ref(null); 
                 const playerName = ref(localStorage.getItem('shilieu_player') || '未知特工');
+                const startTime = ref(null); // 紀錄開始作戰的時間點
+                const isSaving = ref(false); //
                 const time = ref(0);
                 
                 // 📊 終極無限下潛深度文法架構庫
@@ -600,27 +602,39 @@
                 const isCorrect = ref(false);
                 const correctCount = ref(0);
                 const isQuizDone = ref(false);
-                // 🚀 發送戰報到 Google Sheets 總部 (精準對齊版)
+                // 🚀 終極戰報發射器：包含真實計時與原始分數規格
                 const saveBattleLog = () => {
-                    if (typeof GOOGLE_API_URL === 'undefined') return;
+                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return;
+                    isSaving.value = true;
                     
-                    const finalScore = Math.round((correctCount.value / practiceQuestions.value.length) * 100);
+                    const durationMs = Date.now() - startTime.value;
+                    const totalSec = Math.floor(durationMs / 1000);
+                    const m = Math.floor(totalSec / 60);
+                    const s = totalSec % 60;
+                    const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                    
                     const themeName = `文法戰場 - ${displayInfoNode.value.name}`;
+                    const totalQ = practiceQuestions.value.length;
                     
-                    // 🚀 構造 100% 規格相容的網址參數 (對齊後端 7 個欄位)
+                    // 🚀 修正參數：score 傳數字，total 傳數字，讓後端自動組成 "8/10"
                     const finalUrl = `${GOOGLE_API_URL}?action=add` +
                                      `&name=${encodeURIComponent(playerName.value)}` +
                                      `&theme=${encodeURIComponent(themeName)}` +
-                                     `&score=${finalScore}` +
-                                     `&total=100` +
-                                     `&timeStr=${encodeURIComponent("實戰演習")}` +
-                                     `&answered=${practiceQuestions.value.length}` +
+                                     `&score=${correctCount.value}` + 
+                                     `&total=${totalQ}` +
+                                     `&timeStr=${encodeURIComponent(timeStr)}` +
+                                     `&answered=${totalQ}` +
                                      `&wrongWords=X`;
 
-                    // 🛠️ 執行暴力發射 (確保繞過 CORS 攔截)
                     fetch(finalUrl, { mode: 'no-cors' })
-                        .then(() => console.log('📡 文法戰報已發射至神聖殿堂！'))
-                        .catch(err => console.error('⚠️ 戰報傳輸失敗', err));
+                        .then(() => {
+                            console.log(`✅ 戰報：${correctCount.value}/${totalQ}，耗時：${timeStr}`);
+                            isSaving.value = false;
+                        })
+                        .catch(err => {
+                            console.error('❌ 失敗', err);
+                            isSaving.value = false;
+                        });
                 };
                 // 從目標節點以及其底下所有子節點中收集題目
                 const collectQuestions = (node, db) => {
@@ -662,6 +676,7 @@
                         correctCount.value = 0;
                         isQuizDone.value = false;
                         view.value = 'practice';
+                        startTime.value = Date.now(); // 裝填彈藥完畢，按下按鈕瞬間開始計時
                     } else {
                         // 如果該星系真的完全沒題目，還是切換畫面，但會顯示「🔒 無題庫」
                         practiceQuestions.value = [];
@@ -724,7 +739,8 @@
                     getPlanetStyle, enterSystem, handleSatelliteClick, selectSubStar, backUpSystem, returnToMainPlanet, formatText,
                     // 實戰引擎對外開放變數與方法
                     startPractice, practiceQuestions, currentQIndex, currentQuestion, selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, scoreColor,
-                    selectOption, submitAnswer, nextQuestion, restartPractice, quitPractice
+                    selectOption, submitAnswer, nextQuestion, restartPractice, quitPractice, 
+                    isSaving //
                 };
             }
         }).mount('#app');
