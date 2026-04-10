@@ -600,23 +600,27 @@
                 const isCorrect = ref(false);
                 const correctCount = ref(0);
                 const isQuizDone = ref(false);
-                // 🚀 發送戰報到 Google Sheets 總部
+                // 🚀 發送戰報到 Google Sheets 總部 (精準對齊版)
                 const saveBattleLog = () => {
                     if (typeof GOOGLE_API_URL === 'undefined') return;
-                    const finalScore = Math.round((correctCount.value / practiceQuestions.value.length) * 100);
                     
-                    const formData = new FormData();
-                    formData.append('action', 'add'); // 對接後端 API 寫入指令
-                    formData.append('name', playerName.value);
-                    formData.append('theme', `文法戰場 - ${displayInfoNode.value.name}`);
-                    formData.append('score', finalScore.toString());
-                    formData.append('wrongWords', 'X'); // 文法不適用單字錯題重測，代入 X
+                    const finalScore = Math.round((correctCount.value / practiceQuestions.value.length) * 100);
+                    const themeName = `文法戰場 - ${displayInfoNode.value.name}`;
+                    
+                    // 🚀 構造 100% 規格相容的網址參數 (對齊後端 7 個欄位)
+                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                     `&name=${encodeURIComponent(playerName.value)}` +
+                                     `&theme=${encodeURIComponent(themeName)}` +
+                                     `&score=${finalScore}` +
+                                     `&total=100` +
+                                     `&timeStr=${encodeURIComponent("實戰演習")}` +
+                                     `&answered=${practiceQuestions.value.length}` +
+                                     `&wrongWords=X`;
 
-                    fetch(GOOGLE_API_URL, {
-                        method: 'POST',
-                        body: formData
-                    }).then(res => console.log('📡 文法戰報已成功上傳神聖殿堂！'))
-                      .catch(err => console.error('⚠️ 戰報傳輸失敗', err));
+                    // 🛠️ 執行暴力發射 (確保繞過 CORS 攔截)
+                    fetch(finalUrl, { mode: 'no-cors' })
+                        .then(() => console.log('📡 文法戰報已發射至神聖殿堂！'))
+                        .catch(err => console.error('⚠️ 戰報傳輸失敗', err));
                 };
                 // 從目標節點以及其底下所有子節點中收集題目
                 const collectQuestions = (node, db) => {
