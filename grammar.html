@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 文法戰場</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',purple:'#b026ff',bg:'#050b14'}}}}}</script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <script src="config.js"></script>
+    <script src="grammar_data.js"></script>
+
+    <style>
+        body { background-color: #050b14; color: #e5e7eb; overflow-x: hidden; font-family: sans-serif; }
+        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.05) 51%); background-size: 100% 4px; animation: scan 10s linear infinite; pointer-events: none; }
+        @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
+        
+        .cyber-panel { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); background: rgba(0, 20, 40, 0.8); backdrop-blur: 10px; border: 1px solid rgba(0, 255, 255, 0.3); }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .orbit-ring { position: absolute; transform: translate(-50%, -50%); border: 1px dashed rgba(255,255,255,0.15); border-radius: 50%; pointer-events: none; transition: all 0.5s ease; }
+        
+        ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: #0ff; }
+    </style>
+</head>
+<body class="min-h-screen relative p-4 md:p-8 flex flex-col">
+    <div class="fixed inset-0 scanline z-0"></div>
+    <div class="fixed inset-0 pointer-events-none z-0" style="background-image:radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 80%);"></div>
+
+    <div id="app" class="max-w-7xl mx-auto relative z-10 flex flex-col h-full w-full">
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-cyan-900/50 pb-4 gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black tracking-widest text-white neon-text-cyan drop-shadow-[0_0_10px_#0ff]">文法戰場 // <span class="text-neon-purple">3D 考點星圖</span></h1>
+                <p class="text-xs text-gray-400 font-bold tracking-widest mt-1">>> GRAMMAR DEEP-DIVE NAVIGATION SYSTEM</p>
+            </div>
+            <button v-if="view === 'map'" onclick="window.location.href='index.html'" class="border border-cyan-800 text-cyan-600 hover:text-neon-cyan hover:border-neon-cyan px-6 py-2 font-bold tracking-widest transition text-sm bg-black/40 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+                ≪ 撤退返回大廳
+            </button>
+            <button v-else @click="quitPractice" class="border border-red-800 text-red-500 hover:text-white hover:bg-red-900 px-6 py-2 font-bold tracking-widest transition text-sm bg-black/40 shadow-[0_0_15px_rgba(255,0,0,0.2)]">
+                中止演習 (Abort) ✖
+            </button>
+        </div>
+
+        <div v-if="view === 'map'" class="flex flex-col lg:flex-row gap-6 flex-1 fade-in">
+            
+            <div class="w-full lg:w-3/5 h-[500px] md:h-[700px] relative bg-black/60 border border-cyan-900/50 shadow-[inset_0_0_50px_rgba(0,255,255,0.05)] overflow-hidden rounded-xl">
+                <div class="absolute top-4 left-4 z-50 pointer-events-none">
+                    <span class="text-xs font-bold text-cyan-700 tracking-widest animate-pulse bg-black/50 px-2 py-1 rounded shadow-md">
+                        [ 系統提示：點擊帶有 [+] 標記的衛星可深入下一層星系 ]
+                    </span>
+                </div>
+
+                <div class="absolute top-1/2 left-1/2 w-0 h-0 scale-[0.65] md:scale-90 transition-transform duration-500">
+                    <transition name="fade" mode="out-in">
+                        
+                        <div v-if="systemState === 'galaxy'" key="galaxy">
+                            <div class="orbit-ring" style="width: 320px; height: 128px;"></div>
+                            <div class="orbit-ring" style="width: 540px; height: 216px;"></div>
+                            <div class="orbit-ring" style="width: 760px; height: 304px;"></div>
+
+                            <div class="absolute transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border-4 border-neon-cyan bg-black flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(0,255,255,0.4)] z-[1000]">
+                                <span class="text-4xl mb-1 drop-shadow-[0_0_10px_#0ff]">🌐</span>
+                                <span class="text-white font-black tracking-widest text-sm leading-tight">國中<br>英語文法</span>
+                            </div>
+
+                            <div v-for="star in activeGalaxyPlanets" :key="star.id" class="absolute cursor-pointer group" :style="getPlanetStyle(star)" @click="enterSystem(star)">
+                                <div class="w-16 h-16 rounded-full border-2 bg-black flex items-center justify-center transition-transform group-hover:scale-125" :style="{ borderColor: star.color, boxShadow: `0 0 20px ${star.color}60`, backgroundColor: star.color+'20' }">
+                                    <span class="text-2xl drop-shadow-md">{{ star.icon }}</span>
+                                </div>
+                                <div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none">
+                                    <div class="text-xs font-black text-white tracking-widest drop-shadow-[0_0_3px_#000]">{{ star.name }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div v-else-if="systemState === 'planet'" key="planet">
+                            <button @click="backUpSystem" class="fixed top-[-260px] md:top-[-320px] left-[-45vw] md:left-[-350px] z-50 bg-black/80 border border-gray-600 px-6 py-3 hover:bg-white hover:text-black transition font-black tracking-widest text-sm shadow-[0_0_15px_rgba(255,255,255,0.2)] backdrop-blur-md flex items-center gap-2" :style="{ borderColor: focusedCenter.color, color: focusedCenter.color }">
+                                🔙 躍遷回上層星系
+                            </button>
+
+                            <div v-if="satellitePlanets.length > 0" class="orbit-ring" :style="{ width: '420px', height: '168px', borderColor: focusedCenter.color + '60', boxShadow: `inset 0 0 30px ${focusedCenter.color}20` }"></div>
+                            <div class="orbit-ring" style="width: 860px; height: 344px; border-color: rgba(255,255,255,0.05);"></div>
+
+                            <div class="absolute transform -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full border-[5px] bg-black flex flex-col items-center justify-center text-center shadow-[0_0_60px_var(--star-color)] z-[1000] scale-100 transition-all duration-500 cursor-pointer hover:scale-110" :style="{'--star-color': focusedCenter.color, borderColor: focusedCenter.color, backgroundColor: focusedCenter.color+'30'}" @click="selectSubStar(null)">
+                                <span class="text-5xl mb-2 drop-shadow-lg">{{ focusedCenter.icon }}</span>
+                                <span class="text-white font-black text-sm tracking-widest leading-tight" v-html="focusedCenter.name.replace(' ','<br>')"></span>
+                                <div v-if="!selectedSubStar" class="absolute -bottom-6 text-[10px] text-neon-yellow font-bold bg-black/80 px-2 py-0.5 rounded animate-pulse whitespace-nowrap">📍 當前情報鎖定</div>
+                            </div>
+
+                            <div v-for="sat in satellitePlanets" :key="sat.id" class="absolute group cursor-pointer" :style="getPlanetStyle(sat)" @click="handleSatelliteClick(sat)">
+                                <div class="w-20 h-20 rounded-full border-[3px] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:bg-white group-hover:text-black relative" :style="{ borderColor: focusedCenter.color, backgroundColor: selectedSubStar && selectedSubStar.id === sat.id ? focusedCenter.color : '#050b14', boxShadow: selectedSubStar && selectedSubStar.id === sat.id ? `0 0 30px ${focusedCenter.color}` : `0 0 15px ${focusedCenter.color}60` }">
+                                    <span class="text-[11px] font-black text-center px-1 leading-tight break-words tracking-widest group-hover:text-black z-10" :style="{ color: selectedSubStar && selectedSubStar.id === sat.id ? '#000' : '#fff' }">{{ sat.name }}</span>
+                                    <div v-if="sat.children && sat.children.length > 0" class="absolute -top-2 -right-2 bg-neon-purple text-white text-[10px] w-6 h-6 flex items-center justify-center rounded-full animate-bounce shadow-lg border border-purple-400 z-20">[+]</div>
+                                </div>
+                                <div v-if="selectedSubStar && selectedSubStar.id === sat.id" class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-neon-yellow font-bold bg-black px-1.5 py-0.5 rounded animate-pulse whitespace-nowrap pointer-events-none">📍 鎖定</div>
+                            </div>
+
+                            <div v-for="star in backgroundPlanets" :key="star.id" class="absolute opacity-30 pointer-events-none transition-all duration-1000" :style="getPlanetStyle(star)">
+                                <div class="w-10 h-10 rounded-full border bg-black flex items-center justify-center filter grayscale" :style="{ borderColor: star.color }">
+                                    <span class="text-xs">{{ star.icon }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-2/5 flex flex-col gap-4">
+                <div v-if="systemState === 'galaxy'" class="cyber-panel p-8 text-center border-neon-cyan flex flex-col items-center justify-center min-h-[500px] shadow-[0_0_20px_rgba(0,255,255,0.1)] fade-in">
+                    <span class="text-7xl mb-6 drop-shadow-[0_0_15px_#0ff] animate-pulse">🌐</span>
+                    <h2 class="text-2xl font-black text-white tracking-widest mb-2">國中英語文法</h2>
+                    <p class="text-sm text-gray-400 font-bold tracking-widest mb-8 border-b border-gray-700 pb-6 w-full leading-loose">
+                        特工 <span class="text-neon-cyan">{{ playerName }}</span>，歡迎回來。<br>
+                        這裡是全英語文法宇宙的中心。<br>
+                        <span class="text-neon-yellow">請在左側點擊發光恆星，進入歷屆試題高頻考點的深度解析網路。</span>
+                    </p>
+                </div>
+
+                <div v-else-if="systemState === 'planet' && displayInfoNode" class="cyber-panel p-6 md:p-8 fade-in w-full h-full shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col transition-colors duration-300" :style="{ borderColor: focusedCenter.color }">
+                    <div class="mb-4 flex items-center justify-between border-b pb-4" :style="{ borderColor: focusedCenter.color + '40' }">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-2 mb-2">
+                                <span class="text-[10px] text-black font-black tracking-widest px-2 py-0.5 rounded-sm shadow-md transition-colors whitespace-nowrap" :style="{ backgroundColor: focusedCenter.color }">
+                                    {{ selectedSubStar ? '微觀終極考點' : '星系核心中樞' }}
+                                </span>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest leading-tight" :style="{ textShadow: `0 0 15px ${focusedCenter.color}` }">
+                                {{ displayInfoNode.name }}
+                            </h2>
+                            <p class="text-[10px] font-bold text-gray-400 mt-2 tracking-widest break-all">
+                                座標：{{ currentPath }}
+                            </p>
+                        </div>
+                        <div class="text-5xl opacity-80 pl-4" :style="{ filter: `drop-shadow(0 0 10px ${focusedCenter.color})` }">
+                            {{ selectedSubStar ? '💠' : focusedCenter.icon }}
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 overflow-y-auto cyber-scrollbar pr-2 space-y-4 mb-6 max-h-[450px]">
+                        <div v-if="displayInfoNode.desc" class="bg-black/60 p-4 border-l-4" :style="{ borderColor: focusedCenter.color }">
+                            <h3 class="text-sm font-black text-white tracking-widest mb-2 flex items-center gap-2"><span>📖</span> 戰術介紹 (Intro)</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed font-bold tracking-wide" v-html="formatText(displayInfoNode.desc)"></p>
+                        </div>
+                        <div class="bg-red-950/20 p-4 border border-red-900/50 relative overflow-hidden" v-if="displayInfoNode.note">
+                            <div class="absolute top-0 right-0 bg-red-900/50 text-red-300 text-[9px] px-2 py-0.5 tracking-widest">WARNING</div>
+                            <h3 class="text-sm font-black text-red-400 tracking-widest mb-2 flex items-center gap-2"><span class="animate-pulse">⚠️</span> 致命陷阱 (Note)</h3>
+                            <p class="text-sm text-red-200/90 leading-relaxed font-bold tracking-wide" v-html="formatText(displayInfoNode.note)"></p>
+                        </div>
+                        <div class="bg-yellow-950/20 p-4 border border-yellow-900/50 relative overflow-hidden" v-if="displayInfoNode.tip">
+                            <h3 class="text-sm font-black text-neon-yellow tracking-widest mb-2 flex items-center gap-2"><span>💡</span> 破題撇步 (Tip)</h3>
+                            <p class="text-sm text-yellow-200/90 leading-relaxed font-bold tracking-wide" v-html="formatText(displayInfoNode.tip)"></p>
+                        </div>
+                        <div v-if="displayInfoNode.children && displayInfoNode.children.length > 0" class="text-center p-3 border border-dashed border-gray-600 text-gray-400 text-xs font-bold tracking-widest mt-4 animate-pulse">
+                            👆 此星系還有更深層的情報！<br>點擊左側帶有 [+] 的衛星進行躍遷深入。
+                        </div>
+                    </div>
+
+                    <div v-if="isMainPlanet" class="mt-auto">
+                        <button @click="startPractice" class="w-full text-black py-4 font-black tracking-widest transition text-lg border-2 hover:bg-white hover:text-black shadow-[0_0_20px_var(--btn-shadow)]" :style="{ backgroundColor: focusedCenter.color, borderColor: focusedCenter.color, '--btn-shadow': focusedCenter.color + '60' }">
+                            ⚔️ 啟動實戰模擬演習 ➔
+                        </button>
+                    </div>
+                    <div v-else class="mt-auto">
+                        <button @click="returnToMainPlanet" class="w-full bg-black/60 py-4 font-black tracking-widest transition text-lg border-2 hover:bg-white hover:text-black shadow-[inset_0_0_15px_rgba(255,255,255,0.1)]" :style="{ borderColor: focusedCenter.color, color: focusedCenter.color }">
+                            🚀 躍遷回主星系準備實戰
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="view === 'practice'" class="fade-in max-w-4xl mx-auto mt-4 w-full flex-1 flex flex-col">
+            
+            <div v-if="practiceQuestions.length === 0" class="cyber-panel p-12 text-center border-gray-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] m-auto">
+                <span class="text-6xl mb-6 block drop-shadow-[0_0_15px_#fff] grayscale">🔒</span>
+                <h2 class="text-2xl font-black text-gray-300 mb-4 tracking-widest">此戰區尚無歷屆題庫資料</h2>
+                <p class="text-gray-500 mb-8 font-bold tracking-widest leading-loose">
+                    總司令，【{{ displayInfoNode.name }}】目前沒有攔截到相關的歷屆試題。<br>請切換至其他重點星系進行演練！
+                </p>
+                <button @click="quitPractice" class="bg-transparent border border-cyan-500 text-cyan-400 hover:bg-cyan-900 hover:text-white py-3 px-8 font-bold tracking-widest transition">
+                    返回星圖導航
+                </button>
+            </div>
+
+            <div v-else-if="isQuizDone" class="cyber-panel p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full max-w-2xl">
+                <span class="text-6xl mb-4 block">🏆</span>
+                <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
+                <p class="text-gray-400 font-bold tracking-widest mb-6 border-b border-gray-700 pb-6">特工 {{ playerName }}，您的實戰數據如下：</p>
+                
+                <div class="text-8xl font-black mb-2" :class="scoreColor">
+                    {{ Math.round((correctCount / practiceQuestions.length) * 100) }}%
+                </div>
+                <p class="text-sm text-gray-400 font-bold tracking-widest mb-8">
+                    命中率 ( {{ correctCount }} / {{ practiceQuestions.length }} )
+                </p>
+
+                <div class="flex gap-4 justify-center">
+                    <button @click="restartPractice" class="bg-transparent border border-gray-500 text-gray-300 hover:bg-white hover:text-black py-3 px-6 font-black tracking-widest transition">
+                        🔄 重新演習
+                    </button>
+                    <button @click="quitPractice" class="bg-neon-cyan text-black py-3 px-6 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(0,255,255,0.4)]">
+                        返回星圖 ➔
+                    </button>
+                </div>
+            </div>
+
+            <div v-else class="flex flex-col h-full gap-4">
+                
+                <div class="flex items-center justify-between bg-black/60 p-4 border border-gray-700">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl drop-shadow-[0_0_8px_var(--star-color)]" :style="{'--star-color': displayInfoNode.color}">{{ displayInfoNode.icon }}</span>
+                        <div>
+                            <div class="text-xs text-gray-400 font-bold tracking-widest">當前戰區</div>
+                            <div class="text-lg font-black text-white tracking-widest" :style="{color: displayInfoNode.color}">{{ displayInfoNode.name }}</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-1">任務進度 MISSION PROGRESS</div>
+                        <div class="text-2xl font-black text-white">
+                            <span class="text-neon-cyan">{{ currentQIndex + 1 }}</span> <span class="text-gray-600 text-lg">/ {{ practiceQuestions.length }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4" :style="{ borderTopColor: displayInfoNode.color }">
+                    <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full animate-pulse" :style="{ backgroundColor: displayInfoNode.color }"></span>
+                        INTERCEPTED TRANSMISSION
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white leading-relaxed tracking-wide">
+                        {{ currentQuestion.question }}
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button v-for="(opt, idx) in currentQuestion.options" :key="idx"
+                            @click="selectOption(opt)"
+                            :disabled="hasAnswered"
+                            class="text-left p-5 border-2 text-gray-300 font-bold tracking-wide text-lg flex items-center gap-4 relative overflow-hidden transition-all duration-200"
+                            :class="{
+                                'border-gray-700 bg-black/60 hover:border-cyan-500 hover:bg-cyan-900/30 hover:pl-8': selectedOpt !== opt && !hasAnswered,
+                                'border-cyan-400 bg-cyan-900/50 pl-8 shadow-[0_0_15px_rgba(0,255,255,0.4)] text-white': selectedOpt === opt && !hasAnswered,
+                                'border-green-500 bg-green-900/50 pl-8 shadow-[0_0_15px_rgba(0,255,0,0.4)] text-white': hasAnswered && opt === currentQuestion.answer,
+                                'border-red-500 bg-red-900/50 pl-8 shadow-[0_0_15px_rgba(255,0,60,0.4)] text-white opacity-80': hasAnswered && selectedOpt === opt && opt !== currentQuestion.answer,
+                                'border-gray-800 bg-black/40 opacity-40 cursor-not-allowed': hasAnswered && opt !== currentQuestion.answer && selectedOpt !== opt
+                            }">
+                        
+                        <span class="text-sm font-black font-mono w-6" :class="selectedOpt === opt || hasAnswered ? 'text-white' : 'text-gray-600'">{{ ['A','B','C','D'][idx] }}</span>
+                        <span class="flex-1">{{ opt }}</span>
+                        
+                        <span v-if="hasAnswered && opt === currentQuestion.answer" class="text-neon-green text-2xl font-black drop-shadow-[0_0_8px_#0f0] absolute right-4">✓</span>
+                        <span v-if="hasAnswered && selectedOpt === opt && opt !== currentQuestion.answer" class="text-neon-red text-2xl font-black drop-shadow-[0_0_8px_#ff003c] absolute right-4">✗</span>
+                    </button>
+                </div>
+
+                <transition name="fade">
+                    <div v-if="hasAnswered" class="mt-4 p-6 border bg-black/80 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6"
+                         :class="isCorrect ? 'border-neon-green' : 'border-neon-red'">
+                        
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2 font-black tracking-widest text-lg" :class="isCorrect ? 'text-neon-green' : 'text-neon-red'">
+                                <span>{{ isCorrect ? '✅ 破解成功 (TARGET DESTROYED)' : '❌ 戰術失誤 (MISSION FAILED)' }}</span>
+                            </div>
+                            <p class="text-sm text-gray-300 leading-relaxed font-bold tracking-wide" v-html="formatText(currentQuestion.explanation)"></p>
+                        </div>
+
+                        <button @click="nextQuestion" class="w-full md:w-auto px-10 py-4 font-black tracking-widest transition text-black bg-white hover:bg-gray-300 shadow-[0_0_15px_rgba(255,255,255,0.5)] whitespace-nowrap">
+                            {{ currentQIndex === practiceQuestions.length - 1 ? '查看結算報告 ➔' : '下一題 (NEXT) ➔' }}
+                        </button>
+                    </div>
+                </transition>
+
+                <transition name="fade">
+                    <div v-if="selectedOpt && !hasAnswered" class="mt-4 text-right">
+                        <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-black border-2 hover:bg-white hover:border-white shadow-[0_0_15px_var(--btn-shadow)]" :style="{ backgroundColor: displayInfoNode.color, borderColor: displayInfoNode.color, '--btn-shadow': displayInfoNode.color + '80' }">
+                            確認送出 (SUBMIT)
+                        </button>
+                    </div>
+                </transition>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
+
+        createApp({
+            setup() {
+                const view = ref('map');
+                const systemState = ref('galaxy'); 
+                const viewHistory = ref([]);       
+                const focusedCenter = ref(null);   
+                const selectedSubStar = ref(null); 
+                const playerName = ref(localStorage.getItem('shilieu_player') || '未知特工');
+                const startTime = ref(null); // 紀錄開始作戰的時間點
+                const isSaving = ref(false); //
+                const time = ref(0);
+                
+                // 📊 終極無限下潛深度文法架構庫
+                const rawGrammarStars = [
+                    {
+                        id: 'pronouns', name: '代名詞', icon: '👤', color: '#0ff',
+                        desc: "代替名詞以避免重複的詞語。在會考中，找尋『它到底代替誰』是解題關鍵。",
+                        children: [
+                            {
+                                id: 'pro_1', name: "人稱代名詞", desc: "指示說話者、聽話者或第三者的代名詞。",
+                                children: [
+                                    { id: 'pro_1_a', name: "主格", desc: "I, you, he, she, it, we, they", tip: "破題：放句首，或在一般動詞、be動詞之前當發出動作的主角。" },
+                                    { id: 'pro_1_b', name: "受格", desc: "me, you, him, her, it, us, them", note: "致命陷阱：介係詞後面一定要接『受格』！例如 between you and **me** (絕對不能用 I)。", tip: "破題：放在『一般動詞』或『介係詞(with/for/to/between)』後面。例如: Wait for **them**." },
+                                    { id: 'pro_1_c', name: "所有格", desc: "my, your, his, her, its, our, their", note: "所有格絕對不能單獨存在！後面一定要加『名詞』。", tip: "破題：看到空格後面有衣服、書本等名詞，前面立刻選所有格。" },
+                                    { id: 'pro_1_d', name: "反身代名詞", desc: "myself, yourself, himself...", tip: "破題：當『主詞跟受詞是同一人』時必選反身代名詞 (例如 I cut **myself**)。常搭配 by 表示『靠自己』(She did it by **herself**)。" },
+                                    { id: 'pro_1_e', name: "所有格代名詞", desc: "mine, yours, his, hers, ours, theirs", tip: "破題：它是『所有格 + 名詞』的化身，用來避免名詞重複。例如: My pen is broken. Can I borrow **yours**? (yours = your pen)" }
+                                ]
+                            },
+                            {
+                                id: 'pro_2', name: "不定代名詞", desc: "無特定指稱對象的代名詞。",
+                                children: [
+                                    { id: 'pro_2_a', name: "one/ones/it/them", desc: "常考指示代名詞區別。", tip: "● **it**: 同一件物品 (I lost my pen and can't find **it**.)<br>● **them**: 同一群物品<br>● **one**: 同類但『不同件』(I lost my pen, so I bought a new **one**.)<br>● **ones**: 同類多件" },
+                                    { id: 'pro_2_b', name: "another/others", desc: "兩者或三者以上的『另一個』。", note: "the 代表『範圍內剩下的全部』！", tip: "● **another**: 無範圍的隨便另一個。<br>● **the other**: 兩者之中『剩下那一個』(One is tall, **the other** is short.)<br>● **others**: 無範圍的其他人/物。<br>● **the others**: 有範圍的『剩下全部』。" }
+                                ]
+                            },
+                            {
+                                id: 'pro_3', name: "數量不定代名詞", desc: "表示數量的代名詞，常考 `數量詞 + of the + 名詞`。", note: "最常考『動詞的單複數』。of 後面的名詞決定前面要用什麼數量詞；但**前面的數量詞決定最後的動詞單複數！**",
+                                children: [
+                                    { id: 'pro_3_a', name: "可數專用", desc: "單數：one, each, every one, either, neither<br>複數：two, both, several, many, few, a few", note: "each of / one of 後面的名詞要複數，但動詞必須是『單數』！", tip: "如果 of the 後面的名詞是複數可數 (boys)，才能選這些。<br>例如：One of the boys **is** tall." },
+                                    { id: 'pro_3_b', name: "不可數專用", desc: "little, a little, much", note: "不可數名詞永遠視為單數，後面的動詞必須加 s 或用 is/was！", tip: "如果 of the 後面是水或錢 (water, money)，只能選 much 或 little！<br>例如：Much of the water **is** dirty." },
+                                    { id: 'pro_3_c', name: "通用", desc: "all, most, lots of, a lot of, some, none, any", tip: "可接可數與不可數。<br>破題關鍵：主動詞由 of 後面的名詞決定！<br>● Some of the boys **are**...<br>● Some of the water **is**..." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'tenses', name: '時態', icon: '⏳', color: '#3b82f6',
+                        desc: "掌控英文句子的時間軸。會考最愛考時間標記與動詞的對應關係。",
+                        children: [
+                            { id: 'ten_1', name: "現在簡單式", desc: "描述事實、真理或現在的習慣。", tip: "關鍵字：every day, always, usually, often。" },
+                            { id: 'ten_2', name: "現在進行式", desc: "當下正在發生的動作 (be + Ving)。", tip: "關鍵字：now, right now, Look!, Listen!。" },
+                            { id: 'ten_3', name: "現在完成式", desc: "從過去持續到現在，或描述目前的經驗 (have/has + p.p.)。", note: "千萬別跟過去式搞混！完成式強調『對現在有影響』。陷阱：`has gone to`(去了還沒回來) vs `has been to`(去過已回來)。", tip: "關鍵字：**for + 一段時間**, **since + 過去點**, just, already, yet。" },
+                            { id: 'ten_4', name: "過去簡單式", desc: "發生在過去且已結束的動作。", tip: "關鍵字：yesterday, ago, last night, in 2010。" },
+                            { id: 'ten_5', name: "過去進行式", desc: "過去某個時間點正在發生的動作 (was/were + Ving)。", tip: "關鍵字：at that time, then。常考：when 配過去簡單式(瞬間動作)，while 配過去進行式(連續動作)。" },
+                            { id: 'ten_6', name: "過去完成式", desc: "『過去的過去』(had + p.p.)。", tip: "句子裡通常有兩個過去的動作，『先發生』的那個必須用過去完成式。" },
+                            { id: 'ten_7', name: "未來式", desc: "將要發生的事 (will + V / be going to + V)。", note: "來去動詞 (come, go, arrive, leave, head for) 可用「現在進行式」代替未來式！", tip: "關鍵字：tomorrow, next week。例如：He **is leaving** tomorrow." },
+                            { id: 'ten_8', name: "被動語態", desc: "主詞是動作的『承受者』(be + p.p.)。", note: "務必注意被動語態的『時態』變化，由 be 動詞決定時態！", tip: "當主詞是『無生命物品』，選項有被動語態時，極高機率是答案！" },
+                            { id: 'ten_9', name: "特殊時態陷阱", desc: "條件句或時間副詞子句。", note: "在 **if (如果)、when (當)、before、after、as soon as** 引導的副詞子句中，常常以「現在式」代替「未來式」！", tip: "歷屆最愛考：If it **rains** tomorrow, I will stay home. (用現在式 rains 代替 will rain)。" }
+                        ]
+                    },
+                    {
+                        id: 'special_verbs', name: '特殊動詞', icon: '⚡', color: '#f97316',
+                        desc: "有獨特接續規則的動詞，是歷屆試題命中率極高的熱區。",
+                        children: [
+                            { id: 'sv_1', name: "be動詞 vs 助動詞", desc: "問句與簡答中的動詞選擇。", note: "例外：如果有 Ving(進行式) 或 V-p.p.(被動)，也要找 Be 動詞！", tip: "破題關鍵：看句尾！有「一般動詞原形」找 do/does/did；無動詞找 am/is/are/was/were。例如：**Do** you like apples? / **Are** you a student?" },
+                            { id: 'sv_2', name: "感官動詞", desc: "三看(see, watch, look at)、兩聽(hear, listen to)、一聞(smell)、一感覺(feel)、一注意(notice)。", note: "⚠️ 連綴動詞翻譯為「～起來」(後加形容詞)；感官動詞翻譯為「感覺/聽/看到」(後加原V或Ving)。兩者極易搞混！被動語態陷阱：The boy was seen **to cross** the street (感官被動要還原 to)。", tip: "看到 saw, heard 後面被挖空，直接找原型(強調全程)或 Ving(強調當下)！" },
+                            { id: 'sv_3', name: "花費動詞", desc: "時間與金錢的巨頭。", tip: "例句防暈：<br>1. **人 spend** 時/錢 **on** N / Ving (I spent $100 on it.) <br>2. **人 pay** 錢 **for** 物 (I paid $100 for it.) <br>3. **物 cost** 人 錢 = **It costs** 人 錢 **to V** <br>4. **物 take** 人 時 = **It takes** 人 時 **to V**" },
+                            { id: 'sv_4', name: "連綴動詞", desc: "look(看起來), sound(聽起來), taste(嚐起來), smell(聞起來), feel(感覺起來), get/become(變得)。", note: "連綴動詞後面絕對**不能加副詞 (-ly)**，只能加『形容詞』，或加上『like + 名詞』。", tip: "This dress does not **look good**. (絕對不能選 well)。" },
+                            { id: 'sv_5', name: "使役動詞", desc: "叫、讓、要求別人做事。", children: [
+                                { id: 'sv_5_1', name: "真使役", desc: "make / have / let + 受詞 + **原形動詞**。" },
+                                { id: 'sv_5_2', name: "半使役", desc: "help + 受詞 + **(to) 原形動詞** (to可省略)。" },
+                                { id: 'sv_5_3', name: "冒牌使役", desc: "ask / tell / get / want + 受詞 + **to V**。", tip: "陷阱：看到 get/ask/tell 叫別人做事，後面一定要加 **to V**！例如：I got him **to fix** the car." }
+                            ]},
+                            { id: 'sv_6', name: "情態助動詞", desc: "can (能), will (將), should (應該), must (必須), may/might (可能)。", note: "情態助動詞後面**一律接原形動詞**，且無人稱單複數變化！", tip: "如果表示『過去』的能力或推測，記得要把 can 改成 could，will 改成 would！" },
+                            { id: 'sv_7', name: "授予動詞", desc: "需要兩個受詞(人、物)的動詞 (give, send, buy, show, ask)。", tip: "破題：物先人後，必須加介係詞(通常用to)。<br>⚠️ 買菜口訣用 **for**：拿(get)米煮(cook)飯，買(buy)菜做(make)湯！例如：I made a cake **for** him." }
+                        ]
+                    },
+                    {
+                        id: 'conjunctions', name: '連接詞', icon: '🔗', color: '#22c55e',
+                        desc: "連接單字、片語或子句的橋樑。",
+                        children: [
+                            { id: 'conj_1', name: "對等連接詞", desc: "and, but, or, so", tip: "This dress is pretty, **but** it doesn't look good on me. (語意轉折用 but)。" },
+                            {
+                                id: 'conj_2', name: "從屬連接詞", desc: "引導副詞子句。",
+                                children: [
+                                    { id: 'conj_2_1', name: "表時間", desc: "when, before, after, while, until", tip: "until (直到...為止)：I'll stay here **until** I finish the work." },
+                                    { id: 'conj_2_2', name: "表條件", desc: "if (如果), unless (除非)", note: "常常以『現在式』代替『未來式』！", tip: "if 條件句陷阱：If it **rains** tomorrow, I will stay home. (用現在式 rains 代替 will rain)。" },
+                                    { id: 'conj_2_3', name: "表因果", desc: "because, since, as", note: "英文中 **because 和 so 絕對不能同時出現**！" },
+                                    { id: 'conj_2_4', name: "表語氣轉折", desc: "although, though (雖然)", note: "英文中 **although 和 but 絕對不能同時出現**！" }
+                                ]
+                            },
+                            { id: 'conj_3', name: "連接詞平行結構", desc: "對等連接詞 (and, or, but) 前後的結構必須如天秤般對稱。", note: "前後的詞性、時態、型態(To V 或 Ving) 必須一致！包含 Not only A but also B。", tip: "如果 and 前面是 Ving，後面被挖空通常也是選 Ving。" }
+                        ]
+                    },
+                    {
+                        id: 'adjectives', name: '形容詞與副詞', icon: '🎨', color: '#ec4899',
+                        desc: "負責修飾與比較的塗裝系統。",
+                        children: [
+                            { id: 'adj_1', name: "形容詞 vs 副詞", desc: "比較功能與使用時機。", note: "形容詞修飾『名詞』與『連綴動詞』；副詞修飾『一般動詞』與『形容詞』。", tip: "Tommy is a **good** user (adj 修飾名詞). Tommy uses chopsticks **well** (adv 修飾一般動詞)." },
+                            {
+                                id: 'adj_2', name: "三級變化", desc: "原級、比較級、最高級。",
+                                children: [
+                                    { id: 'adj_2_1', name: "原級", desc: "as + 原級 + as" },
+                                    { id: 'adj_2_2', name: "比較級", desc: "比較級 + than", note: "修飾比較級的專用字：**much, even, a lot, a little** (不可用 very 修飾)。", tip: "選項看到 than，找 -er 或 more。" },
+                                    { id: 'adj_2_3', name: "最高級", desc: "the + 最高級 + in/of", note: "最高級不是只有加 -est！長單字前面加 **the most**，還有不規則變化(good -> best)。", tip: "看到 in/of 範圍，找 the + 最高級。" }
+                                ]
+                            },
+                            {
+                                id: 'adj_3', name: "詞性轉換", desc: "由形容詞轉為副詞的規則。",
+                                children: [
+                                    { id: 'adj_3_1', name: "原型 (同型)", desc: "fast, hard, late, early, high。", note: "絕對沒有 fastly 這種字！" },
+                                    { id: 'adj_3_2', name: "ly 系列", desc: "形容詞直接加 ly (slow -> slowly)。" },
+                                    { id: 'adj_3_3', name: "不規則", desc: "good 的副詞是 **well**。" },
+                                    { id: 'adj_3_4', name: "多副詞型態", desc: "hard(努力地) / hardly(幾乎不)；high(高) / highly(極度)；late(晚) / lately(最近)。", tip: "hardly 和 lately 語意完全改變！He **hardly** studies (有否定意味)。" },
+                                    { id: 'adj_3_5', name: "易搞混", desc: "friendly, lovely, lonely 雖然有 -ly，但它們是**形容詞**！", tip: "He is a **friendly** boy. (修飾名詞 boy)。" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'prepositions', name: '介係詞', icon: '📍', color: '#eab308',
+                        children: [
+                            { id: 'prep_1', name: "表地方", desc: "in, on, at, under, behind...", tip: "**in** (大範圍內部)；**on** (平面/特定道路)；**at** (精確點)。" },
+                            { id: 'prep_2', name: "表時間", desc: "in, on, at 的時間切分。", tip: "**in** (月/年/季節/上午下午)；**on** (特定天/星期)；**at** (精確時刻/中午/午夜)。例：**on** Friday nights。" },
+                            { id: 'prep_3', name: "表關係", desc: "about, with, without, except (除了...之外)。", tip: "except 常搭配 all 或 everyone：Everyone went **except** John." },
+                            { id: 'prep_4', name: "其他介係詞", desc: "by, for, from 等。", tip: "**by** + 交通工具(不加the) 表示搭乘；**for** 表示為了...或持續一段時間。" }
+                        ]
+                    },
+                    {
+                        id: 'interrogatives', name: '疑問詞', icon: '❓', color: '#ef4444',
+                        desc: "情報蒐集器，依照答句反推疑問詞！",
+                        children: [
+                            { id: 'wh_1', name: "Who/What/Which", desc: "Who(問人), What(問事/物/職業), Which(問哪一個-有範圍限制)。" },
+                            { id: 'wh_2', name: "Where/When/Why", desc: "Where(問地點,答句常有in/at), When(問時間), Why(問原因,答句常有Because)。" },
+                            { id: 'wh_3', name: "How 系列", desc: "How(如何/交通方式/天氣), How often(多常-問頻率), How long(多久-問時間長度), How soon(多快-問還要多久發生)。" }
+                        ]
+                    },
+                    {
+                        id: 'verbals', name: '不定詞與動名詞', icon: '🌀', color: '#a855f7',
+                        desc: "動詞變身後的型態 (To V 與 Ving)。",
+                        children: [
+                            { id: 'v_1', name: "動名詞當主詞", desc: "Ving 或 To V 當主詞時，整件事情視為『單一事件』，動詞必須用**單數**！", tip: "Getting up early **is** not easy. (動詞要用 is)。" },
+                            { id: 'v_2', name: "當受詞判定", desc: "● 必接 **Ving**: enjoy, practice, mind, finish<br>● 必接 **to V**: want, decide, hope, need<br>● 兩種皆可(語意不同): stop, remember, forget<br>● 兩種皆可(語意相近): start, begin, love, like, hate", note: "stop to V (停下來去做...) vs stop Ving (停止做...)", tip: "歷屆必殺題：看到 enjoy，後面挖空直接選 Ving！" },
+                            { id: 'v_3', name: "It虛主詞", desc: "It is + adj. + (for 人) + to V.", tip: "當真主詞(to V)太長時，會用 It 放在句首假裝。例如：**It** is easy for me **to read** this book." }
+                        ]
+                    },
+                    {
+                        id: 'patterns', name: '特殊句型', icon: '📐', color: '#ff0',
+                        children: [
+                            { id: 'pat_1', name: "祈使句", desc: "省略 You，以『原形動詞』開頭。", tip: "**Be** sure to put on your coat. / Hurry up, **or** you will miss the bus." },
+                            { id: 'pat_2', name: "There be", desc: "表示『某地有某物』。", note: "There is 配單數/不可數，There are 配複數。絕對不能寫 There have！" },
+                            { id: 'pat_3', name: "too / so / enough", desc: "too...to (太...而不能) / so...that (如此...以至於) / enough to (足夠...去做)。", note: "too...to 本身帶有否定意味，後面不需加 not。enough 必須放在形容詞/副詞的後面 (old enough)。" },
+                            { id: 'pat_4', name: "主動詞一致", desc: "主詞很長時，動詞單複數由真正的核心主詞決定。", tip: "**One** of the boys **is** tall. (主詞是 One，動詞用 is)。" },
+                            { id: 'pat_5', name: "附加問句", desc: "放句尾，尋求認同的小問句。", note: "前肯定後否定，前否定後肯定。代名詞必須對應主詞！⚠️ 若句子有 never, seldom, hardly, few, little 等字，視為『否定句』，附加問句必須是『肯定』！", tip: "He seldom comes, **does he**? / Let's go, **shall we**?" },
+                            { id: 'pat_6', name: "附和句", desc: "表示我也一樣。", note: "肯定用 So，否定用 Neither。中間的助動詞必須跟前一句的時態與動詞對稱！", tip: "A: I like apples. B: **So do I**. (like 是一般動詞，用 do 附和)。" }
+                        ]
+                    },
+                    {
+                        id: 'clauses', name: '子句 (大魔王)', icon: '🛰️', color: '#14b8a6',
+                        desc: "將句子鑲嵌進另一個句子中，是國中會考的終極防線。",
+                        children: [
+                            {
+                                id: 'cl_1', name: "形容詞子句", desc: "用完整的句子修飾前面的名詞(先行詞)。",
+                                children: [
+                                    { id: 'cl_1_a', name: "先行詞為人", desc: "主格用 who/that, 受格用 who/whom/that, 所有格用 whose。", note: "判定：關代後面直接接動詞，表示缺主格；關代後面接『主詞+動詞』，表示缺受格(可省略!)", tip: "The man **(whom) you saw**... (you是主詞，saw是動詞，關代當受詞可省略)。" },
+                                    { id: 'cl_1_b', name: "先行詞為物", desc: "主格用 which/that, 受格用 which/that。", tip: "看到前面是動物或無生命物品，立刻找 which 或 that。" },
+                                    { id: 'cl_1_c', name: "先行詞為人+物", desc: "當先行詞同時包含人跟物 (the boy and his dog)。", note: "這種情況下，關係代名詞**只能使用 that**！" },
+                                    { id: 'cl_1_d', name: "限定與非限定", desc: "限定: 無逗號(不可少)；非限定: 有逗號(用來補充說明世上獨一無二的人事物)。", note: "致命陷阱：**有逗號的非限定用法，絕對不可以使用 that！**" }
+                                ]
+                            },
+                            {
+                                id: 'cl_2', name: "名詞子句", desc: "將句子降級成名詞當受詞。",
+                                children: [
+                                    { id: 'cl_2_a', name: "wh~ (間接問句)", desc: "將 wh- 疑問句塞進另一個句子裡。", note: "致命陷阱：間接問句必須改回 **『直述句語序 (疑問詞 + 主詞 + 動詞)』**！絕對不能有助動詞 do/does/did。", tip: "💡 破題：找『主詞在動詞前面』的選項！(know **why he was** kicked off)。<br>⚠️ 例外：如果 who/which/what 本身就是主詞，則順序不需調動！(I know **who stole** the car.)" },
+                                    { id: 'cl_2_b', name: "if / whether~", desc: "引導『是否...』的名詞子句。", note: "whether 通常可以搭配 or not。", tip: "She wants to know **whether** the weather will be fine." },
+                                    { id: 'cl_2_c', name: "that~", desc: "引導敘述事實的名詞子句。", note: "作為受詞時，that 可以省略！", tip: "I think **(that)** you are right." }
+                                ]
+                            }
+                        ]
+                    }
+                ];
+
+                const initTree = (node, inheritColor, inheritIcon) => {
+                    node.color = node.color || inheritColor;
+                    node.icon = node.icon || inheritIcon || '💠';
+                    if (node.children) {
+                        node.children.forEach(child => initTree(child, node.color, node.icon));
+                    }
+                };
+                rawGrammarStars.forEach(star => initTree(star, star.color, star.icon));
+
+                const galaxyPlanets = rawGrammarStars.map((star, i) => {
+                    let r, spd, ang;
+                    if (i < 4) { r = 160; spd = 0.8; ang = (i / 4) * Math.PI * 2; }
+                    else if (i < 8) { r = 270; spd = -0.6; ang = ((i - 4) / 4) * Math.PI * 2; }
+                    else { r = 380; spd = 0.4; ang = ((i - 8) / 2) * Math.PI * 2; }
+                    return { ...star, radius: r, speed: spd, angleOffset: ang };
+                });
+
+                const activeGalaxyPlanets = computed(() => galaxyPlanets);
+
+                const satellitePlanets = computed(() => {
+                    if (!focusedCenter.value || !focusedCenter.value.children) return [];
+                    const count = focusedCenter.value.children.length;
+                    const r = count > 5 ? 210 : 170; 
+                    return focusedCenter.value.children.map((sub, i) => ({
+                        ...sub, radius: r, speed: 1.0, angleOffset: (i / count) * Math.PI * 2
+                    }));
+                });
+
+                const backgroundPlanets = computed(() => {
+                    if (!focusedCenter.value) return [];
+                    let siblings = [];
+                    if (viewHistory.value.length === 0) siblings = galaxyPlanets;
+                    else siblings = viewHistory.value[viewHistory.value.length - 1].children;
+                    
+                    const others = siblings.filter(s => s.id !== focusedCenter.value.id);
+                    const count = others.length || 1;
+                    return others.map((s, i) => ({
+                        ...s, radius: 430, speed: 0.2, angleOffset: (i / count) * Math.PI * 2
+                    }));
+                });
+
+                const currentPath = computed(() => {
+                    let path = '國中英語文法';
+                    viewHistory.value.forEach(node => path += ' > ' + node.name);
+                    if (focusedCenter.value) path += ' > ' + focusedCenter.value.name;
+                    if (selectedSubStar.value) path += ' > ' + selectedSubStar.value.name;
+                    return path;
+                });
+
+                const getPlanetStyle = (p) => {
+                    const angle = (time.value * p.speed) + p.angleOffset;
+                    const x = Math.cos(angle) * p.radius;
+                    const y = Math.sin(angle) * p.radius * 0.4; 
+                    const zIndex = Math.round(y); 
+                    const scale = 1 + (y / (p.radius * 0.4)) * 0.25; 
+                    return {
+                        left: `${x}px`, top: `${y}px`,
+                        transform: `translate(-50%, -50%) scale(${scale})`,
+                        zIndex: 1000 + zIndex
+                    };
+                };
+
+                const displayInfoNode = computed(() => {
+                    if (selectedSubStar.value) return selectedSubStar.value;
+                    return focusedCenter.value;
+                });
+
+                const isMainPlanet = computed(() => {
+                    return viewHistory.value.length === 0 && !selectedSubStar.value;
+                });
+
+                const formatText = (text) => {
+                    if (!text) return '';
+                    return text.replace(/\*\*(.*?)\*\*/g, '<span class="text-white bg-white/20 px-1 rounded shadow-sm mx-0.5">$1</span>');
+                };
+
+                let raf;
+                const animate = () => { time.value += 0.002; raf = requestAnimationFrame(animate); };
+                onMounted(() => { animate(); });
+                onUnmounted(() => { cancelAnimationFrame(raf); });
+
+                const enterSystem = (star) => {
+                    viewHistory.value = []; 
+                    focusedCenter.value = star;
+                    selectedSubStar.value = null; 
+                    systemState.value = 'planet';
+                };
+
+                const handleSatelliteClick = (sat) => {
+                    if (sat.children && sat.children.length > 0) {
+                        viewHistory.value.push(focusedCenter.value);
+                        focusedCenter.value = sat;
+                        selectedSubStar.value = null;
+                    } else {
+                        selectedSubStar.value = sat;
+                    }
+                };
+
+                const selectSubStar = (sat) => { selectedSubStar.value = sat; };
+
+                const backUpSystem = () => {
+                    if (viewHistory.value.length > 0) {
+                        focusedCenter.value = viewHistory.value.pop();
+                        selectedSubStar.value = null;
+                    } else {
+                        systemState.value = 'galaxy';
+                        focusedCenter.value = null;
+                        selectedSubStar.value = null;
+                    }
+                };
+
+                const returnToMainPlanet = () => {
+                    if (viewHistory.value.length > 0) {
+                        focusedCenter.value = viewHistory.value[0]; 
+                        viewHistory.value = [];
+                    }
+                    selectedSubStar.value = null;
+                };
+
+                // ==========================================
+                // 🚀 實戰引擎邏輯 (Quiz Engine)
+                // ==========================================
+                const practiceQuestions = ref([]);
+                const currentQIndex = ref(0);
+                const selectedOpt = ref(null);
+                const hasAnswered = ref(false);
+                const isCorrect = ref(false);
+                const correctCount = ref(0);
+                const isQuizDone = ref(false);
+                // 🚀 終極戰報發射器：包含真實計時與原始分數規格
+                const saveBattleLog = () => {
+                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return;
+                    isSaving.value = true;
+                    
+                    const durationMs = Date.now() - startTime.value;
+                    const totalSec = Math.floor(durationMs / 1000);
+                    const m = Math.floor(totalSec / 60);
+                    const s = totalSec % 60;
+                    const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                    
+                    const themeName = `文法戰場 - ${displayInfoNode.value.name}`;
+                    const totalQ = practiceQuestions.value.length;
+                    
+                    // 🚀 修正參數：score 傳數字，total 傳數字，讓後端自動組成 "8/10"
+                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                     `&name=${encodeURIComponent(playerName.value)}` +
+                                     `&theme=${encodeURIComponent(themeName)}` +
+                                     `&score=${correctCount.value}` + 
+                                     `&total=${totalQ}` +
+                                     `&timeStr=${encodeURIComponent(timeStr)}` +
+                                     `&answered=${totalQ}` +
+                                     `&wrongWords=X`;
+
+                    fetch(finalUrl, { mode: 'no-cors' })
+                        .then(() => {
+                            console.log(`✅ 戰報：${correctCount.value}/${totalQ}，耗時：${timeStr}`);
+                            isSaving.value = false;
+                        })
+                        .catch(err => {
+                            console.error('❌ 失敗', err);
+                            isSaving.value = false;
+                        });
+                };
+                // 從目標節點以及其底下所有子節點中收集題目
+                const collectQuestions = (node, db) => {
+                    let questions = [];
+                    if (db[node.id]) {
+                        questions = questions.concat(db[node.id]);
+                    }
+                    if (node.children) {
+                        node.children.forEach(child => {
+                            questions = questions.concat(collectQuestions(child, db));
+                        });
+                    }
+                    return questions;
+                };
+
+                // 洗牌演算法 (Fisher-Yates)
+                const shuffleArray = (array) => {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                    return array;
+                };
+
+                const startPractice = () => {
+                    const targetNode = displayInfoNode.value;
+                    const db = window.GRAMMAR_QUESTIONS || {};
+                    
+                    // 收集該星系底下所有的題目
+                    let rawQuestions = collectQuestions(targetNode, db);
+                    
+                    if (rawQuestions.length > 0) {
+                        // 將題目洗牌，避免學生背答案順序
+                        practiceQuestions.value = shuffleArray([...rawQuestions]);
+                        currentQIndex.value = 0;
+                        selectedOpt.value = null;
+                        hasAnswered.value = false;
+                        isCorrect.value = false;
+                        correctCount.value = 0;
+                        isQuizDone.value = false;
+                        view.value = 'practice';
+                        startTime.value = Date.now(); // 裝填彈藥完畢，按下按鈕瞬間開始計時
+                    } else {
+                        // 如果該星系真的完全沒題目，還是切換畫面，但會顯示「🔒 無題庫」
+                        practiceQuestions.value = [];
+                        view.value = 'practice';
+                    }
+                };
+
+                const currentQuestion = computed(() => {
+                    return practiceQuestions.value[currentQIndex.value] || {};
+                });
+
+                const selectOption = (opt) => {
+                    if (hasAnswered.value) return;
+                    selectedOpt.value = opt;
+                };
+
+                const submitAnswer = () => {
+                    if (!selectedOpt.value) return;
+                    hasAnswered.value = true;
+                    isCorrect.value = (selectedOpt.value === currentQuestion.value.answer);
+                    if (isCorrect.value) correctCount.value++;
+                };
+
+                const nextQuestion = () => {
+                    if (currentQIndex.value < practiceQuestions.value.length - 1) {
+                        currentQIndex.value++;
+                        selectedOpt.value = null;
+                        hasAnswered.value = false;
+                        isCorrect.value = false;
+                    } else {
+                        isQuizDone.value = true;
+                        saveBattleLog(); // 🎯 觸發傳輸！發送戰報！
+                    }
+                };
+
+                const restartPractice = () => {
+                    practiceQuestions.value = shuffleArray([...practiceQuestions.value]);
+                    currentQIndex.value = 0;
+                    selectedOpt.value = null;
+                    hasAnswered.value = false;
+                    isCorrect.value = false;
+                    correctCount.value = 0;
+                    isQuizDone.value = false;
+                };
+
+                const quitPractice = () => {
+                    view.value = 'map';
+                };
+
+                const scoreColor = computed(() => {
+                    const ratio = correctCount.value / practiceQuestions.value.length;
+                    if (ratio >= 0.8) return 'text-neon-green drop-shadow-[0_0_15px_#0f0]';
+                    if (ratio >= 0.6) return 'text-neon-yellow drop-shadow-[0_0_15px_#ff0]';
+                    return 'text-neon-red drop-shadow-[0_0_15px_#ff003c]';
+                });
+
+                return { 
+                    view, systemState, focusedCenter, selectedSubStar, playerName, currentPath, isMainPlanet,
+                    activeGalaxyPlanets, satellitePlanets, backgroundPlanets, displayInfoNode,
+                    getPlanetStyle, enterSystem, handleSatelliteClick, selectSubStar, backUpSystem, returnToMainPlanet, formatText,
+                    // 實戰引擎對外開放變數與方法
+                    startPractice, practiceQuestions, currentQIndex, currentQuestion, selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, scoreColor,
+                    selectOption, submitAnswer, nextQuestion, restartPractice, quitPractice, 
+                    isSaving //
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
