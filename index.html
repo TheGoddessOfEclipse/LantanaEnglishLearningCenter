@@ -11,7 +11,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script src="config.js"></script>
+    <script src="grammar_data.js"></script>
+    
     <style>
         body{background-color:#050b14; font-family: sans-serif;} 
         .bg-neon-bg{background-color:#050b14;}
@@ -328,7 +331,7 @@
                 let chartInstance = null; 
 
                 const masteryData = ref({});
-                const grammarMasteryData = ref({}); // 🌟 新增文法精熟度儲存
+                const grammarMasteryData = ref({});
 
                 const totalMissions = computed(() => myLogs.value.length);
                 const numericLogs = computed(() => myLogs.value.filter(log => !isNaN(parseInt(log.score))));
@@ -353,26 +356,28 @@
                     return parseFloat(((totalMasteredCount.value / totalWordsCount.value) * 100).toFixed(1));
                 });
 
-                // 🌟 新增：計算文法精熟度 (十大主題，各佔 10%)
+                // 🌟 修復 2：均權分配法，並加入 prefix 以對應 grammar_data.js 的資料
                 const overallGrammarPercentage = computed(() => {
                     if (typeof window.GRAMMAR_QUESTIONS === 'undefined') return 0;
                     const qDb = window.GRAMMAR_QUESTIONS;
                     
-                    // 從 grammar.html 借用文法的十大主題架構
                     const grammarThemes = [
-                        { id: 'pronouns', name: '代名詞' }, { id: 'tenses', name: '時態' }, { id: 'special_verbs', name: '特殊動詞' },
-                        { id: 'conjunctions', name: '連接詞' }, { id: 'adjectives', name: '形容詞與副詞' }, { id: 'prepositions', name: '介係詞' },
-                        { id: 'interrogatives', name: '疑問詞' }, { id: 'verbals', name: '不定詞與動名詞' }, { id: 'patterns', name: '特殊句型' },
-                        { id: 'clauses', name: '子句 (大魔王)' }
+                        { id: 'pronouns', prefix: 'pro', name: '代名詞' }, 
+                        { id: 'tenses', prefix: 'ten', name: '時態' }, 
+                        { id: 'special_verbs', prefix: 'sv', name: '特殊動詞' },
+                        { id: 'conjunctions', prefix: 'conj', name: '連接詞' }, 
+                        { id: 'adjectives', prefix: 'adj', name: '形容詞與副詞' }, 
+                        { id: 'prepositions', prefix: 'prep', name: '介係詞' },
+                        { id: 'interrogatives', prefix: 'wh', name: '疑問詞' }, 
+                        { id: 'verbals', prefix: 'v', name: '不定詞與動名詞' }, 
+                        { id: 'patterns', prefix: 'pat', name: '特殊句型' },
+                        { id: 'clauses', prefix: 'cl', name: '子句 (大魔王)' }
                     ];
 
-                    // 收集一個節點底下所有問題的輔助函數
-                    const collectQs = (themeId, nodeObj) => {
+                    const collectQs = (prefix) => {
                         let qs = [];
-                        if (qDb[themeId]) qs = qs.concat(qDb[themeId]);
-                        // 如果在原始題庫中找得到子節點，需往下挖 (簡易版：抓出所有開頭符合該 themeId 的 key)
                         Object.keys(qDb).forEach(key => {
-                            if (key.startsWith(themeId + '_') && key !== themeId) {
+                            if (key.startsWith(prefix + '_')) {
                                 qs = qs.concat(qDb[key]);
                             }
                         });
@@ -382,18 +387,14 @@
                     let totalPercentage = 0;
 
                     grammarThemes.forEach(theme => {
-                        let themeQuestions = collectQs(theme.id);
+                        let themeQuestions = collectQs(theme.prefix);
                         if (themeQuestions.length > 0) {
                             let masteredCount = 0;
                             themeQuestions.forEach(q => {
                                 const safeKey = btoa(encodeURIComponent(q.question)).replace(/[=+\/]/g, '');
                                 if (grammarMasteryData.value[safeKey]) masteredCount++;
                             });
-                            // 該主題 10%，按比例計算
                             totalPercentage += (masteredCount / themeQuestions.length) * 10;
-                        } else {
-                            // 若該區暫無題目，預設給滿 (或不給，這裡設定不給)
-                            totalPercentage += 0; 
                         }
                     });
 
@@ -433,12 +434,10 @@
                                 }
                             });
 
-                            // 監聽單字精熟度
                             db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
                                 masteryData.value = snap.exists() ? snap.val() : {};
                             });
 
-                            // 🌟 監聽文法精熟度
                             db.ref(`app_state/users/${user.uid}/grammarMastery`).on('value', snap => {
                                 grammarMasteryData.value = snap.exists() ? snap.val() : {};
                             });
@@ -615,7 +614,7 @@
                     totalWordsCount, totalMasteredCount, overallProgressPercentage, themeProgressStats,
                     resetThemeMastery,
                     showLogModal, selectedLogContent, viewGrammarLog,
-                    overallGrammarPercentage // 🌟 輸出文法精熟度
+                    overallGrammarPercentage 
                 };
             }
         }).mount('#app');
