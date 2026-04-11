@@ -178,7 +178,7 @@
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
-        const auth = firebase.auth(); // 🌟 引入 Auth
+        const auth = firebase.auth(); 
         const { createApp, ref, computed, onUnmounted, onMounted } = Vue;
         
         createApp({
@@ -195,15 +195,21 @@
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
                 
-                // 🌟 精熟度資料庫與視覺計算
                 const masteryData = ref({});
                 const highlights = ref({ modes: {}, themes: {} });
+
+                // 🌟 新增：Firebase 防爆轉換器，將 . # $ [ ] 轉為安全字元
+                const getSafeWordKey = (word) => {
+                    if (!word) return 'unknown';
+                    return word.replace(/\./g, '_dot_').replace(/[#$\[\]]/g, '_');
+                };
 
                 const getThemeMastery = (theme) => {
                     if (!theme || !theme.words || theme.words.length === 0) return 0;
                     let count = 0;
                     theme.words.forEach(w => {
-                        if (masteryData.value[w.word]) count++;
+                        // 🌟 讀取時套用防爆轉換器
+                        if (masteryData.value[getSafeWordKey(w.word)]) count++;
                     });
                     return parseFloat(((count / theme.words.length) * 100).toFixed(1));
                 };
@@ -215,7 +221,8 @@
                         ALL_THEMES_DATA.forEach(t => {
                             totalWords += t.words.length;
                             t.words.forEach(w => {
-                                if (masteryData.value[w.word]) masteredWords++;
+                                // 🌟 讀取時套用防爆轉換器
+                                if (masteryData.value[getSafeWordKey(w.word)]) masteredWords++;
                             });
                         });
                     }
@@ -272,7 +279,8 @@
                         score.value++; 
                         // 🌟 如果盲測誠實選「有背熟」，且不是重測，則將其視為精熟！
                         if (!isRetrySession.value && currentUserUid.value) {
-                            db.ref(`app_state/users/${currentUserUid.value}/mastery/${q.word}`).set(Date.now());
+                            // 🌟 寫入精熟度時，套用防爆轉換器
+                            db.ref(`app_state/users/${currentUserUid.value}/mastery/${getSafeWordKey(q.word)}`).set(Date.now());
                         }
                     } else { 
                         wrongItems.value.push(q); 
@@ -294,7 +302,6 @@
                 const logPartialSession = () => { if (view.value === 'playing' && startTime.value > 0 && !hasSubmittedScore.value) { const diff = Math.floor((Date.now() - startTime.value) / 1000); if (diff < 3) return; const tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+') + ' (中離)'; let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(tStr)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`).catch(e=>e); hasSubmittedScore.value = true; } };
                 const goSetup = () => { logPartialSession(); view.value = 'setup'; window.scrollTo(0,0); };
                 
-                // 🌟 統一返回單字戰場大廳 (vocab.html)
                 const goHome = () => { logPartialSession(); window.location.href = 'vocab.html'; };
                 onUnmounted(() => { logPartialSession(); });
 

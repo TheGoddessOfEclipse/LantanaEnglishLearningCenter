@@ -236,11 +236,18 @@
                 
                 const masteryData = ref({});
 
+                // 🌟 新增：Firebase 防爆轉換器，把小數點、#等無效字元替換掉
+                const getSafeWordKey = (word) => {
+                    if (!word) return 'unknown';
+                    return word.replace(/\./g, '_dot_').replace(/[#$\[\]]/g, '_');
+                };
+
                 const getThemeMastery = (theme) => {
                     if (!theme || !theme.words || theme.words.length === 0) return 0;
                     let count = 0;
                     theme.words.forEach(w => {
-                        if (masteryData.value[w.word]) count++;
+                        // 🌟 套用防爆機制
+                        if (masteryData.value[getSafeWordKey(w.word)]) count++;
                     });
                     return parseFloat(((count / theme.words.length) * 100).toFixed(1));
                 };
@@ -252,7 +259,8 @@
                         ALL_THEMES_DATA.forEach(t => {
                             totalWords += t.words.length;
                             t.words.forEach(w => {
-                                if (masteryData.value[w.word]) masteredWords++;
+                                // 🌟 套用防爆機制
+                                if (masteryData.value[getSafeWordKey(w.word)]) masteredWords++;
                             });
                         });
                     }
@@ -393,7 +401,8 @@
 
                     if (!isRetrySession.value && opt === q.correct && timeLeft.value > 0) {
                         if (currentUserUid.value) {
-                            db.ref(`app_state/users/${currentUserUid.value}/mastery/${q.word}`).set(Date.now());
+                            // 🌟 存檔防爆處理：寫入 Firebase 前套用轉換器
+                            db.ref(`app_state/users/${currentUserUid.value}/mastery/${getSafeWordKey(q.word)}`).set(Date.now());
                         }
                     }
 
