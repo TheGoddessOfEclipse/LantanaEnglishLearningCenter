@@ -45,6 +45,7 @@
     </style>
 </head>
 <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
+    <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
     <div class="fixed inset-0 scanline z-0"></div>
 
     <div id="app" class="max-w-4xl mx-auto relative z-10 flex flex-col h-full w-full">
@@ -331,31 +332,26 @@
             }
         });
         // =========================================================================
-        // 📡 主動式防作弊雷達：每秒掃描是否被手機/平板強制翻譯
+        // 📡 主動式雷達 v2.0 (金絲雀誘餌戰術)
         // =========================================================================
         setInterval(() => {
             const htmlNode = document.documentElement;
+            const canary = document.getElementById('anti-cheat-canary');
             
-            // 1. 偵測 Google 翻譯系統偷偷加上的 class
+            // 1. 偵測 Chrome 標籤 (防電腦版)
             const hasGoogleClass = htmlNode.classList.contains('translated-ltr') || 
-                                   htmlNode.classList.contains('translated-rtl');
+                                   htmlNode.classList.contains('translated-rtl') || 
+                                   document.querySelector('font');
+                                   
+            // 2. 偵測誘餌單字 (防手機/平板暴力翻譯)
+            // 如果 'Apple' 變成 '蘋果' 或其他語言，代表整頁翻譯已啟動！
+            const isCanaryTranslated = canary && canary.innerText.trim() !== 'Apple';
             
-            // 2. 偵測 iOS/Safari 或其他系統是否強行把網頁語言 (lang) 屬性改掉
-            const isLangChanged = htmlNode.lang && htmlNode.lang !== 'zh-TW' && htmlNode.lang.toLowerCase() !== 'en';
-            
-            // 3. 偵測 DOM 內是否被安插了翻譯軟體的專用框架
-            const hasGoogFrame = document.querySelector('.skiptranslate') || 
-                                 document.querySelector('#goog-gt-tt') || 
-                                 document.querySelector('font'); // 很多底層翻譯會強制把字包在 <font> 裡面
-            
-            if (hasGoogleClass || isLangChanged || hasGoogFrame) {
-                // 發現作弊！立刻跳出警告並懲罰
-                alert('⚠️ 系統防作弊雷達警告：\n偵測到「網頁翻譯」功能啟動！\n為維護測驗公平性，系統將強制沒收當前進度並重整網頁。');
-                
-                // 強制重整網頁，讓翻譯失效，特工必須重頭來過
-                window.location.reload(); 
+            if (hasGoogleClass || isCanaryTranslated) {
+                alert('⚠️ 系統防作弊雷達警告：\n偵測到「網頁翻譯」功能啟動！\n為維護測驗公平性，系統將強制重整。');
+                window.location.reload(); // 強制洗掉作弊畫面
             }
-        }, 1000); // 1000毫秒 = 每 1 秒鐘掃描一次
+        }, 1000);
         // =========================================================================
 
         const { createApp, ref, computed, onMounted } = Vue;
