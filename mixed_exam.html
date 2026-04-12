@@ -378,67 +378,7 @@
             }
         }, 1000);
         // =========================================================================
-        // =========================================================================
-        // 👁️ 主動式雷達 v5.0 (智能緩衝與鍵盤防誤判系統) 
-        // =========================================================================
-        let cheatWarnings = 0;
-        const MAX_WARNINGS = 3;
-        let cheatTimer = null;
-        let isCheatingDetected = false;
-
-        // 啟動致盲倒數
-        const triggerSuspicion = () => {
-            // 【防誤判核心 1：鍵盤豁免】如果目前正在輸入框，通常是收起鍵盤的操作，直接忽略！
-            const activeTag = document.activeElement ? document.activeElement.tagName : '';
-            if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') {
-                return;
-            }
-
-            // 如果還沒開始倒數，就啟動倒數計時
-            if (!isCheatingDetected && !cheatTimer) {
-                // 【防誤判核心 2：1.5秒緩衝】給予緩衝時間，防誤觸與系統推播干擾
-                cheatTimer = setTimeout(() => {
-                    isCheatingDetected = true;
-                    document.body.classList.add('blurred-mode');
-                }, 1500); // 1500毫秒 = 1.5秒
-            }
-        };
-
-        // 解除嫌疑或進行懲罰
-        const clearSuspicion = () => {
-            // 狀況 A：在 1.5 秒內就回來了 -> 取消倒數，當作沒事發生 (防誤判成功)
-            if (cheatTimer && !isCheatingDetected) {
-                clearTimeout(cheatTimer);
-                cheatTimer = null;
-            }
-            
-            // 狀況 B：已經超過 1.5 秒，畫面已經被致盲了 -> 解除致盲並記警告
-            if (isCheatingDetected) {
-                isCheatingDetected = false;
-                cheatTimer = null;
-                document.body.classList.remove('blurred-mode');
-                cheatWarnings++;
-                
-                setTimeout(() => {
-                    alert(`⚠️ 戰術警告：系統偵測到您【切換視窗】或離開測驗畫面過久！\n目前警告次數：${cheatWarnings} / ${MAX_WARNINGS}`);
-                    if (cheatWarnings >= MAX_WARNINGS) {
-                        alert('🚨 警告次數達標！強制終止演習，並判定為撤退！');
-                        window.location.href = 'index.html'; // 踢回大廳
-                    }
-                }, 100);
-            }
-        };
-
-        // 1. 監聽視窗失去/獲得焦點 (點擊旁邊的懸浮視窗會觸發)
-        window.addEventListener('blur', triggerSuspicion);
-        window.addEventListener('focus', clearSuspicion);
-
-        // 2. 監聽網頁被縮小或切換 APP (滑回主畫面會觸發)
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) triggerSuspicion();
-            else clearSuspicion();
-        });
-        // =========================================================================
+       
 
         const { createApp, ref, computed, onMounted } = Vue;
 
