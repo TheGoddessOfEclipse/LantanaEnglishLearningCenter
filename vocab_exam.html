@@ -19,7 +19,7 @@
         .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(249, 115, 22, 0.05) 51%); background-size: 100% 4px; animation: scan 10s linear infinite; pointer-events: none; }
         @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
         
-        .cyber-panel { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); background: rgba(40, 15, 0, 0.8); backdrop-blur: 10px; border: 1px solid rgba(249, 115, 22, 0.5); }
+        .cyber-panel { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); background: rgba(40, 20, 0, 0.8); backdrop-blur: 10px; border: 1px solid rgba(249, 115, 22, 0.5); }
         .fade-in { animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
@@ -34,29 +34,44 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-orange-900/50 pb-4 gap-4">
             <div>
                 <h1 class="text-3xl md:text-4xl font-black tracking-widest text-white drop-shadow-[0_0_10px_#f97316]"><span class="text-neon-orange">🔥 </span>會考單字實戰</h1>
-                <p class="text-xs text-orange-400 font-bold tracking-widest mt-1">>> EXAM VOCABULARY SIMULATOR</p>
+                <p class="text-xs text-orange-400 font-bold tracking-widest mt-1">>> VOCABULARY COMBAT ZONE: EXAM SIMULATOR</p>
             </div>
             <button @click="quitPractice" :disabled="isSaving" class="border border-orange-800 text-orange-500 hover:text-white hover:bg-orange-900 px-6 py-2 font-bold tracking-widest transition text-sm bg-black/40 shadow-[0_0_15px_rgba(249,115,22,0.2)] disabled:opacity-50">
-                {{ isSaving ? '📡 發送戰報中...' : '中止演習 (Abort) ✖' }}
+                {{ isSaving ? '📡 發送戰報中...' : '返回基地 (Return) ✖' }}
             </button>
         </div>
 
-        <div v-if="practiceQuestions.length === 0" class="cyber-panel p-12 text-center shadow-[0_0_30px_rgba(249,115,22,0.1)] m-auto fade-in">
-            <span class="text-6xl mb-6 block drop-shadow-[0_0_15px_#f97316] animate-pulse">📡</span>
-            <h2 class="text-2xl font-black text-orange-400 mb-4 tracking-widest">系統準備中</h2>
-            <p class="text-gray-400 mb-8 font-bold tracking-widest leading-loose">
-                總司令，正在為您載入歷屆會考最強單字題庫...
-            </p>
-            <button @click="startPractice" class="bg-orange-600 text-black hover:bg-white hover:text-black py-4 px-12 font-black text-xl tracking-widest transition shadow-[0_0_20px_rgba(249,115,22,0.5)]">
-                開始實戰演習 ➔
-            </button>
+        <div v-if="currentPhase === 'select_mode'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6">
+            <div class="text-center border-b border-orange-800 pb-6 mb-2">
+                <span class="text-5xl mb-4 block drop-shadow-[0_0_15px_#f97316]">🛰️</span>
+                <h2 class="text-2xl font-black text-orange-400 tracking-widest">請選擇單字實戰模式</h2>
+                <p class="text-sm text-gray-400 mt-2 font-bold">涵蓋 102~114 年歷屆會考精選單字題庫</p>
+            </div>
+
+            <div class="bg-black/60 border border-orange-600 p-6 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition">
+                <div>
+                    <h3 class="text-xl font-black text-white tracking-widest flex items-center gap-2"><span class="text-neon-cyan">🎲</span> 隨機極限刷題</h3>
+                    <p class="text-sm text-gray-400 mt-1 font-bold">從歷屆單字題庫中隨機抽取指定數量的題目。</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <select v-model="randomQuestionCount" class="bg-gray-900 border border-orange-500 text-white font-bold p-3 outline-none focus:border-neon-orange">
+                        <option :value="5">5 題 (暖身)</option>
+                        <option :value="10">10 題 (標準)</option>
+                        <option :value="20">20 題 (進階)</option>
+                        <option :value="50">50 題 (極限)</option>
+                    </select>
+                    <button @click="startPractice" class="bg-orange-500 text-white hover:bg-white hover:text-black px-6 py-3 font-black tracking-widest transition shadow-[0_0_10px_rgba(249,115,22,0.4)] whitespace-nowrap">
+                        啟動 ➔
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div v-else-if="isQuizDone" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full fade-in">
+        <div v-if="currentPhase === 'result'" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full fade-in">
             <span class="text-6xl mb-4 block">🏆</span>
             <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
             <p v-if="isSaving" class="text-orange-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
-            <p v-else class="text-gray-400 font-bold tracking-widest mb-6 border-b border-gray-700 pb-6">特工 {{ playerName }}，您的實戰數據如下：</p>
+            <p v-else class="text-gray-400 font-bold tracking-widest mb-2 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據如下：</p>
             
             <div class="text-8xl font-black mb-2" :class="scoreColor">
                 {{ Math.round((correctCount / practiceQuestions.length) * 100) }}%
@@ -66,8 +81,8 @@
             </p>
 
             <div class="flex gap-4 justify-center mb-8">
-                <button @click="quitPractice" class="bg-orange-500 text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(249,115,22,0.4)]">
-                    返回大廳 ➔
+                <button @click="currentPhase = 'select_mode'" class="bg-orange-500 text-white hover:text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                    返回模式選擇 ➔
                 </button>
             </div>
 
@@ -77,6 +92,11 @@
                 </h3>
                 <div class="space-y-4">
                     <div v-for="(q, idx) in reviewList" :key="idx" class="bg-gray-900 border border-gray-700 p-5 rounded relative">
+                        
+                        <div v-if="q.points && q.points.length > 0" class="text-[10px] text-orange-400 font-bold mb-2 tracking-widest border border-orange-800 inline-block px-2 py-0.5 bg-orange-900/30">
+                            考點：{{ q.points.join(', ') }}
+                        </div>
+                        
                         <div class="text-gray-300 font-bold mb-3 leading-relaxed tracking-wide">
                             <span class="text-neon-red font-black mr-2">Q:</span>{{ q.question }}
                         </div>
@@ -92,6 +112,9 @@
                         </div>
                         <div v-if="q.explanation" class="bg-blue-950/20 border-l-2 border-blue-500 p-3 mt-2">
                             <span class="text-xs text-blue-400 font-black block mb-1 tracking-widest">💡 解析說明</span>
+                            <div v-if="q.hintKeywords && q.hintKeywords.length > 0" class="text-orange-300 font-bold text-sm mb-2 flex gap-2 items-center">
+                                <span>🔑 關鍵字：{{ q.hintKeywords.join(', ') }}</span>
+                            </div>
                             <p class="text-sm text-gray-300 font-bold" v-html="formatText(q.explanation)"></p>
                         </div>
                     </div>
@@ -99,17 +122,19 @@
             </div>
         </div>
 
-        <div v-else class="flex flex-col h-full gap-4 fade-in">
+        <div v-if="currentPhase === 'quiz'" class="flex flex-col h-full gap-4 fade-in">
             
-            <div class="flex items-center justify-between bg-black/60 p-4 border border-orange-900/50">
-                <div class="flex items-center gap-3">
+            <div class="flex items-center justify-between bg-black/60 p-4 border border-orange-900/50 relative overflow-hidden">
+                <div class="flex items-center gap-3 relative z-10">
                     <span class="text-2xl drop-shadow-[0_0_8px_#f97316]">🎯</span>
                     <div>
-                        <div class="text-xs text-gray-400 font-bold tracking-widest">當前戰區</div>
-                        <div class="text-lg font-black text-orange-500 tracking-widest">歷屆會考單字精選 10 題</div>
+                        <div class="text-xs text-gray-400 font-bold tracking-widest flex items-center gap-2">
+                            當前戰區 
+                        </div>
+                        <div class="text-lg font-black text-orange-500 tracking-widest">歷屆單字實戰</div>
                     </div>
                 </div>
-                <div class="text-right">
+                <div class="text-right relative z-10">
                     <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-1">任務進度</div>
                     <div class="text-2xl font-black text-white">
                         <span class="text-orange-400">{{ currentQIndex + 1 }}</span> <span class="text-gray-600 text-lg">/ {{ practiceQuestions.length }}</span>
@@ -118,13 +143,29 @@
             </div>
 
             <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4 border-t-orange-500 relative">
-                <div class="text-[10px] text-gray-500 font-bold tracking-widest mb-4 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full animate-pulse bg-orange-500"></span>
-                    READ CAREFULLY
+                
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex flex-col gap-2">
+                        <div class="text-[10px] text-gray-500 font-bold tracking-widest flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full animate-pulse bg-orange-500"></span>
+                            TARGET IDENTIFIED
+                        </div>
+                        
+                        <div v-if="currentQuestion.points && currentQuestion.points.length > 0" class="flex flex-wrap gap-2">
+                            <span v-for="(pt, idx) in currentQuestion.points" :key="idx" 
+                                  class="text-[10px] md:text-xs text-orange-400 border border-orange-700 bg-orange-900/40 px-2 py-1 font-black tracking-widest shadow-[0_0_8px_rgba(249,115,22,0.2)]">
+                                🎯 考點：{{ pt }}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <button @click="showHint = true" :disabled="showHint || !currentQuestion.hintKeywords" class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-3 py-1.5 font-bold tracking-widest hover:bg-neon-yellow hover:text-black transition shadow-[0_0_10px_rgba(255,255,0,0.2)] disabled:opacity-30 disabled:cursor-not-allowed">
+                        {{ currentQuestion.hintKeywords ? '💡 戰術掃描 (Hint)' : '🚫 無掃描資料' }}
+                    </button>
                 </div>
-                <h3 class="text-xl md:text-3xl font-bold text-white leading-relaxed tracking-wide font-mono">
-                    {{ currentQuestion.question }}
-                </h3>
+
+                <h3 class="text-xl md:text-3xl font-bold text-white leading-relaxed tracking-wide font-mono" v-html="displayQuestion"></h3>
+                
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -167,7 +208,7 @@
 
             <transition name="fade">
                 <div v-if="selectedOpt && !hasAnswered" class="mt-4 text-right">
-                    <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-black border-2 border-orange-500 bg-orange-500 hover:bg-white hover:border-white shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                    <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-white border-2 border-orange-500 bg-orange-600 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(249,115,22,0.5)]">
                         確認送出 (SUBMIT)
                     </button>
                 </div>
@@ -179,25 +220,46 @@
     <script>
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; }
         if (!firebase.apps.length) { firebase.initializeApp(FIREBASE_CONFIG); }
+        const db = firebase.database();
+        const auth = firebase.auth(); 
         
         const { createApp, ref, computed, onMounted } = Vue;
 
         createApp({
             setup() {
                 const playerName = ref(localStorage.getItem('shilieu_player') || '未知特工');
+                const currentUserUid = ref('');
                 
+                const currentPhase = ref('select_mode'); 
+                const randomQuestionCount = ref(10);
+
                 const practiceQuestions = ref([]);
                 const currentQIndex = ref(0);
                 const selectedOpt = ref(null);
                 const hasAnswered = ref(false);
                 const isCorrect = ref(false);
                 const correctCount = ref(0);
-                const isQuizDone = ref(false);
                 const isSaving = ref(false);
                 const startTime = ref(null);
                 
                 const wrongQuestionsLog = ref([]); 
                 const reviewList = ref([]);        
+
+                // 🌟 新增：戰術提示開關
+                const showHint = ref(false);
+
+                // 🌟 新增：帶有螢光筆標記的題目生成器
+                const displayQuestion = computed(() => {
+                    let q = currentQuestion.value.question || '';
+                    if (showHint.value && currentQuestion.value.hintKeywords) {
+                        currentQuestion.value.hintKeywords.forEach(kw => {
+                            const safeKw = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            const regex = new RegExp(`(${safeKw})`, 'gi');
+                            q = q.replace(regex, '<span class="text-neon-yellow drop-shadow-[0_0_15px_#ff0] border-b-2 border-yellow-400 bg-yellow-900/40 px-1">$1</span>');
+                        });
+                    }
+                    return q;
+                });
 
                 const shuffleArray = (array) => {
                     for (let i = array.length - 1; i > 0; i--) {
@@ -212,26 +274,27 @@
                     return text.replace(/<b>(.*?)<\/b>/g, '<span class="text-white bg-white/20 px-1 rounded shadow-sm mx-0.5">$1</span>');
                 };
 
+                onMounted(() => {
+                    auth.onAuthStateChanged(user => { if (user) currentUserUid.value = user.uid; });
+                });
+
                 const startPractice = () => {
                     if (typeof window.VOCAB_EXAM_QUESTIONS === 'undefined' || window.VOCAB_EXAM_QUESTIONS.length === 0) {
-                        alert("尚未建立會考單字題庫！請聯絡總司令。");
-                        return;
+                        alert("尚未建立會考單字題庫！"); return;
                     }
-                    
-                    // 每次隨機抽取 10 題
                     const db = [...window.VOCAB_EXAM_QUESTIONS];
-                    const shuffledDb = shuffleArray(db);
-                    practiceQuestions.value = shuffledDb.slice(0, 10);
+                    practiceQuestions.value = shuffleArray(db).slice(0, randomQuestionCount.value);
                     
                     currentQIndex.value = 0;
                     selectedOpt.value = null;
                     hasAnswered.value = false;
                     isCorrect.value = false;
                     correctCount.value = 0;
-                    isQuizDone.value = false;
                     wrongQuestionsLog.value = []; 
                     reviewList.value = [];
+                    showHint.value = false; // 確保開始時關閉提示
                     startTime.value = Date.now(); 
+                    currentPhase.value = 'quiz';
                 };
 
                 const currentQuestion = computed(() => practiceQuestions.value[currentQIndex.value] || {});
@@ -245,10 +308,9 @@
                     if (!selectedOpt.value) return;
                     hasAnswered.value = true;
                     isCorrect.value = (selectedOpt.value === currentQuestion.value.answer);
-                    
-                    if (isCorrect.value) {
-                        correctCount.value++;
-                    } else {
+
+                    if (isCorrect.value) correctCount.value++;
+                    else {
                         const selectedIdx = currentQuestion.value.options.indexOf(selectedOpt.value);
                         const correctIdx = currentQuestion.value.options.indexOf(currentQuestion.value.answer);
                         const getLabel = (idx) => ['A', 'B', 'C', 'D'][idx];
@@ -259,16 +321,31 @@
                         
                         wrongQuestionsLog.value.push(`【第 ${currentQIndex.value + 1} 題】${qText}\n❌ 你的選擇：${userAns}\n✅ 正確答案：${rightAns}`);
                         
+                        // 🌟 寫入完整的檢討資料，包含考點與提示字
                         reviewList.value.push({
                             question: qText,
                             userChoice: userAns,
                             correctChoice: rightAns,
-                            explanation: currentQuestion.value.explanation
+                            explanation: currentQuestion.value.explanation,
+                            points: currentQuestion.value.points || null,
+                            hintKeywords: currentQuestion.value.hintKeywords || null
                         });
                     }
                 };
 
-                // 🌟 更新：非同步回報任務 (Promise)
+                const nextQuestion = () => {
+                    if (currentQIndex.value < practiceQuestions.value.length - 1) {
+                        currentQIndex.value++;
+                        selectedOpt.value = null;
+                        hasAnswered.value = false;
+                        isCorrect.value = false;
+                        showHint.value = false; // 🌟 換題時關閉提示
+                    } else {
+                        currentPhase.value = 'result';
+                        saveBattleLog(false); 
+                    }
+                };
+
                 const saveBattleLog = (isAborted = false) => {
                     if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return Promise.resolve();
                     isSaving.value = true;
@@ -278,10 +355,10 @@
                         const totalSeconds = Math.floor(durationMs / 1000);
                         const m = Math.floor(totalSeconds / 60);
                         const s = totalSeconds % 60;
-                        const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
                         
-                        // 標記撤退狀態
-                        const themeName = isAborted ? `🔥會考實戰 (撤退)` : `🔥會考實戰`;
+                        let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                        
+                        const themeName = isAborted ? `🔥會考單字實戰 (撤退)` : `🔥會考單字實戰`;
                         const totalQ = practiceQuestions.value.length;
                         const answeredQ = isAborted ? (currentQIndex.value) : totalQ;
                         
@@ -303,35 +380,14 @@
                                          `&wrongWords=${encodeURIComponent(wrongStr)}`;
 
                         fetch(finalUrl, { mode: 'no-cors' })
-                            .then(() => {
-                                isSaving.value = false;
-                                resolve();
-                            })
-                            .catch(err => {
-                                console.error('發射失敗', err);
-                                isSaving.value = false;
-                                resolve();
-                            });
+                            .then(() => { isSaving.value = false; resolve(); })
+                            .catch(err => { isSaving.value = false; resolve(); });
                     });
                 };
 
-                const nextQuestion = () => {
-                    if (currentQIndex.value < practiceQuestions.value.length - 1) {
-                        currentQIndex.value++;
-                        selectedOpt.value = null;
-                        hasAnswered.value = false;
-                        isCorrect.value = false;
-                    } else {
-                        isQuizDone.value = true;
-                        saveBattleLog(false); 
-                    }
-                };
-
-                // 🌟 更新：撤退時強制等待傳輸完成再跳轉
                 const quitPractice = () => { 
                     if (practiceQuestions.value.length > 0 && !isQuizDone.value) {
                         if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要離開嗎？')) {
-                            // 等待 Promise 解決後再跳轉
                             saveBattleLog(true).then(() => {
                                 window.location.href = 'vocab.html';
                             });
@@ -348,11 +404,16 @@
                     return 'text-neon-red drop-shadow-[0_0_15px_#ff003c]';
                 });
 
+                const isQuizDone = computed(() => currentPhase.value === 'result');
+
                 return { 
                     playerName, practiceQuestions, currentQIndex, currentQuestion, 
                     selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, 
                     scoreColor, selectOption, submitAnswer, nextQuestion, quitPractice, 
-                    isSaving, reviewList, formatText, startPractice
+                    isSaving, reviewList, formatText, startPractice,
+                    
+                    showHint, displayQuestion, // 🌟 匯出提示相關變數
+                    currentPhase, randomQuestionCount
                 };
             }
         }).mount('#app');
