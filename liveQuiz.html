@@ -160,6 +160,33 @@
                 event.preventDefault();
             }
         });
+        // =========================================================================
+        // 📡 主動式防作弊雷達：每秒掃描是否被手機/平板強制翻譯
+        // =========================================================================
+        setInterval(() => {
+            const htmlNode = document.documentElement;
+            
+            // 1. 偵測 Google 翻譯系統偷偷加上的 class
+            const hasGoogleClass = htmlNode.classList.contains('translated-ltr') || 
+                                   htmlNode.classList.contains('translated-rtl');
+            
+            // 2. 偵測 iOS/Safari 或其他系統是否強行把網頁語言 (lang) 屬性改掉
+            const isLangChanged = htmlNode.lang && htmlNode.lang !== 'zh-TW' && htmlNode.lang.toLowerCase() !== 'en';
+            
+            // 3. 偵測 DOM 內是否被安插了翻譯軟體的專用框架
+            const hasGoogFrame = document.querySelector('.skiptranslate') || 
+                                 document.querySelector('#goog-gt-tt') || 
+                                 document.querySelector('font'); // 很多底層翻譯會強制把字包在 <font> 裡面
+            
+            if (hasGoogleClass || isLangChanged || hasGoogFrame) {
+                // 發現作弊！立刻跳出警告並懲罰
+                alert('⚠️ 系統防作弊雷達警告：\n偵測到「網頁翻譯」功能啟動！\n為維護測驗公平性，系統將強制沒收當前進度並重整網頁。');
+                
+                // 強制重整網頁，讓翻譯失效，特工必須重頭來過
+                window.location.reload(); 
+            }
+        }, 1000); // 1000毫秒 = 每 1 秒鐘掃描一次
+        // =========================================================================
 
         createApp({
             setup() {
