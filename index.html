@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>馬纓丹 ONLINE - 特工總部</title>
+    <title>馬纓丹 ONLINE - 馬纓丹特情局</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config={theme:{extend:{colors:{neon:{cyan:'#0ff',pink:'#f0f',yellow:'#ff0',green:'#0f0',red:'#ff003c',purple:'#b026ff',bg:'#050b14'}}}}}</script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script src="config.js"></script>
+    <script src="vocab_exam_data.js"></script>
     <script src="grammar_data.js"></script>
     
     <style>
@@ -21,26 +22,67 @@
         .neon-text-cyan{text-shadow:0 0 10px rgba(0,255,255,0.7),0 0 20px rgba(0,255,255,0.5);}
         .cyber-box-cyan{border:1px solid #0ff;background:rgba(0,20,40,0.6);box-shadow:inset 0 0 15px rgba(0,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .cyber-box-red{border:1px solid #ff003c;background:rgba(40,0,0,0.4);box-shadow:inset 0 0 15px rgba(255,0,60,0.2);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
+        .cyber-box-purple{border:1px solid #b026ff;background:rgba(20,0,30,0.6);box-shadow:inset 0 0 15px rgba(176,38,255,0.3);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .cyber-box-gray{border:1px solid #4b5563;background:rgba(31,41,55,0.4);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.1) 51%);background-size:100% 4px;animation:scan 10s linear infinite; pointer-events: none;} 
         @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
         .fade-in{animation:fadeIn 0.5s ease-out;} 
         @keyframes fadeIn{from{opacity:0; transform: translateY(10px);}to{opacity:1; transform: translateY(0);}}
-        .cyber-glitch-title { position: relative; display: inline-block; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0ff;}
+
+        /* 🌟 特效：火焰字體 (單站訓練) */
+        .fire-text {
+            color: #ff8c00;
+            text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 20px #ff0000;
+            animation: fireFlicker 1.5s infinite alternate;
+        }
+        @keyframes fireFlicker {
+            0% { text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 20px #ff0000; }
+            50% { text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500, 0 0 30px #ff0000; color: #ffd700; }
+            100% { text-shadow: 0 0 5px #ff4500, 0 0 15px #ff0000, 0 0 25px #b22222; }
+        }
+
+        /* 🌟 特效：閃電字體 (文武雙全) */
+        .lightning-text {
+            color: #e0ffff;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+            animation: lightningFlash 2s infinite;
+        }
+        @keyframes lightningFlash {
+            0%, 90%, 100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; color: #e0ffff; }
+            92%, 96% { text-shadow: 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff; color: #fff; }
+            94%, 98% { text-shadow: 0 0 5px #00ffff; color: #e0ffff; }
+        }
+
+        /* 🌟 終極特效：戰場業火高溫字體 (親臨戰場) */
+        .inferno-text {
+            color: #ffeedd;
+            text-shadow: 0 0 10px #ff4500, 0 0 20px #ff4500, 0 0 40px #ff0000, 0 0 80px #8b0000;
+            animation: infernoPulse 1.2s infinite alternate, sparkTremble 0.1s infinite;
+            display: inline-block;
+        }
+        @keyframes infernoPulse {
+            0% { text-shadow: 0 0 10px #ff4500, 0 0 20px #ff0000, 0 0 30px #8b0000; transform: scale(1); color: #ffcc99; }
+            100% { text-shadow: 0 0 20px #ff8c00, 0 0 40px #ff4500, 0 0 60px #ff0000, 0 0 100px #ff0000; transform: scale(1.08); color: #ffffff; }
+        }
+        @keyframes sparkTremble {
+            0%, 100% { transform: translate(0, 0) skewX(0deg); }
+            25% { transform: translate(-0.5px, 0.5px) skewX(0.5deg); }
+            50% { transform: translate(0.5px, -0.5px) skewX(-0.5deg); }
+        }
     </style>
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen font-sans relative overflow-x-hidden selection:bg-neon-cyan selection:text-black">
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.03) 1px,transparent 1px);background-size:30px 30px;"></div>
 
-    <div id="app" class="max-w-5xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
+    <div id="app" class="max-w-6xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
         
         <div v-if="view === 'auth'" class="fade-in flex flex-col items-center justify-center flex-1 w-full max-w-md mx-auto py-8">
             <div class="cyber-box-cyan p-8 md:p-10 w-full relative overflow-hidden bg-black/90">
                 <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
                 <div class="text-5xl mb-4 text-center drop-shadow-[0_0_15px_#0ff]">🌸</div>
                 <h1 class="text-3xl font-black mb-1 tracking-widest text-center text-white neon-text-cyan">馬纓丹 ONLINE</h1>
-                <p class="text-cyan-600 font-bold tracking-widest text-xs mb-6 text-center">>> 特工身分驗證系統</p>
+                <p class="text-cyan-600 font-bold tracking-widest text-xs mb-6 text-center">>> 特情局身分驗證系統</p>
 
                 <div v-if="authError" class="bg-red-900/50 border border-neon-red text-red-200 p-3 mb-6 text-sm font-bold tracking-widest text-center">⚠️ {{ authError }}</div>
 
@@ -98,7 +140,7 @@
             
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl md:text-4xl font-black text-white tracking-widest neon-text-cyan drop-shadow-[0_0_10px_#0ff]">
-                    特工總司令部
+                    馬纓丹特情局 🏵️
                 </h1>
                 <button @click="handleLogout" class="text-xs md:text-sm text-red-400 border border-red-800 bg-red-950/30 px-4 py-2 hover:bg-neon-red hover:text-white transition font-bold tracking-widest shadow-[0_0_10px_rgba(255,0,60,0.2)]">
                     登出系統
@@ -120,16 +162,22 @@
                         <p class="text-cyan-400 font-bold tracking-widest text-xs mb-4">真實身分：{{ currentUserProfile.realName }}<br>學號：{{ currentUserProfile.studentId }}</p>
                         
                         <div class="mt-4 pt-4 border-t border-cyan-900 w-full">
-                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2">
-                                <span class="text-gray-400">單字總精熟度</span>
+                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2 items-center">
+                                <span class="text-gray-400 flex items-center gap-1">
+                                    單字總精熟度
+                                    <button @click="openInfo('progress_vocab')" class="w-4 h-4 rounded-full border border-gray-500 text-gray-400 hover:text-neon-cyan hover:border-neon-cyan flex items-center justify-center text-[10px] transition">?</button>
+                                </span>
                                 <span class="text-neon-cyan">{{ overallProgressPercentage }}%</span>
                             </div>
                             <div class="w-full bg-gray-900 h-3 border border-cyan-900 relative shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] overflow-hidden">
                                 <div class="h-full bg-neon-cyan transition-all duration-1000 ease-out shadow-[0_0_10px_#0ff]" :style="{ width: overallProgressPercentage + '%' }"></div>
                             </div>
                             
-                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2 mt-4">
-                                <span class="text-gray-400">文法總精熟度</span>
+                            <div class="flex justify-between text-xs font-bold tracking-widest mb-2 mt-4 items-center">
+                                <span class="text-gray-400 flex items-center gap-1">
+                                    文法總精熟度
+                                    <button @click="openInfo('progress_grammar')" class="w-4 h-4 rounded-full border border-gray-500 text-gray-400 hover:text-neon-purple hover:border-neon-purple flex items-center justify-center text-[10px] transition">?</button>
+                                </span>
                                 <span class="text-neon-purple">{{ overallGrammarPercentage }}%</span>
                             </div>
                             <div class="w-full bg-gray-900 h-3 border border-purple-900 relative shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] overflow-hidden">
@@ -169,22 +217,44 @@
             </div>
 
             <h3 class="text-lg md:text-xl font-black text-gray-400 tracking-widest mb-4 flex items-center gap-3">
-                <span class="w-6 h-1 bg-gray-600 inline-block"></span> 戰場傳送門
+                <span class="w-6 h-1 bg-gray-600 inline-block"></span> 戰略特訓中心
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 mb-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 relative z-10 mb-8">
                 
-                <button onclick="window.location.href='vocab.html'" class="cyber-box-red p-6 flex flex-col items-center justify-center group hover:bg-red-900/50 hover:border-neon-red transition-all duration-300">
+                <button onclick="window.location.href='vocab.html'" class="cyber-box-red p-6 flex flex-col items-center justify-center group hover:bg-red-900/50 hover:border-neon-red transition-all duration-300 relative">
+                    <div @click.stop="openInfo('vocab')" class="absolute top-3 left-3 text-red-600 border border-red-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-red hover:border-neon-red transition z-20">?</div>
                     <div class="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_#f00]">🔥</div>
-                    <h2 class="text-xl font-black text-white tracking-widest mb-1 group-hover:text-neon-red transition">單字戰場</h2>
+                    <h2 class="text-2xl font-black text-white tracking-widest mb-1 group-hover:text-neon-red transition">
+                        <span class="fire-text">單</span>站訓練
+                    </h2>
                     <p class="text-xs text-red-300 font-bold tracking-widest">>> 2000單極限特訓與對決</p>
                     <div class="mt-3 bg-neon-red text-white text-[10px] px-3 py-1 font-black tracking-widest opacity-0 group-hover:opacity-100 transition shadow-[0_0_10px_#f00]">啟動傳送程序 ➔</div>
                 </button>
 
-                <button onclick="window.location.href='grammar.html'" class="cyber-box-cyan p-6 flex flex-col items-center justify-center group hover:bg-cyan-900/50 hover:border-neon-cyan transition-all duration-300">
+                <button onclick="window.location.href='grammar.html'" class="cyber-box-cyan p-6 flex flex-col items-center justify-center group hover:bg-cyan-900/50 hover:border-neon-cyan transition-all duration-300 relative">
+                    <div @click.stop="openInfo('grammar')" class="absolute top-3 left-3 text-cyan-600 border border-cyan-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-cyan hover:border-neon-cyan transition z-20">?</div>
                     <div class="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_#0ff]">⚡</div>
-                    <h2 class="text-xl font-black text-white tracking-widest mb-1 group-hover:text-neon-cyan transition">文法戰場</h2>
+                    <h2 class="text-2xl font-black text-white tracking-widest mb-1 group-hover:text-neon-cyan transition">
+                        <span class="lightning-text">文</span>武雙全
+                    </h2>
                     <p class="text-xs text-cyan-300 font-bold tracking-widest">>> 3D 星際導航與歷屆實戰</p>
                     <div class="mt-3 bg-neon-cyan text-black text-[10px] px-3 py-1 font-black tracking-widest opacity-0 group-hover:opacity-100 transition shadow-[0_0_10px_#0ff]">啟動傳送程序 ➔</div>
+                </button>
+
+                <button onclick="window.location.href='mixed_exam.html'" class="cyber-box-purple p-6 flex flex-col items-center justify-center group hover:bg-purple-900/50 transition-all duration-300 relative overflow-hidden">
+                    
+                    <canvas id="sparkCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-500"></canvas>
+                    
+                    <div @click.stop="openInfo('mixed')" class="absolute top-3 left-3 text-purple-500 border border-purple-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-purple hover:border-neon-purple transition z-20">?</div>
+                    <div class="absolute top-0 right-0 bg-neon-purple text-black text-[10px] px-2 py-1 font-black tracking-widest rounded-bl-lg z-10 shadow-[0_0_10px_#b026ff]">LIVE</div>
+                    <div class="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_20px_#ff4500] relative z-10">🚀</div>
+                    
+                    <h2 class="text-2xl font-black tracking-widest mb-1 transition inferno-text relative z-10">
+                        親臨戰場
+                    </h2>
+                    <p class="text-xs text-purple-300 font-bold tracking-widest relative z-10 mt-1">>> 單字與文法混合極限測驗</p>
+                    <div class="mt-3 bg-neon-purple text-white text-[10px] px-3 py-1 font-black tracking-widest opacity-0 group-hover:opacity-100 transition shadow-[0_0_10px_#b026ff] relative z-10">啟動傳送程序 ➔</div>
                 </button>
                 
             </div>
@@ -197,7 +267,6 @@
                 </div>
                 
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[350px] overflow-y-auto cyber-scrollbar pr-2 pb-2">
-                    
                     <div v-for="theme in themeProgressStats" :key="theme.name" class="relative aspect-square bg-black/60 border border-gray-700 overflow-hidden flex flex-col items-center justify-center p-2 group hover:border-cyan-500 transition-colors">
                         
                         <div class="absolute bottom-0 left-0 w-full bg-neon-cyan/30 border-t border-neon-cyan/50 transition-all duration-1000 z-0" 
@@ -252,13 +321,13 @@
                                 <td class="p-3 text-gray-200 font-bold">{{ log.theme }}</td>
                                 <td class="p-3 font-black text-lg" :class="getLogScoreColor(log.score)">{{ log.score }}</td>
                                 <td class="p-3 text-center">
-                                    <button v-if="log.wrongWords && log.wrongWords !== '無' && log.wrongWords !== 'X' && !log.theme.includes('文法')" 
+                                    <button v-if="log.wrongWords && log.wrongWords !== '無' && log.wrongWords !== 'X' && !log.theme.includes('文法') && !log.theme.includes('會考') && !log.theme.includes('戰場')" 
                                             @click="startRetest(log)" 
                                             class="bg-red-950/50 text-red-400 hover:bg-neon-red hover:text-white border border-red-800 px-4 py-1.5 text-xs font-black tracking-widest transition shadow-[0_0_10px_rgba(255,0,60,0.2)]">
                                         ⚔️ 復仇 (錯題重測)
                                     </button>
                                     
-                                    <button v-else-if="log.theme.includes('文法')" 
+                                    <button v-else-if="log.theme.includes('文法') || log.theme.includes('會考') || log.theme.includes('戰場')" 
                                             @click="viewGrammarLog(log)" 
                                             class="bg-cyan-950/50 text-cyan-400 hover:bg-neon-cyan hover:text-black border border-cyan-800 px-4 py-1.5 text-xs font-black tracking-widest transition shadow-[0_0_10px_rgba(0,255,255,0.2)]">
                                         👁️ 查看戰報
@@ -294,6 +363,24 @@
                     </div>
                 </div>
             </transition>
+
+            <transition name="fade">
+                <div v-if="showInfoModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+                    <div class="cyber-box-gray w-full max-w-lg p-6 md:p-8 relative bg-gray-900 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                        <button @click="closeInfo" class="absolute top-4 right-4 text-gray-500 hover:text-white text-3xl font-black leading-none transition">&times;</button>
+                        <div class="text-center mb-6 border-b border-gray-700 pb-4">
+                            <span class="text-5xl block mb-4 drop-shadow-md">{{ currentInfo.icon }}</span>
+                            <h2 class="text-2xl font-black tracking-widest" :class="currentInfo.color">{{ currentInfo.title }}</h2>
+                        </div>
+                        <div class="text-gray-300 text-sm leading-loose tracking-wider font-bold space-y-4">
+                            <p v-html="currentInfo.desc"></p>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button @click="closeInfo" class="bg-gray-800 text-gray-300 hover:bg-white hover:text-black px-8 py-3 text-sm font-black tracking-widest transition border border-gray-600">我了解了</button>
+                        </div>
+                    </div>
+                </div>
+            </transition>
             
             <div class="mt-auto pt-6 pb-4 text-center w-full">
                 <p class="text-[11px] text-gray-600 font-bold tracking-widest">【 © 2026 本網頁為 Jason Wang 之智慧財產 】</p>
@@ -304,11 +391,12 @@
 
     <script>
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; }
-        firebase.initializeApp(FIREBASE_CONFIG);
+        if (!firebase.apps.length) { firebase.initializeApp(FIREBASE_CONFIG); }
         const db = firebase.database();
         const auth = firebase.auth(); 
         
-        const { createApp, ref, computed, onMounted } = Vue;
+        // 🌟 引入 nextTick 來確保 DOM 載入後再啟動 Canvas
+        const { createApp, ref, computed, onMounted, nextTick } = Vue;
 
         createApp({
             setup() {
@@ -325,6 +413,16 @@
 
                 const showLogModal = ref(false);
                 const selectedLogContent = ref({});
+
+                const showInfoModal = ref(false);
+                const currentInfo = ref({});
+                const infoData = {
+                    vocab: { title: '單站訓練', icon: '🔥', color: 'text-neon-red', desc: '【專攻：英文字彙能力】<br>進行國中 2000 單字極限特訓與對決。<br>內部包含單字卡、自我考驗、字義盲測、雙人死鬥及會考單選實戰等多種模式。' },
+                    grammar: { title: '文武雙全', icon: '⚡', color: 'text-neon-cyan', desc: '【專攻：文法結構判斷】<br>3D 星際導航與歷屆文法實戰。<br>透過星系探索解鎖各項文法成就，並透過智能雷達揪出你的文法盲區進行打擊！' },
+                    mixed: { title: '親臨戰場', icon: '🚀', color: 'text-neon-purple', desc: '【專攻：綜合考驗與臨場反應】<br>極限綜合刷題區。<br>將單字與文法混合進行高強度隨機測驗，考驗你的真實作戰臨場反應！' },
+                    progress_vocab: { title: '單字精熟度計算', icon: '📊', color: 'text-neon-cyan', desc: '【計算公式】<br>▸ 分母：系統收錄的國中必備總單字量。<br>▸ 分子：你在各項測驗中「答對且成功標記為精熟」的單字總數。<br><br>※ 只要持續在「自我考驗」或「盲測」中答對，精熟度就會自動提升！' },
+                    progress_grammar: { title: '文法精熟度計算', icon: '📈', color: 'text-neon-purple', desc: '【計算公式】<br>▸ 分母：所有十大文法星系的題庫總量。<br>▸ 分子：你在文法戰場中成功攻克並答對的獨特題目數量。<br><br>※ 每個星系的權重採平均計算，多探索不同星系有助於全面提升精熟度！' }
+                };
 
                 const myLogs = ref([]);
                 const isLoadingLogs = ref(false);
@@ -356,36 +454,24 @@
                     return parseFloat(((totalMasteredCount.value / totalWordsCount.value) * 100).toFixed(1));
                 });
 
-                // 🌟 修復 2：均權分配法，並加入 prefix 以對應 grammar_data.js 的資料
                 const overallGrammarPercentage = computed(() => {
                     if (typeof window.GRAMMAR_QUESTIONS === 'undefined') return 0;
                     const qDb = window.GRAMMAR_QUESTIONS;
                     
                     const grammarThemes = [
-                        { id: 'pronouns', prefix: 'pro', name: '代名詞' }, 
-                        { id: 'tenses', prefix: 'ten', name: '時態' }, 
-                        { id: 'special_verbs', prefix: 'sv', name: '特殊動詞' },
-                        { id: 'conjunctions', prefix: 'conj', name: '連接詞' }, 
-                        { id: 'adjectives', prefix: 'adj', name: '形容詞與副詞' }, 
-                        { id: 'prepositions', prefix: 'prep', name: '介係詞' },
-                        { id: 'interrogatives', prefix: 'wh', name: '疑問詞' }, 
-                        { id: 'verbals', prefix: 'v', name: '不定詞與動名詞' }, 
-                        { id: 'patterns', prefix: 'pat', name: '特殊句型' },
-                        { id: 'clauses', prefix: 'cl', name: '子句 (大魔王)' }
+                        { id: 'pronouns', prefix: 'pro' }, { id: 'tenses', prefix: 'ten' }, { id: 'special_verbs', prefix: 'sv' },
+                        { id: 'conjunctions', prefix: 'conj' }, { id: 'adjectives', prefix: 'adj' }, { id: 'prepositions', prefix: 'prep' },
+                        { id: 'interrogatives', prefix: 'wh' }, { id: 'verbals', prefix: 'v' }, { id: 'patterns', prefix: 'pat' },
+                        { id: 'clauses', prefix: 'cl' }
                     ];
 
                     const collectQs = (prefix) => {
                         let qs = [];
-                        Object.keys(qDb).forEach(key => {
-                            if (key.startsWith(prefix + '_')) {
-                                qs = qs.concat(qDb[key]);
-                            }
-                        });
+                        Object.keys(qDb).forEach(key => { if (key.startsWith(prefix + '_')) qs = qs.concat(qDb[key]); });
                         return qs;
                     };
 
                     let totalPercentage = 0;
-
                     grammarThemes.forEach(theme => {
                         let themeQuestions = collectQs(theme.prefix);
                         if (themeQuestions.length > 0) {
@@ -397,7 +483,6 @@
                             totalPercentage += (masteredCount / themeQuestions.length) * 10;
                         }
                     });
-
                     return parseFloat(totalPercentage.toFixed(1));
                 });
 
@@ -405,44 +490,93 @@
                     if (typeof ALL_THEMES_DATA === 'undefined') return [];
                     return ALL_THEMES_DATA.map(theme => {
                         let themeMastered = 0;
-                        theme.words.forEach(w => {
-                            if (masteryData.value[w.word]) themeMastered++;
-                        });
+                        theme.words.forEach(w => { if (masteryData.value[w.word]) themeMastered++; });
                         let percentage = theme.words.length > 0 ? parseFloat(((themeMastered / theme.words.length) * 100).toFixed(1)) : 0;
-                        return {
-                            name: theme.name,
-                            icon: theme.icon,
-                            total: theme.words.length,
-                            mastered: themeMastered,
-                            percentage: percentage
-                        };
+                        return { name: theme.name, icon: theme.icon, total: theme.words.length, mastered: themeMastered, percentage: percentage };
                     });
                 });
+
+                // 🌟 啟動戰場業火 (Canvas 粒子系統)
+                const startSparkAnimation = () => {
+                    const canvas = document.getElementById('sparkCanvas');
+                    if (!canvas) return;
+                    const ctx = canvas.getContext('2d');
+                    let width = canvas.width = canvas.offsetWidth;
+                    let height = canvas.height = canvas.offsetHeight;
+
+                    const particles = [];
+                    // 生成 60 顆火星
+                    for (let i = 0; i < 60; i++) {
+                        particles.push({
+                            x: Math.random() * width,
+                            y: height + Math.random() * 100,
+                            size: Math.random() * 2 + 0.5,
+                            speedY: Math.random() * 2 + 0.5,
+                            speedX: (Math.random() - 0.5) * 1.5,
+                            opacity: Math.random(),
+                            life: Math.random() * 100
+                        });
+                    }
+
+                    const animate = () => {
+                        if (!document.getElementById('sparkCanvas')) return; // 確保 Canvas 存在
+                        ctx.clearRect(0, 0, width, height);
+
+                        if (canvas.width !== canvas.offsetWidth) width = canvas.width = canvas.offsetWidth;
+                        if (canvas.height !== canvas.offsetHeight) height = canvas.height = canvas.offsetHeight;
+
+                        // 讓火星採用濾色疊加，增加高溫發光感
+                        ctx.globalCompositeOperation = 'screen';
+
+                        particles.forEach(p => {
+                            p.y -= p.speedY;
+                            p.x += p.speedX + Math.sin(p.y / 20) * 0.5; // S型蜿蜒向上
+                            p.life -= 1;
+
+                            // 火星飛出邊界或生命週期結束時重置到底部
+                            if (p.life <= 0 || p.y < 0) {
+                                p.y = height + 10;
+                                p.x = Math.random() * width;
+                                p.life = 50 + Math.random() * 50;
+                                p.opacity = Math.random() * 0.8 + 0.2;
+                            }
+
+                            ctx.globalAlpha = Math.max(0, (p.life / 100) * p.opacity);
+                            ctx.fillStyle = p.size > 1.5 ? '#ffcc00' : '#ff4500'; // 混合黃色與橘色
+                            ctx.shadowBlur = 8;
+                            ctx.shadowColor = '#ff0000';
+                            
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                            ctx.fill();
+                        });
+
+                        requestAnimationFrame(animate);
+                    };
+                    animate();
+                };
 
                 onMounted(() => {
                     auth.onAuthStateChanged(user => {
                         if (user) {
                             currentUserUid.value = user.uid;
-                            
                             db.ref(`app_state/users/${user.uid}`).once('value').then(snap => {
                                 if (snap.exists()) {
                                     currentUserProfile.value = snap.val();
                                     playerName.value = currentUserProfile.value.realName || currentUserProfile.value.studentId;
                                     localStorage.setItem('shilieu_player', playerName.value);
-                                    
                                     fetchMyLogs(); 
                                 }
                             });
-
-                            db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
-                                masteryData.value = snap.exists() ? snap.val() : {};
-                            });
-
-                            db.ref(`app_state/users/${user.uid}/grammarMastery`).on('value', snap => {
-                                grammarMasteryData.value = snap.exists() ? snap.val() : {};
-                            });
-
+                            db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => { masteryData.value = snap.exists() ? snap.val() : {}; });
+                            db.ref(`app_state/users/${user.uid}/grammarMastery`).on('value', snap => { grammarMasteryData.value = snap.exists() ? snap.val() : {}; });
+                            
                             view.value = 'home';
+                            // 🌟 確保畫面切換後才啟動 Canvas 粒子引擎
+                            nextTick(() => {
+                                startSparkAnimation();
+                            });
+
                         } else {
                             view.value = 'auth';
                         }
@@ -450,28 +584,18 @@
                 });
 
                 const resetThemeMastery = async (themeName) => {
-                    if (!confirm(`⚠️ 警告：您確定要清除【${themeName}】的所有精熟紀錄嗎？\n此操作無法復原，您必須重新在戰場上證明自己！`)) return;
-
+                    if (!confirm(`⚠️ 警告：您確定要清除【${themeName}】的所有精熟紀錄嗎？\n此操作無法復原！`)) return;
                     const themeObj = ALL_THEMES_DATA.find(t => t.name === themeName);
                     if (!themeObj || !currentUserUid.value) return;
-
                     const updates = {};
-                    themeObj.words.forEach(w => {
-                        updates[w.word] = null; 
-                    });
-
-                    try {
-                        await db.ref(`app_state/users/${currentUserUid.value}/mastery`).update(updates);
-                    } catch (e) {
-                        console.error('重置失敗', e);
-                        alert('重置失敗，請檢查網路連線。');
-                    }
+                    themeObj.words.forEach(w => { updates[w.word] = null; });
+                    try { await db.ref(`app_state/users/${currentUserUid.value}/mastery`).update(updates); } 
+                    catch (e) { alert('重置失敗，請檢查網路連線。'); }
                 };
 
                 const fetchMyLogs = () => {
                     if (isLoadingLogs.value || !playerName.value) return;
                     isLoadingLogs.value = true;
-                    
                     fetch(`${GOOGLE_API_URL}?action=getAll`)
                         .then(res => res.json())
                         .then(data => {
@@ -481,10 +605,7 @@
                             }
                             isLoadingLogs.value = false;
                         })
-                        .catch(err => {
-                            console.error(err);
-                            isLoadingLogs.value = false;
-                        });
+                        .catch(err => { isLoadingLogs.value = false; });
                 };
 
                 const renderChart = () => {
@@ -602,9 +723,17 @@
                         currentUserProfile.value = {};
                         myLogs.value = [];
                         masteryData.value = {};
-                        grammarMasteryData.value = {}; // 登出時清空
+                        grammarMasteryData.value = {}; 
                         if (chartInstance) chartInstance.destroy();
                     }
+                };
+
+                const openInfo = (type) => {
+                    currentInfo.value = infoData[type];
+                    showInfoModal.value = true;
+                };
+                const closeInfo = () => {
+                    showInfoModal.value = false;
                 };
 
                 return {
@@ -614,7 +743,8 @@
                     totalWordsCount, totalMasteredCount, overallProgressPercentage, themeProgressStats,
                     resetThemeMastery,
                     showLogModal, selectedLogContent, viewGrammarLog,
-                    overallGrammarPercentage 
+                    overallGrammarPercentage,
+                    showInfoModal, currentInfo, openInfo, closeInfo
                 };
             }
         }).mount('#app');
