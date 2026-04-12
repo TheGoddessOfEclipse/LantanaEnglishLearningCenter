@@ -194,69 +194,7 @@
             }
         }, 1000);
         // =========================================================================
-       // =========================================================================
-        // 👁️ 主動式雷達 v4.0 (高頻焦點查核 + 空間擠壓偵測) - 專剋 iPad 分割/懸浮視窗
-        // =========================================================================
-        let cheatWarnings = 0;
-        const MAX_WARNINGS = 3; // 容忍上限，超過就強制繳卷
-        let isCheatingDetected = false;
 
-        // 核心致盲機制
-        const punishCheater = () => {
-            if (!isCheatingDetected) {
-                isCheatingDetected = true;
-                document.body.classList.add('blurred-mode');
-            }
-        };
-
-        // 解除致盲並記警告
-        const forgiveCheater = () => {
-            if (isCheatingDetected) {
-                isCheatingDetected = false;
-                document.body.classList.remove('blurred-mode');
-                cheatWarnings++;
-                
-                setTimeout(() => {
-                    alert(`⚠️ 戰術警告：系統偵測到您【切換視窗】或使用【分割/懸浮畫面】！\n目前警告次數：${cheatWarnings} / ${MAX_WARNINGS}`);
-                    if (cheatWarnings >= MAX_WARNINGS) {
-                        alert('🚨 警告次數達標！強制終止演習，並判定為撤退！');
-                        window.location.href = 'index.html'; // 踢回大廳 (可視需求更改路徑)
-                    }
-                }, 100);
-            }
-        };
-
-        // 1. 保底傳統事件監聽 (切換分頁、縮小APP)
-        window.addEventListener('blur', punishCheater);
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) punishCheater();
-        });
-
-        // 2. ⚡ 終極高頻雷達：每 0.5 秒強制掃描 (專剋 iPad 吞事件)
-        setInterval(() => {
-            const screenAvailWidth = window.screen.availWidth || window.innerWidth;
-            
-            // A. 焦點查核：就算 iPad 沒觸發 blur，只要焦點不在網頁上，立刻致盲！
-            if (!document.hasFocus()) {
-                punishCheater();
-            } 
-            // B. 空間擠壓偵測：iPad 分割/懸浮時，寬度會大幅縮水 (設定低於螢幕可用寬度 75% 即視為作弊)
-            else if (window.innerWidth < screenAvailWidth * 0.75) {
-                punishCheater();
-                // 動態修改遮罩文字，提示學生恢復全螢幕
-                const overlayText = document.querySelector('#anti-cheat-overlay p');
-                if (overlayText) overlayText.innerHTML = "偵測到【分割畫面】或【懸浮視窗】！<br>請將瀏覽器恢復「全螢幕」並點擊畫面以繼續作答。";
-            } 
-            // C. 恢復查核：焦點回來了，且畫面夠大(已恢復全螢幕)，才能解除致盲
-            else if (isCheatingDetected && document.hasFocus() && window.innerWidth >= screenAvailWidth * 0.75) {
-                // 恢復預設遮罩文字
-                const overlayText = document.querySelector('#anti-cheat-overlay p');
-                if (overlayText) overlayText.innerHTML = "請勿使用分割畫面、懸浮視窗或切換至其他 APP。<br>您的測驗畫面已暫時鎖定。";
-                
-                forgiveCheater();
-            }
-        }, 500); // 每 500 毫秒掃描一次
-        // =========================================================================
         createApp({
             setup() {
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
