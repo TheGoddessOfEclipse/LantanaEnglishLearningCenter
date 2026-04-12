@@ -47,14 +47,6 @@
     <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
     <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
 
-    <div id="anti-cheat-overlay">
-        <span class="text-7xl mb-4 animate-bounce">🙈</span>
-        <h1 class="text-4xl font-black text-red-500 tracking-widest mb-4">警告：偵測到視窗切換！</h1>
-        <p class="text-gray-300 font-bold text-lg text-center leading-loose">
-            請勿使用分割畫面、懸浮視窗或切換至其他 APP。<br>
-            您的測驗畫面已暫時鎖定。
-        </p>
-    </div>
     <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
         
         <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
