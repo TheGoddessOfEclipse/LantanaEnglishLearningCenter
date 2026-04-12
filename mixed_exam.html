@@ -42,12 +42,37 @@
             -ms-user-select: auto;
             user-select: auto;
         }
+        /* 🛡️ 致盲防護罩：當失去焦點時啟動 */
+        #anti-cheat-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.95); z-index: 99999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.1s;
+        }
+        /* 當 body 被加上 blurred-mode 時，顯示遮罩並模糊後方題目 */
+        body.blurred-mode #anti-cheat-overlay {
+            opacity: 1; pointer-events: auto;
+        }
+        body.blurred-mode #app {
+            filter: blur(15px); pointer-events: none; user-select: none;
+        }
     </style>
 </head>
 <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
     <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
     <div class="fixed inset-0 scanline z-0"></div>
 
+    <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
+    <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
+
+    <div id="anti-cheat-overlay">
+        <span class="text-7xl mb-4 animate-bounce">🙈</span>
+        <h1 class="text-4xl font-black text-red-500 tracking-widest mb-4">警告：偵測到視窗切換！</h1>
+        <p class="text-gray-300 font-bold text-lg text-center leading-loose">
+            請勿使用分割畫面、懸浮視窗或切換至其他 APP。<br>
+            您的測驗畫面已暫時鎖定。
+        </p>
+    </div>
     <div id="app" class="max-w-4xl mx-auto relative z-10 flex flex-col h-full w-full">
         
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-purple-900/50 pb-4 gap-4">
@@ -352,6 +377,46 @@
                 window.location.reload(); // 強制洗掉作弊畫面
             }
         }, 1000);
+        // =========================================================================
+        // =========================================================================
+        // 👁️ 主動式雷達 v3.0 (失去焦點致盲系統) - 對付分割畫面與懸浮視窗
+        // =========================================================================
+        let cheatWarnings = 0;
+        const MAX_WARNINGS = 3; // 容忍上限，超過就強制繳卷
+
+        // 當畫面失去焦點 (例如：點擊了旁邊的懸浮字典、切換了分頁)
+        const handleFocusLoss = () => {
+            document.body.classList.add('blurred-mode'); // 瞬間致盲
+        };
+
+        // 當畫面恢復焦點 (點回來測驗畫面)
+        const handleFocusGain = () => {
+            if (document.body.classList.contains('blurred-mode')) {
+                document.body.classList.remove('blurred-mode'); // 解除致盲
+                cheatWarnings++;
+                
+                // 延遲一點點跳出警告，確保畫面已恢復
+                setTimeout(() => {
+                    alert(`⚠️ 戰術警告：系統偵測到您剛剛離開了測驗畫面！\n目前警告次數：${cheatWarnings} / ${MAX_WARNINGS}\n如果達 ${MAX_WARNINGS} 次，系統將強制沒收考卷！`);
+                    
+                    if (cheatWarnings >= MAX_WARNINGS) {
+                        alert('🚨 警告次數達標！強制終止演習並判定為撤退！');
+                        // 尋找是否有我們寫好的 saveBattleLog 函數來存檔並踢出
+                        window.location.href = 'index.html'; // 強制踢回大廳
+                    }
+                }, 100);
+            }
+        };
+
+        // 監聽視窗焦點事件
+        window.addEventListener('blur', handleFocusLoss);
+        window.addEventListener('focus', handleFocusGain);
+        
+        // 監聽網頁可見度變化 (防手機縮小APP)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) handleFocusLoss();
+            else handleFocusGain();
+        });
         // =========================================================================
 
         const { createApp, ref, computed, onMounted } = Vue;
