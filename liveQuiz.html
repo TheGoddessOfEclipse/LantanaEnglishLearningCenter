@@ -22,6 +22,20 @@
         .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.3) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
         .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#fff;}
+        body {
+            -webkit-touch-callout: none; /* 禁用 iOS Safari 長按選單 */
+            -webkit-user-select: none;   /* 禁用 Safari 文字選取 */
+            -moz-user-select: none;      /* 禁用 Firefox 文字選取 */
+            -ms-user-select: none;       /* 禁用 Edge/IE 文字選取 */
+            user-select: none;           /* 禁用標準文字選取 */
+        }
+        input, textarea {
+            -webkit-touch-callout: default;
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
     </style>
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-white selection:text-black">
@@ -128,6 +142,23 @@
         const auth = firebase.auth(); // 🌟 引入 Auth
         const { createApp, ref, onMounted, onUnmounted } = Vue;
         
+        // 🚫 1. 禁用滑鼠右鍵選單 (防止叫出翻譯或檢查原始碼)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
+        // 🚫 2. 禁用鍵盤「複製」 (Ctrl+C / Cmd+C) 與「貼上」 (Ctrl+V / Cmd+V)
+        document.addEventListener('copy', event => event.preventDefault());
+        document.addEventListener('paste', event => event.preventDefault());
+
+        // 🚫 3. 禁用 F12 開發者工具、Ctrl+Shift+I 與 Ctrl+U (防止有技術的特工偷看網頁原始碼找答案)
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || 
+               (event.ctrlKey && event.shiftKey && event.key === 'I') || 
+               (event.ctrlKey && event.key === 'u') || 
+               (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+
         createApp({
             setup() {
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');

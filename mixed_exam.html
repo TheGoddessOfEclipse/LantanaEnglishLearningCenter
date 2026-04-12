@@ -24,6 +24,22 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: #b026ff; }
+        body {
+            -webkit-touch-callout: none; /* 禁用 iOS Safari 長按選單 */
+            -webkit-user-select: none;   /* 禁用 Safari 文字選取 */
+            -moz-user-select: none;      /* 禁用 Firefox 文字選取 */
+            -ms-user-select: none;       /* 禁用 Edge/IE 文字選取 */
+            user-select: none;           /* 禁用標準文字選取 */
+        }
+        
+        /* ⚠️ 確保「輸入框」(如單字拼寫) 還是可以正常打字 */
+        input, textarea {
+            -webkit-touch-callout: default;
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
     </style>
 </head>
 <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
@@ -296,6 +312,23 @@
         const db = firebase.database();
         const auth = firebase.auth(); 
         
+        // 🚫 1. 禁用滑鼠右鍵選單 (防止叫出翻譯或檢查原始碼)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
+        // 🚫 2. 禁用鍵盤「複製」 (Ctrl+C / Cmd+C) 與「貼上」 (Ctrl+V / Cmd+V)
+        document.addEventListener('copy', event => event.preventDefault());
+        document.addEventListener('paste', event => event.preventDefault());
+
+        // 🚫 3. 禁用 F12 開發者工具、Ctrl+Shift+I 與 Ctrl+U (防止有技術的特工偷看網頁原始碼找答案)
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || 
+               (event.ctrlKey && event.shiftKey && event.key === 'I') || 
+               (event.ctrlKey && event.key === 'u') || 
+               (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+
         const { createApp, ref, computed, onMounted } = Vue;
 
         createApp({
