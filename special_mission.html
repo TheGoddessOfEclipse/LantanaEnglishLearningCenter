@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW" translate="no" class="notranslate">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <title>馬纓丹 ONLINE - 特派任務前線</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="config.js"></script>
+    <style>
+        body { background-color: #030712; color: #e5e7eb; overflow: hidden; font-family: sans-serif; height: 100dvh; width: 100vw; user-select: none; }
+        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.05) 50%); background-size: 100% 4px; pointer-events: none; }
+        .radar-bg { background: radial-gradient(circle, rgba(234,179,8,0.1) 0%, transparent 70%); }
+        .radar-line { position: absolute; top: 50%; left: 50%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, rgba(234,179,8,0.8), #eab308); transform-origin: 0 0; animation: radarScan 2s linear infinite; }
+        @keyframes radarScan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .warning-flash { animation: flashRed 1s infinite alternate; }
+        @keyframes flashRed { from { background-color: rgba(220, 38, 38, 0.1); } to { background-color: rgba(220, 38, 38, 0.4); } }
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(234,179,8,0.3); border-radius: 10px; }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center relative">
+    <span id="anti-cheat-canary" style="display:none;">Secret</span>
+    <div class="fixed inset-0 scanline z-0"></div>
+
+    <div id="app" class="w-full h-full max-w-4xl relative z-10 flex flex-col shadow-[0_0_50px_rgba(234,179,8,0.1)]">
+        <div class="bg-yellow-950/80 border-b border-yellow-500/50 p-3 md:p-4 text-center relative flex-shrink-0 z-20 shadow-md">
+            <h1 class="text-lg md:text-xl font-black flex items-center justify-center gap-2 tracking-widest text-yellow-400 drop-shadow-[0_0_8px_#eab308]">
+                <i class="fas fa-satellite-dish"></i> 指揮中心特派任務
+            </h1>
+            <div class="text-xs font-bold mt-1 text-gray-400">特工：<span class="text-white">{{ playerName }}</span></div>
+            <button @click="quitToMenu" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-400 hover:text-white transition"><i class="fas fa-sign-out-alt text-xl"></i></button>
+        </div>
+
+        <div class="flex-1 relative overflow-hidden flex flex-col">
+            <transition name="fade" mode="out-in">
+                <div v-if="currentView === 'waiting'" class="flex-1 flex flex-col items-center justify-center relative p-4">
+                    <div class="relative w-56 h-56 md:w-80 md:h-80 rounded-full border border-yellow-500/30 radar-bg flex items-center justify-center mb-6 md:mb-8 shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+                        <div class="absolute inset-0 rounded-full border border-yellow-500/10 scale-75"></div>
+                        <div class="absolute inset-0 rounded-full border border-yellow-500/10 scale-50"></div>
+                        <div class="radar-line"></div>
+                        <i class="fas fa-map-marker-alt text-4xl text-yellow-500 drop-shadow-[0_0_10px_#eab308]"></i>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-black text-yellow-100 tracking-widest animate-pulse drop-shadow-md">總部尚未派發任務</h2>
+                    <p class="text-xs md:text-sm text-yellow-500/70 font-bold mt-4 tracking-widest bg-yellow-900/30 px-6 py-2 rounded-full border border-yellow-700/50 text-center">請留在此畫面待命，接收到任務將自動進入戰場...</p>
+                </div>
+
+                <div v-else-if="currentView === 'exam'" class="flex-1 flex flex-col p-3 md:p-6 bg-[#050b14]">
+                    
+                    <div class="flex justify-between items-center bg-gray-900 border border-gray-700 p-2 md:p-3 rounded-lg mb-3 md:mb-4 flex-shrink-0">
+                        <div class="text-[10px] md:text-xs font-bold tracking-widest" :class="violations > 0 ? 'text-red-400' : 'text-emerald-400'"><i class="fas fa-shield-alt hidden md:inline"></i> 防作弊：最高警戒</div>
+                        <div class="text-[10px] md:text-xs font-bold text-gray-400 tracking-widest">違規：<span :class="violations > 0 ? 'text-red-500 font-black text-sm' : 'text-white'">{{ violations }} / 2</span></div>
+                        <div class="text-xs md:text-sm font-black text-yellow-400">進度：{{ currentIndex + 1 }} / {{ activeMission.questions.length }}</div>
+                    </div>
+
+                    <div class="flex-1 flex flex-col bg-gray-900/50 border border-gray-700 rounded-xl p-4 md:p-6 relative overflow-hidden">
+                        <h3 class="text-[10px] md:text-xs text-yellow-500 font-bold tracking-widest mb-2 md:mb-4 border-b border-gray-700 pb-1 md:pb-2 uppercase flex-shrink-0">
+                            {{ activeMission.theme }} - {{ translateMode(activeMission.type) }}
+                        </h3>
+                        
+                        <div class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center justify-center w-full py-2">
+                            
+                            <div v-if="currentQuestion.audio" class="mb-3 md:mb-5 flex flex-col items-center flex-shrink-0">
+                                <button @click="playAudio" class="bg-blue-900/40 border-2 border-blue-500 text-blue-300 hover:bg-cyan-500 hover:text-black w-14 h-14 md:w-16 md:h-16 rounded-full text-2xl transition shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center justify-center active:scale-95"><i class="fas fa-volume-up"></i></button>
+                                <p class="text-[10px] text-blue-400 mt-2 font-bold tracking-widest">點擊重複播放</p>
+                            </div>
+
+                            <div class="text-xl md:text-3xl font-black text-white text-center mb-4 md:mb-8 drop-shadow-md leading-relaxed flex-shrink-0">
+                                {{ currentQuestion.questionText }}
+                            </div>
+
+                            <div v-if="activeMission.type === 'mcq' || activeMission.type === 'past_exam'" class="w-full max-w-2xl flex flex-col items-center flex-shrink-0">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 w-full mb-4 md:mb-6">
+                                    <button v-for="(opt, idx) in currentQuestion.options" :key="idx" @click="selectOption(opt)" class="bg-gray-800 border border-gray-600 hover:border-yellow-500 text-gray-200 hover:text-white p-3 md:p-4 rounded-xl font-bold text-sm md:text-lg text-left transition shadow-md active:scale-95">
+                                        <span class="text-yellow-500 mr-2 font-black">({{ ['A','B','C','D'][idx] }})</span> {{ opt }}
+                                    </button>
+                                </div>
+                                <button @click="submitUnknown" class="text-gray-500 hover:text-red-400 font-bold tracking-widest text-xs md:text-sm underline underline-offset-4 transition">
+                                    <i class="fas fa-flag text-xs"></i> 真的不會，放棄本題
+                                </button>
+                            </div>
+
+                            <div v-else-if="activeMission.type === 'dictation'" class="w-full flex flex-col items-center gap-2 md:gap-4 flex-shrink-0">
+                                <input v-model="studentAnswerEn" @keyup.enter="focusZh" ref="inputEn" type="text" class="w-full max-w-sm bg-[#030712] border border-blue-700/50 text-blue-100 text-center text-lg md:text-2xl font-black p-3 md:p-4 rounded-xl focus:outline-none focus:border-blue-400 transition" placeholder="[1] 聽打英文拼字...">
+                                <input v-model="studentAnswerZh" @keyup.enter="submitAnswer" ref="inputZh" type="text" class="w-full max-w-sm bg-[#030712] border border-yellow-700/50 text-yellow-100 text-center text-base md:text-xl font-black p-3 md:p-4 rounded-xl focus:outline-none focus:border-yellow-400 transition" placeholder="[2] 輸入中文含義...">
+                            </div>
+
+                            <div v-else class="w-full flex flex-col items-center flex-shrink-0">
+                                <input v-model="studentAnswer" @keyup.enter="submitAnswer" ref="inputAnswer" type="text" class="w-full max-w-sm bg-[#030712] border border-yellow-700/50 text-yellow-100 text-center text-xl md:text-2xl font-black p-3 md:p-4 rounded-xl focus:outline-none focus:border-yellow-400 transition" placeholder="輸入答案...">
+                            </div>
+                        </div>
+
+                        <div v-if="activeMission.type === 'en2zh' || activeMission.type === 'zh2en' || activeMission.type === 'dictation'" class="pt-3 md:pt-4 mt-2 md:mt-4 flex justify-between items-center w-full max-w-md mx-auto flex-shrink-0 border-t border-gray-800">
+                            <button @click="submitUnknown" class="text-gray-500 hover:text-red-400 font-bold tracking-widest text-xs md:text-sm transition px-3 md:px-4 py-2 border border-transparent hover:border-red-900 rounded-lg">
+                                <i class="fas fa-flag"></i> 不會寫 (跳過)
+                            </button>
+                            <button @click="submitAnswer" :disabled="isSubmitDisabled" class="bg-yellow-600 hover:bg-yellow-500 text-black font-black px-6 md:px-8 py-2.5 md:py-3 rounded-xl tracking-widest text-sm md:text-base transition shadow-[0_0_15px_rgba(234,179,8,0.4)] disabled:opacity-30 disabled:shadow-none active:scale-95">
+                                確認送出 <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else-if="currentView === 'kicked'" class="flex-1 flex flex-col items-center justify-center bg-red-950/80 warning-flash p-6 text-center">
+                    <i class="fas fa-ban text-5xl md:text-7xl text-red-500 mb-6 drop-shadow-[0_0_20px_#f00]"></i>
+                    <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-2">任務強制終止</h2>
+                    <p class="text-sm md:text-base text-red-300 font-bold tracking-widest mb-8 leading-loose">系統偵測到您發生兩次嚴重的違規行為<br>您的任務已判定為 0 分並強制收卷！</p>
+                    <button @click="goHome" class="bg-black/50 border border-red-500 text-red-400 hover:bg-red-600 hover:text-white font-black tracking-widest px-8 py-3 rounded-xl transition">返回大廳反省</button>
+                </div>
+
+                <div v-else-if="currentView === 'finished'" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+                    <i class="fas fa-check-circle text-5xl md:text-6xl text-emerald-400 mb-6 drop-shadow-[0_0_15px_#10b981]"></i>
+                    <h2 class="text-xl md:text-2xl font-black text-white tracking-widest mb-2">任務演習結束</h2>
+                    <p class="text-gray-400 font-bold tracking-widest mb-8 text-xs md:text-sm">您的戰報已安全加密並回傳指揮中心。<br>辛苦了，特工！</p>
+                    <button @click="goHome" class="bg-gray-800 border border-gray-600 text-white font-black tracking-widest px-8 py-3 rounded-xl hover:bg-gray-700 transition">返回大廳</button>
+                </div>
+            </transition>
+        </div>
+
+        <div v-if="showWarning" class="fixed inset-0 z-[100] flex items-center justify-center bg-red-900/90 backdrop-blur-md p-4">
+            <div class="bg-[#050b14] border-2 border-red-500 p-6 md:p-8 rounded-2xl max-w-sm w-full text-center shadow-[0_0_50px_#f00]">
+                <i class="fas fa-exclamation-triangle text-4xl md:text-5xl text-red-500 mb-4 animate-pulse"></i>
+                <h3 class="text-lg md:text-xl font-black text-white tracking-widest mb-2">嚴重違規警告</h3>
+                <p class="text-xs md:text-sm font-bold text-red-400 tracking-widest leading-loose mb-6">偵測到您嘗試離開考試畫面！<br>請勿切換分頁或點擊外部視窗。<br>再違規一次將直接零分收卷！</p>
+                <button @click="showWarning = false" class="w-full bg-red-700 hover:bg-red-600 text-white font-black tracking-widest py-3 rounded-xl transition active:scale-95">我了解了，繼續作答</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof FIREBASE_CONFIG === 'undefined') { alert('找不到 config.js'); }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+        const auth = firebase.auth();
+
+        const { createApp, ref, computed, onMounted, onUnmounted, watch, nextTick } = Vue;
+
+        createApp({
+            setup() {
+                const playerName = ref(localStorage.getItem('shilieu_player') || '未登入');
+                const currentUserUid = ref('');
+                const currentView = ref('waiting'); 
+                const activeMission = ref(null);
+                const currentIndex = ref(0);
+                
+                const studentAnswer = ref('');
+                const studentAnswerEn = ref('');
+                const studentAnswerZh = ref('');
+                const inputAnswer = ref(null);
+                const inputEn = ref(null);
+                const inputZh = ref(null);
+                const answersRecord = ref([]);
+
+                const violations = ref(0);
+                const showWarning = ref(false);
+                let checkTranslationInterval = null;
+                const missionStartTime = ref(null); // 🌟 新增：任務計時器
+
+                const currentQuestion = computed(() => { return activeMission.value?.questions[currentIndex.value] || {}; });
+                const translateMode = (type) => { const map = { 'mcq': '經典四選一', 'en2zh': '英翻中', 'zh2en': '中翻英', 'dictation': '聽寫英中', 'past_exam': '歷屆單題' }; return map[type] || '特殊測驗'; };
+
+                const isSubmitDisabled = computed(() => {
+                    if (!activeMission.value) return true;
+                    if (activeMission.value.type === 'dictation') {
+                        return !studentAnswerEn.value.trim() || !studentAnswerZh.value.trim();
+                    } else if (activeMission.value.type !== 'mcq' && activeMission.value.type !== 'past_exam') {
+                        return !studentAnswer.value.trim();
+                    }
+                    return false;
+                });
+
+                const playAudio = () => {
+                    if (!currentQuestion.value.audio) return;
+                    if (window.speechSynthesis) {
+                        window.speechSynthesis.cancel();
+                        let text = currentQuestion.value.audio;
+                        if (text === 'read') text = 'red'; 
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'en-US'; utterance.rate = 0.8;
+                        window.speechSynthesis.speak(utterance);
+                    }
+                };
+
+                const focusZh = () => { if (inputZh.value) inputZh.value.focus(); };
+
+                const prepareQuestion = () => {
+                    studentAnswer.value = ''; studentAnswerEn.value = ''; studentAnswerZh.value = '';
+                    if (currentQuestion.value.audio) setTimeout(playAudio, 300);
+                    nextTick(() => {
+                        if (activeMission.value?.type === 'dictation' && inputEn.value) inputEn.value.focus();
+                        else if (inputAnswer.value) inputAnswer.value.focus();
+                    });
+                };
+
+                watch(currentIndex, () => { if (currentView.value === 'exam') prepareQuestion(); });
+
+                onMounted(() => {
+                    auth.onAuthStateChanged(user => { if (user) currentUserUid.value = user.uid; });
+                    db.ref('app_state/active_mission').on('value', snap => {
+                        const mission = snap.val();
+                        if (mission && mission.status === 'active') {
+                            if (currentView.value === 'waiting') {
+                                activeMission.value = mission; 
+                                currentView.value = 'exam'; 
+                                currentIndex.value = 0; 
+                                answersRecord.value = [];
+                                missionStartTime.value = Date.now(); // 啟動計時
+                                initAntiCheat(); prepareQuestion();
+                            }
+                        } else {
+                            if (currentView.value === 'exam') forceSubmit(); 
+                            currentView.value = 'waiting'; activeMission.value = null; removeAntiCheat();
+                            if (window.speechSynthesis) window.speechSynthesis.cancel();
+                        }
+                    });
+                });
+
+                const handleViolation = (reason) => {
+                    if (currentView.value !== 'exam' || showWarning.value) return;
+                    violations.value++;
+                    if (violations.value >= 2) { currentView.value = 'kicked'; forceSubmit(true); removeAntiCheat(); } 
+                    else {
+                        showWarning.value = true;
+                        if(currentUserUid.value) db.ref(`app_state/mission_progress/${activeMission.value.id}/${currentUserUid.value}`).update({ violations: violations.value, lastViolationTime: Date.now() });
+                    }
+                };
+                const visibilityHandler = () => { if (document.hidden) handleViolation('visibility'); };
+                const blurHandler = () => { handleViolation('blur'); };
+                const initAntiCheat = () => {
+                    violations.value = 0; document.addEventListener('visibilitychange', visibilityHandler); window.addEventListener('blur', blurHandler);
+                    checkTranslationInterval = setInterval(() => {
+                        const canary = document.getElementById('anti-cheat-canary');
+                        if (document.documentElement.classList.contains('translated-ltr') || (canary && canary.innerText !== 'Secret')) { handleViolation('translation'); window.location.reload(); }
+                    }, 1000);
+                };
+                const removeAntiCheat = () => { document.removeEventListener('visibilitychange', visibilityHandler); window.removeEventListener('blur', blurHandler); if (checkTranslationInterval) clearInterval(checkTranslationInterval); };
+                onUnmounted(() => { removeAntiCheat(); });
+
+                const selectOption = (opt) => { studentAnswer.value = opt; submitAnswer(); };
+
+                const submitUnknown = () => {
+                    answersRecord.value.push({ qId: currentQuestion.value.id, answer: '(放棄作答)', timeTaken: Date.now() });
+                    if (currentUserUid.value && activeMission.value) db.ref(`app_state/mission_progress/${activeMission.value.id}/${currentUserUid.value}`).set({ name: playerName.value, progress: currentIndex.value + 1, total: activeMission.value.questions.length, violations: violations.value, status: 'doing' });
+                    if (currentIndex.value + 1 >= activeMission.value.questions.length) finishExam();
+                    else currentIndex.value++;
+                };
+
+                const submitAnswer = () => {
+                    if (isSubmitDisabled.value) return;
+                    let finalAns = '';
+                    if (activeMission.value.type === 'dictation') finalAns = studentAnswerEn.value.trim() + " | " + studentAnswerZh.value.trim();
+                    else if (activeMission.value.type !== 'mcq' && activeMission.value.type !== 'past_exam') finalAns = studentAnswer.value.trim();
+                    else finalAns = studentAnswer.value;
+
+                    answersRecord.value.push({ qId: currentQuestion.value.id, answer: finalAns, timeTaken: Date.now() });
+                    if (currentUserUid.value && activeMission.value) db.ref(`app_state/mission_progress/${activeMission.value.id}/${currentUserUid.value}`).set({ name: playerName.value, progress: currentIndex.value + 1, total: activeMission.value.questions.length, violations: violations.value, status: 'doing' });
+                    
+                    if (currentIndex.value + 1 >= activeMission.value.questions.length) finishExam();
+                    else currentIndex.value++;
+                };
+
+                // 🌟 新增：發送至 Google Spreadsheet
+                const sendToSpreadsheet = async (reportData) => {
+                    if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL) {
+                        try {
+                            const formData = new URLSearchParams();
+                            for (const key in reportData) formData.append(key, reportData[key]);
+                            // 不 await 阻塞畫面，讓它背景默默送出
+                            fetch(GOOGLE_API_URL, { method: 'POST', body: formData }).catch(e=>console.error(e));
+                        } catch(e) { console.error('GAS傳輸受阻', e); }
+                    }
+                };
+
+                const finishExam = () => { currentView.value = 'finished'; removeAntiCheat(); saveResult(false, false); };
+                const forceSubmit = (isKicked = false) => { saveResult(isKicked, false); };
+                
+                // 🌟 核心：儲存成績並發送至 GAS
+                const saveResult = (isKicked, isRetreat = false) => {
+                    if (!currentUserUid.value || !activeMission.value) return;
+                    
+                    // 1. Firebase 儲存
+                    db.ref(`app_state/mission_results/${activeMission.value.id}/${currentUserUid.value}`).set({ 
+                        name: playerName.value, answers: answersRecord.value, isKicked: isKicked, isRetreat: isRetreat, timestamp: Date.now(), status: 'pending_grade' 
+                    });
+                    db.ref(`app_state/mission_progress/${activeMission.value.id}/${currentUserUid.value}`).update({ 
+                        status: isKicked ? 'kicked' : (isRetreat ? 'retreat' : 'finished'), progress: answersRecord.value.length 
+                    });
+
+                    // 2. Spreadsheet 打包發送
+                    const endTime = Date.now();
+                    const diff = Math.floor((endTime - (missionStartTime.value || endTime)) / 1000);
+                    const m = Math.floor(diff / 60); const s = diff % 60;
+                    const durationStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+
+                    // 計算初估分數與錯題字串
+                    let tempScore = 0;
+                    const mistakesList = [];
+                    
+                    answersRecord.value.forEach(a => {
+                        const q = activeMission.value.questions.find(x => x.id === a.qId);
+                        if (!q) return;
+                        const expected = (q.answer || '').toString().toLowerCase();
+                        const userAns = (a.answer || '').toString().trim().toLowerCase();
+
+                        let isCorrect = false;
+                        if (activeMission.value.type === 'dictation' && expected.includes('|')) {
+                            const uParts = userAns.split('|').map(x => x.trim());
+                            const eParts = expected.split('|').map(x => x.trim());
+                            const enMatch = (uParts[0] === eParts[0]);
+                            const zhMatch = (eParts[1] || '').split(/[/、；]/).some(zh => zh.trim() === uParts[1] || uParts[1].includes(zh.trim())) && uParts[1].length > 0;
+                            isCorrect = (enMatch && zhMatch);
+                        } else if (userAns !== '(放棄作答)' && userAns !== '(放棄)') {
+                            const expectedList = expected.split(/[/、；]/).map(x => x.trim());
+                            isCorrect = expectedList.some(ex => ex === userAns || userAns.includes(ex)) && userAns.length > 0;
+                        }
+
+                        if (isCorrect) tempScore++;
+                        else mistakesList.push(`[${q.questionText.substring(0,8)}.. 答: ${a.answer}]`);
+                    });
+
+                    let statusTag = `特派-${translateMode(activeMission.value.type)}`;
+                    if (isKicked) statusTag += '(違規踢出)';
+                    else if (isRetreat) statusTag += '(中途撤退)';
+
+                    const reportData = {
+                        action: 'add', 
+                        name: playerName.value, 
+                        theme: statusTag, 
+                        score: tempScore,
+                        total: activeMission.value.questions.length, 
+                        timeStr: durationStr, 
+                        answered: answersRecord.value.length, 
+                        wrongWords: mistakesList.length > 0 ? mistakesList.join(', ') : '全對/待老師複查'
+                    };
+                    sendToSpreadsheet(reportData);
+                };
+
+                // 🌟 新增：撤退邏輯
+                const quitToMenu = () => {
+                    if (currentView.value === 'exam') {
+                        if (confirm('⚠️ 戰役尚未結束！確定要撤退嗎？\n(系統將結算您目前的作答並回傳指揮中心)')) {
+                            currentView.value = 'finished';
+                            removeAntiCheat();
+                            saveResult(false, true); // isKicked=false, isRetreat=true
+                            if (window.speechSynthesis) window.speechSynthesis.cancel();
+                        }
+                        return;
+                    }
+                    currentView.value = 'waiting';
+                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    goHome();
+                };
+
+                const goHome = () => { window.location.href = 'index.html'; };
+
+                return { 
+                    playerName, currentView, activeMission, currentQuestion, translateMode, currentIndex, 
+                    studentAnswer, studentAnswerEn, studentAnswerZh, submitAnswer, submitUnknown, selectOption, 
+                    inputAnswer, inputEn, inputZh, violations, showWarning, goHome, playAudio, focusZh, isSubmitDisabled, quitToMenu 
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

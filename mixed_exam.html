@@ -27,14 +27,13 @@
         
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: #b026ff; }
         body {
-            -webkit-touch-callout: none; /* 禁用 iOS Safari 長按選單 */
-            -webkit-user-select: none;   /* 禁用 Safari 文字選取 */
-            -moz-user-select: none;      /* 禁用 Firefox 文字選取 */
-            -ms-user-select: none;       /* 禁用 Edge/IE 文字選取 */
-            user-select: none;           /* 禁用標準文字選取 */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
-        /* ⚠️ 確保「輸入框」(如單字拼寫) 還是可以正常打字 */
         input, textarea {
             -webkit-touch-callout: default;
             -webkit-user-select: auto;
@@ -45,11 +44,7 @@
     </style>
 </head>
 <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
-    <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
     <div class="fixed inset-0 scanline z-0"></div>
-
-    <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
-    <span id="anti-cheat-canary" style="display:none; opacity:0; pointer-events:none;">Apple</span>
 
     <div id="app" class="max-w-4xl mx-auto relative z-10 flex flex-col h-full w-full">
         
@@ -96,52 +91,6 @@
                     選擇年份 ➔
                 </button>
             </div>
-
-            <div class="bg-red-950/20 border border-neon-red p-6 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-[0_0_20px_rgba(255,0,60,0.3)] transition relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-neon-red text-white text-[10px] px-2 py-1 font-black tracking-widest">LIVE SYNC</div>
-                <div>
-                    <h3 class="text-xl font-black text-white tracking-widest flex items-center gap-2"><span class="text-neon-red">🎯</span> 總部指定機密任務</h3>
-                    <p class="text-sm text-red-300 mt-1 font-bold">進入總司令派發的專屬任務，啟動天眼監控系統。</p>
-                </div>
-                <button @click="currentPhase = 'select_mission'" class="bg-neon-red text-white hover:bg-white hover:text-black px-6 py-3 font-black tracking-widest transition shadow-[0_0_10px_rgba(255,0,60,0.4)] whitespace-nowrap w-full md:w-auto z-10 relative">
-                    <span v-if="Object.keys(activeMissions).length > 0" class="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] px-2 py-0.5 rounded-full animate-bounce">{{ Object.keys(activeMissions).length }}</span>
-                    選擇任務 ➔
-                </button>
-            </div>
-        </div>
-
-        <div v-if="currentPhase === 'select_mission'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6 border-neon-red shadow-[0_0_30px_rgba(255,0,60,0.2)]">
-            <div class="flex justify-between items-center border-b border-red-800 pb-4 mb-2">
-                <div>
-                    <h2 class="text-2xl font-black text-neon-red tracking-widest flex items-center gap-2">
-                        <span class="text-3xl">🎯</span> 選擇機密任務
-                    </h2>
-                    <p class="text-xs text-red-400 font-bold mt-1 tracking-widest">⚠️ 注意：進入此模式將全程監控切換視窗行為，並即時同步作答進度。</p>
-                </div>
-                <button @click="currentPhase = 'select_mode'" class="text-gray-400 hover:text-white text-sm font-bold tracking-widest border border-gray-600 px-4 py-2 bg-gray-900 shrink-0">
-                    返回
-                </button>
-            </div>
-
-            <div v-if="Object.keys(activeMissions).length === 0" class="text-center py-12 text-gray-500 font-bold tracking-widest bg-black/50 border border-gray-800">
-                <span class="text-4xl block mb-4">☕</span>
-                目前總部沒有派發任何進行中的機密任務。
-            </div>
-
-            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button v-for="(mission, code) in activeMissions" :key="code" @click="joinMission(code)"
-                        class="bg-black/80 border-2 border-red-900 text-left p-5 transition shadow-[0_0_10px_rgba(255,0,60,0.1)] hover:shadow-[0_0_20px_rgba(255,0,60,0.6)] hover:border-neon-red group flex flex-col gap-2 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-neon-red opacity-0 group-hover:opacity-10 transition pointer-events-none"></div>
-                    <div class="flex justify-between items-start w-full relative z-10">
-                        <span class="font-black text-xl text-white tracking-widest group-hover:text-neon-red transition">{{ mission.title }}</span>
-                        <span class="bg-red-950/80 text-red-400 border border-red-800 text-[10px] px-2 py-1 font-mono font-bold tracking-widest">ID: {{ code }}</span>
-                    </div>
-                    <div class="text-sm text-gray-400 group-hover:text-white font-bold transition relative z-10 flex items-center gap-4 mt-2">
-                        <span class="bg-gray-800 px-2 py-1 rounded-sm">🎯 題數：{{ mission.questionCount }} 題</span>
-                        <span>發布於：{{ formatDate(mission.createdAt) }}</span>
-                    </div>
-                </button>
-            </div>
         </div>
 
         <div v-if="currentPhase === 'select_year'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6">
@@ -165,12 +114,8 @@
             <span class="text-6xl mb-4 block">🏆</span>
             <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
             <p v-if="isSaving" class="text-purple-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
-            <p v-else class="text-gray-400 font-bold tracking-widest mb-2 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據如下：</p>
+            <p v-else class="text-gray-400 font-bold tracking-widest mb-4 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據如下：</p>
             
-            <div v-if="cheatCount > 0" class="text-neon-red font-black tracking-widest text-sm mb-4 animate-pulse">
-                ⚠️ 本次作戰共偵測到 {{ cheatCount }} 次切換視窗行為！
-            </div>
-
             <div class="text-8xl font-black mb-2" :class="scoreColor">
                 {{ Math.round((correctCount / practiceQuestions.length) * 100) }}%
             </div>
@@ -218,15 +163,10 @@
         <div v-if="currentPhase === 'quiz'" class="flex flex-col h-full gap-4 fade-in">
             
             <div class="flex items-center justify-between bg-black/60 p-4 border border-purple-900/50 relative overflow-hidden">
-                <div v-if="cheatWarning" class="absolute inset-0 bg-red-600/30 animate-pulse z-0 pointer-events-none"></div>
-                
                 <div class="flex items-center gap-3 relative z-10">
                     <span class="text-2xl drop-shadow-[0_0_8px_#b026ff]">🎯</span>
                     <div>
-                        <div class="text-xs text-gray-400 font-bold tracking-widest flex items-center gap-2">
-                            當前戰區 
-                            <span v-if="currentMissionCode" class="bg-neon-red text-white text-[9px] px-1.5 py-0.5 rounded shadow-[0_0_5px_#ff003c] animate-pulse">天眼監控中</span>
-                        </div>
+                        <div class="text-xs text-gray-400 font-bold tracking-widest flex items-center gap-2">當前戰區</div>
                         <div class="text-lg font-black text-purple-500 tracking-widest">{{ quizTitle }}</div>
                     </div>
                 </div>
@@ -239,7 +179,6 @@
             </div>
 
             <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4 border-t-purple-500 relative">
-                
                 <div class="flex justify-between items-start mb-6">
                     <div class="flex flex-col gap-2">
                         <div class="text-[10px] text-gray-500 font-bold tracking-widest flex items-center gap-2">
@@ -247,7 +186,7 @@
                             TARGET IDENTIFIED
                         </div>
                         
-                        <div v-if="!currentMissionCode && currentQuestion.points && currentQuestion.points.length > 0" class="flex flex-wrap gap-2">
+                        <div v-if="currentQuestion.points && currentQuestion.points.length > 0" class="flex flex-wrap gap-2">
                             <span v-for="(pt, idx) in currentQuestion.points" :key="idx" 
                                   class="text-[10px] md:text-xs text-neon-cyan border border-cyan-700 bg-cyan-900/40 px-2 py-1 font-black tracking-widest shadow-[0_0_8px_rgba(0,255,255,0.2)]">
                                 🎯 考點：{{ pt }}
@@ -255,7 +194,7 @@
                         </div>
                     </div>
                     
-                    <button v-if="!currentMissionCode" @click="showHint = true" :disabled="showHint || !currentQuestion.hintKeywords" class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-3 py-1.5 font-bold tracking-widest hover:bg-neon-yellow hover:text-black transition shadow-[0_0_10px_rgba(255,255,0,0.2)] disabled:opacity-30 disabled:cursor-not-allowed">
+                    <button @click="showHint = true" :disabled="showHint || !currentQuestion.hintKeywords" class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-3 py-1.5 font-bold tracking-widest hover:bg-neon-yellow hover:text-black transition shadow-[0_0_10px_rgba(255,255,0,0.2)] disabled:opacity-30 disabled:cursor-not-allowed">
                         {{ currentQuestion.hintKeywords ? '💡 戰術掃描 (Hint)' : '🚫 無掃描資料' }}
                     </button>
                 </div>
@@ -318,14 +257,9 @@
         const db = firebase.database();
         const auth = firebase.auth(); 
         
-        // 🚫 1. 禁用滑鼠右鍵選單 (防止叫出翻譯或檢查原始碼)
         document.addEventListener('contextmenu', event => event.preventDefault());
-        
-        // 🚫 2. 禁用鍵盤「複製」 (Ctrl+C / Cmd+C) 與「貼上」 (Ctrl+V / Cmd+V)
         document.addEventListener('copy', event => event.preventDefault());
         document.addEventListener('paste', event => event.preventDefault());
-
-        // 🚫 3. 禁用 F12 開發者工具、Ctrl+Shift+I 與 Ctrl+U (防止有技術的特工偷看網頁原始碼找答案)
         document.addEventListener('keydown', event => {
             if (event.key === 'F12' || 
                (event.ctrlKey && event.shiftKey && event.key === 'I') || 
@@ -334,29 +268,6 @@
                 event.preventDefault();
             }
         });
-        // =========================================================================
-        // 📡 主動式雷達 v2.0 (金絲雀誘餌戰術)
-        // =========================================================================
-        setInterval(() => {
-            const htmlNode = document.documentElement;
-            const canary = document.getElementById('anti-cheat-canary');
-            
-            // 1. 偵測 Chrome 標籤 (防電腦版)
-            const hasGoogleClass = htmlNode.classList.contains('translated-ltr') || 
-                                   htmlNode.classList.contains('translated-rtl') || 
-                                   document.querySelector('font');
-                                   
-            // 2. 偵測誘餌單字 (防手機/平板暴力翻譯)
-            // 如果 'Apple' 變成 '蘋果' 或其他語言，代表整頁翻譯已啟動！
-            const isCanaryTranslated = canary && canary.innerText.trim() !== 'Apple';
-            
-            if (hasGoogleClass || isCanaryTranslated) {
-                alert('⚠️ 系統防作弊雷達警告：\n偵測到「網頁翻譯」功能啟動！\n為維護測驗公平性，系統將強制重整。');
-                window.location.reload(); // 強制洗掉作弊畫面
-            }
-        }, 1000);
-        // =========================================================================
-       
 
         const { createApp, ref, computed, onMounted } = Vue;
 
@@ -368,12 +279,6 @@
                 const currentPhase = ref('select_mode'); 
                 const randomQuestionCount = ref(10);
                 const quizTitle = ref('');
-
-                const activeMissions = ref({}); 
-                const currentMissionCode = ref(''); 
-                
-                const cheatCount = ref(0);
-                const cheatWarning = ref(false);
 
                 const practiceQuestions = ref([]);
                 const currentQIndex = ref(0);
@@ -426,70 +331,23 @@
                     return `${d.getMonth()+1}/${d.getDate()} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
                 };
 
-                const updateLiveStatus = (statusStr) => {
-                    if (currentMissionCode.value && currentUserUid.value) {
-                        db.ref(`app_state/live_exams/${currentMissionCode.value}/${currentUserUid.value}`).update({
-                            name: playerName.value,
-                            progress: currentQIndex.value + 1,
-                            total: practiceQuestions.value.length,
-                            cheats: cheatCount.value,
-                            score: correctCount.value,
-                            status: statusStr,
-                            answers: userAnswers.value,
-                            lastUpdate: Date.now()
-                        });
-                    }
-                };
-
                 onMounted(() => {
                     auth.onAuthStateChanged(user => { if (user) currentUserUid.value = user.uid; });
-
-                    // 🌟 【修復重點2：天眼機制僅在指定任務時啟動】
-                    window.addEventListener('blur', () => {
-                        if (currentPhase.value === 'quiz' && currentMissionCode.value) {
-                            cheatCount.value++;
-                            cheatWarning.value = true;
-                            setTimeout(() => { cheatWarning.value = false; }, 3000); 
-                            
-                            alert("⚠️ 天眼系統警告：\n偵測到您剛剛切換了視窗！請勿離開考試畫面查單字！\n此異常行為已同步傳送至總部指揮中心！");
-                            
-                            updateLiveStatus(`作答中 (⚠️切窗 ${cheatCount.value} 次)`);
-                        }
-                    });
-
-                    db.ref('app_state/missions').on('value', snap => {
-                        if (snap.exists()) {
-                            const allMissions = snap.val();
-                            const active = {};
-                            for (const code in allMissions) {
-                                if (allMissions[code].status === 'active') {
-                                    active[code] = allMissions[code];
-                                }
-                            }
-                            activeMissions.value = active;
-                        } else {
-                            activeMissions.value = {};
-                        }
-                    });
                 });
 
-                const initQuizState = (title, code = null) => {
+                const initQuizState = (title) => {
                     quizTitle.value = title;
-                    currentMissionCode.value = code;
                     currentQIndex.value = 0;
                     selectedOpt.value = null;
                     hasAnswered.value = false;
                     isCorrect.value = false;
                     correctCount.value = 0;
-                    cheatCount.value = 0;
                     userAnswers.value = {}; 
                     wrongQuestionsLog.value = []; 
                     reviewList.value = [];
                     startTime.value = Date.now(); 
                     showHint.value = false; 
                     currentPhase.value = 'quiz';
-
-                    if (code) updateLiveStatus('開始作答');
                 };
 
                 const startRandomQuiz = () => {
@@ -506,26 +364,6 @@
                     if (db.length === 0) { alert(`找不到 ${year} 年的題目！`); return; }
                     practiceQuestions.value = [...db]; 
                     initQuizState(`${year} 年會考全真模擬`);
-                };
-
-                const joinMission = (code) => {
-                    const missionData = activeMissions.value[code];
-                    if (!missionData) {
-                        alert("❌ 此任務已結束或不存在！");
-                        return;
-                    }
-                    
-                    practiceQuestions.value = missionData.questions;
-                    initQuizState(missionData.title, code);
-                    
-                    db.ref(`app_state/missions/${code}/status`).on('value', statusSnap => {
-                        if (statusSnap.val() === 'ended' && currentPhase.value === 'quiz') {
-                            alert("⚠️ 總部已下達強制收卷指令！測驗立刻結束。");
-                            currentPhase.value = 'result';
-                            updateLiveStatus('被強制收卷');
-                            saveBattleLog(false);
-                        }
-                    });
                 };
 
                 const currentQuestion = computed(() => practiceQuestions.value[currentQIndex.value] || {});
@@ -571,21 +409,13 @@
                         hasAnswered.value = false;
                         isCorrect.value = false;
                         showHint.value = false; 
-                        
-                        if (currentMissionCode.value) updateLiveStatus(`作答中 (第 ${currentQIndex.value + 1} 題)`);
                     } else {
                         currentPhase.value = 'result';
-                        if (currentMissionCode.value) updateLiveStatus('已完成結算');
                         saveBattleLog(false); 
                     }
                 };
 
                 const saveBattleLog = (isAborted = false) => {
-                    if (currentMissionCode.value) {
-                        isSaving.value = false;
-                        return Promise.resolve();
-                    }
-
                     if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return Promise.resolve();
                     isSaving.value = true;
                     
@@ -596,7 +426,6 @@
                         const s = totalSeconds % 60;
                         
                         let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
-                        if (cheatCount.value > 0) timeStr += ` (⚠️切窗 ${cheatCount.value} 次)`;
                         
                         const themeName = isAborted ? `🚀親臨戰場 [${quizTitle.value}] (撤退)` : `🚀親臨戰場 [${quizTitle.value}]`;
                         const totalQ = practiceQuestions.value.length;
@@ -628,7 +457,6 @@
                 const quitPractice = () => { 
                     if (currentPhase.value === 'quiz' && practiceQuestions.value.length > 0) {
                         if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要離開嗎？')) {
-                            if (currentMissionCode.value) updateLiveStatus('中途撤退 (逃兵)');
                             saveBattleLog(true).then(() => { window.location.href = 'index.html'; });
                         }
                     } else {
@@ -652,8 +480,7 @@
                     isSaving, reviewList, formatText, formatDate,
                     showHint, displayQuestion,
                     currentPhase, randomQuestionCount, quizTitle, availableYears,
-                    startRandomQuiz, startYearQuiz,
-                    activeMissions, currentMissionCode, joinMission, cheatCount, cheatWarning
+                    startRandomQuiz, startYearQuiz
                 };
             }
         }).mount('#app');

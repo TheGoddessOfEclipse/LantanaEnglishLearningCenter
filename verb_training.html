@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>馬纓丹 ONLINE - 變異動詞修復艙 (極速湧現無痕版)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="config.js"></script>
+    <script src="irregular_verbs_data.js"></script>
+
+    <style>
+        /* 🌟 全域狙擊準心設定 */
+        body, button, div, span, a, p, h1, h2, h3 { cursor: crosshair !important; }
+        input[type="text"], input[type="password"], input[type="email"] { cursor: text !important; }
+
+        body { 
+            background-color: #030712; color: #e5e7eb; overflow: hidden; font-family: sans-serif; 
+            height: 100dvh; width: 100vw;
+            /* 太空深邃背景特效 */
+            background: radial-gradient(circle at 50% 50%, #081124 0%, #030712 100%);
+        }
+        
+        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(16, 185, 129, 0.05) 50%); background-size: 100% 4px; pointer-events: none; }
+        .neon-box-green { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); }
+        .neon-text-green { text-shadow: 0 0 8px rgba(16, 185, 129, 0.8); }
+        .neon-text-yellow { text-shadow: 0 0 8px rgba(234, 179, 8, 0.8); }
+        .neon-text-red { text-shadow: 0 0 8px rgba(239, 68, 68, 0.8); }
+
+        /* 🌟 三大病毒漂浮動畫 */
+        @keyframes float1 { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-15px) scale(1.02) rotate(3deg); } }
+        @keyframes float2 { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05) rotate(-4deg); } }
+        @keyframes float3 { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-12px) scale(1.03) rotate(2deg); } }
+        .virus-float-1 { animation: float1 4s ease-in-out infinite; }
+        .virus-float-2 { animation: float2 5s ease-in-out infinite 1s; } 
+        .virus-float-3 { animation: float3 4.5s ease-in-out infinite 2s; }
+
+        /* 動畫特效 */
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; transform: scale(0.95); }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+        @keyframes swipeHint { 0%, 100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-20px) rotate(-5deg); } 75% { transform: translateX(20px) rotate(5deg); } }
+        .animate-swipeHint { animation: swipeHint 2s ease-in-out infinite; }
+        
+        /* 背景病毒漂浮動畫 */
+        @keyframes flyUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 5% { opacity: 0.8; } 95% { opacity: 0.8; } 100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
+
+        /* 🌟 徹底隱藏滾動條，但保留滾動功能 */
+        .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        
+        .touch-none-y { touch-action: pan-y; }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-2 md:p-6 relative">
+    
+    <div class="fixed inset-0 scanline z-0"></div>
+
+    <div id="app" class="w-full h-full flex flex-col relative z-10 items-center justify-center">
+        
+        <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-500" :class="currentView === 'menu' ? 'opacity-100' : 'opacity-10'">
+            <div v-for="v in bgViruses" :key="v.id"
+                 class="absolute transition-transform"
+                 :class="[v.color, currentView === 'menu' ? 'pointer-events-auto hover:scale-125 hover:brightness-150' : '', v.exploded ? 'scale-150 opacity-0 transition-all duration-500' : '']"
+                 :style="[v.style, { animationPlayState: interceptedVirus ? 'paused' : 'running' }]"
+                 @click="targetVirus(v)">
+                 <i class="fas drop-shadow-[0_0_10px_currentColor]" :class="v.icon"></i>
+            </div>
+        </div>
+
+        <transition name="fade">
+            <div v-if="interceptedVirus" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+                <div class="bg-[#050b14] border-2 border-red-600 rounded-2xl p-6 md:p-8 text-center shadow-[0_0_40px_rgba(255,0,0,0.5)] w-full max-w-sm relative overflow-hidden">
+                    <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+                    <div class="absolute top-0 left-0 w-full h-1 bg-red-600 animate-pulse"></div>
+                    
+                    <h3 class="text-2xl font-black text-red-500 mb-1 tracking-widest"><i class="fas fa-crosshairs fa-spin"></i> 目標鎖定</h3>
+                    <p class="text-red-400/80 text-xs font-bold mb-5 tracking-widest">請輸入正確中文含義摧毀變異體</p>
+                    
+                    <div class="bg-black/60 border border-red-900/50 p-4 rounded-xl mb-5 shadow-inner">
+                        <div class="text-3xl font-mono text-white mb-1 neon-text-red font-black">{{ interceptedVirus.verb.base }}</div>
+                        <div class="text-sm font-mono text-gray-400 font-bold">{{ interceptedVirus.verb.past }} / {{ interceptedVirus.verb.pp }}</div>
+                    </div>
+                    
+                    <input v-model="sniperInput" @keyup.enter="shootVirus" ref="inputSniper" type="text" class="w-full bg-gray-900 border-2 border-red-800 text-white text-center text-xl font-black p-3 md:p-4 rounded-xl focus:outline-none focus:border-red-500 focus:shadow-[0_0_20px_#f00] mb-5 transition placeholder-red-900/50" placeholder="輸入中文...">
+                    
+                    <div class="flex gap-3 relative z-10">
+                        <button @click="cancelSniper" class="flex-1 bg-gray-800 text-gray-400 py-3 rounded-xl font-bold hover:bg-gray-700 active:scale-95 transition text-sm tracking-widest border border-gray-700">放棄目標</button>
+                        <button @click="shootVirus" class="flex-1 bg-red-700 text-white py-3 rounded-xl font-black hover:bg-red-600 active:scale-95 transition shadow-[0_0_15px_#f00] tracking-widest">開火射擊 💥</button>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+        <div class="w-full max-w-4xl flex flex-col relative h-full md:h-auto md:max-h-[95vh] z-10 overflow-hidden transition-all duration-500 custom-scrollbar"
+             :class="currentView === 'menu' ? 'bg-transparent' : 'bg-[#050b14]/90 backdrop-blur-md rounded-2xl neon-box-green shadow-[0_0_50px_rgba(0,0,0,0.8)]'">
+            
+            <div v-if="currentView !== 'menu'" class="bg-emerald-950/90 border-b border-emerald-500/50 p-3 md:p-5 text-emerald-100 text-center relative flex-shrink-0 z-20 shadow-md">
+                <h1 class="text-xl md:text-2xl font-black flex items-center justify-center gap-2 tracking-widest neon-text-green">
+                    <i class="fas fa-biohazard"></i> 變異動詞修復艙
+                </h1>
+                <button @click="quitToMenu" class="absolute top-1/2 -translate-y-1/2 left-4 text-emerald-400 hover:text-white transition">
+                    <i class="fas fa-sign-out-alt text-xl md:text-2xl drop-shadow-md"></i>
+                </button>
+            </div>
+
+            <transition name="fade">
+                <div v-if="showCountSelector" class="absolute inset-0 bg-[#030712]/95 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                    <div class="bg-[#0a1128] border border-emerald-500/50 rounded-2xl p-6 w-full max-w-md text-center shadow-[0_0_25px_rgba(16,185,129,0.3)]">
+                        <h3 class="text-xl font-black text-emerald-100 mb-2 tracking-widest">鎖定變異體數量</h3>
+                        <p class="text-sm text-emerald-500/70 mb-6 font-bold">請設定雷達掃描的目標總數</p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+                            <button @click="confirmStart(10)" class="bg-slate-800 border border-slate-600 hover:border-emerald-400 text-slate-300 hover:text-emerald-300 font-black py-3 rounded-xl transition active:scale-95">10 隻</button>
+                            <button @click="confirmStart(20)" class="bg-slate-800 border border-slate-600 hover:border-emerald-400 text-slate-300 hover:text-emerald-300 font-black py-3 rounded-xl transition active:scale-95">20 隻</button>
+                            <button @click="confirmStart(50)" class="bg-slate-800 border border-slate-600 hover:border-emerald-400 text-slate-300 hover:text-emerald-300 font-black py-3 rounded-xl transition active:scale-95">50 隻</button>
+                            <button @click="confirmStart('all')" class="col-span-2 md:col-span-3 bg-amber-900/30 border border-amber-500/50 hover:border-amber-400 text-amber-400 font-black py-3 rounded-xl transition active:scale-95 tracking-widest"><i class="fas fa-skull text-red-500 mr-2"></i>全部清除</button>
+                        </div>
+                        <button @click="showCountSelector = false" class="text-slate-500 hover:text-white underline text-sm tracking-widest font-bold">取消鎖定</button>
+                    </div>
+                </div>
+            </transition>
+
+            <div class="flex-1 flex flex-col relative overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar" :class="currentView === 'menu' ? 'p-0' : 'p-4 md:p-6'">
+                <transition name="fade" mode="out-in">
+                    
+                    <div v-if="currentView === 'menu'" class="flex flex-col h-full items-center justify-between w-full relative z-10">
+                        
+                        <div class="w-full text-center mt-6 md:mt-10 z-10 flex-shrink-0">
+                            <h1 class="text-3xl md:text-5xl font-black text-white tracking-widest neon-text-green drop-shadow-[0_0_15px_#0f0] mb-2">
+                                <i class="fas fa-biohazard"></i> 變異動詞修復艙
+                            </h1>
+                            <h2 class="text-xs md:text-sm font-bold text-emerald-400 tracking-widest flex items-center justify-center gap-2 drop-shadow-md bg-black/40 inline-block px-4 py-1 rounded-full border border-emerald-900/50 backdrop-blur-sm">
+                                <i class="fas fa-crosshairs text-red-500 animate-pulse"></i> 點擊主體進入任務，或狙擊背景小型變異體
+                            </h2>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 w-full z-10 py-8">
+                            
+                            <div @click="startMission('practice')" class="virus-float-1 group cursor-crosshair flex flex-col items-center relative">
+                                <div class="absolute inset-0 bg-emerald-500/30 rounded-full blur-2xl group-hover:bg-emerald-500/60 transition-all duration-300"></div>
+                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.8)] group-hover:shadow-[0_0_60px_rgba(16,185,129,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                                    <i class="fas fa-virus text-6xl md:text-8xl text-emerald-400 drop-shadow-[0_0_15px_rgba(16,185,129,1)]"></i>
+                                </div>
+                                <div class="mt-6 text-center z-10">
+                                    <div class="text-xl md:text-2xl font-black text-emerald-100 tracking-widest drop-shadow-[0_0_8px_#0f0]">變異體展示</div>
+                                    <div class="text-xs md:text-sm text-emerald-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">觀察 / 自動發音</div>
+                                </div>
+                            </div>
+
+                            <div @click="selectCountFor('identify')" class="virus-float-2 group cursor-crosshair flex flex-col items-center relative">
+                                <div class="absolute inset-0 bg-amber-500/30 rounded-full blur-2xl group-hover:bg-amber-500/60 transition-all duration-300"></div>
+                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-amber-500 shadow-[0_0_30px_rgba(234,179,8,0.8)] group-hover:shadow-[0_0_60px_rgba(234,179,8,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                                    <i class="fas fa-bacteria text-6xl md:text-8xl text-amber-400 drop-shadow-[0_0_15px_rgba(234,179,8,1)]"></i>
+                                </div>
+                                <div class="mt-6 text-center z-10">
+                                    <div class="text-xl md:text-2xl font-black text-amber-100 tracking-widest drop-shadow-[0_0_8px_#fa0]">變異體識別</div>
+                                    <div class="text-xs md:text-sm text-amber-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">滑動閃卡 / 驗證</div>
+                                </div>
+                            </div>
+
+                            <div @click="selectCountFor('create')" class="virus-float-3 group cursor-crosshair flex flex-col items-center relative">
+                                <div class="absolute inset-0 bg-fuchsia-500/30 rounded-full blur-2xl group-hover:bg-fuchsia-500/60 transition-all duration-300"></div>
+                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-fuchsia-500 shadow-[0_0_30px_rgba(217,70,239,0.8)] group-hover:shadow-[0_0_60px_rgba(217,70,239,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                                    <i class="fas fa-bacterium text-6xl md:text-8xl text-fuchsia-400 drop-shadow-[0_0_15px_rgba(217,70,239,1)]"></i>
+                                </div>
+                                <div class="mt-6 text-center z-10">
+                                    <div class="text-xl md:text-2xl font-black text-fuchsia-100 tracking-widest drop-shadow-[0_0_8px_#f0f]">變異體製造</div>
+                                    <div class="text-xs md:text-sm text-fuchsia-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">精準修復拼字</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pb-6 z-10 flex-shrink-0 w-full flex justify-center">
+                            <button @click="goHome" class="bg-black/50 hover:bg-red-900/80 border border-red-700 text-red-400 hover:text-white font-black tracking-widest px-8 py-3 md:py-4 rounded-full transition flex items-center justify-center gap-2 backdrop-blur-md shadow-[0_0_15px_rgba(255,0,0,0.3)] cursor-crosshair">
+                                <i class="fas fa-home"></i> 撤離修復艙 (回大廳)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div v-else-if="currentView === 'practice'" class="flex flex-col h-full w-full justify-between items-center text-center relative z-10">
+                        <div class="w-full flex justify-between items-center mb-2 flex-shrink-0">
+                            <span class="px-2 py-1 rounded bg-emerald-900/40 border border-emerald-500/50 text-emerald-300 text-xs font-bold tracking-widest flex items-center gap-1 shadow-inner">
+                                <i class="fas fa-dna"></i> {{ currentPatternBadge }} 型態
+                            </span>
+                            <span class="text-slate-400 text-xs md:text-sm font-bold font-mono">{{ currentIndex + 1 }} / {{ queue.length }}</span>
+                        </div>
+                        <div class="w-full h-1 bg-slate-800 rounded-full mb-4 overflow-hidden flex-shrink-0">
+                            <div class="h-full bg-emerald-500 transition-all duration-300 ease-out" :style="{ width: ((currentIndex + 1) / queue.length * 100) + '%' }"></div>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center justify-center w-full my-2 overflow-y-auto custom-scrollbar">
+                            <h2 class="text-2xl md:text-4xl font-black text-emerald-100 tracking-widest drop-shadow-md mb-4">{{ currentVerb.zh }}</h2>
+                            <div class="flex flex-col md:flex-row w-full gap-3 md:gap-6 justify-center items-stretch">
+                                <div class="flex-1 bg-[#030712] border border-blue-500/30 py-3 md:py-5 rounded-xl">
+                                    <div class="text-[10px] text-blue-500 font-bold tracking-widest mb-1">原形 BASE</div>
+                                    <div class="text-3xl md:text-5xl font-black text-blue-400 font-mono">{{ currentVerb.base }}</div>
+                                </div>
+                                <div class="flex-1 bg-[#030712] border border-amber-500/30 py-3 md:py-5 rounded-xl">
+                                    <div class="text-[10px] text-amber-500 font-bold tracking-widest mb-1">過去式 PAST</div>
+                                    <div class="text-3xl md:text-5xl font-black text-amber-400 font-mono">{{ currentVerb.past }}</div>
+                                </div>
+                                <div class="flex-1 bg-[#030712] border border-fuchsia-500/30 py-3 md:py-5 rounded-xl">
+                                    <div class="text-[10px] text-fuchsia-500 font-bold tracking-widest mb-1">過去分詞 P.P.</div>
+                                    <div class="text-3xl md:text-5xl font-black text-fuchsia-400 font-mono">{{ currentVerb.pp }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 md:gap-4 w-full mt-4 flex-shrink-0">
+                            <button @click="prevPractice" class="flex items-center justify-center py-3 md:py-4 rounded-xl font-bold bg-slate-800 border border-slate-600 text-slate-300 active:scale-95 transition text-xs md:text-base">
+                                <i class="fas fa-backward mr-1"></i> <span class="hidden sm:inline">上一個</span>
+                            </button>
+                            <button @click="playPracticeTTS" class="flex items-center justify-center py-3 md:py-4 rounded-xl font-bold bg-black/60 border border-blue-500/50 text-blue-300 active:scale-95 transition text-xs md:text-base backdrop-blur-sm">
+                                <i class="fas fa-volume-up text-lg"></i>
+                            </button>
+                            <button @click="nextPractice" class="flex items-center justify-center bg-emerald-700 border border-emerald-500 text-white py-3 md:py-4 rounded-xl font-black tracking-widest active:scale-95 transition text-xs md:text-base">
+                                <span class="hidden sm:inline">下一筆</span> <i class="fas fa-forward ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div v-else-if="currentView === 'identify'" class="flex flex-col h-full w-full justify-between items-center text-center relative z-10">
+                        <div class="w-full flex justify-between items-center mb-2 border-b border-amber-900/50 pb-2 flex-shrink-0">
+                            <span class="text-xs font-bold text-amber-500/70 tracking-widest">任務 [ {{ currentIndex + 1 }} / {{ queue.length }} ]</span>
+                            <span class="text-xs md:text-sm font-black text-amber-400 bg-amber-900/30 px-2 py-1 rounded border border-amber-500/50">SCORE: {{ score }}</span>
+                        </div>
+                        <div class="flex-1 w-full relative flex items-center justify-center min-h-[50vh] max-h-[400px]">
+                            <div class="absolute inset-0 flex justify-between items-center px-4 md:px-20 opacity-30 pointer-events-none">
+                                <div class="text-red-500 font-black text-xl md:text-4xl flex flex-col items-center"><i class="fas fa-times-circle mb-1 text-3xl md:text-5xl"></i>不熟</div>
+                                <div class="text-emerald-500 font-black text-xl md:text-4xl flex flex-col items-center"><i class="fas fa-check-circle mb-1 text-3xl md:text-5xl"></i>記住</div>
+                            </div>
+                            <div 
+                                @mousedown="startDrag" @mousemove="onDrag" @mouseup="endDrag" @mouseleave="endDrag"
+                                @touchstart.passive="startDrag" @touchmove.passive="onDrag" @touchend="endDrag"
+                                :style="{ transform: `translateX(${swipeOffset}px) rotate(${swipeOffset * 0.05}deg)`, transition: isDragging ? 'none' : 'transform 0.3s ease-out' }"
+                                class="relative w-full max-w-[280px] md:max-w-[350px] h-[90%] bg-[#0a1128] border-2 border-amber-500/50 rounded-3xl flex flex-col items-center shadow-[0_0_20px_rgba(234,179,8,0.2)] touch-none-y z-10 overflow-hidden cursor-crosshair"
+                            >
+                                <div class="absolute inset-0 transition-opacity duration-100 pointer-events-none" :style="{ backgroundColor: swipeOffset > 0 ? 'rgba(16,185,129,0.2)' : swipeOffset < 0 ? 'rgba(239,68,68,0.2)' : 'transparent', opacity: Math.min(Math.abs(swipeOffset) / 100, 1) }"></div>
+                                <button @click.stop="playCurrentWordTTS" class="absolute top-3 right-3 text-amber-500/70 hover:text-amber-400 bg-amber-900/40 border border-amber-700/50 w-10 h-10 rounded-full flex items-center justify-center transition z-20"><i class="fas fa-volume-up"></i></button>
+                                <div class="text-[10px] md:text-xs text-amber-500/70 font-bold bg-[#030712] px-3 py-1 rounded-full border border-amber-900 mt-6 z-10">原形: {{ currentVerb.base }}</div>
+                                <div class="flex-1 flex items-center justify-center w-full px-2 z-10 pointer-events-none">
+                                    <div class="text-4xl md:text-5xl font-black text-amber-400 neon-text-yellow tracking-wider font-mono select-none">{{ displayMutant }}</div>
+                                </div>
+                                <div class="mb-6 h-[50px] flex items-center justify-center w-full px-4 z-10">
+                                    <button v-if="!showMeaning" @click.stop="showMeaning = true" class="bg-[#030712] border border-amber-700/50 text-amber-300 px-5 py-2 rounded-full font-bold text-xs tracking-widest transition cursor-crosshair"><i class="fas fa-eye mr-1"></i> 顯示中文</button>
+                                    <div v-else class="text-2xl md:text-3xl font-black text-slate-100 tracking-widest drop-shadow-md select-none fade-in pointer-events-none">{{ currentVerb.zh }}</div>
+                                </div>
+                                <div v-if="showSwipeGuide && currentIndex === 0" class="absolute inset-0 bg-black/70 rounded-3xl flex flex-col items-center justify-center pointer-events-none z-30">
+                                    <i class="fas fa-hand-pointer text-5xl md:text-6xl text-amber-400 animate-swipeHint drop-shadow-lg"></i>
+                                    <div class="mt-6 text-amber-100 font-bold tracking-widest bg-[#030712]/90 border border-amber-500/50 px-4 py-2 rounded-xl text-center leading-relaxed text-xs md:text-sm">
+                                        <span class="text-red-400"><i class="fas fa-arrow-left"></i> 左滑(不熟)</span><br>
+                                        <span class="text-emerald-400">右滑(記住) <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full max-w-sm mx-auto flex justify-center gap-3 mt-2 flex-shrink-0">
+                            <button @click="handleSwipe('left')" class="flex-1 bg-slate-800 border border-slate-600 text-red-400 font-black tracking-widest py-3 rounded-xl active:scale-95 transition flex items-center justify-center gap-1 text-sm md:text-base"><i class="fas fa-times"></i> 不熟</button>
+                            <button @click="handleSwipe('right')" class="flex-1 bg-slate-800 border border-slate-600 text-emerald-400 font-black tracking-widest py-3 rounded-xl active:scale-95 transition flex items-center justify-center gap-1 text-sm md:text-base">記住 <i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+
+                    <div v-else-if="currentView === 'create'" class="flex flex-col h-full w-full justify-between items-center text-center relative z-10">
+                        <div class="w-full flex justify-between items-center mb-2 border-b border-fuchsia-900/50 pb-2 flex-shrink-0">
+                            <span class="text-xs md:text-sm font-bold text-fuchsia-500/70 tracking-widest">任務 [ {{ currentIndex + 1 }} / {{ queue.length }} ]</span>
+                            <span class="text-xs md:text-sm font-black text-fuchsia-400 bg-fuchsia-900/30 px-2 py-1 rounded border border-fuchsia-500/50">SCORE: {{ score }}</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row flex-1 w-full gap-4 md:gap-8 items-center justify-center my-2 overflow-y-auto custom-scrollbar">
+                            <div class="w-full md:w-1/2 flex flex-col items-center">
+                                <div class="text-xl md:text-3xl font-bold text-slate-300 mb-2 tracking-widest">{{ currentVerb.zh }}</div>
+                                <div class="flex items-center justify-center gap-3 mb-1">
+                                    <div class="text-4xl md:text-6xl font-black text-emerald-400 neon-text-green font-mono tracking-wider">{{ currentVerb.base }}</div>
+                                    <button @click="playPracticeTTS" class="text-emerald-500/70 bg-emerald-900/20 border border-emerald-700/50 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition md:text-xl"><i class="fas fa-volume-up"></i></button>
+                                </div>
+                                <p class="text-[10px] md:text-xs text-emerald-500/50 font-bold tracking-widest">( 點擊喇叭聽三態 )</p>
+                            </div>
+                            <div class="w-full md:w-1/2 space-y-4 max-w-sm mx-auto">
+                                <div class="relative mt-2 md:mt-0">
+                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-amber-500 font-bold uppercase">過去式(PT)</label>
+                                    <input v-model="userPast" @keyup.enter="focusPp" type="text" ref="inputPast" :disabled="isAnimating" :class="{'shake': hasErrorPast, 'border-red-500 text-red-400': showCorrection && !isPastCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPastCorrect, 'border-amber-700/50 focus:border-amber-400 text-amber-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700">
+                                    <div v-if="showCorrection && !isPastCorrect" class="text-xs text-red-400 font-bold mt-1 font-mono tracking-widest">{{ currentVerb.past }}</div>
+                                </div>
+                                <div class="relative mt-4">
+                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-fuchsia-500 font-bold uppercase">過去分詞(PP)</label>
+                                    <input v-model="userPp" @keyup.enter="submitCreate" type="text" ref="inputPp" :disabled="isAnimating" :class="{'shake': hasErrorPp, 'border-red-500 text-red-400': showCorrection && !isPpCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPpCorrect, 'border-fuchsia-700/50 focus:border-fuchsia-400 text-fuchsia-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700">
+                                    <div v-if="showCorrection && !isPpCorrect" class="text-xs text-red-400 font-bold mt-1 font-mono tracking-widest">{{ currentVerb.pp }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full max-w-sm mx-auto flex gap-2 mt-2 flex-shrink-0">
+                            <template v-if="!showCorrection">
+                                <button @click="skipCreate" :disabled="isAnimating" class="w-1/3 bg-slate-800 border border-slate-600 text-slate-400 hover:text-slate-200 font-bold text-xs md:text-sm py-3 md:py-4 rounded-xl active:scale-95 transition"><i class="fas fa-question-circle mb-1 block text-sm"></i> 遺忘配方</button>
+                                <button @click="submitCreate" :disabled="isAnimating" class="w-2/3 bg-fuchsia-700 hover:bg-fuchsia-600 border border-fuchsia-500 text-white font-black tracking-widest py-3 md:py-4 rounded-xl active:scale-95 transition md:text-lg">執行製造 <i class="fas fa-hammer ml-1"></i></button>
+                            </template>
+                            <template v-else>
+                                <button @click="nextCreate" class="w-full bg-slate-700 hover:bg-slate-600 border border-slate-500 text-white font-black tracking-widest py-3 md:py-4 rounded-xl active:scale-95 transition md:text-lg">繼續任務 <i class="fas fa-arrow-right ml-1"></i></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div v-else-if="currentView === 'result'" class="flex flex-col h-full w-full items-center relative z-10">
+                        <div v-if="isSaving" class="w-full bg-blue-900/30 border border-blue-500/50 text-blue-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 animate-pulse flex-shrink-0"><i class="fas fa-satellite-dish fa-spin"></i> 正在將戰報傳送至指揮中心...</div>
+                        <div v-else class="w-full bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 flex-shrink-0"><i class="fas fa-check-circle"></i> 演習結束！戰報已同步至後台！</div>
+                        
+                        <div class="flex items-center gap-3 mb-2 flex-shrink-0">
+                            <div class="text-3xl md:text-4xl drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">🎖️</div>
+                            <h2 class="text-xl md:text-2xl font-black text-emerald-100 tracking-widest">任務結算</h2>
+                        </div>
+                        
+                        <div class="flex justify-center gap-2 md:gap-3 w-full mb-3 max-w-lg flex-shrink-0">
+                            <div class="flex-1 bg-[#030712] border border-slate-700 py-2 rounded-xl text-center shadow-inner">
+                                <div class="text-[10px] text-slate-500 font-bold mb-1">任務總數</div>
+                                <div class="text-xl md:text-2xl font-black text-slate-200 font-mono">{{ queue.length }}</div>
+                            </div>
+                            <div class="flex-1 bg-[#030712] border border-emerald-500/50 py-2 rounded-xl text-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                                <div class="text-[10px] text-emerald-500 font-bold mb-1">成功修復</div>
+                                <div class="text-xl md:text-2xl font-black text-emerald-400 font-mono">{{ score }}</div>
+                            </div>
+                            <div class="flex-1 bg-[#030712] border border-amber-500/50 py-2 rounded-xl text-center shadow-[0_0_15px_rgba(234,179,8,0.1)]">
+                                <div class="text-[10px] text-amber-500 font-bold mb-1">同步率</div>
+                                <div class="text-xl md:text-2xl font-black text-amber-400 font-mono">{{ Math.round((score/queue.length)*100) }}%</div>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex-1 overflow-hidden flex flex-col mb-3 max-w-lg mx-auto min-h-[250px] md:min-h-[350px] border border-slate-800/50 rounded-xl bg-black/40 p-2 md:p-3 backdrop-blur-sm">
+                            <h3 class="font-bold text-red-400 mb-2 text-xs md:text-sm tracking-widest border-b border-red-900/50 pb-2 flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle"></i> 系統損壞紀錄 (錯題)
+                            </h3>
+                            <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
+                                <div v-if="mistakes.length === 0" class="text-center text-emerald-500/70 font-bold py-8 text-sm">完美防禦！無任何損壞紀錄</div>
+                                <div v-for="(m, i) in mistakes" :key="i" class="bg-[#0a1128] border border-red-900/50 p-3 rounded-lg text-xs md:text-sm flex flex-col md:flex-row md:items-center gap-2 md:gap-4 shadow-sm">
+                                    <div class="font-bold text-slate-300 text-base border-b md:border-b-0 md:border-r border-slate-800 pb-1 md:pb-0 md:pr-4 md:w-1/3">{{ m.word }}</div>
+                                    <div class="flex-1">
+                                        <template v-if="m.mode === 'identify'">
+                                            <div class="flex justify-between text-slate-500 mb-1"><span>狀態：</span><span class="text-red-400 font-bold">{{ m.userAns }}</span></div>
+                                            <div class="flex justify-between text-emerald-400 font-bold"><span>正確含義：</span><span>{{ m.correctAns }}</span></div>
+                                        </template>
+                                        <template v-else>
+                                            <div class="grid grid-cols-2 gap-2 text-center">
+                                                <div class="bg-[#030712] p-1.5 rounded border border-gray-800">
+                                                    <div class="text-[9px] text-slate-500">PT</div>
+                                                    <div :class="m.isPastCorrect ? 'text-emerald-400' : 'text-slate-500 line-through'" class="font-mono">{{ m.userPast || '(空白)' }}</div>
+                                                    <div v-if="!m.isPastCorrect" class="text-red-400 font-mono font-bold">{{ m.correctPast }}</div>
+                                                </div>
+                                                <div class="bg-[#030712] p-1.5 rounded border border-gray-800">
+                                                    <div class="text-[9px] text-slate-500">PP</div>
+                                                    <div :class="m.isPpCorrect ? 'text-emerald-400' : 'text-slate-500 line-through'" class="font-mono">{{ m.userPp || '(空白)' }}</div>
+                                                    <div v-if="!m.isPpCorrect" class="text-red-400 font-mono font-bold">{{ m.correctPp }}</div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button @click="quitToMenu" class="w-full max-w-lg mx-auto bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-black tracking-widest py-3 rounded-xl shadow-md active:scale-95 transition flex-shrink-0 cursor-crosshair">
+                            返回大廳選單
+                        </button>
+                    </div>
+
+                </transition>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed, nextTick, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const currentView = ref('menu'); 
+                const playerName = ref(localStorage.getItem('shilieu_player') || '未登入特工');
+                const activeMode = ref('');
+                
+                const showCountSelector = ref(false);
+                const pendingMode = ref('');
+
+                const queue = ref([]);
+                const currentIndex = ref(0);
+                const score = ref(0);
+                const mistakes = ref([]);
+                
+                const isAnimating = ref(false);
+                const showCorrection = ref(false);
+                const hasErrorPast = ref(false);
+                const hasErrorPp = ref(false);
+                const isSaving = ref(false);
+
+                const userPast = ref('');
+                const userPp = ref('');
+                const inputPast = ref(null);
+                const inputPp = ref(null);
+
+                const showMeaning = ref(false);
+                const showSwipeGuide = ref(true);
+                const swipeOffset = ref(0);
+                const isDragging = ref(false);
+                const startX = ref(0);
+                
+                const missionStartTime = ref(null);
+
+                // 🌟 狙擊系統狀態
+                const bgViruses = ref([]);
+                const interceptedVirus = ref(null);
+                const sniperInput = ref('');
+                const inputSniper = ref(null);
+
+                const sfxYes = new Audio('https://www.myinstants.com/media/sounds/yes_7.mp3');
+                const sfxFail = new Audio('https://www.myinstants.com/media/sounds/wrong-buzzer.mp3');
+                const sfxExplode = new Audio('https://www.myinstants.com/media/sounds/explosion_3.mp3');
+                sfxYes.volume = 0.5; sfxFail.volume = 0.5; sfxExplode.volume = 0.4;
+
+                const currentVerb = computed(() => queue.value[currentIndex.value] || {});
+                
+                const currentPatternBadge = computed(() => {
+                    if (!currentVerb.value.base) return '';
+                    return getVerbPattern(currentVerb.value).type;
+                });
+
+                const displayMutant = computed(() => {
+                    if (currentView.value !== 'identify' || !currentVerb.value.base) return '';
+                    return (currentIndex.value % 2 === 0) ? currentVerb.value.past.split('/')[0] : currentVerb.value.pp.split('/')[0];
+                });
+
+                const getVerbPattern = (verb) => {
+                    let b = verb.base.split('/')[0].trim();
+                    let p = verb.past.split('/')[0].trim();
+                    let pp = verb.pp.split('/')[0].trim();
+                    if (b === p && p === pp) return { type: 'AAA', weight: 1 };
+                    if (b === pp && b !== p) return { type: 'ABA', weight: 2 };
+                    if (p === pp && b !== p) return { type: 'ABB', weight: 3 };
+                    if (b === p && b !== pp) return { type: 'AAB', weight: 4 }; 
+                    return { type: 'ABC', weight: 5 };
+                };
+
+                const sortVerbsByPattern = (verbsArray) => {
+                    return [...verbsArray].sort((a, b) => {
+                        let patA = getVerbPattern(a);
+                        let patB = getVerbPattern(b);
+                        if (patA.weight !== patB.weight) return patA.weight - patB.weight;
+                        return a.base.localeCompare(b.base);
+                    });
+                };
+
+                const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+                const playWordTTS = (wordStr) => {
+                    if (window.speechSynthesis) {
+                        window.speechSynthesis.cancel();
+                        let text = wordStr;
+                        if (currentVerb.value.base === 'read' && wordStr !== 'read') {
+                            text = text.replace(/read/g, 'red');
+                        }
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'en-US';
+                        utterance.rate = 0.8;
+                        window.speechSynthesis.speak(utterance);
+                    }
+                };
+
+                const playCurrentWordTTS = () => playWordTTS(currentVerb.value.base);
+                
+                const playPracticeTTS = () => {
+                    if (!currentVerb.value || !currentVerb.value.past) return;
+                    let past = currentVerb.value.past.split('/')[0];
+                    let pp = currentVerb.value.pp.split('/')[0];
+                    if (currentVerb.value.base === 'read') { past = 'red'; pp = 'red'; }
+                    playWordTTS(`${currentVerb.value.base}, ${past}, ${pp}`);
+                };
+
+                const getSafeVerbList = () => {
+                    if (typeof allVerbs !== 'undefined' && Array.isArray(allVerbs) && allVerbs.length > 0) {
+                        return [...allVerbs];
+                    } else {
+                        return [
+                            { base: 'be', past: 'was/were', pp: 'been', zh: '是', emoji: '👤', type: '不規則' },
+                            { base: 'do', past: 'did', pp: 'done', zh: '做', emoji: '✅', type: '不規則' },
+                            { base: 'go', past: 'went', pp: 'gone', zh: '去', emoji: '🏃', type: '不規則' }
+                        ];
+                    }
+                };
+
+                /* ================= 🌟 狙擊系統邏輯 (極速湧現版) ================= */
+                const initViruses = () => {
+                    const verbList = getSafeVerbList();
+                    for(let i=0; i<18; i++) {
+                        resetVirus(i, verbList);
+                    }
+                };
+
+                const resetVirus = (i, verbList) => {
+                    const verb = verbList[Math.floor(Math.random() * verbList.length)];
+                    const icons = ['fa-virus', 'fa-bacteria', 'fa-bacterium', 'fa-bug', 'fa-spider'];
+                    const colors = ['text-green-500', 'text-yellow-500', 'text-fuchsia-500', 'text-red-500', 'text-cyan-500'];
+                    
+                    // 🌟 縮短動畫週期並使用負數延遲，讓它們一開始就佈滿畫面
+                    const duration = Math.random() * 10 + 10; // 10~20秒 (加速)
+                    const delay = -(Math.random() * duration); // 負數延遲 = 已經在跑了
+                    
+                    bgViruses.value[i] = {
+                        id: i,
+                        verb: verb,
+                        icon: icons[Math.floor(Math.random() * icons.length)],
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        exploded: false,
+                        style: {
+                            left: Math.random() * 90 + 2 + 'vw',
+                            bottom: '-15vh',
+                            animation: `flyUp ${duration}s linear infinite ${delay}s`,
+                            fontSize: Math.random() * 25 + 25 + 'px'
+                        }
+                    };
+                };
+
+                const targetVirus = (v) => {
+                    if (currentView.value !== 'menu') return; 
+                    if (v.exploded || interceptedVirus.value) return;
+                    
+                    interceptedVirus.value = v;
+                    sniperInput.value = '';
+                    sfxFail.pause(); 
+                    sfxFail.currentTime = 0;
+                    
+                    nextTick(() => {
+                        if(inputSniper.value) inputSniper.value.focus();
+                    });
+                };
+
+                const cancelSniper = () => {
+                    interceptedVirus.value = null;
+                };
+
+                const shootVirus = () => {
+                    if(!interceptedVirus.value) return;
+                    const correctStrs = interceptedVirus.value.verb.zh.split(/[/、；]/).map(s => s.trim());
+                    const user = sniperInput.value.trim();
+                    const isCorrect = correctStrs.some(ans => (ans.includes(user) && user.length > 0) || (user.includes(ans)));
+
+                    if(isCorrect) {
+                        sfxExplode.play();
+                        const v = interceptedVirus.value;
+                        v.exploded = true;
+                        v.icon = 'fa-burst';
+                        v.color = 'text-orange-500';
+                        
+                        interceptedVirus.value = null;
+                        
+                        setTimeout(() => {
+                            resetVirus(v.id, getSafeVerbList());
+                        }, 800);
+                    } else {
+                        sfxFail.play();
+                        const el = inputSniper.value;
+                        el.classList.add('shake', 'border-red-500');
+                        setTimeout(() => el.classList.remove('shake', 'border-red-500'), 500);
+                        sniperInput.value = '';
+                    }
+                };
+
+                onMounted(() => {
+                    initViruses();
+                });
+
+                /* ================= 模式啟動邏輯 ================= */
+                const selectCountFor = (mode) => {
+                    pendingMode.value = mode;
+                    showCountSelector.value = true;
+                };
+
+                const confirmStart = (count) => {
+                    showCountSelector.value = false;
+                    const verbList = getSafeVerbList();
+                    activeMode.value = pendingMode.value;
+                    currentIndex.value = 0;
+                    score.value = 0;
+                    mistakes.value = [];
+                    showCorrection.value = false;
+                    missionStartTime.value = Date.now();
+
+                    let targetList = shuffle(verbList);
+                    if (count !== 'all') {
+                        targetList = targetList.slice(0, count);
+                    }
+                    queue.value = targetList;
+                    currentView.value = pendingMode.value;
+                    resetInputs();
+                };
+
+                const startMission = (mode) => {
+                    if (mode === 'practice') {
+                        activeMode.value = mode;
+                        currentIndex.value = 0;
+                        const verbList = getSafeVerbList();
+                        queue.value = sortVerbsByPattern(verbList);
+                        currentView.value = 'practice';
+                        nextTick(() => { playPracticeTTS(); });
+                    }
+                };
+
+                const resetInputs = () => {
+                    userPast.value = '';
+                    userPp.value = '';
+                    hasErrorPast.value = false;
+                    hasErrorPp.value = false;
+                    showCorrection.value = false;
+                    isAnimating.value = false;
+                    
+                    swipeOffset.value = 0;
+                    showMeaning.value = false;
+                    if (currentIndex.value === 0) showSwipeGuide.value = true;
+                    
+                    nextTick(() => {
+                        if (currentView.value === 'identify') playCurrentWordTTS();
+                        if (currentView.value === 'create' && inputPast.value) inputPast.value.focus();
+                    });
+                };
+
+                const prevPractice = () => { currentIndex.value = (currentIndex.value - 1 + queue.value.length) % queue.value.length; nextTick(() => { playPracticeTTS(); }); };
+                const nextPractice = () => { currentIndex.value = (currentIndex.value + 1) % queue.value.length; nextTick(() => { playPracticeTTS(); }); };
+
+                const startDrag = (e) => { if (isAnimating.value) return; isDragging.value = true; showSwipeGuide.value = false; startX.value = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; };
+                const onDrag = (e) => { if (!isDragging.value || isAnimating.value) return; const currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; swipeOffset.value = currentX - startX.value; };
+                const endDrag = () => { if (!isDragging.value) return; isDragging.value = false; if (swipeOffset.value > 60) handleSwipe('right'); else if (swipeOffset.value < -60) handleSwipe('left'); else swipeOffset.value = 0; };
+
+                const handleSwipe = (direction) => {
+                    if (isAnimating.value) return;
+                    isAnimating.value = true;
+                    swipeOffset.value = direction === 'right' ? window.innerWidth : -window.innerWidth;
+                    setTimeout(() => {
+                        if (direction === 'right') { score.value++; sfxYes.play(); } 
+                        else { sfxFail.play(); mistakes.value.push({ mode: 'identify', word: currentVerb.value.base, userAns: '不熟', correctAns: currentVerb.value.zh }); }
+                        nextIdentify();
+                    }, 250);
+                };
+
+                const nextIdentify = () => { if (currentIndex.value + 1 >= queue.value.length) { finishMission(); } else { currentIndex.value++; resetInputs(); } };
+
+                const focusPp = () => { if (inputPp.value) inputPp.value.focus(); };
+
+                const checkSpellMatch = (input, correctStr) => {
+                    if (!correctStr) return false;
+                    const user = input.trim().toLowerCase();
+                    const corrects = correctStr.split('/').map(s => s.trim().toLowerCase());
+                    return corrects.includes(user) || correctStr.toLowerCase() === user;
+                };
+
+                const skipCreate = () => {
+                    if (isAnimating.value) return;
+                    sfxFail.play();
+                    mistakes.value.push({ mode: 'create', word: currentVerb.value.base, userPast: '(遺忘)', userPp: '(遺忘)', correctPast: currentVerb.value.past, correctPp: currentVerb.value.pp, isPastCorrect: false, isPpCorrect: false });
+                    isPastCorrect.value = false; isPpCorrect.value = false;
+                    showCorrection.value = true; hasErrorPast.value = true; hasErrorPp.value = true;
+                    setTimeout(() => { hasErrorPast.value = false; hasErrorPp.value = false; }, 500);
+                };
+
+                const isPastCorrect = ref(false); const isPpCorrect = ref(false);
+
+                const submitCreate = () => {
+                    if ((!userPast.value.trim() || !userPp.value.trim()) && !showCorrection.value) {
+                        if (!userPast.value.trim()) hasErrorPast.value = true; if (!userPp.value.trim()) hasErrorPp.value = true;
+                        setTimeout(() => { hasErrorPast.value = false; hasErrorPp.value = false; }, 500); return;
+                    }
+                    isAnimating.value = true;
+                    isPastCorrect.value = checkSpellMatch(userPast.value, currentVerb.value.past);
+                    isPpCorrect.value = checkSpellMatch(userPp.value, currentVerb.value.pp);
+
+                    if (isPastCorrect.value && isPpCorrect.value) { score.value++; sfxYes.play(); nextCreate(); } 
+                    else {
+                        sfxFail.play();
+                        mistakes.value.push({ mode: 'create', word: currentVerb.value.base, userPast: userPast.value, userPp: userPp.value, correctPast: currentVerb.value.past, correctPp: currentVerb.value.pp, isPastCorrect: isPastCorrect.value, isPpCorrect: isPpCorrect.value });
+                        showCorrection.value = true;
+                        if (!isPastCorrect.value) hasErrorPast.value = true; if (!isPpCorrect.value) hasErrorPp.value = true;
+                        setTimeout(() => { hasErrorPast.value = false; hasErrorPp.value = false; }, 500);
+                    }
+                };
+
+                const nextCreate = () => { if (currentIndex.value + 1 >= queue.value.length) { finishMission(); } else { currentIndex.value++; resetInputs(); } };
+
+                const sendToSpreadsheet = async (reportData) => {
+                    if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL) {
+                        try {
+                            const formData = new URLSearchParams();
+                            for (const key in reportData) formData.append(key, reportData[key]);
+                            await fetch(GOOGLE_API_URL, { method: 'POST', body: formData });
+                        } catch(e) { console.error('GAS傳輸受阻', e); }
+                    }
+                };
+
+                const finishMission = (isRetreat = false) => {
+                    currentView.value = 'result';
+                    isSaving.value = true;
+                    
+                    const endTime = Date.now();
+                    const diff = Math.floor((endTime - (missionStartTime.value || endTime)) / 1000);
+                    const m = Math.floor(diff / 60); const s = diff % 60;
+                    const durationStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+
+                    const mistakesList = mistakes.value.map(m => m.mode === 'identify' ? `[${m.word}:不熟]` : `[${m.word}:錯${m.userPast}/${m.userPp}]`).join(', ');
+
+                    let statusTag = activeMode.value === 'identify' ? '識別' : '製造';
+                    if (isRetreat) statusTag += '(中途撤退)';
+
+                    const reportData = {
+                        action: 'add', name: playerName.value, theme: `動詞-${statusTag}`, score: score.value,
+                        total: queue.value.length, timeStr: durationStr, answered: isRetreat ? currentIndex.value : queue.value.length, wrongWords: mistakesList
+                    };
+                    sendToSpreadsheet(reportData).then(() => { isSaving.value = false; });
+                };
+
+                const quitToMenu = () => {
+                    if (currentView.value !== 'practice' && currentView.value !== 'result') {
+                        if (confirm('演習尚未結束，確定要撤退嗎？\n(系統將結算您目前的成績並強制上傳戰報！)')) {
+                            finishMission(true); if (window.speechSynthesis) window.speechSynthesis.cancel();
+                        }
+                        return;
+                    }
+                    currentView.value = 'menu';
+                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                };
+
+                const goHome = () => { window.location.href = 'index.html'; };
+
+                return {
+                    currentView, queue, currentIndex, score, mistakes, currentVerb, currentPatternBadge, displayMutant,
+                    userPast, userPp, inputPast, inputPp, isAnimating, showCorrection, hasErrorPast, hasErrorPp, isSaving,
+                    showCountSelector, pendingMode, selectCountFor, confirmStart, showMeaning, showSwipeGuide, swipeOffset, isDragging,
+                    startDrag, onDrag, endDrag, handleSwipe, startMission, submitCreate, skipCreate, nextCreate, prevPractice, nextPractice,
+                    playCurrentWordTTS, playPracticeTTS, quitToMenu, goHome, focusPp, isPastCorrect, isPpCorrect,
+                    bgViruses, interceptedVirus, sniperInput, inputSniper, targetVirus, cancelSniper, shootVirus
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
