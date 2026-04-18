@@ -73,19 +73,6 @@
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.03) 1px,transparent 1px);background-size:30px 30px;"></div>
 
     <div id="app" class="max-w-6xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
-        
-        <div v-if="showBrowserWarning" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 fade-in">
-            <div class="cyber-box-cyan w-full max-w-lg p-8 relative overflow-hidden bg-black/90 text-center border-2 border-white shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
-                <div class="text-6xl mb-4 animate-pulse">📡</div>
-                <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-6" style="text-shadow:0 0 10px rgba(255,255,255,0.7);">受限環境警告</h2>
-                <div class="bg-black/80 border border-gray-700 p-6 mb-8 text-left text-sm font-bold tracking-wider leading-relaxed">
-                    偵測到您正在使用 LINE 或 社群軟體 內建瀏覽器，這將導致英文發音無法正常撥放。<br><br>
-                    請點擊右上角 <span class="text-neon-cyan">「...」</span> 並選擇 <span class="text-neon-green">「以預設瀏覽器開啟」</span> 以獲得最佳體驗。
-                </div>
-                <button @click="showBrowserWarning = false" class="w-full bg-white text-black py-4 font-black tracking-widest hover:bg-gray-300 transition">繼續使用</button>
-            </div>
-        </div>
 
         <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
             <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
@@ -113,13 +100,6 @@
                 </button>
                 <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
                     <i class="fas fa-user-secret text-neon-cyan"></i> 特工 // <span class="text-white">{{ playerName }}</span>
-                </div>
-            </div>
-
-            <div v-if="systemAnnouncement && systemAnnouncement.isEnabled && systemAnnouncement.text" class="mb-8 border border-cyan-900 bg-cyan-950/40 p-3 flex items-center gap-4 overflow-hidden">
-                <span class="text-neon-cyan font-black animate-pulse whitespace-nowrap">📢 戰區廣播</span>
-                <div class="marquee-container flex-1 overflow-hidden">
-                    <p class="text-cyan-100 font-bold tracking-widest truncate">{{ systemAnnouncement.text }}</p>
                 </div>
             </div>
 
@@ -329,7 +309,6 @@
                 const playerName = ref(localStorage.getItem('shilieu_player') || '');
                 const isAuthorized = ref(false); 
                 const systemModes = ref({ flashcard: true, quiz: true, blindTest: true, battle: true, vocab_exam: true });
-                const systemAnnouncement = ref({ text: '', isEnabled: false });
                 const highlights = ref({ vocab_modes: {}, themes: {} });
                 const locks = ref({ vocab_modes: {}, themes: {} });
                 const showInfoModal = ref(false);
@@ -337,7 +316,6 @@
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
-                const showBrowserWarning = ref(false);
                 
                 const infoData = {
                     flashcard: { icon: '📇', title: '單字卡模式', color: 'text-neon-cyan', desc: '適合<span class="text-neon-cyan">初次學習或複習</span>。<br>系統會顯示英文單字與發音，您可以選擇隱藏或顯示中文意思，幫助您穩紮穩打建立單字記憶。' },
@@ -348,10 +326,6 @@
                 };
 
                 onMounted(() => {
-                    const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
-                    if (ua.includes("line/") || ua.includes("fban") || ua.includes("fbav") || ua.includes("instagram")) {
-                        showBrowserWarning.value = true;
-                    }
 
                     auth.onAuthStateChanged(user => {
                         if (user) {
@@ -375,7 +349,6 @@
                         if (snap.exists()) {
                             const data = snap.val();
                             if (data.modes) systemModes.value = data.modes;
-                            if (data.announcement) systemAnnouncement.value = data.announcement;
                             if (data.highlights) highlights.value = data.highlights;
                             if (data.locks) locks.value = data.locks;
                         }
@@ -398,9 +371,9 @@
                 // --- 🌟 變數全輸出 ---
                 return {
                     isConfigMissing, isAuthorized, playerName, goBack,
-                    systemModes, systemAnnouncement, highlights, locks, navigateTo,
+                    systemModes, highlights, locks, navigateTo,
                     showInfoModal, currentInfo, openInfo, closeInfo,
-                    realtimeMsg, showRealtimeMsg, showBrowserWarning, 
+                    realtimeMsg, showRealtimeMsg, 
                     // 🌟 空間引擎必須導出的變數
                     showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };

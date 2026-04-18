@@ -41,11 +41,12 @@
         .cyber-box-yellow{border:1px solid #ff0;background:rgba(40,40,0,0.6);box-shadow:inset 0 0 15px rgba(255,255,0,0.2);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .cyber-box-gray{border:1px solid #4b5563;background:rgba(15,23,42,0.6);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         
-        .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.05) 51%);background-size:100% 4px;animation:scan 10s linear infinite; pointer-events: none;} 
-        @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
         .fade-in{animation:fadeIn 0.5s ease-out;} 
         @keyframes fadeIn{from{opacity:0; transform: translateY(10px);}to{opacity:1; transform: translateY(0);}}
         
+        /* 🌟 新增跑馬燈動畫 */
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0ff;}
 
         .neon-text-cyan{text-shadow:0 0 10px rgba(0,255,255,0.7),0 0 20px rgba(0,255,255,0.5);}
@@ -97,6 +98,18 @@
 
     <div id="app" class="max-w-6xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
         
+        <div v-if="showBrowserWarning" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 fade-in">
+            <div class="w-full max-w-lg p-8 relative overflow-hidden bg-black/90 text-center border-2 border-white shadow-[0_0_40px_rgba(255,255,255,0.2)] rounded-xl">
+                <div class="text-6xl mb-4 animate-pulse">📡</div>
+                <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-6">受限環境警告</h2>
+                <div class="bg-gray-900 border border-gray-700 p-6 mb-8 text-left text-sm font-bold tracking-wider leading-relaxed rounded-lg">
+                    偵測到您正在使用 LINE 或 社群軟體 內建瀏覽器，這將導致部分功能（如英文發音）無法正常運作。<br><br>
+                    請點擊右上角 <span class="text-yellow-400">「...」</span> 或 <span class="text-yellow-400">「分享圖示」</span>，並選擇 <span class="text-green-400">「以預設瀏覽器開啟 (Open in Browser)」</span>。
+                </div>
+                <button @click="showBrowserWarning = false" class="w-full bg-white text-black py-4 font-black tracking-widest hover:bg-gray-300 transition rounded-lg active:scale-95">我了解了，繼續使用</button>
+            </div>
+        </div>
+
         <div v-if="showRealtimeMsg" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
             <div class="border-2 border-red-500 w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center shadow-[0_0_40px_rgba(255,0,60,0.5)] rounded-xl">
                 <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
@@ -110,7 +123,6 @@
 
         <div v-if="view === 'auth'" class="fade-in flex flex-col items-center justify-center flex-1 w-full max-w-md mx-auto py-8">
             <div class="cyber-box-cyan p-8 md:p-10 w-full relative overflow-hidden bg-black/90">
-                <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
                 <div class="text-5xl mb-4 text-center drop-shadow-[0_0_15px_#0ff]">🌸</div>
                 <h1 class="text-3xl font-black mb-1 tracking-widest text-center text-white neon-text-cyan">馬纓丹 ONLINE</h1>
                 <p class="text-cyan-600 font-bold tracking-widest text-xs mb-6 text-center">>> 特情局身分驗證系統</p>
@@ -176,6 +188,12 @@
                 <button @click="handleLogout" class="text-xs md:text-sm text-red-400 border border-red-800 bg-red-950/30 px-4 py-2 hover:bg-neon-red hover:text-white transition font-bold tracking-widest shadow-[0_0_10px_rgba(255,0,60,0.2)] rounded-lg">
                     <i class="fas fa-power-off mr-1"></i> 登出
                 </button>
+            </div>
+
+            <div v-if="systemAnnouncement" ref="marqueeWrapper" class="bg-yellow-900/50 border border-yellow-500 text-yellow-400 py-2.5 mb-6 overflow-hidden relative z-20 shadow-[0_0_15px_rgba(255,255,0,0.2)] rounded-lg flex items-center">
+                <div ref="marqueeText" :class="isMarqueeNeeded ? 'animate-[marquee_15s_linear_infinite]' : 'text-center'" class="whitespace-nowrap font-black tracking-widest text-sm px-4 inline-block min-w-full">
+                    📢 總部廣播：{{ systemAnnouncement }}
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
@@ -437,12 +455,28 @@
                 const currentUserUid = ref('');
                 const playerName = ref('');
 
+                // 🌟 主模式變數宣告
                 const highlights = ref({ main_modes: {}, themes: {} });
                 const locks = ref({ main_modes: {}, themes: {} });
 
+                // 🌟 新增廣播與瀏覽器警告變數
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
+                const systemAnnouncement = ref('');
+                
+                const showBrowserWarning = ref(false);
+                // 🌟 智慧跑馬燈變數與計算
+                const isMarqueeNeeded = ref(false);
+                const marqueeWrapper = ref(null);
+                const marqueeText = ref(null);
+
+                const checkMarquee = () => {
+                    if (marqueeWrapper.value && marqueeText.value) {
+                        // 如果文字實際長度 (scrollWidth) 大於 外框寬度 (clientWidth)，才開啟跑馬燈
+                        isMarqueeNeeded.value = marqueeText.value.scrollWidth > marqueeWrapper.value.clientWidth;
+                    }
+                };
 
                 const showLogModal = ref(false);
                 const selectedLogContent = ref({});
@@ -586,6 +620,13 @@
                 };
 
                 onMounted(() => {
+                    window.addEventListener('resize', checkMarquee); // 🌟 加入視窗大小監聽
+                    // 🌟 加入瀏覽器環境偵測 (Line/IG/FB)
+                    const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+                    if (ua.includes("line/") || ua.includes("fban") || ua.includes("fbav") || ua.includes("instagram")) {
+                        showBrowserWarning.value = true;
+                    }
+
                     auth.onAuthStateChanged(user => {
                         if (user) {
                             currentUserUid.value = user.uid;
@@ -607,12 +648,18 @@
                         }
                     });
 
+                    // 🌟 串接設定與跑馬燈
                     db.ref('app_state/system_settings').on('value', snap => {
                         const data = snap.val() || {};
+                        
+                        systemAnnouncement.value = data.announcement?.text || data.announcement || '';
+                        nextTick(() => { checkMarquee(); });
+
                         highlights.value = {
                             main_modes: data.highlights?.main_modes || {},
                             themes: data.highlights?.themes || {}
                         };
+                        
                         locks.value = {
                             main_modes: data.locks?.main_modes || {},
                             themes: data.locks?.themes || {}
@@ -786,6 +833,7 @@
                     showInfoModal.value = false;
                 };
 
+                // 🌟 所有匯出變數補齊
                 return {
                     view, authMode, authError, isAuthLoading, regData, loginData, currentUserProfile, playerName,
                     handleLogin, handleRegister, handleLogout,
@@ -796,7 +844,8 @@
                     overallGrammarPercentage,
                     showInfoModal, currentInfo, openInfo, closeInfo,
                     highlights, locks, 
-                    realtimeMsg, showRealtimeMsg
+                    realtimeMsg, showRealtimeMsg,
+                    showBrowserWarning, systemAnnouncement, isMarqueeNeeded, marqueeWrapper, marqueeText,
                 };
             }
         }).mount('#app');
