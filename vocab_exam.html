@@ -25,20 +25,27 @@
         
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: #f97316; }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="min-h-screen relative p-4 md:p-8 flex flex-col">
     <div class="fixed inset-0 scanline z-0"></div>
 
     <div id="app" class="max-w-4xl mx-auto relative z-10 flex flex-col h-full w-full">
         
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-orange-900/50 pb-4 gap-4">
+        <div class="flex justify-between items-center mb-4 border-b border-orange-900/50 pb-2 w-full pt-2 relative z-20">
+            <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-neon-orange transition flex items-center gap-2 border border-gray-600 hover:border-neon-orange px-3 py-1.5 rounded-lg bg-black/50 active:scale-95">
+                Back <span class="text-lg leading-none">↩</span>
+            </button>
+            <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
+                <i class="fas fa-user-secret text-neon-orange"></i> 特工 // <span class="text-white">{{ playerName }}</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-2 gap-4">
             <div>
                 <h1 class="text-3xl md:text-4xl font-black tracking-widest text-white drop-shadow-[0_0_10px_#f97316]"><span class="text-neon-orange">🔥 </span>會考單字實戰</h1>
                 <p class="text-xs text-orange-400 font-bold tracking-widest mt-1">>> VOCABULARY COMBAT ZONE: EXAM SIMULATOR</p>
             </div>
-            <button @click="quitPractice" :disabled="isSaving" class="border border-orange-800 text-orange-500 hover:text-white hover:bg-orange-900 px-6 py-2 font-bold tracking-widest transition text-sm bg-black/40 shadow-[0_0_15px_rgba(249,115,22,0.2)] disabled:opacity-50">
-                {{ isSaving ? '📡 發送戰報中...' : '返回基地 (Return) ✖' }}
-            </button>
         </div>
 
         <div v-if="currentPhase === 'select_mode'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6">
@@ -70,8 +77,8 @@
         <div v-if="currentPhase === 'result'" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full fade-in">
             <span class="text-6xl mb-4 block">🏆</span>
             <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
-            <p v-if="isSaving" class="text-orange-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
-            <p v-else class="text-gray-400 font-bold tracking-widest mb-2 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據如下：</p>
+            <p v-if="!hasSubmittedScore" class="text-orange-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
+            <p v-else class="text-gray-400 font-bold tracking-widest mb-2 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據已上傳：</p>
             
             <div class="text-8xl font-black mb-2" :class="scoreColor">
                 {{ Math.round((correctCount / practiceQuestions.length) * 100) }}%
@@ -81,7 +88,7 @@
             </p>
 
             <div class="flex gap-4 justify-center mb-8">
-                <button @click="currentPhase = 'select_mode'" class="bg-orange-500 text-white hover:text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                <button @click="goBack" class="bg-orange-500 text-white hover:text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(249,115,22,0.4)]">
                     返回模式選擇 ➔
                 </button>
             </div>
@@ -215,6 +222,31 @@
             </transition>
 
         </div>
+
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" class="w-14 h-14 bg-gray-900/90 border-2 border-orange-500 rounded-full flex items-center justify-center hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(249,115,22,0.5)] hover:shadow-[0_0_25px_#f97316] relative overflow-hidden cursor-move" style="color: #f97316;">
+                <i class="fas fa-atom text-3xl absolute opacity-30 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
     </div>
 
     <script>
@@ -223,7 +255,7 @@
         const db = firebase.database();
         const auth = firebase.auth(); 
         
-        const { createApp, ref, computed, onMounted } = Vue;
+        const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
 
         createApp({
             setup() {
@@ -241,14 +273,91 @@
                 const correctCount = ref(0);
                 const isSaving = ref(false);
                 const startTime = ref(null);
+                const hasSubmittedScore = ref(false);
                 
                 const wrongQuestionsLog = ref([]); 
                 const reviewList = ref([]);        
 
-                // 🌟 新增：戰術提示開關
                 const showHint = ref(false);
 
-                // 🌟 新增：帶有螢光筆標記的題目生成器
+                // --- 🌟 空間躍傳引擎 ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
+                // --- 🌟 階層式無縫秒退邏輯 ---
+                const goBack = () => {
+                    if (currentPhase.value === 'quiz') {
+                        if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要離開嗎？')) {
+                            saveBattleLog(true); 
+                            currentPhase.value = 'select_mode';
+                            window.scrollTo(0,0);
+                        }
+                    } else if (currentPhase.value === 'result') {
+                        currentPhase.value = 'select_mode';
+                        window.scrollTo(0,0);
+                    } else {
+                        window.location.href = 'vocab.html';
+                    }
+                };
+
                 const displayQuestion = computed(() => {
                     let q = currentQuestion.value.question || '';
                     if (showHint.value && currentQuestion.value.hintKeywords) {
@@ -276,6 +385,17 @@
 
                 onMounted(() => {
                     auth.onAuthStateChanged(user => { if (user) currentUserUid.value = user.uid; });
+
+                    // 🌟 天眼機制：切換分頁直接判定撤退
+                    document.addEventListener("visibilitychange", () => {
+                        if (document.visibilityState === 'hidden' && currentPhase.value === 'quiz' && !hasSubmittedScore.value) {
+                            saveBattleLog(true);
+                        }
+                    });
+                });
+
+                onUnmounted(() => {
+                    if (currentPhase.value === 'quiz' && !hasSubmittedScore.value) { saveBattleLog(true); }
                 });
 
                 const startPractice = () => {
@@ -292,9 +412,11 @@
                     correctCount.value = 0;
                     wrongQuestionsLog.value = []; 
                     reviewList.value = [];
-                    showHint.value = false; // 確保開始時關閉提示
+                    showHint.value = false;
+                    hasSubmittedScore.value = false;
                     startTime.value = Date.now(); 
                     currentPhase.value = 'quiz';
+                    window.scrollTo(0,0);
                 };
 
                 const currentQuestion = computed(() => practiceQuestions.value[currentQIndex.value] || {});
@@ -321,7 +443,6 @@
                         
                         wrongQuestionsLog.value.push(`【第 ${currentQIndex.value + 1} 題】${qText}\n❌ 你的選擇：${userAns}\n✅ 正確答案：${rightAns}`);
                         
-                        // 🌟 寫入完整的檢討資料，包含考點與提示字
                         reviewList.value.push({
                             question: qText,
                             userChoice: userAns,
@@ -339,62 +460,48 @@
                         selectedOpt.value = null;
                         hasAnswered.value = false;
                         isCorrect.value = false;
-                        showHint.value = false; // 🌟 換題時關閉提示
+                        showHint.value = false; 
                     } else {
                         currentPhase.value = 'result';
+                        window.scrollTo(0,0);
                         saveBattleLog(false); 
                     }
                 };
 
+                // 🌟 改為無縫背景發射 (keepalive)
                 const saveBattleLog = (isAborted = false) => {
-                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return Promise.resolve();
-                    isSaving.value = true;
+                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value || hasSubmittedScore.value) return;
+                    hasSubmittedScore.value = true;
                     
-                    return new Promise((resolve) => {
-                        const durationMs = Date.now() - startTime.value;
-                        const totalSeconds = Math.floor(durationMs / 1000);
-                        const m = Math.floor(totalSeconds / 60);
-                        const s = totalSeconds % 60;
-                        
-                        let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
-                        
-                        const themeName = isAborted ? `🔥會考單字實戰 (撤退)` : `🔥會考單字實戰`;
-                        const totalQ = practiceQuestions.value.length;
-                        const answeredQ = isAborted ? (currentQIndex.value) : totalQ;
-                        
-                        let wrongStr = 'X';
-                        if (wrongQuestionsLog.value.length > 0) {
-                            wrongStr = wrongQuestionsLog.value.join('\n\n--------------------\n\n');
-                            if (wrongStr.length > 1500) wrongStr = wrongStr.substring(0, 1500) + '\n\n...(字數過多省略)';
-                        }
-                        
-                        const scoreDisplay = isAborted ? `${correctCount.value} (撤退)` : correctCount.value;
-
-                        const finalUrl = `${GOOGLE_API_URL}?action=add` +
-                                         `&name=${encodeURIComponent(playerName.value)}` +
-                                         `&theme=${encodeURIComponent(themeName)}` +
-                                         `&score=${encodeURIComponent(scoreDisplay)}` + 
-                                         `&total=${totalQ}` +
-                                         `&timeStr=${encodeURIComponent(timeStr)}` +
-                                         `&answered=${answeredQ}` +
-                                         `&wrongWords=${encodeURIComponent(wrongStr)}`;
-
-                        fetch(finalUrl, { mode: 'no-cors' })
-                            .then(() => { isSaving.value = false; resolve(); })
-                            .catch(err => { isSaving.value = false; resolve(); });
-                    });
-                };
-
-                const quitPractice = () => { 
-                    if (practiceQuestions.value.length > 0 && !isQuizDone.value) {
-                        if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要離開嗎？')) {
-                            saveBattleLog(true).then(() => {
-                                window.location.href = 'vocab.html';
-                            });
-                        }
-                    } else {
-                        window.location.href = 'vocab.html';
+                    const durationMs = Date.now() - startTime.value;
+                    const totalSeconds = Math.floor(durationMs / 1000);
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    
+                    let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                    
+                    const themeName = isAborted ? `🔥會考單字實戰 (撤退)` : `🔥會考單字實戰`;
+                    const totalQ = practiceQuestions.value.length;
+                    const answeredQ = isAborted ? (currentQIndex.value) : totalQ;
+                    
+                    let wrongStr = 'X';
+                    if (wrongQuestionsLog.value.length > 0) {
+                        wrongStr = wrongQuestionsLog.value.join('\n\n--------------------\n\n');
+                        if (wrongStr.length > 1500) wrongStr = wrongStr.substring(0, 1500) + '\n\n...(字數過多省略)';
                     }
+                    
+                    const scoreDisplay = isAborted ? `${correctCount.value} (撤退)` : correctCount.value;
+
+                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                     `&name=${encodeURIComponent(playerName.value)}` +
+                                     `&theme=${encodeURIComponent(themeName)}` +
+                                     `&score=${encodeURIComponent(scoreDisplay)}` + 
+                                     `&total=${totalQ}` +
+                                     `&timeStr=${encodeURIComponent(timeStr)}` +
+                                     `&answered=${answeredQ}` +
+                                     `&wrongWords=${encodeURIComponent(wrongStr)}`;
+
+                    fetch(finalUrl, { keepalive: true }).catch(e=>e);
                 };
 
                 const scoreColor = computed(() => {
@@ -409,11 +516,10 @@
                 return { 
                     playerName, practiceQuestions, currentQIndex, currentQuestion, 
                     selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, 
-                    scoreColor, selectOption, submitAnswer, nextQuestion, quitPractice, 
-                    isSaving, reviewList, formatText, startPractice,
-                    
-                    showHint, displayQuestion, // 🌟 匯出提示相關變數
-                    currentPhase, randomQuestionCount
+                    scoreColor, selectOption, submitAnswer, nextQuestion, 
+                    isSaving, reviewList, formatText, startPractice, hasSubmittedScore,
+                    showHint, displayQuestion, currentPhase, randomQuestionCount,
+                    goBack, showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');

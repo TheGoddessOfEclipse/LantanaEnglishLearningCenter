@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<meta name="google" content="notranslate">
-<meta name="robots" content="notranslate">
+<html lang="zh-TW" translate="no" class="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,12 +11,27 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="config.js"></script>
     <script src="exam_mixed_data.js"></script>
 
     <style>
-        body { background-color: #050b14; color: #e5e7eb; overflow-x: hidden; font-family: sans-serif; }
+        body { background-color: #030000; color: #e5e7eb; overflow-x: hidden; font-family: sans-serif; }
+        
+        /* 🏙️ Cyberpunk 發射台與戰火背景 */
+        .cyber-base-bg {
+            background-color: #050b14;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                radial-gradient(ellipse at 50% 100%, rgba(180, 40, 0, 0.15) 0%, rgba(20, 0, 30, 0.8) 60%, #050b14 100%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' preserveAspectRatio='none'%3E%3Cpath d='M0,100 L10,60 L15,60 L20,80 L35,30 L45,30 L50,80 L65,40 L70,40 L80,70 L95,20 L100,20 L100,100 Z' fill='%23080c14' stroke='%2300ffff' stroke-width='0.5' stroke-opacity='0.2'/%3E%3Cpath d='M0,100 L10,80 L25,90 L50,55 L70,85 L90,50 L100,85 L100,100 Z' fill='%2303050a' opacity='0.95'/%3E%3C/svg%3E");
+            background-size: 40px 40px, 40px 40px, 100% 100%, 100% 40%;
+            background-position: center top, center top, center bottom, center bottom;
+            background-repeat: repeat, repeat, no-repeat, no-repeat;
+        }
+
         .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(176, 38, 255, 0.05) 51%); background-size: 100% 4px; animation: scan 10s linear infinite; pointer-events: none; }
         @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
         
@@ -26,94 +40,251 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: #b026ff; }
-        body {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+        body { -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        input, textarea, select { -webkit-touch-callout: default; -webkit-user-select: auto; -moz-user-select: auto; -ms-user-select: auto; user-select: auto; }
+
+        /* ================= ✨ 發光矩陣 ================= */
+        .glow-cyan { animation: glowCyanAnim 0.8s ease-in-out infinite alternate !important; border-color: #0ff !important; z-index: 10 !important; }
+        @keyframes glowCyanAnim { 0% { box-shadow: 0 0 15px #0ff, inset 0 0 15px rgba(0,255,255,0.2); } 100% { box-shadow: 0 0 35px #0ff, inset 0 0 30px rgba(0,255,255,0.5); } }
         
-        input, textarea {
-            -webkit-touch-callout: default;
-            -webkit-user-select: auto;
-            -moz-user-select: auto;
-            -ms-user-select: auto;
-            user-select: auto;
-        }
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border-color: #0f0 !important; z-index: 10 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 15px #0f0, inset 0 0 15px rgba(0,255,0,0.2); } 100% { box-shadow: 0 0 35px #0f0, inset 0 0 30px rgba(0,255,0,0.5); } }
+
+        /* 飛彈推進器動畫 */
+        @keyframes thrust { 0% { transform: scaleY(1); opacity: 0.8; } 50% { transform: scaleY(1.3); opacity: 1; } 100% { transform: scaleY(0.9); opacity: 0.7; } }
+        .animate-thrust { transform-origin: top center; animation: thrust 0.1s infinite alternate; }
+
+        /* 損壞電線短路動畫 */
+        @keyframes sparkShort { 0%, 100% { opacity: 1; } 50% { opacity: 0; } 55% { opacity: 1; } 56% { opacity: 0; } 60% { opacity: 1; } }
+        .animate-short { animation: sparkShort 3s infinite; }
     </style>
 </head>
-<body class="min-h-screen relative p-4 md:p-8 flex flex-col">
+<body class="min-h-screen relative flex flex-col m-0 p-0 overflow-x-hidden">
+    
+    <div class="fixed inset-0 cyber-base-bg z-0 pointer-events-none"></div>
+    <canvas id="bgSparksCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
     <div class="fixed inset-0 scanline z-0"></div>
 
-    <div id="app" class="max-w-4xl mx-auto relative z-10 flex flex-col h-full w-full">
+    <div id="app" class="max-w-5xl mx-auto relative z-10 flex flex-col h-full w-full min-h-screen p-4 md:p-8">
         
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-purple-900/50 pb-4 gap-4">
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
+            <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-neon-red tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-neon-red text-white py-4 font-black tracking-widest transition shadow-[0_0_20px_#f00] text-lg">收到，長官！</button>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center w-full pb-2 border-b border-purple-900/50 relative z-50 mb-4 pointer-events-auto">
+            <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-neon-purple transition flex items-center gap-2 border border-gray-600 hover:border-neon-purple px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-sm active:scale-95">
+                Back <span class="text-lg leading-none">↩</span>
+            </button>
+            <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-gray-800">
+                <i class="fas fa-user-secret text-neon-purple"></i> 特工 // <span class="text-white">{{ playerName }}</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 pb-2 gap-4 z-20">
             <div>
                 <h1 class="text-3xl md:text-4xl font-black tracking-widest text-white drop-shadow-[0_0_10px_#b026ff]"><span class="text-neon-purple">🚀 </span>親臨戰場</h1>
-                <p class="text-xs text-purple-400 font-bold tracking-widest mt-1">>> MIXED COMBAT ZONE: ADVANCED SIMULATOR</p>
-            </div>
-            <button @click="quitPractice" :disabled="isSaving" class="border border-purple-800 text-purple-500 hover:text-white hover:bg-purple-900 px-6 py-2 font-bold tracking-widest transition text-sm bg-black/40 shadow-[0_0_15px_rgba(176,38,255,0.2)] disabled:opacity-50">
-                {{ isSaving ? '📡 發送戰報中...' : '返回基地 (Return) ✖' }}
-            </button>
-        </div>
-
-        <div v-if="currentPhase === 'select_mode'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6">
-            <div class="text-center border-b border-purple-800 pb-6 mb-2">
-                <span class="text-5xl mb-4 block drop-shadow-[0_0_15px_#b026ff]">🛰️</span>
-                <h2 class="text-2xl font-black text-purple-400 tracking-widest">請選擇戰術模擬模式</h2>
-            </div>
-
-            <div class="bg-black/60 border border-purple-600 p-6 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-[0_0_20px_rgba(176,38,255,0.3)] transition">
-                <div>
-                    <h3 class="text-xl font-black text-white tracking-widest flex items-center gap-2"><span class="text-neon-cyan">🎲</span> 隨機極限刷題</h3>
-                    <p class="text-sm text-gray-400 mt-1 font-bold">從綜合彈藥庫中隨機抽取指定數量的題目。</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <select v-model="randomQuestionCount" class="bg-gray-900 border border-purple-500 text-white font-bold p-3 outline-none focus:border-neon-cyan">
-                        <option :value="5">5 題 (暖身)</option>
-                        <option :value="10">10 題 (標準)</option>
-                        <option :value="20">20 題 (進階)</option>
-                        <option :value="50">50 題 (極限)</option>
-                    </select>
-                    <button @click="startRandomQuiz" class="bg-neon-cyan text-black hover:bg-white px-6 py-3 font-black tracking-widest transition shadow-[0_0_10px_rgba(0,255,255,0.4)] whitespace-nowrap">
-                        啟動 ➔
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-black/60 border border-purple-600 p-6 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-[0_0_20px_rgba(176,38,255,0.3)] transition">
-                <div>
-                    <h3 class="text-xl font-black text-white tracking-widest flex items-center gap-2"><span class="text-neon-green">📚</span> 歷屆會考全真模擬</h3>
-                    <p class="text-sm text-gray-400 mt-1 font-bold">選擇特定年份，照原卷順序進行完整模擬作答。</p>
-                </div>
-                <button @click="currentPhase = 'select_year'" class="bg-neon-green text-black hover:bg-white px-6 py-3 font-black tracking-widest transition shadow-[0_0_10px_rgba(0,255,0,0.4)] whitespace-nowrap w-full md:w-auto">
-                    選擇年份 ➔
-                </button>
+                <p class="text-xs text-purple-400 font-bold tracking-widest mt-1">>> MIXED COMBAT ZONE: WARHEAD ARMORY</p>
             </div>
         </div>
 
-        <div v-if="currentPhase === 'select_year'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6">
+        <div v-if="currentPhase === 'select_mode'" class="flex-1 w-full flex flex-col items-center justify-center fade-in relative py-6">
+
+            <div class="text-center z-10 mb-8 mt-2">
+                <span class="text-5xl md:text-6xl drop-shadow-[0_0_20px_#00ffff] block mb-3 animate-pulse">☢️</span>
+                <h2 class="text-2xl md:text-4xl font-black text-white tracking-widest drop-shadow-[0_0_15px_#b026ff] uppercase">戰術武器庫</h2>
+                <p class="text-xs md:text-sm text-cyan-400 font-bold tracking-widest mt-3 bg-cyan-950/40 border border-cyan-500/50 inline-block px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(0,255,255,0.3)] backdrop-blur-md">
+                    >> 選擇未爆彈進行實戰引爆 (SELECT WARHEAD) <<
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full max-w-4xl z-10">
+                
+                <div class="relative w-full max-w-[300px] mx-auto transition-all duration-300" :class="locks?.mixed_modes?.random ? 'opacity-80 grayscale-[0.5]' : 'group'">
+                    <div class="absolute inset-x-0 bottom-0 top-16 bg-gray-950 border-x-4 border-t-4 rounded-t-[50px] shadow-[inset_0_20px_50px_rgba(0,0,0,0.9)]"
+                         :class="[locks?.mixed_modes?.random ? 'border-gray-800' : 'border-cyan-500', highlights?.mixed_modes?.random && !locks?.mixed_modes?.random ? 'glow-cyan' : '']">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,255,0.15)_0%,transparent_60%)] transition-opacity duration-300 opacity-100 pointer-events-none"></div>
+                        <div class="absolute top-4 inset-x-0 text-center text-[10px] font-black tracking-widest" :class="locks?.mixed_modes?.random ? 'text-red-900 animate-pulse' : 'text-cyan-400'">
+                            SILO ALPHA - {{ locks?.mixed_modes?.random ? 'OFFLINE' : 'ACTIVE' }}
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex justify-center h-[260px] md:h-[300px] pointer-events-none transition-transform duration-700 ease-out" :class="!locks?.mixed_modes?.random ? 'group-hover:-translate-y-8' : ''">
+                        
+                        <svg v-if="!locks?.mixed_modes?.random" viewBox="0 0 100 350" class="w-32 md:w-36 h-full drop-shadow-[0_15px_25px_rgba(0,255,255,0.3)]">
+                            <defs>
+                                <linearGradient id="missileGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2a303c" /><stop offset="50%" stop-color="#6b7280" /><stop offset="100%" stop-color="#1f2937" />
+                                </linearGradient>
+                            </defs>
+                            <g class="animate-thrust opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                                <path d="M35,300 Q50,380 65,300 Z" fill="#00ffff" /><path d="M42,300 Q50,350 58,300 Z" fill="#ffffff" />
+                            </g>
+                            <path d="M15,260 L35,220 L35,300 L15,300 Z" fill="#1f2937" stroke="#111"/><path d="M85,260 L65,220 L65,300 L85,300 Z" fill="#1f2937" stroke="#111"/>
+                            <path d="M50,220 L55,300 L45,300 Z" fill="#111827" />
+                            <rect x="35" y="80" width="30" height="220" fill="url(#missileGrad1)" stroke="#111"/>
+                            <rect x="35" y="110" width="30" height="15" fill="#0ff" opacity="0.8" /><rect x="35" y="135" width="30" height="4" fill="#0ff" opacity="0.4" />
+                            <path d="M35,80 Q50,-10 65,80 Z" fill="url(#missileGrad1)" stroke="#111"/>
+                            <path d="M47,20 Q50,0 53,20 Z" fill="#0ff" class="animate-ping" opacity="0.8"/>
+                            <text x="50" y="180" fill="#111" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle" transform="rotate(90 50 180)">RANDOM</text>
+                            <text x="50" y="240" fill="#0ff" font-size="24" text-anchor="middle" opacity="0.8">🎲</text>
+                        </svg>
+
+                        <svg v-else viewBox="0 0 100 350" class="w-32 md:w-36 h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
+                            <defs>
+                                <linearGradient id="missileGradRust1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#3b2f2f" /><stop offset="50%" stop-color="#5c4033" /><stop offset="100%" stop-color="#2a1f1f" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M20,260 L35,220 L35,290 L25,300 Z" fill="#2a1f1f" stroke="#111"/>
+                            <path d="M85,260 L65,220 L65,270 L80,280 Z" fill="#2a1f1f" stroke="#111"/>
+                            <path d="M35,80 L65,80 L65,150 L55,160 L65,180 L65,300 L35,300 L35,170 L45,155 L35,140 Z" fill="url(#missileGradRust1)" stroke="#111"/>
+                            <path d="M35,150 Q45,160 55,150 T65,160" stroke="#ff003c" stroke-width="2" fill="none" class="animate-short"/>
+                            <path d="M35,160 Q45,170 50,150 T65,170" stroke="#ffea00" stroke-width="1.5" fill="none" />
+                            <rect x="35" y="110" width="15" height="15" fill="#4a5568" opacity="0.5" />
+                            <path d="M35,80 Q50,40 60,60 L65,80 Z" fill="url(#missileGradRust1)" stroke="#111"/>
+                            <text x="50" y="240" fill="#ff003c" font-size="24" text-anchor="middle" opacity="0.4">⚠</text>
+                        </svg>
+                    </div>
+
+                    <div v-if="locks?.mixed_modes?.random" class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[6deg] bg-[#1a0505]/95 border-l-8 border border-red-600 text-red-500 font-black px-6 py-3 text-lg md:text-xl tracking-widest z-50 whitespace-nowrap shadow-[0_0_30px_rgba(255,0,60,0.8)] backdrop-blur-md">
+                        ✖ 武器損壞 / 權限封鎖
+                    </div>
+
+                    <div class="relative z-20 w-[106%] -ml-[3%] bg-[#050b14]/95 backdrop-blur-md p-4 rounded-xl shadow-[0_-10px_30px_rgba(0,0,0,0.9)] mt-[-40px] md:mt-[-50px] h-[200px] flex flex-col justify-between"
+                         :class="locks?.mixed_modes?.random ? 'border-2 border-gray-800 pointer-events-none' : 'border-2 border-cyan-400'">
+                        <div class="absolute top-0 right-0 text-[9px] px-2 py-0.5 font-black tracking-widest rounded-bl"
+                             :class="locks?.mixed_modes?.random ? 'bg-gray-800 text-gray-500' : 'bg-cyan-600 text-black'">
+                             WARHEAD-1
+                        </div>
+                        <div class="text-center mt-2">
+                            <h3 class="text-lg md:text-xl font-black tracking-widest" :class="locks?.mixed_modes?.random ? 'text-gray-500' : 'text-neon-cyan'">隨機極限刷題</h3>
+                            <p class="text-[11px] md:text-xs font-bold mt-1" :class="locks?.mixed_modes?.random ? 'text-red-900 leading-relaxed' : 'text-cyan-600'">
+                                <span v-if="locks?.mixed_modes?.random">SYSTEM ERROR<br>CONNECTION LOST</span>
+                                <span v-else>隨機抽取綜合彈藥庫</span>
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-2 w-full mt-auto">
+                            <template v-if="!locks?.mixed_modes?.random">
+                                <select v-model="randomQuestionCount" class="w-full bg-black/80 border border-cyan-500 text-cyan-200 font-black tracking-widest p-1.5 text-center text-sm outline-none focus:border-neon-cyan rounded-lg transition">
+                                    <option :value="5">5 發 (暖身試射)</option>
+                                    <option :value="10">10 發 (標準打擊)</option>
+                                    <option :value="20">20 發 (進階轟炸)</option>
+                                    <option :value="50">50 發 (極限毀滅)</option>
+                                </select>
+                                <button @click="startRandomQuiz" class="w-full bg-cyan-700 hover:bg-neon-cyan text-white hover:text-black py-2.5 font-black tracking-widest transition rounded-lg shadow-[0_0_15px_rgba(0,255,255,0.5)] active:scale-95 text-sm md:text-base">
+                                    啟動引爆 ➔
+                                </button>
+                            </template>
+                            <template v-else>
+                                <button disabled class="w-full bg-gray-900 border border-gray-800 text-gray-600 py-2.5 font-black tracking-widest rounded-lg text-sm">引爆裝置失效</button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative w-full max-w-[300px] mx-auto transition-all duration-300" :class="locks?.mixed_modes?.year ? 'opacity-80 grayscale-[0.5]' : 'group'">
+                    <div class="absolute inset-x-0 bottom-0 top-16 bg-gray-950 border-x-4 border-t-4 rounded-t-[50px] shadow-[inset_0_20px_50px_rgba(0,0,0,0.9)]"
+                         :class="[locks?.mixed_modes?.year ? 'border-gray-800' : 'border-green-500', highlights?.mixed_modes?.year && !locks?.mixed_modes?.year ? 'glow-green' : '']">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.15)_0%,transparent_60%)] transition-opacity duration-300 pointer-events-none" :class="highlights?.mixed_modes?.year ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'"></div>
+                        <div class="absolute top-4 inset-x-0 text-center text-[10px] font-black tracking-widest" :class="locks?.mixed_modes?.year ? 'text-red-900 animate-pulse' : 'text-green-500/30'">
+                            SILO BRAVO - {{ locks?.mixed_modes?.year ? 'OFFLINE' : 'ACTIVE' }}
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex justify-center h-[260px] md:h-[300px] pointer-events-none transition-transform duration-700 ease-out" :class="!locks?.mixed_modes?.year ? 'group-hover:-translate-y-8' : ''">
+                        
+                        <svg v-if="!locks?.mixed_modes?.year" viewBox="0 0 100 350" class="w-32 md:w-36 h-full drop-shadow-[0_15px_25px_rgba(0,255,0,0.3)]">
+                            <defs>
+                                <linearGradient id="missileGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2a303c" /><stop offset="50%" stop-color="#6b7280" /><stop offset="100%" stop-color="#1f2937" />
+                                </linearGradient>
+                            </defs>
+                            <g class="animate-thrust opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                                <path d="M35,300 Q50,380 65,300 Z" fill="#00ff00" /><path d="M42,300 Q50,350 58,300 Z" fill="#ffffff" />
+                            </g>
+                            <path d="M15,260 L35,220 L35,300 L15,300 Z" fill="#1f2937" stroke="#111"/><path d="M85,260 L65,220 L65,300 L85,300 Z" fill="#1f2937" stroke="#111"/>
+                            <path d="M50,220 L55,300 L45,300 Z" fill="#111827" />
+                            <rect x="35" y="80" width="30" height="220" fill="url(#missileGrad2)" stroke="#111"/>
+                            <rect x="35" y="110" width="30" height="15" fill="#0f0" opacity="0.8" /><rect x="35" y="135" width="30" height="4" fill="#0f0" opacity="0.4" />
+                            <path d="M35,80 Q50,-10 65,80 Z" fill="url(#missileGrad2)" stroke="#111"/>
+                            <path d="M47,20 Q50,0 53,20 Z" fill="#0f0" class="animate-ping" opacity="0.8"/>
+                            <text x="50" y="180" fill="#111" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle" transform="rotate(90 50 180)">HISTORY</text>
+                            <text x="50" y="240" fill="#0f0" font-size="24" text-anchor="middle" opacity="0.8">📚</text>
+                        </svg>
+
+                        <svg v-else viewBox="0 0 100 350" class="w-32 md:w-36 h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
+                            <defs>
+                                <linearGradient id="missileGradRust2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#3b2f2f" /><stop offset="50%" stop-color="#5c4033" /><stop offset="100%" stop-color="#2a1f1f" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M20,260 L35,220 L35,290 L25,300 Z" fill="#2a1f1f" stroke="#111"/>
+                            <path d="M85,260 L65,220 L65,270 L80,280 Z" fill="#2a1f1f" stroke="#111"/>
+                            <path d="M35,80 L65,80 L65,150 L55,160 L65,180 L65,300 L35,300 L35,170 L45,155 L35,140 Z" fill="url(#missileGradRust2)" stroke="#111"/>
+                            <path d="M35,150 Q45,160 55,150 T65,160" stroke="#ff003c" stroke-width="2" fill="none" class="animate-short"/>
+                            <path d="M35,160 Q45,170 50,150 T65,170" stroke="#ffea00" stroke-width="1.5" fill="none" />
+                            <rect x="35" y="110" width="15" height="15" fill="#4a5568" opacity="0.5" />
+                            <path d="M35,80 Q50,40 60,60 L65,80 Z" fill="url(#missileGradRust2)" stroke="#111"/>
+                            <text x="50" y="240" fill="#ff003c" font-size="24" text-anchor="middle" opacity="0.4">⚠</text>
+                        </svg>
+                    </div>
+
+                    <div v-if="locks?.mixed_modes?.year" class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[6deg] bg-[#1a0505]/95 border-l-8 border border-red-600 text-red-500 font-black px-6 py-3 text-lg md:text-xl tracking-widest z-50 whitespace-nowrap shadow-[0_0_30px_rgba(255,0,60,0.8)] backdrop-blur-md">
+                        ✖ 武器損壞 / 權限封鎖
+                    </div>
+
+                    <div class="relative z-20 w-[106%] -ml-[3%] bg-[#050b14]/95 backdrop-blur-md p-4 rounded-xl shadow-[0_-10px_30px_rgba(0,0,0,0.9)] mt-[-40px] md:mt-[-50px] h-[200px] flex flex-col justify-between"
+                         :class="locks?.mixed_modes?.year ? 'border-2 border-gray-800 pointer-events-none' : 'border-2 border-green-500'">
+                        <div class="absolute top-0 right-0 text-[9px] px-2 py-0.5 font-black tracking-widest rounded-bl"
+                             :class="locks?.mixed_modes?.year ? 'bg-gray-800 text-gray-500' : 'bg-green-700 text-black'">
+                             WARHEAD-2
+                        </div>
+                        <div class="text-center mt-2 mb-4">
+                            <h3 class="text-lg md:text-xl font-black tracking-widest" :class="locks?.mixed_modes?.year ? 'text-gray-500' : 'text-neon-green'">歷屆會考全真模擬</h3>
+                            <p class="text-[11px] md:text-xs font-bold mt-1 leading-relaxed" :class="locks?.mixed_modes?.year ? 'text-red-900' : 'text-green-600'">
+                                <span v-if="locks?.mixed_modes?.year">SYSTEM ERROR<br>CONNECTION LOST</span>
+                                <span v-else>選擇特定年份<br>照原卷順序完整打擊</span>
+                            </p>
+                        </div>
+                        <template v-if="!locks?.mixed_modes?.year">
+                            <button @click="currentPhase = 'select_year'" class="w-full mt-auto bg-green-700 hover:bg-neon-green text-white hover:text-black py-2.5 font-black tracking-widest transition rounded-lg shadow-[0_0_15px_rgba(0,255,0,0.3)] active:scale-95 text-sm md:text-base">
+                                選擇年份引爆 ➔
+                            </button>
+                        </template>
+                        <template v-else>
+                            <button disabled class="w-full mt-auto bg-gray-900 border border-gray-800 text-gray-600 py-2.5 font-black tracking-widest rounded-lg text-sm">引爆裝置失效</button>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div v-if="currentPhase === 'select_year'" class="cyber-panel p-8 md:p-12 m-auto w-full fade-in flex flex-col gap-6 bg-black/80">
             <div class="flex justify-between items-center border-b border-green-800 pb-4 mb-4">
                 <h2 class="text-2xl font-black text-neon-green tracking-widest flex items-center gap-2">
                     <span class="text-3xl">📚</span> 選擇模擬年份
                 </h2>
-                <button @click="currentPhase = 'select_mode'" class="text-gray-400 hover:text-white text-sm font-bold tracking-widest border border-gray-600 px-4 py-2 bg-gray-900">
-                    返回上一頁
-                </button>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <button v-for="year in availableYears" :key="year" @click="startYearQuiz(year)" 
-                        class="bg-black/50 border-2 border-green-800 text-green-400 hover:bg-neon-green hover:text-black py-4 font-black text-xl tracking-widest transition shadow-[0_0_10px_rgba(0,255,0,0.1)] hover:shadow-[0_0_20px_rgba(0,255,0,0.6)]">
+                        class="bg-black/50 border-2 border-green-800 text-green-400 hover:bg-neon-green hover:text-black py-4 font-black text-xl tracking-widest transition shadow-[0_0_10px_rgba(0,255,0,0.1)] hover:shadow-[0_0_20px_rgba(0,255,0,0.6)] rounded-lg active:scale-95">
                     {{ year }} 年
                 </button>
             </div>
         </div>
 
-        <div v-if="currentPhase === 'result'" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full fade-in">
-            <span class="text-6xl mb-4 block">🏆</span>
+        <div v-if="currentPhase === 'result'" class="cyber-panel p-6 md:p-12 text-center border-neon-yellow shadow-[0_0_30px_rgba(255,255,0,0.2)] m-auto w-full fade-in bg-black/90 z-20 relative">
+            <span class="text-6xl mb-4 block drop-shadow-[0_0_15px_#ffff00]">🏆</span>
             <h2 class="text-3xl font-black text-white mb-2 tracking-widest">演習結束報告</h2>
-            <p v-if="isSaving" class="text-purple-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
+            <p v-if="!hasSubmittedScore" class="text-purple-500 font-bold mb-4 animate-pulse">📡 正在發送戰報至神聖殿堂...</p>
             <p v-else class="text-gray-400 font-bold tracking-widest mb-4 border-b border-gray-700 pb-4">特工 {{ playerName }}，您的實戰數據如下：</p>
             
             <div class="text-8xl font-black mb-2" :class="scoreColor">
@@ -124,8 +295,8 @@
             </p>
 
             <div class="flex gap-4 justify-center mb-8">
-                <button @click="currentPhase = 'select_mode'" class="bg-purple-500 text-white hover:text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(176,38,255,0.4)]">
-                    返回模式選擇 ➔
+                <button @click="goBack" class="bg-purple-500 text-white hover:text-black py-3 px-8 font-black tracking-widest hover:bg-white transition shadow-[0_0_15px_rgba(176,38,255,0.4)] rounded-lg active:scale-95">
+                    返回武器庫 ➔
                 </button>
             </div>
 
@@ -134,35 +305,35 @@
                     <span>🔍</span> 錯題深度解析 (Review)
                 </h3>
                 <div class="space-y-4">
-                    <div v-for="(q, idx) in reviewList" :key="idx" class="bg-gray-900 border border-gray-700 p-5 rounded relative">
-                        <div class="text-[10px] text-purple-400 font-bold mb-2 tracking-widest border border-purple-800 inline-block px-2 py-0.5 bg-purple-900/30">
+                    <div v-for="(q, idx) in reviewList" :key="idx" class="bg-gray-900/80 border border-gray-700 p-5 rounded-xl relative shadow-inner">
+                        <div class="text-[10px] text-purple-400 font-bold mb-2 tracking-widest border border-purple-800 inline-block px-2 py-0.5 bg-purple-900/30 rounded">
                             考點：{{ q.points ? q.points.join(', ') : '綜合測驗' }}
                         </div>
-                        <div class="text-gray-300 font-bold mb-3 leading-relaxed tracking-wide">
+                        <div class="text-gray-200 font-bold mb-3 leading-relaxed tracking-wide text-lg">
                             <span class="text-neon-red font-black mr-2">Q:</span>{{ q.question }}
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-                            <div class="bg-red-950/30 border border-red-900/50 p-3 rounded">
+                            <div class="bg-red-950/30 border border-red-900/50 p-3 rounded-lg">
                                 <span class="text-xs text-gray-500 block mb-1">❌ 你的選擇</span>
                                 <span class="text-red-400 font-bold">{{ q.userChoice }}</span>
                             </div>
-                            <div class="bg-green-950/30 border border-green-900/50 p-3 rounded">
+                            <div class="bg-green-950/30 border border-green-900/50 p-3 rounded-lg">
                                 <span class="text-xs text-gray-500 block mb-1">✅ 正確解答</span>
                                 <span class="text-green-400 font-bold">{{ q.correctChoice }}</span>
                             </div>
                         </div>
-                        <div v-if="q.explanation" class="bg-blue-950/20 border-l-2 border-blue-500 p-3 mt-2">
+                        <div v-if="q.explanation" class="bg-blue-950/20 border-l-2 border-blue-500 p-3 mt-2 rounded-lg">
                             <span class="text-xs text-blue-400 font-black block mb-1 tracking-widest">💡 解析說明</span>
-                            <p class="text-sm text-gray-300 font-bold" v-html="formatText(q.explanation)"></p>
+                            <p class="text-sm text-gray-300 font-bold leading-relaxed" v-html="formatText(q.explanation)"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div v-if="currentPhase === 'quiz'" class="flex flex-col h-full gap-4 fade-in">
+        <div v-if="currentPhase === 'quiz'" class="flex flex-col h-full gap-4 fade-in bg-black/50 p-4 rounded-2xl backdrop-blur-sm z-20 relative flex-1">
             
-            <div class="flex items-center justify-between bg-black/60 p-4 border border-purple-900/50 relative overflow-hidden">
+            <div class="flex items-center justify-between bg-black/80 p-4 border border-purple-900/50 relative overflow-hidden rounded-xl shadow-md">
                 <div class="flex items-center gap-3 relative z-10">
                     <span class="text-2xl drop-shadow-[0_0_8px_#b026ff]">🎯</span>
                     <div>
@@ -178,7 +349,7 @@
                 </div>
             </div>
 
-            <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4 border-t-purple-500 relative">
+            <div class="cyber-panel p-6 md:p-10 flex-1 flex flex-col justify-center border-t-4 border-t-purple-500 relative bg-black/80 shadow-2xl rounded-xl">
                 <div class="flex justify-between items-start mb-6">
                     <div class="flex flex-col gap-2">
                         <div class="text-[10px] text-gray-500 font-bold tracking-widest flex items-center gap-2">
@@ -188,13 +359,13 @@
                         
                         <div v-if="currentQuestion.points && currentQuestion.points.length > 0" class="flex flex-wrap gap-2">
                             <span v-for="(pt, idx) in currentQuestion.points" :key="idx" 
-                                  class="text-[10px] md:text-xs text-neon-cyan border border-cyan-700 bg-cyan-900/40 px-2 py-1 font-black tracking-widest shadow-[0_0_8px_rgba(0,255,255,0.2)]">
+                                  class="text-[10px] md:text-xs text-neon-cyan border border-cyan-700 bg-cyan-900/40 px-2 py-1 font-black tracking-widest shadow-[0_0_8px_rgba(0,255,255,0.2)] rounded">
                                 🎯 考點：{{ pt }}
                             </span>
                         </div>
                     </div>
                     
-                    <button @click="showHint = true" :disabled="showHint || !currentQuestion.hintKeywords" class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-3 py-1.5 font-bold tracking-widest hover:bg-neon-yellow hover:text-black transition shadow-[0_0_10px_rgba(255,255,0,0.2)] disabled:opacity-30 disabled:cursor-not-allowed">
+                    <button @click="showHint = true" :disabled="showHint || !currentQuestion.hintKeywords" class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-3 py-1.5 font-bold tracking-widest hover:bg-neon-yellow hover:text-black transition shadow-[0_0_10px_rgba(255,255,0,0.2)] disabled:opacity-30 disabled:cursor-not-allowed rounded">
                         {{ currentQuestion.hintKeywords ? '💡 戰術掃描 (Hint)' : '🚫 無掃描資料' }}
                     </button>
                 </div>
@@ -206,13 +377,13 @@
                 <button v-for="(opt, idx) in currentQuestion.options" :key="idx"
                         @click="selectOption(opt)"
                         :disabled="hasAnswered"
-                        class="text-left p-5 border-2 text-gray-300 font-bold tracking-wide text-lg flex items-center gap-4 relative overflow-hidden transition-all duration-200"
+                        class="text-left p-5 border-2 text-gray-300 font-bold tracking-wide text-lg flex items-center gap-4 relative overflow-hidden transition-all duration-200 rounded-xl shadow-md"
                         :class="{
-                            'border-gray-700 bg-black/60 hover:border-purple-500 hover:bg-purple-900/30 hover:pl-8': selectedOpt !== opt && !hasAnswered,
+                            'border-gray-700 bg-gray-900/80 hover:border-purple-500 hover:bg-purple-900/30 hover:pl-8': selectedOpt !== opt && !hasAnswered,
                             'border-purple-400 bg-purple-900/50 pl-8 shadow-[0_0_15px_rgba(176,38,255,0.4)] text-white': selectedOpt === opt && !hasAnswered,
                             'border-green-500 bg-green-900/50 pl-8 shadow-[0_0_15px_rgba(0,255,0,0.4)] text-white': hasAnswered && opt === currentQuestion.answer,
                             'border-red-500 bg-red-900/50 pl-8 shadow-[0_0_15px_rgba(255,0,60,0.4)] text-white opacity-80': hasAnswered && selectedOpt === opt && opt !== currentQuestion.answer,
-                            'border-gray-800 bg-black/40 opacity-40 cursor-not-allowed': hasAnswered && opt !== currentQuestion.answer && selectedOpt !== opt
+                            'border-gray-800 bg-black/60 opacity-40 cursor-not-allowed': hasAnswered && opt !== currentQuestion.answer && selectedOpt !== opt
                         }">
                     
                     <span class="text-sm font-black font-mono w-6" :class="selectedOpt === opt || hasAnswered ? 'text-white' : 'text-gray-600'">{{ ['A','B','C','D'][idx] }}</span>
@@ -224,7 +395,7 @@
             </div>
 
             <transition name="fade">
-                <div v-if="hasAnswered" class="mt-4 p-6 border bg-black/80 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6"
+                <div v-if="hasAnswered" class="mt-4 p-6 border bg-black/90 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6 rounded-xl"
                      :class="isCorrect ? 'border-neon-green' : 'border-neon-red'">
                     
                     <div class="flex-1">
@@ -234,7 +405,7 @@
                         <p class="text-sm text-gray-300 leading-relaxed font-bold tracking-wide" v-html="formatText(currentQuestion.explanation)"></p>
                     </div>
 
-                    <button @click="nextQuestion" class="w-full md:w-auto px-10 py-4 font-black tracking-widest transition text-black bg-white hover:bg-gray-300 shadow-[0_0_15px_rgba(255,255,255,0.5)] whitespace-nowrap">
+                    <button @click="nextQuestion" class="w-full md:w-auto px-10 py-4 font-black tracking-widest transition text-black bg-white hover:bg-gray-300 shadow-[0_0_15px_rgba(255,255,255,0.5)] whitespace-nowrap rounded-lg active:scale-95">
                         {{ currentQIndex === practiceQuestions.length - 1 ? '查看結算報告 ➔' : '下一題 (NEXT) ➔' }}
                     </button>
                 </div>
@@ -242,13 +413,39 @@
 
             <transition name="fade">
                 <div v-if="selectedOpt && !hasAnswered" class="mt-4 text-right">
-                    <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-white border-2 border-purple-500 bg-purple-600 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(176,38,255,0.5)]">
+                    <button @click="submitAnswer" class="px-12 py-4 font-black tracking-widest transition text-white border-2 border-purple-500 bg-purple-600 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(176,38,255,0.5)] rounded-lg active:scale-95">
                         確認送出 (SUBMIT)
                     </button>
                 </div>
             </transition>
 
         </div>
+
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300 pointer-events-auto"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" class="w-14 h-14 bg-gray-900/90 border-2 border-purple-500 rounded-full flex items-center justify-center hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(176,38,255,0.4)] hover:shadow-[0_0_25px_#b026ff] relative overflow-hidden cursor-move text-purple-400" style="color: #b026ff;">
+                <i class="fas fa-atom text-3xl absolute opacity-30 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
+
     </div>
 
     <script>
@@ -257,19 +454,7 @@
         const db = firebase.database();
         const auth = firebase.auth(); 
         
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('copy', event => event.preventDefault());
-        document.addEventListener('paste', event => event.preventDefault());
-        document.addEventListener('keydown', event => {
-            if (event.key === 'F12' || 
-               (event.ctrlKey && event.shiftKey && event.key === 'I') || 
-               (event.ctrlKey && event.key === 'u') || 
-               (event.ctrlKey && event.key === 'U')) {
-                event.preventDefault();
-            }
-        });
-
-        const { createApp, ref, computed, onMounted } = Vue;
+        const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
 
         createApp({
             setup() {
@@ -280,18 +465,24 @@
                 const randomQuestionCount = ref(10);
                 const quizTitle = ref('');
 
+                const highlights = ref({ mixed_modes: {} });
+                const locks = ref({ mixed_modes: {} });
+
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
+
                 const practiceQuestions = ref([]);
                 const currentQIndex = ref(0);
                 const selectedOpt = ref(null);
                 const hasAnswered = ref(false);
                 const isCorrect = ref(false);
                 const correctCount = ref(0);
-                const isSaving = ref(false);
+                const hasSubmittedScore = ref(false); 
                 const startTime = ref(null);
                 
                 const wrongQuestionsLog = ref([]); 
                 const reviewList = ref([]);        
-                const userAnswers = ref({}); 
 
                 const availableYears = computed(() => {
                     if (typeof window.EXAM_MIXED_QUESTIONS === 'undefined') return [];
@@ -300,6 +491,69 @@
                 });
 
                 const showHint = ref(false); 
+
+                // --- 🌟 空間躍傳引擎 ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
 
                 const displayQuestion = computed(() => {
                     let q = currentQuestion.value.question || '';
@@ -331,8 +585,87 @@
                     return `${d.getMonth()+1}/${d.getDate()} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
                 };
 
+                const startBgSparks = () => {
+                    const canvas = document.getElementById('bgSparksCanvas');
+                    if (!canvas) return;
+                    const ctx = canvas.getContext('2d', { alpha: true }); 
+                    let width = canvas.width = window.innerWidth;
+                    let height = canvas.height = window.innerHeight;
+
+                    window.addEventListener('resize', () => {
+                        width = canvas.width = window.innerWidth;
+                        height = canvas.height = window.innerHeight;
+                    });
+
+                    const particles = [];
+                    for (let i = 0; i < 40; i++) {
+                        particles.push({
+                            x: Math.random() * width,
+                            y: height + Math.random() * 100,
+                            size: Math.random() * 2.5 + 0.5,
+                            speedY: Math.random() * 2 + 1,
+                            speedX: (Math.random() - 0.5) * 1.5,
+                            opacity: Math.random(),
+                            life: Math.random() * 100
+                        });
+                    }
+
+                    const animate = () => {
+                        if (!document.getElementById('bgSparksCanvas')) return;
+                        ctx.clearRect(0, 0, width, height);
+                        
+                        particles.forEach(p => {
+                            p.y -= p.speedY;
+                            p.x += p.speedX + Math.sin(p.y / 30) * 0.5;
+                            p.life -= 1;
+
+                            if (p.life <= 0 || p.y < 0) {
+                                p.y = height + 10;
+                                p.x = Math.random() * width;
+                                p.life = 50 + Math.random() * 50;
+                                p.opacity = Math.random() * 0.8 + 0.2;
+                            }
+
+                            ctx.globalAlpha = Math.max(0, (p.life / 100) * p.opacity);
+                            ctx.fillStyle = p.size > 1.5 ? '#ff9900' : '#ff3300';
+                            
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                            ctx.fill();
+                        });
+                        requestAnimationFrame(animate);
+                    };
+                    animate();
+                };
+
                 onMounted(() => {
                     auth.onAuthStateChanged(user => { if (user) currentUserUid.value = user.uid; });
+                    startBgSparks();
+
+                    db.ref('app_state/system_settings').on('value', snap => {
+                        if (snap.exists()) {
+                            const data = snap.val();
+                            if (data.highlights) highlights.value = data.highlights;
+                            if (data.locks) locks.value = data.locks;
+                        }
+                    });
+
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
+
+                    // 🌟 天眼機制：切換分頁直接判定撤退
+                    document.addEventListener("visibilitychange", () => {
+                        if (document.visibilityState === 'hidden' && currentPhase.value === 'quiz' && !isQuizDone.value && !hasSubmittedScore.value) {
+                            saveBattleLog(true);
+                            currentPhase.value = 'select_mode';
+                        }
+                    });
                 });
 
                 const initQuizState = (title) => {
@@ -342,15 +675,17 @@
                     hasAnswered.value = false;
                     isCorrect.value = false;
                     correctCount.value = 0;
-                    userAnswers.value = {}; 
                     wrongQuestionsLog.value = []; 
                     reviewList.value = [];
                     startTime.value = Date.now(); 
                     showHint.value = false; 
+                    hasSubmittedScore.value = false;
                     currentPhase.value = 'quiz';
+                    window.scrollTo(0,0);
                 };
 
                 const startRandomQuiz = () => {
+                    if (locks.value?.mixed_modes?.random) return;
                     if (typeof window.EXAM_MIXED_QUESTIONS === 'undefined' || window.EXAM_MIXED_QUESTIONS.length === 0) {
                         alert("尚未建立綜合題庫！"); return;
                     }
@@ -360,6 +695,7 @@
                 };
 
                 const startYearQuiz = (year) => {
+                    if (locks.value?.mixed_modes?.year) return;
                     const db = window.EXAM_MIXED_QUESTIONS.filter(q => q.year === year);
                     if (db.length === 0) { alert(`找不到 ${year} 年的題目！`); return; }
                     practiceQuestions.value = [...db]; 
@@ -378,8 +714,6 @@
                     hasAnswered.value = true;
                     isCorrect.value = (selectedOpt.value === currentQuestion.value.answer);
                     
-                    userAnswers.value[currentQIndex.value] = isCorrect.value;
-
                     if (isCorrect.value) correctCount.value++;
                     else {
                         const selectedIdx = currentQuestion.value.options.indexOf(selectedOpt.value);
@@ -411,58 +745,74 @@
                         showHint.value = false; 
                     } else {
                         currentPhase.value = 'result';
-                        saveBattleLog(false); 
+                        saveBattleLog(false);
+                        window.scrollTo(0,0);
                     }
                 };
 
+                // 🌟 改為無縫背景發射 (keepalive: true)
                 const saveBattleLog = (isAborted = false) => {
-                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value) return Promise.resolve();
-                    isSaving.value = true;
+                    if (typeof GOOGLE_API_URL === 'undefined' || !startTime.value || hasSubmittedScore.value) return;
+                    hasSubmittedScore.value = true;
                     
-                    return new Promise((resolve) => {
-                        const durationMs = Date.now() - startTime.value;
-                        const totalSeconds = Math.floor(durationMs / 1000);
-                        const m = Math.floor(totalSeconds / 60);
-                        const s = totalSeconds % 60;
-                        
-                        let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
-                        
-                        const themeName = isAborted ? `🚀親臨戰場 [${quizTitle.value}] (撤退)` : `🚀親臨戰場 [${quizTitle.value}]`;
-                        const totalQ = practiceQuestions.value.length;
-                        const answeredQ = isAborted ? (currentQIndex.value) : totalQ;
-                        
-                        let wrongStr = 'X';
-                        if (wrongQuestionsLog.value.length > 0) {
-                            wrongStr = wrongQuestionsLog.value.join('\n\n--------------------\n\n');
-                            if (wrongStr.length > 1500) wrongStr = wrongStr.substring(0, 1500) + '\n\n...(字數過多省略)';
-                        }
-                        
-                        const scoreDisplay = isAborted ? `${correctCount.value} (撤退)` : correctCount.value;
+                    const durationMs = Date.now() - startTime.value;
+                    const totalSeconds = Math.floor(durationMs / 1000);
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    
+                    let timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+                    
+                    const themeName = isAborted ? `🚀親臨戰場 [${quizTitle.value}] (撤退)` : `🚀親臨戰場 [${quizTitle.value}]`;
+                    const totalQ = practiceQuestions.value.length;
+                    const answeredQ = isAborted ? (currentQIndex.value) : totalQ;
+                    
+                    let wrongStr = 'X';
+                    if (wrongQuestionsLog.value.length > 0) {
+                        wrongStr = wrongQuestionsLog.value.join('\n\n--------------------\n\n');
+                        if (wrongStr.length > 1500) wrongStr = wrongStr.substring(0, 1500) + '\n\n...(字數過多省略)';
+                    }
+                    
+                    const scoreDisplay = isAborted ? `${correctCount.value} (撤退)` : correctCount.value;
 
-                        const finalUrl = `${GOOGLE_API_URL}?action=add` +
-                                         `&name=${encodeURIComponent(playerName.value)}` +
-                                         `&theme=${encodeURIComponent(themeName)}` +
-                                         `&score=${encodeURIComponent(scoreDisplay)}` + 
-                                         `&total=${totalQ}` +
-                                         `&timeStr=${encodeURIComponent(timeStr)}` +
-                                         `&answered=${answeredQ}` +
-                                         `&wrongWords=${encodeURIComponent(wrongStr)}`;
+                    const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                     `&name=${encodeURIComponent(playerName.value)}` +
+                                     `&theme=${encodeURIComponent(themeName)}` +
+                                     `&score=${encodeURIComponent(scoreDisplay)}` + 
+                                     `&total=${totalQ}` +
+                                     `&timeStr=${encodeURIComponent(timeStr)}` +
+                                     `&answered=${answeredQ}` +
+                                     `&wrongWords=${encodeURIComponent(wrongStr)}`;
 
-                        fetch(finalUrl, { mode: 'no-cors' })
-                            .then(() => { isSaving.value = false; resolve(); })
-                            .catch(err => { isSaving.value = false; resolve(); });
-                    });
+                    fetch(finalUrl, { keepalive: true }).catch(e=>e);
                 };
 
-                const quitPractice = () => { 
-                    if (currentPhase.value === 'quiz' && practiceQuestions.value.length > 0) {
-                        if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要離開嗎？')) {
-                            saveBattleLog(true).then(() => { window.location.href = 'index.html'; });
-                        }
-                    } else {
+                // 🌟 階層式無縫秒退邏輯
+                const goBack = () => {
+                    if (currentPhase.value === 'select_mode') {
                         window.location.href = 'index.html'; 
+                    } else if (currentPhase.value === 'select_year') {
+                        currentPhase.value = 'select_mode';
+                    } else if (currentPhase.value === 'quiz') {
+                        if (practiceQuestions.value.length > 0 && !isQuizDone.value) {
+                            if (confirm('演習尚未結束，現在退出將判定為「撤退」並記錄至總部，確定要放棄本次演習嗎？')) {
+                                saveBattleLog(true);
+                                currentPhase.value = 'select_mode'; 
+                                window.scrollTo(0,0);
+                            }
+                        } else {
+                            currentPhase.value = 'select_mode';
+                        }
+                    } else if (currentPhase.value === 'result') {
+                        currentPhase.value = 'select_mode';
+                        window.scrollTo(0,0);
                     }
                 };
+
+                onUnmounted(() => {
+                    if (currentPhase.value === 'quiz' && !isQuizDone.value && !hasSubmittedScore.value) {
+                        saveBattleLog(true);
+                    }
+                });
 
                 const scoreColor = computed(() => {
                     const ratio = correctCount.value / practiceQuestions.value.length;
@@ -476,11 +826,14 @@
                 return { 
                     playerName, practiceQuestions, currentQIndex, currentQuestion, 
                     selectedOpt, hasAnswered, isCorrect, correctCount, isQuizDone, 
-                    scoreColor, selectOption, submitAnswer, nextQuestion, quitPractice, 
-                    isSaving, reviewList, formatText, formatDate,
+                    scoreColor, selectOption, submitAnswer, nextQuestion, goBack, 
+                    hasSubmittedScore, reviewList, formatText, formatDate,
                     showHint, displayQuestion,
                     currentPhase, randomQuestionCount, quizTitle, availableYears,
-                    startRandomQuiz, startYearQuiz
+                    startRandomQuiz, startYearQuiz,
+                    highlights, locks,
+                    realtimeMsg, showRealtimeMsg,
+                    showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');

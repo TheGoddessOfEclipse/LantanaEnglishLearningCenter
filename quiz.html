@@ -20,20 +20,36 @@
         .fade-in{animation:fadeIn 0.3s ease-out;} @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0f0;}
         .cyber-scrollbar::-webkit-scrollbar-thumb{background:#0f0;}
-        
-        /* 🌟 靜態發光矩陣：捨棄所有動畫，改為持續的高強度發光邊框 */
-        .glow-matrix-green { 
-            border: 3px solid #0f0 !important; 
-            box-shadow: 0 0 20px #0f0, 0 0 10px #0f0, inset 0 0 15px rgba(0, 255, 0, 0.6) !important;
-            z-index: 50 !important; 
-            pointer-events: none !important; 
+
+        /* ================= ✨ 發光矩陣 ================= */
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0f0 !important; z-index: 50 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); background-color: rgba(0,255,0,0.05); } 100% { box-shadow: 0 0 40px #0f0, inset 0 0 30px rgba(0,255,0,0.6); transform: scale(1.08); background-color: rgba(0,255,0,0.2); } }
+
+        /* ================= ⚡ 封鎖結界 ================= */
+        .vine-locked { position: relative; pointer-events: none !important; overflow: hidden; }
+        .vine-locked > * { opacity: 0.4; filter: brightness(0.4) blur(1px) !important; transform: scale(0.98); transition: all 0.3s ease; }
+        .vine-locked::after {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 80%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80,20 L0,0 M80,20 L10,100 M80,20 L50,100 M80,20 L100,70 M80,20 L100,0 M80,20 L0,40 M50,16 L30,30 M30,30 L10,60 M85,55 L60,80 M60,80 L35,80 M35,80 L15,100' stroke='rgba(255,255,255,0.4)' stroke-width='0.5' fill='none'/%3E%3Cpath d='M80,20 L40,50 L20,80 M80,20 L60,0 M90,50 L100,100' stroke='rgba(255,255,255,0.15)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-size: cover; backdrop-filter: contrast(1.1); z-index: 40; animation: shatterFlicker 3s infinite;
+            clip-path: inherit; 
         }
+        .vine-locked::before {
+            content: '✖ 權限封鎖'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-3deg);
+            background: rgba(20, 0, 0, 0.85); border: 1px solid #ff003c; border-left: 4px solid #ff003c;
+            color: #ff003c; padding: 6px 12px; border-radius: 2px; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.2em;
+            z-index: 41; box-shadow: 0 0 15px rgba(255, 0, 60, 0.4); text-shadow: 2px 2px 0px rgba(0, 255, 255, 0.5); white-space: nowrap;
+        }
+        @keyframes shatterFlicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: 0.6; } 96% { opacity: 0.3; } 98% { opacity: 1; } }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-green selection:text-black">
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,0,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
 
     <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full">
+        
         <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
             <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
                 <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
@@ -51,11 +67,13 @@
             <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
         </div>
 
-        <div class="flex justify-between items-center mb-2">
-            <button @click="goHome" class="text-sm font-bold tracking-widest text-green-400 hover:text-black transition border border-green-700 hover:border-neon-green hover:bg-neon-green px-4 py-2 bg-gray-900/50 flex items-center gap-2 shadow-[0_0_10px_rgba(0,255,0,0.1)] z-20 relative">
-                <span class="text-lg leading-none">≪</span> 撤退 (返回大廳)
+        <div class="flex justify-between items-center mb-4 border-b border-green-900/50 pb-2 w-full pt-2 relative z-20">
+            <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-neon-green transition flex items-center gap-2 border border-gray-600 hover:border-neon-green px-3 py-1.5 rounded-lg bg-black/50 active:scale-95">
+                Back <span class="text-lg leading-none">↩</span>
             </button>
-            <div class="cyber-box-green px-4 py-2 text-neon-green font-bold tracking-widest text-sm flex items-center gap-2 z-20 relative">特工 // {{ playerName }}</div>
+            <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
+                <i class="fas fa-user-secret text-neon-green"></i> 特工 // <span class="text-white">{{ playerName }}</span>
+            </div>
         </div>
 
         <div v-if="view === 'themeList'" class="fade-in w-full max-w-4xl mx-auto">
@@ -64,35 +82,32 @@
             </div>
             
             <div class="mb-6">
-                <button @click="startBossQuiz" class="w-full cyber-box-green bg-green-950/30 hover:bg-green-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(0,255,0,0.3)]">
+                <button @click="!locks?.themes?.quiz_boss && startBossQuiz()" 
+                        class="w-full cyber-box-green bg-green-950/30 hover:bg-green-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(0,255,0,0.3)]"
+                        :class="{'vine-locked': locks?.themes?.quiz_boss, 'glow-green': highlights?.themes?.quiz_boss}">
                     <div class="absolute inset-0 scanline opacity-40 pointer-events-none z-10"></div>
-                    
                     <div class="absolute bottom-0 left-0 w-full bg-green-500/30 transition-all duration-1000 z-0" :style="{ height: bossMastery + '%' }"></div>
                     
-                    <div v-if="highlights.themes && highlights.themes['quiz_boss']" class="absolute inset-0 glow-matrix-green z-50"></div>
-
                     <div v-if="championsData['🎯自我考驗模式 : 🔥 2000單大魔王']" class="absolute top-0 right-0 bg-neon-yellow text-black text-[11px] md:text-xs font-black px-3 py-1 shadow-[0_0_15px_#ff0] z-20 rounded-bl-lg">👑 全服霸主 : {{ championsData['🎯自我考驗模式 : 🔥 2000單大魔王'].name }}</div>
                     
                     <span class="text-5xl filter drop-shadow-[0_0_15px_#0f0] group-hover:scale-110 transition-transform z-20 relative">😈</span>
                     <span class="text-xl font-black tracking-widest text-neon-green neon-text-green z-20 relative">2000單大魔王・終極隨機</span>
-                    
                     <span class="absolute bottom-2 right-4 text-neon-green text-sm font-black z-20 drop-shadow-[0_0_5px_#000]">{{ bossMastery.toFixed(1) }}% 解鎖</span>
                 </button>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <button v-for="(theme, index) in themes" :key="index" @click="openTheme(theme)" class="cyber-box-green hover:bg-green-950/30 p-4 transition-all flex flex-col items-center justify-center gap-2 relative cursor-pointer min-h-[100px] group overflow-hidden">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <button v-for="(theme, index) in themes" :key="index" 
+                        @click="!locks?.themes?.['quiz_' + theme.name] && openTheme(theme)" 
+                        class="cyber-box-green hover:bg-green-950/30 p-4 transition-all flex flex-col items-center justify-center gap-2 relative cursor-pointer min-h-[100px] group overflow-hidden"
+                        :class="{'vine-locked': locks?.themes?.['quiz_' + theme.name], 'glow-green': highlights?.themes?.['quiz_' + theme.name]}">
                     
                     <div class="absolute bottom-0 left-0 w-full bg-green-500/30 transition-all duration-1000 z-0" :style="{ height: getThemeMastery(theme) + '%' }"></div>
-                    
-                    <div v-if="highlights.themes && highlights.themes['quiz_' + theme.name]" class="absolute inset-0 glow-matrix-green z-50"></div>
-                    
                     <div v-if="championsData['🎯自我考驗模式 : ' + theme.name]" class="absolute top-0 right-0 bg-neon-yellow text-black text-[10px] font-black px-1.5 py-0.5 z-20 rounded-bl-lg">👑 {{ championsData['🎯自我考驗模式 : ' + theme.name].name }}</div>
                     
                     <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-300 z-20 relative">{{ theme.icon }}</span>
                     <span class="text-sm font-bold tracking-wider text-center line-clamp-2 text-green-100 z-20 relative drop-shadow-[0_0_2px_#000]">{{ theme.name }}</span>
                     <span class="text-[10px] bg-black/80 px-2 py-0.5 tracking-widest border border-green-900 font-bold text-neon-green z-20 relative">{{ theme.words.length }} 字</span>
-                    
                     <span class="absolute bottom-1 left-2 text-[10px] text-green-400 font-black z-20 drop-shadow-[0_0_2px_#000]">{{ getThemeMastery(theme).toFixed(0) }}%</span>
                 </button>
             </div>
@@ -173,7 +188,7 @@
                 <div class="flex flex-col md:flex-row gap-4 justify-center w-full mt-4">
                     <button v-if="quizWrongItems.length > 0" @click="retryWrongQuestions" class="bg-transparent border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black px-8 py-4 font-bold text-lg tracking-widest w-full md:w-auto transition shadow-[0_0_10px_rgba(0,255,0,0.3)]">🎯 錯題再答</button>
                     <button @click="openTheme(activeTheme)" class="border border-neon-green text-neon-green hover:bg-neon-green hover:text-black px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto bg-black/50">↺ {{ isRetrySession ? '完整再測一次' : '再測一次' }}</button>
-                    <button @click="goThemeList" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回目錄</button>
+                    <button @click="goBack" class="bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 px-8 py-4 font-bold text-lg tracking-widest transition w-full md:w-auto">☰ 回目錄</button>
                 </div>
             </div>
         </div>
@@ -207,6 +222,32 @@
                 <div class="p-2 border-t border-cyan-900 text-center bg-black"><button @click="showLeaderboard = false" class="text-gray-500 hover:text-neon-cyan text-sm font-bold tracking-widest w-full py-3 transition">[ 關閉排行榜 ]</button></div>
             </div>
         </div>
+
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" 
+                    class="w-14 h-14 bg-gray-900/90 border-2 border-green-500 rounded-full flex items-center justify-center text-neon-green hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(0,255,0,0.3)] hover:shadow-[0_0_20px_#0f0] relative overflow-hidden cursor-move">
+                <i class="fas fa-atom text-3xl absolute opacity-20 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
     </div>
 
     <script>
@@ -235,33 +276,139 @@
                 const lastMsgTimestamp = ref(Date.now());
                 
                 const masteryData = ref({});
+                const highlights = ref({ modes: {}, themes: {} });
+                const locks = ref({ modes: {}, themes: {} });
 
-                // 🌟 新增：Firebase 防爆轉換器，把小數點、#等無效字元替換掉
-                const getSafeWordKey = (word) => {
-                    if (!word) return 'unknown';
-                    return word.replace(/\./g, '_dot_').replace(/[#$\[\]]/g, '_');
+                // --- 🌟 紀錄上傳函數 (Keepalive 發射版) ---
+                const submitScore = () => { 
+                    if (isSubmitting.value || hasSubmittedScore.value) return; 
+                    isSubmitting.value = true; 
+                    let tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); 
+                    const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); 
+                    const ans = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== 'TIMEOUT').length; 
+                    
+                    fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${quizScore.value}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(quizTimeStr.value)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`, { keepalive: true })
+                        .then(res => res.json())
+                        .then(() => { 
+                            isSubmitting.value = false; 
+                            hasSubmittedScore.value = true; 
+                            if (!isRetrySession.value) loadChampions(); 
+                        }).catch(() => { isSubmitting.value = false; }); 
                 };
+
+                const logPartialQuizSession = () => { 
+                    if (!activeTheme.value || quizStartTime.value === 0 || hasSubmittedScore.value) return; 
+                    const diff = Math.floor((Date.now() - quizStartTime.value) / 1000); 
+                    if (diff < 3) return; 
+                    const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; 
+                    const score = quizQuestions.value.filter(q => q.userAnswer === q.correct).length; 
+                    const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); 
+                    const ans = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== 'TIMEOUT').length; 
+                    const tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : "") + ' (中離)'; 
+                    
+                    fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(timeStr)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`, { keepalive: true }).catch(e=>e); 
+                    hasSubmittedScore.value = true; 
+                };
+
+                // --- 🌟 階層式返回邏輯 ---
+                const goBack = () => {
+                    if (view.value === 'playing') {
+                        if (!hasSubmittedScore.value && confirm('測驗尚未結束，確定要退回目錄嗎？\n(系統將自動結算並上傳紀錄)')) {
+                            logPartialQuizSession();
+                            clearInterval(heartbeatTimer);
+                            clearTimeout(autoAdvanceTimer);
+                            view.value = 'themeList';
+                            window.scrollTo(0,0);
+                        }
+                    } else if (view.value === 'result') {
+                        view.value = 'themeList';
+                        window.scrollTo(0,0);
+                    } else {
+                        logPartialQuizSession();
+                        window.location.href = 'vocab.html';
+                    }
+                };
+
+                // --- 🌟 空間躍傳引擎 ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+                
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
+                // --- 🌟 Firebase 與功能邏輯 ---
+                const getSafeWordKey = (word) => word ? word.replace(/\./g, '_dot_').replace(/[#$\[\]]/g, '_') : 'unknown';
 
                 const getThemeMastery = (theme) => {
                     if (!theme || !theme.words || theme.words.length === 0) return 0;
                     let count = 0;
-                    theme.words.forEach(w => {
-                        // 🌟 套用防爆機制
-                        if (masteryData.value[getSafeWordKey(w.word)]) count++;
-                    });
+                    theme.words.forEach(w => { if (masteryData.value[getSafeWordKey(w.word)]) count++; });
                     return parseFloat(((count / theme.words.length) * 100).toFixed(1));
                 };
 
                 const bossMastery = computed(() => {
-                    let totalWords = 0;
-                    let masteredWords = 0;
+                    let totalWords = 0; let masteredWords = 0;
                     if (typeof ALL_THEMES_DATA !== 'undefined') {
                         ALL_THEMES_DATA.forEach(t => {
                             totalWords += t.words.length;
-                            t.words.forEach(w => {
-                                // 🌟 套用防爆機制
-                                if (masteryData.value[getSafeWordKey(w.word)]) masteredWords++;
-                            });
+                            t.words.forEach(w => { if (masteryData.value[getSafeWordKey(w.word)]) masteredWords++; });
                         });
                     }
                     return totalWords > 0 ? parseFloat(((masteredWords / totalWords) * 100).toFixed(1)) : 0;
@@ -272,18 +419,8 @@
                 
                 const startRetestFromStorage = (wordsArray) => {
                     let validWords = [];
-                    ALL_THEMES_DATA.forEach(t => {
-                        t.words.forEach(w => {
-                            if (wordsArray.includes(w.word)) {
-                                if (!validWords.find(vw => vw.word === w.word)) validWords.push(w);
-                            }
-                        });
-                    });
-                    if (validWords.length === 0) {
-                        alert("題庫中找不到這些錯題資料！");
-                        window.location.href = 'vocab.html';
-                        return;
-                    }
+                    ALL_THEMES_DATA.forEach(t => { t.words.forEach(w => { if (wordsArray.includes(w.word)) { if (!validWords.find(vw => vw.word === w.word)) validWords.push(w); } }); });
+                    if (validWords.length === 0) { alert("題庫中找不到這些錯題資料！"); window.location.href = 'vocab.html'; return; }
                     const retestTheme = { name: "⚔️ 錯題復仇特訓", icon: "🎯", words: validWords };
                     activeTheme.value = retestTheme;
                     startQuiz(retestTheme, true); 
@@ -295,13 +432,8 @@
                         if (user) {
                             currentUserUid.value = user.uid;
                             playerName.value = localStorage.getItem('shilieu_player') || '未知特工';
-                            
                             db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
-                                if (snap.exists()) {
-                                    masteryData.value = snap.val();
-                                } else {
-                                    masteryData.value = {};
-                                }
+                                masteryData.value = snap.exists() ? snap.val() : {};
                             });
                         } else {
                             alert('⚠️ 特工身分驗證失效，請重新登入！');
@@ -310,6 +442,7 @@
                     });
 
                     loadChampions(); 
+                    
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) {
@@ -319,13 +452,26 @@
                         }
                     });
 
+                    db.ref('app_state/system_settings').on('value', snap => { 
+                        if (snap.exists()) { 
+                            let data = snap.val(); 
+                            highlights.value = { modes: data.highlights?.modes || {}, themes: data.highlights?.themes || {} }; 
+                            locks.value = { modes: data.locks?.modes || {}, themes: data.locks?.themes || {} }; 
+                        } 
+                    });
+
                     const urlParams = new URLSearchParams(window.location.search);
                     if (urlParams.get('mode') === 'retest') {
                         const retestWordsStr = localStorage.getItem('shilieu_retest_words');
-                        if (retestWordsStr) {
-                            try { startRetestFromStorage(JSON.parse(retestWordsStr)); } catch (e) {}
-                        }
+                        if (retestWordsStr) { try { startRetestFromStorage(JSON.parse(retestWordsStr)); } catch (e) {} }
                     }
+
+                    // 🌟 終極斷線追蹤系統
+                    document.addEventListener("visibilitychange", () => {
+                        if (document.visibilityState === 'hidden') {
+                            logPartialQuizSession();
+                        }
+                    });
                 });
 
                 const startHeartbeat = () => {
@@ -401,7 +547,6 @@
 
                     if (!isRetrySession.value && opt === q.correct && timeLeft.value > 0) {
                         if (currentUserUid.value) {
-                            // 🌟 存檔防爆處理：寫入 Firebase 前套用轉換器
                             db.ref(`app_state/users/${currentUserUid.value}/mastery/${getSafeWordKey(q.word)}`).set(Date.now());
                         }
                     }
@@ -440,18 +585,11 @@
                     submitScore(); 
                 };
 
-                const submitScore = () => { if (isSubmitting.value || hasSubmittedScore.value) return; isSubmitting.value = true; let tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); const ans = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== 'TIMEOUT').length; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${quizScore.value}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(quizTimeStr.value)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`).then(res => res.json()).then(data => { isSubmitting.value = false; hasSubmittedScore.value = true; if (!isRetrySession.value) loadChampions(); }).catch(e => { isSubmitting.value = false; }); };
                 const retryWrongQuestions = () => { isRetrySession.value = true; quizQuestions.value = quizWrongItems.value.map(q => ({ word: q.word, correct: q.correct, options: [...q.options].sort(() => 0.5 - Math.random()), userAnswer: null })).sort(() => 0.5 - Math.random()); quizScore.value = 0; quizWrongItems.value = []; currentQuizIndex.value = 0; hasSubmittedScore.value = false; quizStartTime.value = Date.now(); view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => { playAudio(quizQuestions.value[0].word); startHeartbeat(); }, 300); };
-                const logPartialQuizSession = () => { if (!activeTheme.value || quizStartTime.value === 0 || hasSubmittedScore.value) return; const diff = Math.floor((Date.now() - quizStartTime.value) / 1000); if (diff < 3) return; const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const score = quizQuestions.value.filter(q => q.userAnswer === q.correct).length; const actuallyWrongWords = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== q.correct).map(q => q.word).join(', '); const ans = quizQuestions.value.filter(q => q.userAnswer !== null && q.userAnswer !== 'TIMEOUT').length; const tName = '🎯自我考驗模式 : ' + activeTheme.value.name + (isRetrySession.value ? "(再測)" : ""); fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score}&total=${quizQuestions.value.length}&timeStr=${encodeURIComponent(timeStr)}&answered=${ans}&wrongWords=${encodeURIComponent(actuallyWrongWords || '無')}`).catch(e=>e); hasSubmittedScore.value = true; };
-                
-                const goThemeList = () => { logPartialQuizSession(); view.value = 'themeList'; window.scrollTo(0,0); loadChampions(); clearInterval(heartbeatTimer); };
-                const goHome = () => { logPartialQuizSession(); localStorage.removeItem('shilieu_retest_words'); clearInterval(heartbeatTimer); window.location.href = 'vocab.html'; };
                 
                 onUnmounted(() => { logPartialQuizSession(); clearInterval(heartbeatTimer); });
 
                 const openLeaderboard = () => { showLeaderboard.value = true; isLoadingLeaderboard.value = true; leaderboardData.value = []; let targetThemeName = '🎯自我考驗模式 : ' + activeTheme.value.name; fetch(`${GOOGLE_API_URL}?action=get&theme=${encodeURIComponent(targetThemeName)}`).then(res => res.json()).then(data => { let validData = data.filter(item => item.score && !item.score.includes('X') && !item.score.includes('勝') && !item.score.includes('敗') && !item.score.includes('撤退')); validData.sort((a, b) => { let scoreA = (typeof a.score === 'string' && a.score.includes('/')) ? parseInt(a.score.split('/')[0]) : parseInt(a.score)||0; let scoreB = (typeof b.score === 'string' && b.score.includes('/')) ? parseInt(b.score.split('/')[0]) : parseInt(b.score)||0; if (scoreB !== scoreA) return scoreB - scoreA; let timeA = a.timeStr.includes('分') ? parseInt(a.timeStr.split('分')[0])*60 + parseInt(a.timeStr.split('分')[1]) : parseInt(a.timeStr); let timeB = b.timeStr.includes('分') ? parseInt(b.timeStr.split('分')[0])*60 + parseInt(b.timeStr.split('分')[1]) : parseInt(b.timeStr); return timeA - timeB; }); leaderboardData.value = validData.slice(0, 15); isLoadingLeaderboard.value = false; }).catch(e => { isLoadingLeaderboard.value = false; }); };
-                const highlights = ref({ modes: {}, themes: {} });
-                db.ref('app_state/system_settings/highlights').on('value', snap => { if (snap.exists()) { let data = snap.val(); highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; } });
 
                 return { 
                     isConfigMissing, view, playerName, themes, activeTheme, 
@@ -459,9 +597,9 @@
                     selectAnswer, getOptionClass, finishQuiz, retryWrongQuestions, 
                     isSubmitting, hasSubmittedScore, isRetrySession, championsData, startBossQuiz, openTheme, playAudio,
                     showLeaderboard, isLoadingLeaderboard, leaderboardData, openLeaderboard,
-                    goHome, goThemeList, highlights,
-                    realtimeMsg, showRealtimeMsg,
-                    timeLeft, getThemeMastery, bossMastery
+                    highlights, locks, realtimeMsg, showRealtimeMsg,
+                    timeLeft, getThemeMastery, bossMastery,
+                    goBack, showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');

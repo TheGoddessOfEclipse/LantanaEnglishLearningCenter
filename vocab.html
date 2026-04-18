@@ -13,75 +13,61 @@
     <script src="config.js"></script>
     <style>
         body{background-color:#050b14; font-family: sans-serif;} .bg-neon-bg{background-color:#050b14;}
-        .neon-text-cyan{text-shadow:0 0 10px rgba(0,255,255,0.7),0 0 20px rgba(0,255,255,0.5);}
-        .neon-text-green{text-shadow:0 0 10px rgba(0,255,0,0.7),0 0 20px rgba(0,255,0,0.5);}
-        .neon-text-yellow{text-shadow:0 0 10px rgba(255,255,0,0.7),0 0 20px rgba(255,255,0,0.5);}
-        .neon-text-red{text-shadow:0 0 10px rgba(255,0,60,0.7),0 0 20px rgba(255,0,60,0.5);}
-        .neon-text-white{text-shadow:0 0 10px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);}
-        
         .cyber-box-cyan{border:1px solid #0ff;background:rgba(0,20,40,0.6);box-shadow:inset 0 0 15px rgba(0,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
         .cyber-box-green{border:1px solid #0f0;background:rgba(0,40,0,0.6);box-shadow:inset 0 0 15px rgba(0,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
         .cyber-box-yellow{border:1px solid #ff0;background:rgba(40,40,0,0.6);box-shadow:inset 0 0 15px rgba(255,255,0,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
         .cyber-box-red{border:1px solid #ff003c;background:rgba(40,0,0,0.6);box-shadow:inset 0 0 15px rgba(255,0,60,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
-        .cyber-box-white{border:1px solid #fff;background:rgba(40,40,40,0.6);box-shadow:inset 0 0 15px rgba(255,255,255,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
         .cyber-box-orange{border:1px solid #f97316;background:rgba(40,20,0,0.6);box-shadow:inset 0 0 15px rgba(249,115,22,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
         
-        .glow-orange { animation: glowOrangeAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #f97316 !important; z-index: 50 !important; }
-        @keyframes glowOrangeAnim { 0% { box-shadow: 0 0 10px #f97316, inset 0 0 10px rgba(249,115,22,0.3); transform: scale(1.02); background-color: rgba(249,115,22,0.05); } 100% { box-shadow: 0 0 40px #f97316, inset 0 0 30px rgba(249,115,22,0.6); transform: scale(1.08); background-color: rgba(249,115,22,0.2); } }
-
         .scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,255,255,0.2) 51%);background-size:100% 4px;animation:scan 10s linear infinite;} @keyframes scan{0%{background-position:0 0;}100%{background-position:0 100vh;}}
         .fade-in{animation:fadeIn 0.5s ease-out;} @keyframes fadeIn{from{opacity:0; transform: translateY(10px);}to{opacity:1; transform: translateY(0);}}
-        
-        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#0ff;}
 
-        .glow-cyan { animation: glowCyanAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0ff !important; z-index: 50 !important; }
-        @keyframes glowCyanAnim { 0% { box-shadow: 0 0 10px #0ff, inset 0 0 10px rgba(0,255,255,0.3); transform: scale(1.02); background-color: rgba(0,255,255,0.05); } 100% { box-shadow: 0 0 40px #0ff, inset 0 0 30px rgba(0,255,255,0.6); transform: scale(1.08); background-color: rgba(0,255,255,0.2); } }
+        /* ================= ✨ 發光矩陣 ================= */
+        .glow-cyan { animation: glowCyanAnim 0.8s ease-in-out infinite alternate !important; border-color: #0ff !important; z-index: 50 !important; }
+        @keyframes glowCyanAnim { 0% { box-shadow: 0 0 10px #0ff, inset 0 0 10px rgba(0,255,255,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 30px #0ff, inset 0 0 20px rgba(0,255,255,0.6); transform: scale(1.05); } }
 
-        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0f0 !important; z-index: 50 !important; }
-        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); background-color: rgba(0,255,0,0.05); } 100% { box-shadow: 0 0 40px #0f0, inset 0 0 30px rgba(0,255,0,0.6); transform: scale(1.08); background-color: rgba(0,255,0,0.2); } }
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border-color: #0f0 !important; z-index: 50 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 30px #0f0, inset 0 0 20px rgba(0,255,0,0.6); transform: scale(1.05); } }
 
-        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
-        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); background-color: rgba(255,255,0,0.05); } 100% { box-shadow: 0 0 40px #ff0, inset 0 0 30px rgba(255,255,0,0.6); transform: scale(1.08); background-color: rgba(255,255,0,0.2); } }
+        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border-color: #ff0 !important; z-index: 50 !important; }
+        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 30px #ff0, inset 0 0 20px rgba(255,255,0,0.6); transform: scale(1.05); } }
 
-        .glow-red { animation: glowRedAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff003c !important; z-index: 50 !important; }
-        @keyframes glowRedAnim { 0% { box-shadow: 0 0 10px #ff003c, inset 0 0 10px rgba(255,0,60,0.3); transform: scale(1.02); background-color: rgba(255,0,60,0.05); } 100% { box-shadow: 0 0 40px #ff003c, inset 0 0 30px rgba(255,0,60,0.6); transform: scale(1.08); background-color: rgba(255,0,60,0.2); } }
+        .glow-red { animation: glowRedAnim 0.8s ease-in-out infinite alternate !important; border-color: #ff003c !important; z-index: 50 !important; }
+        @keyframes glowRedAnim { 0% { box-shadow: 0 0 10px #ff003c, inset 0 0 10px rgba(255,0,60,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 30px #ff003c, inset 0 0 20px rgba(255,0,60,0.6); transform: scale(1.05); } }
 
-        .cyber-glitch-title {
-            position: relative; display: inline-block;
-            animation: neon-shift 8s ease-in-out infinite, flicker 5s linear infinite;
-            font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+        .glow-orange { animation: glowOrangeAnim 0.8s ease-in-out infinite alternate !important; border-color: #f97316 !important; z-index: 50 !important; }
+        @keyframes glowOrangeAnim { 0% { box-shadow: 0 0 10px #f97316, inset 0 0 10px rgba(249,115,22,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 30px #f97316, inset 0 0 20px rgba(249,115,22,0.6); transform: scale(1.05); } }
+
+        /* ================= ⚡ 封鎖結界 ================= */
+        .vine-locked { position: relative; pointer-events: none !important; }
+        .vine-locked > * { opacity: 0.4; filter: brightness(0.4) blur(1px) !important; transform: scale(0.98); transition: all 0.3s ease; }
+        .vine-locked::after {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 80%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80,20 L0,0 M80,20 L10,100 M80,20 L50,100 M80,20 L100,70 M80,20 L100,0 M80,20 L0,40 M50,16 L30,30 M30,30 L10,60 M85,55 L60,80 M60,80 L35,80 M35,80 L15,100' stroke='rgba(255,255,255,0.4)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+            background-size: cover; backdrop-filter: contrast(1.1); z-index: 40; animation: shatterFlicker 3s infinite; clip-path: inherit; 
         }
-        .cyber-glitch-title::before, .cyber-glitch-title::after {
-            content: '單字戰場';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
+        .vine-locked.rounded-full::after { clip-path: circle(50% at 50% 50%); }
+        .vine-locked:not(.rounded-full):not([class*="cyber-box"])::after { clip-path: inset(0 round 8px); }
+        .vine-locked::before {
+            content: '✖ 權限封鎖'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-3deg);
+            background: rgba(20, 0, 0, 0.85); border: 1px solid #ff003c; border-left: 4px solid #ff003c;
+            color: #ff003c; padding: 6px 12px; border-radius: 2px; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.2em;
+            z-index: 41; box-shadow: 0 0 15px rgba(255, 0, 60, 0.4); text-shadow: 2px 2px 0px rgba(0, 255, 255, 0.5); white-space: nowrap;
         }
+        @keyframes shatterFlicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: 0.6; } 96% { opacity: 0.3; } 98% { opacity: 1; } }
+
+        /* ================= 標題閃爍特效 ================= */
+        .cyber-glitch-title { position: relative; display: inline-block; animation: neon-shift 8s ease-in-out infinite, flicker 5s linear infinite; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+        .cyber-glitch-title::before, .cyber-glitch-title::after { content: '單字戰場'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
         .cyber-glitch-title::before { color: #f0f; z-index: -1; animation: glitch-anim 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
         .cyber-glitch-title::after { color: #0ff; z-index: -2; animation: glitch-anim-2 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse infinite; }
-        @keyframes glitch-anim {
-            0% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(2px, 2px); }
-            5% { clip-path: polygon(0 33%, 100% 33%, 100% 34%, 0 34%); transform: translate(-2px, -2px); }
-            10% { clip-path: polygon(0 50%, 100% 50%, 100% 51%, 0 51%); transform: translate(2px, -2px); }
-            15% { clip-path: polygon(0 75%, 100% 75%, 100% 76%, 0 76%); transform: translate(-2px, 2px); }
-            20% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); }
-            100% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(-1px, -1px); }
-            10% { clip-path: polygon(0 60%, 100% 60%, 100% 61%, 0 61%); transform: translate(1px, 1px); }
-            20% { clip-path: polygon(0 85%, 100% 85%, 100% 86%, 0 86%); transform: translate(-1px, 1px); }
-            30% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); }
-            100% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); }
-        }
-        @keyframes neon-shift {
-            0%, 100% { color: #fff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
-            33% { color: #fff; text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; }
-            66% { color: #fff; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
-        }
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.6; }
-        }
+        @keyframes glitch-anim { 0% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(2px, 2px); } 5% { clip-path: polygon(0 33%, 100% 33%, 100% 34%, 0 34%); transform: translate(-2px, -2px); } 10% { clip-path: polygon(0 50%, 100% 50%, 100% 51%, 0 51%); transform: translate(2px, -2px); } 15% { clip-path: polygon(0 75%, 100% 75%, 100% 76%, 0 76%); transform: translate(-2px, 2px); } 20% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); } 100% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); transform: translate(0, 0); } }
+        @keyframes glitch-anim-2 { 0% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(-1px, -1px); } 10% { clip-path: polygon(0 60%, 100% 60%, 100% 61%, 0 61%); transform: translate(1px, 1px); } 20% { clip-path: polygon(0 85%, 100% 85%, 100% 86%, 0 86%); transform: translate(-1px, 1px); } 30% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); } 100% { clip-path: polygon(0 10%, 100% 10%, 100% 11%, 0 11%); transform: translate(0, 0); } }
+        @keyframes neon-shift { 0%, 100% { color: #fff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; } 33% { color: #fff; text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; } 66% { color: #fff; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; } }
+        @keyframes flicker { 0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; } 20%, 24%, 55% { opacity: 0.6; } }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen font-sans relative overflow-x-hidden selection:bg-neon-cyan selection:text-black">
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(0,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.03) 1px,transparent 1px);background-size:30px 30px;"></div>
@@ -89,10 +75,10 @@
     <div id="app" class="max-w-6xl mx-auto flex flex-col relative z-10 min-h-screen p-4 md:p-6">
         
         <div v-if="showBrowserWarning" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 fade-in">
-            <div class="cyber-box-white w-full max-w-lg p-8 relative overflow-hidden bg-black/90 text-center border-2 border-white shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+            <div class="cyber-box-cyan w-full max-w-lg p-8 relative overflow-hidden bg-black/90 text-center border-2 border-white shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                 <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
                 <div class="text-6xl mb-4 animate-pulse">📡</div>
-                <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-6 neon-text-white">受限環境警告</h2>
+                <h2 class="text-2xl md:text-3xl font-black text-white tracking-widest mb-6" style="text-shadow:0 0 10px rgba(255,255,255,0.7);">受限環境警告</h2>
                 <div class="bg-black/80 border border-gray-700 p-6 mb-8 text-left text-sm font-bold tracking-wider leading-relaxed">
                     偵測到您正在使用 LINE 或 社群軟體 內建瀏覽器，這將導致英文發音無法正常撥放。<br><br>
                     請點擊右上角 <span class="text-neon-cyan">「...」</span> 並選擇 <span class="text-neon-green">「以預設瀏覽器開啟」</span> 以獲得最佳體驗。
@@ -120,20 +106,13 @@
         </div>
 
         <div v-if="isAuthorized" class="fade-in flex flex-col flex-1">
-            
-            <div class="mb-4 flex justify-start relative z-30 pt-2">
-                <button onclick="window.location.href='index.html'" class="text-sm font-bold tracking-widest text-cyan-400 hover:text-black transition border border-cyan-700 hover:border-neon-cyan hover:bg-neon-cyan px-4 py-2 bg-gray-900/50 flex items-center gap-2 shadow-[0_0_10px_rgba(0,255,255,0.1)]">
-                    <span class="text-lg leading-none">≪</span> 返回特工總部
-                </button>
-            </div>
 
-            <div class="flex justify-between items-start w-full mb-6 relative z-20">
-                <div class="border border-cyan-800 bg-cyan-950/30 px-3 py-1 shadow-[0_0_10px_rgba(0,255,255,0.1)] flex items-center gap-2">
-                    <span class="text-[10px] text-cyan-600 tracking-widest font-bold hidden md:inline">SYSTEM</span>
-                    <span class="text-sm text-neon-cyan font-black tracking-wider drop-shadow-[0_0_5px_#0ff]">v4.0</span>
-                </div>
-                <div class="flex flex-col items-end gap-2">
-                    <div class="cyber-box-cyan px-4 py-2 text-neon-cyan font-bold tracking-widest text-sm shadow-[0_0_10px_rgba(0,255,255,0.2)]">特工 // {{ playerName }}</div>
+            <div class="flex justify-between items-center mb-4 border-b border-gray-700/50 pb-2 w-full pt-2">
+                <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-white transition flex items-center gap-2 border border-gray-600 hover:border-white px-3 py-1.5 rounded-lg bg-black/50 active:scale-95 z-20">
+                    Back <span class="text-lg leading-none">↩</span>
+                </button>
+                <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
+                    <i class="fas fa-user-secret text-neon-cyan"></i> 特工 // <span class="text-white">{{ playerName }}</span>
                 </div>
             </div>
 
@@ -147,47 +126,51 @@
             <div class="text-center mb-10 mt-4 relative z-10">
                 <div class="text-6xl mb-4 drop-shadow-[0_0_20px_#0ff] animate-pulse">🔥</div>
                 <h1 class="text-4xl md:text-5xl font-black mb-2 tracking-widest"><span class="cyber-glitch-title">單字戰場</span></h1>
-                <p class="text-cyan-600 font-bold tracking-widest text-sm">> 選擇作戰模式</p>
+                <p class="text-cyan-600 font-bold tracking-widest text-sm">> 選擇日常自主訓練模式</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-10 relative z-10 max-w-5xl mx-auto w-full">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                 
-                <button @click="systemModes.flashcard ? navigateTo('flashcard.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.flashcard ? 'cyber-box-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights?.modes?.flashcard ? 'glow-cyan' : '']">
-                    <div v-if="!systemModes.flashcard" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
-                    <div @click.stop="openInfo('flashcard')" class="absolute top-3 right-3 text-cyan-600 border border-cyan-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-cyan hover:border-neon-cyan transition z-20">?</div>
-                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">📇</span>
-                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap" :class="systemModes.flashcard ? 'text-neon-cyan' : 'text-gray-500'">單字卡模式</h2>
+                <button @click="systemModes.flashcard ? navigateTo('flashcard.html') : null" 
+                        class="cyber-box-cyan p-6 transition-all flex flex-col items-center justify-center gap-3 relative group hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] cursor-pointer" 
+                        :class="{'vine-locked': locks?.vocab_modes?.flashcard || !systemModes.flashcard, 'glow-cyan': highlights?.vocab_modes?.flashcard}">
+                    <div @click.stop="openInfo('flashcard')" class="absolute top-3 right-3 text-cyan-600 border border-cyan-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-cyan hover:border-neon-cyan transition z-20 pointer-events-auto">?</div>
+                    <span class="text-5xl mb-1 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110">📇</span>
+                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap text-neon-cyan">單字卡模式</h2>
                 </button>
                 
-                <button @click="systemModes.quiz ? navigateTo('quiz.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.quiz ? 'cyber-box-green hover:shadow-[0_0_30px_rgba(0,255,0,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights?.modes?.quiz ? 'glow-green' : '']">
-                    <div v-if="!systemModes.quiz" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
-                    <div @click.stop="openInfo('quiz')" class="absolute top-3 right-3 text-green-600 border border-green-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-green hover:border-neon-green transition z-20">?</div>
-                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">🎯</span>
-                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap" :class="systemModes.quiz ? 'text-neon-green' : 'text-gray-500'">自我考驗</h2>
+                <button @click="systemModes.quiz ? navigateTo('quiz.html') : null" 
+                        class="cyber-box-green p-6 transition-all flex flex-col items-center justify-center gap-3 relative group hover:shadow-[0_0_30px_rgba(0,255,0,0.4)] cursor-pointer" 
+                        :class="{'vine-locked': locks?.vocab_modes?.quiz || !systemModes.quiz, 'glow-green': highlights?.vocab_modes?.quiz}">
+                    <div @click.stop="openInfo('quiz')" class="absolute top-3 right-3 text-green-600 border border-green-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-green hover:border-neon-green transition z-20 pointer-events-auto">?</div>
+                    <span class="text-5xl mb-1 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110">🎯</span>
+                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap text-neon-green">自我考驗</h2>
                 </button>
                 
-                <button @click="systemModes.blindTest !== false ? navigateTo('blindTest.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.blindTest !== false ? 'cyber-box-yellow hover:shadow-[0_0_30px_rgba(255,255,0,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights?.modes?.blindTest ? 'glow-yellow' : '']">
-                    <div v-if="systemModes.blindTest === false" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
-                    <div @click.stop="openInfo('blindTest')" class="absolute top-3 right-3 text-yellow-600 border border-yellow-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-yellow hover:border-neon-yellow transition z-20">?</div>
-                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">🧠</span>
-                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap" :class="systemModes.blindTest !== false ? 'text-neon-yellow' : 'text-gray-500'">字義盲測</h2>
+                <button @click="systemModes.blindTest !== false ? navigateTo('blindTest.html') : null" 
+                        class="cyber-box-yellow p-6 transition-all flex flex-col items-center justify-center gap-3 relative group hover:shadow-[0_0_30px_rgba(255,255,0,0.4)] cursor-pointer" 
+                        :class="{'vine-locked': locks?.vocab_modes?.blindTest || systemModes.blindTest === false, 'glow-yellow': highlights?.vocab_modes?.blindTest}">
+                    <div @click.stop="openInfo('blindTest')" class="absolute top-3 right-3 text-yellow-600 border border-yellow-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-yellow hover:border-neon-yellow transition z-20 pointer-events-auto">?</div>
+                    <span class="text-5xl mb-1 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110">🧠</span>
+                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap text-neon-yellow">字義盲測</h2>
                 </button>
                 
-                <button @click="systemModes.battle ? navigateTo('battle.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group" :class="[systemModes.battle ? 'cyber-box-red hover:shadow-[0_0_30px_rgba(255,0,60,0.5)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights?.modes?.battle ? 'glow-red' : '']">
-                    <div v-if="!systemModes.battle" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
+                <button @click="systemModes.battle ? navigateTo('battle.html') : null" 
+                        class="cyber-box-red p-6 transition-all flex flex-col items-center justify-center gap-3 relative group hover:shadow-[0_0_30px_rgba(255,0,60,0.5)] cursor-pointer" 
+                        :class="{'vine-locked': locks?.vocab_modes?.battle || !systemModes.battle, 'glow-red': highlights?.vocab_modes?.battle}">
                     <div class="absolute top-0 left-0 bg-neon-red text-white font-black text-[10px] px-2 py-1 tracking-widest z-10 rounded-br-lg">PVP</div>
-                    <div @click.stop="openInfo('battle')" class="absolute top-3 right-3 text-red-600 border border-red-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-red hover:border-neon-red transition z-20">?</div>
-                    <span class="text-5xl mb-1 mt-3 filter grayscale group-hover:grayscale-0 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">⚔️</span>
-                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap" :class="systemModes.battle ? 'text-neon-red neon-text-red' : 'text-gray-500'">雙人死鬥</h2>
+                    <div @click.stop="openInfo('battle')" class="absolute top-3 right-3 text-red-600 border border-red-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-neon-red hover:border-neon-red transition z-20 pointer-events-auto">?</div>
+                    <span class="text-5xl mb-1 mt-3 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110">⚔️</span>
+                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap text-neon-red" style="text-shadow:0 0 10px rgba(255,0,60,0.7);">雙人死鬥</h2>
                 </button>
 
-                <button @click="systemModes.vocab_exam !== false ? navigateTo('vocab_exam.html') : null" class="p-6 transition-all flex flex-col items-center justify-center gap-3 relative group md:col-span-1 col-span-2" :class="[systemModes.vocab_exam !== false ? 'cyber-box-orange hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] cursor-pointer' : 'border border-gray-700 bg-gray-900/50 cursor-not-allowed opacity-80', highlights?.modes?.vocab_exam ? 'glow-orange' : '']">
-                    <div v-if="systemModes.vocab_exam === false" class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 rounded backdrop-blur-[1px]"><span class="text-6xl opacity-50">🔒</span></div>
-                    <div @click.stop="openInfo('vocab_exam')" class="absolute top-3 right-3 text-orange-600 border border-orange-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-orange-400 hover:border-orange-400 transition z-20">?</div>
-                    <span class="text-5xl mb-1 filter grayscale group-hover:grayscale-0 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">🔥</span>
-                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap" :class="systemModes.vocab_exam !== false ? 'text-orange-400' : 'text-gray-500'">會考實戰</h2>
+                <button @click="systemModes.vocab_exam !== false ? navigateTo('vocab_exam.html') : null" 
+                        class="cyber-box-orange p-6 transition-all flex flex-col items-center justify-center gap-3 relative group hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] cursor-pointer md:col-span-4 lg:col-span-1 col-span-2" 
+                        :class="{'vine-locked': locks?.vocab_modes?.vocab_exam || systemModes.vocab_exam === false, 'glow-orange': highlights?.vocab_modes?.vocab_exam}">
+                    <div @click.stop="openInfo('vocab_exam')" class="absolute top-3 right-3 text-orange-600 border border-orange-700 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold hover:text-orange-400 hover:border-orange-400 transition z-20 pointer-events-auto">?</div>
+                    <span class="text-5xl mb-1 transition-all duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] group-hover:scale-110">🔥</span>
+                    <h2 class="text-lg md:text-xl font-bold tracking-widest whitespace-nowrap text-orange-400">會考實戰</h2>
                 </button>
-
             </div>
 
             <div class="mt-auto pt-12 pb-4 text-center w-full">
@@ -215,6 +198,31 @@
             </div>
         </div>
 
+        <div class="fixed z-[9999] flex flex-col items-end"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" 
+                    class="w-14 h-14 bg-gray-900/90 border-2 border-gray-400 rounded-full flex items-center justify-center text-white hover:border-cyan-400 hover:text-neon-cyan transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_#0ff] relative overflow-hidden cursor-move">
+                <i class="fas fa-dharmachakra text-3xl absolute opacity-30" style="animation: spin 4s linear infinite;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-bullseye text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
     </div>
 
     <script>
@@ -222,22 +230,110 @@
         if (!firebase.apps.length) { firebase.initializeApp(FIREBASE_CONFIG); }
         const db = firebase.database();
         const auth = firebase.auth(); 
-        const { createApp, ref, onMounted } = Vue;
+        const { createApp, ref, computed, onMounted } = Vue;
 
         createApp({
             setup() {
+                // --- 🌟 統一返回大廳邏輯 ---
+                const goBack = () => { window.location.href = 'index.html'; };
                 const isConfigMissing = ref(FIREBASE_CONFIG.apiKey === 'preview');
-                const savedName = localStorage.getItem('shilieu_player') || '';
-                const playerName = ref(savedName);
-                const isAuthorized = ref(false); 
                 
+                // --- 🌟 空間躍傳引擎 (全域無卡頓拖曳 + 四向磁吸版) ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false); // 必須是 ref 才能綁定到 CSS
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; 
+                    hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    
+                    // 🌟 將拖曳監聽器綁定到 document 上，解決滑鼠移動太快跟丟的問題
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault(); // 防止手機端拖曳時畫面跟著捲動
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; 
+                    const dy = clientY - startMouse.y;
+                    
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    
+                    let newX = startPos.x + dx; 
+                    let newY = startPos.y + dy;
+                    
+                    // 防止球被拖出螢幕邊界
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    
+                    // 🌟 四向邊緣磁吸計算
+                    const w = window.innerWidth; 
+                    const h = window.innerHeight; 
+                    const ballSize = 56; 
+                    const p = 15; // 邊距
+                    
+                    const distL = portalPos.value.x; 
+                    const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; 
+                    const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+
+                const togglePortal = () => { 
+                    // 只有在純點擊(未拖曳)時，才展開選單
+                    if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; 
+                };
+
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    // 自動判斷選單展開方向，避免被切掉
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
+                // --- 🌟 Firebase 狀態與系統變數 ---
+                const playerName = ref(localStorage.getItem('shilieu_player') || '');
+                const isAuthorized = ref(false); 
                 const systemModes = ref({ flashcard: true, quiz: true, blindTest: true, battle: true, vocab_exam: true });
                 const systemAnnouncement = ref({ text: '', isEnabled: false });
-                const highlights = ref({ modes: {}, themes: {} });
-
+                const highlights = ref({ vocab_modes: {}, themes: {} });
+                const locks = ref({ vocab_modes: {}, themes: {} });
                 const showInfoModal = ref(false);
                 const currentInfo = ref({});
-
                 const realtimeMsg = ref('');
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
@@ -253,7 +349,7 @@
 
                 onMounted(() => {
                     const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
-                    if (ua.includes("line") || ua.includes("fban") || ua.includes("fbav") || ua.includes("instagram")) {
+                    if (ua.includes("line/") || ua.includes("fban") || ua.includes("fbav") || ua.includes("instagram")) {
                         showBrowserWarning.value = true;
                     }
 
@@ -281,6 +377,7 @@
                             if (data.modes) systemModes.value = data.modes;
                             if (data.announcement) systemAnnouncement.value = data.announcement;
                             if (data.highlights) highlights.value = data.highlights;
+                            if (data.locks) locks.value = data.locks;
                         }
                     });
 
@@ -298,11 +395,14 @@
                 const openInfo = (mode) => { currentInfo.value = infoData[mode]; showInfoModal.value = true; };
                 const closeInfo = () => { showInfoModal.value = false; };
 
+                // --- 🌟 變數全輸出 ---
                 return {
-                    isConfigMissing, isAuthorized, playerName, 
-                    systemModes, systemAnnouncement, highlights, navigateTo,
+                    isConfigMissing, isAuthorized, playerName, goBack,
+                    systemModes, systemAnnouncement, highlights, locks, navigateTo,
                     showInfoModal, currentInfo, openInfo, closeInfo,
-                    realtimeMsg, showRealtimeMsg, showBrowserWarning
+                    realtimeMsg, showRealtimeMsg, showBrowserWarning, 
+                    // 🌟 空間引擎必須導出的變數
+                    showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');

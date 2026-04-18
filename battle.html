@@ -26,19 +26,33 @@
         .anim-victory-zoom{animation:victoryZoom 0.6s cubic-bezier(0.175,0.885,0.32,1.275) forwards;} @keyframes victoryZoom{0%{opacity:0;transform:scale(0.5);}100%{opacity:1;transform:scale(1);}} .anim-defeat-fade{animation:defeatFade 1s ease-out forwards;} @keyframes defeatFade{0%{opacity:0;filter:grayscale(1) brightness(0.5);transform:translateY(-20px);}100%{opacity:1;filter:grayscale(1) brightness(1);transform:translateY(0);}}
         ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#050b14;} ::-webkit-scrollbar-thumb{background:#ff003c;}
         
-        /* 🌟 教師強制發光矩陣 (紅色靜態版) */
-        .glow-matrix-red { 
-            border: 3px solid #ff003c !important; 
-            box-shadow: 0 0 20px #ff003c, 0 0 10px #ff003c, inset 0 0 15px rgba(255, 0, 60, 0.6) !important;
-            z-index: 50 !important; 
-            pointer-events: none !important; 
+        /* 🌟 發光矩陣 (標準動態版) */
+        .glow-red { animation: glowRedAnim 0.8s ease-in-out infinite alternate !important; border-color: #ff003c !important; z-index: 50 !important; }
+        @keyframes glowRedAnim { 0% { box-shadow: 0 0 10px #ff003c, inset 0 0 10px rgba(255,0,60,0.3); background-color: rgba(255,0,60,0.05); } 100% { box-shadow: 0 0 30px #ff003c, inset 0 0 20px rgba(255,0,60,0.6); background-color: rgba(255,0,60,0.2); } }
+
+        /* ================= ⚡ 封鎖結界 ================= */
+        .vine-locked { position: relative; pointer-events: none !important; overflow: hidden; }
+        .vine-locked > * { opacity: 0.4; filter: brightness(0.4) blur(1px) !important; transform: scale(0.98); transition: all 0.3s ease; }
+        .vine-locked::after {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 80%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80,20 L0,0 M80,20 L10,100 M80,20 L50,100 M80,20 L100,70 M80,20 L100,0 M80,20 L0,40 M50,16 L30,30 M30,30 L10,60 M85,55 L60,80 M60,80 L35,80 M35,80 L15,100' stroke='rgba(255,255,255,0.4)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+            background-size: cover; backdrop-filter: contrast(1.1); z-index: 40; animation: shatterFlicker 3s infinite; clip-path: inherit; 
         }
-    </style>
+        .vine-locked::before {
+            content: '✖ 權限封鎖'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-3deg);
+            background: rgba(20, 0, 0, 0.85); border: 1px solid #ff003c; border-left: 4px solid #ff003c;
+            color: #ff003c; padding: 6px 12px; border-radius: 2px; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.2em;
+            z-index: 41; box-shadow: 0 0 15px rgba(255, 0, 60, 0.4); text-shadow: 2px 2px 0px rgba(0, 255, 255, 0.5); white-space: nowrap;
+        }
+        </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-neon-bg text-gray-200 min-h-screen p-2 md:p-6 font-sans relative overflow-x-hidden selection:bg-neon-red selection:text-white">
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image:linear-gradient(rgba(255,0,60,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,60,0.05) 1px,transparent 1px);background-size:30px 30px;"></div>
 
-    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full" :class="isShaking ? 'anim-shake' : ''">
+    <div id="app" class="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 h-full min-h-[90vh]" :class="isShaking ? 'anim-shake' : ''">
+        
         <div v-if="showRealtimeMsg" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
             <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center border-2 border-neon-red shadow-[0_0_40px_rgba(255,0,60,0.5)]">
                 <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
@@ -56,12 +70,20 @@
             <h1 class="text-3xl text-neon-red font-black mb-4 tracking-widest drop-shadow-[0_0_15px_#f00]">無法讀取 config.js</h1>
         </div>
 
-        <div v-if="view !== 'battleArena'" class="flex justify-end items-center gap-3 md:gap-4 mb-2">
-            <div class="cyber-box-red px-4 py-2 text-neon-red font-bold tracking-widest text-sm flex items-center gap-2">玩家 // {{ playerName }}</div>
+        <div v-if="view !== 'battleArena'" class="flex justify-between items-center mb-4 border-b border-red-900/50 pb-2 w-full pt-2 relative z-20">
+            <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-neon-red transition flex items-center gap-2 border border-gray-600 hover:border-neon-red px-3 py-1.5 rounded-lg bg-black/50 active:scale-95">
+                Back <span class="text-lg leading-none">↩</span>
+            </button>
+            <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
+                <i class="fas fa-user-secret text-neon-red"></i> 特工 // <span class="text-white">{{ playerName }}</span>
+            </div>
         </div>
 
         <div v-if="showBattleRulesModal" class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in">
             <div class="cyber-box-red w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/30 to-black">
+                
+                <button v-if="!activeBattleRoom" @click="showBattleRulesModal = false" class="absolute top-4 right-4 text-red-600 hover:text-neon-red text-3xl font-bold leading-none transition z-50">&times;</button>
+                
                 <div class="text-center z-10 relative">
                     <span class="text-5xl block mb-4 filter drop-shadow-[0_0_15px_#f00]">⚔️</span>
                     <h2 class="text-2xl font-black text-neon-red tracking-widest mb-6 border-b border-red-800 pb-4">死鬥模式．數值計算規則</h2>
@@ -70,10 +92,10 @@
                         <li>💥 <b class="text-white">基礎數值：</b>每次答對 補血/傷害 <b class="text-neon-yellow">3 滴</b>。</li>
                         <li>🔥 <b class="text-neon-yellow">連擊加成 (COMBO)：</b>連對 2 題觸發！每多 1 Combo，數值 <b class="text-neon-yellow">再疊加 +1</b>。答錯歸零！</li>
                         <li>⚠️ <b class="text-neon-red">跨主題爆擊：</b>遇「紅色單字」，基礎數值直接翻倍為 <b class="text-neon-yellow">6 滴</b> (可與 Combo 疊加)！</li>
-                        <li>🏃 <b class="text-gray-400">戰術撤退：</b>若自知不敵，可點擊右上角撤退保命 (記為敗場)。</li>
+                        <li>🏃 <b class="text-gray-400">戰術撤退：</b>若自知不敵，可點擊左上角 Back 撤退保命 (記為敗場)。</li>
                     </ul>
                     <div v-if="battleData && battleData[myRole + 'Ready']" class="w-full bg-red-950 border border-neon-yellow text-neon-yellow py-3 font-black tracking-widest text-center animate-pulse shadow-[0_0_15px_#ff0]">✅ 您已準備就緒！等待對手確認...</div>
-                    <button v-else @click="dismissBattleRules" class="w-full bg-neon-red text-white hover:bg-red-600 py-3 font-black tracking-widest transition shadow-[0_0_15px_#f00]">我準備好了 ➔</button>
+                    <button v-else @click="dismissBattleRules" class="w-full bg-neon-red text-white hover:bg-red-600 py-3 font-black tracking-widest transition shadow-[0_0_15px_#f00]">{{ activeBattleRoom ? '我準備好了 ➔' : '我了解了' }}</button>
                 </div>
             </div>
         </div>
@@ -81,7 +103,7 @@
         <div v-if="view === 'battleMenu'" class="fade-in mt-4 max-w-2xl mx-auto w-full">
             <div class="flex justify-between items-center mb-6 border-b border-neon-red/50 pb-3">
                 <h2 class="text-xl md:text-2xl font-bold tracking-widest text-neon-red flex items-center gap-2">> 雙人對戰大廳</h2>
-                <button @click="goHome" class="border border-gray-600 text-gray-400 hover:text-white px-3 py-1 text-xs font-bold tracking-widest transition">返回</button>
+                <button @click="showBattleRulesModal = true" class="text-xs bg-red-900/30 border border-red-700 text-red-400 hover:text-white hover:bg-red-700 px-3 py-1 font-bold tracking-widest transition"><i class="fas fa-book-dead mr-1"></i> 死鬥規則</button>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="cyber-box-red border-neon-yellow bg-yellow-950/20 p-6 flex flex-col items-center justify-center gap-4">
@@ -100,34 +122,28 @@
         <div v-if="view === 'battleCreate'" class="fade-in w-full max-w-4xl mx-auto">
             <div class="flex justify-between items-center mb-6 border-b border-neon-red/50 pb-3">
                 <h2 class="text-lg md:text-xl font-bold tracking-widest text-neon-red flex items-center gap-2">> 選擇對戰主題</h2>
-                <button @click="cancelBattle" class="border border-gray-600 text-gray-400 hover:text-white px-3 py-1 text-xs font-bold tracking-widest transition">取消開房</button>
             </div>
 
             <div class="mb-6">
-                <button @click="createBossBattle" class="w-full cyber-box-red bg-red-950/30 hover:bg-red-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,0,60,0.3)]">
+                <button @click="!locks?.themes?.battle_boss && createBossBattle()" 
+                        class="w-full cyber-box-red bg-red-950/30 hover:bg-red-900/50 p-6 transition-all flex flex-col items-center justify-center gap-2 group relative cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(255,0,60,0.3)]"
+                        :class="{'vine-locked': locks?.themes?.battle_boss, 'glow-red': highlights?.themes?.battle_boss}">
                     <div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
-                    
                     <div class="absolute bottom-0 left-0 w-full bg-neon-red/20 transition-all duration-1000 z-0" :style="{ height: bossMastery + '%' }"></div>
-                    
-                    <div v-if="highlights.themes && highlights.themes['battle_boss']" class="absolute inset-0 glow-matrix-red z-50"></div>
-
                     <span class="text-5xl filter drop-shadow-[0_0_15px_#ff003c] group-hover:scale-110 transition-transform z-10 relative">😈</span>
                     <span class="text-xl font-black tracking-widest text-neon-red neon-text-red z-10 relative">2000單大魔王・深淵全範圍死鬥</span>
-                    
                     <span class="absolute bottom-2 right-4 text-neon-red text-sm font-black z-20 drop-shadow-[0_0_5px_#000]">{{ bossMastery.toFixed(1) }}% 解鎖</span>
                 </button>
             </div>
 
-            <div class="grid grid-cols-3 md:grid-cols-4 gap-3">
-                <button v-for="(theme, index) in themes" :key="index" @click="createBattle(theme)" class="cyber-box-red bg-black/60 hover:bg-red-900/40 p-3 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer min-h-[90px] group overflow-hidden relative">
-                    
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <button v-for="(theme, index) in themes" :key="index" 
+                        @click="!locks?.themes?.['battle_' + theme.name] && createBattle(theme)" 
+                        class="cyber-box-red bg-black/60 hover:bg-red-900/40 p-4 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer min-h-[100px] group overflow-hidden relative"
+                        :class="{'vine-locked': locks?.themes?.['battle_' + theme.name], 'glow-red': highlights?.themes?.['battle_' + theme.name]}">
                     <div class="absolute bottom-0 left-0 w-full bg-neon-red/20 transition-all duration-1000 z-0" :style="{ height: getThemeMastery(theme) + '%' }"></div>
-                    
-                    <div v-if="highlights.themes && highlights.themes['battle_' + theme.name]" class="absolute inset-0 glow-matrix-red z-50"></div>
-
-                    <span class="text-2xl filter grayscale group-hover:grayscale-0 transition-all duration-300 z-20 relative">{{ theme.icon }}</span>
-                    <span class="text-xs font-bold tracking-wider text-red-100 line-clamp-2 text-center z-20 relative drop-shadow-[0_0_2px_#000]">{{ theme.name }}</span>
-                    
+                    <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-300 z-20 relative">{{ theme.icon }}</span>
+                    <span class="text-sm font-bold tracking-wider text-red-100 line-clamp-2 text-center z-20 relative drop-shadow-[0_0_2px_#000]">{{ theme.name }}</span>
                     <span class="absolute bottom-1 left-2 text-[10px] text-red-400 font-black z-20 drop-shadow-[0_0_2px_#000]">{{ getThemeMastery(theme).toFixed(0) }}%</span>
                 </button>
             </div>
@@ -139,7 +155,6 @@
                 <div class="text-neon-red font-bold tracking-widest mb-2 text-sm">請告訴對手這個房號：</div>
                 <div class="text-7xl font-black text-white neon-text-red mb-6 tracking-widest">{{ activeBattleRoom }}</div>
                 <div class="text-xs text-gray-400 font-bold tracking-widest mb-6 animate-pulse">📡 等待挑戰者連線中...</div>
-                <button @click="cancelBattle" class="text-gray-500 hover:text-white border-b border-gray-600 text-xs font-bold tracking-widest transition pb-1">解散房間</button>
             </div>
         </div>
 
@@ -171,14 +186,19 @@
 
             <div class="flex justify-between items-center mb-2 text-[10px] font-bold tracking-widest text-gray-500 border-b border-gray-800 pb-1">
                 <span class="truncate pr-2">房號：{{ activeBattleRoom }} | {{ battleData.theme }}</span>
-                <div class="flex items-center gap-2"><span class="animate-pulse flex-shrink-0" :class="isBattleCrit ? 'text-neon-red font-black' : 'text-neon-yellow'">答對補血、滿血攻擊！</span><button @click="retreatFromBattle" class="bg-gray-800 hover:bg-neon-red text-gray-300 hover:text-white border border-gray-600 hover:border-neon-red px-2 py-0.5 transition-colors duration-200">🏃 撤退</button></div>
+                <div class="flex items-center gap-2">
+                    <span class="animate-pulse flex-shrink-0" :class="isBattleCrit ? 'text-neon-red font-black' : 'text-neon-yellow'">答對補血、滿血攻擊！</span>
+                    <button @click="goBack" class="bg-gray-800 hover:bg-neon-red text-gray-300 hover:text-white border border-gray-600 hover:border-neon-red px-2 py-0.5 transition-colors duration-200">Back ↩</button>
+                </div>
             </div>
+
             <div class="border-2 p-4 md:p-6 relative mb-3 bg-gradient-to-b from-gray-900 to-black overflow-hidden flex flex-col items-center justify-center flex-shrink-0 transition-colors duration-300 min-h-[160px]" :class="(isBattleCrit || battleData.theme === '🔥 2000單大魔王') ? 'border-neon-red shadow-[inset_0_0_30px_rgba(255,0,60,0.4)] anim-glitch' : 'border-gray-600'">
                 <div v-if="isBattleCrit && battleData.theme !== '🔥 2000單大魔王'" class="absolute top-0 w-full text-center bg-neon-red text-white text-[10px] font-black py-1 tracking-widest animate-pulse z-10">⚠️ 跨主題爆擊 (傷害基礎: 6) ⚠️</div>
                 <div v-if="battleData.theme === '🔥 2000單大魔王'" class="absolute top-0 w-full text-center bg-red-900 text-white text-[10px] font-black py-1 tracking-widest z-10 opacity-70">😈 大魔王深淵 😈</div>
                 <h1 class="text-4xl md:text-6xl font-black text-white mb-3 text-center break-all z-10 tracking-widest transition-transform duration-200" :class="(isBattleCrit || battleData.theme === '🔥 2000單大魔王') ? 'neon-text-red scale-110' : ''">{{ currentBattleWord.word }}</h1>
                 <button @click="playAudio(currentBattleWord.word)" class="text-xs font-bold border border-gray-600 text-gray-300 px-4 py-1 hover:bg-gray-200 hover:text-black transition z-10 tracking-widest rounded-full" :class="(isBattleCrit || battleData.theme === '🔥 2000單大魔王') ? 'border-neon-red text-neon-red hover:bg-neon-red hover:text-white' : ''">▶ 發音</button>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 flex-1 pb-2">
                 <button v-for="(opt, idx) in currentBattleWord.options" :key="idx" @click="handleBattleAnswer(opt)" :class="getBattleOptionClass(opt)" :disabled="battleAnswerLocked || showBattleRulesModal" class="p-3 md:p-4 text-base md:text-lg font-bold tracking-wider transition-all duration-100 text-left relative overflow-hidden border flex items-center justify-center">
                     <span class="absolute top-1 left-2 text-[9px] opacity-40 tracking-widest font-bold">0{{ idx + 1 }}</span>
@@ -204,17 +224,43 @@
                     <div class="text-center z-10"><div class="text-[10px] text-gray-500 mb-1">挑戰者 {{ battleData.guestName }}</div><div class="text-3xl font-black font-mono" :class="battleData.guestHp > 0 ? 'text-neon-pink' : 'text-neon-red'">{{ battleData.guestHp }}</div></div>
                 </div>
                 <div v-if="battleHasSubmitted" class="mb-4 text-neon-green font-bold text-xs tracking-widest bg-green-900/20 py-2">✅ 戰績已同步至神聖殿堂後台</div>
-                <button @click="leaveBattleRoom" class="w-full bg-transparent border-2 border-neon-red text-neon-red hover:bg-neon-red hover:text-black py-3 font-bold tracking-widest transition">返回大廳</button>
+                <button @click="goBack" class="w-full bg-transparent border-2 border-neon-red text-neon-red hover:bg-neon-red hover:text-black py-3 font-bold tracking-widest transition">返回大廳</button>
             </div>
         </div>
+
         <div v-if="projectile.active" class="fixed z-50 text-4xl md:text-5xl font-black pointer-events-none tracking-widest whitespace-nowrap" :class="getProjectileClass()" :style="{ left: '50%', top: '60%', transform: 'translate(-50%, -50%)' }">{{ projectile.text }}</div>
+        
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" class="w-14 h-14 bg-gray-900/90 border-2 border-red-500 rounded-full flex items-center justify-center hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(255,0,0,0.5)] hover:shadow-[0_0_25px_#f00] relative overflow-hidden cursor-move" style="color: #ff003c;">
+                <i class="fas fa-atom text-3xl absolute opacity-30 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
     </div>
 
     <script>
         if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; window.ALL_THEMES_DATA = [{ name: '預覽用', icon: '🧪', words: [{word: 'test', meaning: '測試', pos: 'n.'}] }]; window.GOOGLE_API_URL = ""; window.PRONUNCIATION_DICT = {}; }
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
-        const auth = firebase.auth(); // 🌟 引入 Auth 抓取精熟度
+        const auth = firebase.auth(); 
         const { createApp, ref, onUnmounted, onMounted, computed } = Vue;
         
         createApp({
@@ -232,28 +278,106 @@
                 const showRealtimeMsg = ref(false);
                 const lastMsgTimestamp = ref(Date.now());
                 
-                // 🌟 精熟度變數
                 const masteryData = ref({});
                 const highlights = ref({ modes: {}, themes: {} });
+                const locks = ref({ modes: {}, themes: {} });
+
+                // --- 🌟 空間躍傳引擎 (四向磁吸版) ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
+                // --- 🌟 階層式智慧返回邏輯 ---
+                const goBack = () => {
+                    if (view.value === 'battleMenu') {
+                        window.location.href = 'vocab.html';
+                    } else if (view.value === 'battleCreate') {
+                        view.value = 'battleMenu';
+                    } else if (view.value === 'battleWaiting') {
+                        cancelBattle();
+                    } else if (view.value === 'battleArena') {
+                        if(confirm('戰鬥尚未結束，確定要撤退嗎？這將被記錄為「撤退(敗北)」喔！')) {
+                            let enemyName = myRole.value === 'host' ? battleData.value.guestName : battleData.value.hostName; 
+                            if (!enemyName) enemyName = '無人'; 
+                            db.ref('rooms/' + activeBattleRoom.value).update({ status: 'finished', winner: enemyName, retreated: playerName.value });
+                            // The listener will catch 'finished' and route to battleResult
+                        }
+                    } else if (view.value === 'battleResult') {
+                        leaveBattleRoom();
+                        view.value = 'battleMenu';
+                    }
+                };
 
                 const getThemeMastery = (theme) => {
                     if (!theme || !theme.words || theme.words.length === 0) return 0;
                     let count = 0;
-                    theme.words.forEach(w => {
-                        if (masteryData.value[w.word]) count++;
-                    });
+                    theme.words.forEach(w => { if (masteryData.value[w.word]) count++; });
                     return parseFloat(((count / theme.words.length) * 100).toFixed(1));
                 };
 
                 const bossMastery = computed(() => {
-                    let totalWords = 0;
-                    let masteredWords = 0;
+                    let totalWords = 0; let masteredWords = 0;
                     if (typeof ALL_THEMES_DATA !== 'undefined') {
                         ALL_THEMES_DATA.forEach(t => {
                             totalWords += t.words.length;
-                            t.words.forEach(w => {
-                                if (masteryData.value[w.word]) masteredWords++;
-                            });
+                            t.words.forEach(w => { if (masteryData.value[w.word]) masteredWords++; });
                         });
                     }
                     return totalWords > 0 ? parseFloat(((masteredWords / totalWords) * 100).toFixed(1)) : 0;
@@ -267,34 +391,34 @@
                             currentUserUid.value = user.uid;
                             playerName.value = localStorage.getItem('shilieu_player') || '未知特工';
                             db.ref(`app_state/users/${user.uid}/mastery`).on('value', snap => {
-                                if (snap.exists()) {
-                                    masteryData.value = snap.val();
-                                } else {
-                                    masteryData.value = {};
-                                }
+                                if (snap.exists()) { masteryData.value = snap.val(); } else { masteryData.value = {}; }
                             });
                         } else {
-                            if (!isConfigMissing.value) {
-                                alert('⚠️ 特工身分驗證失效，請重新登入！');
-                                window.location.href = 'index.html';
-                            }
+                            if (!isConfigMissing.value) { alert('⚠️ 特工身分驗證失效，請重新登入！'); window.location.href = 'index.html'; }
                         }
                     });
 
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
-                        if (val && val.timestamp > lastMsgTimestamp.value) {
-                            realtimeMsg.value = val.text;
-                            showRealtimeMsg.value = true;
-                            lastMsgTimestamp.value = val.timestamp;
-                        }
+                        if (val && val.timestamp > lastMsgTimestamp.value) { realtimeMsg.value = val.text; showRealtimeMsg.value = true; lastMsgTimestamp.value = val.timestamp; }
                     });
 
-                    db.ref('app_state/system_settings/highlights').on('value', snap => { 
+                    db.ref('app_state/system_settings').on('value', snap => { 
                         if (snap.exists()) { 
                             let data = snap.val(); 
-                            highlights.value = { modes: data.modes || {}, themes: data.themes || {} }; 
+                            highlights.value = { modes: data.highlights?.modes || {}, themes: data.highlights?.themes || {} }; 
+                            locks.value = { modes: data.locks?.modes || {}, themes: data.locks?.themes || {} }; 
                         } 
+                    });
+
+                    // 🌟 終極斷線追蹤系統 (天眼機制)
+                    document.addEventListener("visibilitychange", () => {
+                        if (document.visibilityState === 'hidden' && view.value === 'battleArena') {
+                            // 若切換視窗，直接判定撤退敗北
+                            let enemyName = myRole.value === 'host' ? battleData.value.guestName : battleData.value.hostName; 
+                            if (!enemyName) enemyName = '無人'; 
+                            db.ref('rooms/' + activeBattleRoom.value).update({ status: 'finished', winner: enemyName, retreated: playerName.value });
+                        }
                     });
                 });
 
@@ -302,30 +426,35 @@
                 const triggerAnim = (target, type, amount, isCrit) => { if(target === 'host') { hostAnimKey.value++; if(type === 'heal') { hostFloatText.value = `+${amount}`; hostHealEffect.value = true; if(isCrit) hostFloatText.value = `+${amount} 爆擊回血!`; } else { hostFloatText.value = `-${amount}`; hostHitEffect.value = true; isShaking.value = true; if(isCrit) hostFloatText.value = `-${amount} 爆擊!`; } } else { guestAnimKey.value++; if(type === 'heal') { guestFloatText.value = `+${amount}`; guestHealEffect.value = true; if(isCrit) guestFloatText.value = `+${amount} 爆擊回血!`; } else { guestFloatText.value = `-${amount}`; guestHitEffect.value = true; isShaking.value = true; if(isCrit) guestFloatText.value = `-${amount} 爆擊!`; } } const timer = setTimeout(() => { if(target === 'host') { hostHitEffect.value = false; hostHealEffect.value = false; hostFloatText.value = ''; } if(target === 'guest') { guestHitEffect.value = false; guestHealEffect.value = false; guestFloatText.value = ''; } isShaking.value = false; }, 2000); animTimers.push(timer); };
                 const clearAnimTimers = () => { animTimers.forEach(t => clearTimeout(t)); animTimers = []; };
                 
-                const dismissBattleRules = () => { if(activeBattleRoom.value) { let updateData = {}; updateData[`${myRole.value}Ready`] = true; db.ref(`rooms/${activeBattleRoom.value}`).update(updateData); } };
+                const dismissBattleRules = () => { 
+    if(activeBattleRoom.value) { 
+        let updateData = {}; updateData[`${myRole.value}Ready`] = true; db.ref(`rooms/${activeBattleRoom.value}`).update(updateData); 
+    } else {
+        // 如果在大廳，單純把彈窗關掉就好
+        showBattleRulesModal.value = false;
+    }
+};
                 const generateRoomCode = () => Math.floor(Math.random() * 9000 + 1000).toString();
                 
                 const createBossBattle = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); createBattle({ name: "🔥 2000單大魔王", icon: "😈", words: allWords }); };
                 const createBattle = (theme) => { activeTheme.value = theme; battleErrorMsg.value = ''; const tryCreateRoom = () => { const code = generateRoomCode(); db.ref('rooms/' + code).once('value').then(snap => { if (snap.exists() && snap.val().status !== 'finished') { tryCreateRoom(); } else { activeBattleRoom.value = code; myRole.value = 'host'; db.ref('rooms/' + code).set({ theme: theme.name, hostName: playerName.value, guestName: '', hostHp: 20, guestHp: 20, hostCombo: 0, guestCombo: 0, hostReady: false, guestReady: false, status: 'waiting', winner: '', retreated: '' }); view.value = 'battleWaiting'; listenToBattleRoom(code); } }); }; tryCreateRoom(); };
                 const joinBattle = () => { const code = joinRoomCode.value.trim(); if(code.length !== 4) return; db.ref('rooms/' + code).once('value').then(snap => { if(snap.exists()) { const data = snap.val(); if(data.status === 'waiting') { activeBattleRoom.value = code; myRole.value = 'guest'; if (data.theme === "🔥 2000單大魔王") { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); activeTheme.value = { name: "🔥 2000單大魔王", icon: "😈", words: allWords }; } else { activeTheme.value = themes.value.find(t => t.name === data.theme) || themes.value[0]; } db.ref('rooms/' + code).update({ guestName: playerName.value, status: 'playing' }); listenToBattleRoom(code); } else { battleErrorMsg.value = "房間已經開打或結束了！"; } } else { battleErrorMsg.value = "找不到房號！"; } }); };
 
-                const retreatFromBattle = () => { if(confirm('確定要撤退嗎？這將被記錄為「撤退」喔！')) { let enemyName = myRole.value === 'host' ? battleData.value.guestName : battleData.value.hostName; if (!enemyName) enemyName = '無人'; db.ref('rooms/' + activeBattleRoom.value).update({ status: 'finished', winner: enemyName, retreated: playerName.value }); } };
-
-                const listenToBattleRoom = (code) => { if(battleListener) db.ref('rooms/' + activeBattleRoom.value).off('value', battleListener); battleListener = db.ref('rooms/' + code).on('value', snap => { const data = snap.val(); if(!data) return; if(battleData.value) { let oldHost = battleData.value.hostHp, newHost = data.hostHp, oldGuest = battleData.value.guestHp, newGuest = data.guestHp; if(newHost > oldHost) triggerAnim('host', 'heal', newHost - oldHost, (newHost - oldHost) >= 6); if(newHost < oldHost) triggerAnim('host', 'dmg', oldHost - newHost, (oldHost - newHost) >= 4); if(newGuest > oldGuest) triggerAnim('guest', 'heal', newGuest - oldGuest, (newGuest - oldGuest) >= 6); if(newGuest < oldGuest) triggerAnim('guest', 'dmg', oldGuest - newGuest, (oldGuest - newGuest) >= 4); } battleData.value = data; if(data.status === 'playing' && view.value !== 'battleArena') { view.value = 'battleArena'; showBattleRulesModal.value = true; battleStartTime.value = 0; battleAnsweredCount.value = 0; battleWrongWords.value = []; battleHasSubmitted.value = false; currentBattleWord.value = null; currentBattleThemeWords.value = [...activeTheme.value.words].sort(() => 0.5 - Math.random()); } if(data.status === 'playing' && data.hostReady && data.guestReady && battleStartTime.value === 0) { showBattleRulesModal.value = false; battleStartTime.value = Date.now(); generateBattleQuestion(); } if(data.status === 'playing' && (data.hostHp <= 0 || data.guestHp <= 0)) { let winnerName = data.hostHp <= 0 ? data.guestName : data.hostName; if(myRole.value === 'host') { db.ref('rooms/' + code).update({ status: 'finished', winner: winnerName }); } } if(data.status === 'finished' && !battleHasSubmitted.value) { showBattleRulesModal.value = false; battleHasSubmitted.value = true; let diff = Math.floor((Date.now() - battleStartTime.value) / 1000); let tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; let wWordStr = Array.from(new Set(battleWrongWords.value)).join(', '); let bScore = data.winner === playerName.value ? '勝' : '敗'; if (data.retreated === playerName.value) bScore = '撤退'; else if (data.retreated && data.retreated !== playerName.value) bScore = '勝 (對手撤退)'; let tName = '⚔️雙人死鬥模式 : ' + data.theme; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${encodeURIComponent(bScore)}&total=&timeStr=${encodeURIComponent(tStr)}&answered=${battleAnsweredCount.value}&wrongWords=${encodeURIComponent(wWordStr || '無')}`).catch(e=>e); if (view.value !== 'battleResult') { clearAnimTimers(); isShaking.value = false; view.value = 'battleResult'; } } }); };
+                const listenToBattleRoom = (code) => { if(battleListener) db.ref('rooms/' + activeBattleRoom.value).off('value', battleListener); battleListener = db.ref('rooms/' + code).on('value', snap => { const data = snap.val(); if(!data) return; if(battleData.value) { let oldHost = battleData.value.hostHp, newHost = data.hostHp, oldGuest = battleData.value.guestHp, newGuest = data.guestHp; if(newHost > oldHost) triggerAnim('host', 'heal', newHost - oldHost, (newHost - oldHost) >= 6); if(newHost < oldHost) triggerAnim('host', 'dmg', oldHost - newHost, (oldHost - newHost) >= 4); if(newGuest > oldGuest) triggerAnim('guest', 'heal', newGuest - oldGuest, (newGuest - oldGuest) >= 6); if(newGuest < oldGuest) triggerAnim('guest', 'dmg', oldGuest - newGuest, (oldGuest - newGuest) >= 4); } battleData.value = data; if(data.status === 'playing' && view.value !== 'battleArena') { view.value = 'battleArena'; showBattleRulesModal.value = true; battleStartTime.value = 0; battleAnsweredCount.value = 0; battleWrongWords.value = []; battleHasSubmitted.value = false; currentBattleWord.value = null; currentBattleThemeWords.value = [...activeTheme.value.words].sort(() => 0.5 - Math.random()); } if(data.status === 'playing' && data.hostReady && data.guestReady && battleStartTime.value === 0) { showBattleRulesModal.value = false; battleStartTime.value = Date.now(); generateBattleQuestion(); } if(data.status === 'playing' && (data.hostHp <= 0 || data.guestHp <= 0)) { let winnerName = data.hostHp <= 0 ? data.guestName : data.hostName; if(myRole.value === 'host') { db.ref('rooms/' + code).update({ status: 'finished', winner: winnerName }); } } if(data.status === 'finished' && !battleHasSubmitted.value) { showBattleRulesModal.value = false; battleHasSubmitted.value = true; let diff = Math.floor((Date.now() - battleStartTime.value) / 1000); let tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; let wWordStr = Array.from(new Set(battleWrongWords.value)).join(', '); let bScore = data.winner === playerName.value ? '勝' : '敗'; if (data.retreated === playerName.value) bScore = '撤退'; else if (data.retreated && data.retreated !== playerName.value) bScore = '勝 (對手撤退)'; let tName = '⚔️雙人死鬥模式 : ' + data.theme; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${encodeURIComponent(bScore)}&total=&timeStr=${encodeURIComponent(tStr)}&answered=${battleAnsweredCount.value}&wrongWords=${encodeURIComponent(wWordStr || '無')}`, { keepalive: true }).catch(e=>e); if (view.value !== 'battleResult') { clearAnimTimers(); isShaking.value = false; view.value = 'battleResult'; } } }); };
                 const generateBattleQuestion = () => { battleAnswerLocked.value = false; currentBattleWord.value = null; isBattleCrit.value = Math.random() < 0.1; let targetWord; let allOtherMeanings = []; if (isBattleCrit.value || battleData.value.theme === "🔥 2000單大魔王") { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); targetWord = allWords[Math.floor(Math.random() * allWords.length)]; themes.value.forEach(t => t.words.forEach(w => allOtherMeanings.push(w.meaning))); } else { if(currentBattleThemeWords.value.length === 0) currentBattleThemeWords.value = [...activeTheme.value.words].sort(() => 0.5 - Math.random()); targetWord = currentBattleThemeWords.value.pop(); activeTheme.value.words.forEach(w => allOtherMeanings.push(w.meaning)); } let options = [targetWord.meaning]; let distractors = Array.from(new Set(allOtherMeanings.filter(m => m !== targetWord.meaning))).sort(() => 0.5 - Math.random()).slice(0, 3); options = options.concat(distractors).sort(() => 0.5 - Math.random()); currentBattleWord.value = { ...targetWord, options: options, userAnswer: null }; setTimeout(() => playAudio(currentBattleWord.value.word), 100); };
                 const handleBattleAnswer = (opt) => { if(battleAnswerLocked.value || !battleData.value || battleData.value.status !== 'playing' || showBattleRulesModal.value) return; battleAnswerLocked.value = true; currentBattleWord.value.userAnswer = opt; battleAnsweredCount.value++; let isHost = myRole.value === 'host'; if(opt === currentBattleWord.value.meaning) { let myCombo = (isHost ? battleData.value.hostCombo : battleData.value.guestCombo) + 1; let baseDmgHeal = ((isBattleCrit.value || battleData.value.theme === "🔥 2000單大魔王") ? 6 : 3) + (myCombo - 1); let healAmount = baseDmgHeal; let dmgAmount = baseDmgHeal; let myHp = isHost ? battleData.value.hostHp : battleData.value.guestHp; let actionType = myHp >= 20 ? 'attack' : 'heal'; projectile.value = { active: true, text: currentBattleWord.value.word, action: actionType, isHost: isHost }; let comboUpdates = {}; comboUpdates[myRole.value + 'Combo'] = myCombo; db.ref(`rooms/${activeBattleRoom.value}`).update(comboUpdates); setTimeout(() => { projectile.value.active = false; let myHpRef = db.ref(`rooms/${activeBattleRoom.value}/${myRole.value}Hp`); let enemyRole = isHost ? 'guest' : 'host'; let enemyHpRef = db.ref(`rooms/${activeBattleRoom.value}/${enemyRole}Hp`); myHpRef.transaction(hp => { if(hp >= 20) { enemyHpRef.transaction(eHp => Math.max(0, eHp - dmgAmount)); return 20; } else { return Math.min(20, hp + healAmount); } }); setTimeout(() => generateBattleQuestion(), 400); }, 400); } else { if (!isBattleCrit.value && battleData.value.theme !== "🔥 2000單大魔王") { battleWrongWords.value.push(currentBattleWord.value.word); } isShaking.value = true; let comboUpdates = {}; comboUpdates[myRole.value + 'Combo'] = 0; db.ref(`rooms/${activeBattleRoom.value}`).update(comboUpdates); setTimeout(() => isShaking.value = false, 200); setTimeout(() => generateBattleQuestion(), 800); } };
                 const getBattleOptionClass = (opt) => { if (!currentBattleWord.value || !currentBattleWord.value.userAnswer) return 'border-gray-700 hover:border-neon-cyan hover:bg-cyan-900/30 cursor-pointer text-gray-300'; if (opt === currentBattleWord.value.meaning) return 'bg-green-950/50 border-neon-green text-neon-green z-10'; if (opt === currentBattleWord.value.userAnswer && opt !== currentBattleWord.value.meaning) return 'bg-red-950/50 border-neon-red text-neon-red opacity-90'; return 'border-gray-800 opacity-30 bg-black'; };
                 
-                const cancelBattle = () => { if(myRole.value === 'host' && activeBattleRoom.value) db.ref('rooms/' + activeBattleRoom.value).remove(); leaveBattleRoom(); };
-                const leaveBattleRoom = () => { if (!battleData.value || battleStartTime.value === 0 || battleHasSubmitted.value) {} else { const diff = Math.floor((Date.now() - battleStartTime.value) / 1000); if (diff >= 3) { const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const wWordStr = Array.from(new Set(battleWrongWords.value)).join(', '); const tName = '⚔️雙人死鬥模式 : ' + battleData.value.theme + ' (中離)'; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${encodeURIComponent('敗')}&total=&timeStr=${encodeURIComponent(timeStr)}&answered=${battleAnsweredCount.value}&wrongWords=${encodeURIComponent(wWordStr || '無')}`).catch(e=>e); battleHasSubmitted.value = true; } } if(battleListener) db.ref('rooms/' + activeBattleRoom.value).off('value', battleListener); battleListener = null; activeBattleRoom.value = ''; battleData.value = null; showBattleRulesModal.value = false; clearAnimTimers(); view.value = 'battleMenu'; battleStartTime.value = 0; };
+                const cancelBattle = () => { if(myRole.value === 'host' && activeBattleRoom.value) db.ref('rooms/' + activeBattleRoom.value).remove(); leaveBattleRoom(); view.value = 'battleMenu'; };
                 
-                // 🌟 統一返回單字戰場大廳
-                const goHome = () => { leaveBattleRoom(); window.location.href = 'vocab.html'; };
+                const leaveBattleRoom = () => { if (!battleData.value || battleStartTime.value === 0 || battleHasSubmitted.value) {} else { const diff = Math.floor((Date.now() - battleStartTime.value) / 1000); if (diff >= 3) { const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; const wWordStr = Array.from(new Set(battleWrongWords.value)).join(', '); const tName = '⚔️雙人死鬥模式 : ' + battleData.value.theme + ' (中離)'; fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${encodeURIComponent('敗')}&total=&timeStr=${encodeURIComponent(timeStr)}&answered=${battleAnsweredCount.value}&wrongWords=${encodeURIComponent(wWordStr || '無')}`, { keepalive: true }).catch(e=>e); battleHasSubmitted.value = true; } } if(battleListener) db.ref('rooms/' + activeBattleRoom.value).off('value', battleListener); battleListener = null; activeBattleRoom.value = ''; battleData.value = null; showBattleRulesModal.value = false; clearAnimTimers(); battleStartTime.value = 0; };
+                
                 onUnmounted(() => leaveBattleRoom());
 
                 return { 
-                    isConfigMissing, view, playerName, themes, activeTheme, playAudio, joinRoomCode, activeBattleRoom, myRole, battleData, battleErrorMsg, currentBattleWord, createBattle, joinBattle, cancelBattle, leaveBattleRoom, goHome, showBattleRulesModal, dismissBattleRules, retreatFromBattle, battleAnswerLocked, handleBattleAnswer, getBattleOptionClass, isBattleCrit, battleHasSubmitted, isShaking, hostHitEffect, hostHealEffect, guestHitEffect, guestHealEffect, hostFloatText, guestFloatText, projectile, getProjectileClass, hostAnimKey, guestAnimKey, highlights, createBossBattle,
-                    realtimeMsg, showRealtimeMsg, getThemeMastery, bossMastery
+                    isConfigMissing, view, playerName, themes, activeTheme, playAudio, joinRoomCode, activeBattleRoom, myRole, battleData, battleErrorMsg, currentBattleWord, createBattle, joinBattle, cancelBattle, leaveBattleRoom, showBattleRulesModal, dismissBattleRules, battleAnswerLocked, handleBattleAnswer, getBattleOptionClass, isBattleCrit, battleHasSubmitted, isShaking, hostHitEffect, hostHealEffect, guestHitEffect, guestHealEffect, hostFloatText, guestFloatText, projectile, getProjectileClass, hostAnimKey, guestAnimKey, highlights, locks, createBossBattle,
+                    realtimeMsg, showRealtimeMsg, getThemeMastery, bossMastery,
+                    goBack, showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');

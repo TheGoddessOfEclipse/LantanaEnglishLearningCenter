@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script src="config.js"></script>
     <script src="irregular_verbs_data.js"></script>
@@ -58,6 +60,49 @@
         .custom-scrollbar::-webkit-scrollbar { display: none; }
         
         .touch-none-y { touch-action: pan-y; }
+
+        /* ================= ✨ 發光矩陣 ================= */
+        .glow-green { animation: glowGreenAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #0f0 !important; z-index: 50 !important; }
+        @keyframes glowGreenAnim { 0% { box-shadow: 0 0 10px #0f0, inset 0 0 10px rgba(0,255,0,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 40px #0f0, inset 0 0 30px rgba(0,255,0,0.6); transform: scale(1.05); } }
+        
+        .glow-yellow { animation: glowYellowAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #ff0 !important; z-index: 50 !important; }
+        @keyframes glowYellowAnim { 0% { box-shadow: 0 0 10px #ff0, inset 0 0 10px rgba(255,255,0,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 40px #ff0, inset 0 0 30px rgba(255,255,0,0.6); transform: scale(1.05); } }
+
+        .glow-pink { animation: glowPinkAnim 0.8s ease-in-out infinite alternate !important; border: 2px solid #f0f !important; z-index: 50 !important; }
+        @keyframes glowPinkAnim { 0% { box-shadow: 0 0 10px #f0f, inset 0 0 10px rgba(255,0,255,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 40px #f0f, inset 0 0 30px rgba(255,0,255,0.6); transform: scale(1.05); } }
+
+        /* ================= ⚡ 封鎖結界 ================= */
+        .vine-locked {
+            position: relative;
+            pointer-events: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .vine-locked > * {
+            opacity: 0.4;
+            filter: brightness(0.4) blur(1px) !important;
+            transform: scale(0.98);
+            transition: all 0.3s ease;
+        }
+        .vine-locked::after {
+            content: ''; position: absolute; inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 80%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80,20 L0,0 M80,20 L10,100 M80,20 L50,100 M80,20 L100,70 M80,20 L100,0 M80,20 L0,40 M50,16 L30,30 M30,30 L10,60 M85,55 L60,80 M60,80 L35,80 M35,80 L15,100' stroke='rgba(255,255,255,0.4)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+            background-size: cover; backdrop-filter: contrast(1.1); z-index: 40;
+            animation: shatterFlicker 3s infinite;
+        }
+        
+        .vine-locked.rounded-full::after { clip-path: circle(50% at 50% 50%); }
+        .vine-locked:not(.rounded-full)::after { clip-path: inset(0 round 16px); }
+        .vine-locked::before {
+            content: '✖ 權限封鎖'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-3deg);
+            background: rgba(20, 0, 0, 0.85); border: 1px solid #ff003c; border-left: 4px solid #ff003c;
+            color: #ff003c; padding: 6px 16px; border-radius: 2px; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.2em;
+            z-index: 41; box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            text-shadow: 2px 2px 0px rgba(0, 255, 255, 0.5), -2px -2px 0px rgba(255, 0, 255, 0.5); 
+            white-space: nowrap;
+        }
+        @keyframes shatterFlicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: 0.6; } 94% { opacity: 0.9; } 96% { opacity: 0.3; } 98% { opacity: 1; } }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-2 md:p-6 relative">
@@ -65,6 +110,26 @@
     <div class="fixed inset-0 scanline z-0"></div>
 
     <div id="app" class="w-full h-full flex flex-col relative z-10 items-center justify-center">
+        
+        <div class="flex justify-between items-center w-full px-4 pt-2 pb-2 border-b border-emerald-900/50 relative z-50 mb-2 pointer-events-auto">
+            <button @click="goBack" class="text-sm font-bold tracking-widest text-gray-400 hover:text-emerald-400 transition flex items-center gap-2 border border-gray-600 hover:border-emerald-500 px-3 py-1.5 rounded-lg bg-black/50 active:scale-95">
+                Back <span class="text-lg leading-none">↩</span>
+            </button>
+            <div class="text-xs md:text-sm font-bold tracking-widest text-gray-300 flex items-center gap-2">
+                <i class="fas fa-user-secret text-emerald-500"></i> 特工 // <span class="text-white">{{ playerName }}</span>
+            </div>
+        </div>
+
+        <div v-if="showRealtimeMsg" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 fade-in pointer-events-auto">
+            <div class="border-2 border-red-500 w-full max-w-lg p-8 relative overflow-hidden bg-gradient-to-b from-red-900/40 to-black text-center shadow-[0_0_40px_rgba(255,0,60,0.5)] rounded-xl">
+                <div class="text-6xl mb-4 animate-bounce relative z-10">🚨</div>
+                <h2 class="text-2xl md:text-3xl font-black text-red-500 tracking-widest mb-6 relative z-10">總司令部緊急廣播</h2>
+                <div class="bg-black/80 border border-red-800 p-6 mb-8 relative z-10 rounded-lg">
+                    <p class="text-white text-lg md:text-xl font-bold tracking-wider leading-relaxed">{{ realtimeMsg }}</p>
+                </div>
+                <button @click="showRealtimeMsg = false" class="w-full bg-red-600 text-white hover:bg-white hover:text-black py-4 font-black tracking-widest transition shadow-[0_0_20px_rgba(255,0,0,0.8)] text-lg rounded-lg active:scale-95">收到，長官！</button>
+            </div>
+        </div>
         
         <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-500" :class="currentView === 'menu' ? 'opacity-100' : 'opacity-10'">
             <div v-for="v in bgViruses" :key="v.id"
@@ -77,7 +142,7 @@
         </div>
 
         <transition name="fade">
-            <div v-if="interceptedVirus" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+            <div v-if="interceptedVirus" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 pointer-events-auto">
                 <div class="bg-[#050b14] border-2 border-red-600 rounded-2xl p-6 md:p-8 text-center shadow-[0_0_40px_rgba(255,0,0,0.5)] w-full max-w-sm relative overflow-hidden">
                     <div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
                     <div class="absolute top-0 left-0 w-full h-1 bg-red-600 animate-pulse"></div>
@@ -100,20 +165,17 @@
             </div>
         </transition>
 
-        <div class="w-full max-w-4xl flex flex-col relative h-full md:h-auto md:max-h-[95vh] z-10 overflow-hidden transition-all duration-500 custom-scrollbar"
-             :class="currentView === 'menu' ? 'bg-transparent' : 'bg-[#050b14]/90 backdrop-blur-md rounded-2xl neon-box-green shadow-[0_0_50px_rgba(0,0,0,0.8)]'">
+        <div class="w-full max-w-4xl flex flex-col relative flex-1 z-10 overflow-hidden transition-all duration-500 custom-scrollbar"
+             :class="currentView === 'menu' ? 'bg-transparent pointer-events-none' : 'bg-[#050b14]/90 backdrop-blur-md rounded-2xl neon-box-green shadow-[0_0_50px_rgba(0,0,0,0.8)] pointer-events-auto'">
             
-            <div v-if="currentView !== 'menu'" class="bg-emerald-950/90 border-b border-emerald-500/50 p-3 md:p-5 text-emerald-100 text-center relative flex-shrink-0 z-20 shadow-md">
+            <div v-if="currentView !== 'menu'" class="bg-emerald-950/90 border-b border-emerald-500/50 p-3 md:p-4 text-emerald-100 text-center relative flex-shrink-0 z-20 shadow-md">
                 <h1 class="text-xl md:text-2xl font-black flex items-center justify-center gap-2 tracking-widest neon-text-green">
                     <i class="fas fa-biohazard"></i> 變異動詞修復艙
                 </h1>
-                <button @click="quitToMenu" class="absolute top-1/2 -translate-y-1/2 left-4 text-emerald-400 hover:text-white transition">
-                    <i class="fas fa-sign-out-alt text-xl md:text-2xl drop-shadow-md"></i>
-                </button>
             </div>
 
             <transition name="fade">
-                <div v-if="showCountSelector" class="absolute inset-0 bg-[#030712]/95 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                <div v-if="showCountSelector" class="absolute inset-0 bg-[#030712]/95 backdrop-blur-sm flex items-center justify-center z-50 p-4 pointer-events-auto">
                     <div class="bg-[#0a1128] border border-emerald-500/50 rounded-2xl p-6 w-full max-w-md text-center shadow-[0_0_25px_rgba(16,185,129,0.3)]">
                         <h3 class="text-xl font-black text-emerald-100 mb-2 tracking-widest">鎖定變異體數量</h3>
                         <p class="text-sm text-emerald-500/70 mb-6 font-bold">請設定雷達掃描的目標總數</p>
@@ -133,7 +195,7 @@
                     
                     <div v-if="currentView === 'menu'" class="flex flex-col h-full items-center justify-between w-full relative z-10">
                         
-                        <div class="w-full text-center mt-6 md:mt-10 z-10 flex-shrink-0">
+                        <div class="w-full text-center mt-6 md:mt-10 z-10 flex-shrink-0 pointer-events-none">
                             <h1 class="text-3xl md:text-5xl font-black text-white tracking-widest neon-text-green drop-shadow-[0_0_15px_#0f0] mb-2">
                                 <i class="fas fa-biohazard"></i> 變異動詞修復艙
                             </h1>
@@ -142,46 +204,55 @@
                             </h2>
                         </div>
                         
-                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 w-full z-10 py-8">
+                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 w-full z-10 py-8 pointer-events-none">
                             
-                            <div @click="startMission('practice')" class="virus-float-1 group cursor-crosshair flex flex-col items-center relative">
-                                <div class="absolute inset-0 bg-emerald-500/30 rounded-full blur-2xl group-hover:bg-emerald-500/60 transition-all duration-300"></div>
-                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.8)] group-hover:shadow-[0_0_60px_rgba(16,185,129,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                            <div @click="startMission('practice')" 
+                                 :class="{'pointer-events-none': locks?.verb_modes?.practice}"
+                                 class="virus-float-1 group cursor-crosshair flex flex-col items-center relative rounded-3xl p-2 transition-all pointer-events-auto">
+                                <div class="absolute inset-0 bg-emerald-500/30 rounded-full blur-2xl group-hover:bg-emerald-500/60 transition-all duration-300 pointer-events-none"></div>
+                                
+                                <div :class="{'glow-green': highlights?.verb_modes?.practice, 'vine-locked rounded-full': locks?.verb_modes?.practice}"
+                                     class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.8)] group-hover:shadow-[0_0_60px_rgba(16,185,129,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
                                     <i class="fas fa-virus text-6xl md:text-8xl text-emerald-400 drop-shadow-[0_0_15px_rgba(16,185,129,1)]"></i>
                                 </div>
-                                <div class="mt-6 text-center z-10">
+                                
+                                <div :class="{'opacity-30 grayscale': locks?.verb_modes?.practice}" class="mt-6 text-center z-10 pointer-events-none transition-all duration-300">
                                     <div class="text-xl md:text-2xl font-black text-emerald-100 tracking-widest drop-shadow-[0_0_8px_#0f0]">變異體展示</div>
                                     <div class="text-xs md:text-sm text-emerald-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">觀察 / 自動發音</div>
                                 </div>
                             </div>
 
-                            <div @click="selectCountFor('identify')" class="virus-float-2 group cursor-crosshair flex flex-col items-center relative">
-                                <div class="absolute inset-0 bg-amber-500/30 rounded-full blur-2xl group-hover:bg-amber-500/60 transition-all duration-300"></div>
-                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-amber-500 shadow-[0_0_30px_rgba(234,179,8,0.8)] group-hover:shadow-[0_0_60px_rgba(234,179,8,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                            <div @click="selectCountFor('identify')" 
+                                 :class="{'pointer-events-none': locks?.verb_modes?.identify}"
+                                 class="virus-float-2 group cursor-crosshair flex flex-col items-center relative rounded-3xl p-2 transition-all pointer-events-auto">
+                                <div class="absolute inset-0 bg-amber-500/30 rounded-full blur-2xl group-hover:bg-amber-500/60 transition-all duration-300 pointer-events-none"></div>
+                                
+                                <div :class="{'glow-yellow': highlights?.verb_modes?.identify, 'vine-locked rounded-full': locks?.verb_modes?.identify}"
+                                     class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-amber-500 shadow-[0_0_30px_rgba(234,179,8,0.8)] group-hover:shadow-[0_0_60px_rgba(234,179,8,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
                                     <i class="fas fa-bacteria text-6xl md:text-8xl text-amber-400 drop-shadow-[0_0_15px_rgba(234,179,8,1)]"></i>
                                 </div>
-                                <div class="mt-6 text-center z-10">
+                                
+                                <div :class="{'opacity-30 grayscale': locks?.verb_modes?.identify}" class="mt-6 text-center z-10 pointer-events-none transition-all duration-300">
                                     <div class="text-xl md:text-2xl font-black text-amber-100 tracking-widest drop-shadow-[0_0_8px_#fa0]">變異體識別</div>
                                     <div class="text-xs md:text-sm text-amber-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">滑動閃卡 / 驗證</div>
                                 </div>
                             </div>
 
-                            <div @click="selectCountFor('create')" class="virus-float-3 group cursor-crosshair flex flex-col items-center relative">
-                                <div class="absolute inset-0 bg-fuchsia-500/30 rounded-full blur-2xl group-hover:bg-fuchsia-500/60 transition-all duration-300"></div>
-                                <div class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-fuchsia-500 shadow-[0_0_30px_rgba(217,70,239,0.8)] group-hover:shadow-[0_0_60px_rgba(217,70,239,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
+                            <div @click="selectCountFor('create')" 
+                                 :class="{'pointer-events-none': locks?.verb_modes?.create}"
+                                 class="virus-float-3 group cursor-crosshair flex flex-col items-center relative rounded-3xl p-2 transition-all pointer-events-auto">
+                                <div class="absolute inset-0 bg-fuchsia-500/30 rounded-full blur-2xl group-hover:bg-fuchsia-500/60 transition-all duration-300 pointer-events-none"></div>
+                                
+                                <div :class="{'glow-pink': highlights?.verb_modes?.create, 'vine-locked rounded-full': locks?.verb_modes?.create}"
+                                     class="w-28 h-28 md:w-40 md:h-40 bg-black/60 rounded-full flex items-center justify-center border-4 border-fuchsia-500 shadow-[0_0_30px_rgba(217,70,239,0.8)] group-hover:shadow-[0_0_60px_rgba(217,70,239,1)] transition-all duration-300 group-hover:scale-110 relative z-10 backdrop-blur-sm">
                                     <i class="fas fa-bacterium text-6xl md:text-8xl text-fuchsia-400 drop-shadow-[0_0_15px_rgba(217,70,239,1)]"></i>
                                 </div>
-                                <div class="mt-6 text-center z-10">
+                                
+                                <div :class="{'opacity-30 grayscale': locks?.verb_modes?.create}" class="mt-6 text-center z-10 pointer-events-none transition-all duration-300">
                                     <div class="text-xl md:text-2xl font-black text-fuchsia-100 tracking-widest drop-shadow-[0_0_8px_#f0f]">變異體製造</div>
                                     <div class="text-xs md:text-sm text-fuchsia-400 font-bold mt-1 drop-shadow-[0_0_5px_#000]">精準修復拼字</div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="pb-6 z-10 flex-shrink-0 w-full flex justify-center">
-                            <button @click="goHome" class="bg-black/50 hover:bg-red-900/80 border border-red-700 text-red-400 hover:text-white font-black tracking-widest px-8 py-3 md:py-4 rounded-full transition flex items-center justify-center gap-2 backdrop-blur-md shadow-[0_0_15px_rgba(255,0,0,0.3)] cursor-crosshair">
-                                <i class="fas fa-home"></i> 撤離修復艙 (回大廳)
-                            </button>
                         </div>
                     </div>
 
@@ -190,10 +261,10 @@
                             <span class="px-2 py-1 rounded bg-emerald-900/40 border border-emerald-500/50 text-emerald-300 text-xs font-bold tracking-widest flex items-center gap-1 shadow-inner">
                                 <i class="fas fa-dna"></i> {{ currentPatternBadge }} 型態
                             </span>
-                            <span class="text-slate-400 text-xs md:text-sm font-bold font-mono">{{ currentIndex + 1 }} / {{ queue.length }}</span>
+                            <span class="text-slate-400 text-xs md:text-sm font-bold font-mono">已探索: {{ viewedVerbs.length }} / {{ queue.length }}</span>
                         </div>
                         <div class="w-full h-1 bg-slate-800 rounded-full mb-4 overflow-hidden flex-shrink-0">
-                            <div class="h-full bg-emerald-500 transition-all duration-300 ease-out" :style="{ width: ((currentIndex + 1) / queue.length * 100) + '%' }"></div>
+                            <div class="h-full bg-emerald-500 transition-all duration-300 ease-out" :style="{ width: (viewedVerbs.length / queue.length * 100) + '%' }"></div>
                         </div>
                         <div class="flex-1 flex flex-col items-center justify-center w-full my-2 overflow-y-auto custom-scrollbar">
                             <h2 class="text-2xl md:text-4xl font-black text-emerald-100 tracking-widest drop-shadow-md mb-4">{{ currentVerb.zh }}</h2>
@@ -271,7 +342,8 @@
                             <span class="text-xs md:text-sm font-bold text-fuchsia-500/70 tracking-widest">任務 [ {{ currentIndex + 1 }} / {{ queue.length }} ]</span>
                             <span class="text-xs md:text-sm font-black text-fuchsia-400 bg-fuchsia-900/30 px-2 py-1 rounded border border-fuchsia-500/50">SCORE: {{ score }}</span>
                         </div>
-                        <div class="flex flex-col md:flex-row flex-1 w-full gap-4 md:gap-8 items-center justify-center my-2 overflow-y-auto custom-scrollbar">
+                        
+                        <div class="flex flex-col md:flex-row flex-1 w-full gap-4 md:gap-8 items-center justify-center my-2 overflow-y-auto custom-scrollbar py-6">
                             <div class="w-full md:w-1/2 flex flex-col items-center">
                                 <div class="text-xl md:text-3xl font-bold text-slate-300 mb-2 tracking-widest">{{ currentVerb.zh }}</div>
                                 <div class="flex items-center justify-center gap-3 mb-1">
@@ -280,19 +352,21 @@
                                 </div>
                                 <p class="text-[10px] md:text-xs text-emerald-500/50 font-bold tracking-widest">( 點擊喇叭聽三態 )</p>
                             </div>
-                            <div class="w-full md:w-1/2 space-y-4 max-w-sm mx-auto">
-                                <div class="relative mt-2 md:mt-0">
-                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-amber-500 font-bold uppercase">過去式(PT)</label>
-                                    <input v-model="userPast" @keyup.enter="focusPp" type="text" ref="inputPast" :disabled="isAnimating" :class="{'shake': hasErrorPast, 'border-red-500 text-red-400': showCorrection && !isPastCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPastCorrect, 'border-amber-700/50 focus:border-amber-400 text-amber-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700">
+                            
+                            <div class="w-full md:w-1/2 space-y-6 max-w-sm mx-auto">
+                                <div class="relative">
+                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-amber-500 font-bold uppercase z-10">過去式(PT)</label>
+                                    <input v-model="userPast" @keyup.enter="focusPp" type="text" ref="inputPast" :disabled="isAnimating" :class="{'shake': hasErrorPast, 'border-red-500 text-red-400': showCorrection && !isPastCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPastCorrect, 'border-amber-700/50 focus:border-amber-400 text-amber-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700 relative">
                                     <div v-if="showCorrection && !isPastCorrect" class="text-xs text-red-400 font-bold mt-1 font-mono tracking-widest">{{ currentVerb.past }}</div>
                                 </div>
-                                <div class="relative mt-4">
-                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-fuchsia-500 font-bold uppercase">過去分詞(PP)</label>
-                                    <input v-model="userPp" @keyup.enter="submitCreate" type="text" ref="inputPp" :disabled="isAnimating" :class="{'shake': hasErrorPp, 'border-red-500 text-red-400': showCorrection && !isPpCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPpCorrect, 'border-fuchsia-700/50 focus:border-fuchsia-400 text-fuchsia-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700">
+                                <div class="relative">
+                                    <label class="absolute -top-3 left-4 bg-[#050b14] px-1 text-[10px] text-fuchsia-500 font-bold uppercase z-10">過去分詞(PP)</label>
+                                    <input v-model="userPp" @keyup.enter="submitCreate" type="text" ref="inputPp" :disabled="isAnimating" :class="{'shake': hasErrorPp, 'border-red-500 text-red-400': showCorrection && !isPpCorrect, 'border-emerald-500 text-emerald-400': showCorrection && isPpCorrect, 'border-fuchsia-700/50 focus:border-fuchsia-400 text-fuchsia-100': !showCorrection}" class="w-full px-4 py-3 md:py-4 bg-[#030712] rounded-xl border-2 focus:outline-none text-center text-xl md:text-2xl font-black font-mono transition placeholder-gray-700 relative">
                                     <div v-if="showCorrection && !isPpCorrect" class="text-xs text-red-400 font-bold mt-1 font-mono tracking-widest">{{ currentVerb.pp }}</div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="w-full max-w-sm mx-auto flex gap-2 mt-2 flex-shrink-0">
                             <template v-if="!showCorrection">
                                 <button @click="skipCreate" :disabled="isAnimating" class="w-1/3 bg-slate-800 border border-slate-600 text-slate-400 hover:text-slate-200 font-bold text-xs md:text-sm py-3 md:py-4 rounded-xl active:scale-95 transition"><i class="fas fa-question-circle mb-1 block text-sm"></i> 遺忘配方</button>
@@ -305,8 +379,8 @@
                     </div>
 
                     <div v-else-if="currentView === 'result'" class="flex flex-col h-full w-full items-center relative z-10">
-                        <div v-if="isSaving" class="w-full bg-blue-900/30 border border-blue-500/50 text-blue-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 animate-pulse flex-shrink-0"><i class="fas fa-satellite-dish fa-spin"></i> 正在將戰報傳送至指揮中心...</div>
-                        <div v-else class="w-full bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 flex-shrink-0"><i class="fas fa-check-circle"></i> 演習結束！戰報已同步至後台！</div>
+                        <div v-if="!hasSubmittedScore" class="w-full bg-blue-900/30 border border-blue-500/50 text-blue-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 animate-pulse flex-shrink-0"><i class="fas fa-satellite-dish fa-spin"></i> 正在將戰報傳送至指揮中心...</div>
+                        <div v-else class="w-full bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 p-2 rounded-xl text-xs font-bold text-center mb-2 flex items-center justify-center gap-2 flex-shrink-0"><i class="fas fa-check-circle"></i> 演習結束！戰報已於背景同步至後台！</div>
                         
                         <div class="flex items-center gap-3 mb-2 flex-shrink-0">
                             <div class="text-3xl md:text-4xl drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">🎖️</div>
@@ -360,7 +434,7 @@
                             </div>
                         </div>
 
-                        <button @click="quitToMenu" class="w-full max-w-lg mx-auto bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-black tracking-widest py-3 rounded-xl shadow-md active:scale-95 transition flex-shrink-0 cursor-crosshair">
+                        <button @click="goBack" class="w-full max-w-lg mx-auto bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-black tracking-widest py-3 rounded-xl shadow-md active:scale-95 transition flex-shrink-0 cursor-crosshair">
                             返回大廳選單
                         </button>
                     </div>
@@ -368,17 +442,51 @@
                 </transition>
             </div>
         </div>
+
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300 pointer-events-auto"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+                    <button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4"></i> 總部大廳</button>
+                    <button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book w-4"></i> 單字戰場</button>
+                    <button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-fuchsia-400 hover:text-pink-400 hover:bg-fuchsia-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4"></i> 變體之戰</button>
+                    <button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-emerald-400 hover:text-neon-green hover:bg-emerald-900/50 rounded transition flex items-center gap-2"><i class="fas fa-link w-4"></i> 文法戰場</button>
+                    <button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-history w-4"></i> 歷史戰役</button>
+                    <button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-300 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-satellite-dish w-4"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" class="w-14 h-14 bg-gray-900/90 border-2 border-emerald-500 rounded-full flex items-center justify-center hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:shadow-[0_0_25px_#0f0] relative overflow-hidden cursor-move text-emerald-400">
+                <i class="fas fa-atom text-3xl absolute opacity-30 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
     </div>
 
     <script>
-        const { createApp, ref, computed, nextTick, onMounted } = Vue;
+        const { createApp, ref, computed, nextTick, onMounted, onUnmounted } = Vue;
+        if (typeof FIREBASE_CONFIG === 'undefined') { window.FIREBASE_CONFIG = { apiKey: "preview", authDomain: "preview", databaseURL: "preview", projectId: "preview" }; }
+        if (!firebase.apps.length) { firebase.initializeApp(FIREBASE_CONFIG); }
+        const db = firebase.database();
 
         createApp({
             setup() {
+                const realtimeMsg = ref('');
+                const showRealtimeMsg = ref(false);
+                const lastMsgTimestamp = ref(Date.now());
                 const currentView = ref('menu'); 
                 const playerName = ref(localStorage.getItem('shilieu_player') || '未登入特工');
                 const activeMode = ref('');
                 
+                const highlights = ref({ verb_modes: {} });
+                const locks = ref({ verb_modes: {} });
+
                 const showCountSelector = ref(false);
                 const pendingMode = ref('');
 
@@ -392,6 +500,7 @@
                 const hasErrorPast = ref(false);
                 const hasErrorPp = ref(false);
                 const isSaving = ref(false);
+                const hasSubmittedScore = ref(false);
 
                 const userPast = ref('');
                 const userPp = ref('');
@@ -406,7 +515,9 @@
                 
                 const missionStartTime = ref(null);
 
-                // 🌟 狙擊系統狀態
+                const viewedVerbs = ref([]);
+                const practiceStartTime = ref(0);
+
                 const bgViruses = ref([]);
                 const interceptedVirus = ref(null);
                 const sniperInput = ref('');
@@ -416,6 +527,87 @@
                 const sfxFail = new Audio('https://www.myinstants.com/media/sounds/wrong-buzzer.mp3');
                 const sfxExplode = new Audio('https://www.myinstants.com/media/sounds/explosion_3.mp3');
                 sfxYes.volume = 0.5; sfxFail.volume = 0.5; sfxExplode.volume = 0.4;
+
+                // --- 🌟 空間躍傳引擎 ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+                window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+
+                // --- 🌟 階層式智慧返回邏輯 ---
+                const goBack = () => {
+                    if (currentView.value === 'menu') {
+                        window.location.href = 'index.html';
+                    } else if (currentView.value === 'practice') {
+                        logPracticeSession();
+                        currentView.value = 'menu';
+                        if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    } else if (currentView.value === 'identify' || currentView.value === 'create') {
+                        if (confirm('演習尚未結束，確定要撤退嗎？\n(系統將結算您目前的成績並強制於背景上傳戰報！)')) {
+                            finishMission(true);
+                            if (window.speechSynthesis) window.speechSynthesis.cancel();
+                            currentView.value = 'menu';
+                        }
+                    } else if (currentView.value === 'result') {
+                        currentView.value = 'menu';
+                    }
+                };
 
                 const currentVerb = computed(() => queue.value[currentIndex.value] || {});
                 
@@ -500,9 +692,8 @@
                     const icons = ['fa-virus', 'fa-bacteria', 'fa-bacterium', 'fa-bug', 'fa-spider'];
                     const colors = ['text-green-500', 'text-yellow-500', 'text-fuchsia-500', 'text-red-500', 'text-cyan-500'];
                     
-                    // 🌟 縮短動畫週期並使用負數延遲，讓它們一開始就佈滿畫面
-                    const duration = Math.random() * 10 + 10; // 10~20秒 (加速)
-                    const delay = -(Math.random() * duration); // 負數延遲 = 已經在跑了
+                    const duration = Math.random() * 10 + 10; 
+                    const delay = -(Math.random() * duration); 
                     
                     bgViruses.value[i] = {
                         id: i,
@@ -565,11 +756,39 @@
                 };
 
                 onMounted(() => {
+                    db.ref('app_state/realtime_msg').on('value', snap => {
+                        const val = snap.val();
+                        if (val && val.timestamp > lastMsgTimestamp.value) {
+                            realtimeMsg.value = val.text;
+                            showRealtimeMsg.value = true;
+                            lastMsgTimestamp.value = val.timestamp;
+                        }
+                    });
                     initViruses();
+                    db.ref('app_state/system_settings').on('value', snap => {
+                        if (snap.exists()) {
+                            const data = snap.val();
+                            if (data.highlights) highlights.value = data.highlights;
+                            if (data.locks) locks.value = data.locks;
+                        }
+                    });
+
+                    // 🌟 天眼機制：切換分頁直接判定撤退
+                    document.addEventListener("visibilitychange", () => {
+                        if (document.visibilityState === 'hidden') {
+                            if (currentView.value === 'practice') {
+                                logPracticeSession();
+                            } else if ((currentView.value === 'identify' || currentView.value === 'create') && !hasSubmittedScore.value) {
+                                finishMission(true);
+                                currentView.value = 'menu';
+                            }
+                        }
+                    });
                 });
 
                 /* ================= 模式啟動邏輯 ================= */
                 const selectCountFor = (mode) => {
+                    if (locks.value?.verb_modes?.[mode]) return; 
                     pendingMode.value = mode;
                     showCountSelector.value = true;
                 };
@@ -582,6 +801,7 @@
                     score.value = 0;
                     mistakes.value = [];
                     showCorrection.value = false;
+                    hasSubmittedScore.value = false;
                     missionStartTime.value = Date.now();
 
                     let targetList = shuffle(verbList);
@@ -594,11 +814,16 @@
                 };
 
                 const startMission = (mode) => {
+                    if (locks.value?.verb_modes?.[mode]) return;
                     if (mode === 'practice') {
                         activeMode.value = mode;
                         currentIndex.value = 0;
                         const verbList = getSafeVerbList();
                         queue.value = sortVerbsByPattern(verbList);
+                        
+                        viewedVerbs.value = [queue.value[0].base];
+                        practiceStartTime.value = Date.now();
+                        
                         currentView.value = 'practice';
                         nextTick(() => { playPracticeTTS(); });
                     }
@@ -622,8 +847,33 @@
                     });
                 };
 
-                const prevPractice = () => { currentIndex.value = (currentIndex.value - 1 + queue.value.length) % queue.value.length; nextTick(() => { playPracticeTTS(); }); };
-                const nextPractice = () => { currentIndex.value = (currentIndex.value + 1) % queue.value.length; nextTick(() => { playPracticeTTS(); }); };
+                const prevPractice = () => { 
+                    currentIndex.value = (currentIndex.value - 1 + queue.value.length) % queue.value.length; 
+                    const currentWord = queue.value[currentIndex.value].base;
+                    if (!viewedVerbs.value.includes(currentWord)) viewedVerbs.value.push(currentWord);
+                    nextTick(() => { playPracticeTTS(); }); 
+                };
+                
+                const nextPractice = () => { 
+                    currentIndex.value = (currentIndex.value + 1) % queue.value.length; 
+                    const currentWord = queue.value[currentIndex.value].base;
+                    if (!viewedVerbs.value.includes(currentWord)) viewedVerbs.value.push(currentWord);
+                    nextTick(() => { playPracticeTTS(); }); 
+                };
+
+                const logPracticeSession = () => {
+                    if (currentView.value !== 'practice' || practiceStartTime.value === 0) return;
+                    const diff = Math.floor((Date.now() - practiceStartTime.value) / 1000);
+                    if (diff < 3) return;
+                    
+                    const timeStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`;
+                    const tName = '🧬變異體展示';
+                    
+                    if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL) {
+                        fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=X&total=${queue.value.length}&timeStr=${encodeURIComponent(timeStr)}&answered=${viewedVerbs.value.length}&wrongWords=X`, { keepalive: true }).catch(e=>e);
+                    }
+                    practiceStartTime.value = 0;
+                };
 
                 const startDrag = (e) => { if (isAnimating.value) return; isDragging.value = true; showSwipeGuide.value = false; startX.value = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; };
                 const onDrag = (e) => { if (!isDragging.value || isAnimating.value) return; const currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; swipeOffset.value = currentX - startX.value; };
@@ -683,19 +933,13 @@
 
                 const nextCreate = () => { if (currentIndex.value + 1 >= queue.value.length) { finishMission(); } else { currentIndex.value++; resetInputs(); } };
 
-                const sendToSpreadsheet = async (reportData) => {
-                    if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL) {
-                        try {
-                            const formData = new URLSearchParams();
-                            for (const key in reportData) formData.append(key, reportData[key]);
-                            await fetch(GOOGLE_API_URL, { method: 'POST', body: formData });
-                        } catch(e) { console.error('GAS傳輸受阻', e); }
-                    }
-                };
-
+                // 🌟 無痕背景傳輸 (keepalive)
                 const finishMission = (isRetreat = false) => {
-                    currentView.value = 'result';
-                    isSaving.value = true;
+                    if (hasSubmittedScore.value) return;
+                    
+                    if (!isRetreat) {
+                        currentView.value = 'result';
+                    }
                     
                     const endTime = Date.now();
                     const diff = Math.floor((endTime - (missionStartTime.value || endTime)) / 1000);
@@ -707,33 +951,35 @@
                     let statusTag = activeMode.value === 'identify' ? '識別' : '製造';
                     if (isRetreat) statusTag += '(中途撤退)';
 
-                    const reportData = {
-                        action: 'add', name: playerName.value, theme: `動詞-${statusTag}`, score: score.value,
-                        total: queue.value.length, timeStr: durationStr, answered: isRetreat ? currentIndex.value : queue.value.length, wrongWords: mistakesList
-                    };
-                    sendToSpreadsheet(reportData).then(() => { isSaving.value = false; });
-                };
+                    if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL) {
+                        const finalUrl = `${GOOGLE_API_URL}?action=add` +
+                                         `&name=${encodeURIComponent(playerName.value.trim())}` +
+                                         `&theme=${encodeURIComponent(`動詞-${statusTag}`)}` +
+                                         `&score=${score.value}` +
+                                         `&total=${queue.value.length}` +
+                                         `&timeStr=${encodeURIComponent(durationStr)}` +
+                                         `&answered=${isRetreat ? currentIndex.value : queue.value.length}` +
+                                         `&wrongWords=${encodeURIComponent(mistakesList || '無')}`;
 
-                const quitToMenu = () => {
-                    if (currentView.value !== 'practice' && currentView.value !== 'result') {
-                        if (confirm('演習尚未結束，確定要撤退嗎？\n(系統將結算您目前的成績並強制上傳戰報！)')) {
-                            finishMission(true); if (window.speechSynthesis) window.speechSynthesis.cancel();
-                        }
-                        return;
+                        fetch(finalUrl, { keepalive: true }).catch(e=>e);
                     }
-                    currentView.value = 'menu';
-                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    hasSubmittedScore.value = true;
                 };
 
-                const goHome = () => { window.location.href = 'index.html'; };
+                onUnmounted(() => {
+                    if (currentView.value === 'practice') { logPracticeSession(); }
+                    else if ((currentView.value === 'identify' || currentView.value === 'create') && !hasSubmittedScore.value) { finishMission(true); }
+                });
 
                 return {
                     currentView, queue, currentIndex, score, mistakes, currentVerb, currentPatternBadge, displayMutant,
-                    userPast, userPp, inputPast, inputPp, isAnimating, showCorrection, hasErrorPast, hasErrorPp, isSaving,
+                    userPast, userPp, inputPast, inputPp, isAnimating, showCorrection, hasErrorPast, hasErrorPp, isSaving, hasSubmittedScore,
                     showCountSelector, pendingMode, selectCountFor, confirmStart, showMeaning, showSwipeGuide, swipeOffset, isDragging,
                     startDrag, onDrag, endDrag, handleSwipe, startMission, submitCreate, skipCreate, nextCreate, prevPractice, nextPractice,
-                    playCurrentWordTTS, playPracticeTTS, quitToMenu, goHome, focusPp, isPastCorrect, isPpCorrect,
-                    bgViruses, interceptedVirus, sniperInput, inputSniper, targetVirus, cancelSniper, shootVirus
+                    playCurrentWordTTS, playPracticeTTS, focusPp, isPastCorrect, isPpCorrect,
+                    bgViruses, interceptedVirus, sniperInput, inputSniper, targetVirus, cancelSniper, shootVirus,
+                    highlights, locks, realtimeMsg, showRealtimeMsg, viewedVerbs,
+                    goBack, showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');
