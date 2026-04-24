@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>馬纓丹 ONLINE - 智能辭典 (熾焰橘版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { 
+                            orange: '#ff6a00', /* 核心橘色 */
+                            yellow: '#ffcc00', 
+                            red: '#ff003c', 
+                            bg: '#0a0400' /* 深褐/黑背景 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="dictionary.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0a0400; font-family: sans-serif; color: #fed7aa; overflow-x: hidden; }
+        
+        /* 橘色系 Cyber 邊框與發光 */
+        .cyber-box { 
+            border: 1px solid #ff6a00; 
+            background: rgba(40, 15, 0, 0.6); 
+            box-shadow: inset 0 0 15px rgba(255, 106, 0, 0.15); 
+            border-radius: 12px; 
+        }
+        .cyber-input { 
+            background: rgba(0, 0, 0, 0.6); 
+            border: 1px solid #ff6a00; 
+            color: white; 
+            transition: all 0.3s; 
+        }
+        .cyber-input:focus { 
+            border-color: #ffcc00; 
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); 
+            outline: none; 
+        }
+        
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 橘色系捲軸 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0400; }
+        ::-webkit-scrollbar-thumb { background: #ff6a00; border-radius: 10px; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div id="app" class="max-w-5xl mx-auto">
+        <div class="flex justify-between items-center mb-8 border-b border-orange-900 pb-4">
+            <button onclick="window.location.href='vocab.html'" class="text-orange-400 hover:text-neon-yellow transition font-bold tracking-widest flex items-center gap-2">
+                <i class="fas fa-chevron-left"></i> 返回戰場
+            </button>
+            <h1 class="text-2xl font-black text-white tracking-widest drop-shadow-[0_0_10px_#ff6a00]">
+                <i class="fas fa-book mr-2"></i> 2000 單字全能辭典
+            </h1>
+        </div>
+
+        <div class="cyber-box p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="relative md:col-span-6">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-orange-500"></i>
+                    <input v-model="searchQuery" 
+                           type="text" placeholder="輸入英文單字或中文意思..." 
+                           class="w-full cyber-input pl-12 pr-4 py-3 rounded-lg font-bold tracking-widest">
+                </div>
+
+                <div class="md:col-span-3">
+                    <select v-model="posFilter" class="w-full cyber-input px-4 py-3 rounded-lg font-bold">
+                        <option value="">所有詞性</option>
+                        <option value="名詞">n. 名詞</option>
+                        <option value="動詞">v. 動詞</option>
+                        <option value="形容詞">adj. 形容詞</option>
+                        <option value="副詞">adv. 副詞</option>
+                        <option value="代名詞">pron. 代名詞</option>
+                        <option value="介系詞">prep. 介系詞</option>
+                        <option value="連接詞">conj. 連接詞</option>
+                        <option value="疑問詞">疑問詞</option>
+                        <option value="限定詞">限定詞</option>
+                        <option value="冠詞">冠詞</option>
+                        <option value="短句">短句 / 其他</option>
+                    </select>
+                </div>
+                <div class="md:col-span-3">
+                    <select v-model="themeFilter" class="w-full cyber-input px-4 py-3 rounded-lg font-bold">
+                        <option value="">所有主題</option>
+                        <option v-for="t in uniqueThemes" :key="t" :value="t">{{ t }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-4 flex justify-between items-center">
+                <p class="text-xs text-orange-500 font-bold tracking-widest">
+                    >> 已定位 <span class="text-neon-yellow">{{ filteredWords.length }}</span> 個戰略目標
+                </p>
+                <button @click="resetFilters" class="text-[10px] text-orange-700 hover:text-white transition uppercase font-black">
+                    <i class="fas fa-undo-alt mr-1"></i> 重置過濾
+                </button>
+            </div>
+        </div>
+
+        <div class="space-y-4 min-h-[400px]">
+            <div v-if="!searchQuery && !posFilter && !themeFilter" class="text-center py-20 text-orange-900 font-bold italic tracking-widest">
+                <span class="text-4xl block mb-4 drop-shadow-[0_0_10px_#ff6a00]">📡</span>
+                請輸入關鍵字，或選擇「詞性」與「主題」開始檢索單字。
+            </div>
+
+            <div v-else-if="filteredWords.length === 0" class="text-center py-20 text-red-700 font-bold italic tracking-widest">
+                查無匹配單字，請嘗試放寬篩選條件。
+            </div>
+            
+            <div v-for="item in filteredWords" :key="item.word" 
+                 class="cyber-box p-6 fade-in hover:border-neon-yellow transition-all duration-300 group">
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-3xl font-black text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] group-hover:text-neon-orange transition">{{ item.word }}</span>
+                            <span class="text-[10px] bg-orange-900 text-orange-300 px-2 py-0.5 rounded font-black">{{ item.pos }}</span>
+                            <span class="text-[10px] border border-orange-800 text-orange-500 px-2 py-0.5 rounded font-bold uppercase">{{ item.theme }}</span>
+                        </div>
+                        <div class="text-neon-yellow font-bold text-xl mb-4">中文意義：{{ item.meaning }}</div>
+                        
+                        <div v-if="item.sentence" class="bg-black/50 border-l-4 border-orange-600 p-4 rounded text-orange-100 italic font-medium leading-relaxed">
+                            <span class="text-orange-500 font-black mr-2">EXAMPLE:</span> {{ item.sentence }}
+                            <div v-if="item.sentenceZh" class="text-sm text-orange-700 mt-2 not-italic font-bold">>> {{ item.sentenceZh }}</div>
+                        </div>
+                    </div>
+                    <button @click="speak(item.word)" class="w-12 h-12 rounded-full border-2 border-orange-800 flex items-center justify-center hover:bg-orange-900 transition text-orange-400 shadow-lg active:scale-90" title="點擊發音">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center text-[10px] text-orange-800 font-bold tracking-widest uppercase">
+            &copy; 2026 馬纓丹情報中心 - 2000 單字全能辭典 (Inferno Edition)
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        createApp({
+            setup() {
+                const searchQuery = ref('');
+                const posFilter = ref('');
+                const themeFilter = ref('');
+
+                // 🌟 連接您的最強彈藥庫 DICTIONARY_DATA
+                const allWords = ref(typeof DICTIONARY_DATA !== 'undefined' ? DICTIONARY_DATA : []);
+
+                // 智慧過濾核心邏輯
+                const filteredWords = computed(() => {
+                    const q = searchQuery.value.toLowerCase().trim();
+                    const p = posFilter.value;
+                    const t = themeFilter.value;
+
+                    // 若全部皆空，則不回傳結果
+                    if (!q && !p && !t) return [];
+
+                    return allWords.value.filter(item => {
+                        // 1. 搜尋字串匹配 (英文或中文)
+                        const matchesSearch = !q || item.word.toLowerCase().includes(q) || item.meaning.includes(q);
+                        
+                        // 2. 詞性精準匹配
+                        const matchesPos = !p || item.pos.includes(p);
+
+                        // 3. 主題匹配
+                        const matchesTheme = !t || item.theme === t;
+
+                        return matchesSearch && matchesPos && matchesTheme;
+                    }).slice(0, 50); // 提升至 50 筆，確保分類顯示更完整
+                });
+
+                const uniqueThemes = computed(() => {
+                    const themes = allWords.value.map(w => w.theme);
+                    return [...new Set(themes)].sort();
+                });
+
+                const resetFilters = () => {
+                    searchQuery.value = '';
+                    posFilter.value = '';
+                    themeFilter.value = '';
+                };
+
+                // 語音發音功能
+                const speak = (text) => {
+                    const msg = new SpeechSynthesisUtterance(text);
+                    msg.lang = 'en-US';
+                    window.speechSynthesis.speak(msg);
+                };
+
+                return { 
+                    searchQuery, posFilter, themeFilter, 
+                    filteredWords, uniqueThemes, resetFilters,
+                    speak
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
