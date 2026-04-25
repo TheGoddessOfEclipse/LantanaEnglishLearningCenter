@@ -12,7 +12,7 @@
                 extend:{
                     colors:{
                         neon:{
-                            cyan:'#0ff', pink:'#f0f', yellow:'#ff0', green:'#0f0', red:'#ff003c', purple:'#b026ff', bg:'#050b14'
+                            cyan:'#0ff', pink:'#f0f', yellow:'#ff0', green:'#0f0', red:'#ff003c', purple:'#b026ff', orange:'#ff6a00', bg:'#050b14'
                         }
                     }
                 }
@@ -39,8 +39,12 @@
         .cyber-box-purple{border:1px solid #b026ff;background:rgba(20,0,30,0.6);box-shadow:inset 0 0 15px rgba(176,38,255,0.3);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .cyber-box-green{border:1px solid #0f0;background:rgba(0,30,0,0.5);box-shadow:inset 0 0 15px rgba(0,255,0,0.2);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         .cyber-box-yellow{border:1px solid #ff0;background:rgba(40,40,0,0.6);box-shadow:inset 0 0 15px rgba(255,255,0,0.2);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
-        .cyber-box-gray{border:1px solid #4b5563;background:rgba(15,23,42,0.6);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
+        .cyber-box-gray{border:1px solid #fb6000;background:rgba(15,23,42,0.6);clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
+        /* 🌟 新增：熾焰橘專屬裝甲與發光特效 */
+        .cyber-box-orange {border:1px solid #ff6a00; background:rgba(40,15,0,0.6); box-shadow:inset 0 0 15px rgba(255,106,0,0.2); clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);}
         
+        .glow-orange { animation: glowOrangeAnim 0.8s ease-in-out infinite alternate !important; border: 1px solid #ff6a00 !important; z-index: 50 !important; }
+        @keyframes glowOrangeAnim { 0% { box-shadow: 0 0 10px #ff6a00, inset 0 0 10px rgba(255,106,0,0.3); transform: scale(1.02); } 100% { box-shadow: 0 0 40px #ff6a00, inset 0 0 30px rgba(255,106,0,0.6); transform: scale(1.05); } }
         .fade-in{animation:fadeIn 0.5s ease-out;} 
         @keyframes fadeIn{from{opacity:0; transform: translateY(10px);}to{opacity:1; transform: translateY(0);}}
         
@@ -317,12 +321,12 @@
                     </button>
 
                     <button onclick="window.location.href='dictionary.html'" 
-                            :class="{'vine-locked': locks?.main_modes?.dictionary, 'glow-cyan': highlights?.main_modes?.dictionary}"
-                            class="cyber-box-gray p-6 flex flex-col items-center justify-center group hover:bg-gray-800/80 hover:border-cyan-400 transition-all duration-300 relative text-center">
-                        <div class="absolute top-0 right-0 bg-cyan-600 text-black text-[9px] px-2 py-1 font-black tracking-widest rounded-bl-lg z-10">TOOL</div>
-                        <div class="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_#0ff]">📖</div>
-                        <h2 class="text-xl font-black text-white tracking-widest mb-1"><span class="text-neon-cyan drop-shadow-[0_0_5px_#0ff]">智</span>能辭典</h2>
-                        <p class="text-[10px] text-cyan-300 font-bold tracking-widest">2000單大一統檢索</p>
+                            :class="{'vine-locked': locks?.main_modes?.dictionary, 'glow-orange': highlights?.main_modes?.dictionary}"
+                            class="cyber-box-orange p-6 flex flex-col items-center justify-center group hover:bg-orange-900/40 transition-all duration-300 relative text-center">
+                        <div class="absolute top-0 right-0 bg-neon-orange text-black text-[9px] px-2 py-1 font-black tracking-widest rounded-bl-lg z-10">TOOL</div>
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_#ff6a00]">📖</div>
+                        <h2 class="text-xl font-black text-white tracking-widest mb-1"><span class="text-neon-orange drop-shadow-[0_0_5px_#ff6a00]">智</span>能辭典</h2>
+                        <p class="text-[10px] text-orange-300 font-bold tracking-widest mt-1">2000單大一統檢索</p>
                     </button>
                 </div>
 

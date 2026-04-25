@@ -3,80 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>馬纓丹 ONLINE - 智能辭典 (熾焰橘版)</title>
+    <title>馬纓丹 ONLINE - 智能辭典 (解密回報版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        neon: { 
-                            orange: '#ff6a00', /* 核心橘色 */
-                            yellow: '#ffcc00', 
-                            red: '#ff003c', 
-                            bg: '#0a0400' /* 深褐/黑背景 */
-                        }
+                        neon: { orange: '#ff6a00', yellow: '#ffcc00', red: '#ff003c', bg: '#0a0400' }
                     }
                 }
             }
         }
     </script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="config.js"></script>
     <script src="dictionary.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #0a0400; font-family: sans-serif; color: #fed7aa; overflow-x: hidden; }
+        body { 
+            background-color: #0a0400; 
+            font-family: sans-serif; 
+            color: #fed7aa; 
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(255, 106, 0, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 106, 0, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
         
-        /* 橘色系 Cyber 邊框與發光 */
-        .cyber-box { 
-            border: 1px solid #ff6a00; 
-            background: rgba(40, 15, 0, 0.6); 
-            box-shadow: inset 0 0 15px rgba(255, 106, 0, 0.15); 
-            border-radius: 12px; 
-        }
-        .cyber-input { 
-            background: rgba(0, 0, 0, 0.6); 
-            border: 1px solid #ff6a00; 
-            color: white; 
-            transition: all 0.3s; 
-        }
-        .cyber-input:focus { 
-            border-color: #ffcc00; 
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); 
-            outline: none; 
-        }
+        .cyber-box { border: 1px solid #ff6a00; background: rgba(40, 15, 0, 0.6); box-shadow: inset 0 0 15px rgba(255, 106, 0, 0.15); border-radius: 12px; }
+        .cyber-input { background: rgba(0, 0, 0, 0.6); border: 1px solid #ff6a00; color: white; transition: all 0.3s; }
+        .cyber-input:focus { border-color: #ffcc00; box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); outline: none; }
         
         .fade-in { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* 橘色系捲軸 */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0400; }
-        ::-webkit-scrollbar-thumb { background: #ff6a00; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #ff6a00; }
     </style>
 </head>
-<body class="p-4 md:p-8">
-    <div id="app" class="max-w-5xl mx-auto">
-        <div class="flex justify-between items-center mb-8 border-b border-orange-900 pb-4">
-            <button onclick="window.location.href='vocab.html'" class="text-orange-400 hover:text-neon-yellow transition font-bold tracking-widest flex items-center gap-2">
-                <i class="fas fa-chevron-left"></i> 返回戰場
+<body class="p-4 md:p-8 pb-32">
+    <div id="app" class="max-w-5xl mx-auto relative">
+        
+        <div class="fixed top-4 left-4 z-[100]">
+            <button onclick="window.location.href='index.html'" 
+                    class="flex items-center gap-2 bg-black/80 backdrop-blur-md border border-orange-500/50 px-5 py-2.5 rounded-full text-orange-400 hover:bg-neon-orange hover:text-black transition-all duration-300 font-black tracking-widest text-xs shadow-[0_0_15px_rgba(255,106,0,0.2)]">
+                <i class="fas fa-chevron-left"></i> 返回總指揮大廳
             </button>
-            <h1 class="text-2xl font-black text-white tracking-widest drop-shadow-[0_0_10px_#ff6a00]">
-                <i class="fas fa-book mr-2"></i> 2000 單字全能辭典
-            </h1>
         </div>
 
-        <div class="cyber-box p-6 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <div class="text-center mb-10 mt-16 md:mt-0">
+            <h1 class="text-3xl font-black text-white tracking-widest drop-shadow-[0_0_10px_#ff6a00] uppercase">
+                <i class="fas fa-book-open mr-2 text-neon-orange"></i> 2000 單字全能辭典
+            </h1>
+            <p class="text-[10px] text-orange-600 font-bold tracking-[0.3em] mt-2">INTERACTIVE LOGGING SYSTEM</p>
+        </div>
+
+        <div class="cyber-box p-6 mb-10 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
                 <div class="relative md:col-span-6">
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-orange-500"></i>
                     <input v-model="searchQuery" 
-                           type="text" placeholder="輸入英文單字或中文意思..." 
-                           class="w-full cyber-input pl-12 pr-4 py-3 rounded-lg font-bold tracking-widest">
+                           type="text" placeholder="輸入英文開頭進行鎖定..." 
+                           class="w-full cyber-input pl-12 pr-4 py-3.5 rounded-lg font-bold tracking-widest">
                 </div>
-
                 <div class="md:col-span-3">
-                    <select v-model="posFilter" class="w-full cyber-input px-4 py-3 rounded-lg font-bold">
+                    <select v-model="posFilter" class="w-full cyber-input px-4 py-3.5 rounded-lg font-bold">
                         <option value="">所有詞性</option>
                         <option value="名詞">n. 名詞</option>
                         <option value="動詞">v. 動詞</option>
@@ -85,124 +77,255 @@
                         <option value="代名詞">pron. 代名詞</option>
                         <option value="介系詞">prep. 介系詞</option>
                         <option value="連接詞">conj. 連接詞</option>
-                        <option value="疑問詞">疑問詞</option>
-                        <option value="限定詞">限定詞</option>
-                        <option value="冠詞">冠詞</option>
-                        <option value="短句">短句 / 其他</option>
                     </select>
                 </div>
                 <div class="md:col-span-3">
-                    <select v-model="themeFilter" class="w-full cyber-input px-4 py-3 rounded-lg font-bold">
+                    <select v-model="themeFilter" class="w-full cyber-input px-4 py-3.5 rounded-lg font-bold">
                         <option value="">所有主題</option>
                         <option v-for="t in uniqueThemes" :key="t" :value="t">{{ t }}</option>
                     </select>
                 </div>
             </div>
-            <div class="mt-4 flex justify-between items-center">
-                <p class="text-xs text-orange-500 font-bold tracking-widest">
-                    >> 已定位 <span class="text-neon-yellow">{{ filteredWords.length }}</span> 個戰略目標
-                </p>
-                <button @click="resetFilters" class="text-[10px] text-orange-700 hover:text-white transition uppercase font-black">
-                    <i class="fas fa-undo-alt mr-1"></i> 重置過濾
-                </button>
-            </div>
         </div>
 
         <div class="space-y-4 min-h-[400px]">
-            <div v-if="!searchQuery && !posFilter && !themeFilter" class="text-center py-20 text-orange-900 font-bold italic tracking-widest">
-                <span class="text-4xl block mb-4 drop-shadow-[0_0_10px_#ff6a00]">📡</span>
-                請輸入關鍵字，或選擇「詞性」與「主題」開始檢索單字。
-            </div>
-
-            <div v-else-if="filteredWords.length === 0" class="text-center py-20 text-red-700 font-bold italic tracking-widest">
-                查無匹配單字，請嘗試放寬篩選條件。
+            <div v-if="filteredWords.length === 0" class="text-center py-20 text-orange-900 font-bold italic tracking-widest">
+                {{ searchQuery || posFilter || themeFilter ? '雷達未偵測到匹配單字。' : '系統就緒。請輸入字母以開始檢索。' }}
             </div>
             
-            <div v-for="item in filteredWords" :key="item.word" 
-                 class="cyber-box p-6 fade-in hover:border-neon-yellow transition-all duration-300 group">
-                <div class="flex justify-between items-start">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl font-black text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] group-hover:text-neon-orange transition">{{ item.word }}</span>
-                            <span class="text-[10px] bg-orange-900 text-orange-300 px-2 py-0.5 rounded font-black">{{ item.pos }}</span>
-                            <span class="text-[10px] border border-orange-800 text-orange-500 px-2 py-0.5 rounded font-bold uppercase">{{ item.theme }}</span>
-                        </div>
-                        <div class="text-neon-yellow font-bold text-xl mb-4">中文意義：{{ item.meaning }}</div>
-                        
-                        <div v-if="item.sentence" class="bg-black/50 border-l-4 border-orange-600 p-4 rounded text-orange-100 italic font-medium leading-relaxed">
-                            <span class="text-orange-500 font-black mr-2">EXAMPLE:</span> {{ item.sentence }}
-                            <div v-if="item.sentenceZh" class="text-sm text-orange-700 mt-2 not-italic font-bold">>> {{ item.sentenceZh }}</div>
-                        </div>
+            <div v-for="item in filteredWords" :key="item.word + item.meaning" 
+                 class="cyber-box p-5 md:p-6 fade-in hover:border-neon-yellow transition-all duration-300 group cursor-pointer bg-black/40"
+                 @click="toggleExpand(item)">
+                
+                <div class="flex justify-between items-center">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-3xl font-black text-white group-hover:text-neon-orange transition">{{ item.word }}</span>
+                        <span v-if="item.pos" class="text-[10px] bg-orange-900 text-orange-300 px-2 py-0.5 rounded font-black">{{ item.pos }}</span>
+                        <span class="text-[10px] border border-orange-800 text-orange-500 px-2 py-0.5 rounded font-bold uppercase">{{ item.theme }}</span>
                     </div>
-                    <button @click="speak(item.word)" class="w-12 h-12 rounded-full border-2 border-orange-800 flex items-center justify-center hover:bg-orange-900 transition text-orange-400 shadow-lg active:scale-90" title="點擊發音">
-                        <i class="fas fa-volume-up"></i>
-                    </button>
+                    <div class="text-orange-500 transition-transform duration-300 flex items-center gap-2" :class="{'rotate-180': expandedWords.has(item.word)}">
+                        <span v-if="!expandedWords.has(item.word)" class="text-xs font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">點擊解密</span>
+                        <i class="fas fa-chevron-down text-xl"></i>
+                    </div>
                 </div>
+                
+                <div v-show="expandedWords.has(item.word)" class="mt-4 pt-4 border-t border-orange-900/50 fade-in">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="text-neon-yellow font-bold text-xl mb-3">意義：{{ item.meaning }}</div>
+                            
+                            <div v-if="item.otherForms" class="flex flex-wrap gap-2 mb-4">
+                                <span v-for="form in item.otherForms.split(',')" :key="form" 
+                                      class="text-[11px] font-bold text-orange-400 bg-orange-950/40 px-2.5 py-1 rounded border border-orange-900 flex items-center">
+                                    <i class="fas fa-link mr-1.5 opacity-50 text-[9px]"></i> {{ form.trim() }}
+                                </span>
+                            </div>
+
+                            <div v-if="item.sentence" class="bg-black/60 border-l-4 border-orange-600 p-4 rounded text-gray-300 italic font-medium leading-relaxed">
+                                <span class="text-orange-500 font-black mr-2 uppercase">EX:</span> {{ item.sentence }}
+                                <div v-if="item.sentenceZh" class="text-sm text-gray-500 mt-2 not-italic font-bold">>> {{ item.sentenceZh }}</div>
+                            </div>
+                        </div>
+                        
+                        <button @click.stop="speak(item)" class="w-12 h-12 md:w-14 md:h-14 rounded-xl border-2 border-orange-900 flex items-center justify-center hover:bg-neon-orange hover:text-black transition-all duration-300 text-orange-400 shadow-lg active:scale-90 ml-4 shrink-0">
+                            <i class="fas fa-volume-up text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="mt-16 text-center text-[10px] text-orange-800 font-bold tracking-widest uppercase">
-            &copy; 2026 馬纓丹情報中心 - 2000 單字全能辭典 (Inferno Edition)
+        <transition name="fade">
+            <div v-if="isReporting" class="fixed bottom-24 right-8 bg-black/90 border border-green-500 text-green-400 px-4 py-2 rounded shadow-[0_0_20px_rgba(0,255,0,0.3)] z-[200] text-xs font-black tracking-widest flex items-center gap-2">
+                <i class="fas fa-satellite-dish animate-pulse"></i> 📡 查閱紀錄上傳中...
+            </div>
+        </transition>
+
+        <div class="fixed z-[9999] flex flex-col items-end transition-opacity duration-300"
+             :style="{ left: portalPos.x + 'px', top: portalPos.y + 'px', touchAction: 'none', transition: isDraggingPortal ? 'none' : 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)' }"
+             @mousedown.prevent="startDragPortal" @touchstart="startDragPortal">
+            
+            <transition name="fade">
+                <div v-if="showGlobalNav" 
+                     :class="menuConfig.class"
+                     class="bg-black/95 border-2 border-gray-700 rounded-xl p-2 flex flex-col gap-1 shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-md w-40" 
+                     @mousedown.stop @touchstart.stop>
+                    <div class="text-[10px] text-gray-500 font-bold text-center border-b border-gray-800 pb-1 mb-1 tracking-widest uppercase">Portal System</div>
+<button onclick="window.location.href='index.html'" class="text-sm font-bold text-left px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded transition flex items-center gap-2"><i class="fas fa-home w-4 text-center"></i> 總部大廳</button>
+<button onclick="window.location.href='dictionary.html'" class="text-sm font-bold text-left px-3 py-2 text-orange-400 hover:text-orange-200 hover:bg-orange-900/50 rounded transition flex items-center gap-2"><i class="fas fa-book-open w-4 text-center"></i> 智能辭典</button>
+<button onclick="window.location.href='vocab.html'" class="text-sm font-bold text-left px-3 py-2 text-red-400 hover:text-neon-red hover:bg-red-900/50 rounded transition flex items-center gap-2"><i class="fas fa-fire w-4 text-center"></i> 單戰訓練</button>
+<button onclick="window.location.href='verb_training.html'" class="text-sm font-bold text-left px-3 py-2 text-green-400 hover:text-neon-green hover:bg-green-900/50 rounded transition flex items-center gap-2"><i class="fas fa-dna w-4 text-center"></i> 變體之戰</button>
+<button onclick="window.location.href='grammar.html'" class="text-sm font-bold text-left px-3 py-2 text-cyan-400 hover:text-neon-cyan hover:bg-cyan-900/50 rounded transition flex items-center gap-2"><i class="fas fa-bolt w-4 text-center"></i> 文武雙全</button>
+<button onclick="window.location.href='mixed_exam.html'" class="text-sm font-bold text-left px-3 py-2 text-purple-400 hover:text-neon-purple hover:bg-purple-900/50 rounded transition flex items-center gap-2"><i class="fas fa-rocket w-4 text-center"></i> 歷史戰役</button>
+<button onclick="window.location.href='special_mission.html'" class="text-sm font-bold text-left px-3 py-2 text-yellow-400 hover:text-neon-yellow hover:bg-yellow-900/50 rounded transition flex items-center gap-2"><i class="fas fa-bullseye w-4 text-center"></i> 特派任務</button>
+                </div>
+            </transition>
+            
+            <button @click="togglePortal" class="w-14 h-14 bg-gray-900/90 border-2 border-red-500 rounded-full flex items-center justify-center hover:text-white hover:border-white transition-colors shadow-[0_0_15px_rgba(255,0,0,0.5)] hover:shadow-[0_0_25px_#f00] relative overflow-hidden cursor-move" style="color: #ff003c;">
+                <i class="fas fa-atom text-3xl absolute opacity-30 fa-spin" style="animation-duration: 8s;"></i>
+                <i class="fas" :class="showGlobalNav ? 'fa-times text-xl z-10' : 'fa-door-open text-xl z-10 animate-pulse'"></i>
+            </button>
+        </div>
+
+        <div class="mt-20 text-center text-[10px] text-orange-900 font-bold tracking-widest uppercase">
+            &copy; 2026 馬纓丹情報中心 - 智能辭典 Interactive Edition
         </div>
     </div>
 
     <script>
-        const { createApp, ref, computed } = Vue;
+        const { createApp, ref, computed, onMounted } = Vue;
 
         createApp({
             setup() {
                 const searchQuery = ref('');
                 const posFilter = ref('');
                 const themeFilter = ref('');
+                const isReporting = ref(false); 
+                const playerName = ref(localStorage.getItem('shilieu_player') || '未知特工');
 
-                // 🌟 連接您的最強彈藥庫 DICTIONARY_DATA
+                // 儲存目前被展開的單字 (支援同時展開多個)
+                const expandedWords = ref(new Set());
+
                 const allWords = ref(typeof DICTIONARY_DATA !== 'undefined' ? DICTIONARY_DATA : []);
 
-                // 智慧過濾核心邏輯
+                // 雷達過濾邏輯：嚴格字首比對
                 const filteredWords = computed(() => {
                     const q = searchQuery.value.toLowerCase().trim();
                     const p = posFilter.value;
                     const t = themeFilter.value;
-
-                    // 若全部皆空，則不回傳結果
                     if (!q && !p && !t) return [];
 
-                    return allWords.value.filter(item => {
-                        // 1. 搜尋字串匹配 (英文或中文)
-                        const matchesSearch = !q || item.word.toLowerCase().includes(q) || item.meaning.includes(q);
-                        
-                        // 2. 詞性精準匹配
-                        const matchesPos = !p || item.pos.includes(p);
-
-                        // 3. 主題匹配
+                    const filtered = allWords.value.filter(item => {
+                        const matchesBase = !q || item.word.toLowerCase().trim().startsWith(q);
+                        let matchesOther = false;
+                        if (q && item.otherForms) {
+                            const parts = item.otherForms.split(',').map(part => part.trim().toLowerCase());
+                            matchesOther = parts.some(part => {
+                                const wordOnly = part.split('(')[0].trim();
+                                return wordOnly.startsWith(q);
+                            });
+                        }
+                        const matchesSearch = !q || matchesBase || matchesOther;
+                        const matchesPos = !p || (item.pos && item.pos.includes(p));
                         const matchesTheme = !t || item.theme === t;
-
                         return matchesSearch && matchesPos && matchesTheme;
-                    }).slice(0, 50); // 提升至 50 筆，確保分類顯示更完整
+                    });
+
+                    const uniqueMap = new Map();
+                    filtered.forEach(item => {
+                        const key = `${item.word.trim().toLowerCase()}-${item.meaning.trim()}`;
+                        if (!uniqueMap.has(key)) uniqueMap.set(key, item);
+                    });
+
+                    return Array.from(uniqueMap.values()).sort((a, b) => a.word.length - b.word.length).slice(0, 50); 
                 });
 
-                const uniqueThemes = computed(() => {
-                    const themes = allWords.value.map(w => w.theme);
-                    return [...new Set(themes)].sort();
-                });
+                const uniqueThemes = computed(() => [...new Set(allWords.value.map(w => w.theme))].sort());
 
                 const resetFilters = () => {
-                    searchQuery.value = '';
-                    posFilter.value = '';
-                    themeFilter.value = '';
+                    searchQuery.value = ''; posFilter.value = ''; themeFilter.value = '';
+                    expandedWords.value.clear(); // 重置時收合所有卡片
                 };
 
-                // 語音發音功能
-                const speak = (text) => {
-                    const msg = new SpeechSynthesisUtterance(text);
+                // 🌟 點擊卡片解密展開 ＆ 觸發活動紀錄回報
+                const toggleExpand = (item) => {
+                    if (expandedWords.value.has(item.word)) {
+                        expandedWords.value.delete(item.word); // 再次點擊則收合
+                    } else {
+                        expandedWords.value.add(item.word); // 展開
+                        
+                        // 展開的瞬間，觸發回報
+                        isReporting.value = true;
+                        if (typeof GOOGLE_API_URL !== 'undefined' && GOOGLE_API_URL !== '') {
+                            // 延續系統的 fetch 回報格式
+                            fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent('辭典查閱: ' + item.word)}&score=X&total=&timeStr=${encodeURIComponent(new Date().toLocaleTimeString())}&answered=0&wrongWords=${encodeURIComponent('查閱模式')}`, { keepalive: true })
+                            .catch(e => e)
+                            .finally(() => {
+                                setTimeout(() => { isReporting.value = false; }, 1500);
+                            });
+                        } else {
+                            setTimeout(() => { isReporting.value = false; }, 1500);
+                        }
+                    }
+                };
+
+                // 發音 (純發音，不再綁定回報機制)
+                const speak = (item) => {
+                    const msg = new SpeechSynthesisUtterance(item.word);
                     msg.lang = 'en-US';
                     window.speechSynthesis.speak(msg);
                 };
 
+                // --- 🌟 空間躍傳引擎 (完全移植自 battle.html) ---
+                const showGlobalNav = ref(false);
+                const portalPos = ref({ x: window.innerWidth - 80, y: window.innerHeight - 100 });
+                const isDraggingPortal = ref(false);
+                let startMouse = { x: 0, y: 0 };
+                let startPos = { x: 0, y: 0 };
+                let hasMovedPortal = false;
+
+                const startDragPortal = (e) => {
+                    isDraggingPortal.value = true; hasMovedPortal = false;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startMouse = { x: clientX, y: clientY };
+                    startPos = { ...portalPos.value };
+                    document.addEventListener('mousemove', onDragPortal);
+                    document.addEventListener('mouseup', endDragPortal);
+                    document.addEventListener('touchmove', onDragPortal, { passive: false });
+                    document.addEventListener('touchend', endDragPortal);
+                };
+                
+                const onDragPortal = (e) => {
+                    if (!isDraggingPortal.value) return;
+                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const dx = clientX - startMouse.x; const dy = clientY - startMouse.y;
+                    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMovedPortal = true;
+                    let newX = startPos.x + dx; let newY = startPos.y + dy;
+                    const ballWidth = 56;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - ballWidth));
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - ballWidth));
+                    portalPos.value = { x: newX, y: newY };
+                };
+                
+                const endDragPortal = () => {
+                    if (!isDraggingPortal.value) return;
+                    isDraggingPortal.value = false;
+                    const w = window.innerWidth; const h = window.innerHeight; const ballSize = 56; const p = 15;
+                    const distL = portalPos.value.x; const distR = w - portalPos.value.x - ballSize;
+                    const distT = portalPos.value.y; const distB = h - portalPos.value.y - ballSize;
+                    const minDist = Math.min(distL, distR, distT, distB);
+                    if (minDist === distL) portalPos.value.x = p;
+                    else if (minDist === distR) portalPos.value.x = w - ballSize - p;
+                    else if (minDist === distT) portalPos.value.y = p;
+                    else portalPos.value.y = h - ballSize - p;
+                    document.removeEventListener('mousemove', onDragPortal);
+                    document.removeEventListener('mouseup', endDragPortal);
+                    document.removeEventListener('touchmove', onDragPortal);
+                    document.removeEventListener('touchend', endDragPortal);
+                };
+                
+                const togglePortal = () => { if (!hasMovedPortal) showGlobalNav.value = !showGlobalNav.value; };
+                const menuConfig = computed(() => {
+                    const w = window.innerWidth; const h = window.innerHeight;
+                    const x = portalPos.value.x; const y = portalPos.value.y;
+                    let cls = "absolute ";
+                    if (y < h / 2) cls += "top-full mt-2 "; else cls += "bottom-full mb-2 ";
+                    if (x < w / 2) cls += "left-0 origin-top-left "; else cls += "right-0 origin-top-right ";
+                    return { class: cls };
+                });
+
+                onMounted(() => {
+                    window.addEventListener('resize', () => { portalPos.value = { x: window.innerWidth - 80, y: window.innerHeight - 100 }; });
+                });
+
                 return { 
-                    searchQuery, posFilter, themeFilter, 
-                    filteredWords, uniqueThemes, resetFilters,
-                    speak
+                    searchQuery, posFilter, themeFilter, filteredWords, uniqueThemes, resetFilters, speak, isReporting,
+                    expandedWords, toggleExpand,
+                    showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
                 };
             }
         }).mount('#app');
