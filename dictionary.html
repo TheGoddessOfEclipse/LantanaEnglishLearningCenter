@@ -17,6 +17,8 @@
         }
     </script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="config.js"></script>
     <script src="dictionary.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -142,7 +144,7 @@
                 <div v-show="expandedWords.has(item.word)" class="mt-4 pt-4 border-t border-orange-900/50 fade-in">
                     <div class="flex justify-between items-start">
                         <div class="flex-1">
-                            <div class="text-neon-yellow font-bold text-xl mb-3">意義：{{ item.meaning }}</div>
+                            <div class="text-neon-yellow font-bold text-2xl mb-4">{{ item.meaning }}</div>
                             
                             <div v-if="item.otherForms" class="flex flex-wrap gap-2 mb-4">
                                 <span v-for="form in item.otherForms.split(',')" :key="form" 
@@ -196,6 +198,9 @@
     <script>
         const { createApp, ref, computed, onMounted } = Vue;
 
+        if (typeof FIREBASE_CONFIG !== 'undefined') firebase.initializeApp(FIREBASE_CONFIG);
+        const db = firebase.database();
+
         createApp({
             setup() {
                 const searchQuery = ref('');
@@ -207,7 +212,7 @@
                 // 🌟 新增：分頁狀態與本地端儲存庫
                 const currentTab = ref('search'); // 'search', 'recent', 'starred'
                 const recentWords = ref(JSON.parse(localStorage.getItem('shilieu_dict_history') || '[]'));
-                const starredWords = ref(JSON.parse(localStorage.getItem('shilieu_dict_starred') || '[]'));
+                const starredWords = ref([]); // 改由雲端讀取，初始為空
 
                 const expandedWords = ref(new Set());
                 const allWords = ref(typeof DICTIONARY_DATA !== 'undefined' ? DICTIONARY_DATA : []);
@@ -268,14 +273,25 @@
                 };
 
                 // 🌟 星號切換邏輯
+                // 🌟 從雲端同步星號
+                const syncStarredFromCloud = () => {
+                    if (!playerName.value || playerName.value === '未知特工') return;
+                    db.ref(`users/${playerName.value}/starred_words`).on('value', snap => {
+                        starredWords.value = snap.val() || [];
+                    });
+                };
+
+                // 🌟 修改後的星號切換（改寫入 Firebase）
                 const toggleStar = (wordStr) => {
                     const idx = starredWords.value.indexOf(wordStr);
+                    let newList = [...starredWords.value];
                     if (idx > -1) {
-                        starredWords.value.splice(idx, 1); // 移除星號
+                        newList.splice(idx, 1); 
                     } else {
-                        starredWords.value.unshift(wordStr); // 加入星號 (放最前面)
+                    newList.unshift(wordStr);
                     }
-                    localStorage.setItem('shilieu_dict_starred', JSON.stringify(starredWords.value));
+                    // 寫入雲端路徑：users/姓名/starred_words
+                    db.ref(`users/${playerName.value}/starred_words`).set(newList);
                 };
 
                 // 🌟 歷史紀錄新增邏輯
@@ -326,6 +342,7 @@
 
                 // 🌟 封鎖偵測 (自動遣返)
                 onMounted(() => {
+                    syncStarredFromCloud(); // 啟動雲端雷達監聽星號
                     if (typeof db !== 'undefined') {
                         db.ref('app_state/system_settings/locks/main_modes/dictionary').on('value', snap => {
                             if (snap.val() === true) {
