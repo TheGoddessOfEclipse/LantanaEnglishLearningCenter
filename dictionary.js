@@ -3362,7 +3362,7 @@ const DICTIONARY_DATA = [
     {
         "word": "area",
         "meaning": "區域",
-        "theme": "大自然",
+        "theme": "地方位置",
         "sentence": "This area is known for growing delicious fruit.",
         "sentenceZh": "這個區域以種植美味的水果聞名。",
         "otherForms": "areas (複數型)"
@@ -10754,7 +10754,7 @@ const DICTIONARY_DATA = [
     {
         "word": "good-bye (goodbye, bye)",
         "meaning": "再見",
-        "theme": "雜物",
+        "theme": "會話",
         "sentence": "Wave your hand and say good-bye to your classmates.",
         "sentenceZh": "揮揮手並向你的同學們說再見。",
         "otherForms": ""
@@ -10850,7 +10850,7 @@ const DICTIONARY_DATA = [
     {
         "word": "sound",
         "meaning": "聲音；聽起來",
-        "theme": "會話",
+        "theme": "五官動詞",
         "sentence": "That 1980s synth-pop song sounds really wonderful.",
         "sentenceZh": "那首 80 年代的合成器流行歌聽起來真的很棒。",
         "otherForms": "sounds (複數型), sounds (三單), sounding (ing型), sounded (過去式/分詞)"
@@ -10922,7 +10922,7 @@ const DICTIONARY_DATA = [
     {
         "word": "beat",
         "meaning": "打擊",
-        "theme": "五官動詞",
+        "theme": "手部動作",
         "sentence": "In the game, you have to beat the boss to win.",
         "sentenceZh": "在遊戲中，你必須打敗魔王才能獲勝。",
         "otherForms": "beats (三單), beating (ing型), beat (過去式(不規則同型)), beaten (過去分詞(不規則))"
@@ -11098,7 +11098,7 @@ const DICTIONARY_DATA = [
     {
         "word": "chase",
         "meaning": "追逐",
-        "theme": "手部動作",
+        "theme": "腳部動作",
         "sentence": "The dog loves to chase the cat around the yard.",
         "sentenceZh": "那隻狗喜歡在院子裡追著貓跑。",
         "otherForms": "chases (三單(加es)), chasing (ing型(去e加ing)), chased (過去式/分詞)"
@@ -11210,7 +11210,7 @@ const DICTIONARY_DATA = [
     {
         "word": "bark",
         "meaning": "吠叫",
-        "theme": "腳部動作",
+        "theme": "臉部動作",
         "sentence": "The dog will bark loudly when a stranger comes near.",
         "sentenceZh": "當陌生人靠近時，這隻狗會大聲吠叫。",
         "otherForms": "barks (三單), barking (ing型), barked (過去式/分詞)"
@@ -11314,7 +11314,7 @@ const DICTIONARY_DATA = [
     {
         "word": "advise",
         "meaning": "建議",
-        "theme": "臉部動作",
+        "theme": "言語動作",
         "sentence": "I advise you to practice your vocabulary every day.",
         "sentenceZh": "我建議你每天練習單字。",
         "otherForms": "advises (三單), advising (ing型(去e加ing)), advised (過去式/分詞)"
@@ -11474,7 +11474,7 @@ const DICTIONARY_DATA = [
     {
         "word": "accept",
         "meaning": "接受",
-        "theme": "言語動作",
+        "theme": "心智動作",
         "sentence": "She happily accepted the invitation to the birthday party.",
         "sentenceZh": "她開心地接受了生日派對的邀請。",
         "otherForms": "accepts (三單), accepting (ing型), accepted (過去式/分詞)"
@@ -11866,7 +11866,7 @@ const DICTIONARY_DATA = [
     {
         "word": "affect",
         "meaning": "影響",
-        "theme": "心智動作",
+        "theme": "狀態動作",
         "sentence": "The bad weather will affect our plans to play basketball.",
         "sentenceZh": "壞天氣將會影響我們打籃球的計畫。",
         "otherForms": "affects (三單), affecting (ing型), affected (過去式/分詞)"
@@ -12330,7 +12330,7 @@ const DICTIONARY_DATA = [
     {
         "word": "act",
         "meaning": "表演；行動",
-        "theme": "狀態動作",
+        "theme": "行為動作",
         "sentence": "He acted like a brave hero in the school play.",
         "sentenceZh": "他在學校話劇中扮演了一名勇敢的英雄。",
         "otherForms": "acts (複數型), acts (三單), acting (ing型), acted (過去式/分詞)"
@@ -13194,7 +13194,7 @@ const DICTIONARY_DATA = [
     {
         "word": "be (is, am, are, was, were)",
         "meaning": "是、當、在",
-        "theme": "行為動作",
+        "theme": "助動詞",
         "sentence": "I am a student, and he is a teacher.",
         "sentenceZh": "我是一名學生，而他是一名老師。",
         "otherForms": "is/am/are (現在式型態), being (ing型), was/were (過去式(單/複數)), been (過去分詞(不規則))"
@@ -13586,7 +13586,7 @@ const DICTIONARY_DATA = [
     {
         "word": "alive",
         "meaning": "活著的",
-        "theme": "情緒動詞",
+        "theme": "形容詞(反意)",
         "sentence": "The small plant is still alive because I watered it.",
         "sentenceZh": "因為我有澆水，那株小植物還活著。",
         "otherForms": ""
@@ -14338,7 +14338,7 @@ const DICTIONARY_DATA = [
     {
         "word": "deaf",
         "meaning": "失聰的",
-        "theme": "形容詞(反意)",
+        "theme": "形容人",
         "sentence": "He uses sign language to talk because he is deaf.",
         "sentenceZh": "他因為失聰，所以使用手語交談。",
         "otherForms": "deafer (比較級), deafest (最高級)"
@@ -15186,7 +15186,7 @@ const DICTIONARY_DATA = [
     {
         "word": "black",
         "meaning": "黑色",
-        "theme": "情緒",
+        "theme": "顏色",
         "sentence": "He always uses a black pen to write his homework.",
         "sentenceZh": "他總是用黑筆寫作業。",
         "otherForms": "blacks (複數型), blacker (比較級), blackest (最高級)"
@@ -15290,7 +15290,7 @@ const DICTIONARY_DATA = [
     {
         "word": "able",
         "meaning": "能夠的",
-        "theme": "顏色",
+        "theme": "其餘形容詞",
         "sentence": "You will be able to read this book after learning these words.",
         "sentenceZh": "學完這些單字後你就能夠讀懂這本書了。",
         "otherForms": ""
@@ -15778,7 +15778,7 @@ const DICTIONARY_DATA = [
     {
         "word": "especially",
         "meaning": "尤其",
-        "theme": "其餘形容詞",
+        "theme": "副詞",
         "sentence": "I love eating fruit, especially sweet mangoes in summer.",
         "sentenceZh": "我熱愛吃水果，尤其是在夏天的甜芒果。",
         "otherForms": ""
@@ -16170,7 +16170,7 @@ const DICTIONARY_DATA = [
     {
         "word": "this",
         "meaning": "這個（近指單數）",
-        "theme": "副詞",
+        "theme": "代名詞",
         "sentence": "This interactive grammar game is really fun to play!",
         "sentenceZh": "這個互動文法遊戲玩起來真有趣！",
         "otherForms": ""
@@ -16394,7 +16394,7 @@ const DICTIONARY_DATA = [
     {
         "word": "above",
         "meaning": "在…上面",
-        "theme": "代名詞",
+        "theme": "介係詞",
         "sentence": "The airplane is flying high above the white clouds.",
         "sentenceZh": "飛機在白雲上方高高地飛著。",
         "otherForms": ""
@@ -16733,6 +16733,14 @@ const DICTIONARY_DATA = [
         "theme": "介係詞",
         "sentence": "My mother baked a delicious chocolate cake for my birthday.",
         "sentenceZh": "我媽媽為了我的生日烤了一個美味的巧克力蛋糕。",
+        "otherForms": ""
+    },
+    {
+        "word": "around",
+        "meaning": "四周；大約",
+        "theme": "介係詞",
+        "sentence": "Is there any restroom around here. I need to poop.",
+        "sentenceZh": "這附近有廁所嗎?我需要大便。",
         "otherForms": ""
     },
     {
