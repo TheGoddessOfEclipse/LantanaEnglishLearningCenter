@@ -11864,6 +11864,14 @@ const DICTIONARY_DATA = [
         "otherForms": "wishes (複數型(加es)), wishes (三單(加es)), wishing (ing型), wished (過去式/分詞)"
     },
     {
+        "word": "wonder",
+        "meaning": "想知道",
+        "theme": "心智動作",
+        "sentence": "I wonder how you can pass the test without studying.",
+        "sentenceZh": "我想知道為什麼你能沒讀書通過考試。",
+        "otherForms": "wonder (三單), wondering (ing型), wondered (過去式/分詞)"
+    },
+    {
         "word": "affect",
         "meaning": "影響",
         "theme": "狀態動作",
