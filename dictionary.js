@@ -11869,7 +11869,7 @@ const DICTIONARY_DATA = [
         "theme": "心智動作",
         "sentence": "I wonder how you can pass the test without studying.",
         "sentenceZh": "我想知道為什麼你能沒讀書通過考試。",
-        "otherForms": "wonder (三單), wondering (ing型), wondered (過去式/分詞)"
+        "otherForms": "wonders (三單), wondering (ing型), wondered (過去式/分詞)"
     },
     {
         "word": "affect",
