@@ -1,6 +1,7 @@
 const DICTIONARY_DATA = [
     {
         "word": "adult",
+        "pos": "n.",
         "meaning": "成年人",
         "theme": "身分",
         "sentence": "You have to buy an adult ticket if you are over 18.",
@@ -9,6 +10,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "American",
+        "pos": "n.",
         "meaning": "美國人",
         "theme": "身分",
         "sentence": "My new English teacher is an American.",
@@ -17,6 +19,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "angel",
+        "pos": "n.",
         "meaning": "天使",
         "theme": "身分",
         "sentence": "The little girl sleeping in the bed looks like an angel.",
@@ -25,6 +28,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Asian",
+        "pos": "n.",
         "meaning": "亞洲人",
         "theme": "身分",
         "sentence": "Rice is a very important food for many Asian people.",
@@ -33,6 +37,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "baby",
+        "pos": "n.",
         "meaning": "嬰兒",
         "theme": "身分",
         "sentence": "Please be quiet; the baby is sleeping.",
@@ -41,6 +46,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beginner",
+        "pos": "n.",
         "meaning": "初學者",
         "theme": "身分",
         "sentence": "This racket is perfect for a beginner learning how to swing.",
@@ -49,6 +55,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "boy",
+        "pos": "n.",
         "meaning": "男孩",
         "theme": "身分",
         "sentence": "The boy playing basketball over there is my classmate.",
@@ -57,6 +64,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "character",
+        "pos": "n.",
         "meaning": "角色；性格",
         "theme": "身分",
         "sentence": "We need a cute character for our new vocabulary game.",
@@ -64,7 +72,17 @@ const DICTIONARY_DATA = [
         "otherForms": "characters (複數型)"
     },
     {
+        "word": "chief",
+        "pos": "adj. / n.",
+        "meaning": "主要的；首領",
+        "theme": "身分",
+        "sentence": "He is the chief of the police department.",
+        "sentenceZh": "他是警察局的局長。",
+        "otherForms": "chiefs (複數型), chiefly (副詞 (主要地))"
+    },
+    {
         "word": "child",
+        "pos": "n.",
         "meaning": "小孩",
         "theme": "身分",
         "sentence": "Every child needs love and care from their family.",
@@ -73,6 +91,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "couple",
+        "pos": "n.",
         "meaning": "情侶；夫妻",
         "theme": "身分",
         "sentence": "The old couple walks in the park every morning.",
@@ -81,6 +100,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "crowd",
+        "pos": "n.",
         "meaning": "人群",
         "theme": "身分",
         "sentence": "There was a large crowd waiting for the train at the station.",
@@ -89,6 +109,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "customer",
+        "pos": "n.",
         "meaning": "顧客",
         "theme": "身分",
         "sentence": "The shopkeeper smiled and said hello to the customer.",
@@ -97,6 +118,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "enemy",
+        "pos": "n.",
         "meaning": "敵人",
         "theme": "身分",
         "sentence": "In the game, you have to defeat the enemy to win.",
@@ -105,6 +127,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "female",
+        "pos": "n. / adj.",
         "meaning": "女性",
         "theme": "身分",
         "sentence": "There are twenty male students and fifteen female students in my class.",
@@ -113,6 +136,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fool",
+        "pos": "n.",
         "meaning": "傻瓜",
         "theme": "身分",
         "sentence": "Don't be a fool and believe everything on the Internet.",
@@ -121,6 +145,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "foreigner",
+        "pos": "n.",
         "meaning": "外國人",
         "theme": "身分",
         "sentence": "It is polite to help a foreigner if they are lost.",
@@ -129,6 +154,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "friend",
+        "pos": "n.",
         "meaning": "朋友",
         "theme": "身分",
         "sentence": "A good friend will always listen to you when you are sad.",
@@ -137,6 +163,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "genius",
+        "pos": "n.",
         "meaning": "天才",
         "theme": "身分",
         "sentence": "Albert Einstein was a genius in science.",
@@ -145,6 +172,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gentleman",
+        "pos": "n.",
         "meaning": "紳士",
         "theme": "身分",
         "sentence": "A true gentleman is always polite to others.",
@@ -153,6 +181,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "giant",
+        "pos": "n.",
         "meaning": "巨人",
         "theme": "身分",
         "sentence": "The giant tree in the forest is over one hundred years old.",
@@ -161,6 +190,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "girl",
+        "pos": "n.",
         "meaning": "女孩",
         "theme": "身分",
         "sentence": "The girl with short hair is my younger sister.",
@@ -169,6 +199,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "god",
+        "pos": "n.",
         "meaning": "神",
         "theme": "身分",
         "sentence": "Many ancient stories are about the weather gods.",
@@ -177,6 +208,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guest",
+        "pos": "n.",
         "meaning": "客人",
         "theme": "身分",
         "sentence": "My mother is cooking dinner for our guests tonight.",
@@ -185,6 +217,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guy",
+        "pos": "n.",
         "meaning": "夥計",
         "theme": "身分",
         "sentence": "He is a nice guy, and everyone likes him.",
@@ -193,6 +226,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hero",
+        "pos": "n.",
         "meaning": "英雄",
         "theme": "身分",
         "sentence": "The firefighter who saved the cat from the tree is a hero.",
@@ -201,6 +235,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "honey",
+        "pos": "n.",
         "meaning": "蜂蜜；親愛的",
         "theme": "身分",
         "sentence": "I like to add some honey to my tea.",
@@ -209,6 +244,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "host",
+        "pos": "n.",
         "meaning": "主人",
         "theme": "身分",
         "sentence": "The host of the party prepared a lot of delicious food.",
@@ -217,6 +253,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "human",
+        "pos": "n.",
         "meaning": "人類",
         "theme": "身分",
         "sentence": "Clean water is very important for human health.",
@@ -225,6 +262,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Japanese",
+        "pos": "n.",
         "meaning": "日本人",
         "theme": "身分",
         "sentence": "She is learning Japanese because she loves their culture.",
@@ -233,6 +271,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kid",
+        "pos": "n.",
         "meaning": "小孩",
         "theme": "身分",
         "sentence": "The kids are playing happily in the schoolyard.",
@@ -241,6 +280,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "king",
+        "pos": "n.",
         "meaning": "國王",
         "theme": "身分",
         "sentence": "The king lived in a very large and beautiful castle.",
@@ -249,6 +289,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Korean",
+        "pos": "n.",
         "meaning": "韓國人",
         "theme": "身分",
         "sentence": "We went to a Korean restaurant for lunch yesterday.",
@@ -257,6 +298,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lady",
+        "pos": "n.",
         "meaning": "女士",
         "theme": "身分",
         "sentence": "The old lady needs help crossing the busy street.",
@@ -265,6 +307,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "leader",
+        "pos": "n.",
         "meaning": "領袖",
         "theme": "身分",
         "sentence": "A good class leader helps the teacher and students.",
@@ -273,6 +316,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "loser",
+        "pos": "n.",
         "meaning": "輸家",
         "theme": "身分",
         "sentence": "Don't give up! A true loser is someone who stops trying.",
@@ -280,7 +324,26 @@ const DICTIONARY_DATA = [
         "otherForms": "losers (複數型)"
     },
     {
+        "word": "lover",
+        "pos": "n.",
+        "meaning": "愛人；愛好者",
+        "theme": "身分",
+        "sentence": "She is a great animal lover.",
+        "sentenceZh": "她是一個熱愛動物的人。",
+        "otherForms": "lovers (複數型)"
+    },
+    {
+        "word": "ma'am",
+        "pos": "n.",
+        "meaning": "女士",
+        "theme": "身分",
+        "sentence": "\"Can I help you, ma'am?\" the clerk asked politely.",
+        "sentenceZh": "「女士，需要幫忙嗎？」店員有禮貌地問。",
+        "otherForms": "ma'ams (複數型)"
+    },
+    {
         "word": "male",
+        "pos": "n. / adj.",
         "meaning": "男性",
         "theme": "身分",
         "sentence": "The male bird usually has more colorful feathers.",
@@ -289,6 +352,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "man",
+        "pos": "n.",
         "meaning": "男人",
         "theme": "身分",
         "sentence": "The tall man standing by the door is my uncle.",
@@ -297,6 +361,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "master",
+        "pos": "n.",
         "meaning": "主人；大師",
         "theme": "身分",
         "sentence": "It takes a lot of practice to become a master of English.",
@@ -305,6 +370,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "member",
+        "pos": "n.",
         "meaning": "成員",
         "theme": "身分",
         "sentence": "Every member of the team worked hard to win the game.",
@@ -312,151 +378,17 @@ const DICTIONARY_DATA = [
         "otherForms": "members (複數型)"
     },
     {
-        "word": "neighbor",
-        "meaning": "鄰居",
+        "word": "Miss",
+        "pos": "n.",
+        "meaning": "小姐(已婚未婚都可用)",
         "theme": "身分",
-        "sentence": "Our new neighbor brought us some cookies yesterday.",
-        "sentenceZh": "我們的新鄰居昨天帶了一些餅乾給我們。",
-        "otherForms": "neighbors (複數型)"
-    },
-    {
-        "word": "partner",
-        "meaning": "夥伴；伴侶",
-        "theme": "身分",
-        "sentence": "You and your partner need to work together in this badminton game.",
-        "sentenceZh": "你和你的夥伴必須在這場羽球比賽中合作。",
-        "otherForms": "partners (複數型)"
-    },
-    {
-        "word": "person",
-        "meaning": "人",
-        "theme": "身分",
-        "sentence": "He is a very kind person who always helps others.",
-        "sentenceZh": "他是個非常善良的人，總是幫助別人。",
-        "otherForms": "people/persons (複數型(不規則))"
-    },
-    {
-        "word": "player",
-        "meaning": "玩家；球員",
-        "theme": "身分",
-        "sentence": "Jeremy Lin is a very famous basketball player.",
-        "sentenceZh": "林書豪是一位非常有名的籃球員。",
-        "otherForms": "players (複數型)"
-    },
-    {
-        "word": "prince",
-        "meaning": "王子",
-        "theme": "身分",
-        "sentence": "The young prince rode a white horse through the forest.",
-        "sentenceZh": "年輕的王子騎著白馬穿過森林。",
-        "otherForms": "princes (複數型)"
-    },
-    {
-        "word": "princess",
-        "meaning": "公主",
-        "theme": "身分",
-        "sentence": "The princess lives in a beautiful castle.",
-        "sentenceZh": "公主住在一個美麗的城堡裡。",
-        "otherForms": "princesses (複數型)"
-    },
-    {
-        "word": "queen",
-        "meaning": "女王",
-        "theme": "身分",
-        "sentence": "The queen wore a shiny gold crown on her head.",
-        "sentenceZh": "女王頭上戴著閃亮的金皇冠。",
-        "otherForms": "queens (複數型)"
-    },
-    {
-        "word": "role",
-        "meaning": "角色",
-        "theme": "身分",
-        "sentence": "Everyone plays an important role in our class.",
-        "sentenceZh": "每個人在我們班上都扮演著重要的角色。",
-        "otherForms": "roles (複數型)"
-    },
-    {
-        "word": "snowman",
-        "meaning": "雪人",
-        "theme": "身分",
-        "sentence": "The kids built a big snowman in the yard during winter.",
-        "sentenceZh": "孩子們在冬天時於院子裡堆了一個大雪人。",
-        "otherForms": "snowmen (複數型(不規則))"
-    },
-    {
-        "word": "stranger",
-        "meaning": "陌生人",
-        "theme": "身分",
-        "sentence": "Never open the door for a stranger when you are alone.",
-        "sentenceZh": "當你獨自一人時，千萬別幫陌生人開門。",
-        "otherForms": "strangers (複數型)"
-    },
-    {
-        "word": "Taiwanese",
-        "meaning": "台灣人",
-        "theme": "身分",
-        "sentence": "Bubble tea is a very popular drink among Taiwanese people.",
-        "sentenceZh": "珍珠奶茶在台灣人之中是非常受歡迎的飲料。",
-        "otherForms": "Taiwanese (單複數同型)"
-    },
-    {
-        "word": "teenager",
-        "meaning": "青少年",
-        "theme": "身分",
-        "sentence": "Being a teenager is not always easy, but it is fun.",
-        "sentenceZh": "當個青少年並不總是容易的，但也很有趣。",
-        "otherForms": "teenagers (複數型)"
-    },
-    {
-        "word": "visitor",
-        "meaning": "訪客",
-        "theme": "身分",
-        "sentence": "The museum has thousands of visitors every weekend.",
-        "sentenceZh": "這間博物館每個週末都有成千上萬的訪客。",
-        "otherForms": "visitors (複數型)"
-    },
-    {
-        "word": "winner",
-        "meaning": "贏家",
-        "theme": "身分",
-        "sentence": "The winner of the race will get a gold medal.",
-        "sentenceZh": "賽跑的贏家將會獲得一面金牌。",
-        "otherForms": "winners (複數型)"
-    },
-    {
-        "word": "woman",
-        "meaning": "女人",
-        "theme": "身分",
-        "sentence": "The woman in the red dress is my aunt.",
-        "sentenceZh": "穿著紅洋裝的那個女人是我阿姨。",
-        "otherForms": "women (複數型)"
-    },
-    {
-        "word": "youth",
-        "meaning": "青年",
-        "theme": "身分",
-        "sentence": "The camp is a great place for the local youth to make friends.",
-        "sentenceZh": "這個營隊是當地青年交朋友的好地方。",
-        "otherForms": "youths (複數型)"
-    },
-    {
-        "word": "ma'am",
-        "meaning": "女士",
-        "theme": "身分",
-        "sentence": "\"Can I help you, ma'am?\" the clerk asked politely.",
-        "sentenceZh": "「女士，需要幫忙嗎？」店員有禮貌地問。",
-        "otherForms": "ma'ams (複數型)"
-    },
-    {
-        "word": "sir",
-        "meaning": "男士",
-        "theme": "身分",
-        "sentence": "\"Excuse me, sir, is this your bag?\"",
-        "sentenceZh": "「先生不好意思，這是你的包包嗎？」",
-        "otherForms": "sirs (複數型)"
+        "sentence": "Miss Chen is always kind to her students.",
+        "sentenceZh": "陳小姐對她的學生總是很親切。",
+        "otherForms": "Misses (複數型(加es))"
     },
     {
         "word": "Mr.",
+        "pos": "n.",
         "meaning": "先生",
         "theme": "身分",
         "sentence": "Mr. Lin is our new math teacher this semester.",
@@ -465,6 +397,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Mrs.",
+        "pos": "n.",
         "meaning": "太太(已婚)",
         "theme": "身分",
         "sentence": "Mrs. Wang makes the best cookies in town.",
@@ -473,6 +406,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Ms.",
+        "pos": "n.",
         "meaning": "小姐(未婚)",
         "theme": "身分",
         "sentence": "Ms. Lee is going to teach us English this year.",
@@ -480,15 +414,170 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
-        "word": "Miss",
-        "meaning": "小姐(已婚未婚都可用)",
+        "word": "neighbor",
+        "pos": "n.",
+        "meaning": "鄰居",
         "theme": "身分",
-        "sentence": "Miss Chen is always kind to her students.",
-        "sentenceZh": "陳小姐對她的學生總是很親切。",
-        "otherForms": "Misses (複數型(加es))"
+        "sentence": "Our new neighbor brought us some cookies yesterday.",
+        "sentenceZh": "我們的新鄰居昨天帶了一些餅乾給我們。",
+        "otherForms": "neighbors (複數型)"
+    },
+    {
+        "word": "partner",
+        "pos": "n.",
+        "meaning": "夥伴；伴侶",
+        "theme": "身分",
+        "sentence": "You and your partner need to work together in this badminton game.",
+        "sentenceZh": "你和你的夥伴必須在這場羽球比賽中合作。",
+        "otherForms": "partners (複數型)"
+    },
+    {
+        "word": "person",
+        "pos": "n.",
+        "meaning": "人",
+        "theme": "身分",
+        "sentence": "He is a very kind person who always helps others.",
+        "sentenceZh": "他是個非常善良的人，總是幫助別人。",
+        "otherForms": "people/persons (複數型(不規則))"
+    },
+    {
+        "word": "player",
+        "pos": "n.",
+        "meaning": "玩家；球員",
+        "theme": "身分",
+        "sentence": "Jeremy Lin is a very famous basketball player.",
+        "sentenceZh": "林書豪是一位非常有名的籃球員。",
+        "otherForms": "players (複數型)"
+    },
+    {
+        "word": "prince",
+        "pos": "n.",
+        "meaning": "王子",
+        "theme": "身分",
+        "sentence": "The young prince rode a white horse through the forest.",
+        "sentenceZh": "年輕的王子騎著白馬穿過森林。",
+        "otherForms": "princes (複數型)"
+    },
+    {
+        "word": "princess",
+        "pos": "n.",
+        "meaning": "公主",
+        "theme": "身分",
+        "sentence": "The princess lives in a beautiful castle.",
+        "sentenceZh": "公主住在一個美麗的城堡裡。",
+        "otherForms": "princesses (複數型)"
+    },
+    {
+        "word": "queen",
+        "pos": "n.",
+        "meaning": "女王",
+        "theme": "身分",
+        "sentence": "The queen wore a shiny gold crown on her head.",
+        "sentenceZh": "女王頭上戴著閃亮的金皇冠。",
+        "otherForms": "queens (複數型)"
+    },
+    {
+        "word": "role",
+        "pos": "n.",
+        "meaning": "角色",
+        "theme": "身分",
+        "sentence": "Everyone plays an important role in our class.",
+        "sentenceZh": "每個人在我們班上都扮演著重要的角色。",
+        "otherForms": "roles (複數型)"
+    },
+    {
+        "word": "sir",
+        "pos": "n.",
+        "meaning": "男士",
+        "theme": "身分",
+        "sentence": "\"Excuse me, sir, is this your bag?\"",
+        "sentenceZh": "「先生不好意思，這是你的包包嗎？」",
+        "otherForms": "sirs (複數型)"
+    },
+    {
+        "word": "snowman",
+        "pos": "n.",
+        "meaning": "雪人",
+        "theme": "身分",
+        "sentence": "The kids built a big snowman in the yard during winter.",
+        "sentenceZh": "孩子們在冬天時於院子裡堆了一個大雪人。",
+        "otherForms": "snowmen (複數型(不規則))"
+    },
+    {
+        "word": "stranger",
+        "pos": "n.",
+        "meaning": "陌生人",
+        "theme": "身分",
+        "sentence": "Never open the door for a stranger when you are alone.",
+        "sentenceZh": "當你獨自一人時，千萬別幫陌生人開門。",
+        "otherForms": "strangers (複數型)"
+    },
+    {
+        "word": "Taiwanese",
+        "pos": "n.",
+        "meaning": "台灣人",
+        "theme": "身分",
+        "sentence": "Bubble tea is a very popular drink among Taiwanese people.",
+        "sentenceZh": "珍珠奶茶在台灣人之中是非常受歡迎的飲料。",
+        "otherForms": "Taiwanese (單複數同型)"
+    },
+    {
+        "word": "teenager",
+        "pos": "n.",
+        "meaning": "青少年",
+        "theme": "身分",
+        "sentence": "Being a teenager is not always easy, but it is fun.",
+        "sentenceZh": "當個青少年並不總是容易的，但也很有趣。",
+        "otherForms": "teenagers (複數型)"
+    },
+    {
+        "word": "user",
+        "pos": "n.",
+        "meaning": "使用者",
+        "theme": "身分",
+        "sentence": "This app has millions of users worldwide.",
+        "sentenceZh": "這個應用程式在全世界有數百萬的使用者。",
+        "otherForms": "users (複數型), use (動詞(使用)), useful (形容詞 (有用的))"
+    },
+    {
+        "word": "visitor",
+        "pos": "n.",
+        "meaning": "訪客",
+        "theme": "身分",
+        "sentence": "The museum has thousands of visitors every weekend.",
+        "sentenceZh": "這間博物館每個週末都有成千上萬的訪客。",
+        "otherForms": "visitors (複數型)"
+    },
+    {
+        "word": "winner",
+        "pos": "n.",
+        "meaning": "贏家",
+        "theme": "身分",
+        "sentence": "The winner of the race will get a gold medal.",
+        "sentenceZh": "賽跑的贏家將會獲得一面金牌。",
+        "otherForms": "winners (複數型)"
+    },
+    {
+        "word": "woman",
+        "pos": "n.",
+        "meaning": "女人",
+        "theme": "身分",
+        "sentence": "The woman in the red dress is my aunt.",
+        "sentenceZh": "穿著紅洋裝的那個女人是我阿姨。",
+        "otherForms": "women (複數型)"
+    },
+    {
+        "word": "youth",
+        "pos": "n.",
+        "meaning": "青年",
+        "theme": "身分",
+        "sentence": "The camp is a great place for the local youth to make friends.",
+        "sentenceZh": "這個營隊是當地青年交朋友的好地方。",
+        "otherForms": "youths (複數型)"
     },
     {
         "word": "aunt",
+        "pos": "n.",
         "meaning": "阿姨",
         "theme": "親戚",
         "sentence": "My aunt lives in Taipei with her family.",
@@ -497,6 +586,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "brother",
+        "pos": "n.",
         "meaning": "兄弟",
         "theme": "親戚",
         "sentence": "I have one older brother and two younger sisters.",
@@ -505,6 +595,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cousin",
+        "pos": "n.",
         "meaning": "堂(表)兄弟姊妹",
         "theme": "親戚",
         "sentence": "My cousin and I are the same age.",
@@ -513,6 +604,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "daughter",
+        "pos": "n.",
         "meaning": "女兒",
         "theme": "親戚",
         "sentence": "Mr. Smith is very proud of his hardworking daughter.",
@@ -521,6 +613,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "elder",
+        "pos": "n.",
         "meaning": "長輩",
         "theme": "親戚",
         "sentence": "We should always show respect to our elders.",
@@ -529,6 +622,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "family",
+        "pos": "n.",
         "meaning": "家庭",
         "theme": "親戚",
         "sentence": "I love spending the weekend with my family.",
@@ -537,6 +631,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "father (dad, daddy)",
+        "pos": "n.",
         "meaning": "父親",
         "theme": "親戚",
         "sentence": "My father drives me to school every morning.",
@@ -545,6 +640,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "granddaughter",
+        "pos": "n.",
         "meaning": "孫女",
         "theme": "親戚",
         "sentence": "The old man bought a cute toy for his granddaughter.",
@@ -553,6 +649,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grandfather (grandpa)",
+        "pos": "n.",
         "meaning": "祖父",
         "theme": "親戚",
         "sentence": "My grandfather likes to read the newspaper after breakfast.",
@@ -561,6 +658,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grandmother (grandma)",
+        "pos": "n.",
         "meaning": "祖母",
         "theme": "親戚",
         "sentence": "My grandmother tells the best bedtime stories.",
@@ -569,6 +667,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grandson",
+        "pos": "n.",
         "meaning": "孫子",
         "theme": "親戚",
         "sentence": "She baked a chocolate cake for her grandson's birthday.",
@@ -577,6 +676,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "husband",
+        "pos": "n.",
         "meaning": "丈夫",
         "theme": "親戚",
         "sentence": "Her husband works at the hospital as a doctor.",
@@ -585,6 +685,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mother (mother, mom)",
+        "pos": "n.",
         "meaning": "母親",
         "theme": "親戚",
         "sentence": "My mother cooked a delicious meal for us tonight.",
@@ -593,6 +694,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nephew",
+        "pos": "n.",
         "meaning": "侄子；外甥",
         "theme": "親戚",
         "sentence": "His nephew often visits him to play video games on weekends.",
@@ -601,6 +703,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "niece",
+        "pos": "n.",
         "meaning": "姪女；外甥女",
         "theme": "親戚",
         "sentence": "My niece just started kindergarten this year.",
@@ -609,6 +712,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "parent",
+        "pos": "n.",
         "meaning": "父母",
         "theme": "親戚",
         "sentence": "You need your parents' signature on this form.",
@@ -617,6 +721,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "relative",
+        "pos": "n.",
         "meaning": "親戚",
         "theme": "親戚",
         "sentence": "We visit our relatives during the Chinese New Year.",
@@ -625,6 +730,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sister",
+        "pos": "n.",
         "meaning": "姊妹",
         "theme": "親戚",
         "sentence": "My younger sister likes to draw cute animals.",
@@ -633,6 +739,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "son",
+        "pos": "n.",
         "meaning": "兒子",
         "theme": "親戚",
         "sentence": "Their son is studying in a senior high school now.",
@@ -641,6 +748,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "uncle",
+        "pos": "n.",
         "meaning": "叔叔；舅舅",
         "theme": "親戚",
         "sentence": "My uncle gave me a new watch for my birthday.",
@@ -649,6 +757,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wife",
+        "pos": "n.",
         "meaning": "妻子",
         "theme": "親戚",
         "sentence": "He bought some red roses for his wife.",
@@ -657,6 +766,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "actor",
+        "pos": "n.",
         "meaning": "男演員",
         "theme": "職業",
         "sentence": "The actor in that new movie is very handsome.",
@@ -665,6 +775,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "actress",
+        "pos": "n.",
         "meaning": "女演員",
         "theme": "職業",
         "sentence": "She is a famous actress who won many awards.",
@@ -673,6 +784,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "army",
+        "pos": "n.",
         "meaning": "軍隊",
         "theme": "職業",
         "sentence": "He decided to join the army after finishing high school.",
@@ -681,6 +793,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "artist",
+        "pos": "n.",
         "meaning": "藝術家",
         "theme": "職業",
         "sentence": "The artist drew a beautiful picture of the ocean.",
@@ -689,6 +802,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "assistant",
+        "pos": "n.",
         "meaning": "助理",
         "theme": "職業",
         "sentence": "The teacher's assistant helps hand out the worksheets.",
@@ -697,6 +811,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "baby sitter",
+        "pos": "n.",
         "meaning": "保母",
         "theme": "職業",
         "sentence": "We hired a baby sitter to look after the kids tonight.",
@@ -705,6 +820,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "band",
+        "pos": "n.",
         "meaning": "樂隊；帶子",
         "theme": "職業",
         "sentence": "My favorite 80s band is coming to Taiwan for a concert!",
@@ -713,6 +829,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "barber",
+        "pos": "n.",
         "meaning": "理髮師",
         "theme": "職業",
         "sentence": "The barber cut my hair too short this time.",
@@ -721,6 +838,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "boss",
+        "pos": "n.",
         "meaning": "老闆",
         "theme": "職業",
         "sentence": "Her boss told her to finish the report by Friday.",
@@ -729,6 +847,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "business",
+        "pos": "n.",
         "meaning": "商業；生意",
         "theme": "職業",
         "sentence": "My father travels a lot for business.",
@@ -737,6 +856,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "businessman",
+        "pos": "n.",
         "meaning": "商人",
         "theme": "職業",
         "sentence": "The successful businessman gave a speech at our school.",
@@ -745,6 +865,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "captain",
+        "pos": "n.",
         "meaning": "隊長；船長",
         "theme": "職業",
         "sentence": "The captain of the badminton team plays very well.",
@@ -753,6 +874,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cheerleader",
+        "pos": "n.",
         "meaning": "啦啦隊",
         "theme": "職業",
         "sentence": "The cheerleaders danced energetically during the basketball game.",
@@ -761,6 +883,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "class leader",
+        "pos": "n.",
         "meaning": "班長",
         "theme": "職業",
         "sentence": "As the class leader, he has to keep the classroom quiet.",
@@ -769,6 +892,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "classmate",
+        "pos": "n.",
         "meaning": "同學",
         "theme": "職業",
         "sentence": "I usually walk to the train station with my classmate.",
@@ -777,6 +901,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clerk",
+        "pos": "n.",
         "meaning": "店員；職員",
         "theme": "職業",
         "sentence": "The clerk at the convenience store is very polite.",
@@ -785,6 +910,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "coach",
+        "pos": "n.",
         "meaning": "教練",
         "theme": "職業",
         "sentence": "Our badminton coach teaches us how to swing correctly.",
@@ -793,6 +919,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cook",
+        "pos": "n.",
         "meaning": "廚師",
         "theme": "職業",
         "sentence": "My father is a great cook; he makes the best fried rice.",
@@ -801,6 +928,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cowboy",
+        "pos": "n.",
         "meaning": "牛仔",
         "theme": "職業",
         "sentence": "The cowboy rode his horse quickly across the field.",
@@ -809,6 +937,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dentist",
+        "pos": "n.",
         "meaning": "牙醫",
         "theme": "職業",
         "sentence": "You should visit the dentist if you have a toothache.",
@@ -817,6 +946,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "diplomat",
+        "pos": "n.",
         "meaning": "外交官",
         "theme": "職業",
         "sentence": "The diplomat traveled to many countries to talk about peace.",
@@ -825,6 +955,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "doctor",
+        "pos": "n.",
         "meaning": "醫生",
         "theme": "職業",
         "sentence": "The doctor told me to drink more water and get some rest.",
@@ -833,6 +964,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "driver",
+        "pos": "n.",
         "meaning": "司機",
         "theme": "職業",
         "sentence": "The bus driver drives very carefully on rainy days.",
@@ -841,6 +973,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "engineer",
+        "pos": "n.",
         "meaning": "工程師",
         "theme": "職業",
         "sentence": "The software engineer is writing code for a new vocabulary game.",
@@ -849,6 +982,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "farmer",
+        "pos": "n.",
         "meaning": "農夫",
         "theme": "職業",
         "sentence": "The farmer grows sweet potatoes and rice on his farm.",
@@ -857,6 +991,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fisherman",
+        "pos": "n.",
         "meaning": "漁夫",
         "theme": "職業",
         "sentence": "The fisherman caught a big fish in the sea this morning.",
@@ -865,6 +1000,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guide",
+        "pos": "n.",
         "meaning": "導遊",
         "theme": "職業",
         "sentence": "The tour guide showed us the old temple in the town.",
@@ -873,6 +1009,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hair dresser",
+        "pos": "n.",
         "meaning": "髮型師",
         "theme": "職業",
         "sentence": "The hair dresser helped me try a new hairstyle.",
@@ -881,6 +1018,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "housewife",
+        "pos": "n.",
         "meaning": "家庭主婦",
         "theme": "職業",
         "sentence": "She is a busy housewife who takes care of three children.",
@@ -889,6 +1027,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hunter",
+        "pos": "n.",
         "meaning": "獵人",
         "theme": "職業",
         "sentence": "The hunter walked quietly in the forest to find animals.",
@@ -897,6 +1036,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "job",
+        "pos": "n.",
         "meaning": "工作",
         "theme": "職業",
         "sentence": "Teaching English is a hard but meaningful job.",
@@ -905,6 +1045,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "journalist",
+        "pos": "n.",
         "meaning": "記者",
         "theme": "職業",
         "sentence": "The journalist wrote a news report about the typhoon.",
@@ -913,6 +1054,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "judge",
+        "pos": "n.",
         "meaning": "法官",
         "theme": "職業",
         "sentence": "The judge listened carefully to both sides of the story.",
@@ -921,6 +1063,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lawyer",
+        "pos": "n.",
         "meaning": "律師",
         "theme": "職業",
         "sentence": "The lawyer helped his client understand the rules.",
@@ -929,6 +1072,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "magician",
+        "pos": "n.",
         "meaning": "魔術師",
         "theme": "職業",
         "sentence": "The magician pulled a white rabbit out of his black hat.",
@@ -937,6 +1081,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mailman",
+        "pos": "n.",
         "meaning": "郵差",
         "theme": "職業",
         "sentence": "The mailman delivers letters to our house every morning.",
@@ -945,6 +1090,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mail carrier",
+        "pos": "n.",
         "meaning": "郵差",
         "theme": "職業",
         "sentence": "The mail carrier brought a heavy package today.",
@@ -953,6 +1099,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "manager",
+        "pos": "n.",
         "meaning": "經理",
         "theme": "職業",
         "sentence": "The manager had a meeting with all the store clerks.",
@@ -961,6 +1108,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mechanic",
+        "pos": "n.",
         "meaning": "技工",
         "theme": "職業",
         "sentence": "The mechanic fixed our broken car in just two hours.",
@@ -969,6 +1117,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "model",
+        "pos": "n.",
         "meaning": "模特兒",
         "theme": "職業",
         "sentence": "The fashion model wore a beautiful dress on the stage.",
@@ -977,6 +1126,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "musician",
+        "pos": "n.",
         "meaning": "音樂家",
         "theme": "職業",
         "sentence": "He is a talented musician who can play the piano and the guitar.",
@@ -985,6 +1135,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nurse",
+        "pos": "n.",
         "meaning": "護士",
         "theme": "職業",
         "sentence": "The nurse checked my temperature and gave me some medicine.",
@@ -993,6 +1144,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "officer",
+        "pos": "n.",
         "meaning": "公務員",
         "theme": "職業",
         "sentence": "The police officer helped the lost child find his parents.",
@@ -1001,6 +1153,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "owner",
+        "pos": "n.",
         "meaning": "持有者",
         "theme": "職業",
         "sentence": "The owner of this restaurant is a very kind lady.",
@@ -1009,6 +1162,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "painter",
+        "pos": "n.",
         "meaning": "畫家",
         "theme": "職業",
         "sentence": "The painter mixed blue and yellow to make green paint.",
@@ -1016,7 +1170,17 @@ const DICTIONARY_DATA = [
         "otherForms": "painters (複數型)"
     },
     {
+        "word": "poet",
+        "pos": "n.",
+        "meaning": "詩人",
+        "theme": "職業",
+        "sentence": "Li Bai is a famous poet in Chinese history.",
+        "sentenceZh": "李白是中國歷史上著名的詩人。",
+        "otherForms": "poets (複數型), poem (詩 - 名詞)"
+    },
+    {
         "word": "police",
+        "pos": "n.",
         "meaning": "警方",
         "theme": "職業",
         "sentence": "We called the police when we saw the thief.",
@@ -1025,6 +1189,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "police officer",
+        "pos": "n.",
         "meaning": "警察",
         "theme": "職業",
         "sentence": "The police officer asked the driver to stop the car.",
@@ -1033,6 +1198,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "president",
+        "pos": "n.",
         "meaning": "總統",
         "theme": "職業",
         "sentence": "The president gave an important speech on TV last night.",
@@ -1041,6 +1207,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "priest",
+        "pos": "n.",
         "meaning": "神父",
         "theme": "職業",
         "sentence": "The village priest in the story told the people to be kind.",
@@ -1049,6 +1216,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "principal",
+        "pos": "n.",
         "meaning": "校長",
         "theme": "職業",
         "sentence": "Our school principal shook hands with all the graduating students.",
@@ -1057,6 +1225,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "professor",
+        "pos": "n.",
         "meaning": "教授",
         "theme": "職業",
         "sentence": "The university professor teaches a class on web development.",
@@ -1065,6 +1234,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "reporter",
+        "pos": "n.",
         "meaning": "記者",
         "theme": "職業",
         "sentence": "The reporter interviewed the famous singer after the concert.",
@@ -1073,6 +1243,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sailor",
+        "pos": "n.",
         "meaning": "水手",
         "theme": "職業",
         "sentence": "The brave sailor spent many months traveling on the ocean.",
@@ -1081,6 +1252,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "salesman",
+        "pos": "n.",
         "meaning": "銷售員",
         "theme": "職業",
         "sentence": "The car salesman showed us their newest model.",
@@ -1089,6 +1261,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "scientist",
+        "pos": "n.",
         "meaning": "科學家",
         "theme": "職業",
         "sentence": "The scientist is doing an experiment in the laboratory.",
@@ -1097,6 +1270,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "secretary",
+        "pos": "n.",
         "meaning": "秘書",
         "theme": "職業",
         "sentence": "The secretary helped the boss answer the phone and write emails.",
@@ -1105,6 +1279,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "servant",
+        "pos": "n.",
         "meaning": "僕人",
         "theme": "職業",
         "sentence": "The servant cleaned the large house for the rich family.",
@@ -1113,6 +1288,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shopkeeper",
+        "pos": "n.",
         "meaning": "店主",
         "theme": "職業",
         "sentence": "The shopkeeper smiled and said thank you to the customer.",
@@ -1121,6 +1297,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "singer",
+        "pos": "n.",
         "meaning": "歌手",
         "theme": "職業",
         "sentence": "The singer's voice sounds amazing when she sings live.",
@@ -1129,6 +1306,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soldier",
+        "pos": "n.",
         "meaning": "士兵",
         "theme": "職業",
         "sentence": "The soldier was very brave and protected his country.",
@@ -1137,6 +1315,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "student",
+        "pos": "n.",
         "meaning": "學生",
         "theme": "職業",
         "sentence": "A good student always finishes their homework on time.",
@@ -1145,6 +1324,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "teacher",
+        "pos": "n.",
         "meaning": "老師",
         "theme": "職業",
         "sentence": "Our English teacher uses fun games to help us learn vocabulary.",
@@ -1153,6 +1333,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thief",
+        "pos": "n.",
         "meaning": "小偷",
         "theme": "職業",
         "sentence": "The thief stole a bicycle from the park yesterday.",
@@ -1161,6 +1342,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vendor",
+        "pos": "n.",
         "meaning": "小販",
         "theme": "職業",
         "sentence": "We bought some delicious snacks from the street vendor.",
@@ -1169,6 +1351,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "waiter",
+        "pos": "n.",
         "meaning": "服務生（男性）",
         "theme": "職業",
         "sentence": "The waiter brought us the menu and a glass of water.",
@@ -1177,6 +1360,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "waitress",
+        "pos": "n.",
         "meaning": "服務生（女性）",
         "theme": "職業",
         "sentence": "The waitress asked if we wanted to order dessert.",
@@ -1185,6 +1369,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "work",
+        "pos": "n. / v.",
         "meaning": "工作",
         "theme": "職業",
         "sentence": "I have a lot of work to do this weekend.",
@@ -1193,6 +1378,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "worker",
+        "pos": "n.",
         "meaning": "工人",
         "theme": "職業",
         "sentence": "The construction worker wears a hard hat for safety.",
@@ -1201,6 +1387,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "writer",
+        "pos": "n.",
         "meaning": "作家",
         "theme": "職業",
         "sentence": "J.K. Rowling is the famous writer of the Harry Potter books.",
@@ -1209,6 +1396,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ankle",
+        "pos": "n.",
         "meaning": "腳踝",
         "theme": "身體部位",
         "sentence": "He twisted his ankle while playing basketball.",
@@ -1217,6 +1405,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "arm",
+        "pos": "n.",
         "meaning": "手臂",
         "theme": "身體部位",
         "sentence": "She carried the heavy books in her left arm.",
@@ -1225,6 +1414,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "back",
+        "pos": "n. / adv.",
         "meaning": "背部",
         "theme": "身體部位",
         "sentence": "My grandfather's back hurts when it rains.",
@@ -1233,6 +1423,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beard",
+        "pos": "n.",
         "meaning": "鬍鬚",
         "theme": "身體部位",
         "sentence": "The old man has a long white beard.",
@@ -1241,6 +1432,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blood",
+        "pos": "n.",
         "meaning": "血液",
         "theme": "身體部位",
         "sentence": "Your heart pumps blood around your body.",
@@ -1249,6 +1441,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "body",
+        "pos": "n.",
         "meaning": "身體",
         "theme": "身體部位",
         "sentence": "Exercise is good for both your mind and your body.",
@@ -1257,6 +1450,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bone",
+        "pos": "n.",
         "meaning": "骨頭",
         "theme": "身體部位",
         "sentence": "The dog buried a bone in the garden.",
@@ -1264,7 +1458,17 @@ const DICTIONARY_DATA = [
         "otherForms": "bones (複數型)"
     },
     {
+        "word": "brain",
+        "pos": "n.",
+        "meaning": "大腦",
+        "theme": "身體部位",
+        "sentence": "The human brain is very complex.",
+        "sentenceZh": "人類的大腦非常複雜。",
+        "otherForms": "brains (複數型)"
+    },
+    {
         "word": "chin",
+        "pos": "n.",
         "meaning": "下巴",
         "theme": "身體部位",
         "sentence": "He rested his chin on his hand while thinking.",
@@ -1273,6 +1477,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ear",
+        "pos": "n.",
         "meaning": "耳朵",
         "theme": "身體部位",
         "sentence": "Elephants have very large ears.",
@@ -1281,6 +1486,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eye",
+        "pos": "n.",
         "meaning": "眼睛",
         "theme": "身體部位",
         "sentence": "She has big brown eyes and long hair.",
@@ -1288,7 +1494,17 @@ const DICTIONARY_DATA = [
         "otherForms": "eyes (複數型)"
     },
     {
+        "word": "eyebrow",
+        "pos": "n.",
+        "meaning": "眉毛",
+        "theme": "身體部位",
+        "sentence": "He raised his left eyebrow in surprise.",
+        "sentenceZh": "他驚訝地挑起左眉。",
+        "otherForms": "eyebrows (複數型)"
+    },
+    {
         "word": "face",
+        "pos": "n.",
         "meaning": "臉",
         "theme": "身體部位",
         "sentence": "Wash your face before you go to bed.",
@@ -1297,6 +1513,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "finger",
+        "pos": "n.",
         "meaning": "手指",
         "theme": "身體部位",
         "sentence": "He cut his finger while cooking dinner.",
@@ -1305,6 +1522,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "foot",
+        "pos": "n.",
         "meaning": "腳",
         "theme": "身體部位",
         "sentence": "I have a blister on my left foot.",
@@ -1313,6 +1531,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gesture",
+        "pos": "n.",
         "meaning": "手勢",
         "theme": "身體部位",
         "sentence": "Thumbs up is a friendly gesture in many countries.",
@@ -1321,6 +1540,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hair",
+        "pos": "n.",
         "meaning": "頭髮",
         "theme": "身體部位",
         "sentence": "She brushed her long black hair in front of the mirror.",
@@ -1329,6 +1549,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hand",
+        "pos": "n.",
         "meaning": "手",
         "theme": "身體部位",
         "sentence": "Please raise your hand if you know the answer.",
@@ -1337,6 +1558,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "head",
+        "pos": "n.",
         "meaning": "頭",
         "theme": "身體部位",
         "sentence": "He nodded his head to show that he agreed.",
@@ -1345,6 +1567,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "heart",
+        "pos": "n.",
         "meaning": "心臟",
         "theme": "身體部位",
         "sentence": "Running makes your heart beat faster.",
@@ -1353,6 +1576,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hip",
+        "pos": "n.",
         "meaning": "臀部",
         "theme": "身體部位",
         "sentence": "She stood with her hands on her hips.",
@@ -1361,6 +1585,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "knee",
+        "pos": "n.",
         "meaning": "膝蓋",
         "theme": "身體部位",
         "sentence": "He scraped his knee when he fell off the bike.",
@@ -1369,6 +1594,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "leg",
+        "pos": "n.",
         "meaning": "腿",
         "theme": "身體部位",
         "sentence": "The table is wobbly because one leg is shorter.",
@@ -1377,6 +1603,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lip",
+        "pos": "n.",
         "meaning": "嘴唇",
         "theme": "身體部位",
         "sentence": "She bit her lip because she was nervous.",
@@ -1385,6 +1612,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mouth",
+        "pos": "n.",
         "meaning": "嘴巴",
         "theme": "身體部位",
         "sentence": "Keep your mouth closed when you chew your food.",
@@ -1393,6 +1621,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nail",
+        "pos": "n.",
         "meaning": "指甲",
         "theme": "身體部位",
         "sentence": "You should cut your fingernails every week.",
@@ -1401,6 +1630,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "neck",
+        "pos": "n.",
         "meaning": "脖子",
         "theme": "身體部位",
         "sentence": "Giraffes have a very long neck to reach high leaves.",
@@ -1409,6 +1639,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nose",
+        "pos": "n.",
         "meaning": "鼻子",
         "theme": "身體部位",
         "sentence": "He blew his nose because he had a bad cold.",
@@ -1416,7 +1647,17 @@ const DICTIONARY_DATA = [
         "otherForms": "noses (複數型)"
     },
     {
+        "word": "organ",
+        "pos": "n.",
+        "meaning": "器官",
+        "theme": "身體部位",
+        "sentence": "The heart is an important organ in our body.",
+        "sentenceZh": "心臟是我們體內一個重要的器官。",
+        "otherForms": "organs (複數型)"
+    },
+    {
         "word": "shoulder",
+        "pos": "n.",
         "meaning": "肩膀",
         "theme": "身體部位",
         "sentence": "My backpack is so heavy that my shoulders hurt.",
@@ -1425,6 +1666,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "skin",
+        "pos": "n.",
         "meaning": "皮膚",
         "theme": "身體部位",
         "sentence": "Use sunscreen to protect your skin from the sun.",
@@ -1433,6 +1675,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stomach",
+        "pos": "n.",
         "meaning": "胃",
         "theme": "身體部位",
         "sentence": "I am so hungry that my stomach is making noises.",
@@ -1441,6 +1684,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "throat",
+        "pos": "n.",
         "meaning": "喉嚨",
         "theme": "身體部位",
         "sentence": "I have a sore throat and cannot speak loudly.",
@@ -1449,6 +1693,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thumb",
+        "pos": "n.",
         "meaning": "拇指",
         "theme": "身體部位",
         "sentence": "The baby likes to suck his thumb when he is sleepy.",
@@ -1457,6 +1702,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toe",
+        "pos": "n.",
         "meaning": "腳趾",
         "theme": "身體部位",
         "sentence": "I stubbed my toe on the chair and it hurts!",
@@ -1465,6 +1711,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tongue",
+        "pos": "n.",
         "meaning": "舌頭",
         "theme": "身體部位",
         "sentence": "The dog stuck out its tongue to cool down.",
@@ -1473,6 +1720,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tooth",
+        "pos": "n.",
         "meaning": "牙齒",
         "theme": "身體部位",
         "sentence": "You must brush your teeth twice a day.",
@@ -1481,6 +1729,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "waist",
+        "pos": "n.",
         "meaning": "腰部",
         "theme": "身體部位",
         "sentence": "He tied a jacket around his waist.",
@@ -1489,6 +1738,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wrist",
+        "pos": "n.",
         "meaning": "手腕",
         "theme": "身體部位",
         "sentence": "She wore a beautiful silver watch on her wrist.",
@@ -1497,6 +1747,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wound",
+        "pos": "n.",
         "meaning": "創傷；傷口",
         "theme": "醫療健康",
         "sentence": "The nurse carefully cleaned the wound on his arm.",
@@ -1505,6 +1756,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cancer",
+        "pos": "n.",
         "meaning": "癌症",
         "theme": "醫療健康",
         "sentence": "Smoking increases the risk of getting lung cancer.",
@@ -1513,6 +1765,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cold",
+        "pos": "n. / adj.",
         "meaning": "感冒；冷的；冷漠的",
         "theme": "醫療健康",
         "sentence": "Catching a cold is common in winter, so keep warm.",
@@ -1521,6 +1774,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flu",
+        "pos": "n.",
         "meaning": "流行性感冒",
         "theme": "醫療健康",
         "sentence": "He had to stay home from school because he caught the flu.",
@@ -1529,6 +1783,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "headache",
+        "pos": "n.",
         "meaning": "頭痛",
         "theme": "醫療健康",
         "sentence": "The loud noise gave me a terrible headache.",
@@ -1537,6 +1792,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stomachache",
+        "pos": "n.",
         "meaning": "胃痛",
         "theme": "醫療健康",
         "sentence": "Eating too much ice cream gave her a stomachache.",
@@ -1545,6 +1801,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toothache",
+        "pos": "n.",
         "meaning": "牙痛",
         "theme": "醫療健康",
         "sentence": "He has a bad toothache and needs to see the dentist.",
@@ -1553,6 +1810,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cough",
+        "pos": "n. / v.",
         "meaning": "咳嗽",
         "theme": "醫療健康",
         "sentence": "She has a bad cough and needs to drink more warm water.",
@@ -1561,6 +1819,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fever",
+        "pos": "n.",
         "meaning": "發燒",
         "theme": "醫療健康",
         "sentence": "The baby has a high fever, so they took him to the hospital.",
@@ -1569,6 +1828,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pain",
+        "pos": "n.",
         "meaning": "疼痛",
         "theme": "醫療健康",
         "sentence": "He felt a sharp pain in his knee after the fall.",
@@ -1577,6 +1837,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sore throat",
+        "pos": "n.",
         "meaning": "喉嚨痛",
         "theme": "醫療健康",
         "sentence": "Honey and lemon tea is good for a sore throat.",
@@ -1585,6 +1846,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "death",
+        "pos": "n.",
         "meaning": "死亡",
         "theme": "醫療健康",
         "sentence": "The death of his pet dog made him very sad.",
@@ -1593,6 +1855,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "health",
+        "pos": "n.",
         "meaning": "健康",
         "theme": "醫療健康",
         "sentence": "Eating vegetables and exercising every day is good for your health.",
@@ -1601,6 +1864,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "life",
+        "pos": "n.",
         "meaning": "生命",
         "theme": "醫療健康",
         "sentence": "We only have one life, so we should live it happily.",
@@ -1609,6 +1873,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "medicine",
+        "pos": "n.",
         "meaning": "藥物；醫學",
         "theme": "醫療健康",
         "sentence": "Remember to take your medicine after meals.",
@@ -1617,6 +1882,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "operation",
+        "pos": "n.",
         "meaning": "操作；手術",
         "theme": "醫療健康",
         "sentence": "The doctor performed a successful operation to fix his leg.",
@@ -1625,6 +1891,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "comfortable",
+        "pos": "adj.",
         "meaning": "舒服的",
         "theme": "醫療健康",
         "sentence": "This sofa is very soft and comfortable to sit on.",
@@ -1633,6 +1900,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dizzy",
+        "pos": "adj.",
         "meaning": "頭暈的",
         "theme": "醫療健康",
         "sentence": "I feel dizzy when I stand up too quickly.",
@@ -1641,6 +1909,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "healthy",
+        "pos": "adj.",
         "meaning": "健康的",
         "theme": "醫療健康",
         "sentence": "To stay healthy, you should get enough sleep every night.",
@@ -1649,6 +1918,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "painful",
+        "pos": "adj.",
         "meaning": "疼痛的",
         "theme": "醫療健康",
         "sentence": "It was a painful experience, but he learned a lot from it.",
@@ -1657,6 +1927,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pale",
+        "pos": "adj.",
         "meaning": "蒼白的",
         "theme": "醫療健康",
         "sentence": "You look pale; are you feeling sick?",
@@ -1665,6 +1936,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sick",
+        "pos": "adj.",
         "meaning": "生病的",
         "theme": "醫療健康",
         "sentence": "She felt sick and had to leave work early.",
@@ -1673,6 +1945,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "strong",
+        "pos": "adj.",
         "meaning": "強壯的",
         "theme": "醫療健康",
         "sentence": "He is strong enough to lift the heavy box.",
@@ -1681,6 +1954,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tired",
+        "pos": "adj.",
         "meaning": "疲倦的",
         "theme": "醫療健康",
         "sentence": "I am very tired after running the relay race.",
@@ -1689,6 +1963,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "weak",
+        "pos": "adj.",
         "meaning": "虛弱的",
         "theme": "醫療健康",
         "sentence": "The old man was too weak to get out of bed.",
@@ -1697,7 +1972,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "well",
-        "meaning": "身體健康的",
+        "pos": "adj. / adv.",
+        "meaning": "好地；身體健康的",
         "theme": "醫療健康",
         "sentence": "She did not sleep well last night.",
         "sentenceZh": "她昨晚沒睡好。",
@@ -1705,6 +1981,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ill",
+        "pos": "adj.",
         "meaning": "生病的",
         "theme": "醫療健康",
         "sentence": "He fell ill during the trip and had to rest in the hotel.",
@@ -1713,6 +1990,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sore",
+        "pos": "adj.",
         "meaning": "痠痛的",
         "theme": "醫療健康",
         "sentence": "My legs are sore after playing badminton all afternoon.",
@@ -1721,6 +1999,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cure",
+        "pos": "v. / n.",
         "meaning": "治癒",
         "theme": "醫療健康",
         "sentence": "There is still no cure for this rare disease.",
@@ -1729,6 +2008,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "recover",
+        "pos": "v.",
         "meaning": "恢復；痊癒",
         "theme": "醫療健康",
         "sentence": "It will take a few weeks for her to recover from the surgery.",
@@ -1737,6 +2017,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "badminton",
+        "pos": "n.",
         "meaning": "羽毛球",
         "theme": "運動",
         "sentence": "Badminton is a fast sport that requires a good racket and quick feet.",
@@ -1745,6 +2026,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ball",
+        "pos": "n.",
         "meaning": "球",
         "theme": "運動",
         "sentence": "Throw the ball to me!",
@@ -1753,6 +2035,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "baseball",
+        "pos": "n.",
         "meaning": "棒球",
         "theme": "運動",
         "sentence": "Baseball is one of the most popular sports in Taiwan.",
@@ -1761,6 +2044,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "basketball",
+        "pos": "n.",
         "meaning": "籃球",
         "theme": "運動",
         "sentence": "They play basketball on the school court every evening.",
@@ -1769,6 +2053,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bowling",
+        "pos": "n.",
         "meaning": "保齡球",
         "theme": "運動",
         "sentence": "We went bowling to celebrate my friend's birthday.",
@@ -1777,6 +2062,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dodge ball",
+        "pos": "n.",
         "meaning": "躲避球",
         "theme": "運動",
         "sentence": "The students love playing dodge ball in PE class.",
@@ -1785,6 +2071,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "football",
+        "pos": "n.",
         "meaning": "美式足球",
         "theme": "運動",
         "sentence": "American football is a very exciting but dangerous sport.",
@@ -1793,6 +2080,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "frisbee",
+        "pos": "n.",
         "meaning": "飛盤",
         "theme": "運動",
         "sentence": "We played frisbee with our dog in the park.",
@@ -1801,6 +2089,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "golf",
+        "pos": "n.",
         "meaning": "高爾夫球",
         "theme": "運動",
         "sentence": "Playing golf requires a lot of patience and practice.",
@@ -1809,6 +2098,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "race",
+        "pos": "n. / v.",
         "meaning": "賽跑；競賽",
         "theme": "運動",
         "sentence": "He ran as fast as he could and won the race.",
@@ -1817,6 +2107,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "roller skate (roller blade)",
+        "pos": "n. / v.",
         "meaning": "溜冰",
         "theme": "運動",
         "sentence": "Remember to wear a helmet when you roller skate.",
@@ -1825,6 +2116,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soccer",
+        "pos": "n.",
         "meaning": "足球",
         "theme": "運動",
         "sentence": "You are not allowed to touch the ball with your hands in soccer.",
@@ -1833,6 +2125,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "softball",
+        "pos": "n.",
         "meaning": "壘球",
         "theme": "運動",
         "sentence": "The girls' softball team practiced hard for the championship.",
@@ -1840,7 +2133,8 @@ const DICTIONARY_DATA = [
         "otherForms": "softballs (複數型)"
     },
     {
-        "word": "sports",
+        "word": "sport",
+        "pos": "n.",
         "meaning": "運動",
         "theme": "運動",
         "sentence": "Playing sports is a great way to stay healthy and make friends.",
@@ -1849,6 +2143,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "table tennis",
+        "pos": "n.",
         "meaning": "桌球",
         "theme": "運動",
         "sentence": "We have a table tennis table in the basement.",
@@ -1857,6 +2152,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tennis",
+        "pos": "n.",
         "meaning": "網球",
         "theme": "運動",
         "sentence": "She hits the tennis ball with a lot of power.",
@@ -1865,6 +2161,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "volleyball",
+        "pos": "n.",
         "meaning": "排球",
         "theme": "運動",
         "sentence": "We need six players on the court to play a volleyball game.",
@@ -1873,6 +2170,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "birthday",
+        "pos": "n.",
         "meaning": "生日",
         "theme": "節慶",
         "sentence": "Happy birthday! Here is a present for you.",
@@ -1881,6 +2179,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "celebrate",
+        "pos": "v.",
         "meaning": "慶祝",
         "theme": "節慶",
         "sentence": "We will celebrate his graduation with a big dinner.",
@@ -1889,6 +2188,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Chinese New Year",
+        "pos": "n.",
         "meaning": "春節",
         "theme": "節慶",
         "sentence": "Children often receive red envelopes during Chinese New Year.",
@@ -1897,6 +2197,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Christmas",
+        "pos": "n.",
         "meaning": "聖誕節",
         "theme": "節慶",
         "sentence": "We decorated the Christmas tree with beautiful lights.",
@@ -1905,6 +2206,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "congratulation",
+        "pos": "n.",
         "meaning": "祝賀",
         "theme": "節慶",
         "sentence": "Congratulations on winning the first prize!",
@@ -1913,6 +2215,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "culture",
+        "pos": "n.",
         "meaning": "文化",
         "theme": "節慶",
         "sentence": "Learning a new language helps you understand a different culture.",
@@ -1921,6 +2224,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "custom",
+        "pos": "n.",
         "meaning": "習俗",
         "theme": "節慶",
         "sentence": "Giving red envelopes is a traditional Chinese custom.",
@@ -1929,6 +2233,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Double Tenth Day",
+        "pos": "n.",
         "meaning": "雙十節",
         "theme": "節慶",
         "sentence": "There are always beautiful fireworks on Double Tenth Day.",
@@ -1937,6 +2242,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Dragon-boat Festival",
+        "pos": "n.",
         "meaning": "端午節",
         "theme": "節慶",
         "sentence": "People eat zongzi during the Dragon-boat Festival.",
@@ -1945,6 +2251,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Easter",
+        "pos": "n.",
         "meaning": "復活節",
         "theme": "節慶",
         "sentence": "We painted eggs in bright colors for Easter.",
@@ -1953,6 +2260,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eve",
+        "pos": "n.",
         "meaning": "前夕",
         "theme": "節慶",
         "sentence": "We stayed up late on New Year's Eve to watch the fireworks.",
@@ -1961,6 +2269,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Father’s Day",
+        "pos": "n.",
         "meaning": "父親節",
         "theme": "節慶",
         "sentence": "We bought a tie for Dad to celebrate Father's Day.",
@@ -1969,6 +2278,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "festival",
+        "pos": "n.",
         "meaning": "節慶",
         "theme": "節慶",
         "sentence": "The Lantern Festival is an important traditional event.",
@@ -1977,6 +2287,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Halloween",
+        "pos": "n.",
         "meaning": "萬聖節",
         "theme": "節慶",
         "sentence": "Kids wear scary costumes to go trick-or-treating on Halloween.",
@@ -1985,6 +2296,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "holiday",
+        "pos": "n.",
         "meaning": "假日",
         "theme": "節慶",
         "sentence": "Where are you planning to go for your summer holiday?",
@@ -1993,6 +2305,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lantern",
+        "pos": "n.",
         "meaning": "燈籠",
         "theme": "節慶",
         "sentence": "We made paper lanterns in art class today.",
@@ -2001,6 +2314,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Lantern Festival",
+        "pos": "n.",
         "meaning": "元宵節",
         "theme": "節慶",
         "sentence": "Let's go to the park to see the beautiful lights for the Lantern Festival.",
@@ -2009,6 +2323,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "memory",
+        "pos": "n.",
         "meaning": "記憶；回憶",
         "theme": "節慶",
         "sentence": "The trip to Japan is my favorite childhood memory.",
@@ -2017,6 +2332,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Moon Festival",
+        "pos": "n.",
         "meaning": "中秋節",
         "theme": "節慶",
         "sentence": "We usually have a barbecue with our family on Moon Festival.",
@@ -2025,6 +2341,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Mother’s Day",
+        "pos": "n.",
         "meaning": "母親節",
         "theme": "節慶",
         "sentence": "I wrote a card to tell my mom I love her on Mother's Day.",
@@ -2033,6 +2350,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "New Year’s Day",
+        "pos": "n.",
         "meaning": "元旦",
         "theme": "節慶",
         "sentence": "We woke up early on New Year’s Day to see the sunrise.",
@@ -2041,6 +2359,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "New Year’s Eve",
+        "pos": "n.",
         "meaning": "除夕",
         "theme": "節慶",
         "sentence": "We always have a big family dinner on New Year’s Eve.",
@@ -2049,6 +2368,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "party",
+        "pos": "n.",
         "meaning": "派對；政黨",
         "theme": "節慶",
         "sentence": "They had a pool party on a hot summer afternoon.",
@@ -2057,6 +2377,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Teacher’s Day",
+        "pos": "n.",
         "meaning": "教師節",
         "theme": "節慶",
         "sentence": "We made a thank-you card for our English teacher on Teacher’s Day.",
@@ -2065,6 +2386,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Thanksgiving",
+        "pos": "n.",
         "meaning": "感恩節",
         "theme": "節慶",
         "sentence": "We had a big turkey dinner with our family on Thanksgiving.",
@@ -2073,6 +2395,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tradition",
+        "pos": "n.",
         "meaning": "傳統",
         "theme": "節慶",
         "sentence": "It is a tradition in our school to sing songs before graduation.",
@@ -2081,6 +2404,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vacation",
+        "pos": "n.",
         "meaning": "假期",
         "theme": "節慶",
         "sentence": "I can't wait for the winter vacation to start!",
@@ -2089,6 +2413,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Valentine’s Day",
+        "pos": "n.",
         "meaning": "情人節",
         "theme": "節慶",
         "sentence": "He gave his girlfriend chocolate on Valentine’s Day.",
@@ -2097,6 +2422,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wedding",
+        "pos": "n.",
         "meaning": "婚禮",
         "theme": "節慶",
         "sentence": "The bride looked beautiful in her white dress at the wedding.",
@@ -2105,6 +2431,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "picnic",
+        "pos": "n. / v.",
         "meaning": "野餐",
         "theme": "嗜好",
         "sentence": "Let's pack some sandwiches and have a picnic in the park.",
@@ -2113,6 +2440,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stamp",
+        "pos": "n.",
         "meaning": "郵票",
         "theme": "嗜好",
         "sentence": "She collects stamps from different countries.",
@@ -2121,6 +2449,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trip",
+        "pos": "n.",
         "meaning": "旅行",
         "theme": "嗜好",
         "sentence": "Our family is planning a short trip to Dounan next weekend.",
@@ -2129,6 +2458,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hobby",
+        "pos": "n.",
         "meaning": "嗜好",
         "theme": "嗜好",
         "sentence": "My favorite hobby is listening to 1980s synth-pop music.",
@@ -2137,6 +2467,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "habit",
+        "pos": "n.",
         "meaning": "習慣",
         "theme": "嗜好",
         "sentence": "Reading a little English every day is a good learning habit.",
@@ -2145,6 +2476,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "interest",
+        "pos": "n. / v.",
         "meaning": "興趣",
         "theme": "嗜好",
         "sentence": "He has a strong interest in learning how to write computer code.",
@@ -2153,6 +2485,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "camp",
+        "pos": "n. / v.",
         "meaning": "露營",
         "theme": "嗜好",
         "sentence": "We slept in tents and made a fire at the summer camp.",
@@ -2161,6 +2494,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "climb",
+        "pos": "v. / n.",
         "meaning": "攀爬",
         "theme": "嗜好",
         "sentence": "The monkey quickly climbed to the top of the tree.",
@@ -2169,6 +2503,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dance",
+        "pos": "v. / n.",
         "meaning": "跳舞",
         "theme": "嗜好",
         "sentence": "The students will dance on stage for the school festival.",
@@ -2177,6 +2512,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "draw",
+        "pos": "v.",
         "meaning": "畫畫",
         "theme": "嗜好",
         "sentence": "She likes to draw pictures of cute animals in her notebook.",
@@ -2185,6 +2521,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "exercise",
+        "pos": "n. / v.",
         "meaning": "運動",
         "theme": "嗜好",
         "sentence": "You should exercise for at least 30 minutes a day.",
@@ -2193,6 +2530,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fish",
+        "pos": "v. / n.",
         "meaning": "釣魚",
         "theme": "嗜好",
         "sentence": "My grandfather taught me how to fish by the river.",
@@ -2201,6 +2539,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hike",
+        "pos": "v. / n.",
         "meaning": "健行／遠足",
         "theme": "嗜好",
         "sentence": "We plan to hike up the mountain early tomorrow morning.",
@@ -2209,6 +2548,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jog",
+        "pos": "v. / n.",
         "meaning": "慢跑",
         "theme": "嗜好",
         "sentence": "I jog in the park every morning to stay healthy.",
@@ -2217,6 +2557,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "roller blade",
+        "pos": "v. / n.",
         "meaning": "溜直排輪",
         "theme": "嗜好",
         "sentence": "It is fun to roller blade along the riverbank.",
@@ -2225,6 +2566,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "roller skate",
+        "pos": "v. / n.",
         "meaning": "溜輪鞋",
         "theme": "嗜好",
         "sentence": "She learned how to roller skate when she was five.",
@@ -2233,6 +2575,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "run",
+        "pos": "v. / n.",
         "meaning": "跑步",
         "theme": "嗜好",
         "sentence": "You shouldn't run in the hallways at school.",
@@ -2241,6 +2584,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sail",
+        "pos": "v. / n.",
         "meaning": "航行",
         "theme": "嗜好",
         "sentence": "The boat will sail across the ocean to another country.",
@@ -2249,6 +2593,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sing",
+        "pos": "v.",
         "meaning": "唱歌",
         "theme": "嗜好",
         "sentence": "Let's sing a famous 80s song together!",
@@ -2257,6 +2602,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "skate",
+        "pos": "v. / n.",
         "meaning": "溜冰",
         "theme": "嗜好",
         "sentence": "The kids love to skate at the park on weekends.",
@@ -2265,6 +2611,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ski",
+        "pos": "v. / n.",
         "meaning": "滑雪",
         "theme": "嗜好",
         "sentence": "We went to Japan to ski last winter.",
@@ -2273,6 +2620,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "surf",
+        "pos": "v. / n.",
         "meaning": "衝浪",
         "theme": "嗜好",
         "sentence": "It is very exciting to surf on the big ocean waves.",
@@ -2281,6 +2629,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "swim",
+        "pos": "v. / n.",
         "meaning": "游泳",
         "theme": "嗜好",
         "sentence": "I usually swim in the pool every Tuesday afternoon.",
@@ -2289,6 +2638,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "travel",
+        "pos": "v. / n.",
         "meaning": "旅行",
         "theme": "嗜好",
         "sentence": "Our family plans to travel to Dounan and Huwei next weekend.",
@@ -2297,6 +2647,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "barbecue",
+        "pos": "n. / v.",
         "meaning": "烤肉",
         "theme": "嗜好",
         "sentence": "We had a barbecue in the backyard for the Moon Festival.",
@@ -2305,6 +2656,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "album",
+        "pos": "n.",
         "meaning": "相冊；專輯",
         "theme": "娛樂",
         "sentence": "I love listening to this 1980s synth-pop music album.",
@@ -2313,6 +2665,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "band",
+        "pos": "n.",
         "meaning": "樂團",
         "theme": "娛樂",
         "sentence": "My favorite 80s band is going to have a concert.",
@@ -2321,6 +2674,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "card",
+        "pos": "n.",
         "meaning": "卡片",
         "theme": "娛樂",
         "sentence": "The teacher designed some beautiful phonics cards for the students.",
@@ -2329,6 +2683,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cartoon",
+        "pos": "n.",
         "meaning": "卡通",
         "theme": "娛樂",
         "sentence": "My little sister watches a cartoon on TV every morning.",
@@ -2337,6 +2692,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chess",
+        "pos": "n.",
         "meaning": "西洋棋",
         "theme": "娛樂",
         "sentence": "Playing chess helps you practice how to think deeply.",
@@ -2345,6 +2701,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "comic",
+        "pos": "n.",
         "meaning": "漫書",
         "theme": "娛樂",
         "sentence": "He borrowed a funny comic book from the library.",
@@ -2353,6 +2710,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "computer game",
+        "pos": "n.",
         "meaning": "電腦遊戲",
         "theme": "娛樂",
         "sentence": "The Syntax Repair computer game makes learning English grammar fun.",
@@ -2361,6 +2719,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "doll",
+        "pos": "n.",
         "meaning": "洋娃娃",
         "theme": "娛樂",
         "sentence": "She dressed her favorite doll in a pretty pink dress.",
@@ -2369,6 +2728,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drama",
+        "pos": "n.",
         "meaning": "戲劇",
         "theme": "娛樂",
         "sentence": "The school drama club will perform a play next month.",
@@ -2377,6 +2737,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drum",
+        "pos": "n.",
         "meaning": "鼓",
         "theme": "娛樂",
         "sentence": "He plays the drums in a rock band.",
@@ -2385,6 +2746,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fan",
+        "pos": "n.",
         "meaning": "粉絲；愛好者",
         "theme": "娛樂",
         "sentence": "He is a big fan of the band a-ha.",
@@ -2393,6 +2755,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "film",
+        "pos": "n.",
         "meaning": "電影",
         "theme": "娛樂",
         "sentence": "We went to the theater to watch a new action film.",
@@ -2401,6 +2764,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flute",
+        "pos": "n.",
         "meaning": "長笛",
         "theme": "娛樂",
         "sentence": "She plays the flute beautifully in the music class.",
@@ -2409,6 +2773,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "game",
+        "pos": "n.",
         "meaning": "遊戲",
         "theme": "娛樂",
         "sentence": "In the Weather Combat game, you have to build a civilization.",
@@ -2417,6 +2782,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guitar",
+        "pos": "n.",
         "meaning": "吉他",
         "theme": "娛樂",
         "sentence": "He is learning how to play the guitar by watching videos.",
@@ -2425,6 +2791,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "instrument",
+        "pos": "n.",
         "meaning": "樂器",
         "theme": "娛樂",
         "sentence": "The piano is my favorite musical instrument.",
@@ -2433,6 +2800,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jazz",
+        "pos": "n.",
         "meaning": "爵士樂",
         "theme": "娛樂",
         "sentence": "My father likes to listen to jazz when he is reading.",
@@ -2441,6 +2809,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "movie",
+        "pos": "n.",
         "meaning": "電影",
         "theme": "娛樂",
         "sentence": "Let's buy some popcorn before the movie starts.",
@@ -2449,6 +2818,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "music",
+        "pos": "n.",
         "meaning": "音樂",
         "theme": "娛樂",
         "sentence": "I have a playlist with over 2,000 music tracks on Spotify.",
@@ -2457,6 +2827,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "novel",
+        "pos": "n.",
         "meaning": "小說",
         "theme": "娛樂",
         "sentence": "The Harry Potter novel is very popular around the world.",
@@ -2465,6 +2836,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "paint",
+        "pos": "n. / v.",
         "meaning": "繪畫",
         "theme": "娛樂",
         "sentence": "She likes to paint pictures of flowers in her free time.",
@@ -2473,6 +2845,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "piano",
+        "pos": "n.",
         "meaning": "鋼琴",
         "theme": "娛樂",
         "sentence": "He practices playing the piano for an hour every day.",
@@ -2481,6 +2854,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pop music",
+        "pos": "n.",
         "meaning": "流行音樂",
         "theme": "娛樂",
         "sentence": "Many teenagers love listening to Korean pop music.",
@@ -2489,6 +2863,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "puzzle",
+        "pos": "n.",
         "meaning": "拼圖；謎題",
         "theme": "娛樂",
         "sentence": "This 1,000-piece puzzle is very difficult to finish.",
@@ -2497,6 +2872,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "song",
+        "pos": "n.",
         "meaning": "歌曲",
         "theme": "娛樂",
         "sentence": "The singer sang a beautiful 80s love song.",
@@ -2504,7 +2880,26 @@ const DICTIONARY_DATA = [
         "otherForms": "songs (複數型)"
     },
     {
+        "word": "stage",
+        "pos": "n.",
+        "meaning": "舞台；階段",
+        "theme": "娛樂",
+        "sentence": "The singer walked onto the stage.",
+        "sentenceZh": "那位歌手走上了舞台。",
+        "otherForms": "stages (複數型)"
+    },
+    {
+        "word": "tale",
+        "pos": "n.",
+        "meaning": "故事；傳說",
+        "theme": "娛樂",
+        "sentence": "My grandfather told me an old fairy tale.",
+        "sentenceZh": "我爺爺跟我說了一個古老的童話故事。",
+        "otherForms": "tales (複數型)"
+    },
+    {
         "word": "team",
+        "pos": "n.",
         "meaning": "隊伍",
         "theme": "娛樂",
         "sentence": "The badminton team practices swinging their rackets after school.",
@@ -2513,6 +2908,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tent",
+        "pos": "n.",
         "meaning": "帳篷",
         "theme": "娛樂",
         "sentence": "We set up our tent near the river for the camping trip.",
@@ -2521,6 +2917,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toy",
+        "pos": "n.",
         "meaning": "玩具",
         "theme": "娛樂",
         "sentence": "The baby is playing with a colorful wooden toy.",
@@ -2529,6 +2926,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trumpet",
+        "pos": "n.",
         "meaning": "小喇叭",
         "theme": "娛樂",
         "sentence": "He blew the trumpet loudly during the parade.",
@@ -2537,6 +2935,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "violin",
+        "pos": "n.",
         "meaning": "小提琴",
         "theme": "娛樂",
         "sentence": "She won first prize in the violin competition.",
@@ -2545,6 +2944,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "time",
+        "pos": "n.",
         "meaning": "時間",
         "theme": "時間",
         "sentence": "What time does the English class start?",
@@ -2553,6 +2953,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "century",
+        "pos": "n.",
         "meaning": "世紀",
         "theme": "時間",
         "sentence": "We are living in the 21st century.",
@@ -2561,6 +2962,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "year",
+        "pos": "n.",
         "meaning": "年",
         "theme": "時間",
         "sentence": "There are 365 days in a common year.",
@@ -2569,6 +2971,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "season",
+        "pos": "n.",
         "meaning": "季節",
         "theme": "時間",
         "sentence": "Summer is my favorite season because I can eat ice cream.",
@@ -2577,6 +2980,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "month",
+        "pos": "n.",
         "meaning": "月",
         "theme": "時間",
         "sentence": "My birthday is in the month of August.",
@@ -2585,6 +2989,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "day",
+        "pos": "n.",
         "meaning": "天",
         "theme": "時間",
         "sentence": "I spend an hour writing HTML code every day.",
@@ -2593,6 +2998,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hour",
+        "pos": "n.",
         "meaning": "小時",
         "theme": "時間",
         "sentence": "The bus trip to Taipei takes about three hours.",
@@ -2601,6 +3007,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "minute",
+        "pos": "n.",
         "meaning": "分鐘",
         "theme": "時間",
         "sentence": "The quiz will start in five minutes.",
@@ -2609,6 +3016,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "second",
+        "pos": "n.",
         "meaning": "秒",
         "theme": "時間",
         "sentence": "He ran 100 meters in just 12 seconds.",
@@ -2617,6 +3025,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dawn",
+        "pos": "n.",
         "meaning": "黎明",
         "theme": "時間",
         "sentence": "The farmer wakes up at dawn to work in the field.",
@@ -2625,6 +3034,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "morning",
+        "pos": "n.",
         "meaning": "早晨",
         "theme": "時間",
         "sentence": "Good morning! Did you sleep well last night?",
@@ -2633,6 +3043,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "noon",
+        "pos": "n.",
         "meaning": "中午",
         "theme": "時間",
         "sentence": "We usually have lunch at noon.",
@@ -2641,6 +3052,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "afternoon",
+        "pos": "n.",
         "meaning": "下午",
         "theme": "時間",
         "sentence": "Let's play badminton this afternoon.",
@@ -2649,6 +3061,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "evening",
+        "pos": "n.",
         "meaning": "傍晚",
         "theme": "時間",
         "sentence": "My family eats dinner together every evening.",
@@ -2657,6 +3070,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "night",
+        "pos": "n.",
         "meaning": "夜晚",
         "theme": "時間",
         "sentence": "The stars look very bright in the sky at night.",
@@ -2665,6 +3079,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "midnight",
+        "pos": "n.",
         "meaning": "午夜",
         "theme": "時間",
         "sentence": "You shouldn't stay up playing games until midnight.",
@@ -2673,6 +3088,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Monday",
+        "pos": "n.",
         "meaning": "星期一",
         "theme": "時間",
         "sentence": "We have a school assembly every Monday morning.",
@@ -2681,6 +3097,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Tuesday",
+        "pos": "n.",
         "meaning": "星期二",
         "theme": "時間",
         "sentence": "I have a piano lesson on Tuesday afternoon.",
@@ -2689,6 +3106,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Wednesday",
+        "pos": "n.",
         "meaning": "星期三",
         "theme": "時間",
         "sentence": "We only go to school for half a day on Wednesday.",
@@ -2697,6 +3115,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Thursday",
+        "pos": "n.",
         "meaning": "星期四",
         "theme": "時間",
         "sentence": "Our English test is scheduled for next Thursday.",
@@ -2705,6 +3124,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Friday",
+        "pos": "n.",
         "meaning": "星期五",
         "theme": "時間",
         "sentence": "Everyone is happy when Friday arrives.",
@@ -2713,6 +3133,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Saturday",
+        "pos": "n.",
         "meaning": "星期六",
         "theme": "時間",
         "sentence": "I am going to the movies with my friends this Saturday.",
@@ -2721,6 +3142,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Sunday",
+        "pos": "n.",
         "meaning": "星期日",
         "theme": "時間",
         "sentence": "My family goes to church every Sunday morning.",
@@ -2729,6 +3151,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "week",
+        "pos": "n.",
         "meaning": "星期；週",
         "theme": "時間",
         "sentence": "There are seven days in a week.",
@@ -2737,6 +3160,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "weekday",
+        "pos": "n.",
         "meaning": "平日（週一至週五）",
         "theme": "時間",
         "sentence": "I am very busy studying on weekdays.",
@@ -2745,6 +3169,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "weekend",
+        "pos": "n.",
         "meaning": "週末",
         "theme": "時間",
         "sentence": "What are your plans for the weekend?",
@@ -2753,6 +3178,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "January",
+        "pos": "n.",
         "meaning": "一月",
         "theme": "時間",
         "sentence": "January is the first month of the year.",
@@ -2761,6 +3187,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "February",
+        "pos": "n.",
         "meaning": "二月",
         "theme": "時間",
         "sentence": "February usually has only 28 days.",
@@ -2769,6 +3196,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "March",
+        "pos": "n.",
         "meaning": "三月",
         "theme": "時間",
         "sentence": "The weather starts to get warmer in March.",
@@ -2777,6 +3205,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "April",
+        "pos": "n.",
         "meaning": "四月",
         "theme": "時間",
         "sentence": "It often rains a lot during April.",
@@ -2785,6 +3214,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "May",
+        "pos": "n.",
         "meaning": "五月",
         "theme": "時間",
         "sentence": "Mother's Day is usually celebrated in May.",
@@ -2793,6 +3223,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "June",
+        "pos": "n.",
         "meaning": "六月",
         "theme": "時間",
         "sentence": "Many junior high school students graduate in June.",
@@ -2801,6 +3232,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "July",
+        "pos": "n.",
         "meaning": "七月",
         "theme": "時間",
         "sentence": "Summer vacation begins in July.",
@@ -2809,6 +3241,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "August",
+        "pos": "n.",
         "meaning": "八月",
         "theme": "時間",
         "sentence": "It is very hot and sunny in August.",
@@ -2817,6 +3250,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "September",
+        "pos": "n.",
         "meaning": "九月",
         "theme": "時間",
         "sentence": "The new school semester starts in September.",
@@ -2825,6 +3259,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "October",
+        "pos": "n.",
         "meaning": "十月",
         "theme": "時間",
         "sentence": "We celebrate Double Tenth Day in October.",
@@ -2833,6 +3268,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "November",
+        "pos": "n.",
         "meaning": "十一月",
         "theme": "時間",
         "sentence": "The weather turns cool in November.",
@@ -2841,6 +3277,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "December",
+        "pos": "n.",
         "meaning": "十二月",
         "theme": "時間",
         "sentence": "Christmas is celebrated on the 25th of December.",
@@ -2849,6 +3286,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spring",
+        "pos": "n.",
         "meaning": "春天",
         "theme": "時間",
         "sentence": "The flowers start to bloom in spring.",
@@ -2857,6 +3295,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "summer",
+        "pos": "n.",
         "meaning": "夏天",
         "theme": "時間",
         "sentence": "We like to go swimming in the hot summer.",
@@ -2865,6 +3304,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "autumn",
+        "pos": "n.",
         "meaning": "秋天",
         "theme": "時間",
         "sentence": "The leaves turn red and fall from the trees in autumn.",
@@ -2873,6 +3313,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "winter",
+        "pos": "n.",
         "meaning": "冬天",
         "theme": "時間",
         "sentence": "It is cold enough to wear a heavy coat in winter.",
@@ -2881,6 +3322,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "today",
+        "pos": "n.",
         "meaning": "今天",
         "theme": "時間",
         "sentence": "What are we going to learn in English class today?",
@@ -2889,6 +3331,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tonight",
+        "pos": "n.",
         "meaning": "今晚",
         "theme": "時間",
         "sentence": "Don't forget to finish your homework tonight.",
@@ -2897,6 +3340,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tomorrow",
+        "pos": "n.",
         "meaning": "明天",
         "theme": "時間",
         "sentence": "We will have a badminton game tomorrow.",
@@ -2905,6 +3349,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "yesterday",
+        "pos": "n.",
         "meaning": "昨天",
         "theme": "時間",
         "sentence": "I saw a funny video on YouTube yesterday.",
@@ -2913,6 +3358,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "p.m.",
+        "pos": "n.",
         "meaning": "晚上時間",
         "theme": "時間",
         "sentence": "The store closes at 10:00 p.m.",
@@ -2921,6 +3367,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "a.m.",
+        "pos": "n.",
         "meaning": "早上時間",
         "theme": "時間",
         "sentence": "The first class starts at 8:15 a.m.",
@@ -2929,6 +3376,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "o'clock",
+        "pos": "n.",
         "meaning": "…點鐘",
         "theme": "時間",
         "sentence": "I usually go to bed at ten o'clock.",
@@ -2937,6 +3385,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "past",
+        "pos": "n.",
         "meaning": "過（用於時間）",
         "theme": "時間",
         "sentence": "It is a quarter past three right now.",
@@ -2945,6 +3394,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "quarter",
+        "pos": "n.",
         "meaning": "一刻鐘；四分之一",
         "theme": "時間",
         "sentence": "Cut the apple into four quarters.",
@@ -2953,6 +3403,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "half",
+        "pos": "n.",
         "meaning": "一半",
         "theme": "時間",
         "sentence": "He ate half of the pizza by himself.",
@@ -2961,6 +3412,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "age",
+        "pos": "n.",
         "meaning": "年齡；時代",
         "theme": "時間",
         "sentence": "We live in the age of computers and the Internet.",
@@ -2969,6 +3421,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "period",
+        "pos": "n.",
         "meaning": "時期",
         "theme": "時間",
         "sentence": "We have a short rest period between classes.",
@@ -2977,6 +3430,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "childhood",
+        "pos": "n.",
         "meaning": "童年",
         "theme": "時間",
         "sentence": "Playing outside was my favorite part of childhood.",
@@ -2985,6 +3439,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "moment",
+        "pos": "n.",
         "meaning": "片刻",
         "theme": "時間",
         "sentence": "Please wait a moment; the teacher will be right back.",
@@ -2993,6 +3448,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "calendar",
+        "pos": "n.",
         "meaning": "日曆",
         "theme": "時間",
         "sentence": "I marked the exam date on my wall calendar.",
@@ -3001,6 +3457,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clock",
+        "pos": "n.",
         "meaning": "時鐘",
         "theme": "時間",
         "sentence": "The clock on the wall says it is time to go home.",
@@ -3009,6 +3466,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "watch",
+        "pos": "n.",
         "meaning": "手錶",
         "theme": "時間",
         "sentence": "He checked his smart watch to see how many steps he walked.",
@@ -3017,6 +3475,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stopwatch",
+        "pos": "n.",
         "meaning": "碼表",
         "theme": "時間",
         "sentence": "The PE teacher used a stopwatch to time our running.",
@@ -3025,6 +3484,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "future",
+        "pos": "n.",
         "meaning": "未來",
         "theme": "時間",
         "sentence": "I want to be a software engineer in the future.",
@@ -3033,6 +3493,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "current",
+        "pos": "adj.",
         "meaning": "當前的",
         "theme": "時間",
         "sentence": "Our current lesson is about grammar rules.",
@@ -3041,6 +3502,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "early",
+        "pos": "adj. / adv.",
         "meaning": "早的",
         "theme": "時間",
         "sentence": "You should sleep early so you won't be late for school.",
@@ -3049,6 +3511,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "last",
+        "pos": "adj. / adv.",
         "meaning": "上一個的；最後的",
         "theme": "時間",
         "sentence": "I passed the English test last week!",
@@ -3057,6 +3520,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "late",
+        "pos": "adj. / adv.",
         "meaning": "晚的",
         "theme": "時間",
         "sentence": "Don't be late for the badminton practice.",
@@ -3065,6 +3529,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "next",
+        "pos": "adj. / adv.",
         "meaning": "下一個的",
         "theme": "時間",
         "sentence": "I will see you in the next class.",
@@ -3073,6 +3538,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "daily",
+        "pos": "adj. / adv.",
         "meaning": "每日的",
         "theme": "時間",
         "sentence": "Reading vocabulary cards is my daily routine.",
@@ -3081,6 +3547,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ago",
+        "pos": "adv.",
         "meaning": "以前",
         "theme": "時間",
         "sentence": "I started learning HTML coding a few months ago.",
@@ -3089,6 +3556,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "already",
+        "pos": "adv.",
         "meaning": "已經",
         "theme": "時間",
         "sentence": "She has already finished the grammar game.",
@@ -3097,6 +3565,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "later",
+        "pos": "adv.",
         "meaning": "稍後",
         "theme": "時間",
         "sentence": "I will finish building the web page later.",
@@ -3105,6 +3574,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "now",
+        "pos": "adv. / n.",
         "meaning": "現在",
         "theme": "時間",
         "sentence": "We are listening to the teacher now.",
@@ -3113,6 +3583,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "once",
+        "pos": "adv. / conj.",
         "meaning": "曾經；一次",
         "theme": "時間",
         "sentence": "I brush my teeth at least once after every meal.",
@@ -3121,6 +3592,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soon",
+        "pos": "adv.",
         "meaning": "很快；不久",
         "theme": "時間",
         "sentence": "The school bell will ring very soon.",
@@ -3129,6 +3601,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "world",
+        "pos": "n.",
         "meaning": "世界",
         "theme": "地方位置",
         "sentence": "English is spoken by many people around the world.",
@@ -3137,6 +3610,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nation",
+        "pos": "n.",
         "meaning": "國度",
         "theme": "地方位置",
         "sentence": "Our nation has a lot of beautiful mountains.",
@@ -3145,6 +3619,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "China",
+        "pos": "n.",
         "meaning": "中國",
         "theme": "地方位置",
         "sentence": "The Great Wall is located in China.",
@@ -3153,6 +3628,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "R.O.C./ROC",
+        "pos": "n.",
         "meaning": "中華民國",
         "theme": "地方位置",
         "sentence": "R.O.C. stands for the Republic of China.",
@@ -3161,6 +3637,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Taiwan",
+        "pos": "n.",
         "meaning": "台灣",
         "theme": "地方位置",
         "sentence": "Yunlin County is located in the middle of Taiwan.",
@@ -3169,6 +3646,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "U.S.A./ USA",
+        "pos": "n.",
         "meaning": "美國",
         "theme": "地方位置",
         "sentence": "The USA is a very large country in North America.",
@@ -3177,6 +3655,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "position",
+        "pos": "n.",
         "meaning": "位置",
         "theme": "地方位置",
         "sentence": "In badminton, your foot position is very important.",
@@ -3185,6 +3664,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "back",
+        "pos": "adj. / n.",
         "meaning": "後面的",
         "theme": "地方位置",
         "sentence": "Please sit in the back row of the classroom.",
@@ -3193,6 +3673,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "front",
+        "pos": "adj. / n.",
         "meaning": "前面的",
         "theme": "地方位置",
         "sentence": "The teacher stands in the front of the class.",
@@ -3201,6 +3682,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "upper",
+        "pos": "adj. / n.",
         "meaning": "上面的",
         "theme": "地方位置",
         "sentence": "The books are on the upper shelf of the bookcase.",
@@ -3209,6 +3691,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "backward",
+        "pos": "adv. / adj.",
         "meaning": "向後",
         "theme": "地方位置",
         "sentence": "He took a step backward to look at the big picture.",
@@ -3217,6 +3700,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "forward",
+        "pos": "adv. / adj.",
         "meaning": "向前",
         "theme": "地方位置",
         "sentence": "Please step forward when I call your name.",
@@ -3225,6 +3709,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "here",
+        "pos": "adv. / n.",
         "meaning": "這裡",
         "theme": "地方位置",
         "sentence": "Put your homework on my desk right here.",
@@ -3233,6 +3718,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "there",
+        "pos": "adv. / n.",
         "meaning": "那裡",
         "theme": "地方位置",
         "sentence": "Look over there; the train is coming!",
@@ -3241,6 +3727,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "center",
+        "pos": "n.",
         "meaning": "中心",
         "theme": "地方位置",
         "sentence": "The basketball court is in the center of the school.",
@@ -3249,6 +3736,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "central",
+        "pos": "adj.",
         "meaning": "中心的",
         "theme": "地方位置",
         "sentence": "Taichung is a big city in central Taiwan.",
@@ -3257,6 +3745,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "middle",
+        "pos": "adj. / n.",
         "meaning": "中間的",
         "theme": "地方位置",
         "sentence": "He wrote his name in the middle of the paper.",
@@ -3265,6 +3754,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "edge",
+        "pos": "n.",
         "meaning": "邊緣",
         "theme": "地方位置",
         "sentence": "Don't place your glass on the edge of the table.",
@@ -3273,6 +3763,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "side",
+        "pos": "n.",
         "meaning": "邊；側",
         "theme": "地方位置",
         "sentence": "There are tall trees on both sides of the road.",
@@ -3281,6 +3772,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "corner",
+        "pos": "n.",
         "meaning": "角落",
         "theme": "地方位置",
         "sentence": "The convenience store is right at the street corner.",
@@ -3289,6 +3781,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "direction",
+        "pos": "n.",
         "meaning": "方向",
         "theme": "地方位置",
         "sentence": "The map will show you the right direction.",
@@ -3297,6 +3790,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "east",
+        "pos": "n. / adj. / adv.",
         "meaning": "東方的",
         "theme": "地方位置",
         "sentence": "The sun always rises in the east.",
@@ -3305,6 +3799,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "west",
+        "pos": "n. / adj. / adv.",
         "meaning": "西方的",
         "theme": "地方位置",
         "sentence": "Look at the beautiful sunset in the west.",
@@ -3313,6 +3808,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "south",
+        "pos": "n. / adj. / adv.",
         "meaning": "南方的",
         "theme": "地方位置",
         "sentence": "Tainan is a famous city in south Taiwan.",
@@ -3321,6 +3817,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "north",
+        "pos": "n. / adj. / adv.",
         "meaning": "北方的",
         "theme": "地方位置",
         "sentence": "Taipei is located in the north of Taiwan.",
@@ -3329,6 +3826,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "left",
+        "pos": "n. / adj. / adv.",
         "meaning": "左邊的",
         "theme": "地方位置",
         "sentence": "Turn left at the next traffic light.",
@@ -3337,6 +3835,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "right",
+        "pos": "n. / adj. / adv.",
         "meaning": "右邊的；正確的",
         "theme": "地方位置",
         "sentence": "Keep to the right side when walking on the stairs.",
@@ -3345,6 +3844,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "top",
+        "pos": "n. / adj.",
         "meaning": "頂部(的)",
         "theme": "地方位置",
         "sentence": "The hiker climbed to the top of the mountain.",
@@ -3353,6 +3853,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bottom",
+        "pos": "n.",
         "meaning": "底部",
         "theme": "地方位置",
         "sentence": "You can find the page number at the bottom of the book.",
@@ -3361,6 +3862,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "area",
+        "pos": "n.",
         "meaning": "區域",
         "theme": "地方位置",
         "sentence": "This area is known for growing delicious fruit.",
@@ -3369,6 +3871,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "universe",
+        "pos": "n.",
         "meaning": "宇宙",
         "theme": "大自然",
         "sentence": "There are billions of stars in the universe.",
@@ -3377,6 +3880,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nature",
+        "pos": "n.",
         "meaning": "大自然",
         "theme": "大自然",
         "sentence": "We should do our best to protect nature.",
@@ -3385,6 +3889,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "natural",
+        "pos": "adj.",
         "meaning": "自然的",
         "theme": "大自然",
         "sentence": "Honey is a natural sweetener for tea.",
@@ -3393,6 +3898,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "scene",
+        "pos": "n.",
         "meaning": "場景",
         "theme": "大自然",
         "sentence": "The fighting scene in the movie was very exciting.",
@@ -3401,6 +3907,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "scenery",
+        "pos": "n.",
         "meaning": "風景",
         "theme": "大自然",
         "sentence": "The mountain scenery along the road is beautiful.",
@@ -3409,6 +3916,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sight",
+        "pos": "n.",
         "meaning": "景象",
         "theme": "大自然",
         "sentence": "The colorful hot air balloons were an amazing sight.",
@@ -3417,6 +3925,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "environment",
+        "pos": "n.",
         "meaning": "環境",
         "theme": "大自然",
         "sentence": "Planting trees is a good way to save our environment.",
@@ -3425,6 +3934,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ground",
+        "pos": "n.",
         "meaning": "地面",
         "theme": "大自然",
         "sentence": "The apple fell from the tree to the ground.",
@@ -3433,6 +3943,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "desert",
+        "pos": "n.",
         "meaning": "沙漠",
         "theme": "大自然",
         "sentence": "Camels can walk for days in the hot desert.",
@@ -3441,6 +3952,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hill",
+        "pos": "n.",
         "meaning": "山丘",
         "theme": "大自然",
         "sentence": "The children enjoyed rolling down the green hill.",
@@ -3449,6 +3961,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "island",
+        "pos": "n.",
         "meaning": "島嶼",
         "theme": "大自然",
         "sentence": "They took a boat to a beautiful small island.",
@@ -3457,6 +3970,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mountain",
+        "pos": "n.",
         "meaning": "山",
         "theme": "大自然",
         "sentence": "We went hiking in the mountains during the vacation.",
@@ -3465,6 +3979,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "plain",
+        "pos": "n. / adj.",
         "meaning": "平原",
         "theme": "大自然",
         "sentence": "Horses like to run freely on the wide plain.",
@@ -3473,6 +3988,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "valley",
+        "pos": "n.",
         "meaning": "山谷",
         "theme": "大自然",
         "sentence": "There is a quiet little village down in the valley.",
@@ -3481,6 +3997,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sea",
+        "pos": "n.",
         "meaning": "海",
         "theme": "大自然",
         "sentence": "Many kinds of fish live deep under the sea.",
@@ -3489,6 +4006,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ocean",
+        "pos": "n.",
         "meaning": "海洋",
         "theme": "大自然",
         "sentence": "The Pacific is the largest ocean in the world.",
@@ -3497,6 +4015,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beach",
+        "pos": "n.",
         "meaning": "海灘",
         "theme": "大自然",
         "sentence": "We played with the sand on the beach.",
@@ -3505,6 +4024,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "coast",
+        "pos": "n.",
         "meaning": "海岸",
         "theme": "大自然",
         "sentence": "The weather on the coast is often very windy.",
@@ -3513,6 +4033,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lake",
+        "pos": "n.",
         "meaning": "湖泊",
         "theme": "大自然",
         "sentence": "We rented a small boat to row on the lake.",
@@ -3521,6 +4042,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pond",
+        "pos": "n.",
         "meaning": "池塘",
         "theme": "大自然",
         "sentence": "There are many cute frogs jumping by the pond.",
@@ -3529,6 +4051,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pool",
+        "pos": "n.",
         "meaning": "水池",
         "theme": "大自然",
         "sentence": "Please don't run around the swimming pool.",
@@ -3537,6 +4060,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "river",
+        "pos": "n.",
         "meaning": "河流",
         "theme": "大自然",
         "sentence": "We rode our bicycles along the long river.",
@@ -3545,6 +4069,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spring",
+        "pos": "n.",
         "meaning": "泉水",
         "theme": "大自然",
         "sentence": "The water from the mountain spring is very clean and cold.",
@@ -3553,6 +4078,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stream",
+        "pos": "n.",
         "meaning": "溪流",
         "theme": "大自然",
         "sentence": "The little boy caught a small fish in the stream.",
@@ -3560,7 +4086,17 @@ const DICTIONARY_DATA = [
         "otherForms": "streams (複數型)"
     },
     {
+        "word": "waterfall",
+        "pos": "n.",
+        "meaning": "瀑布",
+        "theme": "大自然",
+        "sentence": "We took a picture in front of a beautiful waterfall.",
+        "sentenceZh": "我們在一個美麗的瀑布前拍了照。",
+        "otherForms": "waterfalls (複數型)"
+    },
+    {
         "word": "bank",
+        "pos": "n.",
         "meaning": "河岸",
         "theme": "大自然",
         "sentence": "We sat on the river bank to enjoy the view.",
@@ -3569,6 +4105,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shore",
+        "pos": "n.",
         "meaning": "岸",
         "theme": "大自然",
         "sentence": "The waves crashed loudly against the shore.",
@@ -3577,7 +4114,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "water",
-        "meaning": "水",
+        "pos": "n. / v.",
+        "meaning": "水/澆水、流口水",
         "theme": "大自然",
         "sentence": "You should drink more water after playing sports.",
         "sentenceZh": "運動後你應該多喝水。",
@@ -3585,6 +4123,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ice",
+        "pos": "n.",
         "meaning": "冰",
         "theme": "大自然",
         "sentence": "Would you like some ice in your juice?",
@@ -3593,6 +4132,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "steam",
+        "pos": "n.",
         "meaning": "蒸汽",
         "theme": "大自然",
         "sentence": "Steam rises from the pot when the water is boiling.",
@@ -3601,6 +4141,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cloud",
+        "pos": "n.",
         "meaning": "雲",
         "theme": "大自然",
         "sentence": "Look at that big dark cloud; it is going to rain.",
@@ -3609,6 +4150,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fire",
+        "pos": "n.",
         "meaning": "火",
         "theme": "大自然",
         "sentence": "We sat around the camp fire to keep warm.",
@@ -3617,6 +4159,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "heat",
+        "pos": "n.",
         "meaning": "熱",
         "theme": "大自然",
         "sentence": "The heat from the sun makes me sweat.",
@@ -3625,6 +4168,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stone",
+        "pos": "n.",
         "meaning": "石頭",
         "theme": "大自然",
         "sentence": "The old bridge is made entirely of stone.",
@@ -3633,6 +4177,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rock",
+        "pos": "n.",
         "meaning": "岩石",
         "theme": "大自然",
         "sentence": "The hikers climbed carefully over the large rocks.",
@@ -3641,6 +4186,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sand",
+        "pos": "n.",
         "meaning": "沙子",
         "theme": "大自然",
         "sentence": "The children are building a castle with sand.",
@@ -3649,6 +4195,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mud",
+        "pos": "n.",
         "meaning": "泥巴",
         "theme": "大自然",
         "sentence": "Try not to step in the mud after the rain.",
@@ -3656,7 +4203,17 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "clay",
+        "pos": "n.",
+        "meaning": "黏土",
+        "theme": "大自然",
+        "sentence": "The students are making cups out of clay.",
+        "sentenceZh": "學生們正在用黏土做杯子。",
+        "otherForms": ""
+    },
+    {
         "word": "metal",
+        "pos": "n.",
         "meaning": "金屬",
         "theme": "大自然",
         "sentence": "This strong door is made of solid metal.",
@@ -3665,6 +4222,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wood",
+        "pos": "n.",
         "meaning": "木材",
         "theme": "大自然",
         "sentence": "My father built a birdhouse out of wood.",
@@ -3673,6 +4231,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rubber",
+        "pos": "n.",
         "meaning": "橡膠",
         "theme": "大自然",
         "sentence": "The tires on a car are made of thick rubber.",
@@ -3681,7 +4240,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "poison",
-        "meaning": "毒",
+        "pos": "n. / v.",
+        "meaning": "毒/下毒",
         "theme": "大自然",
         "sentence": "Never eat a wild mushroom, it might contain poison.",
         "sentenceZh": "千萬別吃野菇，它可能含有毒素。",
@@ -3689,6 +4249,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gas",
+        "pos": "n.",
         "meaning": "氣態；瓦斯；汽油",
         "theme": "大自然",
         "sentence": "We stopped at the station to put more gas in the car.",
@@ -3697,6 +4258,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "liquid",
+        "pos": "n.",
         "meaning": "液體",
         "theme": "大自然",
         "sentence": "Water and milk are both examples of liquids.",
@@ -3705,6 +4267,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "temperature",
+        "pos": "n.",
         "meaning": "溫度",
         "theme": "大自然",
         "sentence": "The temperature will drop below 10 degrees tonight.",
@@ -3713,6 +4276,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "air",
+        "pos": "n.",
         "meaning": "空氣",
         "theme": "大自然",
         "sentence": "The fresh air in the mountains is very good for you.",
@@ -3721,6 +4285,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nest",
+        "pos": "n.",
         "meaning": "鳥巢",
         "theme": "大自然",
         "sentence": "The mother bird is feeding her babies in the nest.",
@@ -3729,6 +4294,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sky",
+        "pos": "n.",
         "meaning": "天空",
         "theme": "大自然",
         "sentence": "The clear blue sky makes everyone feel happy.",
@@ -3737,6 +4303,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "planet",
+        "pos": "n.",
         "meaning": "行星",
         "theme": "大自然",
         "sentence": "Earth is the third planet from the sun.",
@@ -3745,6 +4312,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "earth",
+        "pos": "n.",
         "meaning": "地球",
         "theme": "大自然",
         "sentence": "We must work together to protect the earth.",
@@ -3753,6 +4321,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "moon",
+        "pos": "n.",
         "meaning": "月亮",
         "theme": "大自然",
         "sentence": "The full moon looks beautiful on the Moon Festival.",
@@ -3761,6 +4330,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sun",
+        "pos": "n.",
         "meaning": "太陽",
         "theme": "大自然",
         "sentence": "The sun gives us light and warmth every day.",
@@ -3769,6 +4339,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "star",
+        "pos": "n.",
         "meaning": "星星",
         "theme": "大自然",
         "sentence": "You can see many stars in the dark night sky.",
@@ -3777,6 +4348,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "earthquake",
+        "pos": "n.",
         "meaning": "地震",
         "theme": "大自然",
         "sentence": "We practice hiding under our desks during an earthquake drill.",
@@ -3785,6 +4357,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "plant",
+        "pos": "n. / v.",
         "meaning": "植物；種植",
         "theme": "大自然",
         "sentence": "I am going to plant some tomatoes in the garden.",
@@ -3793,6 +4366,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "forest",
+        "pos": "n.",
         "meaning": "森林",
         "theme": "大自然",
         "sentence": "There are many wild animals living in the deep forest.",
@@ -3801,6 +4375,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tree",
+        "pos": "n.",
         "meaning": "樹",
         "theme": "大自然",
         "sentence": "We sat under the big tree to read books.",
@@ -3809,6 +4384,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grass",
+        "pos": "n.",
         "meaning": "草",
         "theme": "大自然",
         "sentence": "Please do not walk on the green grass.",
@@ -3817,6 +4393,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "woods",
+        "pos": "n.",
         "meaning": "樹林",
         "theme": "大自然",
         "sentence": "We took a quiet walk through the woods.",
@@ -3825,6 +4402,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "branch",
+        "pos": "n.",
         "meaning": "樹枝；分支",
         "theme": "大自然",
         "sentence": "The monkey swung from one branch to another.",
@@ -3833,6 +4411,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flower",
+        "pos": "n.",
         "meaning": "花",
         "theme": "大自然",
         "sentence": "She bought a beautiful red flower for her mother.",
@@ -3841,6 +4420,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "leaf",
+        "pos": "n.",
         "meaning": "葉子",
         "theme": "大自然",
         "sentence": "Look at this green leaf I found in the garden.",
@@ -3849,6 +4429,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "root",
+        "pos": "n.",
         "meaning": "根",
         "theme": "大自然",
         "sentence": "A tree gets water from the ground through its roots.",
@@ -3857,6 +4438,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seed",
+        "pos": "n.",
         "meaning": "種子",
         "theme": "大自然",
         "sentence": "We put a little sunflower seed into the soil.",
@@ -3865,6 +4447,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rose",
+        "pos": "n.",
         "meaning": "玫瑰",
         "theme": "大自然",
         "sentence": "The red rose is a symbol of true love.",
@@ -3873,6 +4456,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "voice",
+        "pos": "n.",
         "meaning": "聲音",
         "theme": "大自然",
         "sentence": "The teacher has a very clear and loud voice.",
@@ -3881,6 +4465,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "noise",
+        "pos": "n.",
         "meaning": "噪音",
         "theme": "大自然",
         "sentence": "Please stop making that loud noise in the library.",
@@ -3889,6 +4474,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pollution",
+        "pos": "n.",
         "meaning": "污染",
         "theme": "大自然",
         "sentence": "Riding bicycles is a good way to reduce air pollution.",
@@ -3897,6 +4483,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trace",
+        "pos": "n. / v.",
         "meaning": "痕跡；追蹤",
         "theme": "大自然",
         "sentence": "We found animal traces on the wet mud.",
@@ -3905,6 +4492,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "basket",
+        "pos": "n.",
         "meaning": "籃子",
         "theme": "居家",
         "sentence": "Put the dirty clothes in the laundry basket.",
@@ -3913,6 +4501,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "brick",
+        "pos": "n.",
         "meaning": "磚塊",
         "theme": "居家",
         "sentence": "The little pig built a strong house made of bricks.",
@@ -3921,6 +4510,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bucket",
+        "pos": "n.",
         "meaning": "水桶",
         "theme": "居家",
         "sentence": "We used a red bucket to carry water.",
@@ -3929,6 +4519,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "candle",
+        "pos": "n.",
         "meaning": "蠟燭",
         "theme": "居家",
         "sentence": "He blew out the candles on his birthday cake.",
@@ -3937,6 +4528,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hammer",
+        "pos": "n.",
         "meaning": "鐵鎚",
         "theme": "居家",
         "sentence": "You need a hammer to hit the nail into the wood.",
@@ -3945,6 +4537,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "housework",
+        "pos": "n.",
         "meaning": "家事",
         "theme": "居家",
         "sentence": "Helping with housework makes parents very happy.",
@@ -3953,6 +4546,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "key",
+        "pos": "n.",
         "meaning": "鑰匙",
         "theme": "居家",
         "sentence": "I cannot open the door without my key.",
@@ -3961,6 +4555,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mat",
+        "pos": "n.",
         "meaning": "地墊",
         "theme": "居家",
         "sentence": "Please wipe your shoes on the door mat before coming in.",
@@ -3969,6 +4564,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "needle",
+        "pos": "n.",
         "meaning": "針",
         "theme": "居家",
         "sentence": "She used a needle and thread to fix my shirt.",
@@ -3977,6 +4573,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toilet",
+        "pos": "n.",
         "meaning": "馬桶",
         "theme": "居家",
         "sentence": "Please remember to flush the toilet after using it.",
@@ -3985,6 +4582,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trash can",
+        "pos": "n.",
         "meaning": "垃圾桶",
         "theme": "居家",
         "sentence": "Throw the paper cup into the trash can, please.",
@@ -3993,6 +4591,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tube",
+        "pos": "n.",
         "meaning": "管子",
         "theme": "居家",
         "sentence": "The toothpaste comes out of a plastic tube.",
@@ -4001,6 +4600,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "umbrella",
+        "pos": "n.",
         "meaning": "雨傘",
         "theme": "居家",
         "sentence": "Don't forget to take an umbrella; it might rain later.",
@@ -4009,6 +4609,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "build",
+        "pos": "v.",
         "meaning": "建造",
         "theme": "居家",
         "sentence": "We are going to build a sandbox in the garden.",
@@ -4017,6 +4618,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clean",
+        "pos": "v. / adj.",
         "meaning": "清潔",
         "theme": "居家",
         "sentence": "It is time to clean the blackboard after class.",
@@ -4025,6 +4627,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "decorate",
+        "pos": "v.",
         "meaning": "裝飾",
         "theme": "居家",
         "sentence": "We will decorate the classroom for the Halloween party.",
@@ -4033,6 +4636,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "design",
+        "pos": "v. / n.",
         "meaning": "設計",
         "theme": "居家",
         "sentence": "I want to design an interactive web game for my students.",
@@ -4041,6 +4645,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fix",
+        "pos": "v.",
         "meaning": "修理",
         "theme": "居家",
         "sentence": "Can you help me fix my broken bicycle?",
@@ -4049,6 +4654,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "repair",
+        "pos": "v. / n.",
         "meaning": "修復",
         "theme": "居家",
         "sentence": "The Syntax Repair game helps you fix wrong sentences.",
@@ -4057,6 +4663,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sweep",
+        "pos": "v.",
         "meaning": "清掃",
         "theme": "居家",
         "sentence": "Please sweep the floor until it is completely clean.",
@@ -4065,6 +4672,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wash",
+        "pos": "v.",
         "meaning": "清洗",
         "theme": "居家",
         "sentence": "You must wash your hands before eating dinner.",
@@ -4073,6 +4681,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "apartment",
+        "pos": "n.",
         "meaning": "公寓",
         "theme": "廳室",
         "sentence": "My aunt lives in a nice apartment in Taipei.",
@@ -4081,6 +4690,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "balcony",
+        "pos": "n.",
         "meaning": "陽台",
         "theme": "廳室",
         "sentence": "She stood on the balcony to enjoy the night breeze.",
@@ -4089,6 +4699,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "basement",
+        "pos": "n.",
         "meaning": "地下室",
         "theme": "廳室",
         "sentence": "We keep our old toys in a box in the basement.",
@@ -4097,6 +4708,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bathroom",
+        "pos": "n.",
         "meaning": "浴室",
         "theme": "廳室",
         "sentence": "I am going to take a hot shower in the bathroom.",
@@ -4105,6 +4717,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bedroom",
+        "pos": "n.",
         "meaning": "臥室",
         "theme": "廳室",
         "sentence": "Your bedroom is very messy; you need to clean it up.",
@@ -4113,6 +4726,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "building",
+        "pos": "n.",
         "meaning": "建築物",
         "theme": "廳室",
         "sentence": "Taipei 101 is one of the tallest buildings in the world.",
@@ -4121,6 +4735,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ceiling",
+        "pos": "n.",
         "meaning": "天花板",
         "theme": "廳室",
         "sentence": "The fan is hanging from the middle of the ceiling.",
@@ -4129,6 +4744,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dining room",
+        "pos": "n.",
         "meaning": "餐廳",
         "theme": "廳室",
         "sentence": "Our family eats dinner together in the dining room.",
@@ -4137,6 +4753,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "door",
+        "pos": "n.",
         "meaning": "門",
         "theme": "廳室",
         "sentence": "Please close the door quietly when you leave.",
@@ -4145,6 +4762,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "downstairs",
+        "pos": "adv. / n.",
         "meaning": "樓下",
         "theme": "廳室",
         "sentence": "I ran downstairs quickly when I smelled the breakfast.",
@@ -4153,6 +4771,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fence",
+        "pos": "n.",
         "meaning": "柵欄",
         "theme": "廳室",
         "sentence": "The dog jumped over the wooden fence and ran away.",
@@ -4161,6 +4780,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "floor",
+        "pos": "n.",
         "meaning": "地板；樓層",
         "theme": "廳室",
         "sentence": "Our classroom is located on the third floor.",
@@ -4169,6 +4789,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "garage",
+        "pos": "n.",
         "meaning": "車庫",
         "theme": "廳室",
         "sentence": "My father parked his car inside the garage.",
@@ -4177,6 +4798,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "garden",
+        "pos": "n.",
         "meaning": "花園",
         "theme": "廳室",
         "sentence": "My mother grows beautiful roses in the front garden.",
@@ -4185,6 +4807,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gate",
+        "pos": "n.",
         "meaning": "大門",
         "theme": "廳室",
         "sentence": "The school gate will close at 7:30 a.m.",
@@ -4193,6 +4816,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hall",
+        "pos": "n.",
         "meaning": "走廊；大廳",
         "theme": "廳室",
         "sentence": "Please don't run in the school hall.",
@@ -4201,6 +4825,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "home",
+        "pos": "n. / adv.",
         "meaning": "家",
         "theme": "廳室",
         "sentence": "It feels so good to be back home after a long day.",
@@ -4209,6 +4834,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "house",
+        "pos": "n.",
         "meaning": "房子",
         "theme": "廳室",
         "sentence": "They just bought a new house in Dounan.",
@@ -4217,6 +4843,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kitchen",
+        "pos": "n.",
         "meaning": "廚房",
         "theme": "廳室",
         "sentence": "The smell of fried rice is coming from the kitchen.",
@@ -4225,6 +4852,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "living room",
+        "pos": "n.",
         "meaning": "客廳",
         "theme": "廳室",
         "sentence": "We sit in the living room to watch TV together.",
@@ -4233,6 +4861,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "roof",
+        "pos": "n.",
         "meaning": "屋頂",
         "theme": "廳室",
         "sentence": "The heavy rain was hitting hard on the roof.",
@@ -4241,6 +4870,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "room",
+        "pos": "n.",
         "meaning": "房間",
         "theme": "廳室",
         "sentence": "Can you help me carry these books to my room?",
@@ -4249,6 +4879,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stairs",
+        "pos": "n.",
         "meaning": "樓梯",
         "theme": "廳室",
         "sentence": "Be careful when you walk up the wet stairs.",
@@ -4257,6 +4888,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "upstairs",
+        "pos": "adv. / n.",
         "meaning": "樓上",
         "theme": "廳室",
         "sentence": "His bedroom is located upstairs.",
@@ -4265,6 +4897,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wall",
+        "pos": "n.",
         "meaning": "牆",
         "theme": "廳室",
         "sentence": "The teacher put a big world map on the wall.",
@@ -4273,6 +4906,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "window",
+        "pos": "n.",
         "meaning": "窗戶",
         "theme": "廳室",
         "sentence": "Open the window to let some fresh air in.",
@@ -4281,6 +4915,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "yard",
+        "pos": "n.",
         "meaning": "院子",
         "theme": "廳室",
         "sentence": "My dog loves to run and play in the back yard.",
@@ -4289,6 +4924,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "weather",
+        "pos": "n.",
         "meaning": "天氣",
         "theme": "天氣",
         "sentence": "We should check the weather before we play badminton outside.",
@@ -4297,6 +4933,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "climate",
+        "pos": "n.",
         "meaning": "氣候",
         "theme": "天氣",
         "sentence": "The climate in southern Taiwan is usually warm and sunny.",
@@ -4305,14 +4942,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clear",
-        "meaning": "晴朗的",
+        "pos": "adj. / v.",
+        "meaning": "晴朗的；使淨空",
         "theme": "天氣",
         "sentence": "The sky is very clear and blue today.",
         "sentenceZh": "今天的天空非常晴朗湛藍。",
-        "otherForms": "clearer (比較級), clearest (最高級), clearly (副詞), clears (三單)"
+        "otherForms": "clearer (比較級), clearest (最高級), clearly (副詞(很清楚地)), clears (三單), clearing (現在分詞), cleared (過去/ 過去分詞)"
     },
     {
         "word": "cloudy",
+        "pos": "adj.",
         "meaning": "多雲的",
         "theme": "天氣",
         "sentence": "It is cloudy right now; I think it might rain later.",
@@ -4321,6 +4960,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cold",
+        "pos": "adj. / n.",
         "meaning": "寒冷的",
         "theme": "天氣",
         "sentence": "I need to wear a heavy coat when the weather is cold.",
@@ -4329,22 +4969,25 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cool",
-        "meaning": "涼爽的",
+        "pos": "adj. / v.",
+        "meaning": "涼爽的；酷的",
         "theme": "天氣",
         "sentence": "The autumn breeze feels very cool and comfortable.",
         "sentenceZh": "秋天的微風吹起來非常涼爽舒服。",
-        "otherForms": "cooler (比較級), coolest (最高級), coolly (副詞), cools (三單)"
+        "otherForms": "cooler (比較級), coolest (最高級)"
     },
     {
         "word": "dry",
-        "meaning": "乾燥的",
+        "pos": "adj. / v.",
+        "meaning": "乾燥的；使乾燥",
         "theme": "天氣",
         "sentence": "The land is very dry because it hasn't rained for months.",
         "sentenceZh": "因為幾個月沒下雨了，土地非常乾燥。",
-        "otherForms": "drier (比較級(去y加ier)), driest (最高級(去y加iest)), drily (副詞(去y加ily)), dries (三單(去y加ies))"
+        "otherForms": "drier (比較級(去y加ier)), driest (最高級(去y加iest)), dries (三單(去y加ies)), drying (現在分詞), dried (過去/ 過去分詞 (去y加ied))"
     },
     {
         "word": "foggy",
+        "pos": "adj.",
         "meaning": "有霧的",
         "theme": "天氣",
         "sentence": "It is dangerous to drive a car when it is highly foggy.",
@@ -4353,6 +4996,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "freezing",
+        "pos": "adj.",
         "meaning": "極冷的",
         "theme": "天氣",
         "sentence": "Put on your gloves; it is freezing outside!",
@@ -4361,6 +5005,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hot",
+        "pos": "adj.",
         "meaning": "炎熱的",
         "theme": "天氣",
         "sentence": "It is too hot to run on the playground at noon.",
@@ -4369,6 +5014,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "humid",
+        "pos": "adj.",
         "meaning": "潮濕的",
         "theme": "天氣",
         "sentence": "The air feels very heavy and humid before a summer storm.",
@@ -4377,6 +5023,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rainy",
+        "pos": "adj.",
         "meaning": "下雨的",
         "theme": "天氣",
         "sentence": "You should take an umbrella with you on a rainy day.",
@@ -4385,6 +5032,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "snowy",
+        "pos": "adj.",
         "meaning": "下雪的",
         "theme": "天氣",
         "sentence": "We built a big snowman together on a snowy morning.",
@@ -4393,6 +5041,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stormy",
+        "pos": "adj.",
         "meaning": "暴風雨的",
         "theme": "天氣",
         "sentence": "The fishing boats cannot go out to sea in stormy weather.",
@@ -4401,6 +5050,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sunny",
+        "pos": "adj.",
         "meaning": "陽光充足的",
         "theme": "天氣",
         "sentence": "Let's ride our bikes to the park on this sunny day.",
@@ -4409,14 +5059,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "warm",
-        "meaning": "溫暖的",
+        "pos": "adj. / v.",
+        "meaning": "溫暖的；使溫暖",
         "theme": "天氣",
         "sentence": "The warm sunlight feels so good in the winter.",
         "sentenceZh": "冬天裡溫暖的陽光感覺真好。",
-        "otherForms": "warmer (比較級), warmest (最高級), warmly (副詞), warms (三單)"
+        "otherForms": "warmer (比較級), warmest (最高級), warmly (副詞), warms (三單), warming (現在分詞), warmed (過去/過去分詞)"
     },
     {
         "word": "wet",
+        "pos": "adj.",
         "meaning": "潮濕的",
         "theme": "天氣",
         "sentence": "My shoes got wet in the heavy rain.",
@@ -4425,6 +5077,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "windy",
+        "pos": "adj.",
         "meaning": "多風的",
         "theme": "天氣",
         "sentence": "It is too windy to play badminton outdoors today.",
@@ -4433,6 +5086,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fog",
+        "pos": "n.",
         "meaning": "霧",
         "theme": "天氣",
         "sentence": "The thick fog makes it hard to see the road clearly.",
@@ -4441,6 +5095,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lightning",
+        "pos": "n.",
         "meaning": "閃電",
         "theme": "天氣",
         "sentence": "We saw a bright flash of lightning in the dark sky.",
@@ -4449,6 +5104,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rainbow",
+        "pos": "n.",
         "meaning": "彩虹",
         "theme": "天氣",
         "sentence": "A beautiful rainbow appeared after the afternoon shower.",
@@ -4457,6 +5113,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shower",
+        "pos": "n. / v.",
         "meaning": "陣雨",
         "theme": "天氣",
         "sentence": "We got completely wet in the sudden afternoon shower.",
@@ -4465,6 +5122,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "snow",
+        "pos": "n. / v.",
         "meaning": "雪",
         "theme": "天氣",
         "sentence": "The kids love to play and jump in the soft white snow.",
@@ -4473,6 +5131,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "storm",
+        "pos": "n.",
         "meaning": "暴風雨",
         "theme": "天氣",
         "sentence": "The heavy storm broke many tree branches last night.",
@@ -4480,7 +5139,17 @@ const DICTIONARY_DATA = [
         "otherForms": "storms (複數型), storms (三單), storming (ing型), stormed (過去式/分詞)"
     },
     {
+        "word": "flood",
+        "pos": "n. / v.",
+        "meaning": "洪水；淹水",
+        "theme": "天氣",
+        "sentence": "The heavy rain caused a terrible flood.",
+        "sentenceZh": "大雨造成了可怕的洪水。",
+        "otherForms": "floods (複數/三單), flooded (過去/過去分詞), flooding (現在分詞)"
+    },
+    {
         "word": "thunder",
+        "pos": "n.",
         "meaning": "雷聲",
         "theme": "天氣",
         "sentence": "The loud thunder scared my little dog.",
@@ -4489,6 +5158,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "typhoon",
+        "pos": "n.",
         "meaning": "颱風",
         "theme": "天氣",
         "sentence": "We have to stay home when a typhoon hits Taiwan.",
@@ -4497,6 +5167,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wind",
+        "pos": "n.",
         "meaning": "風",
         "theme": "天氣",
         "sentence": "The strong wind blew my hat away.",
@@ -4505,6 +5176,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blow",
+        "pos": "v.",
         "meaning": "吹",
         "theme": "天氣",
         "sentence": "The electric fan blows cool air into the classroom.",
@@ -4513,6 +5185,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rain",
+        "pos": "v. / n.",
         "meaning": "下雨；雨",
         "theme": "天氣",
         "sentence": "It will rain heavily tomorrow, so don't forget your umbrella.",
@@ -4521,6 +5194,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shine",
+        "pos": "v.",
         "meaning": "照耀",
         "theme": "天氣",
         "sentence": "The sun shines brightly in the blue sky.",
@@ -4529,6 +5203,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "air conditioner",
+        "pos": "n.",
         "meaning": "空調",
         "theme": "家具家電",
         "sentence": "Please turn on the air conditioner; it is very hot in here.",
@@ -4537,6 +5212,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "alarm",
+        "pos": "n.",
         "meaning": "鬧鐘；警報",
         "theme": "家具家電",
         "sentence": "My alarm clock wakes me up at 6:30 a.m. every morning.",
@@ -4545,6 +5221,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "armchair",
+        "pos": "n.",
         "meaning": "扶手椅",
         "theme": "家具家電",
         "sentence": "Grandfather likes to sit in his comfortable armchair and read.",
@@ -4553,6 +5230,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bath",
+        "pos": "n.",
         "meaning": "浴缸",
         "theme": "家具家電",
         "sentence": "I like to take a warm bath after a long day at school.",
@@ -4561,6 +5239,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bed",
+        "pos": "n.",
         "meaning": "床",
         "theme": "家具家電",
         "sentence": "You should go to bed early if you are tired.",
@@ -4569,6 +5248,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bench",
+        "pos": "n.",
         "meaning": "長凳",
         "theme": "家具家電",
         "sentence": "We sat on a wooden bench in the park to rest.",
@@ -4577,6 +5257,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blanket",
+        "pos": "n.",
         "meaning": "毯子",
         "theme": "家具家電",
         "sentence": "Put an extra blanket on the bed if you feel cold tonight.",
@@ -4585,6 +5266,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bookcase",
+        "pos": "n.",
         "meaning": "書櫃",
         "theme": "家具家電",
         "sentence": "There are many English storybooks in that tall bookcase.",
@@ -4593,6 +5275,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cable",
+        "pos": "n.",
         "meaning": "電纜",
         "theme": "家具家電",
         "sentence": "I need a USB cable to charge my smartphone.",
@@ -4601,6 +5284,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "carpet",
+        "pos": "n.",
         "meaning": "地毯",
         "theme": "家具家電",
         "sentence": "The little baby is crawling on the soft living room carpet.",
@@ -4609,6 +5293,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chair",
+        "pos": "n.",
         "meaning": "椅子",
         "theme": "家具家電",
         "sentence": "Pull up a chair and sit down next to me.",
@@ -4617,6 +5302,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "closet",
+        "pos": "n.",
         "meaning": "衣櫥",
         "theme": "家具家電",
         "sentence": "Please hang your new winter coat in the closet.",
@@ -4625,6 +5311,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "couch",
+        "pos": "n.",
         "meaning": "長沙發",
         "theme": "家具家電",
         "sentence": "We sat on the couch to watch a funny movie together.",
@@ -4633,6 +5320,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "curtain",
+        "pos": "n.",
         "meaning": "窗簾",
         "theme": "家具家電",
         "sentence": "Open the curtain to let the morning sunlight in.",
@@ -4641,6 +5329,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "desk",
+        "pos": "n.",
         "meaning": "書桌",
         "theme": "家具家電",
         "sentence": "He is writing a letter to his pen pal at his desk.",
@@ -4649,6 +5338,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drawer",
+        "pos": "n.",
         "meaning": "抽屜",
         "theme": "家具家電",
         "sentence": "I keep all my pens and pencils in the top drawer.",
@@ -4657,6 +5347,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dresser",
+        "pos": "n.",
         "meaning": "梳妝台",
         "theme": "家具家電",
         "sentence": "She looked at herself in the mirror on the dresser.",
@@ -4665,6 +5356,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dryer",
+        "pos": "n.",
         "meaning": "烘乾機",
         "theme": "家具家電",
         "sentence": "Put the wet towels into the clothes dryer.",
@@ -4673,6 +5365,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "engine",
+        "pos": "n.",
         "meaning": "引擎",
         "theme": "家具家電",
         "sentence": "The car engine is making a very strange noise.",
@@ -4681,6 +5374,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fan",
+        "pos": "n.",
         "meaning": "電風扇",
         "theme": "家具家電",
         "sentence": "Turn on the electric fan if you are feeling warm.",
@@ -4689,6 +5383,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "faucet",
+        "pos": "n.",
         "meaning": "水龍頭",
         "theme": "家具家電",
         "sentence": "Remember to turn off the faucet when you brush your teeth.",
@@ -4697,6 +5392,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flashlight",
+        "pos": "n.",
         "meaning": "手電筒",
         "theme": "家具家電",
         "sentence": "We need a flashlight because the lights suddenly went out.",
@@ -4705,6 +5401,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "freezer",
+        "pos": "n.",
         "meaning": "冷凍庫",
         "theme": "家具家電",
         "sentence": "We keep the meat and ice cream in the freezer.",
@@ -4713,6 +5410,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "furniture",
+        "pos": "n.",
         "meaning": "家具",
         "theme": "家具家電",
         "sentence": "They bought some new wooden furniture for their new house.",
@@ -4721,6 +5419,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hanger",
+        "pos": "n.",
         "meaning": "衣架",
         "theme": "家具家電",
         "sentence": "Put your shirt on a hanger so it won't get wrinkled.",
@@ -4729,6 +5428,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "heater",
+        "pos": "n.",
         "meaning": "暖氣",
         "theme": "家具家電",
         "sentence": "We use a small heater to keep the room warm in winter.",
@@ -4737,6 +5437,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lamp",
+        "pos": "n.",
         "meaning": "燈",
         "theme": "家具家電",
         "sentence": "Turn on the desk lamp when you are reading a book.",
@@ -4745,14 +5446,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "light",
-        "meaning": "燈；光",
+        "pos": "n. / v.",
+        "meaning": "燈、光；點燃",
         "theme": "家具家電",
         "sentence": "Turn off the classroom lights before you leave.",
         "sentenceZh": "離開前請關掉教室的燈。",
-        "otherForms": "lights (複數型), lighter (比較級), lightest (最高級), lights (三單)"
+        "otherForms": "lights (複數型/ 三單), lighting (現在分詞), lit (過去/過去分詞(不規則))"
     },
     {
         "word": "machine",
+        "pos": "n.",
         "meaning": "機器",
         "theme": "家具家電",
         "sentence": "A computer is a very useful learning machine.",
@@ -4761,6 +5464,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "microwave",
+        "pos": "n.",
         "meaning": "微波爐",
         "theme": "家具家電",
         "sentence": "You can heat up your cold soup in the microwave.",
@@ -4769,6 +5473,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mirror",
+        "pos": "n.",
         "meaning": "鏡子",
         "theme": "家具家電",
         "sentence": "She brushed her hair in front of the bathroom mirror.",
@@ -4777,6 +5482,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "oven",
+        "pos": "n.",
         "meaning": "烤箱",
         "theme": "家具家電",
         "sentence": "My mom is baking a delicious chocolate cake in the oven.",
@@ -4785,6 +5491,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pillow",
+        "pos": "n.",
         "meaning": "枕頭",
         "theme": "家具家電",
         "sentence": "This soft pillow helps me sleep very well at night.",
@@ -4793,6 +5500,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pipe",
+        "pos": "n.",
         "meaning": "管子",
         "theme": "家具家電",
         "sentence": "The dirty water flows away through the plastic pipe.",
@@ -4801,6 +5509,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "refrigerator (fridge)",
+        "pos": "n.",
         "meaning": "冰箱",
         "theme": "家具家電",
         "sentence": "Keep the fresh milk and fruit in the refrigerator.",
@@ -4809,6 +5518,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sheet",
+        "pos": "n.",
         "meaning": "床單",
         "theme": "家具家電",
         "sentence": "We need to wash and change the bed sheet every week.",
@@ -4817,6 +5527,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shelf",
+        "pos": "n.",
         "meaning": "架子",
         "theme": "家具家電",
         "sentence": "Put the heavy dictionary back on the bottom shelf.",
@@ -4825,6 +5536,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sink",
+        "pos": "n.",
         "meaning": "水槽",
         "theme": "家具家電",
         "sentence": "Put your dirty dishes in the kitchen sink after eating.",
@@ -4833,6 +5545,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soap",
+        "pos": "n.",
         "meaning": "肥皂",
         "theme": "家具家電",
         "sentence": "Wash your hands with soap before you eat anything.",
@@ -4841,6 +5554,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sofa",
+        "pos": "n.",
         "meaning": "沙發",
         "theme": "家具家電",
         "sentence": "I was so tired that I fell asleep on the sofa.",
@@ -4849,6 +5563,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "speaker",
+        "pos": "n.",
         "meaning": "喇叭",
         "theme": "家具家電",
         "sentence": "The 80s pop music is playing loudly from the Bluetooth speaker.",
@@ -4857,6 +5572,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stove",
+        "pos": "n.",
         "meaning": "爐子",
         "theme": "家具家電",
         "sentence": "The pot of hot soup is boiling on the stove.",
@@ -4865,6 +5581,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "table",
+        "pos": "n.",
         "meaning": "桌子",
         "theme": "家具家電",
         "sentence": "We sit around the dining table to talk and eat dinner.",
@@ -4873,6 +5590,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "telephone",
+        "pos": "n.",
         "meaning": "電話",
         "theme": "家具家電",
         "sentence": "The telephone is ringing loudly; can someone answer it?",
@@ -4881,6 +5599,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "television",
+        "pos": "n.",
         "meaning": "電視",
         "theme": "家具家電",
         "sentence": "Don't sit too close to the television when you watch a movie.",
@@ -4889,6 +5608,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toothbrush",
+        "pos": "n.",
         "meaning": "牙刷",
         "theme": "家具家電",
         "sentence": "You must change your toothbrush every three months.",
@@ -4897,6 +5617,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "towel",
+        "pos": "n.",
         "meaning": "毛巾",
         "theme": "家具家電",
         "sentence": "Use a clean, dry towel to wipe your face after washing it.",
@@ -4905,6 +5626,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tub",
+        "pos": "n.",
         "meaning": "浴缸",
         "theme": "家具家電",
         "sentence": "The baby is playing with his rubber duck in the bath tub.",
@@ -4913,6 +5635,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "school",
+        "pos": "n.",
         "meaning": "學校",
         "theme": "學校",
         "sentence": "I ride my bicycle to school with my classmates every morning.",
@@ -4921,6 +5644,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kindergarten",
+        "pos": "n.",
         "meaning": "幼兒園",
         "theme": "學校",
         "sentence": "My little niece is five years old and goes to kindergarten.",
@@ -4929,6 +5653,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "elementary school",
+        "pos": "n.",
         "meaning": "小學",
         "theme": "學校",
         "sentence": "I met my best friend when we were in elementary school.",
@@ -4937,6 +5662,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "junior high school",
+        "pos": "n.",
         "meaning": "國中",
         "theme": "學校",
         "sentence": "English is a very important subject in junior high school.",
@@ -4945,6 +5671,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "senior high school",
+        "pos": "n.",
         "meaning": "高中",
         "theme": "學校",
         "sentence": "He studies very hard to enter a good senior high school.",
@@ -4953,6 +5680,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "university",
+        "pos": "n.",
         "meaning": "大學",
         "theme": "學校",
         "sentence": "She wants to study computer science at the university.",
@@ -4961,6 +5689,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "college",
+        "pos": "n.",
         "meaning": "大學",
         "theme": "學校",
         "sentence": "My older brother is currently a student at a local college.",
@@ -4969,6 +5698,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "department",
+        "pos": "n.",
         "meaning": "部門；系",
         "theme": "學校",
         "sentence": "Mr. Wang teaches in the English department.",
@@ -4977,6 +5707,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "term",
+        "pos": "n.",
         "meaning": "學期",
         "theme": "學校",
         "sentence": "We will have a big math test at the end of this term.",
@@ -4985,6 +5716,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "semester",
+        "pos": "n.",
         "meaning": "學期",
         "theme": "學校",
         "sentence": "The new school semester will officially begin in September.",
@@ -4993,6 +5725,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "campus",
+        "pos": "n.",
         "meaning": "校園",
         "theme": "學校",
         "sentence": "Our school campus is very large and full of green trees.",
@@ -5001,6 +5734,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guard",
+        "pos": "n. / v.",
         "meaning": "警衛；守護",
         "theme": "學校",
         "sentence": "The friendly security guard stands at the school gate.",
@@ -5009,6 +5743,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gym",
+        "pos": "n.",
         "meaning": "體育館",
         "theme": "學校",
         "sentence": "We play badminton in the school gym when it rains outside.",
@@ -5017,6 +5752,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "library",
+        "pos": "n.",
         "meaning": "圖書館",
         "theme": "學校",
         "sentence": "Please keep your voice down when you are in the library.",
@@ -5025,6 +5761,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "court",
+        "pos": "n.",
         "meaning": "法庭；球場",
         "theme": "學校",
         "sentence": "The basketball court is full of students playing after school.",
@@ -5033,6 +5770,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "entrance",
+        "pos": "n.",
         "meaning": "入口",
         "theme": "學校",
         "sentence": "The main entrance of the museum is right over there.",
@@ -5041,6 +5779,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "exit",
+        "pos": "n.",
         "meaning": "出口",
         "theme": "學校",
         "sentence": "Walk toward the green sign to find the emergency exit.",
@@ -5049,7 +5788,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "club",
-        "meaning": "俱樂部",
+        "pos": "n.",
+        "meaning": "俱樂部、社團",
         "theme": "學校",
         "sentence": "I joined the English club to practice my speaking skills.",
         "sentenceZh": "我加入了英文社團來練習我的口說技巧。",
@@ -5057,6 +5797,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "locker",
+        "pos": "n.",
         "meaning": "鎖櫃",
         "theme": "學校",
         "sentence": "Put your heavy books and backpack in your personal locker.",
@@ -5065,6 +5806,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "playground",
+        "pos": "n.",
         "meaning": "操場；遊樂場",
         "theme": "學校",
         "sentence": "The children are running happily on the playground.",
@@ -5073,6 +5815,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seesaw",
+        "pos": "n.",
         "meaning": "翹翹板",
         "theme": "學校",
         "sentence": "Two kids are playing on the wooden seesaw in the park.",
@@ -5081,22 +5824,25 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "slide",
+        "pos": "n. / v.",
         "meaning": "溜滑梯；滑",
         "theme": "學校",
         "sentence": "The little boy went down the slide very fast.",
         "sentenceZh": "小男孩溜滑梯溜得非常快。",
-        "otherForms": "slides (複數型), slides (三單), sliding (ing型(去e加ing)), slid (過去式(不規則))"
+        "otherForms": "slides (複數型/ 三單), sliding (ing型(去e加ing)), slid (過去/ 過去分詞(不規則))"
     },
     {
         "word": "swing",
+        "pos": "n. / v.",
         "meaning": "鞦韆；搖擺",
         "theme": "學校",
         "sentence": "She loves to sit on the swing and fly high into the air.",
         "sentenceZh": "她喜歡坐在鞦韆上盪得高高的。",
-        "otherForms": "swings (複數型), swings (三單), swinging (ing型), swung (過去式(不規則))"
+        "otherForms": "swings (複數型/ 三單), swings (ing型), swung (過去/ 過去分詞(不規則))"
     },
     {
         "word": "course",
+        "pos": "n.",
         "meaning": "課程",
         "theme": "學校",
         "sentence": "I am taking an online course to learn HTML coding.",
@@ -5105,6 +5851,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "art",
+        "pos": "n.",
         "meaning": "藝術",
         "theme": "學校",
         "sentence": "We will learn how to paint a beautiful picture in art class.",
@@ -5113,6 +5860,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Chinese",
+        "pos": "n.",
         "meaning": "中文",
         "theme": "學校",
         "sentence": "We recite beautiful traditional poems in Chinese class.",
@@ -5121,6 +5869,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "English",
+        "pos": "n.",
         "meaning": "英文",
         "theme": "學校",
         "sentence": "Learning English vocabulary can be very fun if we play games.",
@@ -5129,6 +5878,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "geography",
+        "pos": "n.",
         "meaning": "地理",
         "theme": "學校",
         "sentence": "We study world maps and different countries in geography class.",
@@ -5137,6 +5887,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "history",
+        "pos": "n.",
         "meaning": "歷史",
         "theme": "學校",
         "sentence": "Learning about Taiwan's history helps us understand our home.",
@@ -5145,6 +5896,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "biology",
+        "pos": "n.",
         "meaning": "生物",
         "theme": "學校",
         "sentence": "We use a microscope to look at small cells in biology class.",
@@ -5153,6 +5905,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chemistry",
+        "pos": "n.",
         "meaning": "化學",
         "theme": "學校",
         "sentence": "The students mixed two liquids together in the chemistry lab.",
@@ -5161,6 +5914,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "physics",
+        "pos": "n.",
         "meaning": "物理",
         "theme": "學校",
         "sentence": "We learned about the rules of gravity in today's physics lesson.",
@@ -5169,6 +5923,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "language",
+        "pos": "n.",
         "meaning": "語言",
         "theme": "學校",
         "sentence": "English is a very useful international language to learn.",
@@ -5177,6 +5932,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "law",
+        "pos": "n.",
         "meaning": "法律",
         "theme": "學校",
         "sentence": "Everyone in the country must obey the traffic laws.",
@@ -5185,6 +5941,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "math",
+        "pos": "n.",
         "meaning": "數學",
         "theme": "學校",
         "sentence": "You have to practice a lot to solve difficult math problems.",
@@ -5193,6 +5950,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "music",
+        "pos": "n.",
         "meaning": "音樂",
         "theme": "學校",
         "sentence": "We sing 80s songs and play the recorder in music class.",
@@ -5201,6 +5959,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "science",
+        "pos": "n.",
         "meaning": "科學",
         "theme": "學校",
         "sentence": "The students are doing a cool experiment in the science class.",
@@ -5209,6 +5968,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "social science",
+        "pos": "n.",
         "meaning": "社會科學",
         "theme": "學校",
         "sentence": "We learn about our community in the social science class.",
@@ -5217,6 +5977,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "education",
+        "pos": "n.",
         "meaning": "教育",
         "theme": "學校",
         "sentence": "A good education is very important for a child's future.",
@@ -5224,7 +5985,17 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "class",
+        "pos": "n.",
+        "meaning": "班級；課程",
+        "theme": "學校",
+        "sentence": "Our class is planning a trip to the zoo.",
+        "sentenceZh": "我們班正在計畫去動物園玩。",
+        "otherForms": "classes (複數型)"
+    },
+    {
         "word": "lesson",
+        "pos": "n.",
         "meaning": "課",
         "theme": "學校",
         "sentence": "Today's English lesson is about the names of different animals.",
@@ -5233,6 +6004,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "knowledge",
+        "pos": "n.",
         "meaning": "知識",
         "theme": "學校",
         "sentence": "Reading many books is the best way to get new knowledge.",
@@ -5241,6 +6013,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "memory",
+        "pos": "n.",
         "meaning": "記憶",
         "theme": "學校",
         "sentence": "You need a good memory to learn 2,000 vocabulary words!",
@@ -5248,7 +6021,17 @@ const DICTIONARY_DATA = [
         "otherForms": "memories (複數型(去y加ies))"
     },
     {
+        "word": "alphabet",
+        "pos": "n.",
+        "meaning": "字母表",
+        "theme": "學校",
+        "sentence": "There are 26 letters in the English alphabet.",
+        "sentenceZh": "英文字母表有26個字母。",
+        "otherForms": "alphabets (複數型)"
+    },
+    {
         "word": "word",
+        "pos": "n.",
         "meaning": "字詞",
         "theme": "學校",
         "sentence": "Look up this new word in the dictionary if you don't know it.",
@@ -5257,6 +6040,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vocabulary",
+        "pos": "n.",
         "meaning": "字彙",
         "theme": "學校",
         "sentence": "Check your vocabulary passport to practice these words every day.",
@@ -5265,6 +6049,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sentence",
+        "pos": "n.",
         "meaning": "句子",
         "theme": "學校",
         "sentence": "Try to write a complete sentence using this new grammar rule.",
@@ -5273,6 +6058,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "poem",
+        "pos": "n.",
         "meaning": "詩",
         "theme": "學校",
         "sentence": "The student wrote a beautiful English poem for her mother.",
@@ -5281,6 +6067,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "story",
+        "pos": "n.",
         "meaning": "故事",
         "theme": "學校",
         "sentence": "The teacher told us a very funny story about a clever monkey.",
@@ -5289,6 +6076,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "example",
+        "pos": "n.",
         "meaning": "例子",
         "theme": "學校",
         "sentence": "Let me give you an example of how to play this grammar game.",
@@ -5297,6 +6085,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "exam",
+        "pos": "n.",
         "meaning": "考試",
         "theme": "學校",
         "sentence": "Good luck on your final English exam tomorrow!",
@@ -5305,6 +6094,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "quiz",
+        "pos": "n. / v.",
         "meaning": "小考",
         "theme": "學校",
         "sentence": "We will have a short spelling quiz in class tomorrow morning.",
@@ -5313,6 +6103,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "test",
+        "pos": "n. / v.",
         "meaning": "測驗",
         "theme": "學校",
         "sentence": "Make sure you review your notes carefully before the test.",
@@ -5321,6 +6112,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "exercise",
+        "pos": "n.",
         "meaning": "練習",
         "theme": "學校",
         "sentence": "Doing these grammar exercises will help you write better.",
@@ -5329,6 +6121,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "homework",
+        "pos": "n.",
         "meaning": "家庭作業",
         "theme": "學校",
         "sentence": "Did you finish your math homework before you played video games?",
@@ -5337,6 +6130,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "report",
+        "pos": "n. / v.",
         "meaning": "報告",
         "theme": "學校",
         "sentence": "I have to write a long book report for my English reading class.",
@@ -5345,6 +6139,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grade",
+        "pos": "n.",
         "meaning": "年級；成績；批改",
         "theme": "學校",
         "sentence": "He studied hard and got a very good grade on his science test.",
@@ -5353,6 +6148,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "record",
+        "pos": "n. / v.",
         "meaning": "紀錄",
         "theme": "學校",
         "sentence": "The fast runner broke the school record in the 100-meter race.",
@@ -5361,6 +6157,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "score",
+        "pos": "n.",
         "meaning": "分數",
         "theme": "學校",
         "sentence": "The winning team got a high score in the badminton game.",
@@ -5369,6 +6166,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "book",
+        "pos": "n.",
         "meaning": "書本",
         "theme": "學校",
         "sentence": "Open your English book to page 15, please.",
@@ -5377,6 +6175,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "diary",
+        "pos": "n.",
         "meaning": "日記",
         "theme": "學校",
         "sentence": "She writes her thoughts in her secret diary every night.",
@@ -5385,6 +6184,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dictionary",
+        "pos": "n.",
         "meaning": "字典",
         "theme": "學校",
         "sentence": "You can find the meaning of the word in an English-Chinese dictionary.",
@@ -5393,6 +6193,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "magazine",
+        "pos": "n.",
         "meaning": "雜誌",
         "theme": "學校",
         "sentence": "My sister likes to read sports and fashion magazines.",
@@ -5401,6 +6202,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "map",
+        "pos": "n.",
         "meaning": "地圖",
         "theme": "學校",
         "sentence": "We used a paper map to find our way in the big city.",
@@ -5409,6 +6211,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "notebook",
+        "pos": "n.",
         "meaning": "筆記本",
         "theme": "學校",
         "sentence": "Write down the important grammar rules in your notebook.",
@@ -5417,6 +6220,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "page",
+        "pos": "n.",
         "meaning": "頁",
         "theme": "學校",
         "sentence": "Please turn the page and continue reading the story.",
@@ -5425,6 +6229,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "paper",
+        "pos": "n.",
         "meaning": "紙",
         "theme": "學校",
         "sentence": "Do you have a piece of blank paper that I can use to draw?",
@@ -5433,6 +6238,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sheet",
+        "pos": "n.",
         "meaning": "一張（紙）",
         "theme": "學校",
         "sentence": "Hand me a sheet of paper so I can write down the phone number.",
@@ -5441,6 +6247,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "textbook",
+        "pos": "n.",
         "meaning": "教科書",
         "theme": "學校",
         "sentence": "We have to bring our math textbook to class every day.",
@@ -5449,6 +6256,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "workbook",
+        "pos": "n.",
         "meaning": "練習本",
         "theme": "學校",
         "sentence": "Please finish the matching exercises in your English workbook.",
@@ -5457,6 +6265,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "note",
+        "pos": "n. / v.",
         "meaning": "筆記；音符",
         "theme": "學校",
         "sentence": "I left a yellow sticky note on the teacher's desk.",
@@ -5465,6 +6274,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stationery",
+        "pos": "n.",
         "meaning": "文具",
         "theme": "學校",
         "sentence": "I bought some new pens and cute erasers at the stationery store.",
@@ -5473,6 +6283,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tape",
+        "pos": "n.",
         "meaning": "膠帶；錄影帶",
         "theme": "學校",
         "sentence": "Use some clear tape to stick the poster on the wall.",
@@ -5481,6 +6292,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "envelope",
+        "pos": "n.",
         "meaning": "信封",
         "theme": "學校",
         "sentence": "Put the letter in the envelope before you mail it at the post office.",
@@ -5489,6 +6301,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eraser",
+        "pos": "n.",
         "meaning": "橡皮擦",
         "theme": "學校",
         "sentence": "Use an eraser to rub out the wrong spelling and try again.",
@@ -5497,6 +6310,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "glasses",
+        "pos": "n.",
         "meaning": "眼鏡",
         "theme": "學校",
         "sentence": "My grandfather wears reading glasses when he looks at his phone.",
@@ -5505,6 +6319,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "glue",
+        "pos": "n.",
         "meaning": "膠水",
         "theme": "學校",
         "sentence": "We used liquid glue to stick the paper parts together.",
@@ -5513,6 +6328,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ink",
+        "pos": "n.",
         "meaning": "墨水",
         "theme": "學校",
         "sentence": "I need a new pen because this one is out of blue ink.",
@@ -5521,6 +6337,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "letter",
+        "pos": "n.",
         "meaning": "信件；字母",
         "theme": "學校",
         "sentence": "I wrote a long letter to my pen pal who lives in the USA.",
@@ -5529,6 +6346,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "marker",
+        "pos": "n.",
         "meaning": "麥克筆",
         "theme": "學校",
         "sentence": "The teacher writes clearly on the whiteboard with a black marker.",
@@ -5537,6 +6355,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pen",
+        "pos": "n.",
         "meaning": "筆",
         "theme": "學校",
         "sentence": "Please sign your name at the bottom with a blue or black pen.",
@@ -5545,6 +6364,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pencil",
+        "pos": "n.",
         "meaning": "鉛筆",
         "theme": "學校",
         "sentence": "Write your answers with a pencil so you can erase them later.",
@@ -5553,6 +6373,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pencil box",
+        "pos": "n.",
         "meaning": "鉛筆盒",
         "theme": "學校",
         "sentence": "I keep all my pens, rulers, and erasers inside my pencil box.",
@@ -5561,6 +6382,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "crayon",
+        "pos": "n.",
         "meaning": "蠟筆",
         "theme": "學校",
         "sentence": "The little girl is drawing a big rainbow with colorful crayons.",
@@ -5569,6 +6391,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "postcard",
+        "pos": "n.",
         "meaning": "明信片",
         "theme": "學校",
         "sentence": "I will send you a beautiful postcard when I travel to Japan.",
@@ -5577,6 +6400,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "present",
+        "pos": "n.",
         "meaning": "禮物",
         "theme": "學校",
         "sentence": "This special birthday present is for you; open it!",
@@ -5585,6 +6409,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ruler",
+        "pos": "n.",
         "meaning": "尺",
         "theme": "學校",
         "sentence": "Use a plastic ruler to draw a perfectly straight line.",
@@ -5593,6 +6418,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "backpack",
+        "pos": "n.",
         "meaning": "背包",
         "theme": "學校",
         "sentence": "I put my heavy textbooks and lunchbox in my school backpack.",
@@ -5601,6 +6427,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pin",
+        "pos": "n.",
         "meaning": "大頭針",
         "theme": "學校",
         "sentence": "Use a small metal pin to fix the notice on the board.",
@@ -5609,6 +6436,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "classroom",
+        "pos": "n.",
         "meaning": "教室",
         "theme": "學校",
         "sentence": "Please help keep our classroom clean and tidy every day.",
@@ -5617,6 +6445,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "board",
+        "pos": "n.",
         "meaning": "板子",
         "theme": "學校",
         "sentence": "Look at the English sentences written on the board.",
@@ -5625,6 +6454,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blackboard",
+        "pos": "n.",
         "meaning": "黑板",
         "theme": "學校",
         "sentence": "The teacher used white chalk to write grammar rules on the blackboard.",
@@ -5633,6 +6463,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chalk",
+        "pos": "n.",
         "meaning": "粉筆",
         "theme": "學校",
         "sentence": "We need to buy a new box of colored chalk for the art class.",
@@ -5641,6 +6472,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "picture",
+        "pos": "n.",
         "meaning": "圖片",
         "theme": "學校",
         "sentence": "Draw a cute picture of the noun character on your worksheet.",
@@ -5649,6 +6481,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "problem",
+        "pos": "n.",
         "meaning": "問題",
         "theme": "學校",
         "sentence": "I can help you solve this difficult math problem.",
@@ -5657,6 +6490,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "question",
+        "pos": "n. / v.",
         "meaning": "問題；質疑",
         "theme": "學校",
         "sentence": "Raise your hand if you have a question about the vocabulary game.",
@@ -5665,6 +6499,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "conversation",
+        "pos": "n.",
         "meaning": "對話",
         "theme": "學校",
         "sentence": "We had a long conversation about our favorite badminton players.",
@@ -5673,6 +6508,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seat",
+        "pos": "n.",
         "meaning": "座位",
         "theme": "學校",
         "sentence": "Please go back to your own seat and sit down quietly.",
@@ -5681,6 +6517,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "answer",
+        "pos": "n. / v.",
         "meaning": "回答；答案",
         "theme": "學校",
         "sentence": "Who knows the correct answer to this grammar question?",
@@ -5689,6 +6526,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ask",
+        "pos": "v.",
         "meaning": "詢問",
         "theme": "學校",
         "sentence": "Don't be afraid to ask the teacher for help if you don't understand.",
@@ -5697,6 +6535,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "behave",
+        "pos": "v.",
         "meaning": "守規矩",
         "theme": "學校",
         "sentence": "Good students know how to behave well in the classroom.",
@@ -5705,6 +6544,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "explain",
+        "pos": "v.",
         "meaning": "解釋",
         "theme": "學校",
         "sentence": "Can you explain this difficult sentence structure to me again?",
@@ -5713,6 +6553,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "learn",
+        "pos": "v.",
         "meaning": "學習",
         "theme": "學校",
         "sentence": "We will learn how to write simple code for a web page today.",
@@ -5721,6 +6562,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "listen",
+        "pos": "v.",
         "meaning": "聆聽",
         "theme": "學校",
         "sentence": "Please listen carefully to the instructions before you start the game.",
@@ -5729,6 +6571,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mark",
+        "pos": "n. / v.",
         "meaning": "做記號；記號",
         "theme": "學校",
         "sentence": "The teacher used a red pen to mark my spelling mistakes.",
@@ -5737,6 +6580,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pass",
+        "pos": "v.",
         "meaning": "通過",
         "theme": "學校",
         "sentence": "Study hard, review the words, and you will pass the test.",
@@ -5745,6 +6589,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "practice",
+        "pos": "n. / v.",
         "meaning": "練習",
         "theme": "學校",
         "sentence": "If you want to play well, you must practice your badminton swing.",
@@ -5753,6 +6598,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "prepare",
+        "pos": "v.",
         "meaning": "準備",
         "theme": "學校",
         "sentence": "You should prepare well for the big vocabulary test tomorrow.",
@@ -5761,6 +6607,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pronounce",
+        "pos": "v.",
         "meaning": "發音",
         "theme": "學校",
         "sentence": "Mr. Wang taught us how to pronounce the new word correctly.",
@@ -5769,6 +6616,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "punish",
+        "pos": "v.",
         "meaning": "懲罰",
         "theme": "學校",
         "sentence": "The teacher will not punish you if you are honest and tell the truth.",
@@ -5777,6 +6625,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "read",
+        "pos": "v.",
         "meaning": "閱讀",
         "theme": "學校",
         "sentence": "We will read a story about the weather gods today.",
@@ -5785,6 +6634,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "repeat",
+        "pos": "v.",
         "meaning": "重複",
         "theme": "學校",
         "sentence": "Please repeat after me: \"Vocabulary passport.\"",
@@ -5793,6 +6643,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "review",
+        "pos": "v. / n.",
         "meaning": "複習",
         "theme": "學校",
         "sentence": "Let's take ten minutes to review the words we learned yesterday.",
@@ -5801,6 +6652,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "say",
+        "pos": "v.",
         "meaning": "說",
         "theme": "學校",
         "sentence": "What did you say? I couldn't hear you over the loud noise.",
@@ -5809,6 +6661,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "speak",
+        "pos": "v.",
         "meaning": "說話",
         "theme": "學校",
         "sentence": "Don't be afraid to speak English loudly in class!",
@@ -5817,6 +6670,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spell",
+        "pos": "v.",
         "meaning": "拼寫",
         "theme": "學校",
         "sentence": "Can you tell me how to spell your English name?",
@@ -5825,6 +6679,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "study",
+        "pos": "n. / v.",
         "meaning": "研讀",
         "theme": "學校",
         "sentence": "We usually study together in the library after school ends.",
@@ -5833,6 +6688,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "talk",
+        "pos": "v. / n.",
         "meaning": "談話",
         "theme": "學校",
         "sentence": "Please do not talk to your classmates when the teacher is explaining.",
@@ -5841,6 +6697,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "teach",
+        "pos": "v.",
         "meaning": "教學",
         "theme": "學校",
         "sentence": "Our teacher uses interactive games to teach us grammar.",
@@ -5849,6 +6706,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "underline",
+        "pos": "v. / n.",
         "meaning": "畫底線",
         "theme": "學校",
         "sentence": "Please use a red pen to underline the verb in this sentence.",
@@ -5857,6 +6715,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "understand",
+        "pos": "v.",
         "meaning": "理解",
         "theme": "學校",
         "sentence": "Do you understand what the rules of this game are?",
@@ -5865,6 +6724,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "write",
+        "pos": "v.",
         "meaning": "書寫",
         "theme": "學校",
         "sentence": "We have to write down all the correct answers on the worksheet.",
@@ -5873,6 +6733,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "draw",
+        "pos": "v.",
         "meaning": "畫畫",
         "theme": "學校",
         "sentence": "Use a pencil to draw a big circle on the blank paper.",
@@ -5881,6 +6742,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bakery",
+        "pos": "n.",
         "meaning": "麵包店",
         "theme": "城鎮",
         "sentence": "I bought some fresh bread from the local bakery.",
@@ -5889,6 +6751,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bank",
+        "pos": "n.",
         "meaning": "銀行",
         "theme": "城鎮",
         "sentence": "My mother went to the bank to get some cash.",
@@ -5897,6 +6760,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beach",
+        "pos": "n.",
         "meaning": "海灘",
         "theme": "城鎮",
         "sentence": "We played volleyball on the beautiful sandy beach.",
@@ -5905,6 +6769,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bookstore",
+        "pos": "n.",
         "meaning": "書店",
         "theme": "城鎮",
         "sentence": "I found a good English dictionary at the bookstore.",
@@ -5913,6 +6778,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "buffet",
+        "pos": "n.",
         "meaning": "自助餐",
         "theme": "城鎮",
         "sentence": "We ate a lot of seafood at the buffet restaurant.",
@@ -5921,6 +6787,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cafeteria",
+        "pos": "n.",
         "meaning": "自助餐廳",
         "theme": "城鎮",
         "sentence": "Students usually eat their lunch in the school cafeteria.",
@@ -5929,6 +6796,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "castle",
+        "pos": "n.",
         "meaning": "城堡",
         "theme": "城鎮",
         "sentence": "The king and queen lived in a huge stone castle.",
@@ -5937,6 +6805,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "church",
+        "pos": "n.",
         "meaning": "教堂",
         "theme": "城鎮",
         "sentence": "We saw a beautiful old church in the center of the town.",
@@ -5945,6 +6814,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "city",
+        "pos": "n.",
         "meaning": "城市",
         "theme": "城鎮",
         "sentence": "Douliu is a very convenient city to live in.",
@@ -5953,6 +6823,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "company",
+        "pos": "n.",
         "meaning": "公司",
         "theme": "城鎮",
         "sentence": "His father works for a large computer company.",
@@ -5961,6 +6832,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "convenience store",
+        "pos": "n.",
         "meaning": "便利商店",
         "theme": "城鎮",
         "sentence": "I bought a cold drink from the convenience store.",
@@ -5969,6 +6841,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "country",
+        "pos": "n.",
         "meaning": "國家；鄉下",
         "theme": "城鎮",
         "sentence": "Taiwan is a very beautiful country with friendly people.",
@@ -5977,6 +6850,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "culture center",
+        "pos": "n.",
         "meaning": "文化中心",
         "theme": "城鎮",
         "sentence": "We watched a dance show at the culture center.",
@@ -5985,6 +6859,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "department store",
+        "pos": "n.",
         "meaning": "百貨公司",
         "theme": "城鎮",
         "sentence": "My sister bought a new dress at the department store.",
@@ -5993,6 +6868,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "downtown",
+        "pos": "n. / adv.",
         "meaning": "市中心",
         "theme": "城鎮",
         "sentence": "There are many shops and restaurants downtown.",
@@ -6001,6 +6877,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drugstore",
+        "pos": "n.",
         "meaning": "藥局",
         "theme": "城鎮",
         "sentence": "You can buy basic medicine at the drugstore.",
@@ -6009,6 +6886,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "factory",
+        "pos": "n.",
         "meaning": "工廠",
         "theme": "城鎮",
         "sentence": "They make sports shoes in that large factory.",
@@ -6017,6 +6895,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "farm",
+        "pos": "n.",
         "meaning": "農場",
         "theme": "城鎮",
         "sentence": "The farmer grows cabbages and sweet potatoes on his farm.",
@@ -6025,6 +6904,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fast food restaurant",
+        "pos": "n.",
         "meaning": "速食餐廳",
         "theme": "城鎮",
         "sentence": "Kids love eating French fries at the fast food restaurant.",
@@ -6033,6 +6913,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fire station",
+        "pos": "n.",
         "meaning": "消防局",
         "theme": "城鎮",
         "sentence": "The red fire trucks rushed out of the fire station.",
@@ -6041,6 +6922,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flower shop",
+        "pos": "n.",
         "meaning": "花店",
         "theme": "城鎮",
         "sentence": "He bought some red roses at the flower shop.",
@@ -6049,6 +6931,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hospital",
+        "pos": "n.",
         "meaning": "醫院",
         "theme": "城鎮",
         "sentence": "The doctors and nurses work long hours in the hospital.",
@@ -6057,6 +6940,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hotel",
+        "pos": "n.",
         "meaning": "飯店",
         "theme": "城鎮",
         "sentence": "We stayed in a nice hotel during our trip to Japan.",
@@ -6065,6 +6949,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kingdom",
+        "pos": "n.",
         "meaning": "王國",
         "theme": "城鎮",
         "sentence": "The brave prince saved the kingdom from the giant.",
@@ -6073,6 +6958,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mall",
+        "pos": "n.",
         "meaning": "購物中心",
         "theme": "城鎮",
         "sentence": "We spent the whole afternoon shopping at the big mall.",
@@ -6081,6 +6967,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "market",
+        "pos": "n.",
         "meaning": "市場",
         "theme": "城鎮",
         "sentence": "My mom goes to the traditional market to buy fresh vegetables.",
@@ -6089,6 +6976,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "men’s room",
+        "pos": "n.",
         "meaning": "男廁",
         "theme": "城鎮",
         "sentence": "The men’s room is on the right side of the hall.",
@@ -6097,6 +6985,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "movie theater",
+        "pos": "n.",
         "meaning": "電影院",
         "theme": "城鎮",
         "sentence": "We bought popcorn before entering the movie theater.",
@@ -6105,6 +6994,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "museum",
+        "pos": "n.",
         "meaning": "博物館",
         "theme": "城鎮",
         "sentence": "We saw many old dinosaur bones in the museum.",
@@ -6113,6 +7003,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "office",
+        "pos": "n.",
         "meaning": "辦公室",
         "theme": "城鎮",
         "sentence": "The teachers are working hard to prepare lessons in the office.",
@@ -6121,7 +7012,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "park",
-        "meaning": "公園",
+        "pos": "n. / v.",
+        "meaning": "公園/ 停車",
         "theme": "城鎮",
         "sentence": "I jog and play badminton in the park every evening.",
         "sentenceZh": "我每天傍晚都在公園慢跑和打羽毛球。",
@@ -6129,6 +7021,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "place",
+        "pos": "n.",
         "meaning": "地方",
         "theme": "城鎮",
         "sentence": "This coffee shop is a great place to sit down and read a book.",
@@ -6137,6 +7030,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "police station",
+        "pos": "n.",
         "meaning": "警察局",
         "theme": "城鎮",
         "sentence": "You can ask for help at the police station if you are lost.",
@@ -6145,6 +7039,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pool",
+        "pos": "n.",
         "meaning": "游泳池",
         "theme": "城鎮",
         "sentence": "We went swimming in the public pool yesterday afternoon.",
@@ -6153,6 +7048,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "post office",
+        "pos": "n.",
         "meaning": "郵局",
         "theme": "城鎮",
         "sentence": "I need to buy some stamps to mail a letter at the post office.",
@@ -6160,7 +7056,17 @@ const DICTIONARY_DATA = [
         "otherForms": "post offices (複數型)"
     },
     {
+        "word": "prison",
+        "pos": "n.",
+        "meaning": "監獄",
+        "theme": "城鎮",
+        "sentence": "The bad guy was sent to prison for ten years.",
+        "sentenceZh": "那個壞人被送進監獄十年。",
+        "otherForms": "prisons (複數型), prisoner (囚犯 - 名詞)"
+    },
+    {
         "word": "restaurant",
+        "pos": "n.",
         "meaning": "餐廳",
         "theme": "城鎮",
         "sentence": "We celebrated my birthday at a nice Italian restaurant.",
@@ -6169,6 +7075,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "restroom",
+        "pos": "n.",
         "meaning": "洗手間",
         "theme": "城鎮",
         "sentence": "Excuse me, where is the nearest restroom?",
@@ -6177,6 +7084,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "road",
+        "pos": "n.",
         "meaning": "陸",
         "theme": "城鎮",
         "sentence": "Please look both ways when you cross the busy road.",
@@ -6185,7 +7093,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shop",
-        "meaning": "商店",
+        "pos": "n. / v.",
+        "meaning": "商店/ 購物",
         "theme": "城鎮",
         "sentence": "There is a new stationery shop near our school.",
         "sentenceZh": "學校附近有一間新的文具店。",
@@ -6193,6 +7102,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stationery store",
+        "pos": "n.",
         "meaning": "文具店",
         "theme": "城鎮",
         "sentence": "I bought two red pens and an eraser at the stationery store.",
@@ -6201,6 +7111,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "store",
+        "pos": "n.",
         "meaning": "商店",
         "theme": "城鎮",
         "sentence": "This store sells a lot of cool 80s music albums.",
@@ -6209,6 +7120,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "street",
+        "pos": "n.",
         "meaning": "街",
         "theme": "城鎮",
         "sentence": "The street in front of my house is very quiet at night.",
@@ -6217,6 +7129,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "supermarket",
+        "pos": "n.",
         "meaning": "超市",
         "theme": "城鎮",
         "sentence": "We bought milk and fresh eggs at the supermarket.",
@@ -6225,6 +7138,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "temple",
+        "pos": "n.",
         "meaning": "寺廟",
         "theme": "城鎮",
         "sentence": "Many people visit the temple to pray during the Chinese New Year.",
@@ -6233,6 +7147,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "theater",
+        "pos": "n.",
         "meaning": "劇院",
         "theme": "城鎮",
         "sentence": "We watched a wonderful play at the national theater.",
@@ -6241,6 +7156,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tower",
+        "pos": "n.",
         "meaning": "塔",
         "theme": "城鎮",
         "sentence": "Taipei 101 is a very famous and tall tower.",
@@ -6249,6 +7165,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "town",
+        "pos": "n.",
         "meaning": "城鎮",
         "theme": "城鎮",
         "sentence": "Dounan is a lovely little town.",
@@ -6257,6 +7174,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tunnel",
+        "pos": "n.",
         "meaning": "隧道",
         "theme": "城鎮",
         "sentence": "The fast train went through a long dark tunnel.",
@@ -6265,6 +7183,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "village",
+        "pos": "n.",
         "meaning": "村莊",
         "theme": "城鎮",
         "sentence": "My grandparents live in a quiet little village by the sea.",
@@ -6273,6 +7192,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "waterfalls",
+        "pos": "n.",
         "meaning": "瀑布",
         "theme": "城鎮",
         "sentence": "The tall waterfalls deep in the mountains are beautiful.",
@@ -6281,6 +7201,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "women’s room",
+        "pos": "n.",
         "meaning": "女廁",
         "theme": "城鎮",
         "sentence": "The women’s room is right next to the elevator.",
@@ -6289,6 +7210,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "zoo",
+        "pos": "n.",
         "meaning": "動物園",
         "theme": "城鎮",
         "sentence": "We saw lions, monkeys, and giraffes at the city zoo.",
@@ -6296,7 +7218,17 @@ const DICTIONARY_DATA = [
         "otherForms": "zoos (複數型)"
     },
     {
+        "word": "address",
+        "pos": "n.",
+        "meaning": "地址；處理",
+        "theme": "城鎮",
+        "sentence": "Please write down your name and address.",
+        "sentenceZh": "請寫下你的名字和地址。",
+        "otherForms": "addresses (複數/三單), addressed (過去/過去分詞), addressing (現在分詞)"
+    },
+    {
         "word": "airlines",
+        "pos": "n.",
         "meaning": "航空公司",
         "theme": "交通",
         "sentence": "Which airlines are you taking to fly to America?",
@@ -6305,6 +7237,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "airplane",
+        "pos": "n.",
         "meaning": "飛機",
         "theme": "交通",
         "sentence": "The huge airplane took off safely into the blue sky.",
@@ -6313,6 +7246,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "airport",
+        "pos": "n.",
         "meaning": "機場",
         "theme": "交通",
         "sentence": "We arrived at the airport two hours early for our flight.",
@@ -6321,6 +7255,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ambulance",
+        "pos": "n.",
         "meaning": "救護車",
         "theme": "交通",
         "sentence": "The ambulance quickly took the sick man to the hospital.",
@@ -6329,6 +7264,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bicycle",
+        "pos": "n.",
         "meaning": "腳踏車",
         "theme": "交通",
         "sentence": "I ride my bicycle to school with my classmates every day.",
@@ -6337,6 +7273,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bike",
+        "pos": "n.",
         "meaning": "腳踏車",
         "theme": "交通",
         "sentence": "Don't forget to lock your bike when you park it.",
@@ -6345,7 +7282,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "block",
-        "meaning": "街區",
+        "pos": "n. / v.",
+        "meaning": "街區/ 阻擋",
         "theme": "交通",
         "sentence": "Walk straight for one block and then turn left.",
         "sentenceZh": "往前直走一個街區，然後左轉。",
@@ -6353,6 +7291,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "boat",
+        "pos": "n.",
         "meaning": "船",
         "theme": "交通",
         "sentence": "We rented a small boat to row on the beautiful lake.",
@@ -6361,6 +7300,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bridge",
+        "pos": "n.",
         "meaning": "橋樑",
         "theme": "交通",
         "sentence": "The train slowly crossed the long iron bridge.",
@@ -6369,6 +7309,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bus",
+        "pos": "n.",
         "meaning": "公車",
         "theme": "交通",
         "sentence": "I ran fast because I almost missed the school bus this morning.",
@@ -6377,6 +7318,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bus stop",
+        "pos": "n.",
         "meaning": "公車站",
         "theme": "交通",
         "sentence": "There are many people standing and waiting at the bus stop.",
@@ -6385,6 +7327,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "car",
+        "pos": "n.",
         "meaning": "汽車",
         "theme": "交通",
         "sentence": "My dad washed his white car carefully on Sunday morning.",
@@ -6393,6 +7336,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flat tire",
+        "pos": "n.",
         "meaning": "爆胎",
         "theme": "交通",
         "sentence": "We couldn't drive to Taipei because the car had a flat tire.",
@@ -6401,6 +7345,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flight",
+        "pos": "n.",
         "meaning": "飛行；航班",
         "theme": "交通",
         "sentence": "Our flight to Japan was delayed by the strong typhoon.",
@@ -6409,6 +7354,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "helicopter",
+        "pos": "n.",
         "meaning": "直升機",
         "theme": "交通",
         "sentence": "The rescue helicopter flew low over the mountains.",
@@ -6417,6 +7363,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "highway",
+        "pos": "n.",
         "meaning": "高速公路",
         "theme": "交通",
         "sentence": "Cars are allowed to drive very fast on the highway.",
@@ -6425,6 +7372,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jeep",
+        "pos": "n.",
         "meaning": "吉普車",
         "theme": "交通",
         "sentence": "They drove a strong green jeep through the jungle.",
@@ -6433,6 +7381,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "metro",
+        "pos": "n.",
         "meaning": "地鐵",
         "theme": "交通",
         "sentence": "The metro is a very fast and clean way to travel in the city.",
@@ -6441,6 +7390,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "motorcycle",
+        "pos": "n.",
         "meaning": "摩托車",
         "theme": "交通",
         "sentence": "You must wear a helmet to protect your head when riding a motorcycle.",
@@ -6449,6 +7399,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "MRT",
+        "pos": "n.",
         "meaning": "捷運",
         "theme": "交通",
         "sentence": "I often take the MRT when I visit my relatives in Taipei.",
@@ -6457,6 +7408,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "overpass",
+        "pos": "n.",
         "meaning": "天橋；陸橋",
         "theme": "交通",
         "sentence": "Use the overpass to cross the busy street safely.",
@@ -6465,6 +7417,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "parking lot",
+        "pos": "n.",
         "meaning": "停車場",
         "theme": "交通",
         "sentence": "The supermarket parking lot is totally full on weekends.",
@@ -6473,6 +7426,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "passenger",
+        "pos": "n.",
         "meaning": "乘客",
         "theme": "交通",
         "sentence": "The train had many passengers going home for the holidays.",
@@ -6481,6 +7435,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "path",
+        "pos": "n.",
         "meaning": "小徑",
         "theme": "交通",
         "sentence": "We walked along a small dirt path in the woods.",
@@ -6489,6 +7444,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "platform",
+        "pos": "n.",
         "meaning": "月台",
         "theme": "交通",
         "sentence": "The express train will arrive at platform number two soon.",
@@ -6497,6 +7453,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "railroad",
+        "pos": "n.",
         "meaning": "鐵路",
         "theme": "交通",
         "sentence": "The railroad connects many small towns in Taiwan together.",
@@ -6505,6 +7462,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "railway",
+        "pos": "n.",
         "meaning": "鐵道",
         "theme": "交通",
         "sentence": "Taking a trip on the Taiwan railway is very relaxing.",
@@ -6513,6 +7471,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "scooter",
+        "pos": "n.",
         "meaning": "速克達；小摩托車",
         "theme": "交通",
         "sentence": "Many teachers ride scooters to get to school quickly.",
@@ -6521,6 +7480,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ship",
+        "pos": "n.",
         "meaning": "船（大船）",
         "theme": "交通",
         "sentence": "The huge cargo ship sailed slowly across the ocean.",
@@ -6529,6 +7489,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sidewalk",
+        "pos": "n.",
         "meaning": "人行道",
         "theme": "交通",
         "sentence": "Please walk carefully on the sidewalk for your own safety.",
@@ -6537,6 +7498,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "station",
+        "pos": "n.",
         "meaning": "車站",
         "theme": "交通",
         "sentence": "I will meet you at the Dounan train station at five o'clock.",
@@ -6545,6 +7507,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "subway",
+        "pos": "n.",
         "meaning": "地鐵",
         "theme": "交通",
         "sentence": "Taking the subway is very easy when you travel in New York.",
@@ -6553,6 +7516,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tank",
+        "pos": "n.",
         "meaning": "坦克車",
         "theme": "交通",
         "sentence": "We saw a heavy military tank displayed in the museum.",
@@ -6561,6 +7525,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "taxi",
+        "pos": "n.",
         "meaning": "計程車",
         "theme": "交通",
         "sentence": "We took a yellow taxi because it was raining heavily outside.",
@@ -6568,7 +7533,17 @@ const DICTIONARY_DATA = [
         "otherForms": "taxis (複數型)"
     },
     {
+        "word": "track",
+        "pos": "n. / v.",
+        "meaning": "軌道；追蹤",
+        "theme": "交通",
+        "sentence": "The police are trying to track the bad guy.",
+        "sentenceZh": "警察正試圖追蹤那個壞人。",
+        "otherForms": "tracks (三單), tracked (過去/過去分詞), tracking (現在分詞)"
+    },
+    {
         "word": "traffic",
+        "pos": "n.",
         "meaning": "交通",
         "theme": "交通",
         "sentence": "The traffic is always very bad during the morning rush hour.",
@@ -6577,7 +7552,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "train",
-        "meaning": "火車",
+        "pos": "n. / v.",
+        "meaning": "火車/ 訓練",
         "theme": "交通",
         "sentence": "The fast train arrived in Taichung in just forty minutes.",
         "sentenceZh": "快車只花了四十分鐘就抵達台中。",
@@ -6585,6 +7561,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "train station",
+        "pos": "n.",
         "meaning": "火車站",
         "theme": "交通",
         "sentence": "Dounan train station is a beautiful historic building.",
@@ -6593,6 +7570,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "truck",
+        "pos": "n.",
         "meaning": "卡車",
         "theme": "交通",
         "sentence": "The big delivery truck carried a lot of fresh vegetables.",
@@ -6601,6 +7579,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "underpass",
+        "pos": "n.",
         "meaning": "地下道",
         "theme": "交通",
         "sentence": "We walked through the dark underpass to get to the other side.",
@@ -6609,6 +7588,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wheel",
+        "pos": "n.",
         "meaning": "輪子",
         "theme": "交通",
         "sentence": "My bicycle front wheel is broken and needs to be fixed.",
@@ -6617,6 +7597,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "arrive",
+        "pos": "v.",
         "meaning": "到達",
         "theme": "交通",
         "sentence": "Director Lee will arrive at our school tomorrow morning.",
@@ -6625,7 +7606,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cross",
-        "meaning": "穿越",
+        "pos": "v. / n.",
+        "meaning": "穿越/ 十字架",
         "theme": "交通",
         "sentence": "Look both left and right before you cross the street.",
         "sentenceZh": "過馬路前要先看左邊和右邊。",
@@ -6633,6 +7615,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drive",
+        "pos": "v.",
         "meaning": "開車",
         "theme": "交通",
         "sentence": "My uncle learned how to drive a car when he was 18.",
@@ -6641,7 +7624,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fly",
-        "meaning": "飛行",
+        "pos": "v. / n.",
+        "meaning": "飛行/ 蒼蠅",
         "theme": "交通",
         "sentence": "Birds use their strong wings to fly high in the sky.",
         "sentenceZh": "鳥類用強壯的翅膀在高空飛行。",
@@ -6649,7 +7633,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "land",
-        "meaning": "降落",
+        "pos": "v. / n.",
+        "meaning": "降落/ 土地",
         "theme": "交通",
         "sentence": "The airplane will land at the airport in ten minutes.",
         "sentenceZh": "飛機將在十分鐘後降落於機場。",
@@ -6657,6 +7642,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ride",
+        "pos": "v. / n.",
         "meaning": "騎乘；搭乘",
         "theme": "交通",
         "sentence": "I like to ride my bike along the riverbank on weekends.",
@@ -6665,6 +7651,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sail",
+        "pos": "v. / n.",
         "meaning": "航行",
         "theme": "交通",
         "sentence": "The small boat will sail out to the sea early tomorrow.",
@@ -6673,7 +7660,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "turn",
-        "meaning": "轉彎",
+        "pos": "v. / n.",
+        "meaning": "轉彎/ 彎",
         "theme": "交通",
         "sentence": "Keep walking straight and turn right at the next corner.",
         "sentenceZh": "繼續直走，然後在下一個路口右轉。",
@@ -6681,6 +7669,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beef",
+        "pos": "n.",
         "meaning": "牛肉",
         "theme": "食物",
         "sentence": "I ordered a big bowl of beef noodles for lunch today.",
@@ -6689,6 +7678,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bread",
+        "pos": "n.",
         "meaning": "麵包",
         "theme": "食物",
         "sentence": "I usually eat some bread and drink milk for breakfast.",
@@ -6697,6 +7687,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "breakfast",
+        "pos": "n.",
         "meaning": "早餐",
         "theme": "食物",
         "sentence": "Eating a healthy breakfast gives you energy for the morning.",
@@ -6705,6 +7696,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "brunch",
+        "pos": "n.",
         "meaning": "早午餐",
         "theme": "食物",
         "sentence": "We had a nice brunch together late on Sunday morning.",
@@ -6713,6 +7705,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bun",
+        "pos": "n.",
         "meaning": "小圓麵包",
         "theme": "食物",
         "sentence": "My grandmother makes delicious steamed pork buns.",
@@ -6721,6 +7714,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "burger",
+        "pos": "n.",
         "meaning": "漢堡",
         "theme": "食物",
         "sentence": "He was so hungry that he ate a huge cheese burger.",
@@ -6729,6 +7723,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cereal",
+        "pos": "n.",
         "meaning": "穀物麥片",
         "theme": "食物",
         "sentence": "I usually have chocolate cereal with cold milk in the morning.",
@@ -6737,6 +7732,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chicken",
+        "pos": "n.",
         "meaning": "雞肉",
         "theme": "食物",
         "sentence": "We had fried chicken and rice for dinner last night.",
@@ -6745,6 +7741,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dinner",
+        "pos": "n.",
         "meaning": "晚餐",
         "theme": "食物",
         "sentence": "Let's cook a delicious family dinner together tonight.",
@@ -6753,6 +7750,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dumpling",
+        "pos": "n.",
         "meaning": "餃子",
         "theme": "食物",
         "sentence": "People in Taiwan often eat dumplings during the Chinese New Year.",
@@ -6761,6 +7759,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "egg",
+        "pos": "n.",
         "meaning": "蛋",
         "theme": "食物",
         "sentence": "I need two eggs and some flour to make this cake.",
@@ -6769,6 +7768,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fast food",
+        "pos": "n.",
         "meaning": "速食",
         "theme": "食物",
         "sentence": "Eating too much fast food is bad for your health.",
@@ -6777,7 +7777,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fish",
-        "meaning": "魚",
+        "pos": "n. / v.",
+        "meaning": "魚/ 釣魚",
         "theme": "食物",
         "sentence": "My grandfather likes to eat steamed fish with ginger.",
         "sentenceZh": "我爺爺喜歡吃清蒸薑絲魚。",
@@ -6785,6 +7786,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "flour",
+        "pos": "n.",
         "meaning": "麵粉",
         "theme": "食物",
         "sentence": "You need water and white flour to make fresh bread.",
@@ -6793,6 +7795,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "food",
+        "pos": "n.",
         "meaning": "食物",
         "theme": "食物",
         "sentence": "The food at this night market is very famous and delicious.",
@@ -6801,6 +7804,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fries",
+        "pos": "n.",
         "meaning": "薯條",
         "theme": "食物",
         "sentence": "Would you like some hot fries with your hamburger?",
@@ -6809,6 +7813,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "French fries",
+        "pos": "n.",
         "meaning": "薯條",
         "theme": "食物",
         "sentence": "Kids love to eat crispy French fries with sweet ketchup.",
@@ -6817,6 +7822,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ham",
+        "pos": "n.",
         "meaning": "火腿",
         "theme": "食物",
         "sentence": "I made a simple ham and cheese sandwich for my lunch.",
@@ -6825,6 +7831,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hamburger",
+        "pos": "n.",
         "meaning": "漢堡",
         "theme": "食物",
         "sentence": "He ordered a big beef hamburger and a cola at the restaurant.",
@@ -6833,6 +7840,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hot dog",
+        "pos": "n.",
         "meaning": "熱狗",
         "theme": "食物",
         "sentence": "We bought a hot dog on a stick at the convenience store.",
@@ -6841,6 +7849,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "instant noodle",
+        "pos": "n.",
         "meaning": "泡麵",
         "theme": "食物",
         "sentence": "I cooked some instant noodles because I was hungry late at night.",
@@ -6849,6 +7858,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lunch",
+        "pos": "n.",
         "meaning": "午餐",
         "theme": "食物",
         "sentence": "We usually finish the fourth class and have lunch at twelve o'clock.",
@@ -6857,6 +7867,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meal",
+        "pos": "n.",
         "meaning": "一餐",
         "theme": "食物",
         "sentence": "Breakfast is considered the most important meal of the day.",
@@ -6865,6 +7876,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meat",
+        "pos": "n.",
         "meaning": "肉",
         "theme": "食物",
         "sentence": "Do you prefer to eat meat or vegetables for dinner?",
@@ -6873,6 +7885,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "noodle",
+        "pos": "n.",
         "meaning": "麵條",
         "theme": "食物",
         "sentence": "This bowl of beef noodles is a little bit too spicy for me.",
@@ -6881,6 +7894,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pizza",
+        "pos": "n.",
         "meaning": "披薩",
         "theme": "食物",
         "sentence": "We ordered a large pizza with extra cheese for the party.",
@@ -6889,6 +7903,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pork",
+        "pos": "n.",
         "meaning": "豬肉",
         "theme": "食物",
         "sentence": "My mother bought some fresh pork at the traditional market.",
@@ -6897,6 +7912,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rice",
+        "pos": "n.",
         "meaning": "米飯",
         "theme": "食物",
         "sentence": "People in Taiwan eat a lot of rice every day.",
@@ -6905,6 +7921,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "salad",
+        "pos": "n.",
         "meaning": "沙拉",
         "theme": "食物",
         "sentence": "She ordered a fruit salad because she wants to eat healthy.",
@@ -6913,6 +7930,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sandwich",
+        "pos": "n.",
         "meaning": "三明治",
         "theme": "食物",
         "sentence": "I brought a chicken sandwich in my lunchbox today.",
@@ -6921,6 +7939,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seafood",
+        "pos": "n.",
         "meaning": "海鮮",
         "theme": "食物",
         "sentence": "I love eating shrimp, fish, and other fresh seafood.",
@@ -6929,6 +7948,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shrimp",
+        "pos": "n.",
         "meaning": "蝦",
         "theme": "食物",
         "sentence": "We had some delicious grilled shrimp for dinner.",
@@ -6937,6 +7957,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "snack",
+        "pos": "n.",
         "meaning": "點心",
         "theme": "食物",
         "sentence": "I always have a little snack after finishing my homework.",
@@ -6945,6 +7966,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soup",
+        "pos": "n.",
         "meaning": "湯",
         "theme": "食物",
         "sentence": "This hot chicken soup is perfect for a cold winter night.",
@@ -6953,6 +7975,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spaghetti",
+        "pos": "n.",
         "meaning": "義大利麵",
         "theme": "食物",
         "sentence": "They serve great Italian spaghetti at that corner restaurant.",
@@ -6961,6 +7984,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "steak",
+        "pos": "n.",
         "meaning": "牛排",
         "theme": "食物",
         "sentence": "He ate a big piece of steak to celebrate his good test score.",
@@ -6969,6 +7993,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "supper",
+        "pos": "n.",
         "meaning": "消夜",
         "theme": "食物",
         "sentence": "We had a late supper after watching the midnight movie.",
@@ -6976,7 +8001,17 @@ const DICTIONARY_DATA = [
         "otherForms": "suppers (複數型)"
     },
     {
+        "word": "peanut",
+        "pos": "n.",
+        "meaning": "花生",
+        "theme": "食物",
+        "sentence": "My little brother loves peanut butter.",
+        "sentenceZh": "我弟弟很喜歡花生醬。",
+        "otherForms": "peanuts (複數型)"
+    },
+    {
         "word": "tofu",
+        "pos": "n.",
         "meaning": "豆腐",
         "theme": "食物",
         "sentence": "Stinky tofu is a very famous street food in Taiwan night markets.",
@@ -6985,6 +8020,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bitter",
+        "pos": "adj.",
         "meaning": "苦的",
         "theme": "食物",
         "sentence": "This black coffee is too bitter; I need to add some sugar.",
@@ -6993,6 +8029,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "delicious",
+        "pos": "adj.",
         "meaning": "美味的",
         "theme": "食物",
         "sentence": "The chocolate cake your mother baked was very delicious.",
@@ -7001,6 +8038,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "full",
+        "pos": "adj.",
         "meaning": "飽的",
         "theme": "食物",
         "sentence": "I can't eat another piece of pizza; I am already full.",
@@ -7009,6 +8047,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hot",
+        "pos": "adj.",
         "meaning": "辣的；熱的",
         "theme": "食物",
         "sentence": "Be careful, the soup is very hot, don't burn your tongue!",
@@ -7017,6 +8056,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hungry",
+        "pos": "adj.",
         "meaning": "餓的",
         "theme": "食物",
         "sentence": "I feel very hungry after running the 100-meter relay race.",
@@ -7025,6 +8065,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sour",
+        "pos": "adj.",
         "meaning": "酸的",
         "theme": "食物",
         "sentence": "The yellow lemon is way too sour to eat directly.",
@@ -7033,7 +8074,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sweet",
-        "meaning": "甜的",
+        "pos": "adj. / n.",
+        "meaning": "甜的/ 甜食",
         "theme": "食物",
         "sentence": "This dessert is a little bit too sweet for my taste.",
         "sentenceZh": "這個甜點對我的口味來說有點太甜了。",
@@ -7041,6 +8083,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thirsty",
+        "pos": "adj.",
         "meaning": "渴的",
         "theme": "食物",
         "sentence": "Drink some water right now if you feel thirsty.",
@@ -7049,6 +8092,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "yummy",
+        "pos": "adj.",
         "meaning": "好吃的",
         "theme": "食物",
         "sentence": "The fried chicken smells really yummy; I want some!",
@@ -7057,6 +8101,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "butter",
+        "pos": "n.",
         "meaning": "奶油",
         "theme": "調味料與茶點",
         "sentence": "She spread some yellow butter on her warm morning toast.",
@@ -7065,6 +8110,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cream",
+        "pos": "n.",
         "meaning": "鮮奶油",
         "theme": "調味料與茶點",
         "sentence": "I like to put some sweet cream on top of my coffee.",
@@ -7073,6 +8119,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jam",
+        "pos": "n.",
         "meaning": "果醬",
         "theme": "調味料與茶點",
         "sentence": "I like strawberry jam better than butter on my bread.",
@@ -7080,7 +8127,17 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "sauce",
+        "pos": "n.",
+        "meaning": "醬汁",
+        "theme": "調味料與茶點",
+        "sentence": "I like to eat noodles with some hot sauce.",
+        "sentenceZh": "我喜歡吃麵配一點辣醬。",
+        "otherForms": "sauces (複數型)"
+    },
+    {
         "word": "ketchup",
+        "pos": "n.",
         "meaning": "番茄醬",
         "theme": "調味料與茶點",
         "sentence": "Do you want to dip your French fries in some ketchup?",
@@ -7089,6 +8146,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "oil",
+        "pos": "n.",
         "meaning": "油",
         "theme": "調味料與茶點",
         "sentence": "Add a little cooking oil to the pan before frying the egg.",
@@ -7097,6 +8155,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pepper",
+        "pos": "n.",
         "meaning": "胡椒",
         "theme": "調味料與茶點",
         "sentence": "Can you pass me the salt and black pepper, please?",
@@ -7105,6 +8164,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "powder",
+        "pos": "n.",
         "meaning": "粉末",
         "theme": "調味料與茶點",
         "sentence": "We added some cocoa powder to make delicious chocolate milk.",
@@ -7113,6 +8173,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "salt",
+        "pos": "n.",
         "meaning": "鹽",
         "theme": "調味料與茶點",
         "sentence": "This chicken soup is a bit boring; it needs a little more salt.",
@@ -7121,6 +8182,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soy sauce",
+        "pos": "n.",
         "meaning": "醬油",
         "theme": "調味料與茶點",
         "sentence": "Boiled dumplings taste great when you dip them in soy sauce.",
@@ -7129,6 +8191,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sugar",
+        "pos": "n.",
         "meaning": "糖",
         "theme": "調味料與茶點",
         "sentence": "Eating too much sugar is very bad for your teeth.",
@@ -7137,6 +8200,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vinegar",
+        "pos": "n.",
         "meaning": "醋",
         "theme": "調味料與茶點",
         "sentence": "You can add some black vinegar to the hot soup to make it tasty.",
@@ -7145,6 +8209,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beer",
+        "pos": "n.",
         "meaning": "啤酒",
         "theme": "調味料與茶點",
         "sentence": "Remember, only adults are allowed to drink beer.",
@@ -7153,6 +8218,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "coffee",
+        "pos": "n.",
         "meaning": "咖啡",
         "theme": "調味料與茶點",
         "sentence": "My teacher drinks a hot cup of coffee every morning to wake up.",
@@ -7161,6 +8227,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cola",
+        "pos": "n.",
         "meaning": "可樂",
         "theme": "調味料與茶點",
         "sentence": "He drank a cold can of cola after the exciting basketball game.",
@@ -7169,6 +8236,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "juice",
+        "pos": "n.",
         "meaning": "果汁",
         "theme": "調味料與茶點",
         "sentence": "Fresh orange juice has a lot of vitamin C to keep you healthy.",
@@ -7177,6 +8245,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "milk",
+        "pos": "n.",
         "meaning": "牛奶",
         "theme": "調味料與茶點",
         "sentence": "Children should drink warm milk every day to grow taller.",
@@ -7185,6 +8254,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "milk shake",
+        "pos": "n.",
         "meaning": "奶昔",
         "theme": "調味料與茶點",
         "sentence": "I ordered a sweet strawberry milk shake at the fast food restaurant.",
@@ -7193,6 +8263,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soda",
+        "pos": "n.",
         "meaning": "汽水",
         "theme": "調味料與茶點",
         "sentence": "Drinking too much sweet soda will make you gain weight easily.",
@@ -7201,6 +8272,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soft drink",
+        "pos": "n.",
         "meaning": "軟性飲料",
         "theme": "調味料與茶點",
         "sentence": "Can I get a soft drink to go with my hamburger meal?",
@@ -7209,6 +8281,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tea",
+        "pos": "n.",
         "meaning": "茶",
         "theme": "調味料與茶點",
         "sentence": "Many older people in Taiwan like to sit and drink hot tea together.",
@@ -7216,7 +8289,17 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "wine",
+        "pos": "n.",
+        "meaning": "葡萄酒",
+        "theme": "調味料與茶點",
+        "sentence": "He had a glass of red wine with his dinner.",
+        "sentenceZh": "他吃晚餐時喝了一杯紅葡萄酒。",
+        "otherForms": ""
+    },
+    {
         "word": "cake",
+        "pos": "n.",
         "meaning": "蛋糕",
         "theme": "調味料與茶點",
         "sentence": "We baked a big chocolate cake to celebrate her 15th birthday.",
@@ -7225,6 +8308,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "candy",
+        "pos": "n.",
         "meaning": "糖果",
         "theme": "調味料與茶點",
         "sentence": "Mom said I cannot eat too much candy right before dinner.",
@@ -7233,6 +8317,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cheese",
+        "pos": "n.",
         "meaning": "起司",
         "theme": "調味料與茶點",
         "sentence": "This Italian pizza has a lot of extra cheese on top of it.",
@@ -7241,6 +8326,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chocolate",
+        "pos": "n.",
         "meaning": "巧克力",
         "theme": "調味料與茶點",
         "sentence": "She bought a box of sweet chocolate as a present for her friend.",
@@ -7249,6 +8335,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cookie",
+        "pos": "n.",
         "meaning": "餅乾",
         "theme": "調味料與茶點",
         "sentence": "My grandmother baked some delicious chocolate chip cookies.",
@@ -7257,6 +8344,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dessert",
+        "pos": "n.",
         "meaning": "甜點",
         "theme": "調味料與茶點",
         "sentence": "We ordered a slice of cake for dessert after the big meal.",
@@ -7265,6 +8353,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "doughnut",
+        "pos": "n.",
         "meaning": "甜甜圈",
         "theme": "調味料與茶點",
         "sentence": "I ate a sweet, round doughnut with my afternoon coffee.",
@@ -7273,6 +8362,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ice cream",
+        "pos": "n.",
         "meaning": "冰淇淋",
         "theme": "調味料與茶點",
         "sentence": "It feels great to eat vanilla ice cream on a hot summer day.",
@@ -7281,6 +8371,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "moon cake",
+        "pos": "n.",
         "meaning": "月餅",
         "theme": "調味料與茶點",
         "sentence": "We share delicious moon cakes with our family during the Moon Festival.",
@@ -7289,6 +8380,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pie",
+        "pos": "n.",
         "meaning": "派",
         "theme": "調味料與茶點",
         "sentence": "My mother knows how to make the best apple pie in the world.",
@@ -7297,6 +8389,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "popcorn",
+        "pos": "n.",
         "meaning": "爆米花",
         "theme": "調味料與茶點",
         "sentence": "We love to eat hot, salty popcorn when watching movies in the theater.",
@@ -7305,6 +8398,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "toast",
+        "pos": "n.",
         "meaning": "吐司",
         "theme": "調味料與茶點",
         "sentence": "I usually have two warm pieces of toast for breakfast.",
@@ -7313,6 +8407,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "apple",
+        "pos": "n.",
         "meaning": "蘋果",
         "theme": "蔬果",
         "sentence": "They say that an apple a day keeps the doctor away.",
@@ -7321,6 +8416,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "banana",
+        "pos": "n.",
         "meaning": "香蕉",
         "theme": "蔬果",
         "sentence": "Monkeys in the zoo really love to eat sweet yellow bananas.",
@@ -7328,7 +8424,17 @@ const DICTIONARY_DATA = [
         "otherForms": "bananas (複數型)"
     },
     {
+        "word": "soy",
+        "pos": "n.",
+        "meaning": "大豆",
+        "theme": "蔬果",
+        "sentence": "Soy milk is a very healthy drink.",
+        "sentenceZh": "豆漿是非常健康的飲品。",
+        "otherForms": "soybean (常用名詞)"
+    },
+    {
         "word": "bean",
+        "pos": "n.",
         "meaning": "豆子",
         "theme": "蔬果",
         "sentence": "Eating green beans is very good for your daily health.",
@@ -7337,6 +8443,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cabbage",
+        "pos": "n.",
         "meaning": "高麗菜",
         "theme": "蔬果",
         "sentence": "We grew some big, fresh cabbages on our small farm.",
@@ -7345,6 +8452,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "carrot",
+        "pos": "n.",
         "meaning": "胡蘿蔔",
         "theme": "蔬果",
         "sentence": "Rabbits love to eat crunchy orange carrots.",
@@ -7353,6 +8461,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "corn",
+        "pos": "n.",
         "meaning": "玉米",
         "theme": "蔬果",
         "sentence": "We had sweet yellow corn and beef for dinner tonight.",
@@ -7361,6 +8470,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fruit",
+        "pos": "n.",
         "meaning": "水果",
         "theme": "蔬果",
         "sentence": "You should eat more fresh fruit every day to get vitamins.",
@@ -7369,6 +8479,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "grape",
+        "pos": "n.",
         "meaning": "葡萄",
         "theme": "蔬果",
         "sentence": "I bought a bag of sweet purple grapes at the night market.",
@@ -7377,6 +8488,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "guava",
+        "pos": "n.",
         "meaning": "番石榴",
         "theme": "蔬果",
         "sentence": "Taiwan produces very delicious green guavas.",
@@ -7385,6 +8497,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lemon",
+        "pos": "n.",
         "meaning": "檸檬",
         "theme": "蔬果",
         "sentence": "This yellow lemon is too sour for me to eat directly!",
@@ -7393,6 +8506,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lettuce",
+        "pos": "n.",
         "meaning": "生菜",
         "theme": "蔬果",
         "sentence": "We use fresh, green lettuce to make a healthy fruit salad.",
@@ -7401,6 +8515,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mango",
+        "pos": "n.",
         "meaning": "芒果",
         "theme": "蔬果",
         "sentence": "Summer is definitely the best season to eat sweet mangoes.",
@@ -7409,6 +8524,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nut",
+        "pos": "n.",
         "meaning": "堅果",
         "theme": "蔬果",
         "sentence": "Cute little squirrels collect nuts before the cold winter comes.",
@@ -7417,6 +8533,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "onion",
+        "pos": "n.",
         "meaning": "洋蔥",
         "theme": "蔬果",
         "sentence": "Cutting raw onions always makes my eyes water.",
@@ -7425,6 +8542,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "orange",
+        "pos": "n.",
         "meaning": "柳橙",
         "theme": "蔬果",
         "sentence": "I peeled a juicy orange to eat after finishing my lunch.",
@@ -7433,6 +8551,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "papaya",
+        "pos": "n.",
         "meaning": "木瓜",
         "theme": "蔬果",
         "sentence": "Papaya milk is a very popular and famous drink in Taiwan.",
@@ -7441,6 +8560,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "peach",
+        "pos": "n.",
         "meaning": "桃子",
         "theme": "蔬果",
         "sentence": "This pink peach looks very sweet, soft, and juicy.",
@@ -7449,6 +8569,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pear",
+        "pos": "n.",
         "meaning": "梨子",
         "theme": "蔬果",
         "sentence": "I ate a sweet, juicy yellow pear after having dinner.",
@@ -7457,6 +8578,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pineapple",
+        "pos": "n.",
         "meaning": "鳳梨",
         "theme": "蔬果",
         "sentence": "The pineapple is sweet inside, but its skin is very spiky.",
@@ -7465,6 +8587,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "potato",
+        "pos": "n.",
         "meaning": "馬鈴薯",
         "theme": "蔬果",
         "sentence": "We make delicious French fries out of simple potatoes.",
@@ -7473,6 +8596,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pumpkin",
+        "pos": "n.",
         "meaning": "南瓜",
         "theme": "蔬果",
         "sentence": "We use orange pumpkins to make scary Halloween lanterns.",
@@ -7481,6 +8605,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "strawberry",
+        "pos": "n.",
         "meaning": "草莓",
         "theme": "蔬果",
         "sentence": "She carefully put a red strawberry right on top of the cake.",
@@ -7489,6 +8614,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tangerine",
+        "pos": "n.",
         "meaning": "橘子",
         "theme": "蔬果",
         "sentence": "We eat a lot of sweet tangerines during the Chinese New Year.",
@@ -7497,6 +8623,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tomato",
+        "pos": "n.",
         "meaning": "番茄",
         "theme": "蔬果",
         "sentence": "Are tomatoes considered fruits or are they vegetables?",
@@ -7505,6 +8632,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vegetable",
+        "pos": "n.",
         "meaning": "蔬菜",
         "theme": "蔬果",
         "sentence": "You must eat your green vegetables to grow up strong.",
@@ -7513,6 +8641,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "watermelon",
+        "pos": "n.",
         "meaning": "西瓜",
         "theme": "蔬果",
         "sentence": "A big, cold watermelon is the best fruit for summer.",
@@ -7521,6 +8650,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bowl",
+        "pos": "n.",
         "meaning": "碗",
         "theme": "餐具",
         "sentence": "I ate a big bowl of beef noodles in Douliu for lunch.",
@@ -7529,6 +8659,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chopsticks",
+        "pos": "n.",
         "meaning": "筷子",
         "theme": "餐具",
         "sentence": "It is a little hard for foreigners to use chopsticks at first.",
@@ -7537,6 +8668,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cup",
+        "pos": "n.",
         "meaning": "杯子",
         "theme": "餐具",
         "sentence": "Would you like a hot cup of tea or coffee?",
@@ -7545,7 +8677,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "diet",
-        "meaning": "飲食；節食",
+        "pos": "n. / v.",
+        "meaning": "飲食 / 節食",
         "theme": "餐具",
         "sentence": "Eating a healthy diet is very important for a badminton player.",
         "sentenceZh": "健康的飲食對羽球選手來說非常重要。",
@@ -7553,7 +8686,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dish",
-        "meaning": "盤子、菜餚",
+        "pos": "n.",
+        "meaning": "盤子；菜餚",
         "theme": "餐具",
         "sentence": "This is my favorite dish on the restaurant's menu.",
         "sentenceZh": "這是這家餐廳菜單上我最愛的一道菜。",
@@ -7561,6 +8695,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fork",
+        "pos": "n.",
         "meaning": "叉子",
         "theme": "餐具",
         "sentence": "We usually eat Italian spaghetti with a fork.",
@@ -7569,6 +8704,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "glass",
+        "pos": "n.",
         "meaning": "玻璃杯",
         "theme": "餐具",
         "sentence": "Please give me a glass of cold water, I am very thirsty.",
@@ -7577,6 +8713,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "knife",
+        "pos": "n.",
         "meaning": "刀子",
         "theme": "餐具",
         "sentence": "Be careful not to cut your finger with that sharp knife.",
@@ -7585,6 +8722,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "menu",
+        "pos": "n.",
         "meaning": "菜單",
         "theme": "餐具",
         "sentence": "The waiter handed us the menu to order our dinner.",
@@ -7593,6 +8731,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "napkin",
+        "pos": "n.",
         "meaning": "餐巾",
         "theme": "餐具",
         "sentence": "Use a paper napkin to wipe your mouth after eating.",
@@ -7601,6 +8740,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pan",
+        "pos": "n.",
         "meaning": "平底鍋",
         "theme": "餐具",
         "sentence": "My mother is frying eggs in the pan right now.",
@@ -7609,6 +8749,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "plate",
+        "pos": "n.",
         "meaning": "平盤",
         "theme": "餐具",
         "sentence": "He put a big piece of steak on his plate.",
@@ -7617,6 +8758,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pot",
+        "pos": "n.",
         "meaning": "鍋子",
         "theme": "餐具",
         "sentence": "The hot chicken soup is boiling in the pot.",
@@ -7625,6 +8767,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "saucer",
+        "pos": "n.",
         "meaning": "碟子",
         "theme": "餐具",
         "sentence": "Put the coffee cup on the small saucer.",
@@ -7633,6 +8776,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spoon",
+        "pos": "n.",
         "meaning": "湯匙",
         "theme": "餐具",
         "sentence": "You need a spoon to drink this hot corn soup.",
@@ -7641,6 +8785,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "straw",
+        "pos": "n.",
         "meaning": "吸管",
         "theme": "餐具",
         "sentence": "He used a plastic straw to drink his papaya milk.",
@@ -7649,6 +8794,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "teapot",
+        "pos": "n.",
         "meaning": "茶壺",
         "theme": "餐具",
         "sentence": "Grandmother put some hot water into the traditional teapot.",
@@ -7657,6 +8803,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wok",
+        "pos": "n.",
         "meaning": "炒鍋",
         "theme": "餐具",
         "sentence": "My father cooks the best fried rice in his old wok.",
@@ -7665,6 +8812,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bill",
+        "pos": "n.",
         "meaning": "帳單；紙鈔",
         "theme": "金融",
         "sentence": "Let's pay the bill and go to the movie theater.",
@@ -7673,6 +8821,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cash",
+        "pos": "n.",
         "meaning": "現金",
         "theme": "金融",
         "sentence": "You can only pay with cash at this small night market stall.",
@@ -7681,6 +8830,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cent",
+        "pos": "n.",
         "meaning": "分（貨幣單位）",
         "theme": "金融",
         "sentence": "One hundred cents make one US dollar.",
@@ -7689,7 +8839,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "change",
-        "meaning": "零錢",
+        "pos": "n. / v.",
+        "meaning": "零錢 / 改變",
         "theme": "金融",
         "sentence": "Here is your hot dog, and here is your change.",
         "sentenceZh": "這是你的熱狗，這是找你的零錢。",
@@ -7697,6 +8848,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "coin",
+        "pos": "n.",
         "meaning": "硬幣",
         "theme": "金融",
         "sentence": "I dropped a ten-dollar coin on the floor.",
@@ -7705,6 +8857,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "credit card",
+        "pos": "n.",
         "meaning": "信用卡",
         "theme": "金融",
         "sentence": "My dad paid for the new television with his credit card.",
@@ -7713,6 +8866,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dollar",
+        "pos": "n.",
         "meaning": "元（貨幣單位）",
         "theme": "金融",
         "sentence": "The cute pen in the stationery store only costs twenty dollars.",
@@ -7721,6 +8875,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "money",
+        "pos": "n.",
         "meaning": "錢",
         "theme": "金融",
         "sentence": "You should save some money to buy the things you want.",
@@ -7729,6 +8884,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "price",
+        "pos": "n.",
         "meaning": "價格",
         "theme": "金融",
         "sentence": "The price of this badminton racket is too high for me.",
@@ -7737,6 +8893,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fee",
+        "pos": "n.",
         "meaning": "費用",
         "theme": "金融",
         "sentence": "We need to pay a small fee to join the English club.",
@@ -7745,6 +8902,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "income",
+        "pos": "n.",
         "meaning": "收入",
         "theme": "金融",
         "sentence": "His father has a good income from his company.",
@@ -7753,7 +8911,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tip",
-        "meaning": "小費；提示",
+        "pos": "n. / v.",
+        "meaning": "小費；提示 / 給小費",
         "theme": "金融",
         "sentence": "The teacher gave us a useful tip to remember this grammar rule.",
         "sentenceZh": "老師給了我們一個有用的提示來記住這個文法規則。",
@@ -7761,6 +8920,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "borrow",
+        "pos": "v.",
         "meaning": "借入",
         "theme": "金融",
         "sentence": "Can I borrow your eraser for a minute, please?",
@@ -7769,6 +8929,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "buy",
+        "pos": "v.",
         "meaning": "購買",
         "theme": "金融",
         "sentence": "I want to buy a new comic book this weekend.",
@@ -7777,6 +8938,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "charge",
+        "pos": "n. / v.",
         "meaning": "收費；充電",
         "theme": "金融",
         "sentence": "How much does the hotel charge for one night?",
@@ -7785,7 +8947,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cost",
-        "meaning": "花費",
+        "pos": "v. / n.",
+        "meaning": "花費 / 成本",
         "theme": "金融",
         "sentence": "It costs a lot of money to fly to the USA.",
         "sentenceZh": "飛去美國要花很多錢。",
@@ -7793,6 +8956,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "earn",
+        "pos": "v.",
         "meaning": "賺取",
         "theme": "金融",
         "sentence": "She works hard every day to earn money for her family.",
@@ -7801,6 +8965,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lend",
+        "pos": "v.",
         "meaning": "借出",
         "theme": "金融",
         "sentence": "I can lend you my umbrella if it rains later.",
@@ -7809,7 +8974,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pay",
-        "meaning": "支付",
+        "pos": "v. / n.",
+        "meaning": "支付 / 薪水",
         "theme": "金融",
         "sentence": "You have to pay for your ticket before getting on the train.",
         "sentenceZh": "上火車前你必須先支付車票錢。",
@@ -7817,6 +8983,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spend",
+        "pos": "v.",
         "meaning": "花費",
         "theme": "金融",
         "sentence": "Don't spend too much time playing video games.",
@@ -7825,6 +8992,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "animal",
+        "pos": "n.",
         "meaning": "動物",
         "theme": "動物",
         "sentence": "The dog is a very friendly and smart animal.",
@@ -7832,343 +9000,8 @@ const DICTIONARY_DATA = [
         "otherForms": "animals (複數型)"
     },
     {
-        "word": "bear",
-        "meaning": "熊/忍受",
-        "theme": "動物",
-        "sentence": "The brown bear is sleeping in the cave for the winter.",
-        "sentenceZh": "棕熊正在洞穴裡冬眠。",
-        "otherForms": "bears (複數型), bears (三單), bearing (ing型), bore (過去式(不規則))"
-    },
-    {
-        "word": "cat",
-        "meaning": "貓",
-        "theme": "動物",
-        "sentence": "My cute cat likes to sleep on the soft sofa.",
-        "sentenceZh": "我可愛的貓喜歡睡在柔軟的沙發上。",
-        "otherForms": "cats (複數型)"
-    },
-    {
-        "word": "chicken",
-        "meaning": "雞",
-        "theme": "動物",
-        "sentence": "We feed the chickens on the farm every morning.",
-        "sentenceZh": "我們每天早上在農場餵雞。",
-        "otherForms": "chickens (複數型(當雞可數))"
-    },
-    {
-        "word": "cow",
-        "meaning": "牛",
-        "theme": "動物",
-        "sentence": "The black and white cow is eating grass in the field.",
-        "sentenceZh": "那頭黑白相間的牛正在田裡吃草。",
-        "otherForms": "cows (複數型)"
-    },
-    {
-        "word": "deer",
-        "meaning": "鹿",
-        "theme": "動物",
-        "sentence": "We saw a wild deer running fast in the woods.",
-        "sentenceZh": "我們看到一隻野鹿在樹林裡跑得飛快。",
-        "otherForms": "deer (單複數同型)"
-    },
-    {
-        "word": "dinosaur",
-        "meaning": "恐龍",
-        "theme": "動物",
-        "sentence": "The T-Rex was a very large and scary dinosaur.",
-        "sentenceZh": "暴龍是一種非常巨大且可怕的恐龍。",
-        "otherForms": "dinosaurs (複數型)"
-    },
-    {
-        "word": "dog",
-        "meaning": "狗",
-        "theme": "動物",
-        "sentence": "Remember to walk the dog in the park after dinner.",
-        "sentenceZh": "記得晚餐後去公園遛狗。",
-        "otherForms": "dogs (複數型)"
-    },
-    {
-        "word": "donkey",
-        "meaning": "驢",
-        "theme": "動物",
-        "sentence": "The strong donkey carried heavy bags on its back.",
-        "sentenceZh": "強壯的驢子背上載著重重的袋子。",
-        "otherForms": "donkeys (複數型)"
-    },
-    {
-        "word": "duck",
-        "meaning": "鴨",
-        "theme": "動物",
-        "sentence": "The yellow duck is swimming happily in the pond.",
-        "sentenceZh": "黃色小鴨正在池塘裡開心地游泳。",
-        "otherForms": "ducks (複數型)"
-    },
-    {
-        "word": "eagle",
-        "meaning": "老鷹",
-        "theme": "動物",
-        "sentence": "The brave eagle flies high in the blue sky.",
-        "sentenceZh": "勇敢的老鷹在藍天中高飛。",
-        "otherForms": "eagles (複數型)"
-    },
-    {
-        "word": "elephant",
-        "meaning": "大象",
-        "theme": "動物",
-        "sentence": "The elephant uses its long trunk to drink water.",
-        "sentenceZh": "大象用牠長長的鼻子喝水。",
-        "otherForms": "elephants (複數型)"
-    },
-    {
-        "word": "fox",
-        "meaning": "狐狸",
-        "theme": "動物",
-        "sentence": "The red fox quietly caught a small mouse in the field.",
-        "sentenceZh": "紅狐狸悄悄地在田野裡抓住了一隻小老鼠。",
-        "otherForms": "foxes (複數型(加es))"
-    },
-    {
-        "word": "frog",
-        "meaning": "青蛙",
-        "theme": "動物",
-        "sentence": "The green frog jumped into the water with a splash.",
-        "sentenceZh": "綠色青蛙撲通一聲跳進了水裡。",
-        "otherForms": "frogs (複數型)"
-    },
-    {
-        "word": "goat",
-        "meaning": "山羊",
-        "theme": "動物",
-        "sentence": "The goat easily climbed to the top of the rocks.",
-        "sentenceZh": "山羊輕鬆地爬到了岩石頂端。",
-        "otherForms": "goats (複數型)"
-    },
-    {
-        "word": "goose",
-        "meaning": "鵝",
-        "theme": "動物",
-        "sentence": "The white goose made a loud noise when we walked near it.",
-        "sentenceZh": "當我們走近時，白鵝發出了很大的叫聲。",
-        "otherForms": "geese (複數型(不規則))"
-    },
-    {
-        "word": "hen",
-        "meaning": "母雞",
-        "theme": "動物",
-        "sentence": "The brown hen laid a fresh egg this morning.",
-        "sentenceZh": "那隻棕色母雞今天早上生了一顆新鮮的蛋。",
-        "otherForms": "hens (複數型)"
-    },
-    {
-        "word": "hippo",
-        "meaning": "河馬",
-        "theme": "動物",
-        "sentence": "The big hippo loves to stay in the water all day.",
-        "sentenceZh": "大河馬喜歡整天待在水裡。",
-        "otherForms": "hippos (複數型)"
-    },
-    {
-        "word": "horse",
-        "meaning": "馬",
-        "theme": "動物",
-        "sentence": "He likes to ride his brown horse on the wide plain.",
-        "sentenceZh": "他喜歡在寬廣的平原上騎他那匹棕馬。",
-        "otherForms": "horses (複數型)"
-    },
-    {
-        "word": "kangaroo",
-        "meaning": "袋鼠",
-        "theme": "動物",
-        "sentence": "A mother kangaroo carries her baby in her front pocket.",
-        "sentenceZh": "kangaroo 媽媽把寶寶裝在她前面的育兒袋裡。",
-        "otherForms": "kangaroos (複數型)"
-    },
-    {
-        "word": "kitten",
-        "meaning": "小貓",
-        "theme": "動物",
-        "sentence": "The little kitten is playing with a ball of yarn.",
-        "sentenceZh": "小貓正在玩毛線球。",
-        "otherForms": "kittens (複數型)"
-    },
-    {
-        "word": "koala",
-        "meaning": "無尾熊",
-        "theme": "動物",
-        "sentence": "The cute koala sleeps in the tree for many hours a day.",
-        "sentenceZh": "可愛無尾熊一天在樹上睡好幾個小時。",
-        "otherForms": "koalas (複數型)"
-    },
-    {
-        "word": "lamb",
-        "meaning": "小羊",
-        "theme": "動物",
-        "sentence": "The little white lamb followed its mother everywhere.",
-        "sentenceZh": "小白羊走到哪都跟著牠媽媽。",
-        "otherForms": "lambs (複數型)"
-    },
-    {
-        "word": "lion",
-        "meaning": "獅子",
-        "theme": "動物",
-        "sentence": "The strong lion is the king of the wild animals.",
-        "sentenceZh": "強壯的獅子是野生動物之王。",
-        "otherForms": "lions (複數型)"
-    },
-    {
-        "word": "monkey",
-        "meaning": "猴子",
-        "theme": "動物",
-        "sentence": "The clever monkey learned how to open the box.",
-        "sentenceZh": "聰明的猴子學會了如何打開盒子。",
-        "otherForms": "monkeys (複數型)"
-    },
-    {
-        "word": "monster",
-        "meaning": "怪物",
-        "theme": "動物",
-        "sentence": "In this vocabulary game, you must spell the word correctly to defeat the monster.",
-        "sentenceZh": "在這個單字遊戲裡，你必須正確拼寫單字才能打敗怪物。",
-        "otherForms": "monsters (複數型)"
-    },
-    {
-        "word": "mouse",
-        "meaning": "老鼠",
-        "theme": "動物",
-        "sentence": "The cat quickly ran after the small mouse.",
-        "sentenceZh": "貓迅速地追趕那隻小老鼠。",
-        "otherForms": "mice (複數型(不規則))"
-    },
-    {
-        "word": "ox",
-        "meaning": "公牛",
-        "theme": "動物",
-        "sentence": "The strong ox helped the farmer work in the muddy field.",
-        "sentenceZh": "強壯的公牛幫助農夫在泥濘的田裡工作。",
-        "otherForms": "oxen (複數型(不規則))"
-    },
-    {
-        "word": "panda",
-        "meaning": "熊貓",
-        "theme": "動物",
-        "sentence": "The black and white panda is eating green bamboo.",
-        "sentenceZh": "黑白相間的貓熊正在吃綠竹子。",
-        "otherForms": "pandas (複數型)"
-    },
-    {
-        "word": "parrot",
-        "meaning": "鸚鵡",
-        "theme": "動物",
-        "sentence": "This smart parrot can repeat what you say!",
-        "sentenceZh": "這隻聰明的鸚鵡能重複你說的話！",
-        "otherForms": "parrots (複數型)"
-    },
-    {
-        "word": "pet",
-        "meaning": "寵物",
-        "theme": "動物",
-        "sentence": "Many people treat their pets like their own family members.",
-        "sentenceZh": "許多人把他們的寵物當作自己的家人對待。",
-        "otherForms": "pets (複數型), pets"
-    },
-    {
-        "word": "pig",
-        "meaning": "豬",
-        "theme": "動物",
-        "sentence": "The little pig is happily eating its food in the farm.",
-        "sentenceZh": "小豬正在農場裡開心地吃著食物。",
-        "otherForms": "pigs (複數型)"
-    },
-    {
-        "word": "pigeon",
-        "meaning": "鴿子",
-        "theme": "動物",
-        "sentence": "A gray pigeon flew down to eat the bread crumbs on the floor.",
-        "sentenceZh": "一隻灰鴿子飛下來吃地上的麵包屑。",
-        "otherForms": "pigeons (複數型)"
-    },
-    {
-        "word": "puppy",
-        "meaning": "小狗",
-        "theme": "動物",
-        "sentence": "The cute puppy wagged its tail when I came home.",
-        "sentenceZh": "當我回家時，可愛的小狗搖了搖尾巴。",
-        "otherForms": "puppies (複數型(去y加ies))"
-    },
-    {
-        "word": "rabbit",
-        "meaning": "兔子",
-        "theme": "動物",
-        "sentence": "The white rabbit has very long ears and soft hair.",
-        "sentenceZh": "白兔有著很長的耳朵和柔軟的毛。",
-        "otherForms": "rabbits (複數型)"
-    },
-    {
-        "word": "rat",
-        "meaning": "大鼠",
-        "theme": "動物",
-        "sentence": "A big rat ran across the dark street last night.",
-        "sentenceZh": "昨晚一隻大老鼠跑過了昏暗的街道。",
-        "otherForms": "rats (複數型)"
-    },
-    {
-        "word": "sheep",
-        "meaning": "綿羊",
-        "theme": "動物",
-        "sentence": "The farmer uses the wool from the sheep to make warm clothes.",
-        "sentenceZh": "農夫用綿羊的羊毛來做保暖的衣服。",
-        "otherForms": "sheep (單複數同型)"
-    },
-    {
-        "word": "swan",
-        "meaning": "天鵝",
-        "theme": "動物",
-        "sentence": "The beautiful white swan swam gracefully on the calm lake.",
-        "sentenceZh": "美麗的白天鵝在平靜的湖面上優雅地游著。",
-        "otherForms": "swans (複數型)"
-    },
-    {
-        "word": "tiger",
-        "meaning": "老虎",
-        "theme": "動物",
-        "sentence": "The fierce tiger ran quickly to catch its food.",
-        "sentenceZh": "兇猛的老虎快速奔跑去抓食物。",
-        "otherForms": "tigers (複數型)"
-    },
-    {
-        "word": "turkey",
-        "meaning": "火雞",
-        "theme": "動物",
-        "sentence": "We eat a large roast turkey to celebrate Thanksgiving.",
-        "sentenceZh": "我們吃一大隻烤火雞來慶祝感恩節。",
-        "otherForms": "turkeys (複數型)"
-    },
-    {
-        "word": "wolf",
-        "meaning": "狼",
-        "theme": "動物",
-        "sentence": "The gray wolf howled loudly at the full moon.",
-        "sentenceZh": "灰狼對著滿月大聲嚎叫。",
-        "otherForms": "wolves (複數型(去f加ves))"
-    },
-    {
-        "word": "zebra",
-        "meaning": "斑馬",
-        "theme": "動物",
-        "sentence": "The zebra has black and white stripes on its body.",
-        "sentenceZh": "斑馬身上有黑白相間的條紋。",
-        "otherForms": "zebras (複數型)"
-    },
-    {
-        "word": "insect",
-        "meaning": "昆蟲",
-        "theme": "動物",
-        "sentence": "A butterfly is a very beautiful kind of flying insect.",
-        "sentenceZh": "蝴蝶是一種非常美麗的飛行昆蟲。",
-        "otherForms": "insects (複數型)"
-    },
-    {
         "word": "ant",
+        "pos": "n.",
         "meaning": "螞蟻",
         "theme": "動物",
         "sentence": "The hardworking ants carried the sweet food away.",
@@ -8177,14 +9010,25 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bat",
-        "meaning": "蝙蝠",
+        "pos": "n.",
+        "meaning": "蝙蝠；球棒",
         "theme": "動物",
         "sentence": "A bat is not a bird; it is an animal that sleeps during the day.",
         "sentenceZh": "蝙蝠不是鳥類，牠是一種在白天睡覺的動物。",
         "otherForms": "bats (複數型)"
     },
     {
+        "word": "bear",
+        "pos": "n. / v.",
+        "meaning": "熊 / 忍受",
+        "theme": "動物",
+        "sentence": "The brown bear is sleeping in the cave for the winter.",
+        "sentenceZh": "棕熊正在洞穴裡冬眠。",
+        "otherForms": "bears (複數型/ 三單), bearing (ing型), bore (過去式(不規則)), borne (過去分詞(不規則))"
+    },
+    {
         "word": "bee",
+        "pos": "n.",
         "meaning": "蜜蜂",
         "theme": "動物",
         "sentence": "The busy bee is collecting sweet honey from the red flower.",
@@ -8193,6 +9037,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bird",
+        "pos": "n.",
         "meaning": "鳥",
         "theme": "動物",
         "sentence": "A little blue bird is singing a beautiful song in the tree.",
@@ -8201,6 +9046,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bug",
+        "pos": "n.",
         "meaning": "小蟲",
         "theme": "動物",
         "sentence": "I have to fix a bug in my HTML game code before tomorrow.",
@@ -8209,6 +9055,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "butterfly",
+        "pos": "n.",
         "meaning": "蝴蝶",
         "theme": "動物",
         "sentence": "The colorful butterfly landed softly on the pink rose.",
@@ -8216,7 +9063,26 @@ const DICTIONARY_DATA = [
         "otherForms": "butterflies (複數型(去y加ies))"
     },
     {
+        "word": "cat",
+        "pos": "n.",
+        "meaning": "貓",
+        "theme": "動物",
+        "sentence": "My cute cat likes to sleep on the soft sofa.",
+        "sentenceZh": "我可愛的貓喜歡睡在柔軟的沙發上。",
+        "otherForms": "cats (複數型)"
+    },
+    {
+        "word": "chicken",
+        "pos": "n.",
+        "meaning": "雞",
+        "theme": "動物",
+        "sentence": "We feed the chickens on the farm every morning.",
+        "sentenceZh": "我們每天早上在農場餵雞。",
+        "otherForms": "chickens (複數型(當雞可數))"
+    },
+    {
         "word": "cockroach",
+        "pos": "n.",
         "meaning": "蟑螂",
         "theme": "動物",
         "sentence": "She screamed loudly when she saw a cockroach in the kitchen.",
@@ -8224,7 +9090,80 @@ const DICTIONARY_DATA = [
         "otherForms": "cockroaches (複數型(加es))"
     },
     {
+        "word": "cow",
+        "pos": "n.",
+        "meaning": "牛",
+        "theme": "動物",
+        "sentence": "The black and white cow is eating grass in the field.",
+        "sentenceZh": "那頭黑白相間的牛正在田裡吃草。",
+        "otherForms": "cows (複數型)"
+    },
+    {
+        "word": "crab",
+        "pos": "n.",
+        "meaning": "螃蟹",
+        "theme": "動物",
+        "sentence": "The crab uses its big claws to protect itself on the beach.",
+        "sentenceZh": "螃蟹在海灘上用牠的大螯來保護自己。",
+        "otherForms": "crabs (複數型)"
+    },
+    {
+        "word": "deer",
+        "pos": "n.",
+        "meaning": "鹿",
+        "theme": "動物",
+        "sentence": "We saw a wild deer running fast in the woods.",
+        "sentenceZh": "我們看到一隻野鹿在樹林裡跑得飛快。",
+        "otherForms": "deer (單複數同型)"
+    },
+    {
+        "word": "dinosaur",
+        "pos": "n.",
+        "meaning": "恐龍",
+        "theme": "動物",
+        "sentence": "The T-Rex was a very large and scary dinosaur.",
+        "sentenceZh": "暴龍是一種非常巨大且可怕的恐龍。",
+        "otherForms": "dinosaurs (複數型)"
+    },
+    {
+        "word": "dog",
+        "pos": "n.",
+        "meaning": "狗",
+        "theme": "動物",
+        "sentence": "Remember to walk the dog in the park after dinner.",
+        "sentenceZh": "記得晚餐後去公園遛狗。",
+        "otherForms": "dogs (複數型)"
+    },
+    {
+        "word": "dolphin",
+        "pos": "n.",
+        "meaning": "海豚",
+        "theme": "動物",
+        "sentence": "The smart dolphin jumped high out of the ocean water.",
+        "sentenceZh": "聰明的海豚從海水中跳得高高的。",
+        "otherForms": "dolphins (複數型)"
+    },
+    {
+        "word": "donkey",
+        "pos": "n.",
+        "meaning": "驢",
+        "theme": "動物",
+        "sentence": "The strong donkey carried heavy bags on its back.",
+        "sentenceZh": "強壯的驢子背上載著重重的袋子。",
+        "otherForms": "donkeys (複數型)"
+    },
+    {
+        "word": "dove",
+        "pos": "n.",
+        "meaning": "鴿子",
+        "theme": "動物",
+        "sentence": "A white dove is a symbol of peace.",
+        "sentenceZh": "白鴿是和平的象徵。",
+        "otherForms": "doves (複數型), pigeon (別稱)"
+    },
+    {
         "word": "dragon",
+        "pos": "n.",
         "meaning": "龍",
         "theme": "動物",
         "sentence": "In Chinese culture, the dragon is a symbol of great power.",
@@ -8232,7 +9171,179 @@ const DICTIONARY_DATA = [
         "otherForms": "dragons (複數型)"
     },
     {
+        "word": "duck",
+        "pos": "n.",
+        "meaning": "鴨",
+        "theme": "動物",
+        "sentence": "The yellow duck is swimming happily in the pond.",
+        "sentenceZh": "黃色小鴨正在池塘裡開心地游泳。",
+        "otherForms": "ducks (複數型)"
+    },
+    {
+        "word": "eagle",
+        "pos": "n.",
+        "meaning": "老鷹",
+        "theme": "動物",
+        "sentence": "The brave eagle flies high in the blue sky.",
+        "sentenceZh": "勇敢的老鷹在藍天中高飛。",
+        "otherForms": "eagles (複數型)"
+    },
+    {
+        "word": "elephant",
+        "pos": "n.",
+        "meaning": "大象",
+        "theme": "動物",
+        "sentence": "The elephant uses its long trunk to drink water.",
+        "sentenceZh": "大象用牠長長的鼻子喝水。",
+        "otherForms": "elephants (複數型)"
+    },
+    {
+        "word": "fish",
+        "pos": "n. / v.",
+        "meaning": "魚 / 釣魚",
+        "theme": "動物",
+        "sentence": "There are many colorful fish swimming in this large pond.",
+        "sentenceZh": "有許多色彩繽紛的魚在這個大池塘裡游來游去。",
+        "otherForms": "fish (單複數同型)"
+    },
+    {
+        "word": "fox",
+        "pos": "n.",
+        "meaning": "狐狸",
+        "theme": "動物",
+        "sentence": "The red fox quietly caught a small mouse in the field.",
+        "sentenceZh": "紅狐狸悄悄地在田野裡抓住了一隻小老鼠。",
+        "otherForms": "foxes (複數型(加es))"
+    },
+    {
+        "word": "frog",
+        "pos": "n.",
+        "meaning": "青蛙",
+        "theme": "動物",
+        "sentence": "The green frog jumped into the water with a splash.",
+        "sentenceZh": "綠色青蛙撲通一聲跳進了水裡。",
+        "otherForms": "frogs (複數型)"
+    },
+    {
+        "word": "goat",
+        "pos": "n.",
+        "meaning": "山羊",
+        "theme": "動物",
+        "sentence": "The goat easily climbed to the top of the rocks.",
+        "sentenceZh": "山羊輕鬆地爬到了岩石頂端。",
+        "otherForms": "goats (複數型)"
+    },
+    {
+        "word": "goose",
+        "pos": "n.",
+        "meaning": "鵝",
+        "theme": "動物",
+        "sentence": "The white goose made a loud noise when we walked near it.",
+        "sentenceZh": "當我們走近時，白鵝發出了很大的叫聲。",
+        "otherForms": "geese (複數型(不規則))"
+    },
+    {
+        "word": "hen",
+        "pos": "n.",
+        "meaning": "母雞",
+        "theme": "動物",
+        "sentence": "The brown hen laid a fresh egg this morning.",
+        "sentenceZh": "那隻棕色母雞今天早上生了一顆新鮮的蛋。",
+        "otherForms": "hens (複數型)"
+    },
+    {
+        "word": "hippo",
+        "pos": "n.",
+        "meaning": "河馬",
+        "theme": "動物",
+        "sentence": "The big hippo loves to stay in the water all day.",
+        "sentenceZh": "大河馬喜歡整天待在水裡。",
+        "otherForms": "hippos (複數型)"
+    },
+    {
+        "word": "horse",
+        "pos": "n.",
+        "meaning": "馬",
+        "theme": "動物",
+        "sentence": "He likes to ride his brown horse on the wide plain.",
+        "sentenceZh": "他喜歡在寬廣的平原上騎他那匹棕馬。",
+        "otherForms": "horses (複數型)"
+    },
+    {
+        "word": "insect",
+        "pos": "n.",
+        "meaning": "昆蟲",
+        "theme": "動物",
+        "sentence": "A butterfly is a very beautiful kind of flying insect.",
+        "sentenceZh": "蝴蝶是一種非常美麗的飛行昆蟲。",
+        "otherForms": "insects (複數型)"
+    },
+    {
+        "word": "kangaroo",
+        "pos": "n.",
+        "meaning": "袋鼠",
+        "theme": "動物",
+        "sentence": "A mother kangaroo carries her baby in her front pocket.",
+        "sentenceZh": "kangaroo 媽媽把寶寶裝在她前面的育兒袋裡。",
+        "otherForms": "kangaroos (複數型)"
+    },
+    {
+        "word": "kitten",
+        "pos": "n.",
+        "meaning": "小貓",
+        "theme": "動物",
+        "sentence": "The little kitten is playing with a ball of yarn.",
+        "sentenceZh": "小貓正在玩毛線球。",
+        "otherForms": "kittens (複數型)"
+    },
+    {
+        "word": "koala",
+        "pos": "n.",
+        "meaning": "無尾熊",
+        "theme": "動物",
+        "sentence": "The cute koala sleeps in the tree for many hours a day.",
+        "sentenceZh": "可愛無尾熊一天在樹上睡好幾個小時。",
+        "otherForms": "koalas (複數型)"
+    },
+    {
+        "word": "lamb",
+        "pos": "n.",
+        "meaning": "小羊",
+        "theme": "動物",
+        "sentence": "The little white lamb followed its mother everywhere.",
+        "sentenceZh": "小白羊走到哪都跟著牠媽媽。",
+        "otherForms": "lambs (複數型)"
+    },
+    {
+        "word": "lion",
+        "pos": "n.",
+        "meaning": "獅子",
+        "theme": "動物",
+        "sentence": "The strong lion is the king of the wild animals.",
+        "sentenceZh": "強壯的獅子是野生動物之王。",
+        "otherForms": "lions (複數型)"
+    },
+    {
+        "word": "monkey",
+        "pos": "n.",
+        "meaning": "猴子",
+        "theme": "動物",
+        "sentence": "The clever monkey learned how to open the box.",
+        "sentenceZh": "聰明的猴子學會了如何打開盒子。",
+        "otherForms": "monkeys (複數型)"
+    },
+    {
+        "word": "monster",
+        "pos": "n.",
+        "meaning": "怪物",
+        "theme": "動物",
+        "sentence": "In this vocabulary game, you must spell the word correctly to defeat the monster.",
+        "sentenceZh": "在這個單字遊戲裡，你必須正確拼寫單字才能打敗怪物。",
+        "otherForms": "monsters (複數型)"
+    },
+    {
         "word": "mosquito",
+        "pos": "n.",
         "meaning": "蚊子",
         "theme": "動物",
         "sentence": "A mosquito bit me on the arm and now it is very itchy.",
@@ -8240,7 +9351,125 @@ const DICTIONARY_DATA = [
         "otherForms": "mosquitoes (複數型(加es))"
     },
     {
+        "word": "mouse",
+        "pos": "n.",
+        "meaning": "老鼠",
+        "theme": "動物",
+        "sentence": "The cat quickly ran after the small mouse.",
+        "sentenceZh": "貓迅速地追趕那隻小老鼠。",
+        "otherForms": "mice (複數型(不規則))"
+    },
+    {
+        "word": "ox",
+        "pos": "n.",
+        "meaning": "公牛",
+        "theme": "動物",
+        "sentence": "The strong ox helped the farmer work in the muddy field.",
+        "sentenceZh": "強壯的公牛幫助農夫在泥濘的田裡工作。",
+        "otherForms": "oxen (複數型(不規則))"
+    },
+    {
+        "word": "panda",
+        "pos": "n.",
+        "meaning": "熊貓",
+        "theme": "動物",
+        "sentence": "The black and white panda is eating green bamboo.",
+        "sentenceZh": "黑白相間的貓熊正在吃綠竹子。",
+        "otherForms": "pandas (複數型)"
+    },
+    {
+        "word": "parrot",
+        "pos": "n.",
+        "meaning": "鸚鵡",
+        "theme": "動物",
+        "sentence": "This smart parrot can repeat what you say!",
+        "sentenceZh": "這隻聰明的鸚鵡能重複你說的話！",
+        "otherForms": "parrots (複數型)"
+    },
+    {
+        "word": "pet",
+        "pos": "n.",
+        "meaning": "寵物",
+        "theme": "動物",
+        "sentence": "Many people treat their pets like their own family members.",
+        "sentenceZh": "許多人把他們的寵物當作自己的家人對待。",
+        "otherForms": "pets (複數型), pets"
+    },
+    {
+        "word": "pig",
+        "pos": "n.",
+        "meaning": "豬",
+        "theme": "動物",
+        "sentence": "The little pig is happily eating its food in the farm.",
+        "sentenceZh": "小豬正在農場裡開心地吃著食物。",
+        "otherForms": "pigs (複數型)"
+    },
+    {
+        "word": "pigeon",
+        "pos": "n.",
+        "meaning": "鴿子",
+        "theme": "動物",
+        "sentence": "A gray pigeon flew down to eat the bread crumbs on the floor.",
+        "sentenceZh": "一隻灰鴿子飛下來吃地上的麵包屑。",
+        "otherForms": "pigeons (複數型)"
+    },
+    {
+        "word": "puppy",
+        "pos": "n.",
+        "meaning": "小狗",
+        "theme": "動物",
+        "sentence": "The cute puppy wagged its tail when I came home.",
+        "sentenceZh": "當我回家時，可愛的小狗搖了搖尾巴。",
+        "otherForms": "puppies (複數型(去y加ies))"
+    },
+    {
+        "word": "rabbit",
+        "pos": "n.",
+        "meaning": "兔子",
+        "theme": "動物",
+        "sentence": "The white rabbit has very long ears and soft hair.",
+        "sentenceZh": "白兔有著很長的耳朵和柔軟的毛。",
+        "otherForms": "rabbits (複數型)"
+    },
+    {
+        "word": "rat",
+        "pos": "n.",
+        "meaning": "大鼠",
+        "theme": "動物",
+        "sentence": "A big rat ran across the dark street last night.",
+        "sentenceZh": "昨晚一隻大老鼠跑過了昏暗的街道。",
+        "otherForms": "rats (複數型)"
+    },
+    {
+        "word": "shark",
+        "pos": "n.",
+        "meaning": "鯊魚",
+        "theme": "動物",
+        "sentence": "The dangerous shark has many rows of very sharp teeth.",
+        "sentenceZh": "危險的鯊魚有多排非常銳利的牙齒。",
+        "otherForms": "sharks (複數型)"
+    },
+    {
+        "word": "sheep",
+        "pos": "n.",
+        "meaning": "綿羊",
+        "theme": "動物",
+        "sentence": "The farmer uses the wool from the sheep to make warm clothes.",
+        "sentenceZh": "農夫用綿羊的羊毛來做保暖的衣服。",
+        "otherForms": "sheep (單複數同型)"
+    },
+    {
+        "word": "shrimp",
+        "pos": "n.",
+        "meaning": "蝦",
+        "theme": "動物",
+        "sentence": "I like to order fried rice with egg and fresh shrimp.",
+        "sentenceZh": "我喜歡點加了蛋和新鮮蝦子的炒飯。",
+        "otherForms": "shrimp/shrimps (複數型)"
+    },
+    {
         "word": "snail",
+        "pos": "n.",
         "meaning": "蝸牛",
         "theme": "動物",
         "sentence": "The little snail moves very slowly across the wet leaf.",
@@ -8249,6 +9478,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "snake",
+        "pos": "n.",
         "meaning": "蛇",
         "theme": "動物",
         "sentence": "Be careful of the poisonous snake when you hike in the woods.",
@@ -8257,6 +9487,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spider",
+        "pos": "n.",
         "meaning": "蜘蛛",
         "theme": "動物",
         "sentence": "The spider is making a large web in the corner of the room.",
@@ -8264,55 +9495,44 @@ const DICTIONARY_DATA = [
         "otherForms": "spiders (複數型)"
     },
     {
-        "word": "worm",
-        "meaning": "蠕蟲",
+        "word": "swan",
+        "pos": "n.",
+        "meaning": "天鵝",
         "theme": "動物",
-        "sentence": "The early bird catches the little worm.",
-        "sentenceZh": "早起的鳥兒有蟲吃。",
-        "otherForms": "worms (複數型)"
+        "sentence": "The beautiful white swan swam gracefully on the calm lake.",
+        "sentenceZh": "美麗的白天鵝在平靜的湖面上優雅地游著。",
+        "otherForms": "swans (複數型)"
     },
     {
-        "word": "crab",
-        "meaning": "螃蟹",
+        "word": "tail",
+        "pos": "n.",
+        "meaning": "尾巴",
         "theme": "動物",
-        "sentence": "The crab uses its big claws to protect itself on the beach.",
-        "sentenceZh": "螃蟹在海灘上用牠的大螯來保護自己。",
-        "otherForms": "crabs (複數型)"
+        "sentence": "My happy dog always wags its tail when I play with it.",
+        "sentenceZh": "我的狗很開心，當我和牠玩時牠總是搖尾巴。",
+        "otherForms": "tails (複數型)"
     },
     {
-        "word": "dolphin",
-        "meaning": "海豚",
+        "word": "tiger",
+        "pos": "n.",
+        "meaning": "老虎",
         "theme": "動物",
-        "sentence": "The smart dolphin jumped high out of the ocean water.",
-        "sentenceZh": "聰明的海豚從海水中跳得高高的。",
-        "otherForms": "dolphins (複數型)"
+        "sentence": "The fierce tiger ran quickly to catch its food.",
+        "sentenceZh": "兇猛的老虎快速奔跑去抓食物。",
+        "otherForms": "tigers (複數型)"
     },
     {
-        "word": "fish",
-        "meaning": "魚",
+        "word": "turkey",
+        "pos": "n.",
+        "meaning": "火雞",
         "theme": "動物",
-        "sentence": "There are many colorful fish swimming in this large pond.",
-        "sentenceZh": "有許多色彩繽紛的魚在這個大池塘裡游來游去。",
-        "otherForms": "fish (單複數同型)"
-    },
-    {
-        "word": "shark",
-        "meaning": "鯊魚",
-        "theme": "動物",
-        "sentence": "The dangerous shark has many rows of very sharp teeth.",
-        "sentenceZh": "危險的鯊魚有多排非常銳利的牙齒。",
-        "otherForms": "sharks (複數型)"
-    },
-    {
-        "word": "shrimp",
-        "meaning": "蝦",
-        "theme": "動物",
-        "sentence": "I like to order fried rice with egg and fresh shrimp.",
-        "sentenceZh": "我喜歡點加了蛋和新鮮蝦子的炒飯。",
-        "otherForms": "shrimp/shrimps (複數型)"
+        "sentence": "We eat a large roast turkey to celebrate Thanksgiving.",
+        "sentenceZh": "我們吃一大隻烤火雞來慶祝感恩節。",
+        "otherForms": "turkeys (複數型)"
     },
     {
         "word": "turtle",
+        "pos": "n.",
         "meaning": "烏龜",
         "theme": "動物",
         "sentence": "The heavy turtle walked slowly across the sand to the sea.",
@@ -8321,6 +9541,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "whale",
+        "pos": "n.",
         "meaning": "鯨魚",
         "theme": "動物",
         "sentence": "The blue whale is the largest living animal in the world.",
@@ -8328,15 +9549,8 @@ const DICTIONARY_DATA = [
         "otherForms": "whales (複數型)"
     },
     {
-        "word": "tail",
-        "meaning": "尾巴",
-        "theme": "動物",
-        "sentence": "My happy dog always wags its tail when I play with it.",
-        "sentenceZh": "我的狗很開心，當我和牠玩時牠總是搖尾巴。",
-        "otherForms": "tails (複數型)"
-    },
-    {
         "word": "wing",
+        "pos": "n.",
         "meaning": "翅膀",
         "theme": "動物",
         "sentence": "The bird hurt its left wing and couldn't fly away.",
@@ -8344,7 +9558,35 @@ const DICTIONARY_DATA = [
         "otherForms": "wings (複數型)"
     },
     {
+        "word": "wolf",
+        "pos": "n.",
+        "meaning": "狼",
+        "theme": "動物",
+        "sentence": "The gray wolf howled loudly at the full moon.",
+        "sentenceZh": "灰狼對著滿月大聲嚎叫。",
+        "otherForms": "wolves (複數型(去f加ves))"
+    },
+    {
+        "word": "worm",
+        "pos": "n.",
+        "meaning": "蠕蟲",
+        "theme": "動物",
+        "sentence": "The early bird catches the little worm.",
+        "sentenceZh": "早起的鳥兒有蟲吃。",
+        "otherForms": "worms (複數型)"
+    },
+    {
+        "word": "zebra",
+        "pos": "n.",
+        "meaning": "斑馬",
+        "theme": "動物",
+        "sentence": "The zebra has black and white stripes on its body.",
+        "sentenceZh": "斑馬身上有黑白相間的條紋。",
+        "otherForms": "zebras (複數型)"
+    },
+    {
         "word": "belt",
+        "pos": "n.",
         "meaning": "皮帶",
         "theme": "穿搭配件",
         "sentence": "Your pants are too loose; you need to wear a leather belt.",
@@ -8353,6 +9595,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blouse",
+        "pos": "n.",
         "meaning": "女裝上衣",
         "theme": "穿搭配件",
         "sentence": "My teacher wore a beautiful white blouse to work today.",
@@ -8361,6 +9604,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "button",
+        "pos": "n.",
         "meaning": "鈕扣",
         "theme": "穿搭配件",
         "sentence": "You need to push this red button to turn on the computer.",
@@ -8369,6 +9613,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cap",
+        "pos": "n.",
         "meaning": "棒球帽",
         "theme": "穿搭配件",
         "sentence": "He wore a blue baseball cap to protect his eyes from the sun.",
@@ -8377,6 +9622,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clothes",
+        "pos": "n.",
         "meaning": "衣服（總稱）",
         "theme": "穿搭配件",
         "sentence": "Please fold your clean clothes and put them in the closet.",
@@ -8385,6 +9631,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "coat",
+        "pos": "n.",
         "meaning": "外套",
         "theme": "穿搭配件",
         "sentence": "It is freezing outside, so make sure you wear a heavy coat.",
@@ -8393,7 +9640,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "comb",
-        "meaning": "梳子",
+        "pos": "n. / v.",
+        "meaning": "梳子 / 梳理",
         "theme": "穿搭配件",
         "sentence": "She used a plastic comb to make her long hair neat.",
         "sentenceZh": "她用一把塑膠梳子把長頭髮梳整齊。",
@@ -8401,6 +9649,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "contact lens",
+        "pos": "n.",
         "meaning": "隱形眼鏡",
         "theme": "穿搭配件",
         "sentence": "I usually wear contact lenses instead of glasses when I play badminton.",
@@ -8409,6 +9658,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cotton",
+        "pos": "n.",
         "meaning": "棉",
         "theme": "穿搭配件",
         "sentence": "This T-shirt is very comfortable because it is made of 100% cotton.",
@@ -8417,6 +9667,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "diamond",
+        "pos": "n.",
         "meaning": "鑽石",
         "theme": "穿搭配件",
         "sentence": "Her husband gave her a beautiful ring with a shiny diamond.",
@@ -8425,14 +9676,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dress",
-        "meaning": "連身裙；穿衣",
+        "pos": "n. / v.",
+        "meaning": "連身裙 / 穿衣",
         "theme": "穿搭配件",
         "sentence": "She wore a pretty red dress to the summer party.",
         "sentenceZh": "她穿了一件漂亮的紅洋裝去參加夏日派對。",
         "otherForms": "dresses (複數型(加es)), dresses (三單(加es)), dressing (ing型), dressed (過去式/分詞)"
     },
     {
-        "word": "earrings",
+        "word": "earring",
+        "pos": "n.",
         "meaning": "耳環",
         "theme": "穿搭配件",
         "sentence": "My mother got a pair of gold earrings for her birthday.",
@@ -8440,7 +9693,17 @@ const DICTIONARY_DATA = [
         "otherForms": "earrings (複數型(常以複數出現))"
     },
     {
+        "word": "fashion",
+        "pos": "n.",
+        "meaning": "時尚；流行",
+        "theme": "穿搭配件",
+        "sentence": "Short skirts are back in fashion this summer.",
+        "sentenceZh": "短裙在今年夏天又重新流行起來了。",
+        "otherForms": "fashions (複數型), fashionable (流行的 - 形容詞)"
+    },
+    {
         "word": "glove",
+        "pos": "n.",
         "meaning": "手套",
         "theme": "穿搭配件",
         "sentence": "Wear a thick glove when you take the hot pot out of the oven.",
@@ -8449,6 +9712,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gold",
+        "pos": "n.",
         "meaning": "黃金",
         "theme": "穿搭配件",
         "sentence": "The champion of the badminton race won a real gold medal.",
@@ -8457,6 +9721,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "haircut",
+        "pos": "n.",
         "meaning": "理髮",
         "theme": "穿搭配件",
         "sentence": "Your hair is getting too long; you should get a haircut soon.",
@@ -8465,6 +9730,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "handkerchief",
+        "pos": "n.",
         "meaning": "手帕",
         "theme": "穿搭配件",
         "sentence": "The gentleman gave her a clean handkerchief to wipe her tears.",
@@ -8473,6 +9739,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hat",
+        "pos": "n.",
         "meaning": "帽子",
         "theme": "穿搭配件",
         "sentence": "Don't forget to take off your hat when you go inside the classroom.",
@@ -8481,6 +9748,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hole",
+        "pos": "n.",
         "meaning": "破洞",
         "theme": "穿搭配件",
         "sentence": "There is a big hole in my right sock!",
@@ -8489,6 +9757,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jacket",
+        "pos": "n.",
         "meaning": "夾克",
         "theme": "穿搭配件",
         "sentence": "Put on your jacket; it is getting cold this evening.",
@@ -8497,6 +9766,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jeans",
+        "pos": "n.",
         "meaning": "牛仔褲",
         "theme": "穿搭配件",
         "sentence": "He almost always wears a simple white T-shirt and blue jeans.",
@@ -8505,6 +9775,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mask",
+        "pos": "n.",
         "meaning": "口罩；面具",
         "theme": "穿搭配件",
         "sentence": "We have to wear a face mask if we catch a bad cold.",
@@ -8513,6 +9784,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "necklace",
+        "pos": "n.",
         "meaning": "項鍊",
         "theme": "穿搭配件",
         "sentence": "She bought a silver necklace to match her beautiful dress.",
@@ -8520,7 +9792,8 @@ const DICTIONARY_DATA = [
         "otherForms": "necklaces (複數型)"
     },
     {
-        "word": "pajamas",
+        "word": "pajama",
+        "pos": "n.",
         "meaning": "睡衣",
         "theme": "穿搭配件",
         "sentence": "Put on your comfortable pajamas and get ready for bed.",
@@ -8529,6 +9802,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pants",
+        "pos": "n.",
         "meaning": "褲子",
         "theme": "穿搭配件",
         "sentence": "I need to buy a new pair of black pants for my new job.",
@@ -8537,6 +9811,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pocket",
+        "pos": "n.",
         "meaning": "口袋",
         "theme": "穿搭配件",
         "sentence": "He put his keys and cellphone in his jacket pocket.",
@@ -8545,6 +9820,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "purse",
+        "pos": "n.",
         "meaning": "錢包（女用）",
         "theme": "穿搭配件",
         "sentence": "My mom forgot to bring her purse to the supermarket.",
@@ -8553,6 +9829,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "raincoat",
+        "pos": "n.",
         "meaning": "雨衣",
         "theme": "穿搭配件",
         "sentence": "Wear your yellow raincoat so you don't get wet in the heavy rain.",
@@ -8561,14 +9838,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ring",
-        "meaning": "戒指；響鈴、按鈴",
+        "pos": "n. / v.",
+        "meaning": "戒指 / 響鈴；按鈴",
         "theme": "穿搭配件",
         "sentence": "The beautiful silver ring fits perfectly on her finger.",
         "sentenceZh": "這只美麗的銀戒指完美地戴在她的手指上。",
-        "otherForms": "rings (複數型), rings (三單), ringing (ing型), rang (過去式(不規則))"
+        "otherForms": "rings (複數型/ 三單), ringing (ing型), rang (過去式(不規則)), rung (過去分詞(不規則))"
     },
     {
         "word": "scarf",
+        "pos": "n.",
         "meaning": "圍巾",
         "theme": "穿搭配件",
         "sentence": "Wrap a warm scarf around your neck in the cold winter.",
@@ -8577,6 +9856,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shirt",
+        "pos": "n.",
         "meaning": "襯衫",
         "theme": "穿搭配件",
         "sentence": "He needs to wear a white shirt and a red tie to the meeting.",
@@ -8585,6 +9865,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shoes",
+        "pos": "n.",
         "meaning": "鞋子",
         "theme": "穿搭配件",
         "sentence": "Take off your dirty shoes before you enter the living room.",
@@ -8593,6 +9874,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shorts",
+        "pos": "n.",
         "meaning": "短褲",
         "theme": "穿搭配件",
         "sentence": "It is cool and comfortable to wear shorts in the hot summer.",
@@ -8601,6 +9883,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "silver",
+        "pos": "n.",
         "meaning": "銀",
         "theme": "穿搭配件",
         "sentence": "She uses a beautiful silver spoon to eat her dessert.",
@@ -8609,6 +9892,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "skirt",
+        "pos": "n.",
         "meaning": "裙子",
         "theme": "穿搭配件",
         "sentence": "The girls in our school have to wear a blue skirt on Mondays.",
@@ -8616,7 +9900,8 @@ const DICTIONARY_DATA = [
         "otherForms": "skirts (複數型)"
     },
     {
-        "word": "slippers",
+        "word": "slipper",
+        "pos": "n.",
         "meaning": "拖鞋",
         "theme": "穿搭配件",
         "sentence": "Put on your slippers so your feet won't feel cold on the floor.",
@@ -8624,7 +9909,8 @@ const DICTIONARY_DATA = [
         "otherForms": "slippers (複數型(常以複數出現))"
     },
     {
-        "word": "sneakers",
+        "word": "sneaker",
+        "pos": "n.",
         "meaning": "運動鞋",
         "theme": "穿搭配件",
         "sentence": "I need a good pair of sneakers for jogging in the park.",
@@ -8632,7 +9918,8 @@ const DICTIONARY_DATA = [
         "otherForms": "sneakers (複數型(常以複數出現))"
     },
     {
-        "word": "socks",
+        "word": "sock",
+        "pos": "n.",
         "meaning": "襪子",
         "theme": "穿搭配件",
         "sentence": "Remember to wash your dirty socks after playing sports.",
@@ -8641,7 +9928,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spot",
-        "meaning": "污點",
+        "pos": "n. / v.",
+        "meaning": "污點；地點 / 發現",
         "theme": "穿搭配件",
         "sentence": "There is a coffee spot on your white shirt!",
         "sentenceZh": "你的白襯衫上有個咖啡污點！",
@@ -8649,7 +9937,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "suit",
-        "meaning": "西裝",
+        "pos": "n. / v.",
+        "meaning": "西裝 / 適合",
         "theme": "穿搭配件",
         "sentence": "The businessman wore a black suit to the important meeting.",
         "sentenceZh": "商人穿了一套黑西裝去參加重要會議。",
@@ -8657,6 +9946,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sweater",
+        "pos": "n.",
         "meaning": "毛衣",
         "theme": "穿搭配件",
         "sentence": "Grandmother knitted a warm red sweater for me.",
@@ -8665,6 +9955,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "swimsuit",
+        "pos": "n.",
         "meaning": "泳衣",
         "theme": "穿搭配件",
         "sentence": "Don't forget to pack your swimsuit if we are going to the beach.",
@@ -8673,14 +9964,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tie",
-        "meaning": "領帶；綁",
+        "pos": "n. / v.",
+        "meaning": "領帶 / 綁",
         "theme": "穿搭配件",
         "sentence": "He wore a funny blue tie with his formal suit.",
         "sentenceZh": "他的正式西裝搭配了一條有趣的藍領帶。",
         "otherForms": "ties (複數型), ties (三單), tying (ing型(去ie加ying)), tied (過去式/分詞)"
     },
     {
-        "word": "trousers",
+        "word": "trouser",
+        "pos": "n.",
         "meaning": "長褲",
         "theme": "穿搭配件",
         "sentence": "The school uniform requires boys to wear long dark trousers.",
@@ -8689,7 +9982,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "T-shirt",
-        "meaning": "T 恤",
+        "pos": "n.",
+        "meaning": "T恤",
         "theme": "穿搭配件",
         "sentence": "She gave me a cool T-shirt with my favorite 80s band on it.",
         "sentenceZh": "她送我一件印有我最愛的 80 年代樂團的酷炫 T 恤。",
@@ -8697,6 +9991,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "umbrella",
+        "pos": "n.",
         "meaning": "雨傘",
         "theme": "穿搭配件",
         "sentence": "You had better take an umbrella; the sky looks very dark.",
@@ -8705,6 +10000,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "underwear",
+        "pos": "n.",
         "meaning": "內衣",
         "theme": "穿搭配件",
         "sentence": "Pack enough clean underwear for our three-day trip.",
@@ -8713,6 +10009,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "uniform",
+        "pos": "n.",
         "meaning": "制服",
         "theme": "穿搭配件",
         "sentence": "Students have to wear their school uniform from Monday to Friday.",
@@ -8721,6 +10018,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "vest",
+        "pos": "n.",
         "meaning": "背心",
         "theme": "穿搭配件",
         "sentence": "The police officer wore a heavy bulletproof vest for safety.",
@@ -8729,6 +10027,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wallet",
+        "pos": "n.",
         "meaning": "皮夾（男用）",
         "theme": "穿搭配件",
         "sentence": "My dad keeps his credit cards and cash in his brown leather wallet.",
@@ -8737,6 +10036,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "camera",
+        "pos": "n.",
         "meaning": "相機",
         "theme": "電子產品",
         "sentence": "He used a professional camera to take beautiful photos of nature.",
@@ -8745,6 +10045,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cellphone",
+        "pos": "n.",
         "meaning": "手機",
         "theme": "電子產品",
         "sentence": "You must turn off your cellphone when the class begins.",
@@ -8753,6 +10054,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "computer",
+        "pos": "n.",
         "meaning": "電腦",
         "theme": "電子產品",
         "sentence": "I use my computer to practice writing HTML game code every day.",
@@ -8761,7 +10063,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "e-mail",
-        "meaning": "電子郵件",
+        "pos": "n. / v.",
+        "meaning": "電子郵件 / 寄電子郵件",
         "theme": "電子產品",
         "sentence": "The teacher sent an e-mail to our parents about the test.",
         "sentenceZh": "老師發了一封電子郵件給我們父母告知考試的事。",
@@ -8769,7 +10072,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "file",
-        "meaning": "檔案",
+        "pos": "n. / v.",
+        "meaning": "檔案 / 歸檔",
         "theme": "電子產品",
         "sentence": "Don't forget to save your game file before closing the program.",
         "sentenceZh": "關閉程式前別忘了儲存你的遊戲檔案。",
@@ -8777,6 +10081,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Internet (Net)",
+        "pos": "n.",
         "meaning": "網路",
         "theme": "電子產品",
         "sentence": "You can learn almost anything you want on the Internet.",
@@ -8785,6 +10090,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "link",
+        "pos": "n. / v.",
         "meaning": "連結",
         "theme": "電子產品",
         "sentence": "Click on this blue link to open the vocabulary game website.",
@@ -8793,7 +10099,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mail",
-        "meaning": "郵件",
+        "pos": "n. / v.",
+        "meaning": "郵件 / 郵寄",
         "theme": "電子產品",
         "sentence": "The postman delivered some important mail to our house today.",
         "sentenceZh": "郵差今天送了一些重要的郵件到我們家。",
@@ -8801,6 +10108,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "net",
+        "pos": "n.",
         "meaning": "網",
         "theme": "電子產品",
         "sentence": "The badminton player hit the ball right into the net.",
@@ -8809,6 +10117,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "printer",
+        "pos": "n.",
         "meaning": "印表機",
         "theme": "電子產品",
         "sentence": "The teacher used the printer to make 30 copies of the worksheet.",
@@ -8817,6 +10126,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "radio",
+        "pos": "n.",
         "meaning": "收音機",
         "theme": "電子產品",
         "sentence": "My grandfather still listens to the morning news on his old radio.",
@@ -8825,6 +10135,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "robot",
+        "pos": "n.",
         "meaning": "機器人",
         "theme": "電子產品",
         "sentence": "The students built a smart robot that can clean the floor.",
@@ -8833,6 +10144,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "screen",
+        "pos": "n.",
         "meaning": "螢幕",
         "theme": "電子產品",
         "sentence": "Look at the computer screen carefully to find the correct answer.",
@@ -8841,6 +10153,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "telephone (phone)",
+        "pos": "n.",
         "meaning": "電話",
         "theme": "電子產品",
         "sentence": "Please answer the telephone if it rings while I am out.",
@@ -8849,6 +10162,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "video",
+        "pos": "n.",
         "meaning": "影片；錄影機",
         "theme": "電子產品",
         "sentence": "We watched a funny YouTube video together and laughed loudly.",
@@ -8856,79 +10170,17 @@ const DICTIONARY_DATA = [
         "otherForms": "videos (複數型)"
     },
     {
-        "word": "crime",
-        "meaning": "犯罪",
-        "theme": "社會與媒體",
-        "sentence": "Stealing a bicycle from the park is a serious crime.",
-        "sentenceZh": "在公園偷腳踏車是嚴重的犯罪。",
-        "otherForms": "crimes (複數型)"
-    },
-    {
-        "word": "debate",
-        "meaning": "辯論",
-        "theme": "社會與媒體",
-        "sentence": "The students had a fierce debate about the new school rules.",
-        "sentenceZh": "學生們對新校規進行了激烈的辯論。",
-        "otherForms": "debates (複數型), debates (三單), debating (ing型(去e加ing)), debated (過去式/分詞)"
-    },
-    {
-        "word": "government",
-        "meaning": "政府",
-        "theme": "社會與媒體",
-        "sentence": "The government will build a new hospital in our city next year.",
-        "sentenceZh": "政府明年將在我們城市建一家新醫院。",
-        "otherForms": "governments (複數型)"
-    },
-    {
-        "word": "population",
-        "meaning": "人口",
-        "theme": "社會與媒體",
-        "sentence": "The population of Taiwan is over twenty-three million people.",
-        "sentenceZh": "台灣的人口超過兩千三百萬人。",
-        "otherForms": "populations (複數型)"
-    },
-    {
-        "word": "rule",
-        "meaning": "規則；統治",
-        "theme": "社會與媒體",
-        "sentence": "In our Syntax Repair game, both American and British spellings fit the rules!",
-        "sentenceZh": "在我們的「語法修復」遊戲中，美式和英式拼寫都符合規則！",
-        "otherForms": "rules (複數型), rules (三單), ruling (ing型(去e加ing)), ruled (過去式/分詞)"
-    },
-    {
-        "word": "society",
-        "meaning": "社會",
-        "theme": "社會與媒體",
-        "sentence": "Everyone has to work together to make our society better.",
-        "sentenceZh": "每個人都必須共同努力讓我們的社會變得更好。",
-        "otherForms": "societies (複數型(去y加ies))"
-    },
-    {
-        "word": "speech",
-        "meaning": "演講",
-        "theme": "社會與媒體",
-        "sentence": "The principal gave a very long speech on graduation day.",
-        "sentenceZh": "校長在畢業典禮當天發表了很長的演講。",
-        "otherForms": "speeches (複數型(加es))"
-    },
-    {
-        "word": "system",
-        "meaning": "系統",
-        "theme": "社會與媒體",
-        "sentence": "Our school has a new computer system to track grades.",
-        "sentenceZh": "我們學校有一個新的電腦系統來追蹤成績。",
-        "otherForms": "systems (複數型)"
-    },
-    {
-        "word": "war",
-        "meaning": "戰爭",
-        "theme": "社會與媒體",
-        "sentence": "We should learn from history and always hope there is no more war.",
-        "sentenceZh": "我們應該從歷史中學習，並永遠希望不再有戰爭。",
-        "otherForms": "wars (複數型)"
+        "word": "wire",
+        "pos": "n.",
+        "meaning": "電線；金屬線",
+        "theme": "電子產品",
+        "sentence": "Be careful not to touch the broken wire.",
+        "sentenceZh": "小心不要碰到那根斷掉的電線。",
+        "otherForms": "wires (複數型)"
     },
     {
         "word": "advertisement",
+        "pos": "n.",
         "meaning": "廣告",
         "theme": "社會與媒體",
         "sentence": "I saw a cool TV advertisement for a new 80s music album.",
@@ -8937,6 +10189,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "channel",
+        "pos": "n.",
         "meaning": "頻道；海峽",
         "theme": "社會與媒體",
         "sentence": "Can you switch the TV channel to watch the badminton game?",
@@ -8944,7 +10197,44 @@ const DICTIONARY_DATA = [
         "otherForms": "channels (複數型)"
     },
     {
+        "word": "crime",
+        "pos": "n.",
+        "meaning": "犯罪",
+        "theme": "社會與媒體",
+        "sentence": "Stealing a bicycle from the park is a serious crime.",
+        "sentenceZh": "在公園偷腳踏車是嚴重的犯罪。",
+        "otherForms": "crimes (複數型)"
+    },
+    {
+        "word": "data",
+        "pos": "n.",
+        "meaning": "資料；數據",
+        "theme": "社會與媒體",
+        "sentence": "We need more data to finish the report.",
+        "sentenceZh": "我們需要更多數據來完成報告。",
+        "otherForms": "datum (單數型(較少用))"
+    },
+    {
+        "word": "debate",
+        "pos": "n. / v.",
+        "meaning": "辯論",
+        "theme": "社會與媒體",
+        "sentence": "The students had a fierce debate about the new school rules.",
+        "sentenceZh": "學生們對新校規進行了激烈的辯論。",
+        "otherForms": "debates (複數型), debates (三單), debating (ing型(去e加ing)), debated (過去式/分詞)"
+    },
+    {
+        "word": "government",
+        "pos": "n.",
+        "meaning": "政府",
+        "theme": "社會與媒體",
+        "sentence": "The government will build a new hospital in our city next year.",
+        "sentenceZh": "政府明年將在我們城市建一家新醫院。",
+        "otherForms": "governments (複數型)"
+    },
+    {
         "word": "information",
+        "pos": "n.",
         "meaning": "資訊",
         "theme": "社會與媒體",
         "sentence": "You can find a lot of useful information for your report online.",
@@ -8953,6 +10243,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Internet",
+        "pos": "n.",
         "meaning": "網際網路",
         "theme": "社會與媒體",
         "sentence": "We use the Internet every day to communicate with our friends.",
@@ -8960,7 +10251,26 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "legal",
+        "pos": "adj.",
+        "meaning": "合法的",
+        "theme": "社會與媒體",
+        "sentence": "It is not legal to drive without a license.",
+        "sentenceZh": "無照駕駛是不合法的。",
+        "otherForms": "legally (合法地 - 副詞), illegal (反義詞 (非法的))"
+    },
+    {
+        "word": "media",
+        "pos": "n.",
+        "meaning": "媒體",
+        "theme": "社會與媒體",
+        "sentence": "The news was all over the mass media.",
+        "sentenceZh": "這則新聞在各大媒體上廣為流傳。",
+        "otherForms": "medium (單數型 - 媒介)"
+    },
+    {
         "word": "news",
+        "pos": "n.",
         "meaning": "新聞",
         "theme": "社會與媒體",
         "sentence": "I just read some exciting news about our school team winning the game.",
@@ -8969,6 +10279,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "newspaper",
+        "pos": "n.",
         "meaning": "報紙",
         "theme": "社會與媒體",
         "sentence": "My father likes to read the morning newspaper while drinking coffee.",
@@ -8976,7 +10287,17 @@ const DICTIONARY_DATA = [
         "otherForms": "newspapers (複數型)"
     },
     {
+        "word": "organization",
+        "pos": "n.",
+        "meaning": "組織；機構",
+        "theme": "社會與媒體",
+        "sentence": "She works for a charity organization.",
+        "sentenceZh": "她在一家慈善機構工作。",
+        "otherForms": "organizations (複數型), organize (組織 - 動詞)"
+    },
+    {
         "word": "photo",
+        "pos": "n.",
         "meaning": "照片",
         "theme": "社會與媒體",
         "sentence": "Let's take a group photo together to remember this happy trip!",
@@ -8984,15 +10305,62 @@ const DICTIONARY_DATA = [
         "otherForms": "photos (複數型)"
     },
     {
+        "word": "population",
+        "pos": "n.",
+        "meaning": "人口",
+        "theme": "社會與媒體",
+        "sentence": "The population of Taiwan is over twenty-three million people.",
+        "sentenceZh": "台灣的人口超過兩千三百萬人。",
+        "otherForms": "populations (複數型)"
+    },
+    {
+        "word": "post",
+        "pos": "n. / v.",
+        "meaning": "郵件 / 張貼",
+        "theme": "社會與媒體",
+        "sentence": "She posted a picture of her dog on Facebook.",
+        "sentenceZh": "她在臉書上張貼了她愛犬的照片。",
+        "otherForms": "posts (三單), posted (過去/過去分詞), posting (現在分詞)"
+    },
+    {
         "word": "program",
-        "meaning": "節目；程式",
+        "pos": "n. / v.",
+        "meaning": "節目；程式 / 撰寫程式",
         "theme": "社會與媒體",
         "sentence": "My brother is learning how to write a computer program.",
         "sentenceZh": "我哥哥正在學習如何寫電腦程式。",
         "otherForms": "programs (複數型)"
     },
     {
+        "word": "rule",
+        "pos": "n. / v.",
+        "meaning": "規則 / 統治",
+        "theme": "社會與媒體",
+        "sentence": "In our Syntax Repair game, both American and British spellings fit the rules!",
+        "sentenceZh": "在我們的「語法修復」遊戲中，美式和英式拼寫都符合規則！",
+        "otherForms": "rules (複數型), rules (三單), ruling (ing型(去e加ing)), ruled (過去式/分詞)"
+    },
+    {
+        "word": "society",
+        "pos": "n.",
+        "meaning": "社會",
+        "theme": "社會與媒體",
+        "sentence": "Everyone has to work together to make our society better.",
+        "sentenceZh": "每個人都必須共同努力讓我們的社會變得更好。",
+        "otherForms": "societies (複數型(去y加ies))"
+    },
+    {
+        "word": "speech",
+        "pos": "n.",
+        "meaning": "演講",
+        "theme": "社會與媒體",
+        "sentence": "The principal gave a very long speech on graduation day.",
+        "sentenceZh": "校長在畢業典禮當天發表了很長的演講。",
+        "otherForms": "speeches (複數型(加es))"
+    },
+    {
         "word": "story",
+        "pos": "n.",
         "meaning": "故事",
         "theme": "社會與媒體",
         "sentence": "Let me tell you an interesting story about the history of badminton.",
@@ -9000,7 +10368,17 @@ const DICTIONARY_DATA = [
         "otherForms": "stories (複數型(去y加ies))"
     },
     {
+        "word": "system",
+        "pos": "n.",
+        "meaning": "系統",
+        "theme": "社會與媒體",
+        "sentence": "Our school has a new computer system to track grades.",
+        "sentenceZh": "我們學校有一個新的電腦系統來追蹤成績。",
+        "otherForms": "systems (複數型)"
+    },
+    {
         "word": "title",
+        "pos": "n.",
         "meaning": "標題",
         "theme": "社會與媒體",
         "sentence": "The title of my English book report is \"The Brave Prince.\"",
@@ -9009,6 +10387,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "topic",
+        "pos": "n.",
         "meaning": "話題",
         "theme": "社會與媒體",
         "sentence": "The main topic of today's lesson is about artificial intelligence (AI).",
@@ -9016,7 +10395,26 @@ const DICTIONARY_DATA = [
         "otherForms": "topics (複數型)"
     },
     {
+        "word": "war",
+        "pos": "n.",
+        "meaning": "戰爭",
+        "theme": "社會與媒體",
+        "sentence": "We should learn from history and always hope there is no more war.",
+        "sentenceZh": "我們應該從歷史中學習，並永遠希望不再有戰爭。",
+        "otherForms": "wars (複數型)"
+    },
+    {
+        "word": "weapon",
+        "pos": "n.",
+        "meaning": "武器",
+        "theme": "社會與媒體",
+        "sentence": "Guns and knives are dangerous weapons.",
+        "sentenceZh": "槍和刀都是危險的武器。",
+        "otherForms": "weapons (複數型)"
+    },
+    {
         "word": "activity",
+        "pos": "n.",
         "meaning": "活動",
         "theme": "商業",
         "sentence": "The English camp has many fun outdoor activities for students.",
@@ -9024,7 +10422,17 @@ const DICTIONARY_DATA = [
         "otherForms": "activities (複數型(去y加ies))"
     },
     {
+        "word": "brand",
+        "pos": "n.",
+        "meaning": "品牌",
+        "theme": "商業",
+        "sentence": "What brand of smartphone do you use?",
+        "sentenceZh": "你用哪個品牌的智慧型手機？",
+        "otherForms": "brands (複數型)"
+    },
+    {
         "word": "case",
+        "pos": "n.",
         "meaning": "案例；箱子",
         "theme": "商業",
         "sentence": "The police officer quickly solved the difficult robbery case.",
@@ -9033,6 +10441,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chart",
+        "pos": "n.",
         "meaning": "圖表",
         "theme": "商業",
         "sentence": "Look at the vocabulary chart on page 10 to see the differences.",
@@ -9041,6 +10450,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "command",
+        "pos": "n. / v.",
         "meaning": "命令",
         "theme": "商業",
         "sentence": "The soldier obeyed the captain's command without asking why.",
@@ -9049,7 +10459,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "contract",
-        "meaning": "合約",
+        "pos": "n. / v.",
+        "meaning": "合約 / 訂契約",
         "theme": "商業",
         "sentence": "They signed an important business contract at the meeting today.",
         "sentenceZh": "他們在今天的會議上簽署了一份重要的商業合約。",
@@ -9057,6 +10468,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "discussion",
+        "pos": "n.",
         "meaning": "討論",
         "theme": "商業",
         "sentence": "We had a long discussion about how to design the class badge.",
@@ -9065,6 +10477,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "event",
+        "pos": "n.",
         "meaning": "事件",
         "theme": "商業",
         "sentence": "The school sports day is the most exciting event of the year.",
@@ -9073,6 +10486,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "group",
+        "pos": "n.",
         "meaning": "群組",
         "theme": "商業",
         "sentence": "The teacher divided the class into five small study groups.",
@@ -9081,7 +10495,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "interview",
-        "meaning": "面試；訪談",
+        "pos": "n. / v.",
+        "meaning": "面試；訪談 / 採訪",
         "theme": "商業",
         "sentence": "He wore his best suit to the job interview at the bank.",
         "sentenceZh": "他穿了他最棒的西裝去銀行的工作面試。",
@@ -9089,6 +10504,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "invitation",
+        "pos": "n.",
         "meaning": "邀請",
         "theme": "商業",
         "sentence": "We sent an invitation to Director Lee for our AI teaching seminar.",
@@ -9097,6 +10513,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "item",
+        "pos": "n.",
         "meaning": "項目",
         "theme": "商業",
         "sentence": "Please check each item on your shopping list before you leave.",
@@ -9105,7 +10522,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "matter",
-        "meaning": "事情",
+        "pos": "n. / v.",
+        "meaning": "事情 / 要緊",
         "theme": "商業",
         "sentence": "What is the matter? Why are you looking so sad today?",
         "sentenceZh": "怎麼了？你今天為什麼看起來這麼難過？",
@@ -9113,6 +10531,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meeting",
+        "pos": "n.",
         "meaning": "會議",
         "theme": "商業",
         "sentence": "The teachers had a long meeting to discuss the English curriculum.",
@@ -9121,7 +10540,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "order",
-        "meaning": "命令；訂單",
+        "pos": "n. / v.",
+        "meaning": "命令；訂單 / 點餐；命令",
         "theme": "商業",
         "sentence": "The teacher gave an order to everyone to finish their homework quietly.",
         "sentenceZh": "老師命令每個人安靜地寫完作業。",
@@ -9129,6 +10549,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "project",
+        "pos": "n.",
         "meaning": "專案",
         "theme": "商業",
         "sentence": "The students are working on a science project about the environment.",
@@ -9137,6 +10558,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sale",
+        "pos": "n.",
         "meaning": "拍賣；銷售",
         "theme": "商業",
         "sentence": "The department store is having a big winter sale next week.",
@@ -9145,6 +10567,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sample",
+        "pos": "n.",
         "meaning": "樣品",
         "theme": "商業",
         "sentence": "The lady gave us a free sample of the new cake to try.",
@@ -9153,6 +10576,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "service",
+        "pos": "n.",
         "meaning": "服務",
         "theme": "商業",
         "sentence": "The waiter provided excellent service at the Italian restaurant.",
@@ -9160,7 +10584,17 @@ const DICTIONARY_DATA = [
         "otherForms": "services (複數型)"
     },
     {
+        "word": "supply",
+        "pos": "n. / v.",
+        "meaning": "供應",
+        "theme": "商業",
+        "sentence": "They supply food and water to the people in need.",
+        "sentenceZh": "他們向需要的人供應食物和水。",
+        "otherForms": "supplies (三單), supplied (過去/過去分詞), supplying (現在分詞)"
+    },
+    {
         "word": "ticket",
+        "pos": "n.",
         "meaning": "票",
         "theme": "商業",
         "sentence": "I bought two movie tickets online for us tonight.",
@@ -9169,6 +10603,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trade",
+        "pos": "n. / v.",
         "meaning": "貿易",
         "theme": "商業",
         "sentence": "The two countries agreed to increase their international trade.",
@@ -9177,6 +10612,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "zero",
+        "pos": "num.",
         "meaning": "零",
         "theme": "數量數字",
         "sentence": "I checked my HTML code twice and found zero mistakes.",
@@ -9185,6 +10621,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "one",
+        "pos": "num.",
         "meaning": "一",
         "theme": "數量數字",
         "sentence": "We just need one more player for the badminton game.",
@@ -9193,6 +10630,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "two",
+        "pos": "num.",
         "meaning": "二",
         "theme": "數量數字",
         "sentence": "He drinks two glasses of warm milk every day.",
@@ -9201,6 +10639,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "three",
+        "pos": "num.",
         "meaning": "三",
         "theme": "數量數字",
         "sentence": "A triangle has three straight lines and three angles.",
@@ -9209,6 +10648,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "four",
+        "pos": "num.",
         "meaning": "四",
         "theme": "數量數字",
         "sentence": "A square has four equal sides.",
@@ -9217,6 +10657,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "five",
+        "pos": "num.",
         "meaning": "五",
         "theme": "數量數字",
         "sentence": "Our school badminton team won five games this season.",
@@ -9225,6 +10666,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "six",
+        "pos": "num.",
         "meaning": "六",
         "theme": "數量數字",
         "sentence": "There are six students taking the remedial English class.",
@@ -9233,6 +10675,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seven",
+        "pos": "num.",
         "meaning": "七",
         "theme": "數量數字",
         "sentence": "There are seven days in a week.",
@@ -9241,6 +10684,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eight",
+        "pos": "num.",
         "meaning": "八",
         "theme": "數量數字",
         "sentence": "You should try to sleep for eight hours every night.",
@@ -9249,6 +10693,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nine",
+        "pos": "num.",
         "meaning": "九",
         "theme": "數量數字",
         "sentence": "I usually brush my teeth and go to bed at nine o'clock.",
@@ -9257,6 +10702,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ten",
+        "pos": "num.",
         "meaning": "十",
         "theme": "數量數字",
         "sentence": "This new vocabulary passport has ten pages.",
@@ -9265,6 +10711,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eleven",
+        "pos": "num.",
         "meaning": "十一",
         "theme": "數量數字",
         "sentence": "My younger brother is eleven years old.",
@@ -9273,6 +10720,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "twelve",
+        "pos": "num.",
         "meaning": "十二",
         "theme": "數量數字",
         "sentence": "There are twelve months in a year.",
@@ -9281,6 +10729,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thirteen",
+        "pos": "num.",
         "meaning": "十三",
         "theme": "數量數字",
         "sentence": "Thirteen comes after twelve and before fourteen.",
@@ -9289,6 +10738,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fourteen",
+        "pos": "num.",
         "meaning": "十四",
         "theme": "數量數字",
         "sentence": "He is fourteen years old and studies in junior high school.",
@@ -9297,6 +10747,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fifteen",
+        "pos": "num.",
         "meaning": "十五",
         "theme": "數量數字",
         "sentence": "We have a fifteen-minute break between classes.",
@@ -9305,6 +10756,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sixteen",
+        "pos": "num.",
         "meaning": "十六",
         "theme": "數量數字",
         "sentence": "You must be sixteen to ride a scooter in some countries.",
@@ -9313,6 +10765,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seventeen",
+        "pos": "num.",
         "meaning": "十七",
         "theme": "數量數字",
         "sentence": "My older sister just turned seventeen last month.",
@@ -9321,6 +10774,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eighteen",
+        "pos": "num.",
         "meaning": "十八",
         "theme": "數量數字",
         "sentence": "You become an adult when you are eighteen years old.",
@@ -9329,6 +10783,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nineteen",
+        "pos": "num.",
         "meaning": "十九",
         "theme": "數量數字",
         "sentence": "Nineteen students passed the grammar test today.",
@@ -9337,6 +10792,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "twenty",
+        "pos": "num.",
         "meaning": "二十",
         "theme": "數量數字",
         "sentence": "There are exactly twenty desks in our classroom.",
@@ -9345,6 +10801,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thirty",
+        "pos": "num.",
         "meaning": "三十",
         "theme": "數量數字",
         "sentence": "The English class is usually forty-five or thirty minutes long.",
@@ -9353,6 +10810,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "forty",
+        "pos": "num.",
         "meaning": "四十",
         "theme": "數量數字",
         "sentence": "He read forty pages of the storybook last night.",
@@ -9361,6 +10819,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fifty",
+        "pos": "num.",
         "meaning": "五十",
         "theme": "數量數字",
         "sentence": "A half-century means a period of fifty years.",
@@ -9369,6 +10828,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sixty",
+        "pos": "num.",
         "meaning": "六十",
         "theme": "數量數字",
         "sentence": "There are sixty seconds in one minute.",
@@ -9377,6 +10837,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "seventy",
+        "pos": "num.",
         "meaning": "七十",
         "theme": "數量數字",
         "sentence": "My grandfather will be seventy years old next year.",
@@ -9385,6 +10846,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eighty",
+        "pos": "num.",
         "meaning": "八十",
         "theme": "數量數字",
         "sentence": "I have exactly eighty songs on my 1980s music playlist.",
@@ -9393,6 +10855,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "ninety",
+        "pos": "num.",
         "meaning": "九十",
         "theme": "數量數字",
         "sentence": "The weather is very hot; it is almost ninety degrees today!",
@@ -9401,6 +10864,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hundred",
+        "pos": "num.",
         "meaning": "百",
         "theme": "數量數字",
         "sentence": "He got one hundred points on his final English exam.",
@@ -9409,6 +10873,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thousand",
+        "pos": "num.",
         "meaning": "千",
         "theme": "數量數字",
         "sentence": "You need two thousand points to win the Weather Combat game.",
@@ -9417,6 +10882,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "million",
+        "pos": "num.",
         "meaning": "百萬",
         "theme": "數量數字",
         "sentence": "A million people watched the famous singer's concert online.",
@@ -9425,6 +10891,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "first",
+        "pos": "num.",
         "meaning": "第一",
         "theme": "數量數字",
         "sentence": "She won the first prize in the school spelling contest.",
@@ -9433,6 +10900,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "second",
+        "pos": "num.",
         "meaning": "第二",
         "theme": "數量數字",
         "sentence": "This is my second time playing this interactive grammar game.",
@@ -9441,6 +10909,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "third",
+        "pos": "num.",
         "meaning": "第三",
         "theme": "數量數字",
         "sentence": "Our English classroom is located on the third floor.",
@@ -9449,6 +10918,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "last",
+        "pos": "num.",
         "meaning": "最後的",
         "theme": "數量數字",
         "sentence": "This is the last question on the math test.",
@@ -9457,6 +10927,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "a few",
+        "pos": "num.",
         "meaning": "一些（用於可數）",
         "theme": "數量數字",
         "sentence": "I have a few friends who also like synth-pop music.",
@@ -9465,6 +10936,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "a little",
+        "pos": "num.",
         "meaning": "一點（用於不可數）",
         "theme": "數量數字",
         "sentence": "Please add just a little sugar to my hot tea.",
@@ -9473,6 +10945,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "a lot of",
+        "pos": "num.",
         "meaning": "很多(可屬不可數都能用)",
         "theme": "數量數字",
         "sentence": "We spent a lot of time writing the code for the web page.",
@@ -9481,6 +10954,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "any",
+        "pos": "num.",
         "meaning": "任何",
         "theme": "數量數字",
         "sentence": "Do you have any questions about how to use this tool?",
@@ -9489,6 +10963,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "both",
+        "pos": "num.",
         "meaning": "兩者都",
         "theme": "數量數字",
         "sentence": "Both American and British spellings are correct in this game.",
@@ -9497,6 +10972,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "few",
+        "pos": "num.",
         "meaning": "很少（用於可數）",
         "theme": "數量數字",
         "sentence": "Very few people know the secret answer to this puzzle.",
@@ -9505,30 +10981,43 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "less",
+        "pos": "num.",
         "meaning": "更少（用於不可數）",
-        "theme": "數量數字",
-        "sentence": "You should spend less time watching TV and more time reading.",
-        "sentenceZh": "你應該少花點時間看電視，多花點時間閱讀。",
-        "otherForms": ""
-    },
-    {
-        "word": "little",
-        "meaning": "很少（不可數）",
         "theme": "數量數字",
         "sentence": "We have very little time left before the school bus arrives.",
         "sentenceZh": "在校車到達前，我們剩下很少的時間了。",
         "otherForms": "less (比較級(不規則)), least (最高級(不規則))"
     },
     {
+        "word": "little",
+        "pos": "num.",
+        "meaning": "很少（不可數）",
+        "theme": "數量數字",
+        "sentence": "You should spend less time watching TV and more time reading.",
+        "sentenceZh": "你應該少花點時間看電視，多花點時間閱讀。",
+        "otherForms": ""
+    },
+    {
         "word": "number",
-        "meaning": "數字；數量",
+        "pos": "num.",
+        "meaning": "數字 / 數量",
         "theme": "數量數字",
         "sentence": "The number of students in our class is twenty-five.",
         "sentenceZh": "我們班上的學生數量是二十五人。",
         "otherForms": "numbers (複數型)"
     },
     {
+        "word": "quantity",
+        "pos": "num.",
+        "meaning": "數量",
+        "theme": "數量數字",
+        "sentence": "We need a large quantity of food for the party.",
+        "sentenceZh": "派對需要大量的食物。",
+        "otherForms": "quantities (複數型)"
+    },
+    {
         "word": "several",
+        "pos": "num.",
         "meaning": "幾個",
         "theme": "數量數字",
         "sentence": "I tried several times to fix the bug in the program.",
@@ -9537,6 +11026,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "much",
+        "pos": "num.",
         "meaning": "多的(不可數)",
         "theme": "數量數字",
         "sentence": "I don't have much money in my wallet today.",
@@ -9545,6 +11035,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "most",
+        "pos": "num.",
         "meaning": "最多的",
         "theme": "數量數字",
         "sentence": "Most students in our class have finished their vocabulary passports.",
@@ -9553,6 +11044,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "plus",
+        "pos": "num.",
         "meaning": "加號",
         "theme": "數量數字",
         "sentence": "Five plus three equals eight.",
@@ -9561,6 +11053,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "minus",
+        "pos": "num.",
         "meaning": "負號",
         "theme": "數量數字",
         "sentence": "Ten minus four equals six.",
@@ -9569,7 +11062,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "total",
-        "meaning": "總數；完全的",
+        "pos": "num.",
+        "meaning": "總數 / 完全的",
         "theme": "數量數字",
         "sentence": "The total score for the English test is one hundred points.",
         "sentenceZh": "英文考試的總分是一百分。",
@@ -9577,6 +11071,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rectangle",
+        "pos": "n.",
         "meaning": "長方形",
         "theme": "形狀",
         "sentence": "A badminton court is shaped like a big rectangle.",
@@ -9585,6 +11080,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "shape",
+        "pos": "n.",
         "meaning": "形狀",
         "theme": "形狀",
         "sentence": "What shape is the start button in your new game?",
@@ -9593,6 +11089,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "square",
+        "pos": "n. / adj.",
         "meaning": "正方形",
         "theme": "形狀",
         "sentence": "Draw a perfect square on the blank piece of paper.",
@@ -9601,6 +11098,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "triangle",
+        "pos": "n.",
         "meaning": "三角形",
         "theme": "形狀",
         "sentence": "The roof of that small doghouse looks like a triangle.",
@@ -9609,6 +11107,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "circle",
+        "pos": "n.",
         "meaning": "圓形",
         "theme": "形狀",
         "sentence": "The students sat in a large circle on the classroom floor.",
@@ -9617,6 +11116,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dot",
+        "pos": "n.",
         "meaning": "點",
         "theme": "形狀",
         "sentence": "Put a small black dot at the end of your sentence.",
@@ -9625,6 +11125,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "line",
+        "pos": "n.",
         "meaning": "線",
         "theme": "形狀",
         "sentence": "Please draw a straight line under the correct answer.",
@@ -9633,7 +11134,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "point",
-        "meaning": "點；尖端",
+        "pos": "n. / v.",
+        "meaning": "點；尖端 / 指向",
         "theme": "形狀",
         "sentence": "He won the final point with a great smash in the match.",
         "sentenceZh": "他在比賽中以一記漂亮的殺球贏得了最後一分。",
@@ -9641,6 +11143,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "angle",
+        "pos": "n.",
         "meaning": "角度",
         "theme": "形狀",
         "sentence": "You must hit the badminton ball from the right angle.",
@@ -9649,6 +11152,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "straight",
+        "pos": "adj.",
         "meaning": "直的",
         "theme": "形狀",
         "sentence": "Go straight down the street and you will see the station.",
@@ -9657,6 +11161,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "round",
+        "pos": "adj.",
         "meaning": "圓形的",
         "theme": "形狀",
         "sentence": "A baseball is completely round, but a football is not.",
@@ -9665,6 +11170,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "centimeter",
+        "pos": "n.",
         "meaning": "公分",
         "theme": "單位與度量",
         "sentence": "This short blue pencil is only ten centimeters long.",
@@ -9673,6 +11179,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "foot",
+        "pos": "n.",
         "meaning": "英尺",
         "theme": "單位與度量",
         "sentence": "One foot is equal to about thirty centimeters.",
@@ -9681,6 +11188,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gram",
+        "pos": "n.",
         "meaning": "公克",
         "theme": "單位與度量",
         "sentence": "This fresh red apple weighs about two hundred grams.",
@@ -9689,6 +11197,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "inch",
+        "pos": "n.",
         "meaning": "英吋",
         "theme": "單位與度量",
         "sentence": "The large television screen in the living room is fifty inches.",
@@ -9697,6 +11206,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kilogram",
+        "pos": "n.",
         "meaning": "公斤",
         "theme": "單位與度量",
         "sentence": "My golden retriever dog weighs about thirty kilograms.",
@@ -9705,6 +11215,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kilometer",
+        "pos": "n.",
         "meaning": "公里",
         "theme": "單位與度量",
         "sentence": "I jogged for three kilometers in Douliu Park this morning.",
@@ -9713,6 +11224,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "liter",
+        "pos": "n.",
         "meaning": "公升",
         "theme": "單位與度量",
         "sentence": "You should drink at least two liters of water every day.",
@@ -9721,6 +11233,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meter",
+        "pos": "n.",
         "meaning": "公尺",
         "theme": "單位與度量",
         "sentence": "He ran one hundred meters in just thirteen seconds.",
@@ -9729,6 +11242,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mile",
+        "pos": "n.",
         "meaning": "英里",
         "theme": "單位與度量",
         "sentence": "The small village is about ten miles away from the city.",
@@ -9737,6 +11251,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pound",
+        "pos": "n.",
         "meaning": "磅",
         "theme": "單位與度量",
         "sentence": "This heavy box of books weighs more than twenty pounds.",
@@ -9745,6 +11260,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "yard",
+        "pos": "n.",
         "meaning": "碼",
         "theme": "單位與度量",
         "sentence": "He hit the golf ball more than fifty yards away.",
@@ -9753,6 +11269,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "degree",
+        "pos": "n.",
         "meaning": "度數",
         "theme": "單位與度量",
         "sentence": "The water temperature is over ninety degrees.",
@@ -9761,7 +11278,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "row",
-        "meaning": "排；行",
+        "pos": "n.",
+        "meaning": "排 / 行",
         "theme": "單位與度量",
         "sentence": "We sat in the first row to see the movie clearly.",
         "sentenceZh": "我們坐在第一排以便清楚地看電影。",
@@ -9769,6 +11287,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bottle",
+        "pos": "n.",
         "meaning": "瓶",
         "theme": "單位與度量",
         "sentence": "I bought a cold bottle of water after playing badminton.",
@@ -9777,6 +11296,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cup",
+        "pos": "n.",
         "meaning": "杯",
         "theme": "單位與度量",
         "sentence": "My father drinks a cup of hot coffee every morning.",
@@ -9785,6 +11305,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dozen",
+        "pos": "n.",
         "meaning": "一打（十二個）",
         "theme": "單位與度量",
         "sentence": "My mother bought a dozen fresh eggs at the supermarket.",
@@ -9793,6 +11314,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "glass",
+        "pos": "n.",
         "meaning": "玻璃杯",
         "theme": "單位與度量",
         "sentence": "Would you please pass me that empty glass?",
@@ -9801,6 +11323,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "loaf",
+        "pos": "n.",
         "meaning": "條（麵包）",
         "theme": "單位與度量",
         "sentence": "We need to buy a loaf of bread to make sandwiches.",
@@ -9809,7 +11332,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pack",
-        "meaning": "包/打包",
+        "pos": "n. / v.",
+        "meaning": "包 / 打包",
         "theme": "單位與度量",
         "sentence": "He ate a whole pack of chocolate cookies by himself.",
         "sentenceZh": "他自己吃掉了一整包巧克力餅乾。",
@@ -9817,6 +11341,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "package",
+        "pos": "n.",
         "meaning": "包裹",
         "theme": "單位與度量",
         "sentence": "The mail carrier delivered a big package to our door.",
@@ -9825,7 +11350,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pair",
-        "meaning": "一雙；一對",
+        "pos": "n.",
+        "meaning": "一雙 / 一對",
         "theme": "單位與度量",
         "sentence": "I need a new pair of sports shoes for the race.",
         "sentenceZh": "我需要一雙新的運動鞋來參加賽跑。",
@@ -9833,7 +11359,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "piece",
-        "meaning": "片；塊；件",
+        "pos": "n.",
+        "meaning": "片 / 塊 / 件",
         "theme": "單位與度量",
         "sentence": "Would you like to eat a piece of sweet strawberry cake?",
         "sentenceZh": "你想吃一塊甜甜的草莓蛋糕嗎？",
@@ -9841,7 +11368,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bundle",
-        "meaning": "捆；束",
+        "pos": "n.",
+        "meaning": "捆 / 束",
         "theme": "單位與度量",
         "sentence": "We tied the old newspapers into a neat bundle.",
         "sentenceZh": "我們把舊報紙綁成整齊的一捆。",
@@ -9849,6 +11377,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "curve",
+        "pos": "n.",
         "meaning": "曲線",
         "theme": "單位與度量",
         "sentence": "The mountain road has a very sharp curve ahead.",
@@ -9857,6 +11386,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "section",
+        "pos": "n.",
         "meaning": "部分",
         "theme": "單位與度量",
         "sentence": "The reading section of the English test was quite difficult.",
@@ -9865,7 +11395,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mass",
-        "meaning": "團；大量",
+        "pos": "n.",
+        "meaning": "團 / 大量",
         "theme": "單位與度量",
         "sentence": "The dark clouds formed a huge mass in the sky.",
         "sentenceZh": "烏雲在天空中形成了一大團。",
@@ -9873,6 +11404,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pile",
+        "pos": "n.",
         "meaning": "堆",
         "theme": "單位與度量",
         "sentence": "There is a big pile of dirty clothes on his bedroom floor.",
@@ -9881,6 +11413,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "set",
+        "pos": "n.",
         "meaning": "一套",
         "theme": "單位與度量",
         "sentence": "The teacher gave us a new set of vocabulary cards.",
@@ -9889,6 +11422,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "box",
+        "pos": "n.",
         "meaning": "盒子",
         "theme": "單位與度量",
         "sentence": "The cute little cat is hiding inside the cardboard box.",
@@ -9897,7 +11431,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "can",
-        "meaning": "罐頭",
+        "pos": "n. / aux.",
+        "meaning": "罐頭 / 能夠",
         "theme": "單位與度量",
         "sentence": "Please throw the empty cola can into the recycling bin.",
         "sentenceZh": "請把空的可樂罐丟進回收桶。",
@@ -9905,7 +11440,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "slice",
-        "meaning": "片/切片",
+        "pos": "n. / v.",
+        "meaning": "片 / 切片",
         "theme": "單位與度量",
         "sentence": "He ate a large slice of cheese pizza for his lunch.",
         "sentenceZh": "他午餐吃了一大片起司披薩。",
@@ -9913,6 +11449,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "size",
+        "pos": "n.",
         "meaning": "尺寸",
         "theme": "單位與度量",
         "sentence": "What size T-shirt do you usually wear?",
@@ -9921,6 +11458,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "height",
+        "pos": "n.",
         "meaning": "高度",
         "theme": "單位與度量",
         "sentence": "The height of Taipei 101 is 508 meters.",
@@ -9929,6 +11467,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "distance",
+        "pos": "n.",
         "meaning": "距離",
         "theme": "單位與度量",
         "sentence": "The distance from my home to the school is very short.",
@@ -9937,6 +11476,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "weight",
+        "pos": "n.",
         "meaning": "重量",
         "theme": "單位與度量",
         "sentence": "You can check your weight on the machine in the hospital.",
@@ -9944,7 +11484,17 @@ const DICTIONARY_DATA = [
         "otherForms": "weights (複數型)"
     },
     {
+        "word": "range",
+        "pos": "n.",
+        "meaning": "範圍",
+        "theme": "單位與度量",
+        "sentence": "The price range for these phones is quite wide.",
+        "sentenceZh": "這些手機的價格範圍相當廣。",
+        "otherForms": "ranges (複數)"
+    },
+    {
         "word": "amount",
+        "pos": "n.",
         "meaning": "數量",
         "theme": "單位與度量",
         "sentence": "You only need a small amount of salt for this soup.",
@@ -9953,7 +11503,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "measure",
-        "meaning": "測量；措施",
+        "pos": "n. / v.",
+        "meaning": "測量 / 措施",
         "theme": "單位與度量",
         "sentence": "The nurse will measure your height and weight first.",
         "sentenceZh": "護理師會先測量你的身高和體重。",
@@ -9961,6 +11512,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "accident",
+        "pos": "n.",
         "meaning": "事故",
         "theme": "抽象概念",
         "sentence": "He hurt his leg in a bad motorcycle accident yesterday.",
@@ -9969,6 +11521,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "action",
+        "pos": "n.",
         "meaning": "行動",
         "theme": "抽象概念",
         "sentence": "We must take action now to protect the earth.",
@@ -9977,6 +11530,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "advice",
+        "pos": "n.",
         "meaning": "建議",
         "theme": "抽象概念",
         "sentence": "The teacher gave me some good advice on how to learn English.",
@@ -9985,7 +11539,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "aim",
-        "meaning": "目標；瞄準",
+        "pos": "n. / v.",
+        "meaning": "目標 / 瞄準",
         "theme": "抽象概念",
         "sentence": "His main aim is to become a successful software engineer.",
         "sentenceZh": "他的主要目標是成為一名成功的軟體工程師。",
@@ -9993,7 +11548,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "base",
-        "meaning": "基礎；基地",
+        "pos": "n.",
+        "meaning": "基礎 / 基地",
         "theme": "抽象概念",
         "sentence": "The Syntax Repair game is based on English grammar rules.",
         "sentenceZh": "「語法修復」遊戲是建立在英文文法規則的基礎上。",
@@ -10001,6 +11557,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beauty",
+        "pos": "n.",
         "meaning": "美麗",
         "theme": "抽象概念",
         "sentence": "The natural beauty of the mountains is truly amazing.",
@@ -10009,6 +11566,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beginning",
+        "pos": "n.",
         "meaning": "開始",
         "theme": "抽象概念",
         "sentence": "The beginning of the movie was a little bit boring.",
@@ -10017,7 +11575,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blank",
-        "meaning": "空白",
+        "pos": "n. / adj.",
+        "meaning": "空白 / 空白的",
         "theme": "抽象概念",
         "sentence": "Please write the correct word in the blank space.",
         "sentenceZh": "請在空白處寫上正確的單字。",
@@ -10025,7 +11584,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cause",
-        "meaning": "原因；導致",
+        "pos": "n. / v.",
+        "meaning": "原因 / 導致",
         "theme": "抽象概念",
         "sentence": "The heavy rain was the main cause of the flood.",
         "sentenceZh": "大雨是造成淹水的主要原因。",
@@ -10033,6 +11593,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chance",
+        "pos": "n.",
         "meaning": "機會",
         "theme": "抽象概念",
         "sentence": "Everyone deserves a second chance to try again.",
@@ -10041,6 +11602,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "choice",
+        "pos": "n.",
         "meaning": "選擇",
         "theme": "抽象概念",
         "sentence": "You have to make a choice between the red or blue shirt.",
@@ -10048,7 +11610,17 @@ const DICTIONARY_DATA = [
         "otherForms": "choices (複數型)"
     },
     {
+        "word": "conflict",
+        "pos": "n. / v.",
+        "meaning": "衝突",
+        "theme": "抽象概念",
+        "sentence": "There is a conflict between the two countries.",
+        "sentenceZh": "這兩個國家之間發生了衝突。",
+        "otherForms": "conflicts (複數/三單), conflicted (過去/過去分詞), conflicting (現在分詞)"
+    },
+    {
         "word": "courage",
+        "pos": "n.",
         "meaning": "勇氣",
         "theme": "抽象概念",
         "sentence": "It takes a lot of courage to speak English on the stage.",
@@ -10057,7 +11629,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "damage",
-        "meaning": "傷害；損害",
+        "pos": "n. / v.",
+        "meaning": "傷害 / 損害",
         "theme": "抽象概念",
         "sentence": "The strong typhoon caused a lot of damage to the trees.",
         "sentenceZh": "強烈颱風對樹木造成了很大的損害。",
@@ -10065,6 +11638,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "danger",
+        "pos": "n.",
         "meaning": "危險",
         "theme": "抽象概念",
         "sentence": "The red sign warns us of the hidden danger ahead.",
@@ -10073,6 +11647,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "decision",
+        "pos": "n.",
         "meaning": "決定",
         "theme": "抽象概念",
         "sentence": "I have made the decision to join the school badminton team.",
@@ -10081,6 +11656,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "difference",
+        "pos": "n.",
         "meaning": "差異",
         "theme": "抽象概念",
         "sentence": "Can you tell the difference between these two vocabulary words?",
@@ -10089,6 +11665,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "difficulty",
+        "pos": "n.",
         "meaning": "困難",
         "theme": "抽象概念",
         "sentence": "He had some difficulty fixing the bug in his computer code.",
@@ -10097,7 +11674,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dream",
-        "meaning": "夢想；作夢",
+        "pos": "n. / v.",
+        "meaning": "夢想 / 作夢",
         "theme": "抽象概念",
         "sentence": "Her biggest dream is to travel around the world someday.",
         "sentenceZh": "她最大的夢想是有朝一日能環遊世界。",
@@ -10105,6 +11683,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "duty",
+        "pos": "n.",
         "meaning": "責任",
         "theme": "抽象概念",
         "sentence": "It is the duty of a police officer to protect the people.",
@@ -10112,7 +11691,17 @@ const DICTIONARY_DATA = [
         "otherForms": "duties (複數型(去y加ies))"
     },
     {
+        "word": "effect",
+        "pos": "n.",
+        "meaning": "效果 / 影響",
+        "theme": "抽象概念",
+        "sentence": "The medicine had a good effect on her health.",
+        "sentenceZh": "這種藥對她的健康有很好的效果。",
+        "otherForms": "effects (複數型), effective (有效的 - 形容詞), affect (影響 - 動詞)"
+    },
+    {
         "word": "effort",
+        "pos": "n.",
         "meaning": "努力",
         "theme": "抽象概念",
         "sentence": "He put a lot of effort into designing the vocabulary game.",
@@ -10121,6 +11710,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "energy",
+        "pos": "n.",
         "meaning": "能量",
         "theme": "抽象概念",
         "sentence": "You need a lot of energy to play a full badminton game.",
@@ -10129,6 +11719,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "error",
+        "pos": "n.",
         "meaning": "錯誤",
         "theme": "抽象概念",
         "sentence": "I found a spelling error in my sentence and fixed it.",
@@ -10137,7 +11728,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "excuse",
-        "meaning": "藉口",
+        "pos": "n. / v.",
+        "meaning": "藉口 / 原諒",
         "theme": "抽象概念",
         "sentence": "Being late because you overslept is not a good excuse.",
         "sentenceZh": "因為睡過頭而遲到不是個好藉口。",
@@ -10145,7 +11737,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "experience",
-        "meaning": "經驗；體驗",
+        "pos": "n. / v.",
+        "meaning": "經驗 / 體驗",
         "theme": "抽象概念",
         "sentence": "He has a lot of experience in teaching English grammar.",
         "sentenceZh": "他在教英文文法方面有很多經驗。",
@@ -10153,6 +11746,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fact",
+        "pos": "n.",
         "meaning": "事實",
         "theme": "抽象概念",
         "sentence": "It is a well-known fact that the earth is round.",
@@ -10161,6 +11755,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fault",
+        "pos": "n.",
         "meaning": "過錯",
         "theme": "抽象概念",
         "sentence": "It was my fault that we lost the basketball game.",
@@ -10169,6 +11764,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "freedom",
+        "pos": "n.",
         "meaning": "自由",
         "theme": "抽象概念",
         "sentence": "The wild birds in the sky have the freedom to fly anywhere.",
@@ -10177,6 +11773,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "friendship",
+        "pos": "n.",
         "meaning": "友誼",
         "theme": "抽象概念",
         "sentence": "We hope that our strong friendship will last forever.",
@@ -10185,6 +11782,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "fun",
+        "pos": "n.",
         "meaning": "樂趣",
         "theme": "抽象概念",
         "sentence": "Playing the interactive web game is so much fun.",
@@ -10192,7 +11790,17 @@ const DICTIONARY_DATA = [
         "otherForms": ""
     },
     {
+        "word": "function",
+        "pos": "n. / v.",
+        "meaning": "功能 / 運作",
+        "theme": "抽象概念",
+        "sentence": "What is the function of this button?",
+        "sentenceZh": "這個按鈕的功能是什麼？",
+        "otherForms": "functions (複數/三單), functioned (過去/過去分詞), functioning (現在分詞)"
+    },
+    {
         "word": "ghost",
+        "pos": "n.",
         "meaning": "鬼魂",
         "theme": "抽象概念",
         "sentence": "The kids dressed up as scary ghosts for the Halloween party.",
@@ -10201,6 +11809,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "goal",
+        "pos": "n.",
         "meaning": "目標",
         "theme": "抽象概念",
         "sentence": "My goal this semester is to memorize 2000 English words.",
@@ -10209,6 +11818,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "honesty",
+        "pos": "n.",
         "meaning": "誠實",
         "theme": "抽象概念",
         "sentence": "The teacher told us that honesty is the best policy.",
@@ -10217,6 +11827,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "humor",
+        "pos": "n.",
         "meaning": "幽默",
         "theme": "抽象概念",
         "sentence": "Our English teacher has a great sense of humor.",
@@ -10225,6 +11836,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "idea",
+        "pos": "n.",
         "meaning": "主意",
         "theme": "抽象概念",
         "sentence": "I have a great idea for the new class badge design!",
@@ -10233,6 +11845,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "importance",
+        "pos": "n.",
         "meaning": "重要性",
         "theme": "抽象概念",
         "sentence": "Do you understand the importance of passing the test?",
@@ -10241,6 +11854,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "influence",
+        "pos": "n. / v.",
         "meaning": "影響",
         "theme": "抽象概念",
         "sentence": "The 80s pop music had a huge influence on his music style.",
@@ -10249,6 +11863,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lack",
+        "pos": "n. / v.",
         "meaning": "缺乏",
         "theme": "抽象概念",
         "sentence": "The poor plants died because of a lack of water.",
@@ -10257,6 +11872,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "level",
+        "pos": "n.",
         "meaning": "水平",
         "theme": "抽象概念",
         "sentence": "This vocabulary game has three different difficulty levels.",
@@ -10264,8 +11880,18 @@ const DICTIONARY_DATA = [
         "otherForms": "levels"
     },
     {
+        "word": "luck",
+        "pos": "n.",
+        "meaning": "運氣",
+        "theme": "抽象概念",
+        "sentence": "Wish me luck on my test tomorrow!",
+        "sentenceZh": "祝我明天的考試好運！",
+        "otherForms": "lucky (幸運的 - 形容詞), luckily (幸運地 - 副詞)"
+    },
+    {
         "word": "manner",
-        "meaning": "禮貌；方式",
+        "pos": "n.",
+        "meaning": "禮貌 / 方式",
         "theme": "抽象概念",
         "sentence": "It is bad manners to talk loudly with food in your mouth.",
         "sentenceZh": "嘴裡含著食物大聲說話是很沒禮貌的。",
@@ -10273,6 +11899,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meaning",
+        "pos": "n.",
         "meaning": "意思",
         "theme": "抽象概念",
         "sentence": "Can you look up the meaning of this word in the dictionary?",
@@ -10281,6 +11908,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "message",
+        "pos": "n.",
         "meaning": "訊息",
         "theme": "抽象概念",
         "sentence": "Please leave a message if I do not answer my phone.",
@@ -10289,6 +11917,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "method",
+        "pos": "n.",
         "meaning": "方法",
         "theme": "抽象概念",
         "sentence": "We need to find a better learning method for English.",
@@ -10297,7 +11926,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mind",
-        "meaning": "心智；介意",
+        "pos": "n. / v.",
+        "meaning": "心智 / 介意",
         "theme": "抽象概念",
         "sentence": "Keep your mind calm and clear when you take the final exam.",
         "sentenceZh": "考期末考時保持心智冷靜清晰。",
@@ -10305,14 +11935,16 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "mistake",
-        "meaning": "錯誤；搞錯",
+        "pos": "n. / v.",
+        "meaning": "錯誤 / 搞錯",
         "theme": "抽象概念",
         "sentence": "Don't be afraid to make a mistake when speaking English!",
         "sentenceZh": "開口說英文時別害怕犯錯！",
-        "otherForms": "mistakes (複數型), mistakes (三單), mistaking (ing型(去e加ing)), mistook (過去式(不規則))"
+        "otherForms": "mistakes (複數型)"
     },
     {
         "word": "motion",
+        "pos": "n.",
         "meaning": "動作",
         "theme": "抽象概念",
         "sentence": "The slow motion video shows you how to jump correctly.",
@@ -10321,6 +11953,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "movement",
+        "pos": "n.",
         "meaning": "運動",
         "theme": "抽象概念",
         "sentence": "The cat carefully watched the movement of the small mouse.",
@@ -10329,6 +11962,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "opinion",
+        "pos": "n.",
         "meaning": "意見",
         "theme": "抽象概念",
         "sentence": "What is your opinion on the new rules of the grammar game?",
@@ -10337,6 +11971,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pattern",
+        "pos": "n.",
         "meaning": "模式",
         "theme": "抽象概念",
         "sentence": "Her new dress has a very beautiful flower pattern.",
@@ -10345,6 +11980,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "peace",
+        "pos": "n.",
         "meaning": "和平",
         "theme": "抽象概念",
         "sentence": "Everyone in the country hopes for peace and safety.",
@@ -10353,7 +11989,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "power",
-        "meaning": "力量；電力",
+        "pos": "n.",
+        "meaning": "力量 / 電力",
         "theme": "抽象概念",
         "sentence": "The ancient king had the power to change all the laws.",
         "sentenceZh": "古代的國王擁有改變所有法律的權力。",
@@ -10361,6 +11998,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pressure",
+        "pos": "n.",
         "meaning": "壓力",
         "theme": "抽象概念",
         "sentence": "Students often feel a lot of pressure before a big exam.",
@@ -10369,6 +12007,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "principle",
+        "pos": "n.",
         "meaning": "原則",
         "theme": "抽象概念",
         "sentence": "Always telling the truth is an important principle in his life.",
@@ -10377,6 +12016,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "production",
+        "pos": "n.",
         "meaning": "生產",
         "theme": "抽象概念",
         "sentence": "The large factory increased its production of sports shoes.",
@@ -10385,6 +12025,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "progress",
+        "pos": "n. / v.",
         "meaning": "進步",
         "theme": "抽象概念",
         "sentence": "He made a lot of progress in his English reading skills.",
@@ -10393,6 +12034,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "purpose",
+        "pos": "n.",
         "meaning": "目的",
         "theme": "抽象概念",
         "sentence": "What is the main purpose of playing this vocabulary game?",
@@ -10400,7 +12042,17 @@ const DICTIONARY_DATA = [
         "otherForms": "purposes (複數型)"
     },
     {
+        "word": "quality",
+        "pos": "n.",
+        "meaning": "品質",
+        "theme": "抽象概念",
+        "sentence": "This pair of shoes is of very high quality.",
+        "sentenceZh": "這雙鞋的品質非常高。",
+        "otherForms": "qualities (複數型)"
+    },
+    {
         "word": "reason",
+        "pos": "n.",
         "meaning": "理由",
         "theme": "抽象概念",
         "sentence": "He politely explained the reason why he was late for school.",
@@ -10408,8 +12060,18 @@ const DICTIONARY_DATA = [
         "otherForms": "reasons (複數型)"
     },
     {
+        "word": "relation",
+        "pos": "n.",
+        "meaning": "關係",
+        "theme": "抽象概念",
+        "sentence": "They have a good relation with their neighbors.",
+        "sentenceZh": "他們和鄰居關係良好。",
+        "otherForms": "relations (複數型)"
+    },
+    {
         "word": "result",
-        "meaning": "結果",
+        "pos": "n. / v.",
+        "meaning": "結果 / 導致",
         "theme": "抽象概念",
         "sentence": "He was very happy with the final result of his math test.",
         "sentenceZh": "他對數學考試的最終結果感到非常開心。",
@@ -10417,6 +12079,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "safety",
+        "pos": "n.",
         "meaning": "安全",
         "theme": "抽象概念",
         "sentence": "You must wear a helmet for your own safety when riding a bike.",
@@ -10425,7 +12088,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "secret",
-        "meaning": "秘密",
+        "pos": "n. / adj.",
+        "meaning": "秘密 / 秘密的",
         "theme": "抽象概念",
         "sentence": "Please promise me that you won't tell my secret to anyone.",
         "sentenceZh": "請答應我你不會把我的秘密告訴任何人。",
@@ -10433,6 +12097,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "silence",
+        "pos": "n.",
         "meaning": "寂靜",
         "theme": "抽象概念",
         "sentence": "The teacher waited for total silence before she started speaking.",
@@ -10441,6 +12106,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "skill",
+        "pos": "n.",
         "meaning": "技能",
         "theme": "抽象概念",
         "sentence": "Writing HTML code is a very useful skill for the future.",
@@ -10449,6 +12115,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "soul",
+        "pos": "n.",
         "meaning": "靈魂",
         "theme": "抽象概念",
         "sentence": "Some people say that beautiful music is good for the soul.",
@@ -10456,7 +12123,17 @@ const DICTIONARY_DATA = [
         "otherForms": "souls (複數型)"
     },
     {
+        "word": "source",
+        "pos": "n.",
+        "meaning": "來源",
+        "theme": "抽象概念",
+        "sentence": "The internet is a great source of information.",
+        "sentenceZh": "網路是一個很棒的資訊來源。",
+        "otherForms": "sources (複數型)"
+    },
+    {
         "word": "space",
+        "pos": "n.",
         "meaning": "空間",
         "theme": "抽象概念",
         "sentence": "There is still an empty space for your bag on the top shelf.",
@@ -10465,7 +12142,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "speed",
-        "meaning": "速度",
+        "pos": "n. / v.",
+        "meaning": "速度 / 加速",
         "theme": "抽象概念",
         "sentence": "The bullet train travels across the country at a very high speed.",
         "sentenceZh": "子彈列車以極高的速度穿梭全國。",
@@ -10473,6 +12151,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "spirit",
+        "pos": "n.",
         "meaning": "精神",
         "theme": "抽象概念",
         "sentence": "The students showed great team spirit during the relay race.",
@@ -10481,7 +12160,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "state",
-        "meaning": "狀態；州",
+        "pos": "n.",
+        "meaning": "狀態 / 州",
         "theme": "抽象概念",
         "sentence": "Water can naturally exist in a solid, liquid, or gas state.",
         "sentenceZh": "水在自然界中能以固態、液態或氣態存在。",
@@ -10489,6 +12169,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "style",
+        "pos": "n.",
         "meaning": "風格",
         "theme": "抽象概念",
         "sentence": "I really love the cool style of 1980s synth-pop music.",
@@ -10497,7 +12178,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "subject",
-        "meaning": "主題；科目",
+        "pos": "n.",
+        "meaning": "主題 / 科目",
         "theme": "抽象概念",
         "sentence": "English is my favorite subject in junior high school.",
         "sentenceZh": "英文是我在國中最喜歡的科目。",
@@ -10505,6 +12187,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "success",
+        "pos": "n.",
         "meaning": "成功",
         "theme": "抽象概念",
         "sentence": "The new vocabulary passport plan was a great success.",
@@ -10512,7 +12195,17 @@ const DICTIONARY_DATA = [
         "otherForms": "successes (複數型(加es))"
     },
     {
+        "word": "surface",
+        "pos": "n.",
+        "meaning": "表面",
+        "theme": "抽象概念",
+        "sentence": "The surface of the table is very smooth.",
+        "sentenceZh": "這張桌子的表面非常光滑。",
+        "otherForms": "surfaces (複數型)"
+    },
+    {
         "word": "symbol",
+        "pos": "n.",
         "meaning": "符號",
         "theme": "抽象概念",
         "sentence": "The white dove is often seen as a symbol of world peace.",
@@ -10521,6 +12214,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "talent",
+        "pos": "n.",
         "meaning": "天賦",
         "theme": "抽象概念",
         "sentence": "She has a special talent for drawing cute game characters.",
@@ -10528,7 +12222,17 @@ const DICTIONARY_DATA = [
         "otherForms": "talents (複數型)"
     },
     {
+        "word": "task",
+        "pos": "n.",
+        "meaning": "任務",
+        "theme": "抽象概念",
+        "sentence": "Your task is to finish the homework before 9 PM.",
+        "sentenceZh": "你的任務是在晚上9點前完成作業。",
+        "otherForms": "tasks (複數型)"
+    },
+    {
         "word": "thought",
+        "pos": "n.",
         "meaning": "想法",
         "theme": "抽象概念",
         "sentence": "I just had a brilliant thought about how to fix the code.",
@@ -10537,6 +12241,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trouble",
+        "pos": "n. / v.",
         "meaning": "麻煩",
         "theme": "抽象概念",
         "sentence": "He got into trouble because he didn't finish his homework.",
@@ -10545,6 +12250,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "truth",
+        "pos": "n.",
         "meaning": "真相",
         "theme": "抽象概念",
         "sentence": "A brave and honest student should always tell the truth.",
@@ -10553,7 +12259,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "value",
-        "meaning": "價值；重視",
+        "pos": "n. / v.",
+        "meaning": "價值 / 重視",
         "theme": "抽象概念",
         "sentence": "Good health is of great value to everyone in the world.",
         "sentenceZh": "良好的健康對世上每個人都有極大的價值。",
@@ -10561,6 +12268,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "victory",
+        "pos": "n.",
         "meaning": "勝利",
         "theme": "抽象概念",
         "sentence": "The badminton team celebrated their sweet victory after the game.",
@@ -10569,7 +12277,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "way",
-        "meaning": "方式；道路",
+        "pos": "n.",
+        "meaning": "方式 / 道路",
         "theme": "抽象概念",
         "sentence": "Can you please show me the correct way to the train station?",
         "sentenceZh": "能請你告訴我前往火車站的正確道路嗎？",
@@ -10577,6 +12286,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "balloon",
+        "pos": "n.",
         "meaning": "氣球",
         "theme": "雜物",
         "sentence": "We bought some colorful balloons for the birthday party.",
@@ -10584,7 +12294,17 @@ const DICTIONARY_DATA = [
         "otherForms": "balloons (複數型)"
     },
     {
+        "word": "bag",
+        "pos": "n.",
+        "meaning": "袋子 / 包包",
+        "theme": "雜物",
+        "sentence": "Don't forget to take your bag with you.",
+        "sentenceZh": "別忘了帶著你的包包。",
+        "otherForms": "bags (複數型)"
+    },
+    {
         "word": "bell",
+        "pos": "n.",
         "meaning": "鈴鐺",
         "theme": "雜物",
         "sentence": "The school bell rings loudly at exactly eight o'clock.",
@@ -10593,6 +12313,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bomb",
+        "pos": "n.",
         "meaning": "炸彈",
         "theme": "雜物",
         "sentence": "The brave police officer safely stopped the bomb from exploding.",
@@ -10601,6 +12322,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cage",
+        "pos": "n.",
         "meaning": "籠子",
         "theme": "雜物",
         "sentence": "The beautiful parrot is locked inside a small metal cage.",
@@ -10608,7 +12330,17 @@ const DICTIONARY_DATA = [
         "otherForms": "cages (複數型)"
     },
     {
+        "word": "chemical",
+        "pos": "n. / adj.",
+        "meaning": "化學物質 / 化學的",
+        "theme": "雜物",
+        "sentence": "Be careful when you use these chemical products.",
+        "sentenceZh": "使用這些化學產品時請小心。",
+        "otherForms": "chemicals (複數型), chemistry (化學 - 名詞)"
+    },
+    {
         "word": "flag",
+        "pos": "n.",
         "meaning": "旗幟",
         "theme": "雜物",
         "sentence": "The students raised the national flag at the morning assembly.",
@@ -10617,6 +12349,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "garbage",
+        "pos": "n.",
         "meaning": "垃圾",
         "theme": "雜物",
         "sentence": "Please remember to take out the garbage before you leave.",
@@ -10625,6 +12358,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gift",
+        "pos": "n.",
         "meaning": "禮物",
         "theme": "雜物",
         "sentence": "I received a very special gift from my aunt in Taipei.",
@@ -10633,6 +12367,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "gun",
+        "pos": "n.",
         "meaning": "槍",
         "theme": "雜物",
         "sentence": "The police officer carries a gun to protect the people.",
@@ -10641,6 +12376,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kite",
+        "pos": "n.",
         "meaning": "風箏",
         "theme": "雜物",
         "sentence": "We flew a beautiful red kite high in the clear blue sky.",
@@ -10649,6 +12385,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lid",
+        "pos": "n.",
         "meaning": "蓋子",
         "theme": "雜物",
         "sentence": "Don't forget to put the plastic lid back on the box.",
@@ -10656,8 +12393,18 @@ const DICTIONARY_DATA = [
         "otherForms": "lids (複數型)"
     },
     {
+        "word": "material",
+        "pos": "n.",
+        "meaning": "材料 / 物質",
+        "theme": "雜物",
+        "sentence": "Cotton is a soft material.",
+        "sentenceZh": "棉花是一種柔軟的材料。",
+        "otherForms": "materials (複數型)"
+    },
+    {
         "word": "name",
-        "meaning": "名字",
+        "pos": "n. / v.",
+        "meaning": "名字 / 命名",
         "theme": "雜物",
         "sentence": "Please write your English name clearly on the worksheet.",
         "sentenceZh": "請在學習單上清楚寫下你的英文名字。",
@@ -10665,7 +12412,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "object",
-        "meaning": "物品",
+        "pos": "n. / v.",
+        "meaning": "物品 / 反對",
         "theme": "雜物",
         "sentence": "The teacher put a strange, shiny object on her desk.",
         "sentenceZh": "老師在書桌上放了一個奇怪、閃亮的物品。",
@@ -10673,6 +12421,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "prize",
+        "pos": "n.",
         "meaning": "獎品",
         "theme": "雜物",
         "sentence": "He won the first prize in the national spelling bee contest.",
@@ -10681,6 +12430,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "rope",
+        "pos": "n.",
         "meaning": "繩子",
         "theme": "雜物",
         "sentence": "We need a long, strong rope to play a game of tug-of-war.",
@@ -10689,7 +12439,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "step",
-        "meaning": "步驟；腳步",
+        "pos": "n. / v.",
+        "meaning": "步驟 / 腳步；踩",
         "theme": "雜物",
         "sentence": "Watch your step carefully when you walk down the wet stairs.",
         "sentenceZh": "走下潮濕的樓梯時要小心你的腳步。",
@@ -10697,6 +12448,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "string",
+        "pos": "n.",
         "meaning": "細繩",
         "theme": "雜物",
         "sentence": "I tied the small box nicely with a piece of red string.",
@@ -10705,6 +12457,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "thing",
+        "pos": "n.",
         "meaning": "東西",
         "theme": "雜物",
         "sentence": "Keeping your body healthy is the most important thing in life.",
@@ -10713,6 +12466,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "tool",
+        "pos": "n.",
         "meaning": "工具",
         "theme": "雜物",
         "sentence": "A computer is a very powerful tool for learning new things.",
@@ -10721,7 +12475,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trap",
-        "meaning": "陷阱；困住",
+        "pos": "n. / v.",
+        "meaning": "陷阱 / 困住",
         "theme": "雜物",
         "sentence": "The small mouse was finally caught in the wooden trap.",
         "sentenceZh": "那隻小老鼠最後被抓進了木製陷阱裡。",
@@ -10729,6 +12484,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trash",
+        "pos": "n.",
         "meaning": "垃圾",
         "theme": "雜物",
         "sentence": "Don't throw your trash on the floor; put it in the can.",
@@ -10737,7 +12493,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "treasure",
-        "meaning": "寶藏；珍惜",
+        "pos": "n. / v.",
+        "meaning": "寶藏 / 珍惜",
         "theme": "雜物",
         "sentence": "The pirates found a hidden box of gold treasure on the island.",
         "sentenceZh": "海盜在島上找到了一箱隱藏的黃金寶藏。",
@@ -10745,7 +12502,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "trick",
-        "meaning": "詭計；詐欺",
+        "pos": "n. / v.",
+        "meaning": "詭計 / 詐欺",
         "theme": "雜物",
         "sentence": "The street magician showed us a very cool card trick.",
         "sentenceZh": "街頭魔術師表演了一個非常酷的撲克牌戲法。",
@@ -10753,6 +12511,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "good-bye (goodbye, bye)",
+        "pos": "phr.",
         "meaning": "再見",
         "theme": "會話",
         "sentence": "Wave your hand and say good-bye to your classmates.",
@@ -10761,6 +12520,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "goodness",
+        "pos": "phr.",
         "meaning": "天啊",
         "theme": "會話",
         "sentence": "My goodness! The wind is blowing so strong today!",
@@ -10769,6 +12529,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hello",
+        "pos": "phr.",
         "meaning": "哈囉",
         "theme": "會話",
         "sentence": "Please smile and say hello to the new student in our class.",
@@ -10777,6 +12538,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hey",
+        "pos": "phr.",
         "meaning": "嘿",
         "theme": "會話",
         "sentence": "Hey! Don't forget to take your umbrella, it is raining outside!",
@@ -10785,6 +12547,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hi",
+        "pos": "phr.",
         "meaning": "嗨",
         "theme": "會話",
         "sentence": "Hi, how are you doing with your homework today?",
@@ -10793,6 +12556,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "no",
+        "pos": "phr. / adv.",
         "meaning": "不",
         "theme": "會話",
         "sentence": "He shook his head slowly and said no to the question.",
@@ -10801,6 +12565,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "Of course",
+        "pos": "phr.",
         "meaning": "當然",
         "theme": "會話",
         "sentence": "\"Can you help me fix this bug?\" \"Of course I can!\"",
@@ -10809,6 +12574,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "OK",
+        "pos": "phr.",
         "meaning": "ok",
         "theme": "會話",
         "sentence": "Are you OK? You look a little bit pale today.",
@@ -10817,7 +12583,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pardon",
-        "meaning": "不好意思",
+        "pos": "phr. / v.",
+        "meaning": "不好意思 / 原諒",
         "theme": "會話",
         "sentence": "Pardon me, could you please repeat that English word again?",
         "sentenceZh": "不好意思，能請您再重複一次那個英文單字嗎？",
@@ -10825,7 +12592,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sorry",
-        "meaning": "抱歉的；難過的",
+        "pos": "adj. / phr.",
+        "meaning": "抱歉的 / 難過的",
         "theme": "會話",
         "sentence": "I am very sorry for breaking your favorite coffee cup.",
         "sentenceZh": "打破了你最愛的咖啡杯我感到非常抱歉。",
@@ -10833,7 +12601,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sure",
-        "meaning": "當然",
+        "pos": "adj. / adv.",
+        "meaning": "當然；確定的",
         "theme": "會話",
         "sentence": "Are you sure this is the right way to the train station?",
         "sentenceZh": "你確定這是前往火車站的正確道路嗎？",
@@ -10841,7 +12610,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "yes (yeah)",
-        "meaning": "好",
+        "pos": "phr. / adv.",
+        "meaning": "好；是的",
         "theme": "會話",
         "sentence": "Yes, I have already finished my English reading homework.",
         "sentenceZh": "是的，我已經寫完我的英文閱讀作業了。",
@@ -10849,7 +12619,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sound",
-        "meaning": "聲音；聽起來",
+        "pos": "n. / v.",
+        "meaning": "聲音 / 聽起來",
         "theme": "五官動詞",
         "sentence": "That 1980s synth-pop song sounds really wonderful.",
         "sentenceZh": "那首 80 年代的合成器流行歌聽起來真的很棒。",
@@ -10857,7 +12628,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "taste",
-        "meaning": "口味；嘗起來",
+        "pos": "n. / v.",
+        "meaning": "口味 / 嘗起來",
         "theme": "五官動詞",
         "sentence": "The beef noodles in Douliu taste very delicious.",
         "sentenceZh": "斗六的牛肉麵嘗起來非常美味。",
@@ -10865,7 +12637,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "look",
-        "meaning": "外表；看",
+        "pos": "n. / v.",
+        "meaning": "外表 / 看",
         "theme": "五官動詞",
         "sentence": "You look very tired after the long badminton practice.",
         "sentenceZh": "漫長的羽球練習後你看起來非常累。",
@@ -10873,7 +12646,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "feel",
-        "meaning": "感覺到；感覺起來",
+        "pos": "v.",
+        "meaning": "感覺到 / 感覺起來",
         "theme": "五官動詞",
         "sentence": "The soft blanket feels very warm and comfortable.",
         "sentenceZh": "柔軟的毯子感覺起來非常溫暖舒適。",
@@ -10881,7 +12655,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "smell",
-        "meaning": "味道；聞到、聞起來",
+        "pos": "n. / v.",
+        "meaning": "味道 / 聞到；聞起來",
         "theme": "五官動詞",
         "sentence": "The fried chicken in the night market smells so good.",
         "sentenceZh": "夜市裡的炸雞聞起來好香。",
@@ -10889,6 +12664,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "see",
+        "pos": "v.",
         "meaning": "看到",
         "theme": "五官動詞",
         "sentence": "I can see a beautiful rainbow in the clear sky.",
@@ -10897,6 +12673,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hear",
+        "pos": "v.",
         "meaning": "聽到",
         "theme": "五官動詞",
         "sentence": "Did you hear the school bell ringing just now?",
@@ -10905,6 +12682,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "listen",
+        "pos": "v.",
         "meaning": "聆聽",
         "theme": "五官動詞",
         "sentence": "Please listen carefully to the teacher's instructions.",
@@ -10913,7 +12691,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "watch",
-        "meaning": "觀看；手錶",
+        "pos": "v. / n.",
+        "meaning": "觀看 / 手錶",
         "theme": "五官動詞",
         "sentence": "We watched an exciting badminton game on TV last night.",
         "sentenceZh": "我們昨晚在電視上觀看了一場刺激的羽球比賽。",
@@ -10921,7 +12700,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "beat",
-        "meaning": "打擊",
+        "pos": "v. / n.",
+        "meaning": "打擊 / 節拍",
         "theme": "手部動作",
         "sentence": "In the game, you have to beat the boss to win.",
         "sentenceZh": "在遊戲中，你必須打敗魔王才能獲勝。",
@@ -10929,7 +12709,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "brush",
-        "meaning": "刷；刷子",
+        "pos": "v. / n.",
+        "meaning": "刷 / 刷子",
         "theme": "手部動作",
         "sentence": "Remember to brush your teeth twice a day.",
         "sentenceZh": "記得每天刷兩次牙。",
@@ -10937,6 +12718,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "catch",
+        "pos": "v.",
         "meaning": "抓住",
         "theme": "手部動作",
         "sentence": "He ran fast to catch the school bus this morning.",
@@ -10945,6 +12727,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "clap",
+        "pos": "v. / n.",
         "meaning": "拍手",
         "theme": "手部動作",
         "sentence": "The students began to clap after the great speech.",
@@ -10953,6 +12736,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dial",
+        "pos": "v.",
         "meaning": "撥號",
         "theme": "手部動作",
         "sentence": "You can dial 119 if there is a fire.",
@@ -10961,6 +12745,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "dig",
+        "pos": "v.",
         "meaning": "挖掘",
         "theme": "手部動作",
         "sentence": "The dog likes to dig holes in the garden.",
@@ -10968,7 +12753,17 @@ const DICTIONARY_DATA = [
         "otherForms": "digs (三單), digging (ing型(重複字尾)), dug (過去式(不規則)), dug (過去分詞(不規則))"
     },
     {
+        "word": "drag",
+        "pos": "v.",
+        "meaning": "拖拉",
+        "theme": "手部動作",
+        "sentence": "Don't drag the chair on the floor.",
+        "sentenceZh": "不要在地上拖拉椅子。",
+        "otherForms": "drags (三單), dragged (過去/過去分詞), dragging (現在分詞)"
+    },
+    {
         "word": "give",
+        "pos": "v.",
         "meaning": "給予",
         "theme": "手部動作",
         "sentence": "My uncle gave me a new watch for my birthday.",
@@ -10977,6 +12772,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hit",
+        "pos": "v. / n.",
         "meaning": "擊打",
         "theme": "手部動作",
         "sentence": "You must hit the badminton ball hard to get a point.",
@@ -10985,6 +12781,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hold",
+        "pos": "v.",
         "meaning": "握住",
         "theme": "手部動作",
         "sentence": "Please hold my hand when we cross the street.",
@@ -10993,6 +12790,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hug",
+        "pos": "v. / n.",
         "meaning": "擁抱",
         "theme": "手部動作",
         "sentence": "She gave her mother a big hug on Mother's Day.",
@@ -11001,6 +12799,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "knock",
+        "pos": "v. / n.",
         "meaning": "敲",
         "theme": "手部動作",
         "sentence": "Someone is knocking on the classroom door.",
@@ -11009,7 +12808,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lay",
-        "meaning": "放置（產卵）",
+        "pos": "v.",
+        "meaning": "放置；產卵",
         "theme": "手部動作",
         "sentence": "The brown hen lays a fresh egg every morning.",
         "sentenceZh": "那隻棕色母雞每天早上都會生一顆新鮮的蛋。",
@@ -11017,15 +12817,26 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lift",
-        "meaning": "舉起",
+        "pos": "v. / n.",
+        "meaning": "舉起 / 電梯",
         "theme": "手部動作",
         "sentence": "The box is too heavy for me to lift.",
         "sentenceZh": "這個箱子對我來說太重了，舉不起來。",
         "otherForms": "lifts (三單), lifting (ing型), lifted (過去式/分詞)"
     },
     {
+        "word": "operate",
+        "pos": "v.",
+        "meaning": "操作 / 運作",
+        "theme": "手部動作",
+        "sentence": "Do you know how to operate this machine?",
+        "sentenceZh": "你知道如何操作這台機器嗎？",
+        "otherForms": "operates (三單), operated (過去/過去分詞), operating (現在分詞), operation (名詞(手術))"
+    },
+    {
         "word": "pick",
-        "meaning": "撿起；選擇",
+        "pos": "v.",
+        "meaning": "撿起 / 選擇",
         "theme": "手部動作",
         "sentence": "Please pick up the trash on the floor.",
         "sentenceZh": "請撿起地上的垃圾。",
@@ -11033,6 +12844,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pull",
+        "pos": "v. / n.",
         "meaning": "拉",
         "theme": "手部動作",
         "sentence": "Push the door to open it, don't pull it.",
@@ -11041,6 +12853,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "push",
+        "pos": "v. / n.",
         "meaning": "推",
         "theme": "手部動作",
         "sentence": "The boy tried to push the heavy desk to the corner.",
@@ -11049,6 +12862,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "put",
+        "pos": "v.",
         "meaning": "放",
         "theme": "手部動作",
         "sentence": "Put your vocabulary passport on the desk, please.",
@@ -11057,7 +12871,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "sign",
-        "meaning": "簽名；標誌",
+        "pos": "v. / n.",
+        "meaning": "簽名 / 標誌",
         "theme": "手部動作",
         "sentence": "Please sign your name at the bottom of the test paper.",
         "sentenceZh": "請在考卷底部簽名。",
@@ -11065,6 +12880,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "throw",
+        "pos": "v. / n.",
         "meaning": "丟擲",
         "theme": "手部動作",
         "sentence": "Don't throw the ball inside the classroom.",
@@ -11073,6 +12889,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "touch",
+        "pos": "v. / n.",
         "meaning": "觸摸",
         "theme": "手部動作",
         "sentence": "Don't touch the hot pot, you might burn yourself.",
@@ -11081,7 +12898,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "type",
-        "meaning": "打字",
+        "pos": "v. / n.",
+        "meaning": "打字 / 類型",
         "theme": "手部動作",
         "sentence": "She can type English words very fast on the computer.",
         "sentenceZh": "她能在電腦上把英文單字打得非常快。",
@@ -11089,7 +12907,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "wave",
-        "meaning": "浪；揮手",
+        "pos": "v. / n.",
+        "meaning": "揮手 / 波浪",
         "theme": "手部動作",
         "sentence": "She smiled and waved goodbye to her good friend.",
         "sentenceZh": "她微笑著向她的好朋友揮手道別。",
@@ -11097,6 +12916,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "chase",
+        "pos": "v. / n.",
         "meaning": "追逐",
         "theme": "腳部動作",
         "sentence": "The dog loves to chase the cat around the yard.",
@@ -11105,6 +12925,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "come",
+        "pos": "v.",
         "meaning": "來",
         "theme": "腳部動作",
         "sentence": "Come here and look at this funny picture!",
@@ -11113,6 +12934,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "enter",
+        "pos": "v.",
         "meaning": "進入",
         "theme": "腳部動作",
         "sentence": "Please knock on the door before you enter the office.",
@@ -11121,6 +12943,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "exist",
+        "pos": "v.",
         "meaning": "存在",
         "theme": "腳部動作",
         "sentence": "Do you believe that ghosts really exist?",
@@ -11129,6 +12952,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "follow",
+        "pos": "v.",
         "meaning": "跟隨",
         "theme": "腳部動作",
         "sentence": "Follow me, and I will show you the way to the library.",
@@ -11137,6 +12961,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "go",
+        "pos": "v.",
         "meaning": "去",
         "theme": "腳部動作",
         "sentence": "We usually go to the movies on Saturday afternoon.",
@@ -11145,6 +12970,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "hop",
+        "pos": "v. / n.",
         "meaning": "單腳跳",
         "theme": "腳部動作",
         "sentence": "The little rabbit hopped across the green grass.",
@@ -11153,6 +12979,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "jump",
+        "pos": "v. / n.",
         "meaning": "跳躍",
         "theme": "腳部動作",
         "sentence": "He jumped high to catch the basketball.",
@@ -11161,6 +12988,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kick",
+        "pos": "v. / n.",
         "meaning": "踢",
         "theme": "腳部動作",
         "sentence": "He kicked the soccer ball right into the net.",
@@ -11169,7 +12997,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "leave",
-        "meaning": "離開",
+        "pos": "v.",
+        "meaning": "離開 / 留下",
         "theme": "腳部動作",
         "sentence": "Remember to turn off the lights before you leave.",
         "sentenceZh": "離開前記得關燈。",
@@ -11177,7 +13006,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "move",
-        "meaning": "移動",
+        "pos": "v. / n.",
+        "meaning": "移動 / 感動",
         "theme": "腳部動作",
         "sentence": "Can you help me move this heavy sofa?",
         "sentenceZh": "你能幫我移動這張笨重的沙發嗎？",
@@ -11185,7 +13015,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "run",
-        "meaning": "跑",
+        "pos": "v. / n.",
+        "meaning": "跑 / 經營",
         "theme": "腳部動作",
         "sentence": "Don't run in the hallway, it is dangerous.",
         "sentenceZh": "不要在走廊上奔跑，這很危險。",
@@ -11193,7 +13024,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "stand",
-        "meaning": "站立",
+        "pos": "v. / n.",
+        "meaning": "站立 / 攤位",
         "theme": "腳部動作",
         "sentence": "Please stand up when the principal comes in.",
         "sentenceZh": "校長進來時請起立。",
@@ -11201,7 +13033,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "walk",
-        "meaning": "走路",
+        "pos": "v. / n.",
+        "meaning": "走路 / 散步",
         "theme": "腳部動作",
         "sentence": "I usually walk to school because it is very close.",
         "sentenceZh": "我通常走路去上學因為距離很近。",
@@ -11209,7 +13042,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bark",
-        "meaning": "吠叫",
+        "pos": "v. / n.",
+        "meaning": "吠叫 / 樹皮",
         "theme": "臉部動作",
         "sentence": "The dog will bark loudly when a stranger comes near.",
         "sentenceZh": "當陌生人靠近時，這隻狗會大聲吠叫。",
@@ -11217,6 +13051,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "bite",
+        "pos": "v. / n.",
         "meaning": "咬",
         "theme": "臉部動作",
         "sentence": "Don't put your hand there; the spider might bite you.",
@@ -11225,6 +13060,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "blow",
+        "pos": "v. / n.",
         "meaning": "吹",
         "theme": "臉部動作",
         "sentence": "The wind is blowing hard today.",
@@ -11233,7 +13069,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cry",
-        "meaning": "哭",
+        "pos": "v. / n.",
+        "meaning": "哭 / 叫喊",
         "theme": "臉部動作",
         "sentence": "The little baby began to cry because he was hungry.",
         "sentenceZh": "小嬰兒因為肚子餓開始哭。",
@@ -11241,6 +13078,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "describe",
+        "pos": "v.",
         "meaning": "描述",
         "theme": "臉部動作",
         "sentence": "Can you describe what the thief looked like?",
@@ -11249,6 +13087,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "kiss",
+        "pos": "v. / n.",
         "meaning": "親吻",
         "theme": "臉部動作",
         "sentence": "She kissed her mother goodnight before going to sleep.",
@@ -11257,6 +13096,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lick",
+        "pos": "v. / n.",
         "meaning": "舔",
         "theme": "臉部動作",
         "sentence": "The cat licked its paw to clean itself.",
@@ -11265,6 +13105,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "meet",
+        "pos": "v.",
         "meaning": "遇見",
         "theme": "臉部動作",
         "sentence": "I will meet you at the station at five o'clock.",
@@ -11273,6 +13114,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "nod",
+        "pos": "v. / n.",
         "meaning": "點頭",
         "theme": "臉部動作",
         "sentence": "The student nodded to show that he understood the grammar.",
@@ -11281,6 +13123,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "promise",
+        "pos": "v. / n.",
         "meaning": "承諾",
         "theme": "臉部動作",
         "sentence": "I promise I will finish writing the HTML code tomorrow.",
@@ -11289,7 +13132,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "swallow",
-        "meaning": "吞嚥",
+        "pos": "v. / n.",
+        "meaning": "吞嚥 / 燕子",
         "theme": "臉部動作",
         "sentence": "Take some water to help you swallow the medicine.",
         "sentenceZh": "喝點水來幫你吞下這顆藥。",
@@ -11297,7 +13141,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "drink",
-        "meaning": "喝",
+        "pos": "v. / n.",
+        "meaning": "喝 / 飲料",
         "theme": "臉部動作",
         "sentence": "You should drink a lot of water after exercising.",
         "sentenceZh": "運動後你應該多喝水。",
@@ -11305,6 +13150,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "eat",
+        "pos": "v.",
         "meaning": "吃",
         "theme": "臉部動作",
         "sentence": "We eat dinner together as a family every evening.",
@@ -11313,6 +13159,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "advise",
+        "pos": "v.",
         "meaning": "建議",
         "theme": "言語動作",
         "sentence": "I advise you to practice your vocabulary every day.",
@@ -11321,6 +13168,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "apologize",
+        "pos": "v.",
         "meaning": "道歉",
         "theme": "言語動作",
         "sentence": "You should apologize for being late to class.",
@@ -11329,6 +13177,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "argue",
+        "pos": "v.",
         "meaning": "爭論",
         "theme": "言語動作",
         "sentence": "The two boys started to argue about the game rules.",
@@ -11337,14 +13186,25 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "cheat",
-        "meaning": "欺騙",
+        "pos": "v. / n.",
+        "meaning": "欺騙 / 騙子",
         "theme": "言語動作",
         "sentence": "It is very wrong to cheat on an English test.",
         "sentenceZh": "在英文考試中作弊是非常不對的。",
         "otherForms": "cheats (三單), cheating (ing型), cheated (過去式/分詞)"
     },
     {
+        "word": "claim",
+        "pos": "v. / n.",
+        "meaning": "宣稱 / 要求",
+        "theme": "言語動作",
+        "sentence": "He claimed that he didn't break the window.",
+        "sentenceZh": "他宣稱自己沒有打破窗戶。",
+        "otherForms": "claims (三單), claimed (過去/過去分詞), claiming (現在分詞)"
+    },
+    {
         "word": "comment",
+        "pos": "v. / n.",
         "meaning": "評論",
         "theme": "言語動作",
         "sentence": "Please leave a comment below if you like this video.",
@@ -11353,6 +13213,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "compare",
+        "pos": "v.",
         "meaning": "比較",
         "theme": "言語動作",
         "sentence": "Let's compare these two cellphones to see which is better.",
@@ -11361,6 +13222,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "complain",
+        "pos": "v.",
         "meaning": "抱怨",
         "theme": "言語動作",
         "sentence": "Don't complain about the homework; just do it.",
@@ -11368,7 +13230,17 @@ const DICTIONARY_DATA = [
         "otherForms": "complains (三單), complaining (ing型), complained (過去式/分詞)"
     },
     {
+        "word": "deny",
+        "pos": "v.",
+        "meaning": "否認",
+        "theme": "言語動作",
+        "sentence": "The boy denied stealing the money.",
+        "sentenceZh": "那男孩否認偷了錢。",
+        "otherForms": "denies (三單), denied (過去/過去分詞), denying (現在分詞)"
+    },
+    {
         "word": "discuss",
+        "pos": "v.",
         "meaning": "討論",
         "theme": "言語動作",
         "sentence": "The teachers will discuss the new teaching plan today.",
@@ -11377,6 +13249,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "explain",
+        "pos": "v.",
         "meaning": "解釋",
         "theme": "言語動作",
         "sentence": "Can you explain why you didn't finish your reading report?",
@@ -11385,7 +13258,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "express",
-        "meaning": "表達",
+        "pos": "v. / adj.",
+        "meaning": "表達 / 快速的",
         "theme": "言語動作",
         "sentence": "The beautiful poem expresses his deep love for his mother.",
         "sentenceZh": "這首美麗的詩表達了他對母親深厚的愛。",
@@ -11393,6 +13267,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "greet",
+        "pos": "v.",
         "meaning": "問候",
         "theme": "言語動作",
         "sentence": "The polite student always greets the teacher with a smile.",
@@ -11401,6 +13276,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "introduce",
+        "pos": "v.",
         "meaning": "介紹",
         "theme": "言語動作",
         "sentence": "Let me introduce my new friend, Jason, to you.",
@@ -11409,7 +13285,8 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "lie",
-        "meaning": "說謊；躺",
+        "pos": "v. / n.",
+        "meaning": "說謊 / 躺；謊言",
         "theme": "言語動作",
         "sentence": "A good friend should never lie to you.",
         "sentenceZh": "好朋友絕不應該對你說謊。",
@@ -11417,6 +13294,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "praise",
+        "pos": "v. / n.",
         "meaning": "讚美",
         "theme": "言語動作",
         "sentence": "The teacher praised him for his hard work on the project.",
@@ -11425,6 +13303,7 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "pray",
+        "pos": "v.",
         "meaning": "祈禱",
         "theme": "言語動作",
         "sentence": "They went to the temple to pray for good luck.",
@@ -11432,5919 +13311,8 @@ const DICTIONARY_DATA = [
         "otherForms": "prays (三單), praying (ing型), prayed (過去式/分詞)"
     },
     {
-        "word": "shout",
-        "meaning": "喊叫",
-        "theme": "言語動作",
-        "sentence": "Please don't shout in the library; people are reading.",
-        "sentenceZh": "請不要在圖書館大聲喊叫，人們正在看書。",
-        "otherForms": "shouts (三單), shouting (ing型), shouted (過去式/分詞)"
-    },
-    {
-        "word": "suggest",
-        "meaning": "建議",
-        "theme": "言語動作",
-        "sentence": "I suggest we take a bus instead of walking in the rain.",
-        "sentenceZh": "我建議我們搭公車，而不是在雨中走路。",
-        "otherForms": "suggests (三單), suggesting (ing型), suggested (過去式/分詞)"
-    },
-    {
-        "word": "tell",
-        "meaning": "告訴",
-        "theme": "言語動作",
-        "sentence": "Can you tell me the correct answer to this problem?",
-        "sentenceZh": "你能告訴我這個問題的正確答案嗎？",
-        "otherForms": "tells (三單), telling (ing型), told (過去式(不規則)), told (過去分詞(不規則))"
-    },
-    {
-        "word": "thank",
-        "meaning": "感謝",
-        "theme": "言語動作",
-        "sentence": "I want to thank you for helping me with my math homework.",
-        "sentenceZh": "我想感謝你幫我做數學作業。",
-        "otherForms": "thanks (三單/複數), thanking (ing型), thanked (過去式/分詞)"
-    },
-    {
-        "word": "yell",
-        "meaning": "大叫",
-        "theme": "言語動作",
-        "sentence": "The angry man yelled loudly at the driver.",
-        "sentenceZh": "生氣的男人對著司機大叫。",
-        "otherForms": "yells (三單), yelling (ing型), yelled (過去式/分詞)"
-    },
-    {
-        "word": "accept",
-        "meaning": "接受",
-        "theme": "心智動作",
-        "sentence": "She happily accepted the invitation to the birthday party.",
-        "sentenceZh": "她開心地接受了生日派對的邀請。",
-        "otherForms": "accepts (三單), accepting (ing型), accepted (過去式/分詞)"
-    },
-    {
-        "word": "admire",
-        "meaning": "欽佩",
-        "theme": "心智動作",
-        "sentence": "I really admire the way he plays badminton.",
-        "sentenceZh": "我真的很欽佩他打羽球的方式。",
-        "otherForms": "admires (三單), admiring (ing型(去e加ing)), admired (過去式/分詞)"
-    },
-    {
-        "word": "agree",
-        "meaning": "同意",
-        "theme": "心智動作",
-        "sentence": "I completely agree with your great idea.",
-        "sentenceZh": "我完全同意你這個好主意。",
-        "otherForms": "agrees (三單), agreeing (ing型), agreed (過去式/分詞)"
-    },
-    {
-        "word": "allow",
-        "meaning": "允許",
-        "theme": "心智動作",
-        "sentence": "We are not allowed to eat food in the computer room.",
-        "sentenceZh": "我們不被允許在電腦教室吃東西。",
-        "otherForms": "allows (三單), allowing (ing型), allowed (過去式/分詞)"
-    },
-    {
-        "word": "appreciate",
-        "meaning": "欣賞；感謝",
-        "theme": "心智動作",
-        "sentence": "I really appreciate your help with the interactive game.",
-        "sentenceZh": "我真的很感謝你在互動遊戲上的幫忙。",
-        "otherForms": "appreciates (三單), appreciating (ing型(去e加ing)), appreciated (過去式/分詞)"
-    },
-    {
-        "word": "assume",
-        "meaning": "假設",
-        "theme": "心智動作",
-        "sentence": "I assume you have already finished writing the sentences.",
-        "sentenceZh": "我假設你已經寫完這些句子了。",
-        "otherForms": "assumes (三單), assuming (ing型(去e加ing)), assumed (過去式/分詞)"
-    },
-    {
-        "word": "believe",
-        "meaning": "相信",
-        "theme": "心智動作",
-        "sentence": "I believe that you can pass the test if you study hard.",
-        "sentenceZh": "我相信只要你努力讀書就能通過考試。",
-        "otherForms": "believes (三單), believing (ing型(去e加ing)), believed (過去式/分詞)"
-    },
-    {
-        "word": "blame",
-        "meaning": "責備",
-        "theme": "心智動作",
-        "sentence": "Don't blame him; it was not his fault.",
-        "sentenceZh": "別責備他，那不是他的錯。",
-        "otherForms": "blames (三單), blaming (ing型(去e加ing)), blamed (過去式/分詞)"
-    },
-    {
-        "word": "bless",
-        "meaning": "祝福",
-        "theme": "心智動作",
-        "sentence": "May God bless you with good health and happiness.",
-        "sentenceZh": "願上帝賜福你健康快樂。",
-        "otherForms": "blesses (三單(加es)), blessing (ing型), blessed (過去式/分詞)"
-    },
-    {
-        "word": "choose",
-        "meaning": "選擇",
-        "theme": "心智動作",
-        "sentence": "You can choose either the red pen or the blue pen.",
-        "sentenceZh": "你可以選擇紅筆或藍筆。",
-        "otherForms": "chooses (三單), choosing (ing型(去e加ing)), chose (過去式(不規則)), chosen (過去分詞(不規則))"
-    },
-    {
-        "word": "consider",
-        "meaning": "考慮",
-        "theme": "心智動作",
-        "sentence": "We need to consider the weather before we go camping.",
-        "sentenceZh": "我們去露營前需要考慮天氣狀況。",
-        "otherForms": "considers (三單), considering (ing型), considered (過去式/分詞)"
-    },
-    {
-        "word": "control",
-        "meaning": "控制",
-        "theme": "心智動作",
-        "sentence": "You use the mouse to control the character in the game.",
-        "sentenceZh": "你用滑鼠來控制遊戲裡的角色。",
-        "otherForms": "controls (三單), controlling (ing型(重複字尾)), controlled (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "count",
-        "meaning": "數數",
-        "theme": "心智動作",
-        "sentence": "Can you count from one to one hundred in English?",
-        "sentenceZh": "你能用英文從一數到一百嗎？",
-        "otherForms": "counts (三單), counting (ing型), counted (過去式/分詞)"
-    },
-    {
-        "word": "decide",
-        "meaning": "決定",
-        "theme": "心智動作",
-        "sentence": "I haven't decided what I want to eat for dinner yet.",
-        "sentenceZh": "我還沒決定晚餐想吃什麼。",
-        "otherForms": "decides (三單), deciding (ing型(去e加ing)), decided (過去式/分詞)"
-    },
-    {
-        "word": "define",
-        "meaning": "定義",
-        "theme": "心智動作",
-        "sentence": "Please use the dictionary to define this new vocabulary word.",
-        "sentenceZh": "請用字典來定義這個新單字。",
-        "otherForms": "defines (三單), defining (ing型(去e加ing)), defined (過去式/分詞)"
-    },
-    {
-        "word": "detect",
-        "meaning": "偵測",
-        "theme": "心智動作",
-        "sentence": "The game program can detect if your spelling is correct.",
-        "sentenceZh": "遊戲程式能偵測你的拼寫是否正確。",
-        "otherForms": "detects (三單), detecting (ing型), detected (過去式/分詞)"
-    },
-    {
-        "word": "elect",
-        "meaning": "選舉",
-        "theme": "心智動作",
-        "sentence": "The class voted to elect him as the new class leader.",
-        "sentenceZh": "全班投票選舉他為新班長。",
-        "otherForms": "elects (三單), electing (ing型), elected (過去式/分詞)"
-    },
-    {
-        "word": "expect",
-        "meaning": "預期",
-        "theme": "心智動作",
-        "sentence": "I didn't expect the math test to be this difficult.",
-        "sentenceZh": "我沒預期數學考試會這麼難。",
-        "otherForms": "expects (三單), expecting (ing型), expected (過去式/分詞)"
-    },
-    {
-        "word": "focus",
-        "meaning": "聚焦",
-        "theme": "心智動作",
-        "sentence": "You need to focus your mind on studying for the exam.",
-        "sentenceZh": "你需要把心思專注在準備考試上。",
-        "otherForms": "focuses (三單(加es)), focusing (ing型), focused (過去式/分詞)"
-    },
-    {
-        "word": "forget",
-        "meaning": "忘記",
-        "theme": "心智動作",
-        "sentence": "Don't forget to bring your umbrella tomorrow morning!",
-        "sentenceZh": "明天早上別忘了帶傘！",
-        "otherForms": "forgets (三單), forgetting (ing型(重複字尾)), forgot (過去式(不規則)), forgotten (過去分詞(不規則))"
-    },
-    {
-        "word": "forgive",
-        "meaning": "原諒",
-        "theme": "心智動作",
-        "sentence": "She decided to forgive him for his honest mistake.",
-        "sentenceZh": "她決定原諒他無心之過的錯誤。",
-        "otherForms": "forgives (三單), forgiving (ing型(去e加ing)), forgave (過去式(不規則)), forgiven (過去分詞(不規則))"
-    },
-    {
-        "word": "guess",
-        "meaning": "猜測",
-        "theme": "心智動作",
-        "sentence": "Can you guess what is inside this beautiful gift box?",
-        "sentenceZh": "你能猜到這精美禮物盒裡裝了什麼嗎？",
-        "otherForms": "guesses (三單(加es)), guessing (ing型), guessed (過去式/分詞)"
-    },
-    {
-        "word": "help",
-        "meaning": "幫助",
-        "theme": "心智動作",
-        "sentence": "My teacher always helps me when I don't understand the grammar.",
-        "sentenceZh": "當我不懂文法時，我的老師總是會幫助我。",
-        "otherForms": "helps (三單), helping (ing型), helped (過去式/分詞)"
-    },
-    {
-        "word": "hope",
-        "meaning": "希望",
-        "theme": "心智動作",
-        "sentence": "I hope the weather will be sunny for our picnic tomorrow.",
-        "sentenceZh": "我希望明天野餐的天氣會是晴朗的。",
-        "otherForms": "hopes (三單), hoping (ing型(去e加ing)), hoped (過去式/分詞)"
-    },
-    {
-        "word": "ignore",
-        "meaning": "忽略",
-        "theme": "心智動作",
-        "sentence": "She tried to ignore the loud noise outside her window.",
-        "sentenceZh": "她試著忽略窗外的巨大噪音。",
-        "otherForms": "ignores (三單), ignoring (ing型(去e加ing)), ignored (過去式/分詞)"
-    },
-    {
-        "word": "imagine",
-        "meaning": "想像",
-        "theme": "心智動作",
-        "sentence": "Try to imagine what the world will look like in the future.",
-        "sentenceZh": "試著想像未來的世界會是什麼樣子。",
-        "otherForms": "imagines (三單), imagining (ing型(去e加ing)), imagined (過去式/分詞)"
-    },
-    {
-        "word": "insist",
-        "meaning": "堅持",
-        "theme": "心智動作",
-        "sentence": "He insisted on paying for everyone's dinner.",
-        "sentenceZh": "他堅持要付大家吃晚餐的錢。",
-        "otherForms": "insists (三單), insisting (ing型), insisted (過去式/分詞)"
-    },
-    {
-        "word": "inspire",
-        "meaning": "激勵",
-        "theme": "心智動作",
-        "sentence": "His great speech inspired many students to work harder.",
-        "sentenceZh": "他精彩的演講激勵了許多學生更努力。",
-        "otherForms": "inspires (三單), inspiring (ing型(去e加ing)), inspired (過去式/分詞)"
-    },
-    {
-        "word": "judge",
-        "meaning": "判斷",
-        "theme": "心智動作",
-        "sentence": "You shouldn't judge a book by its cover.",
-        "sentenceZh": "你不應該以貌取人（勿以書封評斷一本書）。",
-        "otherForms": "judges (複數型), judges (三單), judging (ing型(去e加ing)), judged (過去式/分詞)"
-    },
-    {
-        "word": "know",
-        "meaning": "知道",
-        "theme": "心智動作",
-        "sentence": "Do you know how to play this grammar repair game?",
-        "sentenceZh": "你知道怎麼玩這個語法修復遊戲嗎？",
-        "otherForms": "knows (三單), knowing (ing型), knew (過去式(不規則)), known (過去分詞(不規則))"
-    },
-    {
-        "word": "mind",
-        "meaning": "介意",
-        "theme": "心智動作",
-        "sentence": "Do you mind if I sit in this empty seat?",
-        "sentenceZh": "你介意我坐這個空位嗎？",
-        "otherForms": "minds (複數型), minds (三單), minding (ing型), minded (過去式/分詞)"
-    },
-    {
-        "word": "miss",
-        "meaning": "想念；未擊中",
-        "theme": "心智動作",
-        "sentence": "I really miss my old friends from elementary school.",
-        "sentenceZh": "我真的很想念我小學的老朋友。",
-        "otherForms": "misses (三單(加es)), missing (ing型), missed (過去式/分詞)"
-    },
-    {
-        "word": "notice",
-        "meaning": "注意到",
-        "theme": "心智動作",
-        "sentence": "Did you notice his cool new shoes today?",
-        "sentenceZh": "你今天有注意到他酷炫的新鞋子嗎？",
-        "otherForms": "notices (三單), noticing (ing型(去e加ing)), noticed (過去式/分詞)"
-    },
-    {
-        "word": "obey",
-        "meaning": "服從",
-        "theme": "心智動作",
-        "sentence": "Everyone must obey the traffic rules for safety.",
-        "sentenceZh": "為了安全每個人都必須遵守交通規則。",
-        "otherForms": "obeys (三單), obeying (ing型), obeyed (過去式/分詞)"
-    },
-    {
-        "word": "plan",
-        "meaning": "計劃",
-        "theme": "心智動作",
-        "sentence": "We plan to visit Japan during the summer vacation.",
-        "sentenceZh": "我們計畫暑假去日本玩。",
-        "otherForms": "plans (複數型), plans (三單), planning (ing型(重複字尾)), planned (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "prepare",
-        "meaning": "準備",
-        "theme": "心智動作",
-        "sentence": "The mother is preparing a rich dinner for her family.",
-        "sentenceZh": "媽媽正在為家人準備一頓豐盛的晚餐。",
-        "otherForms": "prepares (三單), preparing (ing型(去e加ing)), prepared (過去式/分詞)"
-    },
-    {
-        "word": "realize",
-        "meaning": "意識到",
-        "theme": "心智動作",
-        "sentence": "He finally realized that he had made a big mistake.",
-        "sentenceZh": "他終於意識到他犯了一個大錯。",
-        "otherForms": "realizes (三單), realizing (ing型(去e加ing)), realized (過去式/分詞)"
-    },
-    {
-        "word": "refuse",
-        "meaning": "拒絕",
-        "theme": "心智動作",
-        "sentence": "He refused to take the money because it wasn't his.",
-        "sentenceZh": "他拒絕拿那些錢因為那不是他的。",
-        "otherForms": "refuses (三單), refusing (ing型(去e加ing)), refused (過去式/分詞)"
-    },
-    {
-        "word": "reject",
-        "meaning": "拒絕",
-        "theme": "心智動作",
-        "sentence": "The company rejected his design for the new game character.",
-        "sentenceZh": "公司拒絕了他對新遊戲角色的設計。",
-        "otherForms": "rejects (三單), rejecting (ing型), rejected (過去式/分詞)"
-    },
-    {
-        "word": "remember",
-        "meaning": "記得",
-        "theme": "心智動作",
-        "sentence": "Do you remember the vocabulary words we learned yesterday?",
-        "sentenceZh": "你記得我們昨天學的單字嗎？",
-        "otherForms": "remembers (三單), remembering (ing型), remembered (過去式/分詞)"
-    },
-    {
-        "word": "respect",
-        "meaning": "尊重",
-        "theme": "心智動作",
-        "sentence": "You should always respect your teachers and parents.",
-        "sentenceZh": "你應該永遠尊重你的老師和父母。",
-        "otherForms": "respects (三單), respecting (ing型), respected (過去式/分詞)"
-    },
-    {
-        "word": "select",
-        "meaning": "選擇",
-        "theme": "心智動作",
-        "sentence": "Please select the correct answer from the list below.",
-        "sentenceZh": "請從下面的清單中選擇正確的答案。",
-        "otherForms": "selects (三單), selecting (ing型), selected (過去式/分詞)"
-    },
-    {
-        "word": "support",
-        "meaning": "支持",
-        "theme": "心智動作",
-        "sentence": "A good friend will always support you when you are sad.",
-        "sentenceZh": "當你難過時，好朋友總會支持你。",
-        "otherForms": "supports (三單), supporting (ing型), supported (過去式/分詞)"
-    },
-    {
-        "word": "think",
-        "meaning": "思考",
-        "theme": "心智動作",
-        "sentence": "I think this interactive game is very helpful for learning.",
-        "sentenceZh": "我覺得這個互動遊戲對學習很有幫助。",
-        "otherForms": "thinks (三單), thinking (ing型), thought (過去式(不規則)), thought (過去分詞(不規則))"
-    },
-    {
-        "word": "trust",
-        "meaning": "信任",
-        "theme": "心智動作",
-        "sentence": "You can trust him; he never tells lies.",
-        "sentenceZh": "你可以信任他，他從不說謊。",
-        "otherForms": "trusts (三單), trusting (ing型), trusted (過去式/分詞)"
-    },
-    {
-        "word": "try",
-        "meaning": "嘗試",
-        "theme": "心智動作",
-        "sentence": "Don't give up! Just try your best to swing the racket.",
-        "sentenceZh": "別放棄！盡全力去揮拍試試看。",
-        "otherForms": "tries (三單(去y加ies)), trying (ing型), tried (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "wake",
-        "meaning": "醒來",
-        "theme": "心智動作",
-        "sentence": "My alarm clock usually wakes me up at six o'clock.",
-        "sentenceZh": "我的鬧鐘通常在六點叫我醒來。",
-        "otherForms": "wakes (三單), waking (ing型(去e加ing)), woke (過去式(不規則)), woken (過去分詞(不規則))"
-    },
-    {
-        "word": "want",
-        "meaning": "想要",
-        "theme": "心智動作",
-        "sentence": "I want to be an English teacher when I grow up.",
-        "sentenceZh": "我長大後想要當一名英文老師。",
-        "otherForms": "wants (三單), wanting (ing型), wanted (過去式/分詞)"
-    },
-    {
-        "word": "wish",
-        "meaning": "希望",
-        "theme": "心智動作",
-        "sentence": "Make a wish before you blow out the birthday candles!",
-        "sentenceZh": "吹熄生日蠟燭前先許個願吧！",
-        "otherForms": "wishes (複數型(加es)), wishes (三單(加es)), wishing (ing型), wished (過去式/分詞)"
-    },
-    {
-        "word": "wonder",
-        "meaning": "想知道",
-        "theme": "心智動作",
-        "sentence": "I wonder how you can pass the test without studying.",
-        "sentenceZh": "我想知道為什麼你能沒讀書通過考試。",
-        "otherForms": "wonders (三單), wondering (ing型), wondered (過去式/分詞)"
-    },
-    {
-        "word": "affect",
-        "meaning": "影響",
-        "theme": "狀態動作",
-        "sentence": "The bad weather will affect our plans to play basketball.",
-        "sentenceZh": "壞天氣將會影響我們打籃球的計畫。",
-        "otherForms": "affects (三單), affecting (ing型), affected (過去式/分詞)"
-    },
-    {
-        "word": "appear",
-        "meaning": "出現",
-        "theme": "狀態動作",
-        "sentence": "A beautiful rainbow appeared in the sky after the rain.",
-        "sentenceZh": "雨後天空中出現了一道美麗的彩虹。",
-        "otherForms": "appears (三單), appearing (ing型), appeared (過去式/分詞)"
-    },
-    {
-        "word": "become",
-        "meaning": "變成",
-        "theme": "狀態動作",
-        "sentence": "The little green caterpillar will become a butterfly.",
-        "sentenceZh": "綠色小毛毛蟲將會變成蝴蝶。",
-        "otherForms": "becomes (三單), becoming (ing型(去e加ing)), became (過去式(不規則)), become (過去分詞(不規則))"
-    },
-    {
-        "word": "begin",
-        "meaning": "開始",
-        "theme": "狀態動作",
-        "sentence": "The English class will begin in five minutes.",
-        "sentenceZh": "英文課將在五分鐘後開始。",
-        "otherForms": "begins (三單), beginning (ing型(重複字尾)), began (過去式(不規則)), begun (過去分詞(不規則))"
-    },
-    {
-        "word": "belong",
-        "meaning": "屬於",
-        "theme": "狀態動作",
-        "sentence": "This red dictionary belongs to the school library.",
-        "sentenceZh": "這本紅字典屬於學校圖書館。",
-        "otherForms": "belongs (三單), belonging (ing型), belonged (過去式/分詞)"
-    },
-    {
-        "word": "burst",
-        "meaning": "爆發",
-        "theme": "狀態動作",
-        "sentence": "The balloon burst loudly when he sat on it.",
-        "sentenceZh": "當他坐上去時，氣球發出很大聲的爆破。",
-        "otherForms": "bursts (三單), bursting (ing型), burst (過去式(不規則同型)), burst (過去分詞(不規則同型))"
-    },
-    {
-        "word": "cancel",
-        "meaning": "取消",
-        "theme": "狀態動作",
-        "sentence": "The school sports day was canceled because of the typhoon.",
-        "sentenceZh": "學校運動會因為颱風被取消了。",
-        "otherForms": "cancels (三單), canceling (ing型), canceled (過去式/分詞)"
-    },
-    {
-        "word": "complete",
-        "meaning": "完成",
-        "theme": "狀態動作",
-        "sentence": "You must complete the vocabulary test by Friday.",
-        "sentenceZh": "你必須在星期五前完成單字測驗。",
-        "otherForms": "completes (三單), completing (ing型(去e加ing)), completed (過去式/分詞)"
-    },
-    {
-        "word": "continue",
-        "meaning": "繼續",
-        "theme": "狀態動作",
-        "sentence": "Please continue reading the story on page twenty.",
-        "sentenceZh": "請繼續閱讀第二十頁的故事。",
-        "otherForms": "continues (三單), continuing (ing型(去e加ing)), continued (過去式/分詞)"
-    },
-    {
-        "word": "cover",
-        "meaning": "覆蓋",
-        "theme": "狀態動作",
-        "sentence": "Snow covered the mountains during the cold winter.",
-        "sentenceZh": "寒冬時雪覆蓋了群山。",
-        "otherForms": "covers (複數型), covers (三單), covering (ing型), covered (過去式/分詞)"
-    },
-    {
-        "word": "cut",
-        "meaning": "切割",
-        "theme": "狀態動作",
-        "sentence": "She used a sharp knife to cut the birthday cake.",
-        "sentenceZh": "她用一把利刀切生日蛋糕。",
-        "otherForms": "cuts (三單), cutting (ing型(重複字尾)), cut (過去式(不規則同型)), cut (過去分詞(不規則同型))"
-    },
-    {
-        "word": "decrease",
-        "meaning": "減少",
-        "theme": "狀態動作",
-        "sentence": "The number of students in the school is decreasing every year.",
-        "sentenceZh": "學校裡的學生人數每年都在減少。",
-        "otherForms": "decreases (三單), decreasing (ing型(去e加ing)), decreased (過去式/分詞)"
-    },
-    {
-        "word": "depend",
-        "meaning": "依賴",
-        "theme": "狀態動作",
-        "sentence": "Our picnic tomorrow will depend on the weather.",
-        "sentenceZh": "我們明天的野餐將取決於天氣。",
-        "otherForms": "depends (三單), depending (ing型), depended (過去式/分詞)"
-    },
-    {
-        "word": "develop",
-        "meaning": "發展",
-        "theme": "狀態動作",
-        "sentence": "He wants to develop a fun web game for his English class.",
-        "sentenceZh": "他想為他的英文課開發一個有趣的網頁遊戲。",
-        "otherForms": "develops (三單), developing (ing型), developed (過去式/分詞)"
-    },
-    {
-        "word": "die",
-        "meaning": "死亡",
-        "theme": "狀態動作",
-        "sentence": "The plants will die if you don't give them water.",
-        "sentenceZh": "如果你不給植物澆水，它們會死亡。",
-        "otherForms": "dies (三單), dying (ing型(去ie加ying)), died (過去式/分詞)"
-    },
-    {
-        "word": "disappear",
-        "meaning": "消失",
-        "theme": "狀態動作",
-        "sentence": "The sun slowly disappeared behind the high mountains.",
-        "sentenceZh": "太陽慢慢地消失在高山後方。",
-        "otherForms": "disappears (三單), disappearing (ing型), disappeared (過去式/分詞)"
-    },
-    {
-        "word": "divide",
-        "meaning": "分割",
-        "theme": "狀態動作",
-        "sentence": "The teacher divided the class into four small groups.",
-        "sentenceZh": "老師把全班分成四個小組。",
-        "otherForms": "divides (三單), dividing (ing型(去e加ing)), divided (過去式/分詞)"
-    },
-    {
-        "word": "ease",
-        "meaning": "緩和",
-        "theme": "狀態動作",
-        "sentence": "The medicine helped to ease the pain in his leg.",
-        "sentenceZh": "藥物幫助緩和了他腿部的疼痛。",
-        "otherForms": "eases (三單), easing (ing型(去e加ing)), eased (過去式/分詞)"
-    },
-    {
-        "word": "end",
-        "meaning": "結束",
-        "theme": "狀態動作",
-        "sentence": "The movie will end in about twenty minutes.",
-        "sentenceZh": "電影大約二十分鐘後會結束。",
-        "otherForms": "ends (複數型), ends (三單), ending (ing型), ended (過去式/分詞)"
-    },
-    {
-        "word": "fail",
-        "meaning": "失敗",
-        "theme": "狀態動作",
-        "sentence": "If you don't review your words, you might fail the test.",
-        "sentenceZh": "如果你不複習單字，你考試可能會不及格。",
-        "otherForms": "fails (三單), failing (ing型), failed (過去式/分詞)"
-    },
-    {
-        "word": "fall",
-        "meaning": "掉落",
-        "theme": "狀態動作",
-        "sentence": "The beautiful red leaves fall from the trees in autumn.",
-        "sentenceZh": "美麗的紅葉在秋天從樹上掉落。",
-        "otherForms": "falls (三單), falling (ing型), fell (過去式(不規則)), fallen (過去分詞(不規則))"
-    },
-    {
-        "word": "fill",
-        "meaning": "填滿",
-        "theme": "狀態動作",
-        "sentence": "Please fill this glass with cold water.",
-        "sentenceZh": "請把這個杯子裝滿冷水。",
-        "otherForms": "fills (三單), filling (ing型), filled (過去式/分詞)"
-    },
-    {
-        "word": "finish",
-        "meaning": "完成",
-        "theme": "狀態動作",
-        "sentence": "He finished his math homework before dinner time.",
-        "sentenceZh": "他在晚餐時間前完成了數學作業。",
-        "otherForms": "finishes (三單(加es)), finishing (ing型), finished (過去式/分詞)"
-    },
-    {
-        "word": "fit",
-        "meaning": "適合",
-        "theme": "狀態動作",
-        "sentence": "These old shoes are too small; they don't fit me anymore.",
-        "sentenceZh": "這些舊鞋太小了，它們不再適合我了。",
-        "otherForms": "fits (三單), fitting (ing型(重複字尾)), fit/fitted (過去式/分詞(不規則))"
-    },
-    {
-        "word": "form",
-        "meaning": "形成",
-        "theme": "狀態動作",
-        "sentence": "The dark clouds began to form a huge storm.",
-        "sentenceZh": "烏雲開始形成一場巨大的暴風雨。",
-        "otherForms": "forms (複數型), forms (三單), forming (ing型), formed (過去式/分詞)"
-    },
-    {
-        "word": "gain",
-        "meaning": "增加",
-        "theme": "狀態動作",
-        "sentence": "Eating too much fast food will make you gain weight.",
-        "sentenceZh": "吃太多速食會讓你增加體重（變胖）。",
-        "otherForms": "gains (三單), gaining (ing型), gained (過去式/分詞)"
-    },
-    {
-        "word": "get",
-        "meaning": "得到",
-        "theme": "狀態動作",
-        "sentence": "I got a perfect score on my English grammar test!",
-        "sentenceZh": "我的英文文法考試得到了滿分！",
-        "otherForms": "gets (三單), getting (ing型(重複字尾)), got (過去式(不規則)), gotten/got (過去分詞(不規則))"
-    },
-    {
-        "word": "grow",
-        "meaning": "成長；生長",
-        "theme": "狀態動作",
-        "sentence": "Trees need sunlight and water to grow tall and strong.",
-        "sentenceZh": "樹木需要陽光和水分才能長得高大強壯。",
-        "otherForms": "grows (三單), growing (ing型), grew (過去式(不規則)), grown (過去分詞(不規則))"
-    },
-    {
-        "word": "happen",
-        "meaning": "發生",
-        "theme": "狀態動作",
-        "sentence": "I don't know what happened to my computer screen.",
-        "sentenceZh": "我不知道我的電腦螢幕發生了什麼事。",
-        "otherForms": "happens (三單), happening (ing型), happened (過去式/分詞)"
-    },
-    {
-        "word": "hurry",
-        "meaning": "匆忙",
-        "theme": "狀態動作",
-        "sentence": "We must hurry up, or we will miss the train!",
-        "sentenceZh": "我們必須快一點，否則會錯過火車！",
-        "otherForms": "hurries (三單(去y加ies)), hurrying (ing型), hurried (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "improve",
-        "meaning": "改善",
-        "theme": "狀態動作",
-        "sentence": "Reading every day is a good way to improve your English.",
-        "sentenceZh": "每天閱讀是改善英文的好方法。",
-        "otherForms": "improves (三單), improving (ing型(去e加ing)), improved (過去式/分詞)"
-    },
-    {
-        "word": "increase",
-        "meaning": "增加",
-        "theme": "狀態動作",
-        "sentence": "The price of fresh vegetables increased after the typhoon.",
-        "sentenceZh": "颱風過後新鮮蔬菜的價格增加了。",
-        "otherForms": "increases (三單), increasing (ing型(去e加ing)), increased (過去式/分詞)"
-    },
-    {
-        "word": "indicate",
-        "meaning": "指出；暗示",
-        "theme": "狀態動作",
-        "sentence": "The sign indicates that you should turn left here.",
-        "sentenceZh": "標誌指出你應該在這裡左轉。",
-        "otherForms": "indicates (三單), indicating (ing型(去e加ing)), indicated (過去式/分詞)"
-    },
-    {
-        "word": "keep",
-        "meaning": "保持",
-        "theme": "狀態動作",
-        "sentence": "Please keep quiet while taking the final exam.",
-        "sentenceZh": "考期末考時請保持安靜。",
-        "otherForms": "keeps (三單), keeping (ing型), kept (過去式(不規則)), kept (過去分詞(不規則))"
-    },
-    {
-        "word": "live",
-        "meaning": "居住；生活",
-        "theme": "狀態動作",
-        "sentence": "My grandparents live in a quiet town in Yunlin County.",
-        "sentenceZh": "我祖父母住在雲林縣一個安靜的城鎮。",
-        "otherForms": "lives (三單), living (ing型(去e加ing)), lived (過去式/分詞)"
-    },
-    {
-        "word": "lose",
-        "meaning": "輸掉；失去",
-        "theme": "狀態動作",
-        "sentence": "The team felt sad because they lost the final game.",
-        "sentenceZh": "隊伍感到難過因為他們輸了最後一場比賽。",
-        "otherForms": "loses (三單), losing (ing型(去e加ing)), lost (過去式(不規則)), lost (過去分詞(不規則))"
-    },
-    {
-        "word": "match",
-        "meaning": "匹配",
-        "theme": "狀態動作",
-        "sentence": "Please match the English words with their Chinese meanings.",
-        "sentenceZh": "請把英文單字和它們的中文意思配對。",
-        "otherForms": "matches (複數型(加es)), matches (三單(加es)), matching (ing型), matched (過去式/分詞)"
-    },
-    {
-        "word": "mean",
-        "meaning": "意思是",
-        "theme": "狀態動作",
-        "sentence": "What does this difficult vocabulary word mean?",
-        "sentenceZh": "這個困難的單字是什麼意思？",
-        "otherForms": "means (三單), meaning (ing型), meant (過去式(不規則)), meant (過去分詞(不規則))"
-    },
-    {
-        "word": "need",
-        "meaning": "需要",
-        "theme": "狀態動作",
-        "sentence": "You need a good racket to play badminton well.",
-        "sentenceZh": "你需要一把好球拍才能把羽球打好。",
-        "otherForms": "needs (複數型), needs (三單), needing (ing型), needed (過去式/分詞)"
-    },
-    {
-        "word": "own",
-        "meaning": "擁有",
-        "theme": "狀態動作",
-        "sentence": "I finally have my very own cell phone.",
-        "sentenceZh": "我終於擁有了我自己專屬的手機。",
-        "otherForms": "owns (三單), owning (ing型), owned (過去式/分詞)"
-    },
-    {
-        "word": "pause",
-        "meaning": "暫停",
-        "theme": "狀態動作",
-        "sentence": "Please pause the video so I can copy the sentence.",
-        "sentenceZh": "請暫停影片讓我能抄寫這個句子。",
-        "otherForms": "pauses (複數型), pauses (三單), pausing (ing型(去e加ing)), paused (過去式/分詞)"
-    },
-    {
-        "word": "pop",
-        "meaning": "突然出現",
-        "theme": "狀態動作",
-        "sentence": "The balloon popped suddenly and scared the baby.",
-        "sentenceZh": "氣球突然爆破嚇到了小嬰兒。",
-        "otherForms": "pops (三單), popping (ing型(重複字尾)), popped (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "raise",
-        "meaning": "提高；撫養",
-        "theme": "狀態動作",
-        "sentence": "Please raise your hand if you know the correct answer.",
-        "sentenceZh": "如果你知道正確答案請舉手。",
-        "otherForms": "raises (三單), raising (ing型(去e加ing)), raised (過去式/分詞)"
-    },
-    {
-        "word": "rest",
-        "meaning": "休息",
-        "theme": "狀態動作",
-        "sentence": "You look tired; you should go home and rest.",
-        "sentenceZh": "你看起來很累，你應該回家休息。",
-        "otherForms": "rests (複數型), rests (三單), resting (ing型), rested (過去式/分詞)"
-    },
-    {
-        "word": "return",
-        "meaning": "歸還",
-        "theme": "狀態動作",
-        "sentence": "Don't forget to return the books to the library tomorrow.",
-        "sentenceZh": "記得明天要把書歸還給圖書館。",
-        "otherForms": "returns (三單), returning (ing型), returned (過去式/分詞)"
-    },
-    {
-        "word": "rise",
-        "meaning": "上升",
-        "theme": "狀態動作",
-        "sentence": "The sun rises in the east every morning.",
-        "sentenceZh": "太陽每天早上從東方升起。",
-        "otherForms": "rises (三單), rising (ing型(去e加ing)), rose (過去式(不規則)), risen (過去分詞(不規則))"
-    },
-    {
-        "word": "roll",
-        "meaning": "滾動",
-        "theme": "狀態動作",
-        "sentence": "The ball rolled slowly across the classroom floor.",
-        "sentenceZh": "球緩慢地滾過教室地板。",
-        "otherForms": "rolls (三單), rolling (ing型), rolled (過去式/分詞)"
-    },
-    {
-        "word": "ruin",
-        "meaning": "毀滅",
-        "theme": "狀態動作",
-        "sentence": "The heavy rain ruined our plans for an outdoor barbecue.",
-        "sentenceZh": "大雨毀了我們戶外烤肉的計畫。",
-        "otherForms": "ruins (三單), ruining (ing型), ruined (過去式/分詞)"
-    },
-    {
-        "word": "rush",
-        "meaning": "趕緊",
-        "theme": "狀態動作",
-        "sentence": "He had to rush to the station to catch his train.",
-        "sentenceZh": "他必須趕去車站搭火車。",
-        "otherForms": "rushes (三單(加es)), rushing (ing型), rushed (過去式/分詞)"
-    },
-    {
-        "word": "seem",
-        "meaning": "似乎",
-        "theme": "狀態動作",
-        "sentence": "The grammar rule seems difficult, but it's actually easy.",
-        "sentenceZh": "這個文法規則似乎很難，但其實很簡單。",
-        "otherForms": "seems (三單), seeming (ing型), seemed (過去式/分詞)"
-    },
-    {
-        "word": "shake",
-        "meaning": "搖動",
-        "theme": "狀態動作",
-        "sentence": "The dog shook its body to get dry after a bath.",
-        "sentenceZh": "狗洗澡後搖動身體把水弄乾。",
-        "otherForms": "shakes (三單), shaking (ing型(去e加ing)), shook (過去式(不規則)), shaken (過去分詞(不規則))"
-    },
-    {
-        "word": "start",
-        "meaning": "開始",
-        "theme": "狀態動作",
-        "sentence": "The exciting movie will start in five minutes.",
-        "sentenceZh": "刺激的電影將在五分鐘後開始。",
-        "otherForms": "starts (三單), starting (ing型), started (過去式/分詞)"
-    },
-    {
-        "word": "stay",
-        "meaning": "停留",
-        "theme": "狀態動作",
-        "sentence": "You should stay home and rest if you have a fever.",
-        "sentenceZh": "如果你發燒了就應該留在家裡休息。",
-        "otherForms": "stays (三單), staying (ing型), stayed (過去式/分詞)"
-    },
-    {
-        "word": "stop",
-        "meaning": "停止",
-        "theme": "狀態動作",
-        "sentence": "The bus driver stopped the bus at the red light.",
-        "sentenceZh": "公車司機在紅燈時把公車停了下來。",
-        "otherForms": "stops (三單), stopping (ing型(重複字尾)), stopped (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "succeed",
-        "meaning": "成功",
-        "theme": "狀態動作",
-        "sentence": "If you practice every day, you will succeed in learning English.",
-        "sentenceZh": "如果你每天練習，你在學習英文上一定會成功。",
-        "otherForms": "succeeds (三單), succeeding (ing型), succeeded (過去式/分詞)"
-    },
-    {
-        "word": "survive",
-        "meaning": "生存",
-        "theme": "狀態動作",
-        "sentence": "Camels can survive in the hot desert with very little water.",
-        "sentenceZh": "駱駝能在極少水分的炎熱沙漠中生存。",
-        "otherForms": "survives (三單), surviving (ing型(去e加ing)), survived (過去式/分詞)"
-    },
-    {
-        "word": "wear",
-        "meaning": "穿著",
-        "theme": "狀態動作",
-        "sentence": "Students must wear their uniforms to school on Monday.",
-        "sentenceZh": "學生星期一必須穿制服上學。",
-        "otherForms": "wears (三單), wearing (ing型), wore (過去式(不規則)), worn (過去分詞(不規則))"
-    },
-    {
-        "word": "win",
-        "meaning": "贏",
-        "theme": "狀態動作",
-        "sentence": "Our school team won the gold medal in the badminton race.",
-        "sentenceZh": "我們校隊在羽球競賽中贏得了金牌。",
-        "otherForms": "wins (複數型), wins (三單), winning (ing型(重複字尾)), won (過去式(不規則))"
-    },
-    {
-        "word": "act",
-        "meaning": "表演；行動",
-        "theme": "行為動作",
-        "sentence": "He acted like a brave hero in the school play.",
-        "sentenceZh": "他在學校話劇中扮演了一名勇敢的英雄。",
-        "otherForms": "acts (複數型), acts (三單), acting (ing型), acted (過去式/分詞)"
-    },
-    {
-        "word": "add",
-        "meaning": "增加",
-        "theme": "行為動作",
-        "sentence": "You can add some sugar to your coffee if it is too bitter.",
-        "sentenceZh": "如果咖啡太苦，你可以加一點糖。",
-        "otherForms": "adds (三單), adding (ing型), added (過去式/分詞)"
-    },
-    {
-        "word": "arrange",
-        "meaning": "安排",
-        "theme": "行為動作",
-        "sentence": "The teacher arranged the desks in a big circle.",
-        "sentenceZh": "老師把書桌安排成一個大圓圈。",
-        "otherForms": "arranges (三單), arranging (ing型(去e加ing)), arranged (過去式/分詞)"
-    },
-    {
-        "word": "attack",
-        "meaning": "攻擊",
-        "theme": "行為動作",
-        "sentence": "The fierce tiger suddenly attacked the small animal.",
-        "sentenceZh": "兇猛的老虎突然攻擊了那隻小動物。",
-        "otherForms": "attacks (複數型), attacks (三單), attacking (ing型), attacked (過去式/分詞)"
-    },
-    {
-        "word": "avoid",
-        "meaning": "避免",
-        "theme": "行為動作",
-        "sentence": "You should try to avoid making the same mistake twice.",
-        "sentenceZh": "你應該盡量避免犯兩次同樣的錯誤。",
-        "otherForms": "avoids (三單), avoiding (ing型), avoided (過去式/分詞)"
-    },
-    {
-        "word": "bake",
-        "meaning": "烘烤",
-        "theme": "行為動作",
-        "sentence": "My grandmother is baking a chocolate cake in the kitchen.",
-        "sentenceZh": "我奶奶正在廚房烤巧克力蛋糕。",
-        "otherForms": "bakes (三單), baking (ing型(去e加ing)), baked (過去式/分詞)"
-    },
-    {
-        "word": "bathe",
-        "meaning": "洗澡",
-        "theme": "行為動作",
-        "sentence": "I usually bathe my dog on Sunday morning.",
-        "sentenceZh": "我通常在星期日早上幫我的狗洗澡。",
-        "otherForms": "bathes (三單), bathing (ing型(去e加ing)), bathed (過去式/分詞)"
-    },
-    {
-        "word": "boil",
-        "meaning": "煮沸",
-        "theme": "行為動作",
-        "sentence": "The water will boil when the temperature reaches 100 degrees.",
-        "sentenceZh": "當溫度達到 100 度時水就會沸騰。",
-        "otherForms": "boils (三單), boiling (ing型), boiled (過去式/分詞)"
-    },
-    {
-        "word": "bow",
-        "meaning": "鞠躬",
-        "theme": "行為動作",
-        "sentence": "The students bowed to say thank you to the teacher.",
-        "sentenceZh": "學生們鞠躬向老師說謝謝。",
-        "otherForms": "bows (複數型), bows (三單), bowing (ing型), bowed (過去式/分詞)"
-    },
-    {
-        "word": "break",
-        "meaning": "打破",
-        "theme": "行為動作",
-        "sentence": "Be careful, don't break that expensive glass!",
-        "sentenceZh": "小心，別打破那個昂貴的玻璃杯！",
-        "otherForms": "breaks (三單), breaking (ing型), broke (過去式(不規則)), broken (過去分詞(不規則))"
-    },
-    {
-        "word": "bring",
-        "meaning": "帶來",
-        "theme": "行為動作",
-        "sentence": "Remember to bring your English textbook to class tomorrow.",
-        "sentenceZh": "記得明天帶你的英文課本來上課。",
-        "otherForms": "brings (三單), bringing (ing型), brought (過去式(不規則)), brought (過去分詞(不規則))"
-    },
-    {
-        "word": "broadcast",
-        "meaning": "廣播",
-        "theme": "行為動作",
-        "sentence": "The news was broadcast on television last night.",
-        "sentenceZh": "昨晚電視廣播了這則新聞。",
-        "otherForms": "broadcasts (三單), broadcasting (ing型), broadcast (過去式/分詞(不規則同型))"
-    },
-    {
-        "word": "burn",
-        "meaning": "燒焦",
-        "theme": "行為動作",
-        "sentence": "He cooked the meat too long, and it started to burn.",
-        "sentenceZh": "他把肉煮太久，它開始燒焦了。",
-        "otherForms": "burns (三單), burning (ing型), burned/burnt (過去式/分詞(不規則))"
-    },
-    {
-        "word": "call",
-        "meaning": "打電話；呼叫",
-        "theme": "行為動作",
-        "sentence": "I will call my mother when I arrive at the station.",
-        "sentenceZh": "我到車站時會打電話給我媽媽。",
-        "otherForms": "calls (複數型), calls (三單), calling (ing型), called (過去式/分詞)"
-    },
-    {
-        "word": "carry",
-        "meaning": "攜帶",
-        "theme": "行為動作",
-        "sentence": "Can you help me carry these heavy boxes to the classroom?",
-        "sentenceZh": "你能幫我把這些重箱子搬去教室嗎？",
-        "otherForms": "carries (三單(去y加ies)), carrying (ing型), carried (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "check",
-        "meaning": "檢查",
-        "theme": "行為動作",
-        "sentence": "Please check your answers carefully before handing in the test.",
-        "sentenceZh": "交卷前請仔細檢查你的答案。",
-        "otherForms": "checks (三單), checking (ing型), checked (過去式/分詞)"
-    },
-    {
-        "word": "close",
-        "meaning": "關閉",
-        "theme": "行為動作",
-        "sentence": "Please close the window because it is raining outside.",
-        "sentenceZh": "外面在下雨，請把窗戶關上。",
-        "otherForms": "closes (三單), closing (ing型(去e加ing)), closed (過去式/分詞)"
-    },
-    {
-        "word": "collect",
-        "meaning": "收集",
-        "theme": "行為動作",
-        "sentence": "She likes to collect beautiful stamps from different countries.",
-        "sentenceZh": "她喜歡收集不同國家的美麗郵票。",
-        "otherForms": "collects (三單), collecting (ing型), collected (過去式/分詞)"
-    },
-    {
-        "word": "cook",
-        "meaning": "烹調",
-        "theme": "行為動作",
-        "sentence": "My dad is going to cook dinner for us tonight.",
-        "sentenceZh": "我爸爸今晚要煮晚餐給我們吃。",
-        "otherForms": "cooks (三單), cooking (ing型), cooked (過去式/分詞)"
-    },
-    {
-        "word": "copy",
-        "meaning": "複製；複製品",
-        "theme": "行為動作",
-        "sentence": "Do not copy answers from your classmates during the exam.",
-        "sentenceZh": "考試時不要抄襲同學的答案。",
-        "otherForms": "copies (複數型(去y加ies)), copies (三單(去y加ies)), copying (ing型), copied (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "correct",
-        "meaning": "改正",
-        "theme": "行為動作",
-        "sentence": "The teacher used a red pen to correct my spelling mistakes.",
-        "sentenceZh": "老師用紅筆改正了我的拼字錯誤。",
-        "otherForms": "corrects (三單), correcting (ing型), corrected (過去式/分詞)"
-    },
-    {
-        "word": "create",
-        "meaning": "創造",
-        "theme": "行為動作",
-        "sentence": "He wants to create an interactive game to help students learn.",
-        "sentenceZh": "他想創造一個互動遊戲來幫助學生學習。",
-        "otherForms": "creates (三單), creating (ing型(去e加ing)), created (過去式/分詞)"
-    },
-    {
-        "word": "date",
-        "meaning": "約會；日期",
-        "theme": "行為動作",
-        "sentence": "The couple has been dating for two years.",
-        "sentenceZh": "這對情侶已經約會兩年了。",
-        "otherForms": "dates (複數型), dates (三單), dating (ing型(去e加ing)), dated (過去式/分詞)"
-    },
-    {
-        "word": "deal",
-        "meaning": "處理",
-        "theme": "行為動作",
-        "sentence": "It is difficult to deal with a problem when you are angry.",
-        "sentenceZh": "當你在生氣時是很難處理問題的。",
-        "otherForms": "deals (三單), dealing (ing型), dealt (過去式(不規則)), dealt (過去分詞(不規則))"
-    },
-    {
-        "word": "deliver",
-        "meaning": "遞送",
-        "theme": "行為動作",
-        "sentence": "The mailman delivered a package to our house this morning.",
-        "sentenceZh": "郵差今天早上遞送了一個包裹到我們家。",
-        "otherForms": "delivers (三單), delivering (ing型), delivered (過去式/分詞)"
-    },
-    {
-        "word": "direct",
-        "meaning": "指導",
-        "theme": "行為動作",
-        "sentence": "The police officer directed the traffic during the rush hour.",
-        "sentenceZh": "警察在尖峰時間指揮交通。",
-        "otherForms": "directs (三單), directing (ing型), directed (過去式/分詞)"
-    },
-    {
-        "word": "discover",
-        "meaning": "發現",
-        "theme": "行為動作",
-        "sentence": "The scientist discovered a new type of insect in the forest.",
-        "sentenceZh": "科學家在森林裡發現了一種新型昆蟲。",
-        "otherForms": "discovers (三單), discovering (ing型), discovered (過去式/分詞)"
-    },
-    {
-        "word": "download",
-        "meaning": "下載",
-        "theme": "行為動作",
-        "sentence": "You can download the vocabulary app to your cell phone.",
-        "sentenceZh": "你可以把單字應用程式下載到你的手機裡。",
-        "otherForms": "downloads (複數型), downloads (三單), downloading (ing型), downloaded (過去式/分詞)"
-    },
-    {
-        "word": "drop",
-        "meaning": "掉落",
-        "theme": "行為動作",
-        "sentence": "I accidentally dropped my pen on the floor.",
-        "sentenceZh": "我不小心把筆掉到地上了。",
-        "otherForms": "drops (三單), dropping (ing型(重複字尾)), dropped (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "emphasize",
-        "meaning": "強調",
-        "theme": "行為動作",
-        "sentence": "The teacher emphasized the importance of the grammar rules.",
-        "sentenceZh": "老師強調了文法規則的重要性。",
-        "otherForms": "emphasizes (三單), emphasizing (ing型(去e加ing)), emphasized (過去式/分詞)"
-    },
-    {
-        "word": "employ",
-        "meaning": "雇用",
-        "theme": "行為動作",
-        "sentence": "The company plans to employ more engineers this year.",
-        "sentenceZh": "公司計畫今年雇用更多工程師。",
-        "otherForms": "employs (三單), employing (ing型), employed (過去式/分詞)"
-    },
-    {
-        "word": "feed",
-        "meaning": "餵食",
-        "theme": "行為動作",
-        "sentence": "Don't forget to feed the cat before you go to school.",
-        "sentenceZh": "去上學前別忘了餵貓。",
-        "otherForms": "feeds (三單), feeding (ing型), fed (過去式(不規則)), fed (過去分詞(不規則))"
-    },
-    {
-        "word": "fight",
-        "meaning": "打架",
-        "theme": "行為動作",
-        "sentence": "Good students should solve problems calmly, not by fighting.",
-        "sentenceZh": "好學生應該冷靜解決問題，而不是靠打架。",
-        "otherForms": "fights (三單), fighting (ing型), fought (過去式(不規則)), fought (過去分詞(不規則))"
-    },
-    {
-        "word": "find",
-        "meaning": "找到",
-        "theme": "行為動作",
-        "sentence": "I cannot find my keys anywhere in the room.",
-        "sentenceZh": "我在房間裡到處都找不到我的鑰匙。",
-        "otherForms": "finds (三單), finding (ing型), found (過去式(不規則)), found (過去分詞(不規則))"
-    },
-    {
-        "word": "fry",
-        "meaning": "油炸",
-        "theme": "行為動作",
-        "sentence": "We are going to fry some chicken for dinner.",
-        "sentenceZh": "我們晚餐打算炸一些雞肉。",
-        "otherForms": "fries (三單(去y加ies)), frying (ing型), fried (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "gather",
-        "meaning": "聚集",
-        "theme": "行為動作",
-        "sentence": "The students gathered in the gym to hear the principal's speech.",
-        "sentenceZh": "學生們聚集在體育館聽校長演講。",
-        "otherForms": "gathers (三單), gathering (ing型), gathered (過去式/分詞)"
-    },
-    {
-        "word": "guide",
-        "meaning": "引導",
-        "theme": "行為動作",
-        "sentence": "The map will guide you to the famous old temple.",
-        "sentenceZh": "地圖會引導你前往那座著名的古廟。",
-        "otherForms": "guides (三單), guiding (ing型(去e加ing)), guided (過去式/分詞)"
-    },
-    {
-        "word": "handle",
-        "meaning": "處理",
-        "theme": "行為動作",
-        "sentence": "She is very calm and knows how to handle difficult problems.",
-        "sentenceZh": "她非常冷靜，知道如何處理困難的問題。",
-        "otherForms": "handles (三單), handling (ing型(去e加ing)), handled (過去式/分詞)"
-    },
-    {
-        "word": "hang",
-        "meaning": "懸掛",
-        "theme": "行為動作",
-        "sentence": "Please hang your wet raincoat by the door.",
-        "sentenceZh": "請把濕雨衣掛在門邊。",
-        "otherForms": "hangs (三單), hanging (ing型), hung (過去式(不規則)), hung (過去分詞(不規則))"
-    },
-    {
-        "word": "hide",
-        "meaning": "隱藏",
-        "theme": "行為動作",
-        "sentence": "The scared little mouse tried to hide under the sofa.",
-        "sentenceZh": "害怕的小老鼠試圖躲在沙發底下。",
-        "otherForms": "hides (三單), hiding (ing型(去e加ing)), hid (過去式(不規則)), hidden (過去分詞(不規則))"
-    },
-    {
-        "word": "hire",
-        "meaning": "雇用",
-        "theme": "行為動作",
-        "sentence": "The restaurant needs to hire a new cook for the weekend.",
-        "sentenceZh": "餐廳週末需要雇用一位新廚師。",
-        "otherForms": "hires (三單), hiring (ing型(去e加ing)), hired (過去式/分詞)"
-    },
-    {
-        "word": "hunt",
-        "meaning": "狩獵",
-        "theme": "行為動作",
-        "sentence": "In the past, people had to hunt wild animals for food.",
-        "sentenceZh": "過去，人們必須狩獵野生動物來獲取食物。",
-        "otherForms": "hunts (三單), hunting (ing型), hunted (過去式/分詞)"
-    },
-    {
-        "word": "hurt",
-        "meaning": "傷害",
-        "theme": "行為動作",
-        "sentence": "He hurt his leg badly when he fell off his bike.",
-        "sentenceZh": "他從腳踏車上摔下來時嚴重摔傷了腿。",
-        "otherForms": "hurts (三單), hurting (ing型), hurt (過去式(不規則同型)), hurt (過去分詞(不規則同型))"
-    },
-    {
-        "word": "include",
-        "meaning": "包含",
-        "theme": "行為動作",
-        "sentence": "The meal price includes a bowl of soup and a drink.",
-        "sentenceZh": "套餐價格包含了一碗湯和一杯飲料。",
-        "otherForms": "includes (三單), including (ing型(去e加ing)), included (過去式/分詞)"
-    },
-    {
-        "word": "interrupt",
-        "meaning": "打斷",
-        "theme": "行為動作",
-        "sentence": "It is impolite to interrupt someone when they are speaking.",
-        "sentenceZh": "打斷別人說話是不禮貌的。",
-        "otherForms": "interrupts (三單), interrupting (ing型), interrupted (過去式/分詞)"
-    },
-    {
-        "word": "invent",
-        "meaning": "發明",
-        "theme": "行為動作",
-        "sentence": "Thomas Edison invented the light bulb many years ago.",
-        "sentenceZh": "湯瑪斯·愛迪生許多年前發明了電燈泡。",
-        "otherForms": "invents (三單), inventing (ing型), invented (過去式/分詞)"
-    },
-    {
-        "word": "invite",
-        "meaning": "邀請",
-        "theme": "行為動作",
-        "sentence": "I will invite all my friends to my birthday party.",
-        "sentenceZh": "我會邀請我所有的朋友來參加我的生日派對。",
-        "otherForms": "invites (三單), inviting (ing型(去e加ing)), invited (過去式/分詞)"
-    },
-    {
-        "word": "iron",
-        "meaning": "熨燙；鐵",
-        "theme": "行為動作",
-        "sentence": "My mother is ironing my school uniform to make it neat.",
-        "sentenceZh": "我媽媽正在熨燙我的學校制服讓它變平整。",
-        "otherForms": "irons (複數型), irons (三單), ironing (ing型), ironed (過去式/分詞)"
-    },
-    {
-        "word": "join",
-        "meaning": "加入",
-        "theme": "行為動作",
-        "sentence": "Would you like to join our badminton club this semester?",
-        "sentenceZh": "你這學期想加入我們的羽球社嗎？",
-        "otherForms": "joins (三單), joining (ing型), joined (過去式/分詞)"
-    },
-    {
-        "word": "kill",
-        "meaning": "殺死",
-        "theme": "行為動作",
-        "sentence": "It is illegal to kill wild animals in this national park.",
-        "sentenceZh": "在這個國家公園裡殺死野生動物是違法的。",
-        "otherForms": "kills (三單), killing (ing型), killed (過去式/分詞)"
-    },
-    {
-        "word": "lead",
-        "meaning": "領導",
-        "theme": "行為動作",
-        "sentence": "The class leader will lead the students to the gym.",
-        "sentenceZh": "班長將帶領學生們前往體育館。",
-        "otherForms": "leads (三單), leading (ing型), led (過去式(不規則)), led (過去分詞(不規則))"
-    },
-    {
-        "word": "let",
-        "meaning": "讓",
-        "theme": "行為動作",
-        "sentence": "Please let me know if you need any help with the homework.",
-        "sentenceZh": "如果你的作業需要任何幫忙，請讓我知道。",
-        "otherForms": "lets (三單), letting (ing型(重複字尾)), let (過去式(不規則同型)), let (過去分詞(不規則同型))"
-    },
-    {
-        "word": "limit",
-        "meaning": "限制",
-        "theme": "行為動作",
-        "sentence": "You should limit the time you spend playing computer games.",
-        "sentenceZh": "你應該限制你玩電腦遊戲的時間。",
-        "otherForms": "limits (複數型), limits (三單), limiting (ing型), limited (過去式/分詞)"
-    },
-    {
-        "word": "list",
-        "meaning": "列出",
-        "theme": "行為動作",
-        "sentence": "Please list all the materials you need for the science project.",
-        "sentenceZh": "請列出你科學專案需要的所有材料。",
-        "otherForms": "lists (複數型), lists (三單), listing (ing型), listed (過去式/分詞)"
-    },
-    {
-        "word": "lock",
-        "meaning": "鎖上",
-        "theme": "行為動作",
-        "sentence": "Don't forget to lock the door before you leave the house.",
-        "sentenceZh": "離開家前別忘了鎖門。",
-        "otherForms": "locks (複數型), locks (三單), locking (ing型), locked (過去式/分詞)"
-    },
-    {
-        "word": "make",
-        "meaning": "製作",
-        "theme": "行為動作",
-        "sentence": "We are going to make a beautiful card for Mother's Day.",
-        "sentenceZh": "我們打算為母親節做一張美麗的卡片。",
-        "otherForms": "makes (三單), making (ing型(去e加ing)), made (過去式(不規則)), made (過去分詞(不規則))"
-    },
-    {
-        "word": "marry",
-        "meaning": "結婚",
-        "theme": "行為動作",
-        "sentence": "The prince and the princess married and lived happily.",
-        "sentenceZh": "王子和公主結婚並快樂地生活。",
-        "otherForms": "marries (三單(去y加ies)), marrying (ing型), married (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "mix",
-        "meaning": "混合",
-        "theme": "行為動作",
-        "sentence": "If you mix yellow and blue paint, you will get green.",
-        "sentenceZh": "如果你把黃色和藍色顏料混合，就會得到綠色。",
-        "otherForms": "mixes (三單(加es)), mixing (ing型), mixed (過去式/分詞)"
-    },
-    {
-        "word": "mop",
-        "meaning": "用拖把拖地",
-        "theme": "行為動作",
-        "sentence": "It is your turn to mop the classroom floor today.",
-        "sentenceZh": "今天輪到你用拖把拖教室地板了。",
-        "otherForms": "mops (三單), mopping (ing型(重複字尾)), mopped (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "offer",
-        "meaning": "提供",
-        "theme": "行為動作",
-        "sentence": "The teacher offered to help the students after class.",
-        "sentenceZh": "老師提供放學後幫助學生。",
-        "otherForms": "offers (三單), offering (ing型), offered (過去式/分詞)"
-    },
-    {
-        "word": "omit",
-        "meaning": "省略",
-        "theme": "行為動作",
-        "sentence": "You can omit this word and the sentence is still correct.",
-        "sentenceZh": "你可以省略這個單字，而句子依然正確。",
-        "otherForms": "omits (三單), omitting (ing型(重複字尾)), omitted (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "open",
-        "meaning": "打開",
-        "theme": "行為動作",
-        "sentence": "Please open your textbook to page forty-five.",
-        "sentenceZh": "請把你的教科書打開翻到第四十五頁。",
-        "otherForms": "opens (三單), opening (ing型), opened (過去式/分詞)"
-    },
-    {
-        "word": "order",
-        "meaning": "點餐",
-        "theme": "行為動作",
-        "sentence": "We went to the restaurant and ordered a large pizza.",
-        "sentenceZh": "我們去了餐廳並點了一個大披薩。",
-        "otherForms": "orders (複數型), orders (三單), ordering (ing型), ordered (過去式/分詞)"
-    },
-    {
-        "word": "pack",
-        "meaning": "打包",
-        "theme": "行為動作",
-        "sentence": "I need to pack my clothes for the three-day trip.",
-        "sentenceZh": "我需要為三天的旅行打包衣服。",
-        "otherForms": "packs (三單), packing (ing型), packed (過去式/分詞)"
-    },
-    {
-        "word": "park",
-        "meaning": "停車；公園",
-        "theme": "行為動作",
-        "sentence": "You cannot park your car in front of the school gate.",
-        "sentenceZh": "你不能把車停在學校大門口。",
-        "otherForms": "parks (複數型), parks (三單), parking (ing型), parked (過去式/分詞)"
-    },
-    {
-        "word": "paste",
-        "meaning": "貼上",
-        "theme": "行為動作",
-        "sentence": "Copy the HTML code and paste it into the editor.",
-        "sentenceZh": "複製 HTML 程式碼然後將它貼到編輯器裡。",
-        "otherForms": "pastes (三單), pasting (ing型(去e加ing)), pasted (過去式/分詞)"
-    },
-    {
-        "word": "play",
-        "meaning": "玩",
-        "theme": "行為動作",
-        "sentence": "Let's play a fun game of badminton after school.",
-        "sentenceZh": "我們放學後來打一場有趣的羽球吧。",
-        "otherForms": "plays (三單), playing (ing型), played (過去式/分詞)"
-    },
-    {
-        "word": "pollute",
-        "meaning": "污染",
-        "theme": "行為動作",
-        "sentence": "We must not let factories pollute our clean rivers.",
-        "sentenceZh": "我們絕不能讓工廠污染我們乾淨的河流。",
-        "otherForms": "pollutes (三單), polluting (ing型(去e加ing)), polluted (過去式/分詞)"
-    },
-    {
-        "word": "print",
-        "meaning": "列印",
-        "theme": "行為動作",
-        "sentence": "The teacher will print the vocabulary list for everyone.",
-        "sentenceZh": "老師會印出單字表給大家。",
-        "otherForms": "prints (三單), printing (ing型), printed (過去式/分詞)"
-    },
-    {
-        "word": "produce",
-        "meaning": "生產",
-        "theme": "行為動作",
-        "sentence": "This farm produces very sweet and juicy watermelons.",
-        "sentenceZh": "這座農場生產非常甜又多汁的西瓜。",
-        "otherForms": "produces (三單), producing (ing型(去e加ing)), produced (過去式/分詞)"
-    },
-    {
-        "word": "protect",
-        "meaning": "保護",
-        "theme": "行為動作",
-        "sentence": "Wearing a helmet will protect your head if you fall.",
-        "sentenceZh": "戴安全帽會在你跌倒時保護你的頭部。",
-        "otherForms": "protects (三單), protecting (ing型), protected (過去式/分詞)"
-    },
-    {
-        "word": "provide",
-        "meaning": "提供",
-        "theme": "行為動作",
-        "sentence": "The school provides a healthy lunch for all the students.",
-        "sentenceZh": "學校為所有學生提供健康的午餐。",
-        "otherForms": "provides (三單), providing (ing型(去e加ing)), provided (過去式/分詞)"
-    },
-    {
-        "word": "pump",
-        "meaning": "灌注",
-        "theme": "行為動作",
-        "sentence": "We need to pump some air into the bicycle tires.",
-        "sentenceZh": "我們需要幫腳踏車輪胎打點氣。",
-        "otherForms": "pumps (三單), pumping (ing型), pumped (過去式/分詞)"
-    },
-    {
-        "word": "quit",
-        "meaning": "退出",
-        "theme": "行為動作",
-        "sentence": "Don't quit when learning English gets a little difficult.",
-        "sentenceZh": "當學英文變得有點難時，別放棄。",
-        "otherForms": "quits (三單), quitting (ing型(重複字尾)), quit (過去式(不規則同型)), quit (過去分詞(不規則同型))"
-    },
-    {
-        "word": "reach",
-        "meaning": "到達",
-        "theme": "行為動作",
-        "sentence": "He is tall enough to reach the books on the top shelf.",
-        "sentenceZh": "他夠高，可以搆到最上層架子上的書。",
-        "otherForms": "reaches (三單(加es)), reaching (ing型), reached (過去式/分詞)"
-    },
-    {
-        "word": "receive",
-        "meaning": "接收",
-        "theme": "行為動作",
-        "sentence": "I received a nice postcard from my friend in Japan today.",
-        "sentenceZh": "我今天收到了一張來自日本朋友寄的漂亮明信片。",
-        "otherForms": "receives (三單), receiving (ing型(去e加ing)), received (過去式/分詞)"
-    },
-    {
-        "word": "recycle",
-        "meaning": "回收",
-        "theme": "行為動作",
-        "sentence": "We should always recycle plastic bottles and paper.",
-        "sentenceZh": "我們應該永遠回收塑膠瓶和紙張。",
-        "otherForms": "recycles (三單), recycling (ing型(去e加ing)), recycled (過去式/分詞)"
-    },
-    {
-        "word": "remind",
-        "meaning": "提醒",
-        "theme": "行為動作",
-        "sentence": "Please remind me to bring my umbrella tomorrow.",
-        "sentenceZh": "請提醒我明天要帶傘。",
-        "otherForms": "reminds (三單), reminding (ing型), reminded (過去式/分詞)"
-    },
-    {
-        "word": "rent",
-        "meaning": "租用",
-        "theme": "行為動作",
-        "sentence": "We rented a small car for our family trip to Kenting.",
-        "sentenceZh": "我們為墾丁家庭旅行租了一輛小車。",
-        "otherForms": "rents (三單), renting (ing型), rented (過去式/分詞)"
-    },
-    {
-        "word": "revise",
-        "meaning": "修改",
-        "theme": "行為動作",
-        "sentence": "I need to revise my essay before I hand it to the teacher.",
-        "sentenceZh": "我在交給老師前需要修改我的作文。",
-        "otherForms": "revises (三單), revising (ing型(去e加ing)), revised (過去式/分詞)"
-    },
-    {
-        "word": "rob",
-        "meaning": "搶劫",
-        "theme": "行為動作",
-        "sentence": "The bad guy tried to rob the bank but the police caught him.",
-        "sentenceZh": "壞蛋試圖搶銀行但被警察抓住了。",
-        "otherForms": "robs (三單), robbing (ing型(重複字尾)), robbed (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "rub",
-        "meaning": "摩擦",
-        "theme": "行為動作",
-        "sentence": "Don't rub your eyes when your hands are dirty.",
-        "sentenceZh": "當你的手很髒時不要揉眼睛。",
-        "otherForms": "rubs (三單), rubbing (ing型(重複字尾)), rubbed (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "save",
-        "meaning": "拯救；儲存",
-        "theme": "行為動作",
-        "sentence": "Remember to save your file before you close the computer.",
-        "sentenceZh": "關電腦前記得儲存你的檔案。",
-        "otherForms": "saves (三單), saving (ing型(去e加ing)), saved (過去式/分詞)"
-    },
-    {
-        "word": "search",
-        "meaning": "搜尋",
-        "theme": "行為動作",
-        "sentence": "I used Google to search for information about badminton history.",
-        "sentenceZh": "我用 Google 搜尋關於羽球歷史的資訊。",
-        "otherForms": "searches (複數型(加es)), searches (三單(加es)), searching (ing型), searched (過去式/分詞)"
-    },
-    {
-        "word": "seek",
-        "meaning": "尋求",
-        "theme": "行為動作",
-        "sentence": "You should seek help from the teacher if you don't understand.",
-        "sentenceZh": "如果你不懂，應該尋求老師的幫助。",
-        "otherForms": "seeks (三單), seeking (ing型), sought (過去式(不規則)), sought (過去分詞(不規則))"
-    },
-    {
-        "word": "sell",
-        "meaning": "賣",
-        "theme": "行為動作",
-        "sentence": "The bakery sells the most delicious bread in Douliu.",
-        "sentenceZh": "那家麵包店賣斗六最好吃的麵包。",
-        "otherForms": "sells (三單), selling (ing型), sold (過去式(不規則)), sold (過去分詞(不規則))"
-    },
-    {
-        "word": "send",
-        "meaning": "傳送",
-        "theme": "行為動作",
-        "sentence": "I will send you an email with the photos tonight.",
-        "sentenceZh": "我今晚會發一封附有照片的電子郵件給你。",
-        "otherForms": "sends (三單), sending (ing型), sent (過去式(不規則)), sent (過去分詞(不規則))"
-    },
-    {
-        "word": "serve",
-        "meaning": "服務",
-        "theme": "行為動作",
-        "sentence": "The restaurant serves a very nice hot chicken soup.",
-        "sentenceZh": "這家餐廳供應非常棒的熱雞湯。",
-        "otherForms": "serves (三單), serving (ing型(去e加ing)), served (過去式/分詞)"
-    },
-    {
-        "word": "share",
-        "meaning": "分享",
-        "theme": "行為動作",
-        "sentence": "The student kindly shared his umbrella with his classmate.",
-        "sentenceZh": "這位學生好心地和同學分享他的雨傘。",
-        "otherForms": "shares (三單), sharing (ing型(去e加ing)), shared (過去式/分詞)"
-    },
-    {
-        "word": "shoot",
-        "meaning": "射擊",
-        "theme": "行為動作",
-        "sentence": "He jumped high to shoot the basketball into the net.",
-        "sentenceZh": "他跳得很高去把籃球投進網內。",
-        "otherForms": "shoots (三單), shooting (ing型), shot (過去式(不規則)), shot (過去分詞(不規則))"
-    },
-    {
-        "word": "show",
-        "meaning": "表演；展示",
-        "theme": "行為動作",
-        "sentence": "Can you show me how to play this syntax repair game?",
-        "sentenceZh": "你能示範給我看這個語法修復遊戲怎麼玩嗎？",
-        "otherForms": "shows (複數型), shows (三單), showing (ing型), showed (過去式(規則))"
-    },
-    {
-        "word": "shut",
-        "meaning": "關閉",
-        "theme": "行為動作",
-        "sentence": "Please shut the door quietly so you don't wake the baby.",
-        "sentenceZh": "請輕輕關上門以免吵醒小嬰兒。",
-        "otherForms": "shuts (三單), shutting (ing型(重複字尾)), shut (過去式(不規則同型)), shut (過去分詞(不規則同型))"
-    },
-    {
-        "word": "sit",
-        "meaning": "坐",
-        "theme": "行為動作",
-        "sentence": "Pull up a chair and sit next to me.",
-        "sentenceZh": "拉把椅子過來坐我旁邊。",
-        "otherForms": "sits (三單), sitting (ing型(重複字尾)), sat (過去式(不規則)), sat (過去分詞(不規則))"
-    },
-    {
-        "word": "sleep",
-        "meaning": "睡覺",
-        "theme": "行為動作",
-        "sentence": "I usually sleep for eight hours every night.",
-        "sentenceZh": "我每晚通常睡八小時。",
-        "otherForms": "sleeps (三單), sleeping (ing型), slept (過去式(不規則)), slept (過去分詞(不規則))"
-    },
-    {
-        "word": "smoke",
-        "meaning": "抽煙",
-        "theme": "行為動作",
-        "sentence": "You are not allowed to smoke inside the hospital.",
-        "sentenceZh": "你不被允許在醫院裡面抽菸。",
-        "otherForms": "smokes (三單), smoking (ing型(去e加ing)), smoked (過去式/分詞)"
-    },
-    {
-        "word": "solve",
-        "meaning": "解決",
-        "theme": "行為動作",
-        "sentence": "The smart detective easily solved the difficult mystery.",
-        "sentenceZh": "聰明的偵探輕鬆地解決了這個困難的謎團。",
-        "otherForms": "solves (三單), solving (ing型(去e加ing)), solved (過去式/分詞)"
-    },
-    {
-        "word": "spread",
-        "meaning": "塗抹",
-        "theme": "行為動作",
-        "sentence": "She used a knife to spread butter on the warm toast.",
-        "sentenceZh": "她用刀子把奶油塗在溫熱的吐司上。",
-        "otherForms": "spreads (三單), spreading (ing型), spread (過去式(不規則同型)), spread (過去分詞(不規則同型))"
-    },
-    {
-        "word": "steal",
-        "meaning": "偷竊",
-        "theme": "行為動作",
-        "sentence": "The thief tried to steal a bicycle but a police officer saw him.",
-        "sentenceZh": "小偷試圖偷腳踏車但被警察看到了。",
-        "otherForms": "steals (三單), stealing (ing型), stole (過去式(不規則)), stolen (過去分詞(不規則))"
-    },
-    {
-        "word": "strike",
-        "meaning": "打擊；罷工",
-        "theme": "行為動作",
-        "sentence": "The lightning struck the tall tree during the big storm.",
-        "sentenceZh": "閃電在暴風雨中擊中了那棵大樹。",
-        "otherForms": "strikes (複數型), strikes (三單), striking (ing型(去e加ing)), struck (過去式(不規則))"
-    },
-    {
-        "word": "take",
-        "meaning": "拿；帶",
-        "theme": "行為動作",
-        "sentence": "It will take us about an hour to get to Taichung by train.",
-        "sentenceZh": "搭火車到台中大約會花我們一小時。",
-        "otherForms": "takes (三單), taking (ing型(去e加ing)), took (過去式(不規則)), taken (過去分詞(不規則))"
-    },
-    {
-        "word": "treat",
-        "meaning": "款待；對待",
-        "theme": "行為動作",
-        "sentence": "You should always treat your friends with kindness and respect.",
-        "sentenceZh": "你應該永遠以仁慈和尊重來對待你的朋友。",
-        "otherForms": "treats (三單), treating (ing型), treated (過去式/分詞)"
-    },
-    {
-        "word": "upload",
-        "meaning": "上傳",
-        "theme": "行為動作",
-        "sentence": "Don't forget to upload your homework to the school website.",
-        "sentenceZh": "別忘了把你的作業上傳到學校網站。",
-        "otherForms": "uploads (三單), uploading (ing型), uploaded (過去式/分詞)"
-    },
-    {
-        "word": "use",
-        "meaning": "使用",
-        "theme": "行為動作",
-        "sentence": "I often use an online dictionary to check my spelling.",
-        "sentenceZh": "我經常使用線上字典來檢查我的拼字。",
-        "otherForms": "uses (三單), using (ing型(去e加ing)), used (過去式/分詞)"
-    },
-    {
-        "word": "visit",
-        "meaning": "拜訪",
-        "theme": "行為動作",
-        "sentence": "I plan to visit my grandparents in the village next Sunday.",
-        "sentenceZh": "我計畫下星期日去村莊拜訪我祖父母。",
-        "otherForms": "visits (三單), visiting (ing型), visited (過去式/分詞)"
-    },
-    {
-        "word": "vote",
-        "meaning": "投票",
-        "theme": "行為動作",
-        "sentence": "The class will vote to choose the best badge design tomorrow.",
-        "sentenceZh": "全班明天將投票選出最好的徽章設計。",
-        "otherForms": "votes (三單), voting (ing型(去e加ing)), voted (過去式/分詞)"
-    },
-    {
-        "word": "wait",
-        "meaning": "等待",
-        "theme": "行為動作",
-        "sentence": "I had to wait for the bus for thirty minutes in the rain.",
-        "sentenceZh": "我得在雨中等了三十分鐘的公車。",
-        "otherForms": "waits (三單), waiting (ing型), waited (過去式/分詞)"
-    },
-    {
-        "word": "waste",
-        "meaning": "浪費",
-        "theme": "行為動作",
-        "sentence": "Don't waste your time playing too many computer games.",
-        "sentenceZh": "不要浪費你的時間玩太多電腦遊戲。",
-        "otherForms": "wastes (複數型), wastes (三單), wasting (ing型(去e加ing)), wasted (過去式/分詞)"
-    },
-    {
-        "word": "welcome",
-        "meaning": "歡迎",
-        "theme": "行為動作",
-        "sentence": "We are very happy to welcome the new teacher to our school.",
-        "sentenceZh": "我們非常高興能歡迎新老師來到我們學校。",
-        "otherForms": "welcomes (複數型), welcomes (三單), welcoming (ing型(去e加ing)), welcomed (過去式/分詞)"
-    },
-    {
-        "word": "be (is, am, are, was, were)",
-        "meaning": "是、當、在",
-        "theme": "助動詞",
-        "sentence": "I am a student, and he is a teacher.",
-        "sentenceZh": "我是一名學生，而他是一名老師。",
-        "otherForms": "is/am/are (現在式型態), being (ing型), was/were (過去式(單/複數)), been (過去分詞(不規則))"
-    },
-    {
-        "word": "do (does, did)",
-        "meaning": "做",
-        "theme": "助動詞",
-        "sentence": "What do you usually do on the weekend?",
-        "sentenceZh": "你週末通常做什麼？",
-        "otherForms": "does (三單), doing (ing型), did (過去式(不規則)), done (過去分詞(不規則))"
-    },
-    {
-        "word": "have (has, had)",
-        "meaning": "擁有；已經、使~(做某事)",
-        "theme": "助動詞",
-        "sentence": "I have a very big collection of 80s music on Spotify.",
-        "sentenceZh": "我的 Spotify 裡有非常大量的 80 年代音樂收藏。",
-        "otherForms": "has (三單), having (ing型(去e加ing)), had (過去式(不規則)), had (過去分詞(不規則))"
-    },
-    {
-        "word": "can",
-        "meaning": "可以；可能；能夠",
-        "theme": "助動詞",
-        "sentence": "I could run much faster when I was younger.",
-        "sentenceZh": "我年輕的時候可以跑得快很多。",
-        "otherForms": "could (過去式(助動)), 無其他變形"
-    },
-    {
-        "word": "shall",
-        "meaning": "應該；將會",
-        "theme": "助動詞",
-        "sentence": "You should review your vocabulary every day to remember them.",
-        "sentenceZh": "你應該每天複習單字以記住它們。",
-        "otherForms": "should (過去式(助動)), 無其他變形"
-    },
-    {
-        "word": "must",
-        "meaning": "一定",
-        "theme": "助動詞",
-        "sentence": "You must finish your homework before watching television.",
-        "sentenceZh": "你看電視前必須寫完作業。",
-        "otherForms": "無變形"
-    },
-    {
-        "word": "may",
-        "meaning": "可能；可以",
-        "theme": "助動詞",
-        "sentence": "Take an umbrella with you; it might rain this afternoon.",
-        "sentenceZh": "帶著傘吧，今天下午可能會下雨。",
-        "otherForms": "might (過去式(助動)), 無其他變形"
-    },
-    {
-        "word": "will",
-        "meaning": "將會",
-        "theme": "助動詞",
-        "sentence": "When I get older, will you still love me?",
-        "sentenceZh": "當我變老的時候，你還會愛我嗎?",
-        "otherForms": "would (過去式(助動)), 無其他變形"
-    },
-    {
-        "word": "bother",
-        "meaning": "打擾",
-        "theme": "情緒動詞",
-        "sentence": "Please don't bother me while I am writing the HTML code.",
-        "sentenceZh": "我在寫 HTML 程式碼時請不要打擾我。",
-        "otherForms": "bothers (三單), bothering (ing型), bothered (過去式/分詞)"
-    },
-    {
-        "word": "bore",
-        "meaning": "使~無聊",
-        "theme": "情緒動詞",
-        "sentence": "Englisg class bores me.",
-        "sentenceZh": "英語課使我感到無聊。",
-        "otherForms": "bores (三單), boring (ing型(去e加ing)), bored (過去式/分詞)"
-    },
-    {
-        "word": "confuse",
-        "meaning": "混淆",
-        "theme": "情緒動詞",
-        "sentence": "The difficult grammar rules often confuse the students.",
-        "sentenceZh": "困難的文法規則經常使學生感到混淆。",
-        "otherForms": "confuses (三單), confusing (ing型(去e加ing)), confused (過去式/分詞)"
-    },
-    {
-        "word": "embarrass",
-        "meaning": "使尷尬",
-        "theme": "情緒動詞",
-        "sentence": "Falling down on the badminton court embarrassed him.",
-        "sentenceZh": "在羽球場上跌倒讓他覺得很尷尬。",
-        "otherForms": "embarrasses (三單(加es)), embarrassing (ing型), embarrassed (過去式/分詞)"
-    },
-    {
-        "word": "frighten",
-        "meaning": "使~害怕",
-        "theme": "情緒動詞",
-        "sentence": "The loud thunder frightened the little puppy.",
-        "sentenceZh": "巨大的雷聲嚇壞了小狗。",
-        "otherForms": "frightens (三單), frightening (ing型), frightened (過去式/分詞)"
-    },
-    {
-        "word": "surprise",
-        "meaning": "使~驚訝",
-        "theme": "情緒動詞",
-        "sentence": "The sudden rain surprised us during the school trip.",
-        "sentenceZh": "校外教學時突如其來的大雨讓我們很驚訝。",
-        "otherForms": "surprises (複數/三單), surprising (ing型(去e加ing)), surprised (過去式/分詞)"
-    },
-    {
-        "word": "worry",
-        "meaning": "使~擔心",
-        "theme": "情緒動詞",
-        "sentence": "Don't worry about the test; just do your best.",
-        "sentenceZh": "別擔心考試，盡力就好。",
-        "otherForms": "worries (複數/三單(去y加ies)), worrying (ing型), worried (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "care",
-        "meaning": "關心",
-        "theme": "情緒動詞",
-        "sentence": "A good teacher always cares about their students.",
-        "sentenceZh": "一位好老師總是關心他們的學生。",
-        "otherForms": "cares (三單), caring (ing型(去e加ing)), cared (過去式/分詞)"
-    },
-    {
-        "word": "concern",
-        "meaning": "關心；涉及",
-        "theme": "情緒動詞",
-        "sentence": "The principal is concerned about the safety of the students.",
-        "sentenceZh": "校長很關心學生們的安全。",
-        "otherForms": "concerns (三單), concerning (ing型), concerned (過去式/分詞)"
-    },
-    {
-        "word": "excite",
-        "meaning": "使~興奮",
-        "theme": "情緒動詞",
-        "sentence": "Playing the interactive web game excites the whole class.",
-        "sentenceZh": "玩這個互動網頁遊戲讓全班都很興奮。",
-        "otherForms": "excites (三單), exciting (ing型(去e加ing)), excited (過去式/分詞)"
-    },
-    {
-        "word": "satisfy",
-        "meaning": "使~滿足",
-        "theme": "情緒動詞",
-        "sentence": "A big bowl of Douliu beef noodles will satisfy your hunger.",
-        "sentenceZh": "一大碗斗六牛肉麵能滿足你的飢餓感。",
-        "otherForms": "satisfies (三單(去y加ies)), satisfying (ing型), satisfied (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "please",
-        "meaning": "使~開心",
-        "theme": "情緒動詞",
-        "sentence": "The student's good grades pleased his parents.",
-        "sentenceZh": "這位學生的好成績讓他的父母很開心。",
-        "otherForms": "pleases (三單), pleasing (ing型(去e加ing)), pleased (過去式/分詞)"
-    },
-    {
-        "word": "scare",
-        "meaning": "使~害怕",
-        "theme": "情緒動詞",
-        "sentence": "The monster in the game scared the little boy.",
-        "sentenceZh": "遊戲裡的怪物嚇到了小男孩。",
-        "otherForms": "scares (三單), scaring (ing型(去e加ing)), scared (過去式/分詞)"
-    },
-    {
-        "word": "tire",
-        "meaning": "使~疲累",
-        "theme": "情緒動詞",
-        "sentence": "Running ten laps around the playground will tire you out.",
-        "sentenceZh": "繞著操場跑十圈會讓你累壞的。",
-        "otherForms": "tires (三單), tiring (ing型(去e加ing)), tired (過去式/分詞)"
-    },
-    {
-        "word": "bored",
-        "meaning": "感到無聊的",
-        "theme": "情緒動詞",
-        "sentence": "I am bored with the English class.",
-        "sentenceZh": "我對英語課感到無聊。",
-        "otherForms": "more bored (比較級), most bored (最高級)"
-    },
-    {
-        "word": "bothered",
-        "meaning": "感到厭煩的",
-        "theme": "情緒動詞",
-        "sentence": "I am bothered by the loud noise outside the window.",
-        "sentenceZh": "我對窗外的巨大噪音感到很厭煩。",
-        "otherForms": "more bothered (比較級), most bothered (最高級)"
-    },
-    {
-        "word": "confused",
-        "meaning": "感到困惑的",
-        "theme": "情緒動詞",
-        "sentence": "She was confused by the complicated math problem.",
-        "sentenceZh": "她對這道複雜的數學題感到困惑。",
-        "otherForms": "more confused (比較級), most confused (最高級)"
-    },
-    {
-        "word": "embarrassed",
-        "meaning": "感到尷尬的",
-        "theme": "情緒動詞",
-        "sentence": "I was embarrassed when I forgot my lines in the play.",
-        "sentenceZh": "當我在話劇中忘詞時，我感到很尷尬。",
-        "otherForms": "more embarrassed (比較級), most embarrassed (最高級)"
-    },
-    {
-        "word": "frightened",
-        "meaning": "感到害怕的",
-        "theme": "情緒動詞",
-        "sentence": "The frightened cat hid under the sofa safely.",
-        "sentenceZh": "感到害怕的貓安全地躲在沙發下。",
-        "otherForms": "more frightened (比較級), most frightened (最高級)"
-    },
-    {
-        "word": "surprised",
-        "meaning": "感到驚訝的",
-        "theme": "情緒動詞",
-        "sentence": "I was surprised to see him waiting at the station.",
-        "sentenceZh": "看到他在車站等候讓我很驚訝。",
-        "otherForms": "more surprised (比較級), most surprised (最高級)"
-    },
-    {
-        "word": "worried",
-        "meaning": "感到擔心的",
-        "theme": "情緒動詞",
-        "sentence": "My mom is worried because I have a high fever.",
-        "sentenceZh": "我媽媽很擔心，因為我發高燒了。",
-        "otherForms": "more worried (比較級), most worried (最高級)"
-    },
-    {
-        "word": "concerned",
-        "meaning": "感到擔心的",
-        "theme": "情緒動詞",
-        "sentence": "The concerned teacher asked the student what was wrong.",
-        "sentenceZh": "感到擔心的老師問學生怎麼了。",
-        "otherForms": "more concerned (比較級), most concerned (最高級)"
-    },
-    {
-        "word": "excited",
-        "meaning": "感到興奮的",
-        "theme": "情緒動詞",
-        "sentence": "We are very excited about the school trip to Japan.",
-        "sentenceZh": "我們對去日本的校外教學感到非常興奮。",
-        "otherForms": "more excited (比較級), most excited (最高級), excitedly (副詞)"
-    },
-    {
-        "word": "satisfied",
-        "meaning": "感到滿足的",
-        "theme": "情緒動詞",
-        "sentence": "The coach was satisfied with the badminton team's victory.",
-        "sentenceZh": "教練對羽球隊的勝利感到滿意。",
-        "otherForms": "more satisfied (比較級), most satisfied (最高級)"
-    },
-    {
-        "word": "pleased",
-        "meaning": "感到開心的",
-        "theme": "情緒動詞",
-        "sentence": "I am very pleased to meet your new friend.",
-        "sentenceZh": "我非常高興能認識你的新朋友。",
-        "otherForms": "more pleased (比較級), most pleased (最高級)"
-    },
-    {
-        "word": "scared",
-        "meaning": "感到害怕的",
-        "theme": "情緒動詞",
-        "sentence": "My little sister is scared of big spiders.",
-        "sentenceZh": "我妹妹很害怕大蜘蛛。",
-        "otherForms": "more scared (比較級), most scared (最高級)"
-    },
-    {
-        "word": "tired",
-        "meaning": "感到疲累的",
-        "theme": "情緒動詞",
-        "sentence": "I am very tired after playing badminton for two hours.",
-        "sentenceZh": "打了兩個小時的羽球後我非常累。",
-        "otherForms": "more tired (比較級), most tired (最高級)"
-    },
-    {
-        "word": "bothering",
-        "meaning": "令人厭煩的",
-        "theme": "情緒動詞",
-        "sentence": "The loud music from the neighbor is very bothering.",
-        "sentenceZh": "鄰居傳來的大聲音樂非常令人厭煩。",
-        "otherForms": "more bothering (比較級), most bothering (最高級)"
-    },
-    {
-        "word": "boring",
-        "meaning": "令人無聊的",
-        "theme": "情緒動詞",
-        "sentence": "Eglish class is boring to me.",
-        "sentenceZh": "英語課對我來說是令人無聊的。",
-        "otherForms": "more boring (比較級), most boring (最高級)"
-    },
-    {
-        "word": "confusing",
-        "meaning": "令人困惑的",
-        "theme": "情緒動詞",
-        "sentence": "The map of the city is too confusing for me to read.",
-        "sentenceZh": "這張城市地圖對我來說太令人困惑了，看不懂。",
-        "otherForms": "more confusing (比較級), most confusing (最高級), confusingly (副詞)"
-    },
-    {
-        "word": "embarrassing",
-        "meaning": "令人尷尬的",
-        "theme": "情緒動詞",
-        "sentence": "It was an embarrassing moment when he called me the wrong name.",
-        "sentenceZh": "當他叫錯我的名字時，是個令人尷尬的時刻。",
-        "otherForms": "more embarrassing (比較級), most embarrassing (最高級)"
-    },
-    {
-        "word": "frightening",
-        "meaning": "令人害怕的",
-        "theme": "情緒動詞",
-        "sentence": "The giant monster in the computer game is frightening.",
-        "sentenceZh": "電腦遊戲裡的巨大怪物很嚇人。",
-        "otherForms": "more frightening (比較級), most frightening (最高級)"
-    },
-    {
-        "word": "surprising",
-        "meaning": "令人驚訝的",
-        "theme": "情緒動詞",
-        "sentence": "The sudden rain during the sunny day was very surprising.",
-        "sentenceZh": "晴天時突如其來的雨非常令人驚訝。",
-        "otherForms": "more surprising (比較級), most surprising (最高級), surprisingly (副詞)"
-    },
-    {
-        "word": "worrying",
-        "meaning": "令人擔心的",
-        "theme": "情緒動詞",
-        "sentence": "His bad health is a very worrying problem.",
-        "sentenceZh": "他糟糕的健康狀況是個令人擔心的問題。",
-        "otherForms": "more worrying (比較級), most worrying (最高級)"
-    },
-    {
-        "word": "caring",
-        "meaning": "有愛的",
-        "theme": "情緒動詞",
-        "sentence": "She is a very caring nurse who helps many sick people.",
-        "sentenceZh": "她是一位非常有愛心、幫助許多病人的護理師。",
-        "otherForms": "more caring (比較級), most caring (最高級)"
-    },
-    {
-        "word": "concerning",
-        "meaning": "令人擔心的",
-        "theme": "情緒動詞",
-        "sentence": "The news about the strong typhoon is quite concerning.",
-        "sentenceZh": "關於強烈颱風的新聞相當令人擔心。",
-        "otherForms": "more concerning (比較級), most concerning (最高級)"
-    },
-    {
-        "word": "exciting",
-        "meaning": "令人興奮的",
-        "theme": "情緒動詞",
-        "sentence": "The Weather Combat game is a very exciting game to play.",
-        "sentenceZh": "「天氣大戰」是一款玩起來非常刺激的遊戲。",
-        "otherForms": "more exciting (比較級), most exciting (最高級)"
-    },
-    {
-        "word": "satisfying",
-        "meaning": "令人滿意的",
-        "theme": "情緒動詞",
-        "sentence": "Drinking cold water after exercise is deeply satisfying.",
-        "sentenceZh": "運動後喝冷水令人感到非常滿足。",
-        "otherForms": "more satisfying (比較級), most satisfying (最高級)"
-    },
-    {
-        "word": "pleasing",
-        "meaning": "令人開心的",
-        "theme": "情緒動詞",
-        "sentence": "The 80s synth-pop music is very pleasing to listen to.",
-        "sentenceZh": "80年代的合成器流行音樂聽起來非常令人愉悅。",
-        "otherForms": "more pleasing (比較級), most pleasing (最高級)"
-    },
-    {
-        "word": "scary",
-        "meaning": "令人害怕的",
-        "theme": "情緒動詞",
-        "sentence": "The old house at the corner of the street looks very scary.",
-        "sentenceZh": "街角的那棟老房子看起來很可怕。",
-        "otherForms": "scarier (比較級(去y加ier)), scariest (最高級(去y加iest)), scarily (副詞(去y加ily))"
-    },
-    {
-        "word": "tiring",
-        "meaning": "令人疲累的",
-        "theme": "情緒動詞",
-        "sentence": "Walking up the high mountain is a very tiring activity.",
-        "sentenceZh": "爬上高山是一項非常令人疲累的活動。",
-        "otherForms": "more tiring (比較級), most tiring (最高級)"
-    },
-    {
-        "word": "alive",
-        "meaning": "活著的",
-        "theme": "形容詞(反意)",
-        "sentence": "The small plant is still alive because I watered it.",
-        "sentenceZh": "因為我有澆水，那株小植物還活著。",
-        "otherForms": ""
-    },
-    {
-        "word": "dead",
-        "meaning": "死的",
-        "theme": "形容詞(反意)",
-        "sentence": "The leaves on the ground are brown and dead.",
-        "sentenceZh": "地上的葉子是枯黃且死去的。",
-        "otherForms": ""
-    },
-    {
-        "word": "modern",
-        "meaning": "現代的",
-        "theme": "形容詞(反意)",
-        "sentence": "Taipei is a very modern city with many tall buildings.",
-        "sentenceZh": "台北是一個擁有許多高樓大廈的現代城市。",
-        "otherForms": "more modern (比較級), most modern (最高級)"
-    },
-    {
-        "word": "traditional",
-        "meaning": "傳統的",
-        "theme": "形容詞(反意)",
-        "sentence": "We ate some traditional snacks in the old street of Huwei.",
-        "sentenceZh": "我們在虎尾老街吃了一些傳統小吃。",
-        "otherForms": "more traditional (比較級), most traditional (最高級), traditionally (副詞)"
-    },
-    {
-        "word": "ancient",
-        "meaning": "古代的",
-        "theme": "形容詞(反意)",
-        "sentence": "The museum has many ancient dinosaur bones on display.",
-        "sentenceZh": "博物館裡展示著許多古代的恐龍骨頭。",
-        "otherForms": "more ancient (比較級), most ancient (最高級)"
-    },
-    {
-        "word": "classical",
-        "meaning": "古典的",
-        "theme": "形容詞(反意)",
-        "sentence": "He likes to play classical music on the piano.",
-        "sentenceZh": "他喜歡用鋼琴彈奏古典音樂。",
-        "otherForms": "more classical (比較級), most classical (最高級), classically (副詞)"
-    },
-    {
-        "word": "available",
-        "meaning": "可用的；有空的",
-        "theme": "形容詞(反意)",
-        "sentence": "Is the principal available for a meeting this afternoon?",
-        "sentenceZh": "校長今天下午有空開會嗎？",
-        "otherForms": "more available (比較級), most available (最高級)"
-    },
-    {
-        "word": "busy",
-        "meaning": "忙碌的",
-        "theme": "形容詞(反意)",
-        "sentence": "The English teacher is busy marking the test papers.",
-        "sentenceZh": "英文老師正忙著批改考卷。",
-        "otherForms": "busier (比較級(去y加ier)), busiest (最高級(去y加iest))"
-    },
-    {
-        "word": "bright",
-        "meaning": "明亮的；聰明的",
-        "theme": "形容詞(反意)",
-        "sentence": "The sun is very bright and warm today.",
-        "sentenceZh": "今天的太陽非常明亮且溫暖。",
-        "otherForms": "brighter (比較級), brightest (最高級), brightly (副詞)"
-    },
-    {
-        "word": "dark",
-        "meaning": "黑暗的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is too dark to read the book in this room.",
-        "sentenceZh": "這房間裡太暗了，沒辦法看書。",
-        "otherForms": "darker (比較級), darkest (最高級), darkly (副詞)"
-    },
-    {
-        "word": "colorful",
-        "meaning": "多彩的",
-        "theme": "形容詞(反意)",
-        "sentence": "The students drew colorful pictures of the vocabulary characters.",
-        "sentenceZh": "學生們畫了色彩繽紛的單字角色圖片。",
-        "otherForms": "more colorful (比較級), most colorful (最高級), colorfully (副詞)"
-    },
-    {
-        "word": "right",
-        "meaning": "正確的；右邊的",
-        "theme": "形容詞(反意)",
-        "sentence": "That is the right answer to the math problem!",
-        "sentenceZh": "那是這道數學題的正確答案！",
-        "otherForms": "rightly (副詞)"
-    },
-    {
-        "word": "correct",
-        "meaning": "正確的",
-        "theme": "形容詞(反意)",
-        "sentence": "In the game, both American and British spellings are correct.",
-        "sentenceZh": "在遊戲中，美式和英式的拼寫都是正確的。",
-        "otherForms": "more correct (比較級), most correct (最高級), correctly (副詞)"
-    },
-    {
-        "word": "wrong",
-        "meaning": "錯誤的",
-        "theme": "形容詞(反意)",
-        "sentence": "Don't worry if you give the wrong answer; just try again.",
-        "sentenceZh": "如果給了錯誤的答案別擔心，再試一次就好。",
-        "otherForms": "wrongly/wrong (副詞(wrong可作形副同型))"
-    },
-    {
-        "word": "dirty",
-        "meaning": "骯髒的",
-        "theme": "形容詞(反意)",
-        "sentence": "Take off your dirty shoes before you enter the house.",
-        "sentenceZh": "進屋前脫掉你骯髒的鞋子。",
-        "otherForms": "dirtier (比較級(去y加ier)), dirtiest (最高級(去y加iest))"
-    },
-    {
-        "word": "clean",
-        "meaning": "乾淨的",
-        "theme": "形容詞(反意)",
-        "sentence": "We must keep our classroom clean every day.",
-        "sentenceZh": "我們必須每天保持教室乾淨。",
-        "otherForms": "cleaner (比較級), cleanest (最高級), cleanly (副詞)"
-    },
-    {
-        "word": "empty",
-        "meaning": "空的",
-        "theme": "形容詞(反意)",
-        "sentence": "The water bottle is empty; I need to refill it.",
-        "sentenceZh": "水壺空了，我需要重新裝水。",
-        "otherForms": "emptier (比較級(去y加ier)), emptiest (最高級(去y加iest))"
-    },
-    {
-        "word": "crowded",
-        "meaning": "擁擠的",
-        "theme": "形容詞(反意)",
-        "sentence": "The night market was very crowded with people last night.",
-        "sentenceZh": "昨晚夜市裡擠滿了人。",
-        "otherForms": "more crowded (比較級), most crowded (最高級)"
-    },
-    {
-        "word": "dangerous",
-        "meaning": "危險的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is dangerous to cross the street without looking.",
-        "sentenceZh": "過馬路不看路是很危險的。",
-        "otherForms": "more dangerous (比較級), most dangerous (最高級), dangerously (副詞)"
-    },
-    {
-        "word": "safe",
-        "meaning": "安全的",
-        "theme": "形容詞(反意)",
-        "sentence": "Always wear a helmet to keep your head safe.",
-        "sentenceZh": "總是戴上安全帽以保護頭部安全。",
-        "otherForms": "safer (比較級), safest (最高級), safely (副詞)"
-    },
-    {
-        "word": "excellent",
-        "meaning": "優秀的",
-        "theme": "形容詞(反意)",
-        "sentence": "She did an excellent job on her English reading report.",
-        "sentenceZh": "她的英文讀書報告做得非常優秀。",
-        "otherForms": "more excellent (比較級), most excellent (最高級), excellently (副詞)"
-    },
-    {
-        "word": "fine",
-        "meaning": "好的",
-        "theme": "形容詞(反意)",
-        "sentence": "I feel completely fine after taking the medicine.",
-        "sentenceZh": "吃完藥後我覺得完全好了。",
-        "otherForms": "finer (比較級), finest (最高級), finely (副詞)"
-    },
-    {
-        "word": "nice",
-        "meaning": "好的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is very nice of you to help me with my homework.",
-        "sentenceZh": "你幫我寫作業真是太好了。",
-        "otherForms": "nicer (比較級), nicest (最高級), nicely (副詞)"
-    },
-    {
-        "word": "good",
-        "meaning": "好的",
-        "theme": "形容詞(反意)",
-        "sentence": "Reading English storybooks is a good habit.",
-        "sentenceZh": "讀英文故事書是個好習慣。",
-        "otherForms": "better (比較級(不規則)), best (最高級(不規則)), well (副詞(不規則))"
-    },
-    {
-        "word": "great",
-        "meaning": "好的",
-        "theme": "形容詞(反意)",
-        "sentence": "We had a great time playing the syntax repair game.",
-        "sentenceZh": "我們玩語法修復遊戲玩得很開心。",
-        "otherForms": "greater (比較級), greatest (最高級), greatly (副詞)"
-    },
-    {
-        "word": "bad",
-        "meaning": "壞的",
-        "theme": "形容詞(反意)",
-        "sentence": "Eating too much candy is bad for your teeth.",
-        "sentenceZh": "吃太多糖果對你的牙齒很壞。",
-        "otherForms": "worse (比較級(不規則)), worst (最高級(不規則)), badly (副詞)"
-    },
-    {
-        "word": "terrific",
-        "meaning": "極好的",
-        "theme": "形容詞(反意)",
-        "sentence": "He is a terrific badminton player who wins many games.",
-        "sentenceZh": "他是個極好的羽球選手，贏得許多比賽。",
-        "otherForms": "terrifically (副詞)"
-    },
-    {
-        "word": "fantastic",
-        "meaning": "極好的",
-        "theme": "形容詞(反意)",
-        "sentence": "The weather today is fantastic for a picnic in the park.",
-        "sentenceZh": "今天的天氣對於在公園野餐來說真是棒極了。",
-        "otherForms": "more fantastic (比較級), most fantastic (最高級), fantastically (副詞)"
-    },
-    {
-        "word": "marvelous",
-        "meaning": "不可思議的；極好的",
-        "theme": "形容詞(反意)",
-        "sentence": "The view from the top of the mountain is marvelous.",
-        "sentenceZh": "從山頂看下去的風景真是不可思議的美。",
-        "otherForms": "more marvelous (比較級), most marvelous (最高級), marvelously (副詞)"
-    },
-    {
-        "word": "terrible",
-        "meaning": "糟糕的；可怕的",
-        "theme": "形容詞(反意)",
-        "sentence": "I had a terrible headache and couldn't go to school.",
-        "sentenceZh": "我有可怕的頭痛，所以沒辦法上學。",
-        "otherForms": "more terrible (比較級), most terrible (最高級), terribly (副詞(去le加ly))"
-    },
-    {
-        "word": "local",
-        "meaning": "當地的",
-        "theme": "形容詞(反意)",
-        "sentence": "We like to eat at the local restaurants in Dounan.",
-        "sentenceZh": "我們喜歡在斗南當地的餐廳吃飯。",
-        "otherForms": "locally (副詞)"
-    },
-    {
-        "word": "national",
-        "meaning": "國家的",
-        "theme": "形容詞(反意)",
-        "sentence": "The museum is a national treasure of our country.",
-        "sentenceZh": "這座博物館是我們國家的國寶。",
-        "otherForms": "nationally (副詞)"
-    },
-    {
-        "word": "international",
-        "meaning": "國際的",
-        "theme": "形容詞(反意)",
-        "sentence": "English is a very important international language.",
-        "sentenceZh": "英文是非常重要的國際語言。",
-        "otherForms": "internationally (副詞)"
-    },
-    {
-        "word": "foreign",
-        "meaning": "外國的",
-        "theme": "形容詞(反意)",
-        "sentence": "She likes to collect coins from different foreign countries.",
-        "sentenceZh": "她喜歡收集來自不同外國國家的硬幣。",
-        "otherForms": ""
-    },
-    {
-        "word": "overseas",
-        "meaning": "海外的",
-        "theme": "形容詞(反意)",
-        "sentence": "My uncle works overseas and comes back once a year.",
-        "sentenceZh": "我叔叔在海外工作，一年回來一次。",
-        "otherForms": "overseas (形副同型)"
-    },
-    {
-        "word": "latter",
-        "meaning": "後者的",
-        "theme": "形容詞(反意)",
-        "sentence": "Between the blue shirt and red shirt, I prefer the latter.",
-        "sentenceZh": "藍襯衫和紅襯衫之間，我比較喜歡後者。",
-        "otherForms": ""
-    },
-    {
-        "word": "former",
-        "meaning": "前任的；以前的",
-        "theme": "形容詞(反意)",
-        "sentence": "Director Lee is a former teacher at our school.",
-        "sentenceZh": "李主任是我們學校以前的老師。",
-        "otherForms": "formerly (副詞)"
-    },
-    {
-        "word": "possible",
-        "meaning": "可能的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is possible to learn 2000 words if you practice every day.",
-        "sentenceZh": "如果你每天練習，學會兩千個單字是可能的。",
-        "otherForms": "possibly (副詞(去le加ly))"
-    },
-    {
-        "word": "impossible",
-        "meaning": "不可能的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is impossible for a fish to live without water.",
-        "sentenceZh": "魚沒有水是絕對不可能活下去的。",
-        "otherForms": "impossibly (副詞(去le加ly))"
-    },
-    {
-        "word": "quiet",
-        "meaning": "安靜的",
-        "theme": "形容詞(反意)",
-        "sentence": "Please be quiet while the teacher is explaining the rules.",
-        "sentenceZh": "老師在解釋規則時請保持安靜。",
-        "otherForms": "quieter (比較級), quietest (最高級), quietly (副詞)"
-    },
-    {
-        "word": "silent",
-        "meaning": "沉默的",
-        "theme": "形容詞(反意)",
-        "sentence": "The classroom was completely silent during the big test.",
-        "sentenceZh": "大考時教室裡完全寂靜無聲。",
-        "otherForms": "more silent (比較級), most silent (最高級), silently (副詞)"
-    },
-    {
-        "word": "loud",
-        "meaning": "大聲的",
-        "theme": "形容詞(反意)",
-        "sentence": "The 80s pop music is too loud; please turn it down.",
-        "sentenceZh": "80年代流行音樂太大聲了，請關小聲一點。",
-        "otherForms": "louder (比較級), loudest (最高級), loudly (副詞)"
-    },
-    {
-        "word": "noisy",
-        "meaning": "吵鬧的",
-        "theme": "形容詞(反意)",
-        "sentence": "The streets are very noisy during the morning rush hour.",
-        "sentenceZh": "街道在早上尖峰時間非常吵鬧。",
-        "otherForms": "noisier (比較級(去y加ier)), noisiest (最高級(去y加iest)), noisily (副詞(去y加ily))"
-    },
-    {
-        "word": "positive",
-        "meaning": "正面的；陽性的",
-        "theme": "形容詞(反意)",
-        "sentence": "Always try to keep a positive attitude when learning.",
-        "sentenceZh": "學習時總是試著保持正面的態度。",
-        "otherForms": "more positive (比較級), most positive (最高級), positively (副詞)"
-    },
-    {
-        "word": "negative",
-        "meaning": "負面的",
-        "theme": "形容詞(反意)",
-        "sentence": "Don't let his negative words affect your mood.",
-        "sentenceZh": "別讓他的負面話語影響你的心情。",
-        "otherForms": "more negative (比較級), most negative (最高級), negatively (副詞)"
-    },
-    {
-        "word": "present",
-        "meaning": "現在的；出席的",
-        "theme": "形容詞(反意)",
-        "sentence": "Every student in the class is present today.",
-        "sentenceZh": "班上每個學生今天都出席了。",
-        "otherForms": "presents (複數型), presently (副詞), presents (三單), presenting (ing型)"
-    },
-    {
-        "word": "absent",
-        "meaning": "缺席的",
-        "theme": "形容詞(反意)",
-        "sentence": "He was absent from school yesterday because he had a fever.",
-        "sentenceZh": "他昨天因為發燒而缺席沒來上學。",
-        "otherForms": ""
-    },
-    {
-        "word": "private",
-        "meaning": "私人的",
-        "theme": "形容詞(反意)",
-        "sentence": "This is a private garden, so you cannot enter without asking.",
-        "sentenceZh": "這是一座私人花園，所以你沒有詢問不能進入。",
-        "otherForms": "more private (比較級), most private (最高級), privately (副詞)"
-    },
-    {
-        "word": "public",
-        "meaning": "公眾的；公共的",
-        "theme": "形容詞(反意)",
-        "sentence": "The public library is a great place to study quietly.",
-        "sentenceZh": "公共圖書館是個安靜讀書的好地方。",
-        "otherForms": "publicly (副詞)"
-    },
-    {
-        "word": "rare",
-        "meaning": "稀有的",
-        "theme": "形容詞(反意)",
-        "sentence": "This kind of blue butterfly is very rare in Taiwan.",
-        "sentenceZh": "這種藍色蝴蝶在台灣非常稀有。",
-        "otherForms": "rarer (比較級), rarest (最高級), rarely (副詞)"
-    },
-    {
-        "word": "precious",
-        "meaning": "珍貴的",
-        "theme": "形容詞(反意)",
-        "sentence": "The memories of our childhood are very precious.",
-        "sentenceZh": "我們童年的回憶非常珍貴。",
-        "otherForms": "more precious (比較級), most precious (最高級), preciously (副詞)"
-    },
-    {
-        "word": "ordinary",
-        "meaning": "普通的",
-        "theme": "形容詞(反意)",
-        "sentence": "It was just an ordinary day at school, nothing special happened.",
-        "sentenceZh": "這只是在學校普通的一天，沒什麼特別的事發生。",
-        "otherForms": "more ordinary (比較級), most ordinary (最高級), ordinarily (副詞(去y加ily))"
-    },
-    {
-        "word": "general",
-        "meaning": "普遍的；一般的",
-        "theme": "形容詞(反意)",
-        "sentence": "The general rule is to raise your hand before speaking.",
-        "sentenceZh": "一般的規則是發言前要舉手。",
-        "otherForms": "generally (副詞)"
-    },
-    {
-        "word": "common",
-        "meaning": "普通的；常見的",
-        "theme": "形容詞(反意)",
-        "sentence": "Catching a cold is very common during the winter season.",
-        "sentenceZh": "在冬季感冒是非常常見的。",
-        "otherForms": "more common (比較級), most common (最高級), commonly (副詞)"
-    },
-    {
-        "word": "special",
-        "meaning": "特別的",
-        "theme": "形容詞(反意)",
-        "sentence": "I made a special card for my mother's birthday.",
-        "sentenceZh": "我為媽媽的生日做了一張特別的卡片。",
-        "otherForms": "more special (比較級), most special (最高級), specially (副詞)"
-    },
-    {
-        "word": "strange",
-        "meaning": "奇怪的",
-        "theme": "形容詞(反意)",
-        "sentence": "I heard a strange noise coming from the old machine.",
-        "sentenceZh": "我聽到那台舊機器發出奇怪的噪音。",
-        "otherForms": "stranger (比較級), strangest (最高級), strangely (副詞)"
-    },
-    {
-        "word": "unique",
-        "meaning": "獨特的",
-        "theme": "形容詞(反意)",
-        "sentence": "Every student has their own unique talent.",
-        "sentenceZh": "每個學生都有自己獨特的天賦。",
-        "otherForms": "more unique (比較級), most unique (最高級), uniquely (副詞)"
-    },
-    {
-        "word": "same",
-        "meaning": "相同的",
-        "theme": "形容詞(反意)",
-        "sentence": "My cousin and I are exactly the same age.",
-        "sentenceZh": "我表哥和我完全同齡。",
-        "otherForms": ""
-    },
-    {
-        "word": "different",
-        "meaning": "不同的",
-        "theme": "形容詞(反意)",
-        "sentence": "These two English words have very different meanings.",
-        "sentenceZh": "這兩個英文單字有非常不同的意思。",
-        "otherForms": "differently (副詞)"
-    },
-    {
-        "word": "alike",
-        "meaning": "相似的",
-        "theme": "形容詞(反意)",
-        "sentence": "The two brothers look very much alike.",
-        "sentenceZh": "這兩兄弟看起來非常相似。",
-        "otherForms": ""
-    },
-    {
-        "word": "similar",
-        "meaning": "相似的",
-        "theme": "形容詞(反意)",
-        "sentence": "Your new bicycle is very similar to mine.",
-        "sentenceZh": "你的新腳踏車和我的非常相似。",
-        "otherForms": "similarly (副詞)"
-    },
-    {
-        "word": "simple",
-        "meaning": "簡單的",
-        "theme": "形容詞(反意)",
-        "sentence": "Let me explain this rule in a very simple way.",
-        "sentenceZh": "讓我用非常簡單的方式來解釋這個規則。",
-        "otherForms": "simpler (比較級), simplest (最高級), simply (副詞(去le加ly))"
-    },
-    {
-        "word": "easy",
-        "meaning": "容易的",
-        "theme": "形容詞(反意)",
-        "sentence": "The first level of the vocabulary game is quite easy.",
-        "sentenceZh": "單字遊戲的第一關滿容易的。",
-        "otherForms": "easier (比較級(去y加ier)), easiest (最高級(去y加iest)), easily (副詞(去y加ily))"
-    },
-    {
-        "word": "basic",
-        "meaning": "基本的",
-        "theme": "形容詞(反意)",
-        "sentence": "We are learning the basic rules of badminton today.",
-        "sentenceZh": "我們今天在學習羽球的基本規則。",
-        "otherForms": "basically (副詞)"
-    },
-    {
-        "word": "hard",
-        "meaning": "硬的；困難的",
-        "theme": "形容詞(反意)",
-        "sentence": "It is hard to hit the ball if you don't practice your swing.",
-        "sentenceZh": "如果你不練習揮拍，就很難打到球。",
-        "otherForms": "harder (比較級), hardest (最高級), hard (形副同型(hardly為幾乎不))"
-    },
-    {
-        "word": "difficult",
-        "meaning": "困難的",
-        "theme": "形容詞(反意)",
-        "sentence": "The math problem was too difficult for me to solve.",
-        "sentenceZh": "這道數學題對我來說太困難了，解不出來。",
-        "otherForms": "more difficult (比較級), most difficult (最高級)"
-    },
-    {
-        "word": "major",
-        "meaning": "主要的",
-        "theme": "形容詞(反意)",
-        "sentence": "The major problem with the car is its broken engine.",
-        "sentenceZh": "這輛車的主要問題是它壞掉的引擎。",
-        "otherForms": ""
-    },
-    {
-        "word": "main",
-        "meaning": "主要的",
-        "theme": "形容詞(反意)",
-        "sentence": "The main character in the story is a brave young boy.",
-        "sentenceZh": "故事裡的主要角色是一位勇敢的小男孩。",
-        "otherForms": "mainly (副詞)"
-    },
-    {
-        "word": "primary",
-        "meaning": "主要的",
-        "theme": "形容詞(反意)",
-        "sentence": "Her primary goal this year is to improve her English.",
-        "sentenceZh": "她今年的主要目標是增進她的英文。",
-        "otherForms": "primarily (副詞)"
-    },
-    {
-        "word": "minor",
-        "meaning": "次要的；較小的",
-        "theme": "形容詞(反意)",
-        "sentence": "Don't worry, it is just a minor mistake in the code.",
-        "sentenceZh": "別擔心，那只是程式碼裡一個小小的錯誤。",
-        "otherForms": ""
-    },
-    {
-        "word": "secondary",
-        "meaning": "次要的",
-        "theme": "形容詞(反意)",
-        "sentence": "Winning the game is only of secondary importance; having fun is first.",
-        "sentenceZh": "贏得比賽只是次要的，玩得開心才是第一。",
-        "otherForms": ""
-    },
-    {
-        "word": "maximum",
-        "meaning": "最大的",
-        "theme": "形容詞(反意)",
-        "sentence": "The maximum score you can get on this test is 100.",
-        "sentenceZh": "你在這個考試能得到的最大分數是 100 分。",
-        "otherForms": ""
-    },
-    {
-        "word": "large",
-        "meaning": "大的",
-        "theme": "形容詞(反意)",
-        "sentence": "Elephants are very large and strong animals.",
-        "sentenceZh": "大象是非常巨大且強壯的動物。",
-        "otherForms": "larger (比較級), largest (最高級), largely (副詞)"
-    },
-    {
-        "word": "big",
-        "meaning": "大的",
-        "theme": "形容詞(反意)",
-        "sentence": "My grandfather lives in a big house near the park.",
-        "sentenceZh": "我爺爺住在公園附近的一間大房子裡。",
-        "otherForms": "bigger (比較級(重複字尾)), biggest (最高級(重複字尾))"
-    },
-    {
-        "word": "medium",
-        "meaning": "中等的",
-        "theme": "形容詞(反意)",
-        "sentence": "I would like to order a medium pizza with extra cheese.",
-        "sentenceZh": "我想點一個加起司的中份披薩。",
-        "otherForms": "mediums/media (複數型(不規則))"
-    },
-    {
-        "word": "little",
-        "meaning": "小的",
-        "theme": "形容詞(反意)",
-        "sentence": "The little girl was holding her mother's hand tightly.",
-        "sentenceZh": "小女孩緊緊牽著她媽媽的手。",
-        "otherForms": "less (比較級(不規則)), least (最高級(不規則))"
-    },
-    {
-        "word": "small",
-        "meaning": "小的",
-        "theme": "形容詞(反意)",
-        "sentence": "The mouse is a very small animal that hides easily.",
-        "sentenceZh": "老鼠是一種非常小、容易躲藏的動物。",
-        "otherForms": "smaller (比較級), smallest (最高級)"
-    },
-    {
-        "word": "tiny",
-        "meaning": "微小的",
-        "theme": "形容詞(反意)",
-        "sentence": "Ants are tiny insects, but they are very strong.",
-        "sentenceZh": "螞蟻是微小的昆蟲，但牠們非常強壯。",
-        "otherForms": "tinier (比較級(去y加ier)), tiniest (最高級(去y加iest))"
-    },
-    {
-        "word": "high",
-        "meaning": "高的",
-        "theme": "形容詞(反意)",
-        "sentence": "The airplane flies very high in the clear blue sky.",
-        "sentenceZh": "飛機在清澈的藍天中飛得非常高。",
-        "otherForms": "higher (比較級), highest (最高級), high/highly (形副同型(highly表高度地))"
-    },
-    {
-        "word": "low",
-        "meaning": "低的",
-        "theme": "形容詞(反意)",
-        "sentence": "The temperature is very low today, so wear a heavy coat.",
-        "sentenceZh": "今天溫度很低，所以要穿厚外套。",
-        "otherForms": "lower (比較級), lowest (最高級)"
-    },
-    {
-        "word": "heavy",
-        "meaning": "重的",
-        "theme": "形容詞(反意)",
-        "sentence": "The box full of books is too heavy for me to carry.",
-        "sentenceZh": "這箱裝滿書的箱子對我來說太重了搬不動。",
-        "otherForms": "heavier (比較級(去y加ier)), heaviest (最高級(去y加iest)), heavily (副詞(去y加ily))"
-    },
-    {
-        "word": "light",
-        "meaning": "輕的",
-        "theme": "形容詞(反意)",
-        "sentence": "A feather is very light and can float in the air.",
-        "sentenceZh": "羽毛非常輕，能在空中漂浮。",
-        "otherForms": "lighter (比較級), lightest (最高級), lightly (副詞)"
-    },
-    {
-        "word": "short",
-        "meaning": "矮的、短的",
-        "theme": "形容詞(反意)",
-        "sentence": "My hair is getting too long; I want to cut it short.",
-        "sentenceZh": "我的頭髮越來越長了，我想把它剪短。",
-        "otherForms": "shorter (比較級), shortest (最高級), shortly (副詞(不久))"
-    },
-    {
-        "word": "long",
-        "meaning": "長的",
-        "theme": "形容詞(反意)",
-        "sentence": "The river is very long and goes through many cities.",
-        "sentenceZh": "這條河流非常長，穿過許多城市。",
-        "otherForms": "longer (比較級), longest (最高級)"
-    },
-    {
-        "word": "narrow",
-        "meaning": "窄的",
-        "theme": "形容詞(反意)",
-        "sentence": "The car could not pass through the narrow street.",
-        "sentenceZh": "汽車無法通過這條狹窄的街道。",
-        "otherForms": "narrower (比較級), narrowest (最高級), narrowly (副詞)"
-    },
-    {
-        "word": "wide",
-        "meaning": "寬的",
-        "theme": "形容詞(反意)",
-        "sentence": "The river is too wide for us to swim across.",
-        "sentenceZh": "這條河太寬了，我們無法游過去。",
-        "otherForms": "wider (比較級), widest (最高級), widely (副詞)"
-    },
-    {
-        "word": "broad",
-        "meaning": "寬廣的",
-        "theme": "形容詞(反意)",
-        "sentence": "He stood on the hill and looked at the broad green plain.",
-        "sentenceZh": "他站在山丘上看著寬廣的綠色平原。",
-        "otherForms": "broader (比較級), broadest (最高級), broadly (副詞)"
-    },
-    {
-        "word": "old",
-        "meaning": "年老的；舊的",
-        "theme": "形容詞(反意)",
-        "sentence": "My grandfather is very old but still very healthy.",
-        "sentenceZh": "我爺爺很老了但還是非常健康。",
-        "otherForms": "older (比較級), oldest (最高級)"
-    },
-    {
-        "word": "new",
-        "meaning": "新的",
-        "theme": "形容詞(反意)",
-        "sentence": "Our school will build a new library next year.",
-        "sentenceZh": "我們學校明年將蓋一座新圖書館。",
-        "otherForms": "newer (比較級), newest (最高級), newly (副詞)"
-    },
-    {
-        "word": "quick",
-        "meaning": "迅速的",
-        "theme": "形容詞(反意)",
-        "sentence": "We had a quick lunch before the afternoon class started.",
-        "sentenceZh": "我們在下午的課開始前迅速吃完了午餐。",
-        "otherForms": "quicker (比較級), quickest (最高級), quickly (副詞)"
-    },
-    {
-        "word": "fast",
-        "meaning": "快的",
-        "theme": "形容詞(反意)",
-        "sentence": "The cheetah is the fastest animal on land.",
-        "sentenceZh": "獵豹是陸地上最快的動物。",
-        "otherForms": "faster (比較級), fastest (最高級), fast (形副同型)"
-    },
-    {
-        "word": "slow",
-        "meaning": "慢的",
-        "theme": "形容詞(反意)",
-        "sentence": "The turtle walked at a very slow speed across the road.",
-        "sentenceZh": "烏龜以非常慢的速度走過馬路。",
-        "otherForms": "slower (比較級), slowest (最高級), slowly (副詞)"
-    },
-    {
-        "word": "cheap",
-        "meaning": "便宜的",
-        "theme": "形容詞(反意)",
-        "sentence": "You can buy a lot of cheap and delicious food at the night market.",
-        "sentenceZh": "你可以在夜市買到許多便宜又美味的食物。",
-        "otherForms": "cheaper (比較級), cheapest (最高級), cheaply (副詞)"
-    },
-    {
-        "word": "expensive",
-        "meaning": "昂貴的",
-        "theme": "形容詞(反意)",
-        "sentence": "That gold watch is too expensive; I cannot buy it.",
-        "sentenceZh": "那隻金錶太昂貴了，我買不起。",
-        "otherForms": "more expensive (比較級), most expensive (最高級), expensively (副詞)"
-    },
-    {
-        "word": "deaf",
-        "meaning": "失聰的",
-        "theme": "形容人",
-        "sentence": "He uses sign language to talk because he is deaf.",
-        "sentenceZh": "他因為失聰，所以使用手語交談。",
-        "otherForms": "deafer (比較級), deafest (最高級)"
-    },
-    {
-        "word": "blind",
-        "meaning": "失明的",
-        "theme": "形容人",
-        "sentence": "The blind man uses a white cane to help him walk safely.",
-        "sentenceZh": "這位失明男士使用白手杖幫助他安全行走。",
-        "otherForms": "blindly (副詞)"
-    },
-    {
-        "word": "young",
-        "meaning": "年輕的",
-        "theme": "形容人",
-        "sentence": "The young badminton player runs very fast on the court.",
-        "sentenceZh": "年輕的羽球選手在球場上跑得非常快。",
-        "otherForms": "younger (比較級), youngest (最高級)"
-    },
-    {
-        "word": "tall",
-        "meaning": "高的",
-        "theme": "形容人",
-        "sentence": "Yao Ming is a very tall and famous basketball player.",
-        "sentenceZh": "姚明是一位非常高且知名的籃球員。",
-        "otherForms": "taller (比較級), tallest (最高級)"
-    },
-    {
-        "word": "careful",
-        "meaning": "小心的",
-        "theme": "形容人",
-        "sentence": "Please be careful when you cross the busy street.",
-        "sentenceZh": "過繁忙的馬路時請小心。",
-        "otherForms": "more careful (比較級), most careful (最高級), carefully (副詞)"
-    },
-    {
-        "word": "careless",
-        "meaning": "粗心的",
-        "theme": "形容人",
-        "sentence": "He lost his keys because he was being too careless.",
-        "sentenceZh": "他因為太粗心而弄丟了鑰匙。",
-        "otherForms": "more careless (比較級), most careless (最高級), carelessly (副詞)"
-    },
-    {
-        "word": "diligent",
-        "meaning": "勤奮的",
-        "theme": "形容人",
-        "sentence": "A diligent student always finishes their homework on time.",
-        "sentenceZh": "勤奮的學生總是準時完成作業。",
-        "otherForms": "more diligent (比較級), most diligent (最高級), diligently (副詞)"
-    },
-    {
-        "word": "hard-working",
-        "meaning": "努力工作的",
-        "theme": "形容人",
-        "sentence": "Her parents are very hard-working farmers.",
-        "sentenceZh": "她的父母是非常努力工作的農夫。",
-        "otherForms": "more hard-working (比較級), most hard-working (最高級)"
-    },
-    {
-        "word": "lazy",
-        "meaning": "懶惰的",
-        "theme": "形容人",
-        "sentence": "The lazy cat slept on the sofa all afternoon.",
-        "sentenceZh": "懶惰的貓在沙發上睡了整個下午。",
-        "otherForms": "lazier (比較級(去y加ier)), laziest (最高級(去y加iest)), lazily (副詞(去y加ily))"
-    },
-    {
-        "word": "dishonest",
-        "meaning": "不誠實的",
-        "theme": "形容人",
-        "sentence": "It is dishonest to copy answers from other students.",
-        "sentenceZh": "抄襲其他學生的答案是不誠實的。",
-        "otherForms": "more dishonest (比較級), most dishonest (最高級), dishonestly (副詞)"
-    },
-    {
-        "word": "honest",
-        "meaning": "誠實的",
-        "theme": "形容人",
-        "sentence": "An honest person will always tell you the truth.",
-        "sentenceZh": "誠實的人總是會告訴你真相。",
-        "otherForms": "more honest (比較級), most honest (最高級), honestly (副詞)"
-    },
-    {
-        "word": "generous",
-        "meaning": "慷慨的",
-        "theme": "形容人",
-        "sentence": "My uncle is very generous and always buys us gifts.",
-        "sentenceZh": "我叔叔非常慷慨，總是買禮物給我們。",
-        "otherForms": "more generous (比較級), most generous (最高級), generously (副詞)"
-    },
-    {
-        "word": "selfish",
-        "meaning": "自私的",
-        "theme": "形容人",
-        "sentence": "The selfish boy refused to share his toys with others.",
-        "sentenceZh": "那個自私的男孩拒絕和別人分享他的玩具。",
-        "otherForms": "more selfish (比較級), most selfish (最高級), selfishly (副詞)"
-    },
-    {
-        "word": "stingy",
-        "meaning": "小氣的",
-        "theme": "形容人",
-        "sentence": "He is so stingy that he never buys a drink for his friends.",
-        "sentenceZh": "他太小氣了，從來不請朋友喝飲料。",
-        "otherForms": "stingier (比較級(去y加ier)), stingiest (最高級(去y加iest)), stingily (副詞(去y加ily))"
-    },
-    {
-        "word": "greedy",
-        "meaning": "貪心的",
-        "theme": "形容人",
-        "sentence": "The greedy dog tried to eat all the food in the bowl.",
-        "sentenceZh": "貪心的狗試圖吃掉碗裡所有的食物。",
-        "otherForms": "greedier (比較級(去y加ier)), greediest (最高級(去y加iest)), greedily (副詞(去y加ily))"
-    },
-    {
-        "word": "polite",
-        "meaning": "有禮貌的",
-        "theme": "形容人",
-        "sentence": "It is polite to say \"thank you\" when someone helps you.",
-        "sentenceZh": "當別人幫你時，說「謝謝」是有禮貌的。",
-        "otherForms": "politer (比較級), politest (最高級), politely (副詞)"
-    },
-    {
-        "word": "impolite",
-        "meaning": "不禮貌的",
-        "theme": "形容人",
-        "sentence": "It is impolite to talk loudly when the teacher is speaking.",
-        "sentenceZh": "老師說話時大聲講話是不禮貌的。",
-        "otherForms": "more impolite (比較級), most impolite (最高級), impolitely (副詞)"
-    },
-    {
-        "word": "rich",
-        "meaning": "有錢的",
-        "theme": "形容人",
-        "sentence": "The fruit in Taiwan is very rich in vitamin C.",
-        "sentenceZh": "台灣的水果富含維他命C。",
-        "otherForms": "richer (比較級), richest (最高級), richly (副詞)"
-    },
-    {
-        "word": "poor",
-        "meaning": "貧窮的；可憐的",
-        "theme": "形容人",
-        "sentence": "The poor little bird hurt its wing and couldn't fly.",
-        "sentenceZh": "可憐的小鳥傷了翅膀沒辦法飛。",
-        "otherForms": "poorer (比較級), poorest (最高級), poorly (副詞)"
-    },
-    {
-        "word": "silly",
-        "meaning": "傻的",
-        "theme": "形容人",
-        "sentence": "Stop asking silly questions and focus on the grammar game.",
-        "sentenceZh": "別再問傻問題了，專心玩文法遊戲吧。",
-        "otherForms": "sillier (比較級(去y加ier)), silliest (最高級(去y加iest))"
-    },
-    {
-        "word": "foolish",
-        "meaning": "愚蠢的",
-        "theme": "形容人",
-        "sentence": "It was a foolish idea to go hiking in the heavy rain.",
-        "sentenceZh": "在大雨中去爬山是個愚蠢的主意。",
-        "otherForms": "more foolish (比較級), most foolish (最高級), foolishly (副詞)"
-    },
-    {
-        "word": "stupid",
-        "meaning": "笨的",
-        "theme": "形容人",
-        "sentence": "I felt stupid when I forgot my good friend's name.",
-        "sentenceZh": "當我忘記好朋友的名字時我覺得自己很笨。",
-        "otherForms": "stupider (比較級), stupidest (最高級), stupidly (副詞)"
-    },
-    {
-        "word": "dumb",
-        "meaning": "啞的",
-        "theme": "形容人",
-        "sentence": "Don't say dumb things; think before you speak.",
-        "sentenceZh": "別說蠢話，三思而後行。",
-        "otherForms": "dumber (比較級), dumbest (最高級), dumbly (副詞)"
-    },
-    {
-        "word": "intelligent",
-        "meaning": "有智慧的",
-        "theme": "形容人",
-        "sentence": "Dolphins are highly intelligent animals in the ocean.",
-        "sentenceZh": "海豚是海洋中高度有智慧的動物。",
-        "otherForms": "more intelligent (比較級), most intelligent (最高級), intelligently (副詞)"
-    },
-    {
-        "word": "smart",
-        "meaning": "聰明的",
-        "theme": "形容人",
-        "sentence": "You have to be smart to solve this difficult puzzle.",
-        "sentenceZh": "你必須很聰明才能解開這個困難的謎題。",
-        "otherForms": "smarter (比較級), smartest (最高級), smartly (副詞)"
-    },
-    {
-        "word": "wise",
-        "meaning": "有智慧的",
-        "theme": "形容人",
-        "sentence": "My grandfather gave me some wise advice about life.",
-        "sentenceZh": "我爺爺給了我一些關於人生的智慧建議。",
-        "otherForms": "wiser (比較級), wisest (最高級), wisely (副詞)"
-    },
-    {
-        "word": "clever",
-        "meaning": "聰明的",
-        "theme": "形容人",
-        "sentence": "The clever monkey found a way to open the box.",
-        "sentenceZh": "聰明的猴子找到了打開盒子的方法。",
-        "otherForms": "cleverer (比較級), cleverest (最高級), cleverly (副詞)"
-    },
-    {
-        "word": "talkative",
-        "meaning": "健談的",
-        "theme": "形容人",
-        "sentence": "She is very talkative and likes to chat with everyone.",
-        "sentenceZh": "她非常健談，喜歡和每個人聊天。",
-        "otherForms": "more talkative (比較級), most talkative (最高級)"
-    },
-    {
-        "word": "shy",
-        "meaning": "害羞的",
-        "theme": "形容人",
-        "sentence": "The shy little boy hid behind his mother's legs.",
-        "sentenceZh": "害羞的小男孩躲在他媽媽的腿後面。",
-        "otherForms": "shyer (比較級), shyest (最高級), shyly (副詞)"
-    },
-    {
-        "word": "beautiful",
-        "meaning": "美麗的",
-        "theme": "形容人",
-        "sentence": "The bride looked beautiful in her white wedding dress.",
-        "sentenceZh": "新娘穿著白紗看起來很美麗。",
-        "otherForms": "more beautiful (比較級), most beautiful (最高級), beautifully (副詞)"
-    },
-    {
-        "word": "pretty",
-        "meaning": "漂亮的",
-        "theme": "形容人",
-        "sentence": "She has a pretty smile that makes everyone happy.",
-        "sentenceZh": "她有一個讓每個人都開心的漂亮笑容。",
-        "otherForms": "prettier (比較級(去y加ier)), prettiest (最高級(去y加iest)), prettily (副詞(去y加ily))"
-    },
-    {
-        "word": "handsome",
-        "meaning": "英俊的",
-        "theme": "形容人",
-        "sentence": "The actor in that movie is very tall and handsome.",
-        "sentenceZh": "那部電影裡的男演員非常高大英俊。",
-        "otherForms": "more handsome (比較級), most handsome (最高級), handsomely (副詞)"
-    },
-    {
-        "word": "nice-looking",
-        "meaning": "好看的",
-        "theme": "形容人",
-        "sentence": "That is a very nice-looking watch you are wearing.",
-        "sentenceZh": "你戴的那隻手錶非常好看。",
-        "otherForms": "better-looking (比較級(不規則)), best-looking (最高級(不規則))"
-    },
-    {
-        "word": "ugly",
-        "meaning": "醜陋的",
-        "theme": "形容人",
-        "sentence": "The monster in the game has an ugly green face.",
-        "sentenceZh": "遊戲裡的怪物有著一張醜陋的綠臉。",
-        "otherForms": "uglier (比較級(去y加ier)), ugliest (最高級(去y加iest))"
-    },
-    {
-        "word": "chubby",
-        "meaning": "圓胖的",
-        "theme": "形容人",
-        "sentence": "The baby has cute, chubby cheeks.",
-        "sentenceZh": "小嬰兒有著可愛圓胖的臉頰。",
-        "otherForms": "chubbier (比較級(去y加ier)), chubbiest (最高級(去y加iest))"
-    },
-    {
-        "word": "fat",
-        "meaning": "胖的",
-        "theme": "形容人",
-        "sentence": "My cat is getting too fat because it eats too much.",
-        "sentenceZh": "我的貓因為吃太多變得太胖了。",
-        "otherForms": "fatter (比較級(重複字尾)), fattest (最高級(重複字尾))"
-    },
-    {
-        "word": "over-weight",
-        "meaning": "過重的",
-        "theme": "形容人",
-        "sentence": "The doctor told him he is slightly over-weight and needs to exercise.",
-        "sentenceZh": "醫生告訴他他稍微過重，需要運動。",
-        "otherForms": ""
-    },
-    {
-        "word": "skinny",
-        "meaning": "極瘦的",
-        "theme": "形容人",
-        "sentence": "The stray dog looked very skinny and hungry.",
-        "sentenceZh": "那隻流浪狗看起來極度瘦弱且飢餓。",
-        "otherForms": "skinnier (比較級(去y加ier)), skinniest (最高級(去y加iest))"
-    },
-    {
-        "word": "slender",
-        "meaning": "苗條的",
-        "theme": "形容人",
-        "sentence": "The dancer has a very long and slender body.",
-        "sentenceZh": "那位舞者有著非常修長苗條的身材。",
-        "otherForms": "slenderer (比較級), slenderest (最高級)"
-    },
-    {
-        "word": "slim",
-        "meaning": "纖細的",
-        "theme": "形容人",
-        "sentence": "She stays slim by doing yoga and eating healthy food.",
-        "sentenceZh": "她靠著做瑜珈和吃健康食物保持纖細。",
-        "otherForms": "slimmer (比較級(重複字尾)), slimmest (最高級(重複字尾))"
-    },
-    {
-        "word": "thin",
-        "meaning": "瘦的",
-        "theme": "形容人",
-        "sentence": "Please cut the cheese into very thin slices.",
-        "sentenceZh": "請把起司切成非常薄的片狀。",
-        "otherForms": "thinner (比較級(重複字尾)), thinnest (最高級(重複字尾))"
-    },
-    {
-        "word": "under-weight",
-        "meaning": "體重不足的",
-        "theme": "形容人",
-        "sentence": "The rescued kitten was under-weight and needed milk.",
-        "sentenceZh": "被救出的小貓體重不足，需要喝牛奶。",
-        "otherForms": ""
-    },
-    {
-        "word": "brave",
-        "meaning": "勇敢的",
-        "theme": "形容人",
-        "sentence": "The brave firefighter saved the family from the burning house.",
-        "sentenceZh": "勇敢的消防員從燃燒的房子裡救出了這家人。",
-        "otherForms": "braver (比較級), bravest (最高級), bravely (副詞)"
-    },
-    {
-        "word": "cute",
-        "meaning": "可愛的",
-        "theme": "形容人",
-        "sentence": "We designed a cute character for the English vocabulary book.",
-        "sentenceZh": "我們為英文單字書設計了一個可愛的角色。",
-        "otherForms": "cuter (比較級), cutest (最高級)"
-    },
-    {
-        "word": "active",
-        "meaning": "活躍的",
-        "theme": "形容人",
-        "sentence": "My grandfather is very active and plays sports every morning.",
-        "sentenceZh": "我爺爺非常活躍，每天早上都做運動。",
-        "otherForms": "more active (比較級), most active (最高級), actively (副詞)"
-    },
-    {
-        "word": "confident",
-        "meaning": "有自信的",
-        "theme": "形容人",
-        "sentence": "You should be confident when you speak English on stage.",
-        "sentenceZh": "當你在台上說英文時應該要有自信。",
-        "otherForms": "more confident (比較級), most confident (最高級), confidently (副詞)"
-    },
-    {
-        "word": "considerate",
-        "meaning": "體貼的",
-        "theme": "形容人",
-        "sentence": "It is very considerate of you to bring me a cup of hot tea.",
-        "sentenceZh": "你帶杯熱茶給我真是太體貼了。",
-        "otherForms": "more considerate (比較級), most considerate (最高級), considerately (副詞)"
-    },
-    {
-        "word": "cool",
-        "meaning": "酷的",
-        "theme": "形容人",
-        "sentence": "Wearing sunglasses makes you look very cool.",
-        "sentenceZh": "戴墨鏡讓你看起來很酷。",
-        "otherForms": "cooler (比較級), coolest (最高級), coolly (副詞)"
-    },
-    {
-        "word": "curious",
-        "meaning": "好奇的",
-        "theme": "形容人",
-        "sentence": "The curious little boy asked a lot of questions about the stars.",
-        "sentenceZh": "那個好奇的小男孩問了許多關於星星的問題。",
-        "otherForms": "more curious (比較級), most curious (最高級), curiously (副詞)"
-    },
-    {
-        "word": "energetic",
-        "meaning": "精力充沛的",
-        "theme": "形容人",
-        "sentence": "The students are very energetic during PE class.",
-        "sentenceZh": "學生們在體育課時精力充沛。",
-        "otherForms": "more energetic (比較級), most energetic (最高級), energetically (副詞)"
-    },
-    {
-        "word": "famous",
-        "meaning": "著名的",
-        "theme": "形容人",
-        "sentence": "Tai Tzu-ying is a very famous badminton player from Taiwan.",
-        "sentenceZh": "戴資穎是一位來自台灣且非常著名的羽球選手。",
-        "otherForms": "more famous (比較級), most famous (最高級), famously (副詞)"
-    },
-    {
-        "word": "frank",
-        "meaning": "坦率的",
-        "theme": "形容人",
-        "sentence": "To be frank with you, I don't really like this movie.",
-        "sentenceZh": "坦率地告訴你，我並不是很喜歡這部電影。",
-        "otherForms": "franker (比較級), frankest (最高級), frankly (副詞)"
-    },
-    {
-        "word": "friendly",
-        "meaning": "友善的",
-        "theme": "形容人",
-        "sentence": "The friendly clerk smiled and helped us find the books.",
-        "sentenceZh": "友善的店員微笑著幫我們找書。",
-        "otherForms": "friendlier (比較級(去y加ier)), friendliest (最高級(去y加iest))"
-    },
-    {
-        "word": "funny",
-        "meaning": "有趣的",
-        "theme": "形容人",
-        "sentence": "The teacher told a very funny story to make us laugh.",
-        "sentenceZh": "老師講了一個非常有趣的故事讓我們大笑。",
-        "otherForms": "funnier (比較級(去y加ier)), funniest (最高級(去y加iest)), funnily (副詞(去y加ily))"
-    },
-    {
-        "word": "gentle",
-        "meaning": "溫和的",
-        "theme": "形容人",
-        "sentence": "She has a very gentle voice when she speaks to babies.",
-        "sentenceZh": "她和嬰兒說話時聲音非常溫和。",
-        "otherForms": "gentler (比較級), gentlest (最高級), gently (副詞(去e加y))"
-    },
-    {
-        "word": "humble",
-        "meaning": "謙虛的",
-        "theme": "形容人",
-        "sentence": "Even though he is a genius, he is still very humble.",
-        "sentenceZh": "儘管他是個天才，他依然非常謙虛。",
-        "otherForms": "humbler (比較級), humblest (最高級), humbly (副詞(去e加y))"
-    },
-    {
-        "word": "humorous",
-        "meaning": "幽默的",
-        "theme": "形容人",
-        "sentence": "My uncle is a humorous man who always tells good jokes.",
-        "sentenceZh": "我叔叔是個幽默的人，總是講好笑的笑話。",
-        "otherForms": "more humorous (比較級), most humorous (最高級), humorously (副詞)"
-    },
-    {
-        "word": "kind",
-        "meaning": "仁慈的；親切的；種類(n.)",
-        "theme": "形容人",
-        "sentence": "It was very kind of you to help the old lady cross the street.",
-        "sentenceZh": "你幫助老太太過馬路真是太仁慈了。",
-        "otherForms": "kinder (比較級), kindest (最高級), kindly (副詞)"
-    },
-    {
-        "word": "lovely",
-        "meaning": "可愛的",
-        "theme": "形容人",
-        "sentence": "We had a lovely picnic in the park yesterday afternoon.",
-        "sentenceZh": "我們昨天下午在公園度過了一場美好的野餐。",
-        "otherForms": "lovelier (比較級(去y加ier)), loveliest (最高級(去y加iest))"
-    },
-    {
-        "word": "patient",
-        "meaning": "有耐心的",
-        "theme": "形容人",
-        "sentence": "You need to be patient when you are teaching beginners.",
-        "sentenceZh": "當你在教初學者時，你需要有耐心。",
-        "otherForms": "more patient (比較級), most patient (最高級), patiently (副詞)"
-    },
-    {
-        "word": "sincere",
-        "meaning": "真誠的",
-        "theme": "形容人",
-        "sentence": "He gave me a sincere apology for his mistake.",
-        "sentenceZh": "他為他的錯誤給了我一個真誠的道歉。",
-        "otherForms": "sincerer (比較級), sincerest (最高級), sincerely (副詞)"
-    },
-    {
-        "word": "successful",
-        "meaning": "成功的",
-        "theme": "形容人",
-        "sentence": "The English teaching seminar was a very successful event.",
-        "sentenceZh": "那場英語教學研討會是個非常成功的活動。",
-        "otherForms": "more successful (比較級), most successful (最高級), successfully (副詞)"
-    },
-    {
-        "word": "married",
-        "meaning": "已婚的",
-        "theme": "形容人",
-        "sentence": "The happy couple got married in a beautiful church.",
-        "sentenceZh": "這對快樂的伴侶在一座美麗的教堂結了婚。",
-        "otherForms": ""
-    },
-    {
-        "word": "childish",
-        "meaning": "幼稚的",
-        "theme": "形容人",
-        "sentence": "Stop acting in such a childish way; you are a junior high student now.",
-        "sentenceZh": "別再表現得這麼幼稚了，你現在是國中生了。",
-        "otherForms": "more childish (比較級), most childish (最高級), childishly (副詞)"
-    },
-    {
-        "word": "childlike",
-        "meaning": "孩子般的",
-        "theme": "形容人",
-        "sentence": "The old man has a childlike wonder for magic tricks.",
-        "sentenceZh": "那位老人對魔術有著孩子般的好奇心。",
-        "otherForms": ""
-    },
-    {
-        "word": "crazy",
-        "meaning": "瘋狂的",
-        "theme": "形容人",
-        "sentence": "The weather is crazy today; it's hot and raining at the same time.",
-        "sentenceZh": "今天天氣很瘋狂，又熱又同時在下雨。",
-        "otherForms": "crazier (比較級(去y加ier)), craziest (最高級(去y加iest)), crazily (副詞(去y加ily))"
-    },
-    {
-        "word": "cruel",
-        "meaning": "殘忍的",
-        "theme": "形容人",
-        "sentence": "It is cruel to keep a large bird in a very small cage.",
-        "sentenceZh": "把大鳥關在極小的籠子裡是很殘忍的。",
-        "otherForms": "crueler (比較級), cruelest (最高級), cruelly (副詞)"
-    },
-    {
-        "word": "evil",
-        "meaning": "邪惡的",
-        "theme": "形容人",
-        "sentence": "The brave prince fought the evil monster to save the princess.",
-        "sentenceZh": "勇敢的王子對抗邪惡怪物以拯救公主。",
-        "otherForms": "eviler (比較級), evilest (最高級), evilly (副詞)"
-    },
-    {
-        "word": "naughty",
-        "meaning": "頑皮的",
-        "theme": "形容人",
-        "sentence": "The naughty boy hid his sister's shoes under the bed.",
-        "sentenceZh": "那個頑皮的男孩把他妹妹的鞋子藏在床下。",
-        "otherForms": "naughtier (比較級(去y加ier)), naughtiest (最高級(去y加iest)), naughtily (副詞(去y加ily))"
-    },
-    {
-        "word": "proud",
-        "meaning": "驕傲的",
-        "theme": "形容人",
-        "sentence": "I am very proud of my students for passing the vocabulary test.",
-        "sentenceZh": "我非常為通過單字測驗的學生們感到驕傲。",
-        "otherForms": "prouder (比較級), proudest (最高級), proudly (副詞)"
-    },
-    {
-        "word": "rude",
-        "meaning": "粗魯的",
-        "theme": "形容人",
-        "sentence": "It is rude to point your finger at someone when talking.",
-        "sentenceZh": "講話時用手指指著別人是很粗魯的。",
-        "otherForms": "ruder (比較級), rudest (最高級), rudely (副詞)"
-    },
-    {
-        "word": "sneaky",
-        "meaning": "鬼鬼祟祟的",
-        "theme": "形容人",
-        "sentence": "The sneaky cat tried to steal the fish from the table.",
-        "sentenceZh": "鬼鬼祟祟的貓試圖從桌上偷走魚。",
-        "otherForms": "sneakier (比較級(去y加ier)), sneakiest (最高級(去y加iest)), sneakily (副詞(去y加ily))"
-    },
-    {
-        "word": "desire",
-        "meaning": "慾望",
-        "theme": "情緒",
-        "sentence": "He has a strong desire to win the badminton championship.",
-        "sentenceZh": "他有贏得羽球冠軍的強烈慾望。",
-        "otherForms": "desires (複數型/三單)"
-    },
-    {
-        "word": "emotion",
-        "meaning": "情緒",
-        "theme": "情緒",
-        "sentence": "Music is a great way to express your deep emotions.",
-        "sentenceZh": "音樂是表達你深層情緒的好方法。",
-        "otherForms": "emotions (複數型)"
-    },
-    {
-        "word": "fear",
-        "meaning": "恐懼",
-        "theme": "情緒",
-        "sentence": "The little girl has a deep fear of the dark.",
-        "sentenceZh": "小女孩對黑暗有著深層的恐懼。",
-        "otherForms": "fears (複數/三單), fearing (ing型), feared (過去式/分詞)"
-    },
-    {
-        "word": "feeling",
-        "meaning": "感覺",
-        "theme": "情緒",
-        "sentence": "I have a bad feeling about this upcoming math test.",
-        "sentenceZh": "我對這即將到來的數學考試有種不好的感覺。",
-        "otherForms": "feelings (複數型)"
-    },
-    {
-        "word": "pleasure",
-        "meaning": "樂趣",
-        "theme": "情緒",
-        "sentence": "It is my pleasure to help you design the class badge.",
-        "sentenceZh": "能幫你設計班級徽章是我的榮幸（樂趣）。",
-        "otherForms": "pleasures (複數型)"
-    },
-    {
-        "word": "anger",
-        "meaning": "憤怒",
-        "theme": "情緒",
-        "sentence": "He could not hide his anger when he saw the broken window.",
-        "sentenceZh": "當他看到破掉的窗戶時，他無法隱藏他的憤怒。",
-        "otherForms": "angers (三單)"
-    },
-    {
-        "word": "attention",
-        "meaning": "注意力",
-        "theme": "情緒",
-        "sentence": "Please pay attention to the teacher during the class.",
-        "sentenceZh": "上課時請把注意力放在老師身上（專心聽講）。",
-        "otherForms": "attentions (複數型)"
-    },
-    {
-        "word": "hunger",
-        "meaning": "飢餓",
-        "theme": "情緒",
-        "sentence": "The stray dog barked loudly out of hunger.",
-        "sentenceZh": "流浪狗因為飢餓而大聲吠叫。",
-        "otherForms": ""
-    },
-    {
-        "word": "joy",
-        "meaning": "歡樂",
-        "theme": "情緒",
-        "sentence": "The children jumped up and down with joy when they saw the presents.",
-        "sentenceZh": "孩子們看到禮物時高興地跳上跳下。",
-        "otherForms": "joys (複數型)"
-    },
-    {
-        "word": "sense",
-        "meaning": "感覺；理智",
-        "theme": "情緒",
-        "sentence": "Dogs have a very strong sense of smell.",
-        "sentenceZh": "狗有非常敏銳的嗅覺（感覺）。",
-        "otherForms": "senses (複數/三單(加es)), sensing (ing型(去e加ing)), sensed (過去式/分詞)"
-    },
-    {
-        "word": "smile",
-        "meaning": "微笑",
-        "theme": "情緒",
-        "sentence": "The friendly clerk greeted us with a bright smile.",
-        "sentenceZh": "友善的店員帶著燦爛的微笑問候我們。",
-        "otherForms": "smiles (複數/三單), smiling (ing型(去e加ing)), smiled (過去式/分詞)"
-    },
-    {
-        "word": "tear",
-        "meaning": "眼淚；撕裂",
-        "theme": "情緒",
-        "sentence": "A single tear rolled down her cheek when she heard the sad news.",
-        "sentenceZh": "當她聽到壞消息時，一滴眼淚滑落了她的臉頰。",
-        "otherForms": "tears (複數/三單), tearing (ing型), tore (過去式(不規則)), torn (過去分詞(不規則))"
-    },
-    {
-        "word": "cheer",
-        "meaning": "歡呼",
-        "theme": "情緒",
-        "sentence": "We all cheered loudly when our school badminton team won.",
-        "sentenceZh": "當我們學校羽球隊獲勝時，我們都大聲歡呼。",
-        "otherForms": "cheers (複數/三單), cheering (ing型), cheered (過去式/分詞)"
-    },
-    {
-        "word": "joke",
-        "meaning": "笑話",
-        "theme": "情緒",
-        "sentence": "The English teacher told a funny joke to wake us up.",
-        "sentenceZh": "英文老師講了一個好笑的笑話讓我們清醒。",
-        "otherForms": "jokes (複數/三單), joking (ing型(去e加ing)), joked (過去式/分詞)"
-    },
-    {
-        "word": "hate",
-        "meaning": "討厭",
-        "theme": "情緒",
-        "sentence": "I hate making the same spelling mistake twice.",
-        "sentenceZh": "我討厭犯兩次一樣的拼字錯誤。",
-        "otherForms": "hates (三單), hating (ing型(去e加ing)), hated (過去式/分詞)"
-    },
-    {
-        "word": "like",
-        "meaning": "喜歡",
-        "theme": "情緒",
-        "sentence": "I like listening to 1980s music when I am reading.",
-        "sentenceZh": "我看書時喜歡聽 80 年代的音樂。",
-        "otherForms": "likes (三單), liking (ing型(去e加ing)), liked (過去式/分詞)"
-    },
-    {
-        "word": "love",
-        "meaning": "愛",
-        "theme": "情緒",
-        "sentence": "My grandmother loves taking a walk in the park.",
-        "sentenceZh": "我奶奶熱愛在公園散步。",
-        "otherForms": "loves (三單), loving (ing型(去e加ing)), loved (過去式/分詞)"
-    },
-    {
-        "word": "regret",
-        "meaning": "後悔",
-        "theme": "情緒",
-        "sentence": "You will regret it if you don't study for the exam.",
-        "sentenceZh": "如果你不為考試讀書，你會後悔的。",
-        "otherForms": "regrets (複數/三單), regretting (ing型(重複字尾)), regretted (過去式/分詞(重複字尾))"
-    },
-    {
-        "word": "laugh",
-        "meaning": "大笑",
-        "theme": "情緒",
-        "sentence": "The funny video on YouTube made everyone laugh.",
-        "sentenceZh": "YouTube 上的搞笑影片讓每個人都大笑。",
-        "otherForms": "laughs (複數/三單), laughing (ing型), laughed (過去式/分詞)"
-    },
-    {
-        "word": "calm",
-        "meaning": "使冷靜",
-        "theme": "情緒",
-        "sentence": "Take a deep breath to calm yourself down before the test.",
-        "sentenceZh": "考試前深呼吸讓自己冷靜下來。",
-        "otherForms": "calmer (比較級), calmest (最高級), calmly (副詞)"
-    },
-    {
-        "word": "enjoy",
-        "meaning": "享受",
-        "theme": "情緒",
-        "sentence": "I really enjoy playing the interactive grammar games.",
-        "sentenceZh": "我真的很享受玩互動文法遊戲。",
-        "otherForms": "enjoys (三單), enjoying (ing型), enjoyed (過去式/分詞)"
-    },
-    {
-        "word": "envy",
-        "meaning": "嫉妒",
-        "theme": "情緒",
-        "sentence": "I envy his excellent badminton skills.",
-        "sentenceZh": "我嫉妒他極佳的羽球技巧。",
-        "otherForms": "envies (三單(去y加ies)), envying (ing型), envied (過去式/分詞(去y加ied))"
-    },
-    {
-        "word": "doubt",
-        "meaning": "懷疑",
-        "theme": "情緒",
-        "sentence": "I doubt that it will rain this afternoon; the sky is very clear.",
-        "sentenceZh": "我懷疑今天下午會下雨，天空非常晴朗。",
-        "otherForms": "doubts (複數/三單), doubting (ing型), doubted (過去式/分詞)"
-    },
-    {
-        "word": "pleasant",
-        "meaning": "令人愉悅的",
-        "theme": "情緒",
-        "sentence": "We had a pleasant afternoon at the coffee shop in Douliu.",
-        "sentenceZh": "我們在斗六的咖啡廳度過了一個令人愉悅的下午。",
-        "otherForms": "more pleasant (比較級), most pleasant (最高級), pleasantly (副詞)"
-    },
-    {
-        "word": "afraid",
-        "meaning": "害怕的",
-        "theme": "情緒",
-        "sentence": "Don't be afraid to ask questions in class.",
-        "sentenceZh": "在課堂上別害怕問問題。",
-        "otherForms": ""
-    },
-    {
-        "word": "glad",
-        "meaning": "高興的",
-        "theme": "情緒",
-        "sentence": "I am so glad to hear that you passed the English test!",
-        "sentenceZh": "聽到你通過英文考試我真高興！",
-        "otherForms": "gladder (比較級(重複字尾)), gladdest (最高級(重複字尾)), gladly (副詞)"
-    },
-    {
-        "word": "happy",
-        "meaning": "快樂的",
-        "theme": "情緒",
-        "sentence": "She gave me a happy smile when she saw the present.",
-        "sentenceZh": "她看到禮物時給了我一個快樂的微笑。",
-        "otherForms": "happier (比較級(去y加ier)), happiest (最高級(去y加iest)), happily (副詞(去y加ily))"
-    },
-    {
-        "word": "jealous",
-        "meaning": "嫉妒的",
-        "theme": "情緒",
-        "sentence": "He felt a little jealous when his friend bought a new bike.",
-        "sentenceZh": "當他朋友買了新腳踏車時，他覺得有點嫉妒。",
-        "otherForms": "more jealous (比較級), most jealous (最高級), jealously (副詞)"
-    },
-    {
-        "word": "lonely",
-        "meaning": "孤獨的",
-        "theme": "情緒",
-        "sentence": "The old man felt lonely because his children lived far away.",
-        "sentenceZh": "那位老人覺得孤單，因為他的孩子們住得很遠。",
-        "otherForms": "lonelier (比較級(去y加ier)), loneliest (最高級(去y加iest))"
-    },
-    {
-        "word": "mad",
-        "meaning": "瘋狂的",
-        "theme": "情緒",
-        "sentence": "Please don't be mad at me; I didn't mean to break it.",
-        "sentenceZh": "請別對我生氣，我不是故意弄壞它的。",
-        "otherForms": "madder (比較級(重複字尾)), maddest (最高級(重複字尾)), madly (副詞)"
-    },
-    {
-        "word": "nervous",
-        "meaning": "緊張的",
-        "theme": "情緒",
-        "sentence": "I always feel nervous before speaking English on stage.",
-        "sentenceZh": "在台上說英文前我總是覺得緊張。",
-        "otherForms": "more nervous (比較級), most nervous (最高級), nervously (副詞)"
-    },
-    {
-        "word": "sad",
-        "meaning": "難過的",
-        "theme": "情緒",
-        "sentence": "It is a very sad story about a lost little dog.",
-        "sentenceZh": "這是一個關於迷路小狗的難過故事。",
-        "otherForms": "sadder (比較級(重複字尾)), saddest (最高級(重複字尾)), sadly (副詞)"
-    },
-    {
-        "word": "unhappy",
-        "meaning": "不快樂的",
-        "theme": "情緒",
-        "sentence": "The little boy was unhappy because he couldn't go out to play.",
-        "sentenceZh": "小男孩很不快樂，因為他不能出去玩。",
-        "otherForms": "unhappier (比較級(去y加ier)), unhappiest (最高級(去y加iest)), unhappily (副詞(去y加ily))"
-    },
-    {
-        "word": "angry",
-        "meaning": "生氣的",
-        "theme": "情緒",
-        "sentence": "The teacher was angry because someone cheated on the test.",
-        "sentenceZh": "老師很生氣，因為有人在考試作弊。",
-        "otherForms": "angrier (比較級(去y加ier)), angriest (最高級(去y加iest)), angrily (副詞(去y加ily))"
-    },
-    {
-        "word": "black",
-        "meaning": "黑色",
-        "theme": "顏色",
-        "sentence": "He always uses a black pen to write his homework.",
-        "sentenceZh": "他總是用黑筆寫作業。",
-        "otherForms": "blacks (複數型), blacker (比較級), blackest (最高級)"
-    },
-    {
-        "word": "blue",
-        "meaning": "藍色",
-        "theme": "顏色",
-        "sentence": "The sky is beautifully blue today.",
-        "sentenceZh": "今天的天空是美麗的藍色。",
-        "otherForms": "blues (複數型), bluer (比較級), bluest (最高級)"
-    },
-    {
-        "word": "brown",
-        "meaning": "棕色",
-        "theme": "顏色",
-        "sentence": "My cute dog has big brown eyes.",
-        "sentenceZh": "我可愛的狗有一雙棕色的大眼睛。",
-        "otherForms": "browns (複數型), browner (比較級), brownest (最高級)"
-    },
-    {
-        "word": "color",
-        "meaning": "顏色",
-        "theme": "顏色",
-        "sentence": "What is your favorite color for a badminton racket?",
-        "sentenceZh": "你最喜歡的羽球拍顏色是什麼？",
-        "otherForms": "colors (複數型)"
-    },
-    {
-        "word": "gray",
-        "meaning": "灰色",
-        "theme": "顏色",
-        "sentence": "The sky turned gray just before the heavy rain started.",
-        "sentenceZh": "就在大雨開始前，天空變成了灰色。",
-        "otherForms": "grays (複數型), grayer (比較級), grayest (最高級)"
-    },
-    {
-        "word": "green",
-        "meaning": "綠色",
-        "theme": "顏色",
-        "sentence": "Eating green vegetables is very good for your body.",
-        "sentenceZh": "吃綠色蔬菜對你的身體很好。",
-        "otherForms": "greens (複數型), greener (比較級), greenest (最高級)"
-    },
-    {
-        "word": "orange",
-        "meaning": "橙色；橘子",
-        "theme": "顏色",
-        "sentence": "He wore a bright orange T-shirt to the beach.",
-        "sentenceZh": "他穿了一件亮橘色的 T 恤去海灘。",
-        "otherForms": "oranges (複數型)"
-    },
-    {
-        "word": "pink",
-        "meaning": "粉色",
-        "theme": "顏色",
-        "sentence": "She decorated her bedroom with cute pink flowers.",
-        "sentenceZh": "她用可愛的粉紅花朵裝飾她的臥室。",
-        "otherForms": "pinks (複數型), pinker (比較級), pinkest (最高級)"
-    },
-    {
-        "word": "purple",
-        "meaning": "紫色",
-        "theme": "顏色",
-        "sentence": "Grapes are usually green or purple.",
-        "sentenceZh": "葡萄通常是綠色或紫色的。",
-        "otherForms": "purples (複數型), purpler (比較級), purplest (最高級)"
-    },
-    {
-        "word": "red",
-        "meaning": "紅色",
-        "theme": "顏色",
-        "sentence": "The teacher used a red pen to correct the mistakes.",
-        "sentenceZh": "老師用紅筆來改正錯誤。",
-        "otherForms": "reds (複數型), redder (比較級(重複字尾)), reddest (最高級(重複字尾))"
-    },
-    {
-        "word": "white",
-        "meaning": "白色",
-        "theme": "顏色",
-        "sentence": "The nurse wears a clean white uniform at the hospital.",
-        "sentenceZh": "護理師在醫院穿著乾淨的白色制服。",
-        "otherForms": "whites (複數型), whiter (比較級), whitest (最高級)"
-    },
-    {
-        "word": "yellow",
-        "meaning": "黃色",
-        "theme": "顏色",
-        "sentence": "Bananas and lemons are both yellow fruits.",
-        "sentenceZh": "香蕉和檸檬都是黃色的水果。",
-        "otherForms": "yellows (複數型), yellower (比較級), yellowest (最高級)"
-    },
-    {
-        "word": "golden",
-        "meaning": "金色的",
-        "theme": "顏色",
-        "sentence": "The golden sunlight shines warmly in the early morning.",
-        "sentenceZh": "金色的陽光在清晨溫暖地照耀著。",
-        "otherForms": ""
-    },
-    {
-        "word": "able",
-        "meaning": "能夠的",
-        "theme": "其餘形容詞",
-        "sentence": "You will be able to read this book after learning these words.",
-        "sentenceZh": "學完這些單字後你就能夠讀懂這本書了。",
-        "otherForms": ""
-    },
-    {
-        "word": "asleep",
-        "meaning": "睡著的",
-        "theme": "其餘形容詞",
-        "sentence": "The baby fell asleep quickly after drinking warm milk.",
-        "sentenceZh": "嬰兒喝完溫牛奶後很快就睡著了。",
-        "otherForms": ""
-    },
-    {
-        "word": "born",
-        "meaning": "與生俱來的",
-        "theme": "其餘形容詞",
-        "sentence": "I was born in a small town in central Taiwan.",
-        "sentenceZh": "我出生在中台灣的一個小鎮。",
-        "otherForms": ""
-    },
-    {
-        "word": "certain",
-        "meaning": "確定的",
-        "theme": "其餘形容詞",
-        "sentence": "Are you certain that this is the correct answer?",
-        "sentenceZh": "你確定這是正確答案嗎？",
-        "otherForms": "more certain (比較級), most certain (最高級), certainly (副詞)"
-    },
-    {
-        "word": "complete",
-        "meaning": "完整的；完成",
-        "theme": "其餘形容詞",
-        "sentence": "To win the game, you must build a complete sentence.",
-        "sentenceZh": "為了贏得遊戲，你必須造出一個完整的句子。",
-        "otherForms": "completer (比較級), completest (最高級), completely (副詞), completes (三單)"
-    },
-    {
-        "word": "convenient",
-        "meaning": "方便的",
-        "theme": "其餘形容詞",
-        "sentence": "It is very convenient to use a smartphone to study vocabulary.",
-        "sentenceZh": "用智慧型手機學習單字非常方便。",
-        "otherForms": "more convenient (比較級), most convenient (最高級), conveniently (副詞)"
-    },
-    {
-        "word": "dear",
-        "meaning": "親愛的；昂貴的",
-        "theme": "其餘形容詞",
-        "sentence": "\"Dear Director Lee, we would like to invite you...\"",
-        "sentenceZh": "「親愛的李主任，我們想邀請您……」",
-        "otherForms": "dearer (比較級), dearest (最高級), dearly (副詞)"
-    },
-    {
-        "word": "deep",
-        "meaning": "深的",
-        "theme": "其餘形容詞",
-        "sentence": "The little boy was afraid to swim in the deep ocean.",
-        "sentenceZh": "小男孩害怕在深海裡游泳。",
-        "otherForms": "deeper (比較級), deepest (最高級), deeply (副詞)"
-    },
-    {
-        "word": "distant",
-        "meaning": "遙遠的",
-        "theme": "其餘形容詞",
-        "sentence": "We could hear the distant sound of thunder in the mountains.",
-        "sentenceZh": "我們能聽到群山中遙遠的雷聲。",
-        "otherForms": "more distant (比較級), most distant (最高級), distantly (副詞)"
-    },
-    {
-        "word": "double",
-        "meaning": "雙倍的",
-        "theme": "其餘形容詞",
-        "sentence": "Please check your spelling double times before handing in the test.",
-        "sentenceZh": "交卷前請檢查你的拼字兩次。",
-        "otherForms": ""
-    },
-    {
-        "word": "electric",
-        "meaning": "電的",
-        "theme": "其餘形容詞",
-        "sentence": "Turn off the electric fan when you leave the classroom.",
-        "sentenceZh": "離開教室時請關掉電風扇。",
-        "otherForms": "electrically (副詞)"
-    },
-    {
-        "word": "enough",
-        "meaning": "足夠的",
-        "theme": "其餘形容詞",
-        "sentence": "We don't have enough players to start the volleyball game.",
-        "sentenceZh": "我們沒有足夠的球員來開始排球比賽。",
-        "otherForms": ""
-    },
-    {
-        "word": "equal",
-        "meaning": "平等的",
-        "theme": "其餘形容詞",
-        "sentence": "In math, five plus five is equal to ten.",
-        "sentenceZh": "在數學中，五加五等於十。",
-        "otherForms": "equally (副詞)"
-    },
-    {
-        "word": "every",
-        "meaning": "每個的",
-        "theme": "其餘形容詞",
-        "sentence": "I practice reading English for thirty minutes every day.",
-        "sentenceZh": "我每天練習閱讀英文三十分鐘。",
-        "otherForms": ""
-    },
-    {
-        "word": "extra",
-        "meaning": "額外的",
-        "theme": "其餘形容詞",
-        "sentence": "Can I have an extra piece of blank paper, please?",
-        "sentenceZh": "請問我可以多要一張空白紙嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "fair",
-        "meaning": "公平的",
-        "theme": "其餘形容詞",
-        "sentence": "The teacher made a fair decision for both students.",
-        "sentenceZh": "老師為兩位學生做了一個公平的決定。",
-        "otherForms": "fairer (比較級), fairest (最高級), fairly (副詞)"
-    },
-    {
-        "word": "fancy",
-        "meaning": "別緻的；鋪張的",
-        "theme": "其餘形容詞",
-        "sentence": "We had dinner at a very fancy restaurant to celebrate.",
-        "sentenceZh": "我們在一家非常高級別緻的餐廳吃晚餐慶祝。",
-        "otherForms": "fancier (比較級(去y加ier)), fanciest (最高級(去y加iest))"
-    },
-    {
-        "word": "far",
-        "meaning": "遠的",
-        "theme": "其餘形容詞",
-        "sentence": "Is your house very far from the junior high school?",
-        "sentenceZh": "你家離國中很遠嗎？",
-        "otherForms": "farther/further (比較級(不規則)), farthest/furthest (最高級(不規則)), far (形副同型)"
-    },
-    {
-        "word": "fashionable",
-        "meaning": "時尚的",
-        "theme": "其餘形容詞",
-        "sentence": "Wearing large sunglasses was very fashionable in the 1980s.",
-        "sentenceZh": "戴大墨鏡在 80 年代非常時尚。",
-        "otherForms": "more fashionable (比較級), most fashionable (最高級), fashionably (副詞)"
-    },
-    {
-        "word": "favorite",
-        "meaning": "最喜愛的",
-        "theme": "其餘形容詞",
-        "sentence": "PE is my favorite subject because I can play badminton.",
-        "sentenceZh": "體育是我最喜歡的科目，因為可以打羽球。",
-        "otherForms": "favorites (複數型)"
-    },
-    {
-        "word": "final",
-        "meaning": "最終的",
-        "theme": "其餘形容詞",
-        "sentence": "You must study hard for the final exam next week.",
-        "sentenceZh": "你必須為下週的期末考認真讀書。",
-        "otherForms": "finals (複數型), finally (副詞)"
-    },
-    {
-        "word": "formal",
-        "meaning": "正式的",
-        "theme": "其餘形容詞",
-        "sentence": "He wore a formal black suit to the important meeting.",
-        "sentenceZh": "他穿了一套正式的黑西裝去參加重要會議。",
-        "otherForms": "more formal (比較級), most formal (最高級), formally (副詞)"
-    },
-    {
-        "word": "free",
-        "meaning": "免費的；自由的；有空的",
-        "theme": "其餘形容詞",
-        "sentence": "You can play this English vocabulary game for free.",
-        "sentenceZh": "你可以免費玩這個英文單字遊戲。",
-        "otherForms": "freer (比較級), freest (最高級), freely (副詞)"
-    },
-    {
-        "word": "fresh",
-        "meaning": "新鮮的",
-        "theme": "其餘形容詞",
-        "sentence": "The fresh air in the mountains feels so clean.",
-        "sentenceZh": "山裡的新鮮空氣感覺好乾淨。",
-        "otherForms": "fresher (比較級), freshest (最高級), freshly (副詞)"
-    },
-    {
-        "word": "helpful",
-        "meaning": "有幫助的",
-        "theme": "其餘形容詞",
-        "sentence": "This vocabulary passport is very helpful for learning English.",
-        "sentenceZh": "這本單字護照對學習英文非常有幫助。",
-        "otherForms": "more helpful (比較級), most helpful (最高級), helpfully (副詞)"
-    },
-    {
-        "word": "homesick",
-        "meaning": "想家的",
-        "theme": "其餘形容詞",
-        "sentence": "The student felt very homesick during the summer camp.",
-        "sentenceZh": "這位學生在夏令營期間覺得非常想家。",
-        "otherForms": "more homesick (比較級), most homesick (最高級)"
-    },
-    {
-        "word": "horrible",
-        "meaning": "可怕的",
-        "theme": "其餘形容詞",
-        "sentence": "I had a horrible dream about a giant monster last night.",
-        "sentenceZh": "我昨晚做了一個關於巨大怪物的可怕惡夢。",
-        "otherForms": "more horrible (比較級), most horrible (最高級), horribly (副詞(去le加ly))"
-    },
-    {
-        "word": "important",
-        "meaning": "重要的",
-        "theme": "其餘形容詞",
-        "sentence": "It is very important to eat breakfast every morning.",
-        "sentenceZh": "每天早上吃早餐是非常重要的。",
-        "otherForms": "more important (比較級), most important (最高級), importantly (副詞)"
-    },
-    {
-        "word": "independent",
-        "meaning": "獨立的",
-        "theme": "其餘形容詞",
-        "sentence": "Junior high students should learn to be more independent.",
-        "sentenceZh": "國中生應該學習變得更獨立。",
-        "otherForms": "more independent (比較級), most independent (最高級), independently (副詞)"
-    },
-    {
-        "word": "instant",
-        "meaning": "立即的",
-        "theme": "其餘形容詞",
-        "sentence": "He sent me an instant message on the Internet.",
-        "sentenceZh": "他在網路上傳了一則即時訊息給我。",
-        "otherForms": "instants (複數型), instantly (副詞)"
-    },
-    {
-        "word": "latest",
-        "meaning": "最新的",
-        "theme": "其餘形容詞",
-        "sentence": "Have you listened to their latest pop music album?",
-        "sentenceZh": "你聽過他們最新的流行音樂專輯了嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "lucky",
-        "meaning": "幸運的",
-        "theme": "其餘形容詞",
-        "sentence": "I was very lucky to find my lost keys in the park.",
-        "sentenceZh": "我非常幸運地在公園找到了我弄丟的鑰匙。",
-        "otherForms": "luckier (比較級(去y加ier)), luckiest (最高級(去y加iest)), luckily (副詞(去y加ily))"
-    },
-    {
-        "word": "magic",
-        "meaning": "魔法的",
-        "theme": "其餘形容詞",
-        "sentence": "The magician showed us an amazing magic trick.",
-        "sentenceZh": "魔術師表演了一個驚人的魔術戲法給我們看。",
-        "otherForms": "magically (副詞)"
-    },
-    {
-        "word": "necessary",
-        "meaning": "必要的",
-        "theme": "其餘形容詞",
-        "sentence": "Is it really necessary to buy such an expensive racket?",
-        "sentenceZh": "真的有必要買這麼昂貴的球拍嗎？",
-        "otherForms": "more necessary (比較級), most necessary (最高級), necessarily (副詞(去y加ily))"
-    },
-    {
-        "word": "other",
-        "meaning": "其他的",
-        "theme": "其餘形容詞",
-        "sentence": "Do you have any other questions about the grammar rules?",
-        "sentenceZh": "關於文法規則你還有其他的問題嗎？",
-        "otherForms": "others (複數型)"
-    },
-    {
-        "word": "peaceful",
-        "meaning": "和平的",
-        "theme": "其餘形容詞",
-        "sentence": "The small village in the mountains is very quiet and peaceful.",
-        "sentenceZh": "山裡的小村莊非常安靜且寧靜。",
-        "otherForms": "more peaceful (比較級), most peaceful (最高級), peacefully (副詞)"
-    },
-    {
-        "word": "perfect",
-        "meaning": "完美的",
-        "theme": "其餘形容詞",
-        "sentence": "This clear blue sky is just perfect for an outdoor picnic.",
-        "sentenceZh": "這樣晴朗的藍天簡直完美適合戶外野餐。",
-        "otherForms": "more perfect (比較級), most perfect (最高級), perfectly (副詞)"
-    },
-    {
-        "word": "personal",
-        "meaning": "個人的",
-        "theme": "其餘形容詞",
-        "sentence": "You should not read other people's personal letters.",
-        "sentenceZh": "你不應該讀別人私人的信件。",
-        "otherForms": "more personal (比較級), most personal (最高級), personally (副詞)"
-    },
-    {
-        "word": "popular",
-        "meaning": "受歡迎的",
-        "theme": "其餘形容詞",
-        "sentence": "The game \"Weather Combat\" is very popular among students.",
-        "sentenceZh": "「天氣大戰」這款遊戲在學生中非常受歡迎。",
-        "otherForms": "more popular (比較級), most popular (最高級), popularly (副詞)"
-    },
-    {
-        "word": "ready",
-        "meaning": "準備好的",
-        "theme": "其餘形容詞",
-        "sentence": "Are you ready to start the English vocabulary test?",
-        "sentenceZh": "你準備好開始英文單字測驗了嗎？",
-        "otherForms": "readier (比較級(去y加ier)), readiest (最高級(去y加iest)), readily (副詞(去y加ily))"
-    },
-    {
-        "word": "real",
-        "meaning": "真實的",
-        "theme": "其餘形容詞",
-        "sentence": "Is the monster in the movie a real animal or just computer graphics?",
-        "sentenceZh": "電影裡的怪物是真實的動物還是只是電腦繪圖？",
-        "otherForms": "more real (比較級), most real (最高級), really (副詞)"
-    },
-    {
-        "word": "regular",
-        "meaning": "規律的；定期的",
-        "theme": "其餘形容詞",
-        "sentence": "Doing regular exercise will keep your body strong and healthy.",
-        "sentenceZh": "做規律的運動能讓你的身體保持強壯健康。",
-        "otherForms": "more regular (比較級), most regular (最高級), regularly (副詞)"
-    },
-    {
-        "word": "responsible",
-        "meaning": "負責的",
-        "theme": "其餘形容詞",
-        "sentence": "The class leader is responsible for keeping the classroom quiet.",
-        "sentenceZh": "班長負責保持教室安靜。",
-        "otherForms": "more responsible (比較級), most responsible (最高級), responsibly (副詞)"
-    },
-    {
-        "word": "serious",
-        "meaning": "嚴肅的；嚴重的",
-        "theme": "其餘形容詞",
-        "sentence": "You need to be serious when preparing for the big exam.",
-        "sentenceZh": "準備大考時你需要認真嚴肅。",
-        "otherForms": "more serious (比較級), most serious (最高級), seriously (副詞)"
-    },
-    {
-        "word": "sharp",
-        "meaning": "鋒利的；尖銳的",
-        "theme": "其餘形容詞",
-        "sentence": "Be careful, the edge of that broken glass is very sharp.",
-        "sentenceZh": "小心，那塊破玻璃的邊緣非常銳利。",
-        "otherForms": "sharper (比較級), sharpest (最高級), sharply (副詞)"
-    },
-    {
-        "word": "single",
-        "meaning": "單一的；單身的",
-        "theme": "其餘形容詞",
-        "sentence": "I didn't make a single mistake in my grammar test!",
-        "sentenceZh": "我的文法考試連一個錯誤都沒犯！",
-        "otherForms": ""
-    },
-    {
-        "word": "skillful",
-        "meaning": "熟練的",
-        "theme": "其餘形容詞",
-        "sentence": "He is a very skillful player who can hit the ball perfectly.",
-        "sentenceZh": "他是個非常熟練的球員，能完美地擊球。",
-        "otherForms": "more skillful (比較級), most skillful (最高級), skillfully (副詞)"
-    },
-    {
-        "word": "sleepy",
-        "meaning": "想睡的",
-        "theme": "其餘形容詞",
-        "sentence": "I feel very sleepy because I stayed up late last night.",
-        "sentenceZh": "我覺得很想睡，因為我昨晚熬夜了。",
-        "otherForms": "sleepier (比較級(去y加ier)), sleepiest (最高級(去y加iest)), sleepily (副詞(去y加ily))"
-    },
-    {
-        "word": "social",
-        "meaning": "社會的；社交的",
-        "theme": "其餘形容詞",
-        "sentence": "Humans are social animals; we like to talk to friends.",
-        "sentenceZh": "人類是社會性動物，我們喜歡和朋友聊天。",
-        "otherForms": "more social (比較級), most social (最高級), socially (副詞)"
-    },
-    {
-        "word": "such",
-        "meaning": "如此的",
-        "theme": "其餘形容詞",
-        "sentence": "It is such a beautiful day to play badminton outside.",
-        "sentenceZh": "這是個如此適合在戶外打羽球的美好日子。",
-        "otherForms": ""
-    },
-    {
-        "word": "sudden",
-        "meaning": "突然的",
-        "theme": "其餘形容詞",
-        "sentence": "We got wet because of a sudden rain shower.",
-        "sentenceZh": "我們因為一場突如其來的陣雨淋濕了。",
-        "otherForms": "more sudden (比較級), most sudden (最高級), suddenly (副詞)"
-    },
-    {
-        "word": "super",
-        "meaning": "超級的",
-        "theme": "其餘形容詞",
-        "sentence": "He ran at a super fast speed to catch the bus.",
-        "sentenceZh": "他以超級快的速度奔跑去趕公車。",
-        "otherForms": ""
-    },
-    {
-        "word": "the",
-        "meaning": "那個；這個；那些；這些",
-        "theme": "其餘形容詞",
-        "sentence": "",
-        "sentenceZh": "",
-        "otherForms": ""
-    },
-    {
-        "word": "thick",
-        "meaning": "厚的；濃的；稠的",
-        "theme": "其餘形容詞",
-        "sentence": "You should wear a thick coat because it is freezing outside.",
-        "sentenceZh": "你應該穿件厚外套，因為外面冷極了。",
-        "otherForms": "thicker (比較級), thickest (最高級), thickly (副詞)"
-    },
-    {
-        "word": "tidy",
-        "meaning": "整潔的",
-        "theme": "其餘形容詞",
-        "sentence": "Please keep your desk clean and tidy before leaving the classroom.",
-        "sentenceZh": "離開教室前請保持你的書桌乾淨整潔。",
-        "otherForms": "tidier (比較級(去y加ier)), tidiest (最高級(去y加iest)), tidily (副詞(去y加ily))"
-    },
-    {
-        "word": "useful",
-        "meaning": "有用的",
-        "theme": "其餘形容詞",
-        "sentence": "This English-Chinese dictionary is a very useful tool.",
-        "sentenceZh": "這本英漢字典是非常有用的工具。",
-        "otherForms": "more useful (比較級), most useful (最高級), usefully (副詞)"
-    },
-    {
-        "word": "usual",
-        "meaning": "通常的",
-        "theme": "其餘形容詞",
-        "sentence": "I woke up at my usual time of 6:30 a.m. this morning.",
-        "sentenceZh": "我今天早上在通常的六點半醒來。",
-        "otherForms": "more usual (比較級), most usual (最高級), usually (副詞)"
-    },
-    {
-        "word": "valuable",
-        "meaning": "有價值的",
-        "theme": "其餘形容詞",
-        "sentence": "Time is very valuable, so don't waste it on playing too many games.",
-        "sentenceZh": "時間非常寶貴，所以不要浪費在玩太多遊戲上。",
-        "otherForms": "more valuable (比較級), most valuable (最高級), valuably (副詞)"
-    },
-    {
-        "word": "whole",
-        "meaning": "整體的",
-        "theme": "其餘形容詞",
-        "sentence": "He ate the whole pizza by himself because he was so hungry.",
-        "sentenceZh": "他因為太餓了，自己吃掉了整份披薩。",
-        "otherForms": "wholly (副詞)"
-    },
-    {
-        "word": "wild",
-        "meaning": "野生的；狂野的",
-        "theme": "其餘形容詞",
-        "sentence": "The forest is full of dangerous wild animals.",
-        "sentenceZh": "森林裡充滿了危險的野生動物。",
-        "otherForms": "wilder (比較級), wildest (最高級), wildly (副詞)"
-    },
-    {
-        "word": "wonderful",
-        "meaning": "美妙的",
-        "theme": "其餘形容詞",
-        "sentence": "We had a wonderful time visiting the museum together.",
-        "sentenceZh": "我們一起參觀博物館度過了美妙的時光。",
-        "otherForms": "more wonderful (比較級), most wonderful (最高級), wonderfully (副詞)"
-    },
-    {
-        "word": "especially",
-        "meaning": "尤其",
-        "theme": "副詞",
-        "sentence": "I love eating fruit, especially sweet mangoes in summer.",
-        "sentenceZh": "我熱愛吃水果，尤其是在夏天的甜芒果。",
-        "otherForms": ""
-    },
-    {
-        "word": "finally",
-        "meaning": "最後",
-        "theme": "副詞",
-        "sentence": "After a long game, our team finally won the victory.",
-        "sentenceZh": "經過漫長的比賽，我們的隊伍最後贏得了勝利。",
-        "otherForms": ""
-    },
-    {
-        "word": "least",
-        "meaning": "最少",
-        "theme": "副詞",
-        "sentence": "You should exercise at least three times a week.",
-        "sentenceZh": "你應該一週至少運動三次。",
-        "otherForms": ""
-    },
-    {
-        "word": "then",
-        "meaning": "然後",
-        "theme": "副詞",
-        "sentence": "Finish your homework first, and then you can watch TV.",
-        "sentenceZh": "先寫完你的作業，然後你就可以看電視。",
-        "otherForms": ""
-    },
-    {
-        "word": "yet",
-        "meaning": "尚未；但是",
-        "theme": "副詞",
-        "sentence": "Have you finished coding the HTML game yet?",
-        "sentenceZh": "你寫完 HTML 遊戲的程式碼了嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "aloud",
-        "meaning": "大聲地",
-        "theme": "副詞",
-        "sentence": "Please read the English sentence aloud so everyone can hear you.",
-        "sentenceZh": "請大聲朗讀這個英文句子，讓每個人都能聽到。",
-        "otherForms": ""
-    },
-    {
-        "word": "either",
-        "meaning": "也（用於否定句）",
-        "theme": "副詞",
-        "sentence": "I don't like bitter coffee, and he doesn't like it either.",
-        "sentenceZh": "我不喜歡苦咖啡，他也不喜歡。",
-        "otherForms": ""
-    },
-    {
-        "word": "else",
-        "meaning": "其他",
-        "theme": "副詞",
-        "sentence": "Is there anything else I can help you with today?",
-        "sentenceZh": "今天還有其他我可以幫你的事嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "just",
-        "meaning": "就；剛剛",
-        "theme": "副詞",
-        "sentence": "The school bus just left the station a minute ago.",
-        "sentenceZh": "校車一分鐘前剛剛離開車站。",
-        "otherForms": ""
-    },
-    {
-        "word": "neither",
-        "meaning": "也不",
-        "theme": "副詞",
-        "sentence": "My brother doesn't play tennis, and neither do I.",
-        "sentenceZh": "我哥哥不打網球，我也不打。",
-        "otherForms": ""
-    },
-    {
-        "word": "not",
-        "meaning": "不",
-        "theme": "副詞",
-        "sentence": "This is not the correct answer; please try again.",
-        "sentenceZh": "這不是正確答案，請再試一次。",
-        "otherForms": ""
-    },
-    {
-        "word": "only",
-        "meaning": "只有、僅",
-        "theme": "副詞",
-        "sentence": "I have only one English class on Wednesday afternoon.",
-        "sentenceZh": "我星期三下午只有一節英文課。",
-        "otherForms": ""
-    },
-    {
-        "word": "almost",
-        "meaning": "幾乎",
-        "theme": "副詞",
-        "sentence": "I have almost finished memorizing all 2,000 words!",
-        "sentenceZh": "我幾乎已經背完這兩千個單字了！",
-        "otherForms": ""
-    },
-    {
-        "word": "even",
-        "meaning": "甚至",
-        "theme": "副詞",
-        "sentence": "He loves the game so much that he even plays it on weekends.",
-        "sentenceZh": "他太愛這個遊戲了，甚至在週末也會玩。",
-        "otherForms": ""
-    },
-    {
-        "word": "really",
-        "meaning": "真地",
-        "theme": "副詞",
-        "sentence": "Is it really true that we have no homework tonight?",
-        "sentenceZh": "今晚沒有回家作業是真的嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "so",
-        "meaning": "如此；這麼",
-        "theme": "副詞",
-        "sentence": "The movie was so funny that I laughed until I cried.",
-        "sentenceZh": "這部電影太好笑了，我笑到流眼淚。",
-        "otherForms": ""
-    },
-    {
-        "word": "still",
-        "meaning": "仍然",
-        "theme": "副詞",
-        "sentence": "Are you still watching that 80s music video on YouTube?",
-        "sentenceZh": "你還在 YouTube 上看那部 80 年代的音樂影片嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "very",
-        "meaning": "非常",
-        "theme": "副詞",
-        "sentence": "Thank you very much for helping me solve the grammar problem.",
-        "sentenceZh": "非常感謝你幫我解決文法問題。",
-        "otherForms": ""
-    },
-    {
-        "word": "nearly",
-        "meaning": "幾乎",
-        "theme": "副詞",
-        "sentence": "It took nearly two hours to drive from Douliu to Taipei.",
-        "sentenceZh": "從斗六開車到台北幾乎花了兩個小時。",
-        "otherForms": ""
-    },
-    {
-        "word": "quite",
-        "meaning": "蠻~",
-        "theme": "副詞",
-        "sentence": "The science test today was quite difficult for me.",
-        "sentenceZh": "今天的科學考試對我來說相當困難。",
-        "otherForms": ""
-    },
-    {
-        "word": "rather",
-        "meaning": "寧願；相當地",
-        "theme": "副詞",
-        "sentence": "I would rather play badminton than go running.",
-        "sentenceZh": "我寧願去打羽球也不想去跑步。",
-        "otherForms": ""
-    },
-    {
-        "word": "too",
-        "meaning": "也；太",
-        "theme": "副詞",
-        "sentence": "The hot soup is too spicy for the little child to eat.",
-        "sentenceZh": "這碗熱湯對小孩子來說太辣了沒辦法吃。",
-        "otherForms": ""
-    },
-    {
-        "word": "actually",
-        "meaning": "實際上",
-        "theme": "副詞",
-        "sentence": "The grammar rule looks hard, but it is actually quite easy.",
-        "sentenceZh": "這個文法規則看起來很難，但實際上相當簡單。",
-        "otherForms": ""
-    },
-    {
-        "word": "perhaps",
-        "meaning": "可能地",
-        "theme": "副詞",
-        "sentence": "Perhaps we can go to the beach if it doesn't rain tomorrow.",
-        "sentenceZh": "如果明天不下雨，或許我們可以去海灘。",
-        "otherForms": ""
-    },
-    {
-        "word": "probably",
-        "meaning": "有可能地",
-        "theme": "副詞",
-        "sentence": "He will probably be late for school because he missed the bus.",
-        "sentenceZh": "他可能會上學遲到，因為他錯過了公車。",
-        "otherForms": ""
-    },
-    {
-        "word": "likely",
-        "meaning": "可能地",
-        "theme": "副詞",
-        "sentence": "It is highly likely that she will win the first prize.",
-        "sentenceZh": "她非常有贏得第一名。",
-        "otherForms": ""
-    },
-    {
-        "word": "maybe",
-        "meaning": "可能地",
-        "theme": "副詞",
-        "sentence": "Maybe we can ask the teacher to explain it one more time.",
-        "sentenceZh": "也許我們可以請老師再解釋一次。",
-        "otherForms": ""
-    },
-    {
-        "word": "abroad",
-        "meaning": "在國外",
-        "theme": "副詞",
-        "sentence": "My uncle travels abroad many times a year for business.",
-        "sentenceZh": "我叔叔為了生意一年出國好幾次。",
-        "otherForms": ""
-    },
-    {
-        "word": "ahead",
-        "meaning": "在前面",
-        "theme": "副詞",
-        "sentence": "Keep walking straight ahead, and you will see the post office.",
-        "sentenceZh": "繼續直直往前走，你就會看到郵局。",
-        "otherForms": ""
-    },
-    {
-        "word": "everywhere",
-        "meaning": "到處",
-        "theme": "副詞",
-        "sentence": "I have looked everywhere, but I cannot find my cell phone.",
-        "sentenceZh": "我已經到處找過了，但就是找不到我的手機。",
-        "otherForms": ""
-    },
-    {
-        "word": "anywhere",
-        "meaning": "任何地方",
-        "theme": "副詞",
-        "sentence": "You can sit anywhere you like in the cafeteria.",
-        "sentenceZh": "在自助餐廳裡你可以坐在任何你喜歡的地方。",
-        "otherForms": ""
-    },
-    {
-        "word": "somewhere",
-        "meaning": "某個地方",
-        "theme": "副詞",
-        "sentence": "I dropped my keys somewhere near the badminton court.",
-        "sentenceZh": "我把鑰匙掉在羽球場附近的某個地方了。",
-        "otherForms": ""
-    },
-    {
-        "word": "out",
-        "meaning": "出去",
-        "theme": "副詞",
-        "sentence": "Please take the trash out before you go to bed.",
-        "sentenceZh": "睡前請把垃圾拿出去。",
-        "otherForms": ""
-    },
-    {
-        "word": "upon",
-        "meaning": "在~之上",
-        "theme": "副詞",
-        "sentence": "Once upon a time, there was a brave prince in a castle.",
-        "sentenceZh": "很久很久以前，城堡裡有一位勇敢的王子。",
-        "otherForms": ""
-    },
-    {
-        "word": "away",
-        "meaning": "離開",
-        "theme": "副詞",
-        "sentence": "The scared bird quickly flew away into the blue sky.",
-        "sentenceZh": "受到驚嚇的鳥快速飛走，進入了藍天中。",
-        "otherForms": ""
-    },
-    {
-        "word": "besides",
-        "meaning": "此外；而且",
-        "theme": "副詞",
-        "sentence": "I don't want to go out; besides, it is raining heavily.",
-        "sentenceZh": "我不想出門；而且，現在雨下得很大。",
-        "otherForms": ""
-    },
-    {
-        "word": "therefore",
-        "meaning": "因此",
-        "theme": "副詞",
-        "sentence": "He didn't study hard; therefore, he failed the math test.",
-        "sentenceZh": "他沒有努力讀書；因此，他數學考試不及格。",
-        "otherForms": ""
-    },
-    {
-        "word": "however",
-        "meaning": "然而",
-        "theme": "副詞",
-        "sentence": "He tried his best to hit the ball; however, he missed it.",
-        "sentenceZh": "他盡了全力去擊球；然而，他還是漏接了。",
-        "otherForms": ""
-    },
-    {
-        "word": "always",
-        "meaning": "總是",
-        "theme": "副詞",
-        "sentence": "The sun always rises in the east and sets in the west.",
-        "sentenceZh": "太陽總是從東方升起、西方落下。",
-        "otherForms": ""
-    },
-    {
-        "word": "ever",
-        "meaning": "曾經",
-        "theme": "副詞",
-        "sentence": "Have you ever been to a 1980s pop music concert?",
-        "sentenceZh": "你曾經去過 80 年代流行音樂的演唱會嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "never",
-        "meaning": "從不",
-        "theme": "副詞",
-        "sentence": "You should never open the door for a stranger.",
-        "sentenceZh": "你絕不應該幫陌生人開門。",
-        "otherForms": ""
-    },
-    {
-        "word": "often",
-        "meaning": "經常",
-        "theme": "副詞",
-        "sentence": "I often go jogging in the park on Sunday mornings.",
-        "sentenceZh": "我經常在星期日早上在公園慢跑。",
-        "otherForms": ""
-    },
-    {
-        "word": "seldom",
-        "meaning": "很少",
-        "theme": "副詞",
-        "sentence": "She seldom drinks sweet soda because it is bad for her health.",
-        "sentenceZh": "她很少喝甜汽水，因為那對健康不好。",
-        "otherForms": ""
-    },
-    {
-        "word": "sometimes",
-        "meaning": "有時候",
-        "theme": "副詞",
-        "sentence": "Sometimes learning a new language can be a little frustrating.",
-        "sentenceZh": "有時候學習新語言會有點令人挫折。",
-        "otherForms": ""
-    },
-    {
-        "word": "usually",
-        "meaning": "通常",
-        "theme": "副詞",
-        "sentence": "We usually have rice, meat, and vegetables for dinner.",
-        "sentenceZh": "我們晚餐通常吃米飯、肉和蔬菜。",
-        "otherForms": ""
-    },
-    {
-        "word": "again",
-        "meaning": "再次",
-        "theme": "副詞",
-        "sentence": "Please read the English sentence aloud again.",
-        "sentenceZh": "請再次大聲朗讀這個英文句子。",
-        "otherForms": ""
-    },
-    {
-        "word": "hardly",
-        "meaning": "幾乎不",
-        "theme": "副詞",
-        "sentence": "The fog was so thick that I could hardly see the road.",
-        "sentenceZh": "霧太濃了，我幾乎看不見馬路。",
-        "otherForms": ""
-    },
-    {
-        "word": "together",
-        "meaning": "一起",
-        "theme": "副詞",
-        "sentence": "Let's work together to finish this school science project.",
-        "sentenceZh": "我們一起合作完成這個學校的科學專案吧。",
-        "otherForms": ""
-    },
-    {
-        "word": "twice",
-        "meaning": "兩次",
-        "theme": "副詞",
-        "sentence": "I brush my teeth at least twice a day to keep them healthy.",
-        "sentenceZh": "我一天至少刷兩次牙來保持牙齒健康。",
-        "otherForms": ""
-    },
-    {
-        "word": "this",
-        "meaning": "這個（近指單數）",
-        "theme": "代名詞",
-        "sentence": "This interactive grammar game is really fun to play!",
-        "sentenceZh": "這個互動文法遊戲玩起來真有趣！",
-        "otherForms": ""
-    },
-    {
-        "word": "that",
-        "meaning": "那個（遠指單數）",
-        "theme": "代名詞",
-        "sentence": "That tall building over there is the city hospital.",
-        "sentenceZh": "那邊那棟高大的建築物是市立醫院。",
-        "otherForms": ""
-    },
-    {
-        "word": "these",
-        "meaning": "這些（近指複數）",
-        "theme": "代名詞",
-        "sentence": "Please put these heavy books on the bottom shelf.",
-        "sentenceZh": "請把這些重書放在最底層的架子上。",
-        "otherForms": ""
-    },
-    {
-        "word": "those",
-        "meaning": "那些（遠指複數）",
-        "theme": "代名詞",
-        "sentence": "Those students playing on the court are my classmates.",
-        "sentenceZh": "那些在球場上打球的學生是我的同班同學。",
-        "otherForms": ""
-    },
-    {
-        "word": "I",
-        "meaning": "我",
-        "theme": "代名詞",
-        "sentence": "I built the webpage by myself, and the design is mine.",
-        "sentenceZh": "我自己建立了這個網頁，而設計是我的。",
-        "otherForms": "me (受格), my (所有格), mine (所有格代名詞), myself (反身代名詞)"
-    },
-    {
-        "word": "you",
-        "meaning": "你；你們",
-        "theme": "代名詞",
-        "sentence": "Did you finish the homework by yourself?",
-        "sentenceZh": "你是自己一個人完成作業的嗎？",
-        "otherForms": "your (所有格), yours (所有格代名詞), yourself (反身代名詞), yourselves (反身(複數))"
-    },
-    {
-        "word": "he",
-        "meaning": "他",
-        "theme": "代名詞",
-        "sentence": "He hurt himself when he fell off his new bicycle.",
-        "sentenceZh": "他從新腳踏車上摔下來時傷到了自己。",
-        "otherForms": "him (受格), his (所有格；所有格代名詞), himself (反身代名詞)"
-    },
-    {
-        "word": "she",
-        "meaning": "她",
-        "theme": "代名詞",
-        "sentence": "She made herself a cup of hot tea to feel warm.",
-        "sentenceZh": "她為自己泡了一杯熱茶來保暖。",
-        "otherForms": "her (受格；所有格), hers (所有格代名詞), herself (反身代名詞)"
-    },
-    {
-        "word": "it",
-        "meaning": "它",
-        "theme": "代名詞",
-        "sentence": "The cat is washing itself by licking its paws.",
-        "sentenceZh": "貓正藉由舔爪子來清潔自己。",
-        "otherForms": "its (所有格；所有格代名詞), itself (反身代名詞)"
-    },
-    {
-        "word": "we",
-        "meaning": "我們",
-        "theme": "代名詞",
-        "sentence": "We enjoyed ourselves very much at the Halloween party.",
-        "sentenceZh": "我們在萬聖節派對上玩得非常盡興。",
-        "otherForms": "us (受格), our (所有格), ours (所有格代名詞), ourselves (反身代名詞)"
-    },
-    {
-        "word": "they",
-        "meaning": "他們；它們",
-        "theme": "代名詞",
-        "sentence": "They built the big sandcastle by themselves.",
-        "sentenceZh": "他們自己堆起了那座大沙堡。",
-        "otherForms": "them (受格), their (所有格), theirs (所有格代名詞), themselves (反身代名詞)"
-    },
-    {
-        "word": "all",
-        "meaning": "全部；所有",
-        "theme": "代名詞",
-        "sentence": "You shouldn't eat all the food.",
-        "sentenceZh": "你不應該吃掉全部的食物",
-        "otherForms": ""
-    },
-    {
-        "word": "another",
-        "meaning": "另一個",
-        "theme": "代名詞",
-        "sentence": "Saying is one thing, while doing is another.",
-        "sentenceZh": "說是一件事，做就是另外一件事了。",
-        "otherForms": ""
-    },
-    {
-        "word": "any",
-        "meaning": "任何",
-        "theme": "代名詞",
-        "sentence": "I don't have any money on me right now.",
-        "sentenceZh": "我現在身上沒任何錢。",
-        "otherForms": ""
-    },
-    {
-        "word": "anyone",
-        "meaning": "任何人",
-        "theme": "代名詞",
-        "sentence": "Did you find anyone to help us?",
-        "sentenceZh": "你有找到可以幫我們的人嗎?",
-        "otherForms": ""
-    },
-    {
-        "word": "anything",
-        "meaning": "任何事",
-        "theme": "代名詞",
-        "sentence": "Is there anything else I can help you with today?",
-        "sentenceZh": "有甚麼我今天可以幫忙的嗎?",
-        "otherForms": ""
-    },
-    {
-        "word": "both",
-        "meaning": "兩者",
-        "theme": "代名詞",
-        "sentence": "English and math are hard, but I am good at both.",
-        "sentenceZh": "英文跟數學很難，但我兩個都很擅長。",
-        "otherForms": ""
-    },
-    {
-        "word": "each",
-        "meaning": "每個",
-        "theme": "代名詞",
-        "sentence": "Each of the students need to take this exam.",
-        "sentenceZh": "這裡每位學生都要考這個考試。",
-        "otherForms": ""
-    },
-    {
-        "word": "everyone (everybody)",
-        "meaning": "每個人",
-        "theme": "代名詞",
-        "sentence": "Everyone needs a vocabulary passport to practice words.",
-        "sentenceZh": "每個人都需要一本單字護照來練習單字。",
-        "otherForms": ""
-    },
-    {
-        "word": "everything",
-        "meaning": "每件事",
-        "theme": "代名詞",
-        "sentence": "I hope everything goes well for your big badminton game tomorrow.",
-        "sentenceZh": "希望你明天的羽球大賽一切順利。",
-        "otherForms": ""
-    },
-    {
-        "word": "many",
-        "meaning": "許多（可數）",
-        "theme": "代名詞",
-        "sentence": "There are many interesting animals in the city zoo.",
-        "sentenceZh": "城市動物園裡有許多有趣的動物。",
-        "otherForms": "more (比較級(不規則)), most (最高級(不規則))"
-    },
-    {
-        "word": "nobody",
-        "meaning": "沒有人",
-        "theme": "代名詞",
-        "sentence": "Nobody knows the secret answer to the magic puzzle.",
-        "sentenceZh": "沒有人知道這個魔法謎題的秘密答案。",
-        "otherForms": ""
-    },
-    {
-        "word": "nothing",
-        "meaning": "沒有東西",
-        "theme": "代名詞",
-        "sentence": "There is nothing inside the empty box.",
-        "sentenceZh": "那個空盒子裡什麼都沒有。",
-        "otherForms": ""
-    },
-    {
-        "word": "part",
-        "meaning": "部分",
-        "theme": "代名詞",
-        "sentence": "Reading is an important part of learning a new language.",
-        "sentenceZh": "閱讀是學習新語言重要的一部分。",
-        "otherForms": ""
-    },
-    {
-        "word": "some",
-        "meaning": "一些",
-        "theme": "代名詞",
-        "sentence": "Can I have some extra ice in my orange juice, please?",
-        "sentenceZh": "請問我的柳橙汁可以多加一些冰塊嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "someone (somebody)",
-        "meaning": "某人",
-        "theme": "代名詞",
-        "sentence": "Someone left a blue umbrella in the classroom yesterday.",
-        "sentenceZh": "昨天有人把一把藍色雨傘忘在教室裡了。",
-        "otherForms": ""
-    },
-    {
-        "word": "something",
-        "meaning": "某事",
-        "theme": "代名詞",
-        "sentence": "I have something important to tell you after class.",
-        "sentenceZh": "下課後我有重要的事情要告訴你。",
-        "otherForms": ""
-    },
-    {
-        "word": "none",
-        "meaning": "無",
-        "theme": "代名詞",
-        "sentence": "I asked my friends for help, but none of them knew the answer.",
-        "sentenceZh": "我向朋友們求助，但他們之中沒有人知道答案。",
-        "otherForms": ""
-    },
-    {
-        "word": "above",
-        "meaning": "在…上面",
-        "theme": "介係詞",
-        "sentence": "The airplane is flying high above the white clouds.",
-        "sentenceZh": "飛機在白雲上方高高地飛著。",
-        "otherForms": ""
-    },
-    {
-        "word": "below",
-        "meaning": "在…下面",
-        "theme": "介係詞",
-        "sentence": "Please sign your name below the line on the contract.",
-        "sentenceZh": "請在合約的線下方簽名。",
-        "otherForms": ""
-    },
-    {
-        "word": "on",
-        "meaning": "在…上面（接觸）",
-        "theme": "介係詞",
-        "sentence": "Your English dictionary is right on the teacher's desk.",
-        "sentenceZh": "你的英文字典就在老師的書桌上。",
-        "otherForms": ""
-    },
-    {
-        "word": "under",
-        "meaning": "在…下面",
-        "theme": "介係詞",
-        "sentence": "The little kitten is sleeping soundly under the sofa.",
-        "sentenceZh": "小貓正在沙發下安穩地睡著。",
-        "otherForms": ""
-    },
-    {
-        "word": "in",
-        "meaning": "在…裡面（較大範圍）",
-        "theme": "介係詞",
-        "sentence": "There are many tall trees in the beautiful park.",
-        "sentenceZh": "美麗的公園裡有許多高大的樹木。",
-        "otherForms": ""
-    },
-    {
-        "word": "inside",
-        "meaning": "在…裡面",
-        "theme": "介係詞",
-        "sentence": "It is too hot outside; let's stay inside the house.",
-        "sentenceZh": "外面太熱了，我們待在屋子裡面吧。",
-        "otherForms": ""
-    },
-    {
-        "word": "outside",
-        "meaning": "在…外面",
-        "theme": "介係詞",
-        "sentence": "The children are playing happily outside the classroom.",
-        "sentenceZh": "孩子們正在教室外面開心地玩耍。",
-        "otherForms": ""
-    },
-    {
-        "word": "at",
-        "meaning": "在（地點、時間點）",
-        "theme": "介係詞",
-        "sentence": "We will have an important meeting at ten o'clock tomorrow.",
-        "sentenceZh": "我們明天十點將有一場重要的會議。",
-        "otherForms": ""
-    },
-    {
-        "word": "behind",
-        "meaning": "在…後面",
-        "theme": "介係詞",
-        "sentence": "The shy boy hid behind his father's tall legs.",
-        "sentenceZh": "害羞的男孩躲在他爸爸長長的腿後面。",
-        "otherForms": ""
-    },
-    {
-        "word": "in back of",
-        "meaning": "在…後面",
-        "theme": "介係詞",
-        "sentence": "The school gym is located in back of the library.",
-        "sentenceZh": "學校體育館位在圖書館的後面。",
-        "otherForms": ""
-    },
-    {
-        "word": "in front of",
-        "meaning": "在…前面",
-        "theme": "介係詞",
-        "sentence": "The teacher stood in front of the blackboard to explain.",
-        "sentenceZh": "老師站在黑板前面講解。",
-        "otherForms": ""
-    },
-    {
-        "word": "across",
-        "meaning": "橫越",
-        "theme": "介係詞",
-        "sentence": "Be careful when you walk across the busy street.",
-        "sentenceZh": "走路穿越繁忙的街道時要小心。",
-        "otherForms": ""
-    },
-    {
-        "word": "beyond",
-        "meaning": "超越；在…另一邊",
-        "theme": "介係詞",
-        "sentence": "The beautiful valley lies just beyond those high mountains.",
-        "sentenceZh": "美麗的山谷就坐落於那些高山的另一邊。",
-        "otherForms": ""
-    },
-    {
-        "word": "beside",
-        "meaning": "在…旁邊",
-        "theme": "介係詞",
-        "sentence": "Come sit beside me and let's read the story together.",
-        "sentenceZh": "來坐在我旁邊，我們一起讀這個故事吧。",
-        "otherForms": ""
-    },
-    {
-        "word": "next to",
-        "meaning": "緊鄰；在…旁邊",
-        "theme": "介係詞",
-        "sentence": "The convenience store is right next to the post office.",
-        "sentenceZh": "便利商店就在郵局緊鄰的旁邊。",
-        "otherForms": ""
-    },
-    {
-        "word": "by",
-        "meaning": "藉由；在…旁邊",
-        "theme": "介係詞",
-        "sentence": "We learned how to build a web game by watching videos online.",
-        "sentenceZh": "我們藉由看網路影片學會了如何建立網頁遊戲。",
-        "otherForms": ""
-    },
-    {
-        "word": "between",
-        "meaning": "在…之間（兩者）",
-        "theme": "介係詞",
-        "sentence": "The letter B is exactly between A and C in the alphabet.",
-        "sentenceZh": "字母 B 在字母表裡剛好在 A 和 C 之間。",
-        "otherForms": ""
-    },
-    {
-        "word": "near",
-        "meaning": "靠近",
-        "theme": "介係詞",
-        "sentence": "My grandparents live in a small village near the sea.",
-        "sentenceZh": "我祖父母住在靠近海邊的一個小村莊裡。",
-        "otherForms": "nearer (比較級), nearest (最高級), nearly (副詞)"
-    },
-    {
-        "word": "among",
-        "meaning": "在…之中（三者以上）",
-        "theme": "介係詞",
-        "sentence": "The clever rabbit hid among the tall green bushes.",
-        "sentenceZh": "聰明的兔子躲在高高的綠色灌木叢之中。",
-        "otherForms": ""
-    },
-    {
-        "word": "against",
-        "meaning": "反對；靠著",
-        "theme": "介係詞",
-        "sentence": "He stood leaning his back against the classroom wall.",
-        "sentenceZh": "他背靠著教室牆壁站著。",
-        "otherForms": ""
-    },
-    {
-        "word": "along",
-        "meaning": "沿著",
-        "theme": "介係詞",
-        "sentence": "We rode our bicycles along the beautiful riverbank.",
-        "sentenceZh": "我們沿著美麗的河岸騎腳踏車。",
-        "otherForms": ""
-    },
-    {
-        "word": "down",
-        "meaning": "沿…而下",
-        "theme": "介係詞",
-        "sentence": "The children rolled quickly down the grassy hill.",
-        "sentenceZh": "孩子們快速地沿著長滿草的山丘滾下來。",
-        "otherForms": ""
-    },
-    {
-        "word": "from",
-        "meaning": "從…；來自…",
-        "theme": "介係詞",
-        "sentence": "I received a beautiful postcard from my pen pal in Japan.",
-        "sentenceZh": "我收到了一張來自日本筆友的美麗明信片。",
-        "otherForms": ""
-    },
-    {
-        "word": "to",
-        "meaning": "到…；向…",
-        "theme": "介係詞",
-        "sentence": "Please give this homework paper to your English teacher.",
-        "sentenceZh": "請把這份作業交給你的英文老師。",
-        "otherForms": ""
-    },
-    {
-        "word": "toward",
-        "meaning": "朝向…",
-        "theme": "介係詞",
-        "sentence": "The little dog ran quickly toward its owner.",
-        "sentenceZh": "小狗快速地朝著牠的主人跑去。",
-        "otherForms": ""
-    },
-    {
-        "word": "up",
-        "meaning": "沿…而上",
-        "theme": "介係詞",
-        "sentence": "The brave hikers climbed high up the snowy mountain.",
-        "sentenceZh": "勇敢的登山客爬上了白雪覆蓋的高山。",
-        "otherForms": ""
-    },
-    {
-        "word": "over",
-        "meaning": "在…正上方；越過",
-        "theme": "介係詞",
-        "sentence": "I just saw a plane fly over us.",
-        "sentenceZh": "我剛看到一架飛機飛過我們。",
-        "otherForms": ""
-    },
-    {
-        "word": "into",
-        "meaning": "進入",
-        "theme": "介係詞",
-        "sentence": "Never put your finger into a fan.",
-        "sentenceZh": "絕對不要把你的手指放到電扇裡面。",
-        "otherForms": ""
-    },
-    {
-        "word": "out of",
-        "meaning": "從…裡面出來",
-        "theme": "介係詞",
-        "sentence": "No one has come out of the place alive.",
-        "sentenceZh": "沒人活著從那個地方出來過。",
-        "otherForms": ""
-    },
-    {
-        "word": "through",
-        "meaning": "穿過；透過",
-        "theme": "介係詞",
-        "sentence": "The train traveled fast through the dark tunnel.",
-        "sentenceZh": "火車快速穿過了黑暗的隧道。",
-        "otherForms": ""
-    },
-    {
-        "word": "off",
-        "meaning": "離開；從…下來",
-        "theme": "介係詞",
-        "sentence": "Be careful when you get off the crowded bus.",
-        "sentenceZh": "從擁擠的公車下來時要小心。",
-        "otherForms": ""
-    },
-    {
-        "word": "after",
-        "meaning": "在…之後",
-        "theme": "介係詞",
-        "sentence": "Let's practice playing badminton after school ends today.",
-        "sentenceZh": "今天放學後我們來練習打羽球吧。",
-        "otherForms": ""
-    },
-    {
-        "word": "before",
-        "meaning": "在…之前",
-        "theme": "介係詞",
-        "sentence": "You must wash your hands cleanly before eating dinner.",
-        "sentenceZh": "吃晚餐前你必須把手洗乾淨。",
-        "otherForms": ""
-    },
-    {
-        "word": "during",
-        "meaning": "在…期間",
-        "theme": "介係詞",
-        "sentence": "Please don't talk loudly to your friends during the movie.",
-        "sentenceZh": "看電影期間請不要大聲和朋友講話。",
-        "otherForms": ""
-    },
-    {
-        "word": "until",
-        "meaning": "直到…",
-        "theme": "介係詞",
-        "sentence": "We waited at the station until the train finally arrived.",
-        "sentenceZh": "我們在車站等，直到火車最後抵達。",
-        "otherForms": ""
-    },
-    {
-        "word": "since",
-        "meaning": "自從…",
-        "theme": "介係詞",
-        "sentence": "I have been learning HTML coding since last year.",
-        "sentenceZh": "自從去年開始我就一直在學 HTML 寫程式。",
-        "otherForms": ""
-    },
-    {
-        "word": "with",
-        "meaning": "和…一起；用…",
-        "theme": "介係詞",
-        "sentence": "I went to the shopping mall with my older sister yesterday.",
-        "sentenceZh": "我昨天和姐姐一起去購物中心。",
-        "otherForms": ""
-    },
-    {
-        "word": "without",
-        "meaning": "沒有…",
-        "theme": "介係詞",
-        "sentence": "You cannot enter the school building without your ID card.",
-        "sentenceZh": "沒有識別證你不能進入學校大樓。",
-        "otherForms": ""
-    },
-    {
-        "word": "like",
-        "meaning": "像…",
-        "theme": "介係詞",
-        "sentence": "The cloud in the sky looks exactly like a white rabbit.",
-        "sentenceZh": "天空中的那朵雲看起來就像一隻白兔。",
-        "otherForms": ""
-    },
-    {
-        "word": "than",
-        "meaning": "比…",
-        "theme": "介係詞",
-        "sentence": "An airplane travels much faster than a train.",
-        "sentenceZh": "飛機移動的速度比火車快多了。",
-        "otherForms": ""
-    },
-    {
-        "word": "of",
-        "meaning": "…的；關於",
-        "theme": "介係詞",
-        "sentence": "The capital city of Taiwan is Taipei.",
-        "sentenceZh": "台灣的首都是台北。",
-        "otherForms": ""
-    },
-    {
-        "word": "except",
-        "meaning": "除了…之外",
-        "theme": "介係詞",
-        "sentence": "Everyone in the class passed the test except for John.",
-        "sentenceZh": "班上每個人都通過了考試，除了約翰之外。",
-        "otherForms": ""
-    },
-    {
-        "word": "for",
-        "meaning": "為了；給；因為",
-        "theme": "介係詞",
-        "sentence": "My mother baked a delicious chocolate cake for my birthday.",
-        "sentenceZh": "我媽媽為了我的生日烤了一個美味的巧克力蛋糕。",
-        "otherForms": ""
-    },
-    {
-        "word": "around",
-        "meaning": "四周；大約",
-        "theme": "介係詞",
-        "sentence": "Is there any restroom around here. I need to poop.",
-        "sentenceZh": "這附近有廁所嗎?我需要大便。",
-        "otherForms": ""
-    },
-    {
-        "word": "about",
-        "meaning": "關於；大約",
-        "theme": "介係詞",
-        "sentence": "The teacher told us a funny story about his childhood.",
-        "sentenceZh": "老師告訴我們一個關於他童年的好笑故事。",
-        "otherForms": ""
-    },
-    {
-        "word": "how",
-        "meaning": "如何",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Do you know how to solve this difficult math problem?",
-        "sentenceZh": "你知道如何解開這道困難的數學題嗎？",
-        "otherForms": ""
-    },
-    {
-        "word": "what",
-        "meaning": "什麼",
-        "theme": "疑問詞&連接詞",
-        "sentence": "What are you planning to do during the winter vacation?",
-        "sentenceZh": "你寒假計畫做什麼？",
-        "otherForms": ""
-    },
-    {
-        "word": "when",
-        "meaning": "何時",
-        "theme": "疑問詞&連接詞",
-        "sentence": "When is the badminton game going to start?",
-        "sentenceZh": "羽球比賽何時開始？",
-        "otherForms": ""
-    },
-    {
-        "word": "where",
-        "meaning": "在哪裡",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Where did you put your vocabulary passport?",
-        "sentenceZh": "你把單字護照放在哪裡了？",
-        "otherForms": ""
-    },
-    {
-        "word": "whether",
-        "meaning": "是否",
-        "theme": "疑問詞&連接詞",
-        "sentence": "I don't know whether he likes to play the grammar game.",
-        "sentenceZh": "我不知道他是否喜歡玩文法遊戲。",
-        "otherForms": ""
-    },
-    {
-        "word": "which",
-        "meaning": "哪一個",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Which character do you like more, Batman or Superman?",
-        "sentenceZh": "你比較喜歡哪一個角色，蝙蝠俠還是超人？",
-        "otherForms": ""
-    },
-    {
-        "word": "who",
-        "meaning": "誰(主格)",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Who is the brave hero in this comic book?",
-        "sentenceZh": "這本漫畫書裡勇敢的英雄是誰？",
-        "otherForms": ""
-    },
-    {
-        "word": "why",
-        "meaning": "為什麼",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Why are you late for the English class today?",
-        "sentenceZh": "你今天英文課為什麼遲到？",
-        "otherForms": ""
-    },
-    {
-        "word": "for",
-        "meaning": "因為",
-        "theme": "疑問詞&連接詞",
-        "sentence": "He went to bed early, for he was very tired after the match.",
-        "sentenceZh": "他很早就上床睡覺了，因為他打完比賽後非常累。",
-        "otherForms": ""
-    },
-    {
-        "word": "and",
-        "meaning": "和；並且",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Wonder Woman is strong, and she is very brave.",
-        "sentenceZh": "神力女超人很強壯，並且她非常勇敢。",
-        "otherForms": ""
-    },
-    {
-        "word": "nor",
-        "meaning": "也不",
-        "theme": "疑問詞&連接詞",
-        "sentence": "He doesn't like hot weather, nor does he like cold weather.",
-        "sentenceZh": "他不喜歡炎熱的天氣，也不喜歡寒冷的天氣。",
-        "otherForms": ""
-    },
-    {
-        "word": "but",
-        "meaning": "但是",
-        "theme": "疑問詞&連接詞",
-        "sentence": "The grammar test was hard, but I got a good grade.",
-        "sentenceZh": "文法考試很難，但是我考了個好成績。",
-        "otherForms": ""
-    },
-    {
-        "word": "or",
-        "meaning": "或者；否則",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Hurry up, or you will miss the school bus!",
-        "sentenceZh": "快一點，否則你會錯過校車！",
-        "otherForms": ""
-    },
-    {
-        "word": "yet",
-        "meaning": "但是；尚未",
-        "theme": "疑問詞&連接詞",
-        "sentence": "It was raining heavily, yet they still went out to play.",
-        "sentenceZh": "雨下得很大，但他們還是出去玩了。",
-        "otherForms": ""
-    },
-    {
-        "word": "so",
-        "meaning": "所以；非常",
-        "theme": "疑問詞&連接詞",
-        "sentence": "It is raining, so we have to play badminton inside the gym.",
-        "sentenceZh": "現在正在下雨，所以我們必須在體育館裡面打羽球。",
-        "otherForms": ""
-    },
-    {
-        "word": "because",
-        "meaning": "因為",
-        "theme": "疑問詞&連接詞",
-        "sentence": "I am happy because I passed the English test.",
-        "sentenceZh": "我很開心，因為我通過了英文考試。",
-        "otherForms": ""
-    },
-    {
-        "word": "if",
-        "meaning": "如果",
-        "theme": "疑問詞&連接詞",
-        "sentence": "If you finish your homework, you can play the computer game.",
-        "sentenceZh": "如果你寫完作業，你就可以玩電腦遊戲。",
-        "otherForms": ""
-    },
-    {
-        "word": "since",
-        "meaning": "自從；既然",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Since you are already here, let's review the vocabulary together.",
-        "sentenceZh": "既然你已經在這裡了，我們就一起複習單字吧。",
-        "otherForms": ""
-    },
-    {
-        "word": "before",
-        "meaning": "在~之前",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Please wash your hands before you eat dinner.",
-        "sentenceZh": "吃晚餐前請洗手。",
-        "otherForms": ""
-    },
-    {
-        "word": "after",
-        "meaning": "在~之後",
-        "theme": "疑問詞&連接詞",
-        "sentence": "We will go to the library after school ends.",
-        "sentenceZh": "放學後我們將會去圖書館。",
-        "otherForms": ""
-    },
-    {
-        "word": "while",
-        "meaning": "當~時；然而",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Someone called my name while I was walking down the hall.",
-        "sentenceZh": "當我走在走廊時，有人叫了我的名字。",
-        "otherForms": ""
-    },
-    {
-        "word": "till",
-        "meaning": "直到",
-        "theme": "疑問詞&連接詞",
-        "sentence": "We will stay in the classroom till the rain stops.",
-        "sentenceZh": "我們將會待在教室裡直到雨停。",
-        "otherForms": ""
-    },
-    {
-        "word": "than",
-        "meaning": "比",
-        "theme": "疑問詞&連接詞",
-        "sentence": "The Flash runs much faster than normal people.",
-        "sentenceZh": "閃電俠跑得比一般人快得多。",
-        "otherForms": ""
-    },
-    {
-        "word": "although (though, even though)",
-        "meaning": "雖然",
-        "theme": "疑問詞&連接詞",
-        "sentence": "Although he is a beginner, he plays badminton very well.",
-        "sentenceZh": "雖然他是個初學者，但他羽球打得非常好。",
-        "otherForms": ""
-    },
-    {
-        "word": "address",
-        "meaning": "地址；處理",
-        "theme": "地方位置",
-        "sentence": "Please write down your name and address.",
-        "sentenceZh": "請寫下你的名字和地址。",
-        "otherForms": "addresses (複數/三單), addressed (過去/過去分詞), addressing (現在分詞)"
-    },
-    {
-        "word": "alone",
-        "meaning": "單獨地；獨自",
-        "theme": "其餘形容詞",
-        "sentence": "The old man lives alone in the big house.",
-        "sentenceZh": "那位老人獨自住在大房子裡。",
-        "otherForms": "lonely (形容詞(孤單的))"
-    },
-    {
-        "word": "alphabet",
-        "meaning": "字母表",
-        "theme": "學校",
-        "sentence": "There are 26 letters in the English alphabet.",
-        "sentenceZh": "英文字母表有26個字母。",
-        "otherForms": "alphabets (複數型)"
-    },
-    {
-        "word": "also",
-        "meaning": "也；此外",
-        "theme": "副詞",
-        "sentence": "She speaks English, and she also speaks Japanese.",
-        "sentenceZh": "她會說英文，她也會說日文。",
-        "otherForms": "too (相似詞(也 - 常用於句尾))"
-    },
-    {
-        "word": "as",
-        "meaning": "作為；當作",
-        "theme": "疑問詞&連接詞",
-        "sentence": "He works as an English teacher in a junior high school.",
-        "sentenceZh": "他在一所國中擔任英文老師。",
-        "otherForms": ""
-    },
-    {
-        "word": "bag",
-        "meaning": "袋子；包包",
-        "theme": "雜物",
-        "sentence": "Don't forget to take your bag with you.",
-        "sentenceZh": "別忘了帶著你的包包。",
-        "otherForms": "bags (複數型)"
-    },
-    {
-        "word": "brain",
-        "meaning": "大腦",
-        "theme": "身體部位",
-        "sentence": "The human brain is very complex.",
-        "sentenceZh": "人類的大腦非常複雜。",
-        "otherForms": "brains (複數型)"
-    },
-    {
-        "word": "brand",
-        "meaning": "品牌",
-        "theme": "商業",
-        "sentence": "What brand of smartphone do you use?",
-        "sentenceZh": "你用哪個品牌的智慧型手機？",
-        "otherForms": "brands (複數型)"
-    },
-    {
-        "word": "brief",
-        "meaning": "簡短的",
-        "theme": "其餘形容詞",
-        "sentence": "Let's have a brief meeting after lunch.",
-        "sentenceZh": "我們午餐後開個簡短的會議吧。",
-        "otherForms": "briefer (比較級), briefest (最高級), briefly (簡短地 - 副詞)"
-    },
-    {
-        "word": "chemical",
-        "meaning": "化學的；化學物質",
-        "theme": "雜物",
-        "sentence": "Be careful when you use these chemical products.",
-        "sentenceZh": "使用這些化學產品時請小心。",
-        "otherForms": "chemicals (複數型), chemistry (化學 - 名詞)"
-    },
-    {
-        "word": "chief",
-        "meaning": "主要的；首領",
-        "theme": "身分",
-        "sentence": "He is the chief of the police department.",
-        "sentenceZh": "他是警察局的局長。",
-        "otherForms": "chiefs (複數型), chiefly (副詞 (主要地))"
-    },
-    {
-        "word": "claim",
-        "meaning": "宣稱；要求",
-        "theme": "言語動作",
-        "sentence": "He claimed that he didn't break the window.",
-        "sentenceZh": "他宣稱自己沒有打破窗戶。",
-        "otherForms": "claims (三單), claimed (過去/過去分詞), claiming (現在分詞)"
-    },
-    {
-        "word": "class",
-        "meaning": "班級；課程",
-        "theme": "學校",
-        "sentence": "Our class is planning a trip to the zoo.",
-        "sentenceZh": "我們班正在計畫去動物園玩。",
-        "otherForms": "classes (複數型)"
-    },
-    {
-        "word": "classic",
-        "meaning": "經典的",
-        "theme": "其餘形容詞",
-        "sentence": "This is a classic movie that everyone should watch.",
-        "sentenceZh": "這是一部每個人都該看的經典電影。",
-        "otherForms": ""
-    },
-    {
-        "word": "clay",
-        "meaning": "黏土",
-        "theme": "雜物",
-        "sentence": "The students are making cups out of clay.",
-        "sentenceZh": "學生們正在用黏土做杯子。",
-        "otherForms": ""
-    },
-    {
-        "word": "conflict",
-        "meaning": "衝突",
-        "theme": "抽象概念",
-        "sentence": "There is a conflict between the two countries.",
-        "sentenceZh": "這兩個國家之間發生了衝突。",
-        "otherForms": "conflicts (複數/三單), conflicted (過去/過去分詞), conflicting (現在分詞)"
-    },
-    {
-        "word": "contact",
-        "meaning": "接觸；聯絡",
-        "theme": "行為動作",
-        "sentence": "Please contact me if you have any questions.",
-        "sentenceZh": "如果你有任何問題，請聯絡我。",
-        "otherForms": "contacts (三單), contacted (過去/過去分詞), contacting (現在分詞)"
-    },
-    {
-        "word": "data",
-        "meaning": "資料；數據",
-        "theme": "社會與媒體",
-        "sentence": "We need more data to finish the report.",
-        "sentenceZh": "我們需要更多數據來完成報告。",
-        "otherForms": "datum (單數型(較少用))"
-    },
-    {
-        "word": "deny",
-        "meaning": "否認",
-        "theme": "言語動作",
-        "sentence": "The boy denied stealing the money.",
-        "sentenceZh": "那男孩否認偷了錢。",
-        "otherForms": "denies (三單), denied (過去/過去分詞), denying (現在分詞)"
-    },
-    {
-        "word": "dove",
-        "meaning": "鴿子",
-        "theme": "動物",
-        "sentence": "A white dove is a symbol of peace.",
-        "sentenceZh": "白鴿是和平的象徵。",
-        "otherForms": "doves (複數型), pigeon (別稱)"
-    },
-    {
-        "word": "drag",
-        "meaning": "拖拉",
-        "theme": "手部動作",
-        "sentence": "Don't drag the chair on the floor.",
-        "sentenceZh": "不要在地上拖拉椅子。",
-        "otherForms": "drags (三單), dragged (過去/過去分詞), dragging (現在分詞)"
-    },
-    {
-        "word": "effect",
-        "meaning": "效果；影響",
-        "theme": "抽象概念",
-        "sentence": "The medicine had a good effect on her health.",
-        "sentenceZh": "這種藥對她的健康有很好的效果。",
-        "otherForms": "effects (複數型), effective (有效的 - 形容詞), affect (影響 - 動詞)"
-    },
-    {
-        "word": "exact",
-        "meaning": "確切的；精確的",
-        "theme": "其餘形容詞",
-        "sentence": "Tell me the exact time you will arrive.",
-        "sentenceZh": "告訴我你抵達的確切時間。",
-        "otherForms": "exactly (精確地 - 副詞)"
-    },
-    {
-        "word": "eyebrow",
-        "meaning": "眉毛",
-        "theme": "身體部位",
-        "sentence": "He raised his left eyebrow in surprise.",
-        "sentenceZh": "他驚訝地挑起左眉。",
-        "otherForms": "eyebrows (複數型)"
-    },
-    {
-        "word": "fashion",
-        "meaning": "時尚；流行",
-        "theme": "穿搭配件",
-        "sentence": "Short skirts are back in fashion this summer.",
-        "sentenceZh": "短裙在今年夏天又重新流行起來了。",
-        "otherForms": "fashions (複數型), fashionable (流行的 - 形容詞)"
-    },
-    {
-        "word": "flash",
-        "meaning": "閃光；閃爍",
-        "theme": "狀態動作",
-        "sentence": "Did you see a flash of lightning?",
-        "sentenceZh": "你有看到閃電的閃光嗎？",
-        "otherForms": "flashes (複數/三單), flashed (過去/過去分詞), flashing (現在分詞)"
-    },
-    {
-        "word": "flood",
-        "meaning": "洪水；淹水",
-        "theme": "天氣",
-        "sentence": "The heavy rain caused a terrible flood.",
-        "sentenceZh": "大雨造成了可怕的洪水。",
-        "otherForms": "floods (複數/三單), flooded (過去/過去分詞), flooding (現在分詞)"
-    },
-    {
-        "word": "force",
-        "meaning": "力量；強迫",
-        "theme": "行為動作",
-        "sentence": "You can't force her to do something she hates.",
-        "sentenceZh": "你不能強迫她做她討厭的事。",
-        "otherForms": "forces (複數/三單), forced (過去/過去分詞), forcing (現在分詞)"
-    },
-    {
-        "word": "function",
-        "meaning": "功能",
-        "theme": "抽象概念",
-        "sentence": "What is the function of this button?",
-        "sentenceZh": "這個按鈕的功能是什麼？",
-        "otherForms": "functions (複數/三單), functioned (過去/過去分詞), functioning (現在分詞)"
-    },
-    {
-        "word": "huge",
-        "meaning": "巨大的",
-        "theme": "形容詞(反意)",
-        "sentence": "They bought a huge TV for the living room.",
-        "sentenceZh": "他們買了一台巨大的電視放在客廳。",
-        "otherForms": "huger (比較級), hugest (最高級)"
-    },
-    {
-        "word": "interested",
-        "meaning": "感興趣的",
-        "theme": "情緒動詞",
-        "sentence": "I am very interested in learning English.",
-        "sentenceZh": "我對學習英文非常感興趣。",
-        "otherForms": ""
-    },
-    {
-        "word": "interesting",
-        "meaning": "有趣的",
-        "theme": "情緒動詞",
-        "sentence": "This book is so interesting that I read it twice.",
-        "sentenceZh": "這本書太有趣了，我讀了兩次。",
-        "otherForms": ""
-    },
-    {
-        "word": "legal",
-        "meaning": "合法的",
-        "theme": "社會與媒體",
-        "sentence": "It is not legal to drive without a license.",
-        "sentenceZh": "無照駕駛是不合法的。",
-        "otherForms": "legally (合法地 - 副詞), illegal (反義詞 (非法的))"
-    },
-    {
-        "word": "lover",
-        "meaning": "愛人；愛好者",
-        "theme": "身分",
-        "sentence": "She is a great animal lover.",
-        "sentenceZh": "她是一個熱愛動物的人。",
-        "otherForms": "lovers (複數型)"
-    },
-    {
-        "word": "luck",
-        "meaning": "運氣",
-        "theme": "抽象概念",
-        "sentence": "Wish me luck on my test tomorrow!",
-        "sentenceZh": "祝我明天的考試好運！",
-        "otherForms": "lucky (幸運的 - 形容詞), luckily (幸運地 - 副詞)"
-    },
-    {
-        "word": "maintain",
-        "meaning": "維持；保養",
-        "theme": "狀態動作",
-        "sentence": "It's important to maintain a healthy weight.",
-        "sentenceZh": "維持健康的體重很重要。",
-        "otherForms": "maintains (三單), maintained (過去/過去分詞), maintaining (現在分詞)"
-    },
-    {
-        "word": "material",
-        "meaning": "材料；物質",
-        "theme": "雜物",
-        "sentence": "Cotton is a soft material.",
-        "sentenceZh": "棉花是一種柔軟的材料。",
-        "otherForms": "materials (複數型)"
-    },
-    {
-        "word": "media",
-        "meaning": "媒體",
-        "theme": "社會與媒體",
-        "sentence": "The news was all over the mass media.",
-        "sentenceZh": "這則新聞在各大媒體上廣為流傳。",
-        "otherForms": "medium (單數型 - 媒介)"
-    },
-    {
-        "word": "operate",
-        "meaning": "操作；運作",
-        "theme": "手部動作",
-        "sentence": "Do you know how to operate this machine?",
-        "sentenceZh": "你知道如何操作這台機器嗎？",
-        "otherForms": "operates (三單), operated (過去/過去分詞), operating (現在分詞)"
-    },
-    {
-        "word": "organ",
-        "meaning": "器官",
-        "theme": "身體部位",
-        "sentence": "The heart is an important organ in our body.",
-        "sentenceZh": "心臟是我們體內一個重要的器官。",
-        "otherForms": "organs (複數型)"
-    },
-    {
-        "word": "organization",
-        "meaning": "組織；機構",
-        "theme": "社會與媒體",
-        "sentence": "She works for a charity organization.",
-        "sentenceZh": "她在一家慈善機構工作。",
-        "otherForms": "organizations (複數型), organize (組織 - 動詞)"
-    },
-    {
-        "word": "particular",
-        "meaning": "特定的；特別的",
-        "theme": "其餘形容詞",
-        "sentence": "Is there a particular reason why you are late?",
-        "sentenceZh": "你遲到有什麼特別的原因嗎？",
-        "otherForms": "particularly (特別地 - 副詞)"
-    },
-    {
-        "word": "peanut",
-        "meaning": "花生",
-        "theme": "食物",
-        "sentence": "My little brother loves peanut butter.",
-        "sentenceZh": "我弟弟很喜歡花生醬。",
-        "otherForms": "peanuts (複數型)"
-    },
-    {
-        "word": "poet",
-        "meaning": "詩人",
-        "theme": "職業",
-        "sentence": "Li Bai is a famous poet in Chinese history.",
-        "sentenceZh": "李白是中國歷史上著名的詩人。",
-        "otherForms": "poets (複數型), poem (詩 - 名詞)"
-    },
-    {
-        "word": "pose",
-        "meaning": "擺姿勢；造成",
-        "theme": "行為動作",
-        "sentence": "Everyone posed for a group photo.",
-        "sentenceZh": "大家擺好姿勢拍了一張大合照。",
-        "otherForms": "poses (三單), posed (過去/過去分詞), posing (現在分詞)"
-    },
-    {
-        "word": "post",
-        "meaning": "張貼；郵件",
-        "theme": "社會與媒體",
-        "sentence": "She posted a picture of her dog on Facebook.",
-        "sentenceZh": "她在臉書上張貼了她愛犬的照片。",
-        "otherForms": "posts (三單), posted (過去/過去分詞), posting (現在分詞)"
-    },
-    {
-        "word": "prefer",
-        "meaning": "偏好；更喜歡",
-        "theme": "心智動作",
-        "sentence": "I prefer tea to coffee.",
-        "sentenceZh": "比起咖啡，我更喜歡茶。",
-        "otherForms": "prefers (三單), preferred (過去/過去分詞), preferring (現在分詞)"
-    },
-    {
-        "word": "pride",
-        "meaning": "驕傲；自豪",
-        "theme": "情緒",
-        "sentence": "They take pride in their school.",
-        "sentenceZh": "他們以自己的學校為榮。",
-        "otherForms": "proud (驕傲的 - 形容詞)"
-    },
-    {
-        "word": "prison",
-        "meaning": "監獄",
-        "theme": "城鎮",
-        "sentence": "The bad guy was sent to prison for ten years.",
-        "sentenceZh": "那個壞人被送進監獄十年。",
-        "otherForms": "prisons (複數型), prisoner (囚犯 - 名詞)"
-    },
-    {
         "word": "prove",
+        "pos": "v.",
         "meaning": "證明",
         "theme": "言語動作",
         "sentence": "He can prove that he was at home last night.",
@@ -17352,39 +13320,8 @@ const DICTIONARY_DATA = [
         "otherForms": "proves (三單), proved (過去式), proven (過去分詞), proving (現在分詞)"
     },
     {
-        "word": "quality",
-        "meaning": "品質",
-        "theme": "抽象概念",
-        "sentence": "This pair of shoes is of very high quality.",
-        "sentenceZh": "這雙鞋的品質非常高。",
-        "otherForms": "qualities (複數型)"
-    },
-    {
-        "word": "quantity",
-        "meaning": "數量",
-        "theme": "數量數字",
-        "sentence": "We need a large quantity of food for the party.",
-        "sentenceZh": "派對需要大量的食物。",
-        "otherForms": "quantities (複數型)"
-    },
-    {
-        "word": "range",
-        "meaning": "範圍",
-        "theme": "單位與度量",
-        "sentence": "The price range for these phones is quite wide.",
-        "sentenceZh": "這些手機的價格範圍相當廣。",
-        "otherForms": "ranges (複數)"
-    },
-    {
-        "word": "relation",
-        "meaning": "關係",
-        "theme": "抽象概念",
-        "sentence": "They have a good relation with their neighbors.",
-        "sentenceZh": "他們和鄰居關係良好。",
-        "otherForms": "relations (複數型)"
-    },
-    {
         "word": "reply",
+        "pos": "v. / n.",
         "meaning": "回覆",
         "theme": "言語動作",
         "sentence": "I sent him an email, but he hasn't replied yet.",
@@ -17393,14 +13330,4921 @@ const DICTIONARY_DATA = [
     },
     {
         "word": "require",
-        "meaning": "需要；要求",
+        "pos": "v.",
+        "meaning": "需要 / 要求",
         "theme": "言語動作",
         "sentence": "This job requires good English skills.",
         "sentenceZh": "這份工作需要良好的英文能力。",
         "otherForms": "requires (三單), required (過去/過去分詞), requiring (現在分詞)"
     },
     {
+        "word": "shout",
+        "pos": "v. / n.",
+        "meaning": "喊叫",
+        "theme": "言語動作",
+        "sentence": "Please don't shout in the library; people are reading.",
+        "sentenceZh": "請不要在圖書館大聲喊叫，人們正在看書。",
+        "otherForms": "shouts (三單), shouting (ing型), shouted (過去式/分詞)"
+    },
+    {
+        "word": "suggest",
+        "pos": "v.",
+        "meaning": "建議",
+        "theme": "言語動作",
+        "sentence": "I suggest we take a bus instead of walking in the rain.",
+        "sentenceZh": "我建議我們搭公車，而不是在雨中走路。",
+        "otherForms": "suggests (三單), suggesting (ing型), suggested (過去式/分詞)"
+    },
+    {
+        "word": "tell",
+        "pos": "v.",
+        "meaning": "告訴 / 分辨",
+        "theme": "言語動作",
+        "sentence": "Can you tell me the correct answer to this problem?",
+        "sentenceZh": "你能告訴我這個問題的正確答案嗎？",
+        "otherForms": "tells (三單), telling (ing型), told (過去式(不規則)), told (過去分詞(不規則))"
+    },
+    {
+        "word": "thank",
+        "pos": "v. / n.",
+        "meaning": "感謝",
+        "theme": "言語動作",
+        "sentence": "I want to thank you for helping me with my math homework.",
+        "sentenceZh": "我想感謝你幫我做數學作業。",
+        "otherForms": "thanks (三單/複數), thanking (ing型), thanked (過去式/分詞)"
+    },
+    {
+        "word": "yell",
+        "pos": "v. / n.",
+        "meaning": "大叫",
+        "theme": "言語動作",
+        "sentence": "The angry man yelled loudly at the driver.",
+        "sentenceZh": "生氣的男人對著司機大叫。",
+        "otherForms": "yells (三單), yelling (ing型), yelled (過去式/分詞)"
+    },
+    {
+        "word": "accept",
+        "pos": "v.",
+        "meaning": "接受",
+        "theme": "心智動作",
+        "sentence": "She happily accepted the invitation to the birthday party.",
+        "sentenceZh": "她開心地接受了生日派對的邀請。",
+        "otherForms": "accepts (三單), accepting (ing型), accepted (過去式/分詞)"
+    },
+    {
+        "word": "admire",
+        "pos": "v.",
+        "meaning": "欽佩",
+        "theme": "心智動作",
+        "sentence": "I really admire the way he plays badminton.",
+        "sentenceZh": "我真的很欽佩他打羽球的方式。",
+        "otherForms": "admires (三單), admiring (ing型(去e加ing)), admired (過去式/分詞)"
+    },
+    {
+        "word": "agree",
+        "pos": "v.",
+        "meaning": "同意",
+        "theme": "心智動作",
+        "sentence": "I completely agree with your great idea.",
+        "sentenceZh": "我完全同意你這個好主意。",
+        "otherForms": "agrees (三單), agreeing (ing型), agreed (過去式/分詞)"
+    },
+    {
+        "word": "allow",
+        "pos": "v.",
+        "meaning": "允許",
+        "theme": "心智動作",
+        "sentence": "We are not allowed to eat food in the computer room.",
+        "sentenceZh": "我們不被允許在電腦教室吃東西。",
+        "otherForms": "allows (三單), allowing (ing型), allowed (過去式/分詞)"
+    },
+    {
+        "word": "appreciate",
+        "pos": "v.",
+        "meaning": "欣賞 / 感謝",
+        "theme": "心智動作",
+        "sentence": "I really appreciate your help with the interactive game.",
+        "sentenceZh": "我真的很感謝你在互動遊戲上的幫忙。",
+        "otherForms": "appreciates (三單), appreciating (ing型(去e加ing)), appreciated (過去式/分詞)"
+    },
+    {
+        "word": "assume",
+        "pos": "v.",
+        "meaning": "假設",
+        "theme": "心智動作",
+        "sentence": "I assume you have already finished writing the sentences.",
+        "sentenceZh": "我假設你已經寫完這些句子了。",
+        "otherForms": "assumes (三單), assuming (ing型(去e加ing)), assumed (過去式/分詞)"
+    },
+    {
+        "word": "believe",
+        "pos": "v.",
+        "meaning": "相信",
+        "theme": "心智動作",
+        "sentence": "I believe that you can pass the test if you study hard.",
+        "sentenceZh": "我相信只要你努力讀書就能通過考試。",
+        "otherForms": "believes (三單), believing (ing型(去e加ing)), believed (過去式/分詞)"
+    },
+    {
+        "word": "blame",
+        "pos": "v. / n.",
+        "meaning": "責備",
+        "theme": "心智動作",
+        "sentence": "Don't blame him; it was not his fault.",
+        "sentenceZh": "別責備他，那不是他的錯。",
+        "otherForms": "blames (三單), blaming (ing型(去e加ing)), blamed (過去式/分詞)"
+    },
+    {
+        "word": "bless",
+        "pos": "v.",
+        "meaning": "祝福",
+        "theme": "心智動作",
+        "sentence": "May God bless you with good health and happiness.",
+        "sentenceZh": "願上帝賜福你健康快樂。",
+        "otherForms": "blesses (三單(加es)), blessing (ing型), blessed (過去式/分詞)"
+    },
+    {
+        "word": "choose",
+        "pos": "v.",
+        "meaning": "選擇",
+        "theme": "心智動作",
+        "sentence": "You can choose either the red pen or the blue pen.",
+        "sentenceZh": "你可以選擇紅筆或藍筆。",
+        "otherForms": "chooses (三單), choosing (ing型(去e加ing)), chose (過去式(不規則)), chosen (過去分詞(不規則))"
+    },
+    {
+        "word": "consider",
+        "pos": "v.",
+        "meaning": "考慮",
+        "theme": "心智動作",
+        "sentence": "We need to consider the weather before we go camping.",
+        "sentenceZh": "我們去露營前需要考慮天氣狀況。",
+        "otherForms": "considers (三單), considering (ing型), considered (過去式/分詞)"
+    },
+    {
+        "word": "control",
+        "pos": "v. / n.",
+        "meaning": "控制",
+        "theme": "心智動作",
+        "sentence": "You use the mouse to control the character in the game.",
+        "sentenceZh": "你用滑鼠來控制遊戲裡的角色。",
+        "otherForms": "controls (三單), controlling (ing型(重複字尾)), controlled (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "count",
+        "pos": "v. / n.",
+        "meaning": "數數 / 重要",
+        "theme": "心智動作",
+        "sentence": "Can you count from one to one hundred in English?",
+        "sentenceZh": "你能用英文從一數到一百嗎？",
+        "otherForms": "counts (三單), counting (ing型), counted (過去式/分詞)"
+    },
+    {
+        "word": "decide",
+        "pos": "v.",
+        "meaning": "決定",
+        "theme": "心智動作",
+        "sentence": "I haven't decided what I want to eat for dinner yet.",
+        "sentenceZh": "我還沒決定晚餐想吃什麼。",
+        "otherForms": "decides (三單), deciding (ing型(去e加ing)), decided (過去式/分詞)"
+    },
+    {
+        "word": "define",
+        "pos": "v.",
+        "meaning": "定義",
+        "theme": "心智動作",
+        "sentence": "Please use the dictionary to define this new vocabulary word.",
+        "sentenceZh": "請用字典來定義這個新單字。",
+        "otherForms": "defines (三單), defining (ing型(去e加ing)), defined (過去式/分詞)"
+    },
+    {
+        "word": "detect",
+        "pos": "v.",
+        "meaning": "偵測",
+        "theme": "心智動作",
+        "sentence": "The game program can detect if your spelling is correct.",
+        "sentenceZh": "遊戲程式能偵測你的拼寫是否正確。",
+        "otherForms": "detects (三單), detecting (ing型), detected (過去式/分詞)"
+    },
+    {
+        "word": "elect",
+        "pos": "v.",
+        "meaning": "選舉",
+        "theme": "心智動作",
+        "sentence": "The class voted to elect him as the new class leader.",
+        "sentenceZh": "全班投票選舉他為新班長。",
+        "otherForms": "elects (三單), electing (ing型), elected (過去式/分詞)"
+    },
+    {
+        "word": "expect",
+        "pos": "v.",
+        "meaning": "預期",
+        "theme": "心智動作",
+        "sentence": "I didn't expect the math test to be this difficult.",
+        "sentenceZh": "我沒預期數學考試會這麼難。",
+        "otherForms": "expects (三單), expecting (ing型), expected (過去式/分詞)"
+    },
+    {
+        "word": "focus",
+        "pos": "v.",
+        "meaning": "聚焦",
+        "theme": "心智動作",
+        "sentence": "You need to focus your mind on studying for the exam.",
+        "sentenceZh": "你需要把心思專注在準備考試上。",
+        "otherForms": "focuses (三單(加es)), focusing (ing型), focused (過去式/分詞)"
+    },
+    {
+        "word": "forget",
+        "pos": "v.",
+        "meaning": "忘記",
+        "theme": "心智動作",
+        "sentence": "Don't forget to bring your umbrella tomorrow morning!",
+        "sentenceZh": "明天早上別忘了帶傘！",
+        "otherForms": "forgets (三單), forgetting (ing型(重複字尾)), forgot (過去式(不規則)), forgotten (過去分詞(不規則))"
+    },
+    {
+        "word": "forgive",
+        "pos": "v.",
+        "meaning": "原諒",
+        "theme": "心智動作",
+        "sentence": "She decided to forgive him for his honest mistake.",
+        "sentenceZh": "她決定原諒他無心之過的錯誤。",
+        "otherForms": "forgives (三單), forgiving (ing型(去e加ing)), forgave (過去式(不規則)), forgiven (過去分詞(不規則))"
+    },
+    {
+        "word": "guess",
+        "pos": "v. / n.",
+        "meaning": "猜測",
+        "theme": "心智動作",
+        "sentence": "Can you guess what is inside this beautiful gift box?",
+        "sentenceZh": "你能猜到這精美禮物盒裡裝了什麼嗎？",
+        "otherForms": "guesses (三單(加es)), guessing (ing型), guessed (過去式/分詞)"
+    },
+    {
+        "word": "help",
+        "pos": "v. / n.",
+        "meaning": "幫助",
+        "theme": "心智動作",
+        "sentence": "My teacher always helps me when I don't understand the grammar.",
+        "sentenceZh": "當我不懂文法時，我的老師總是會幫助我。",
+        "otherForms": "helps (三單), helping (ing型), helped (過去式/分詞)"
+    },
+    {
+        "word": "hope",
+        "pos": "v. / n.",
+        "meaning": "希望",
+        "theme": "心智動作",
+        "sentence": "I hope the weather will be sunny for our picnic tomorrow.",
+        "sentenceZh": "我希望明天野餐的天氣會是晴朗的。",
+        "otherForms": "hopes (三單), hoping (ing型(去e加ing)), hoped (過去式/分詞)"
+    },
+    {
+        "word": "ignore",
+        "pos": "v.",
+        "meaning": "忽略",
+        "theme": "心智動作",
+        "sentence": "She tried to ignore the loud noise outside her window.",
+        "sentenceZh": "她試著忽略窗外的巨大噪音。",
+        "otherForms": "ignores (三單), ignoring (ing型(去e加ing)), ignored (過去式/分詞)"
+    },
+    {
+        "word": "imagine",
+        "pos": "v.",
+        "meaning": "想像",
+        "theme": "心智動作",
+        "sentence": "Try to imagine what the world will look like in the future.",
+        "sentenceZh": "試著想像未來的世界會是什麼樣子。",
+        "otherForms": "imagines (三單), imagining (ing型(去e加ing)), imagined (過去式/分詞)"
+    },
+    {
+        "word": "insist",
+        "pos": "v.",
+        "meaning": "堅持",
+        "theme": "心智動作",
+        "sentence": "He insisted on paying for everyone's dinner.",
+        "sentenceZh": "他堅持要付大家吃晚餐的錢。",
+        "otherForms": "insists (三單), insisting (ing型), insisted (過去式/分詞)"
+    },
+    {
+        "word": "inspire",
+        "pos": "v.",
+        "meaning": "激勵",
+        "theme": "心智動作",
+        "sentence": "His great speech inspired many students to work harder.",
+        "sentenceZh": "他精彩的演講激勵了許多學生更努力。",
+        "otherForms": "inspires (三單), inspiring (ing型(去e加ing)), inspired (過去式/分詞)"
+    },
+    {
+        "word": "judge",
+        "pos": "v. / n.",
+        "meaning": "判斷",
+        "theme": "心智動作",
+        "sentence": "You shouldn't judge a book by its cover.",
+        "sentenceZh": "你不應該以貌取人（勿以書封評斷一本書）。",
+        "otherForms": "judges (複數型), judges (三單), judging (ing型(去e加ing)), judged (過去式/分詞)"
+    },
+    {
+        "word": "know",
+        "pos": "v.",
+        "meaning": "知道",
+        "theme": "心智動作",
+        "sentence": "Do you know how to play this grammar repair game?",
+        "sentenceZh": "你知道怎麼玩這個語法修復遊戲嗎？",
+        "otherForms": "knows (三單), knowing (ing型), knew (過去式(不規則)), known (過去分詞(不規則))"
+    },
+    {
+        "word": "mind",
+        "pos": "v. / n.",
+        "meaning": "介意",
+        "theme": "心智動作",
+        "sentence": "Do you mind if I sit in this empty seat?",
+        "sentenceZh": "你介意我坐這個空位嗎？",
+        "otherForms": "minds (複數型), minds (三單), minding (ing型), minded (過去式/分詞)"
+    },
+    {
+        "word": "miss",
+        "pos": "v.",
+        "meaning": "想念 / 未擊中",
+        "theme": "心智動作",
+        "sentence": "I really miss my old friends from elementary school.",
+        "sentenceZh": "我真的很想念我小學的老朋友。",
+        "otherForms": "misses (三單(加es)), missing (ing型), missed (過去式/分詞)"
+    },
+    {
+        "word": "notice",
+        "pos": "v. / n.",
+        "meaning": "注意到",
+        "theme": "心智動作",
+        "sentence": "Did you notice his cool new shoes today?",
+        "sentenceZh": "你今天有注意到他酷炫的新鞋子嗎？",
+        "otherForms": "notices (三單), noticing (ing型(去e加ing)), noticed (過去式/分詞)"
+    },
+    {
+        "word": "obey",
+        "pos": "v.",
+        "meaning": "服從",
+        "theme": "心智動作",
+        "sentence": "Everyone must obey the traffic rules for safety.",
+        "sentenceZh": "為了安全每個人都必須遵守交通規則。",
+        "otherForms": "obeys (三單), obeying (ing型), obeyed (過去式/分詞)"
+    },
+    {
+        "word": "plan",
+        "pos": "v. / n.",
+        "meaning": "計劃",
+        "theme": "心智動作",
+        "sentence": "We plan to visit Japan during the summer vacation.",
+        "sentenceZh": "我們計畫暑假去日本玩。",
+        "otherForms": "plans (複數型), plans (三單), planning (ing型(重複字尾)), planned (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "prefer",
+        "pos": "v.",
+        "meaning": "偏好 / 更喜歡",
+        "theme": "心智動作",
+        "sentence": "I prefer tea to coffee.",
+        "sentenceZh": "比起咖啡，我更喜歡茶。",
+        "otherForms": "prefers (三單), preferred (過去/過去分詞), preferring (現在分詞)"
+    },
+    {
+        "word": "prepare",
+        "pos": "v.",
+        "meaning": "準備",
+        "theme": "心智動作",
+        "sentence": "The mother is preparing a rich dinner for her family.",
+        "sentenceZh": "媽媽正在為家人準備一頓豐盛的晚餐。",
+        "otherForms": "prepares (三單), preparing (ing型(去e加ing)), prepared (過去式/分詞)"
+    },
+    {
+        "word": "realize",
+        "pos": "v.",
+        "meaning": "意識到",
+        "theme": "心智動作",
+        "sentence": "He finally realized that he had made a big mistake.",
+        "sentenceZh": "他終於意識到他犯了一個大錯。",
+        "otherForms": "realizes (三單), realizing (ing型(去e加ing)), realized (過去式/分詞)"
+    },
+    {
+        "word": "refuse",
+        "pos": "v.",
+        "meaning": "拒絕",
+        "theme": "心智動作",
+        "sentence": "He refused to take the money because it wasn't his.",
+        "sentenceZh": "他拒絕拿那些錢因為那不是他的。",
+        "otherForms": "refuses (三單), refusing (ing型(去e加ing)), refused (過去式/分詞)"
+    },
+    {
+        "word": "reject",
+        "pos": "v.",
+        "meaning": "拒絕",
+        "theme": "心智動作",
+        "sentence": "The company rejected his design for the new game character.",
+        "sentenceZh": "公司拒絕了他對新遊戲角色的設計。",
+        "otherForms": "rejects (三單), rejecting (ing型), rejected (過去式/分詞)"
+    },
+    {
+        "word": "remember",
+        "pos": "v.",
+        "meaning": "記得",
+        "theme": "心智動作",
+        "sentence": "Do you remember the vocabulary words we learned yesterday?",
+        "sentenceZh": "你記得我們昨天學的單字嗎？",
+        "otherForms": "remembers (三單), remembering (ing型), remembered (過去式/分詞)"
+    },
+    {
+        "word": "respect",
+        "pos": "v.",
+        "meaning": "尊重",
+        "theme": "心智動作",
+        "sentence": "You should always respect your teachers and parents.",
+        "sentenceZh": "你應該永遠尊重你的老師和父母。",
+        "otherForms": "respects (三單), respecting (ing型), respected (過去式/分詞)"
+    },
+    {
+        "word": "select",
+        "pos": "v.",
+        "meaning": "選擇",
+        "theme": "心智動作",
+        "sentence": "Please select the correct answer from the list below.",
+        "sentenceZh": "請從下面的清單中選擇正確的答案。",
+        "otherForms": "selects (三單), selecting (ing型), selected (過去式/分詞)"
+    },
+    {
+        "word": "support",
+        "pos": "v.",
+        "meaning": "支持",
+        "theme": "心智動作",
+        "sentence": "A good friend will always support you when you are sad.",
+        "sentenceZh": "當你難過時，好朋友總會支持你。",
+        "otherForms": "supports (三單), supporting (ing型), supported (過去式/分詞)"
+    },
+    {
+        "word": "think",
+        "pos": "v.",
+        "meaning": "思考",
+        "theme": "心智動作",
+        "sentence": "I think this interactive game is very helpful for learning.",
+        "sentenceZh": "我覺得這個互動遊戲對學習很有幫助。",
+        "otherForms": "thinks (三單), thinking (ing型), thought (過去式(不規則)), thought (過去分詞(不規則))"
+    },
+    {
+        "word": "trust",
+        "pos": "v. / n.",
+        "meaning": "信任",
+        "theme": "心智動作",
+        "sentence": "You can trust him; he never tells lies.",
+        "sentenceZh": "你可以信任他，他從不說謊。",
+        "otherForms": "trusts (三單), trusting (ing型), trusted (過去式/分詞)"
+    },
+    {
+        "word": "try",
+        "pos": "v.",
+        "meaning": "嘗試",
+        "theme": "心智動作",
+        "sentence": "Don't give up! Just try your best to swing the racket.",
+        "sentenceZh": "別放棄！盡全力去揮拍試試看。",
+        "otherForms": "tries (三單(去y加ies)), trying (ing型), tried (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "wake",
+        "pos": "v.",
+        "meaning": "醒來",
+        "theme": "心智動作",
+        "sentence": "My alarm clock usually wakes me up at six o'clock.",
+        "sentenceZh": "我的鬧鐘通常在六點叫我醒來。",
+        "otherForms": "wakes (三單), waking (ing型(去e加ing)), woke (過去式(不規則)), woken (過去分詞(不規則))"
+    },
+    {
+        "word": "want",
+        "pos": "v.",
+        "meaning": "想要",
+        "theme": "心智動作",
+        "sentence": "I want to be an English teacher when I grow up.",
+        "sentenceZh": "我長大後想要當一名英文老師。",
+        "otherForms": "wants (三單), wanting (ing型), wanted (過去式/分詞)"
+    },
+    {
+        "word": "wish",
+        "pos": "v. / n.",
+        "meaning": "希望",
+        "theme": "心智動作",
+        "sentence": "Make a wish before you blow out the birthday candles!",
+        "sentenceZh": "吹熄生日蠟燭前先許個願吧！",
+        "otherForms": "wishes (複數型(加es)), wishes (三單(加es)), wishing (ing型), wished (過去式/分詞)"
+    },
+    {
+        "word": "wonder",
+        "pos": "v.",
+        "meaning": "想知道",
+        "theme": "心智動作",
+        "sentence": "I wonder how you can pass the test without studying.",
+        "sentenceZh": "我想知道為什麼你能沒讀書通過考試。",
+        "otherForms": "wonders (三單), wondering (ing型), wondered (過去式/分詞)"
+    },
+    {
+        "word": "affect",
+        "pos": "v.",
+        "meaning": "影響",
+        "theme": "狀態動作",
+        "sentence": "The bad weather will affect our plans to play basketball.",
+        "sentenceZh": "壞天氣將會影響我們打籃球的計畫。",
+        "otherForms": "affects (三單), affecting (ing型), affected (過去式/分詞)"
+    },
+    {
+        "word": "appear",
+        "pos": "v.",
+        "meaning": "出現",
+        "theme": "狀態動作",
+        "sentence": "A beautiful rainbow appeared in the sky after the rain.",
+        "sentenceZh": "雨後天空中出現了一道美麗的彩虹。",
+        "otherForms": "appears (三單), appearing (ing型), appeared (過去式/分詞)"
+    },
+    {
+        "word": "become",
+        "pos": "v.",
+        "meaning": "變成",
+        "theme": "狀態動作",
+        "sentence": "The little green caterpillar will become a butterfly.",
+        "sentenceZh": "綠色小毛毛蟲將會變成蝴蝶。",
+        "otherForms": "becomes (三單), becoming (ing型(去e加ing)), became (過去式(不規則)), become (過去分詞(不規則))"
+    },
+    {
+        "word": "begin",
+        "pos": "v.",
+        "meaning": "開始",
+        "theme": "狀態動作",
+        "sentence": "The English class will begin in five minutes.",
+        "sentenceZh": "英文課將在五分鐘後開始。",
+        "otherForms": "begins (三單), beginning (ing型(重複字尾)), began (過去式(不規則)), begun (過去分詞(不規則))"
+    },
+    {
+        "word": "belong",
+        "pos": "v.",
+        "meaning": "屬於",
+        "theme": "狀態動作",
+        "sentence": "This red dictionary belongs to the school library.",
+        "sentenceZh": "這本紅字典屬於學校圖書館。",
+        "otherForms": "belongs (三單), belonging (ing型), belonged (過去式/分詞)"
+    },
+    {
+        "word": "burst",
+        "pos": "v.",
+        "meaning": "爆發",
+        "theme": "狀態動作",
+        "sentence": "The balloon burst loudly when he sat on it.",
+        "sentenceZh": "當他坐上去時，氣球發出很大聲的爆破。",
+        "otherForms": "bursts (三單), bursting (ing型), burst (過去式(不規則同型)), burst (過去分詞(不規則同型))"
+    },
+    {
+        "word": "cancel",
+        "pos": "v.",
+        "meaning": "取消",
+        "theme": "狀態動作",
+        "sentence": "The school sports day was canceled because of the typhoon.",
+        "sentenceZh": "學校運動會因為颱風被取消了。",
+        "otherForms": "cancels (三單), canceling (ing型), canceled (過去式/分詞)"
+    },
+    {
+        "word": "complete",
+        "pos": "v. / adj.",
+        "meaning": "完成 / 完整的",
+        "theme": "狀態動作",
+        "sentence": "You must complete the vocabulary test by Friday.",
+        "sentenceZh": "你必須在星期五前完成單字測驗。",
+        "otherForms": "completes (三單), completing (ing型(去e加ing)), completed (過去式/分詞)"
+    },
+    {
+        "word": "continue",
+        "pos": "v.",
+        "meaning": "繼續",
+        "theme": "狀態動作",
+        "sentence": "Please continue reading the story on page twenty.",
+        "sentenceZh": "請繼續閱讀第二十頁的故事。",
+        "otherForms": "continues (三單), continuing (ing型(去e加ing)), continued (過去式/分詞)"
+    },
+    {
+        "word": "cover",
+        "pos": "n. / v.",
+        "meaning": "覆蓋",
+        "theme": "狀態動作",
+        "sentence": "Snow covered the mountains during the cold winter.",
+        "sentenceZh": "寒冬時雪覆蓋了群山。",
+        "otherForms": "covers (複數型), covers (三單), covering (ing型), covered (過去式/分詞)"
+    },
+    {
+        "word": "cut",
+        "pos": "v.",
+        "meaning": "切割",
+        "theme": "狀態動作",
+        "sentence": "She used a sharp knife to cut the birthday cake.",
+        "sentenceZh": "她用一把利刀切生日蛋糕。",
+        "otherForms": "cuts (三單), cutting (ing型(重複字尾)), cut (過去式(不規則同型)), cut (過去分詞(不規則同型))"
+    },
+    {
+        "word": "decrease",
+        "pos": "v.",
+        "meaning": "減少",
+        "theme": "狀態動作",
+        "sentence": "The number of students in the school is decreasing every year.",
+        "sentenceZh": "學校裡的學生人數每年都在減少。",
+        "otherForms": "decreases (三單), decreasing (ing型(去e加ing)), decreased (過去式/分詞)"
+    },
+    {
+        "word": "depend",
+        "pos": "v.",
+        "meaning": "依賴",
+        "theme": "狀態動作",
+        "sentence": "Our picnic tomorrow will depend on the weather.",
+        "sentenceZh": "我們明天的野餐將取決於天氣。",
+        "otherForms": "depends (三單), depending (ing型), depended (過去式/分詞)"
+    },
+    {
+        "word": "develop",
+        "pos": "v.",
+        "meaning": "發展",
+        "theme": "狀態動作",
+        "sentence": "He wants to develop a fun web game for his English class.",
+        "sentenceZh": "他想為他的英文課開發一個有趣的網頁遊戲。",
+        "otherForms": "develops (三單), developing (ing型), developed (過去式/分詞)"
+    },
+    {
+        "word": "die",
+        "pos": "v.",
+        "meaning": "死亡",
+        "theme": "狀態動作",
+        "sentence": "The plants will die if you don't give them water.",
+        "sentenceZh": "如果你不給植物澆水，它們會死亡。",
+        "otherForms": "dies (三單), dying (ing型(去ie加ying)), died (過去式/分詞)"
+    },
+    {
+        "word": "disappear",
+        "pos": "v.",
+        "meaning": "消失",
+        "theme": "狀態動作",
+        "sentence": "The sun slowly disappeared behind the high mountains.",
+        "sentenceZh": "太陽慢慢地消失在高山後方。",
+        "otherForms": "disappears (三單), disappearing (ing型), disappeared (過去式/分詞)"
+    },
+    {
+        "word": "divide",
+        "pos": "v.",
+        "meaning": "分割",
+        "theme": "狀態動作",
+        "sentence": "The teacher divided the class into four small groups.",
+        "sentenceZh": "老師把全班分成四個小組。",
+        "otherForms": "divides (三單), dividing (ing型(去e加ing)), divided (過去式/分詞)"
+    },
+    {
+        "word": "ease",
+        "pos": "v.",
+        "meaning": "緩和",
+        "theme": "狀態動作",
+        "sentence": "The medicine helped to ease the pain in his leg.",
+        "sentenceZh": "藥物幫助緩和了他腿部的疼痛。",
+        "otherForms": "eases (三單), easing (ing型(去e加ing)), eased (過去式/分詞)"
+    },
+    {
+        "word": "end",
+        "pos": "n. / v.",
+        "meaning": "結束",
+        "theme": "狀態動作",
+        "sentence": "The movie will end in about twenty minutes.",
+        "sentenceZh": "電影大約二十分鐘後會結束。",
+        "otherForms": "ends (複數型), ends (三單), ending (ing型), ended (過去式/分詞)"
+    },
+    {
+        "word": "fail",
+        "pos": "v.",
+        "meaning": "失敗",
+        "theme": "狀態動作",
+        "sentence": "If you don't review your words, you might fail the test.",
+        "sentenceZh": "如果你不複習單字，你考試可能會不及格。",
+        "otherForms": "fails (三單), failing (ing型), failed (過去式/分詞)"
+    },
+    {
+        "word": "fall",
+        "pos": "v. / n.",
+        "meaning": "掉落",
+        "theme": "狀態動作",
+        "sentence": "The beautiful red leaves fall from the trees in autumn.",
+        "sentenceZh": "美麗的紅葉在秋天從樹上掉落。",
+        "otherForms": "falls (三單), falling (ing型), fell (過去式(不規則)), fallen (過去分詞(不規則))"
+    },
+    {
+        "word": "fill",
+        "pos": "v.",
+        "meaning": "填滿",
+        "theme": "狀態動作",
+        "sentence": "Please fill this glass with cold water.",
+        "sentenceZh": "請把這個杯子裝滿冷水。",
+        "otherForms": "fills (三單), filling (ing型), filled (過去式/分詞)"
+    },
+    {
+        "word": "finish",
+        "pos": "v.",
+        "meaning": "完成",
+        "theme": "狀態動作",
+        "sentence": "He finished his math homework before dinner time.",
+        "sentenceZh": "他在晚餐時間前完成了數學作業。",
+        "otherForms": "finishes (三單(加es)), finishing (ing型), finished (過去式/分詞)"
+    },
+    {
+        "word": "fit",
+        "pos": "v.",
+        "meaning": "適合",
+        "theme": "狀態動作",
+        "sentence": "These old shoes are too small; they don't fit me anymore.",
+        "sentenceZh": "這些舊鞋太小了，它們不再適合我了。",
+        "otherForms": "fits (三單), fitting (ing型(重複字尾)), fit/fitted (過去式/分詞(不規則))"
+    },
+    {
+        "word": "flash",
+        "pos": "v. / n.",
+        "meaning": "閃光 / 閃爍",
+        "theme": "狀態動作",
+        "sentence": "Did you see a flash of lightning?",
+        "sentenceZh": "你有看到閃電的閃光嗎？",
+        "otherForms": "flashes (複數/三單), flashed (過去/過去分詞), flashing (現在分詞)"
+    },
+    {
+        "word": "form",
+        "pos": "n. / v.",
+        "meaning": "形成",
+        "theme": "狀態動作",
+        "sentence": "The dark clouds began to form a huge storm.",
+        "sentenceZh": "烏雲開始形成一場巨大的暴風雨。",
+        "otherForms": "forms (複數型), forms (三單), forming (ing型), formed (過去式/分詞)"
+    },
+    {
+        "word": "gain",
+        "pos": "v.",
+        "meaning": "增加",
+        "theme": "狀態動作",
+        "sentence": "Eating too much fast food will make you gain weight.",
+        "sentenceZh": "吃太多速食會讓你增加體重（變胖）。",
+        "otherForms": "gains (三單), gaining (ing型), gained (過去式/分詞)"
+    },
+    {
+        "word": "get",
+        "pos": "v.",
+        "meaning": "得到",
+        "theme": "狀態動作",
+        "sentence": "I got a perfect score on my English grammar test!",
+        "sentenceZh": "我的英文文法考試得到了滿分！",
+        "otherForms": "gets (三單), getting (ing型(重複字尾)), got (過去式(不規則)), gotten/got (過去分詞(不規則))"
+    },
+    {
+        "word": "grow",
+        "pos": "v.",
+        "meaning": "成長 / 生長",
+        "theme": "狀態動作",
+        "sentence": "Trees need sunlight and water to grow tall and strong.",
+        "sentenceZh": "樹木需要陽光和水分才能長得高大強壯。",
+        "otherForms": "grows (三單), growing (ing型), grew (過去式(不規則)), grown (過去分詞(不規則))"
+    },
+    {
+        "word": "happen",
+        "pos": "v.",
+        "meaning": "發生",
+        "theme": "狀態動作",
+        "sentence": "I don't know what happened to my computer screen.",
+        "sentenceZh": "我不知道我的電腦螢幕發生了什麼事。",
+        "otherForms": "happens (三單), happening (ing型), happened (過去式/分詞)"
+    },
+    {
+        "word": "hurry",
+        "pos": "v.",
+        "meaning": "匆忙",
+        "theme": "狀態動作",
+        "sentence": "We must hurry up, or we will miss the train!",
+        "sentenceZh": "我們必須快一點，否則會錯過火車！",
+        "otherForms": "hurries (三單(去y加ies)), hurrying (ing型), hurried (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "improve",
+        "pos": "v.",
+        "meaning": "改善",
+        "theme": "狀態動作",
+        "sentence": "Reading every day is a good way to improve your English.",
+        "sentenceZh": "每天閱讀是改善英文的好方法。",
+        "otherForms": "improves (三單), improving (ing型(去e加ing)), improved (過去式/分詞)"
+    },
+    {
+        "word": "increase",
+        "pos": "v.",
+        "meaning": "增加",
+        "theme": "狀態動作",
+        "sentence": "The price of fresh vegetables increased after the typhoon.",
+        "sentenceZh": "颱風過後新鮮蔬菜的價格增加了。",
+        "otherForms": "increases (三單), increasing (ing型(去e加ing)), increased (過去式/分詞)"
+    },
+    {
+        "word": "indicate",
+        "pos": "v.",
+        "meaning": "指出 / 暗示",
+        "theme": "狀態動作",
+        "sentence": "The sign indicates that you should turn left here.",
+        "sentenceZh": "標誌指出你應該在這裡左轉。",
+        "otherForms": "indicates (三單), indicating (ing型(去e加ing)), indicated (過去式/分詞)"
+    },
+    {
+        "word": "keep",
+        "pos": "v.",
+        "meaning": "保持",
+        "theme": "狀態動作",
+        "sentence": "Please keep quiet while taking the final exam.",
+        "sentenceZh": "考期末考時請保持安靜。",
+        "otherForms": "keeps (三單), keeping (ing型), kept (過去式(不規則)), kept (過去分詞(不規則))"
+    },
+    {
+        "word": "live",
+        "pos": "v.",
+        "meaning": "居住 / 生活",
+        "theme": "狀態動作",
+        "sentence": "My grandparents live in a quiet town in Yunlin County.",
+        "sentenceZh": "我祖父母住在雲林縣一個安靜的城鎮。",
+        "otherForms": "lives (三單), living (ing型(去e加ing)), lived (過去式/分詞)"
+    },
+    {
+        "word": "lose",
+        "pos": "v.",
+        "meaning": "輸掉 / 失去",
+        "theme": "狀態動作",
+        "sentence": "The team felt sad because they lost the final game.",
+        "sentenceZh": "隊伍感到難過因為他們輸了最後一場比賽。",
+        "otherForms": "loses (三單), losing (ing型(去e加ing)), lost (過去式(不規則)), lost (過去分詞(不規則))"
+    },
+    {
+        "word": "maintain",
+        "pos": "v.",
+        "meaning": "維持 / 保養",
+        "theme": "狀態動作",
+        "sentence": "It's important to maintain a healthy weight.",
+        "sentenceZh": "維持健康的體重很重要。",
+        "otherForms": "maintains (三單), maintained (過去/過去分詞), maintaining (現在分詞)"
+    },
+    {
+        "word": "match",
+        "pos": "v. / n.",
+        "meaning": "匹配",
+        "theme": "狀態動作",
+        "sentence": "Please match the English words with their Chinese meanings.",
+        "sentenceZh": "請把英文單字和它們的中文意思配對。",
+        "otherForms": "matches (複數型(加es)), matches (三單(加es)), matching (ing型), matched (過去式/分詞)"
+    },
+    {
+        "word": "mean",
+        "pos": "v.",
+        "meaning": "意思是",
+        "theme": "狀態動作",
+        "sentence": "What does this difficult vocabulary word mean?",
+        "sentenceZh": "這個困難的單字是什麼意思？",
+        "otherForms": "means (三單), meaning (ing型), meant (過去式(不規則)), meant (過去分詞(不規則))"
+    },
+    {
+        "word": "need",
+        "pos": "v. / n.",
+        "meaning": "需要",
+        "theme": "狀態動作",
+        "sentence": "You need a good racket to play badminton well.",
+        "sentenceZh": "你需要一把好球拍才能把羽球打好。",
+        "otherForms": "needs (複數型), needs (三單), needing (ing型), needed (過去式/分詞)"
+    },
+    {
+        "word": "own",
+        "pos": "v. / adj.",
+        "meaning": "擁有",
+        "theme": "狀態動作",
+        "sentence": "I finally have my very own cell phone.",
+        "sentenceZh": "我終於擁有了我自己專屬的手機。",
+        "otherForms": "owns (三單), owning (ing型), owned (過去式/分詞)"
+    },
+    {
+        "word": "pause",
+        "pos": "v.",
+        "meaning": "暫停",
+        "theme": "狀態動作",
+        "sentence": "Please pause the video so I can copy the sentence.",
+        "sentenceZh": "請暫停影片讓我能抄寫這個句子。",
+        "otherForms": "pauses (複數型), pauses (三單), pausing (ing型(去e加ing)), paused (過去式/分詞)"
+    },
+    {
+        "word": "pop",
+        "pos": "v.",
+        "meaning": "突然出現",
+        "theme": "狀態動作",
+        "sentence": "The balloon popped suddenly and scared the baby.",
+        "sentenceZh": "氣球突然爆破嚇到了小嬰兒。",
+        "otherForms": "pops (三單), popping (ing型(重複字尾)), popped (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "raise",
+        "pos": "v.",
+        "meaning": "提高 / 撫養",
+        "theme": "狀態動作",
+        "sentence": "Please raise your hand if you know the correct answer.",
+        "sentenceZh": "如果你知道正確答案請舉手。",
+        "otherForms": "raises (三單), raising (ing型(去e加ing)), raised (過去式/分詞)"
+    },
+    {
+        "word": "rest",
+        "pos": "v. / n.",
+        "meaning": "休息",
+        "theme": "狀態動作",
+        "sentence": "You look tired; you should go home and rest.",
+        "sentenceZh": "你看起來很累，你應該回家休息。",
+        "otherForms": "rests (複數型), rests (三單), resting (ing型), rested (過去式/分詞)"
+    },
+    {
+        "word": "return",
+        "pos": "v.",
+        "meaning": "歸還",
+        "theme": "狀態動作",
+        "sentence": "Don't forget to return the books to the library tomorrow.",
+        "sentenceZh": "記得明天要把書歸還給圖書館。",
+        "otherForms": "returns (三單), returning (ing型), returned (過去式/分詞)"
+    },
+    {
+        "word": "rise",
+        "pos": "v.",
+        "meaning": "上升",
+        "theme": "狀態動作",
+        "sentence": "The sun rises in the east every morning.",
+        "sentenceZh": "太陽每天早上從東方升起。",
+        "otherForms": "rises (三單), rising (ing型(去e加ing)), rose (過去式(不規則)), risen (過去分詞(不規則))"
+    },
+    {
+        "word": "roll",
+        "pos": "v.",
+        "meaning": "滾動",
+        "theme": "狀態動作",
+        "sentence": "The ball rolled slowly across the classroom floor.",
+        "sentenceZh": "球緩慢地滾過教室地板。",
+        "otherForms": "rolls (三單), rolling (ing型), rolled (過去式/分詞)"
+    },
+    {
+        "word": "ruin",
+        "pos": "v.",
+        "meaning": "毀滅",
+        "theme": "狀態動作",
+        "sentence": "The heavy rain ruined our plans for an outdoor barbecue.",
+        "sentenceZh": "大雨毀了我們戶外烤肉的計畫。",
+        "otherForms": "ruins (三單), ruining (ing型), ruined (過去式/分詞)"
+    },
+    {
+        "word": "rush",
+        "pos": "v.",
+        "meaning": "趕緊",
+        "theme": "狀態動作",
+        "sentence": "He had to rush to the station to catch his train.",
+        "sentenceZh": "他必須趕去車站搭火車。",
+        "otherForms": "rushes (三單(加es)), rushing (ing型), rushed (過去式/分詞)"
+    },
+    {
+        "word": "seem",
+        "pos": "v.",
+        "meaning": "似乎",
+        "theme": "狀態動作",
+        "sentence": "The grammar rule seems difficult, but it's actually easy.",
+        "sentenceZh": "這個文法規則似乎很難，但其實很簡單。",
+        "otherForms": "seems (三單), seeming (ing型), seemed (過去式/分詞)"
+    },
+    {
+        "word": "shake",
+        "pos": "v.",
+        "meaning": "搖動",
+        "theme": "狀態動作",
+        "sentence": "The dog shook its body to get dry after a bath.",
+        "sentenceZh": "狗洗澡後搖動身體把水弄乾。",
+        "otherForms": "shakes (三單), shaking (ing型(去e加ing)), shook (過去式(不規則)), shaken (過去分詞(不規則))"
+    },
+    {
+        "word": "start",
+        "pos": "v.",
+        "meaning": "開始",
+        "theme": "狀態動作",
+        "sentence": "The exciting movie will start in five minutes.",
+        "sentenceZh": "刺激的電影將在五分鐘後開始。",
+        "otherForms": "starts (三單), starting (ing型), started (過去式/分詞)"
+    },
+    {
+        "word": "stay",
+        "pos": "v.",
+        "meaning": "停留",
+        "theme": "狀態動作",
+        "sentence": "You should stay home and rest if you have a fever.",
+        "sentenceZh": "如果你發燒了就應該留在家裡休息。",
+        "otherForms": "stays (三單), staying (ing型), stayed (過去式/分詞)"
+    },
+    {
+        "word": "stop",
+        "pos": "v. / n.",
+        "meaning": "停止",
+        "theme": "狀態動作",
+        "sentence": "The bus driver stopped the bus at the red light.",
+        "sentenceZh": "公車司機在紅燈時把公車停了下來。",
+        "otherForms": "stops (三單), stopping (ing型(重複字尾)), stopped (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "succeed",
+        "pos": "v.",
+        "meaning": "成功",
+        "theme": "狀態動作",
+        "sentence": "If you practice every day, you will succeed in learning English.",
+        "sentenceZh": "如果你每天練習，你在學習英文上一定會成功。",
+        "otherForms": "succeeds (三單), succeeding (ing型), succeeded (過去式/分詞)"
+    },
+    {
+        "word": "survive",
+        "pos": "v.",
+        "meaning": "生存",
+        "theme": "狀態動作",
+        "sentence": "Camels can survive in the hot desert with very little water.",
+        "sentenceZh": "駱駝能在極少水分的炎熱沙漠中生存。",
+        "otherForms": "survives (三單), surviving (ing型(去e加ing)), survived (過去式/分詞)"
+    },
+    {
+        "word": "wear",
+        "pos": "v.",
+        "meaning": "穿著",
+        "theme": "狀態動作",
+        "sentence": "Students must wear their uniforms to school on Monday.",
+        "sentenceZh": "學生星期一必須穿制服上學。",
+        "otherForms": "wears (三單), wearing (ing型), wore (過去式(不規則)), worn (過去分詞(不規則))"
+    },
+    {
+        "word": "win",
+        "pos": "v.",
+        "meaning": "贏",
+        "theme": "狀態動作",
+        "sentence": "Our school team won the gold medal in the badminton race.",
+        "sentenceZh": "我們校隊在羽球競賽中贏得了金牌。",
+        "otherForms": "wins (複數型/ 三單), winning (ing型(重複字尾)), won (過去/ 過去分詞(不規則))"
+    },
+    {
+        "word": "act",
+        "pos": "v. / n.",
+        "meaning": "表演 / 行動",
+        "theme": "行為動作",
+        "sentence": "He acted like a brave hero in the school play.",
+        "sentenceZh": "他在學校話劇中扮演了一名勇敢的英雄。",
+        "otherForms": "acts (複數型), acts (三單), acting (ing型), acted (過去式/分詞)"
+    },
+    {
+        "word": "add",
+        "pos": "v.",
+        "meaning": "增加",
+        "theme": "行為動作",
+        "sentence": "You can add some sugar to your coffee if it is too bitter.",
+        "sentenceZh": "如果咖啡太苦，你可以加一點糖。",
+        "otherForms": "adds (三單), adding (ing型), added (過去式/分詞)"
+    },
+    {
+        "word": "arrange",
+        "pos": "v.",
+        "meaning": "安排",
+        "theme": "行為動作",
+        "sentence": "The teacher arranged the desks in a big circle.",
+        "sentenceZh": "老師把書桌安排成一個大圓圈。",
+        "otherForms": "arranges (三單), arranging (ing型(去e加ing)), arranged (過去式/分詞)"
+    },
+    {
+        "word": "attack",
+        "pos": "v.",
+        "meaning": "攻擊",
+        "theme": "行為動作",
+        "sentence": "The fierce tiger suddenly attacked the small animal.",
+        "sentenceZh": "兇猛的老虎突然攻擊了那隻小動物。",
+        "otherForms": "attacks (複數型), attacks (三單), attacking (ing型), attacked (過去式/分詞)"
+    },
+    {
+        "word": "avoid",
+        "pos": "v.",
+        "meaning": "避免",
+        "theme": "行為動作",
+        "sentence": "You should try to avoid making the same mistake twice.",
+        "sentenceZh": "你應該盡量避免犯兩次同樣的錯誤。",
+        "otherForms": "avoids (三單), avoiding (ing型), avoided (過去式/分詞)"
+    },
+    {
+        "word": "bake",
+        "pos": "v.",
+        "meaning": "烘烤",
+        "theme": "行為動作",
+        "sentence": "My grandmother is baking a chocolate cake in the kitchen.",
+        "sentenceZh": "我奶奶正在廚房烤巧克力蛋糕。",
+        "otherForms": "bakes (三單), baking (ing型(去e加ing)), baked (過去式/分詞)"
+    },
+    {
+        "word": "bathe",
+        "pos": "v.",
+        "meaning": "洗澡",
+        "theme": "行為動作",
+        "sentence": "I usually bathe my dog on Sunday morning.",
+        "sentenceZh": "我通常在星期日早上幫我的狗洗澡。",
+        "otherForms": "bathes (三單), bathing (ing型(去e加ing)), bathed (過去式/分詞)"
+    },
+    {
+        "word": "boil",
+        "pos": "v.",
+        "meaning": "煮沸",
+        "theme": "行為動作",
+        "sentence": "The water will boil when the temperature reaches 100 degrees.",
+        "sentenceZh": "當溫度達到 100 度時水就會沸騰。",
+        "otherForms": "boils (三單), boiling (ing型), boiled (過去式/分詞)"
+    },
+    {
+        "word": "bow",
+        "pos": "v.",
+        "meaning": "鞠躬",
+        "theme": "行為動作",
+        "sentence": "The students bowed to say thank you to the teacher.",
+        "sentenceZh": "學生們鞠躬向老師說謝謝。",
+        "otherForms": "bows (複數型), bows (三單), bowing (ing型), bowed (過去式/分詞)"
+    },
+    {
+        "word": "break",
+        "pos": "v.",
+        "meaning": "打破",
+        "theme": "行為動作",
+        "sentence": "Be careful, don't break that expensive glass!",
+        "sentenceZh": "小心，別打破那個昂貴的玻璃杯！",
+        "otherForms": "breaks (三單), breaking (ing型), broke (過去式(不規則)), broken (過去分詞(不規則))"
+    },
+    {
+        "word": "bring",
+        "pos": "v.",
+        "meaning": "帶來",
+        "theme": "行為動作",
+        "sentence": "Remember to bring your English textbook to class tomorrow.",
+        "sentenceZh": "記得明天帶你的英文課本來上課。",
+        "otherForms": "brings (三單), bringing (ing型), brought (過去式(不規則)), brought (過去分詞(不規則))"
+    },
+    {
+        "word": "broadcast",
+        "pos": "v.",
+        "meaning": "廣播",
+        "theme": "行為動作",
+        "sentence": "The news was broadcast on television last night.",
+        "sentenceZh": "昨晚電視廣播了這則新聞。",
+        "otherForms": "broadcasts (三單), broadcasting (ing型), broadcast (過去式/分詞(不規則同型))"
+    },
+    {
+        "word": "burn",
+        "pos": "v.",
+        "meaning": "燒焦",
+        "theme": "行為動作",
+        "sentence": "He cooked the meat too long, and it started to burn.",
+        "sentenceZh": "他把肉煮太久，它開始燒焦了。",
+        "otherForms": "burns (三單), burning (ing型), burned/burnt (過去式/分詞(不規則))"
+    },
+    {
+        "word": "call",
+        "pos": "v. / n.",
+        "meaning": "打電話 / 呼叫",
+        "theme": "行為動作",
+        "sentence": "I will call my mother when I arrive at the station.",
+        "sentenceZh": "我到車站時會打電話給我媽媽。",
+        "otherForms": "calls (複數型), calls (三單), calling (ing型), called (過去式/分詞)"
+    },
+    {
+        "word": "carry",
+        "pos": "v.",
+        "meaning": "攜帶",
+        "theme": "行為動作",
+        "sentence": "Can you help me carry these heavy boxes to the classroom?",
+        "sentenceZh": "你能幫我把這些重箱子搬去教室嗎？",
+        "otherForms": "carries (三單(去y加ies)), carrying (ing型), carried (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "check",
+        "pos": "v. / n.",
+        "meaning": "檢查",
+        "theme": "行為動作",
+        "sentence": "Please check your answers carefully before handing in the test.",
+        "sentenceZh": "交卷前請仔細檢查你的答案。",
+        "otherForms": "checks (三單), checking (ing型), checked (過去式/分詞)"
+    },
+    {
+        "word": "close",
+        "pos": "v. / adj.",
+        "meaning": "關閉",
+        "theme": "行為動作",
+        "sentence": "Please close the window because it is raining outside.",
+        "sentenceZh": "外面在下雨，請把窗戶關上。",
+        "otherForms": "closes (三單), closing (ing型(去e加ing)), closed (過去式/分詞)"
+    },
+    {
+        "word": "collect",
+        "pos": "v.",
+        "meaning": "收集",
+        "theme": "行為動作",
+        "sentence": "She likes to collect beautiful stamps from different countries.",
+        "sentenceZh": "她喜歡收集不同國家的美麗郵票。",
+        "otherForms": "collects (三單), collecting (ing型), collected (過去式/分詞)"
+    },
+    {
+        "word": "contact",
+        "pos": "v. / n.",
+        "meaning": "接觸 / 聯絡",
+        "theme": "行為動作",
+        "sentence": "Please contact me if you have any questions.",
+        "sentenceZh": "如果你有任何問題，請聯絡我。",
+        "otherForms": "contacts (三單), contacted (過去/過去分詞), contacting (現在分詞)"
+    },
+    {
+        "word": "cook",
+        "pos": "v.",
+        "meaning": "烹調",
+        "theme": "行為動作",
+        "sentence": "My dad is going to cook dinner for us tonight.",
+        "sentenceZh": "我爸爸今晚要煮晚餐給我們吃。",
+        "otherForms": "cooks (三單), cooking (ing型), cooked (過去式/分詞)"
+    },
+    {
+        "word": "copy",
+        "pos": "n. / v.",
+        "meaning": "複製 / 複製品",
+        "theme": "行為動作",
+        "sentence": "Do not copy answers from your classmates during the exam.",
+        "sentenceZh": "考試時不要抄襲同學的答案。",
+        "otherForms": "copies (複數型(去y加ies)), copies (三單(去y加ies)), copying (ing型), copied (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "correct",
+        "pos": "v. / adj.",
+        "meaning": "改正 / 正確的",
+        "theme": "行為動作",
+        "sentence": "The teacher used a red pen to correct my spelling mistakes.",
+        "sentenceZh": "老師用紅筆改正了我的拼字錯誤。",
+        "otherForms": "corrects (三單), correcting (ing型), corrected (過去式/分詞)"
+    },
+    {
+        "word": "create",
+        "pos": "v.",
+        "meaning": "創造",
+        "theme": "行為動作",
+        "sentence": "He wants to create an interactive game to help students learn.",
+        "sentenceZh": "他想創造一個互動遊戲來幫助學生學習。",
+        "otherForms": "creates (三單), creating (ing型(去e加ing)), created (過去式/分詞)"
+    },
+    {
+        "word": "date",
+        "pos": "v. / n.",
+        "meaning": "約會 / 日期",
+        "theme": "行為動作",
+        "sentence": "The couple has been dating for two years.",
+        "sentenceZh": "這對情侶已經約會兩年了。",
+        "otherForms": "dates (複數型), dates (三單), dating (ing型(去e加ing)), dated (過去式/分詞)"
+    },
+    {
+        "word": "deal",
+        "pos": "v.",
+        "meaning": "處理",
+        "theme": "行為動作",
+        "sentence": "It is difficult to deal with a problem when you are angry.",
+        "sentenceZh": "當你在生氣時是很難處理問題的。",
+        "otherForms": "deals (三單), dealing (ing型), dealt (過去式(不規則)), dealt (過去分詞(不規則))"
+    },
+    {
+        "word": "deliver",
+        "pos": "v.",
+        "meaning": "遞送",
+        "theme": "行為動作",
+        "sentence": "The mailman delivered a package to our house this morning.",
+        "sentenceZh": "郵差今天早上遞送了一個包裹到我們家。",
+        "otherForms": "delivers (三單), delivering (ing型), delivered (過去式/分詞)"
+    },
+    {
+        "word": "direct",
+        "pos": "v. / adj.",
+        "meaning": "指導 / 直接的",
+        "theme": "行為動作",
+        "sentence": "The police officer directed the traffic during the rush hour.",
+        "sentenceZh": "警察在尖峰時間指揮交通。",
+        "otherForms": "directs (三單), directing (ing型), directed (過去式/分詞)"
+    },
+    {
+        "word": "discover",
+        "pos": "v.",
+        "meaning": "發現",
+        "theme": "行為動作",
+        "sentence": "The scientist discovered a new type of insect in the forest.",
+        "sentenceZh": "科學家在森林裡發現了一種新型昆蟲。",
+        "otherForms": "discovers (三單), discovering (ing型), discovered (過去式/分詞)"
+    },
+    {
+        "word": "download",
+        "pos": "v.",
+        "meaning": "下載",
+        "theme": "行為動作",
+        "sentence": "You can download the vocabulary app to your cell phone.",
+        "sentenceZh": "你可以把單字應用程式下載到你的手機裡。",
+        "otherForms": "downloads (複數型), downloads (三單), downloading (ing型), downloaded (過去式/分詞)"
+    },
+    {
+        "word": "drop",
+        "pos": "v. / n.",
+        "meaning": "掉落",
+        "theme": "行為動作",
+        "sentence": "I accidentally dropped my pen on the floor.",
+        "sentenceZh": "我不小心把筆掉到地上了。",
+        "otherForms": "drops (三單), dropping (ing型(重複字尾)), dropped (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "emphasize",
+        "pos": "v.",
+        "meaning": "強調",
+        "theme": "行為動作",
+        "sentence": "The teacher emphasized the importance of the grammar rules.",
+        "sentenceZh": "老師強調了文法規則的重要性。",
+        "otherForms": "emphasizes (三單), emphasizing (ing型(去e加ing)), emphasized (過去式/分詞)"
+    },
+    {
+        "word": "employ",
+        "pos": "v.",
+        "meaning": "雇用",
+        "theme": "行為動作",
+        "sentence": "The company plans to employ more engineers this year.",
+        "sentenceZh": "公司計畫今年雇用更多工程師。",
+        "otherForms": "employs (三單), employing (ing型), employed (過去式/分詞)"
+    },
+    {
+        "word": "feed",
+        "pos": "v.",
+        "meaning": "餵食",
+        "theme": "行為動作",
+        "sentence": "Don't forget to feed the cat before you go to school.",
+        "sentenceZh": "去上學前別忘了餵貓。",
+        "otherForms": "feeds (三單), feeding (ing型), fed (過去式(不規則)), fed (過去分詞(不規則))"
+    },
+    {
+        "word": "fight",
+        "pos": "v. / n.",
+        "meaning": "打架",
+        "theme": "行為動作",
+        "sentence": "Good students should solve problems calmly, not by fighting.",
+        "sentenceZh": "好學生應該冷靜解決問題，而不是靠打架。",
+        "otherForms": "fights (三單), fighting (ing型), fought (過去式(不規則)), fought (過去分詞(不規則))"
+    },
+    {
+        "word": "find",
+        "pos": "v.",
+        "meaning": "找到",
+        "theme": "行為動作",
+        "sentence": "I cannot find my keys anywhere in the room.",
+        "sentenceZh": "我在房間裡到處都找不到我的鑰匙。",
+        "otherForms": "finds (三單), finding (ing型), found (過去式(不規則)), found (過去分詞(不規則))"
+    },
+    {
+        "word": "force",
+        "pos": "n. / v.",
+        "meaning": "力量 / 強迫",
+        "theme": "行為動作",
+        "sentence": "You can't force her to do something she hates.",
+        "sentenceZh": "你不能強迫她做她討厭的事。",
+        "otherForms": "forces (複數/三單), forced (過去/過去分詞), forcing (現在分詞)"
+    },
+    {
+        "word": "fry",
+        "pos": "v.",
+        "meaning": "油炸",
+        "theme": "行為動作",
+        "sentence": "We are going to fry some chicken for dinner.",
+        "sentenceZh": "我們晚餐打算炸一些雞肉。",
+        "otherForms": "fries (三單(去y加ies)), frying (ing型), fried (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "gather",
+        "pos": "v.",
+        "meaning": "聚集",
+        "theme": "行為動作",
+        "sentence": "The students gathered in the gym to hear the principal's speech.",
+        "sentenceZh": "學生們聚集在體育館聽校長演講。",
+        "otherForms": "gathers (三單), gathering (ing型), gathered (過去式/分詞)"
+    },
+    {
+        "word": "guide",
+        "pos": "n. / v.",
+        "meaning": "引導",
+        "theme": "行為動作",
+        "sentence": "The map will guide you to the famous old temple.",
+        "sentenceZh": "地圖會引導你前往那座著名的古廟。",
+        "otherForms": "guides (三單), guiding (ing型(去e加ing)), guided (過去式/分詞)"
+    },
+    {
+        "word": "handle",
+        "pos": "v.",
+        "meaning": "處理",
+        "theme": "行為動作",
+        "sentence": "She is very calm and knows how to handle difficult problems.",
+        "sentenceZh": "她非常冷靜，知道如何處理困難的問題。",
+        "otherForms": "handles (三單), handling (ing型(去e加ing)), handled (過去式/分詞)"
+    },
+    {
+        "word": "hang",
+        "pos": "v.",
+        "meaning": "懸掛",
+        "theme": "行為動作",
+        "sentence": "Please hang your wet raincoat by the door.",
+        "sentenceZh": "請把濕雨衣掛在門邊。",
+        "otherForms": "hangs (三單), hanging (ing型), hung (過去式(不規則)), hung (過去分詞(不規則))"
+    },
+    {
+        "word": "hide",
+        "pos": "v.",
+        "meaning": "隱藏",
+        "theme": "行為動作",
+        "sentence": "The scared little mouse tried to hide under the sofa.",
+        "sentenceZh": "害怕的小老鼠試圖躲在沙發底下。",
+        "otherForms": "hides (三單), hiding (ing型(去e加ing)), hid (過去式(不規則)), hidden (過去分詞(不規則))"
+    },
+    {
+        "word": "hire",
+        "pos": "v.",
+        "meaning": "雇用",
+        "theme": "行為動作",
+        "sentence": "The restaurant needs to hire a new cook for the weekend.",
+        "sentenceZh": "餐廳週末需要雇用一位新廚師。",
+        "otherForms": "hires (三單), hiring (ing型(去e加ing)), hired (過去式/分詞)"
+    },
+    {
+        "word": "hunt",
+        "pos": "v.",
+        "meaning": "狩獵",
+        "theme": "行為動作",
+        "sentence": "In the past, people had to hunt wild animals for food.",
+        "sentenceZh": "過去，人們必須狩獵野生動物來獲取食物。",
+        "otherForms": "hunts (三單), hunting (ing型), hunted (過去式/分詞)"
+    },
+    {
+        "word": "hurt",
+        "pos": "v. / n.",
+        "meaning": "傷害",
+        "theme": "行為動作",
+        "sentence": "He hurt his leg badly when he fell off his bike.",
+        "sentenceZh": "他從腳踏車上摔下來時嚴重摔傷了腿。",
+        "otherForms": "hurts (三單), hurting (ing型), hurt (過去式(不規則同型)), hurt (過去分詞(不規則同型))"
+    },
+    {
+        "word": "include",
+        "pos": "v.",
+        "meaning": "包含",
+        "theme": "行為動作",
+        "sentence": "The meal price includes a bowl of soup and a drink.",
+        "sentenceZh": "套餐價格包含了一碗湯和一杯飲料。",
+        "otherForms": "includes (三單), including (ing型(去e加ing)), included (過去式/分詞)"
+    },
+    {
+        "word": "interrupt",
+        "pos": "v.",
+        "meaning": "打斷",
+        "theme": "行為動作",
+        "sentence": "It is impolite to interrupt someone when they are speaking.",
+        "sentenceZh": "打斷別人說話是不禮貌的。",
+        "otherForms": "interrupts (三單), interrupting (ing型), interrupted (過去式/分詞)"
+    },
+    {
+        "word": "invent",
+        "pos": "v.",
+        "meaning": "發明",
+        "theme": "行為動作",
+        "sentence": "Thomas Edison invented the light bulb many years ago.",
+        "sentenceZh": "湯瑪斯·愛迪生許多年前發明了電燈泡。",
+        "otherForms": "invents (三單), inventing (ing型), invented (過去式/分詞)"
+    },
+    {
+        "word": "invite",
+        "pos": "v.",
+        "meaning": "邀請",
+        "theme": "行為動作",
+        "sentence": "I will invite all my friends to my birthday party.",
+        "sentenceZh": "我會邀請我所有的朋友來參加我的生日派對。",
+        "otherForms": "invites (三單), inviting (ing型(去e加ing)), invited (過去式/分詞)"
+    },
+    {
+        "word": "iron",
+        "pos": "v. / n.",
+        "meaning": "熨燙 / 鐵",
+        "theme": "行為動作",
+        "sentence": "My mother is ironing my school uniform to make it neat.",
+        "sentenceZh": "我媽媽正在熨燙我的學校制服讓它變平整。",
+        "otherForms": "irons (複數型), irons (三單), ironing (ing型), ironed (過去式/分詞)"
+    },
+    {
+        "word": "join",
+        "pos": "v.",
+        "meaning": "加入",
+        "theme": "行為動作",
+        "sentence": "Would you like to join our badminton club this semester?",
+        "sentenceZh": "你這學期想加入我們的羽球社嗎？",
+        "otherForms": "joins (三單), joining (ing型), joined (過去式/分詞)"
+    },
+    {
+        "word": "kill",
+        "pos": "v.",
+        "meaning": "殺死",
+        "theme": "行為動作",
+        "sentence": "It is illegal to kill wild animals in this national park.",
+        "sentenceZh": "在這個國家公園裡殺死野生動物是違法的。",
+        "otherForms": "kills (三單), killing (ing型), killed (過去式/分詞)"
+    },
+    {
+        "word": "lead",
+        "pos": "v.",
+        "meaning": "領導",
+        "theme": "行為動作",
+        "sentence": "The class leader will lead the students to the gym.",
+        "sentenceZh": "班長將帶領學生們前往體育館。",
+        "otherForms": "leads (三單), leading (ing型), led (過去式(不規則)), led (過去分詞(不規則))"
+    },
+    {
+        "word": "let",
+        "pos": "v.",
+        "meaning": "讓",
+        "theme": "行為動作",
+        "sentence": "Please let me know if you need any help with the homework.",
+        "sentenceZh": "如果你的作業需要任何幫忙，請讓我知道。",
+        "otherForms": "lets (三單), letting (ing型(重複字尾)), let (過去式(不規則同型)), let (過去分詞(不規則同型))"
+    },
+    {
+        "word": "limit",
+        "pos": "v. / n.",
+        "meaning": "限制",
+        "theme": "行為動作",
+        "sentence": "You should limit the time you spend playing computer games.",
+        "sentenceZh": "你應該限制你玩電腦遊戲的時間。",
+        "otherForms": "limits (複數型), limits (三單), limiting (ing型), limited (過去式/分詞)"
+    },
+    {
+        "word": "list",
+        "pos": "v. / n.",
+        "meaning": "列出 / 名單",
+        "theme": "行為動作",
+        "sentence": "Please list all the materials you need for the science project.",
+        "sentenceZh": "請列出你科學專案需要的所有材料。",
+        "otherForms": "lists (複數型), lists (三單), listing (ing型), listed (過去式/分詞)"
+    },
+    {
+        "word": "lock",
+        "pos": "v. / n.",
+        "meaning": "鎖上",
+        "theme": "行為動作",
+        "sentence": "Don't forget to lock the door before you leave the house.",
+        "sentenceZh": "離開家前別忘了鎖門。",
+        "otherForms": "locks (複數型), locks (三單), locking (ing型), locked (過去式/分詞)"
+    },
+    {
+        "word": "make",
+        "pos": "v.",
+        "meaning": "製作",
+        "theme": "行為動作",
+        "sentence": "We are going to make a beautiful card for Mother's Day.",
+        "sentenceZh": "我們打算為母親節做一張美麗的卡片。",
+        "otherForms": "makes (三單), making (ing型(去e加ing)), made (過去式(不規則)), made (過去分詞(不規則))"
+    },
+    {
+        "word": "marry",
+        "pos": "v.",
+        "meaning": "結婚",
+        "theme": "行為動作",
+        "sentence": "The prince and the princess married and lived happily.",
+        "sentenceZh": "王子和公主結婚並快樂地生活。",
+        "otherForms": "marries (三單(去y加ies)), marrying (ing型), married (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "mix",
+        "pos": "v.",
+        "meaning": "混合",
+        "theme": "行為動作",
+        "sentence": "If you mix yellow and blue paint, you will get green.",
+        "sentenceZh": "如果你把黃色和藍色顏料混合，就會得到綠色。",
+        "otherForms": "mixes (三單(加es)), mixing (ing型), mixed (過去式/分詞)"
+    },
+    {
+        "word": "mop",
+        "pos": "v. / n.",
+        "meaning": "用拖把拖地 / 拖把",
+        "theme": "行為動作",
+        "sentence": "It is your turn to mop the classroom floor today.",
+        "sentenceZh": "今天輪到你用拖把拖教室地板了。",
+        "otherForms": "mops (三單), mopping (ing型(重複字尾)), mopped (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "offer",
+        "pos": "v. / n.",
+        "meaning": "提供",
+        "theme": "行為動作",
+        "sentence": "The teacher offered to help the students after class.",
+        "sentenceZh": "老師提供放學後幫助學生。",
+        "otherForms": "offers (三單), offering (ing型), offered (過去式/分詞)"
+    },
+    {
+        "word": "omit",
+        "pos": "v.",
+        "meaning": "省略",
+        "theme": "行為動作",
+        "sentence": "You can omit this word and the sentence is still correct.",
+        "sentenceZh": "你可以省略這個單字，而句子依然正確。",
+        "otherForms": "omits (三單), omitting (ing型(重複字尾)), omitted (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "open",
+        "pos": "v. / adj.",
+        "meaning": "打開 / 開著的",
+        "theme": "行為動作",
+        "sentence": "Please open your textbook to page forty-five.",
+        "sentenceZh": "請把你的教科書打開翻到第四十五頁。",
+        "otherForms": "opens (三單), opening (ing型), opened (過去式/分詞)"
+    },
+    {
+        "word": "order",
+        "pos": "v. / n.",
+        "meaning": "點餐 / 命令",
+        "theme": "行為動作",
+        "sentence": "We went to the restaurant and ordered a large pizza.",
+        "sentenceZh": "我們去了餐廳並點了一個大披薩。",
+        "otherForms": "orders (複數型), orders (三單), ordering (ing型), ordered (過去式/分詞)"
+    },
+    {
+        "word": "pack",
+        "pos": "v. / n.",
+        "meaning": "打包",
+        "theme": "行為動作",
+        "sentence": "I need to pack my clothes for the three-day trip.",
+        "sentenceZh": "我需要為三天的旅行打包衣服。",
+        "otherForms": "packs (三單), packing (ing型), packed (過去式/分詞)"
+    },
+    {
+        "word": "park",
+        "pos": "v. / n.",
+        "meaning": "停車 / 公園",
+        "theme": "行為動作",
+        "sentence": "You cannot park your car in front of the school gate.",
+        "sentenceZh": "你不能把車停在學校大門口。",
+        "otherForms": "parks (複數型), parks (三單), parking (ing型), parked (過去式/分詞)"
+    },
+    {
+        "word": "paste",
+        "pos": "v.",
+        "meaning": "貼上",
+        "theme": "行為動作",
+        "sentence": "Copy the HTML code and paste it into the editor.",
+        "sentenceZh": "複製 HTML 程式碼然後將它貼到編輯器裡。",
+        "otherForms": "pastes (三單), pasting (ing型(去e加ing)), pasted (過去式/分詞)"
+    },
+    {
+        "word": "play",
+        "pos": "v. / n.",
+        "meaning": "玩 / 戲劇",
+        "theme": "行為動作",
+        "sentence": "Let's play a fun game of badminton after school.",
+        "sentenceZh": "我們放學後來打一場有趣的羽球吧。",
+        "otherForms": "plays (三單), playing (ing型), played (過去式/分詞)"
+    },
+    {
+        "word": "pollute",
+        "pos": "v.",
+        "meaning": "污染",
+        "theme": "行為動作",
+        "sentence": "We must not let factories pollute our clean rivers.",
+        "sentenceZh": "我們絕不能讓工廠污染我們乾淨的河流。",
+        "otherForms": "pollutes (三單), polluting (ing型(去e加ing)), polluted (過去式/分詞)"
+    },
+    {
+        "word": "pose",
+        "pos": "v. / n.",
+        "meaning": "擺姿勢 / 造成",
+        "theme": "行為動作",
+        "sentence": "Everyone posed for a group photo.",
+        "sentenceZh": "大家擺好姿勢拍了一張大合照。",
+        "otherForms": "poses (三單), posed (過去/過去分詞), posing (現在分詞)"
+    },
+    {
+        "word": "print",
+        "pos": "v.",
+        "meaning": "列印",
+        "theme": "行為動作",
+        "sentence": "The teacher will print the vocabulary list for everyone.",
+        "sentenceZh": "老師會印出單字表給大家。",
+        "otherForms": "prints (三單), printing (ing型), printed (過去式/分詞)"
+    },
+    {
+        "word": "produce",
+        "pos": "v.",
+        "meaning": "生產",
+        "theme": "行為動作",
+        "sentence": "This farm produces very sweet and juicy watermelons.",
+        "sentenceZh": "這座農場生產非常甜又多汁的西瓜。",
+        "otherForms": "produces (三單), producing (ing型(去e加ing)), produced (過去式/分詞)"
+    },
+    {
+        "word": "protect",
+        "pos": "v.",
+        "meaning": "保護",
+        "theme": "行為動作",
+        "sentence": "Wearing a helmet will protect your head if you fall.",
+        "sentenceZh": "戴安全帽會在你跌倒時保護你的頭部。",
+        "otherForms": "protects (三單), protecting (ing型), protected (過去式/分詞)"
+    },
+    {
+        "word": "provide",
+        "pos": "v.",
+        "meaning": "提供",
+        "theme": "行為動作",
+        "sentence": "The school provides a healthy lunch for all the students.",
+        "sentenceZh": "學校為所有學生提供健康的午餐。",
+        "otherForms": "provides (三單), providing (ing型(去e加ing)), provided (過去式/分詞)"
+    },
+    {
+        "word": "pump",
+        "pos": "v. / n.",
+        "meaning": "灌注 / 幫浦",
+        "theme": "行為動作",
+        "sentence": "We need to pump some air into the bicycle tires.",
+        "sentenceZh": "我們需要幫腳踏車輪胎打點氣。",
+        "otherForms": "pumps (三單), pumping (ing型), pumped (過去式/分詞)"
+    },
+    {
+        "word": "quit",
+        "pos": "v.",
+        "meaning": "退出",
+        "theme": "行為動作",
+        "sentence": "Don't quit when learning English gets a little difficult.",
+        "sentenceZh": "當學英文變得有點難時，別放棄。",
+        "otherForms": "quits (三單), quitting (ing型(重複字尾)), quit (過去式(不規則同型)), quit (過去分詞(不規則同型))"
+    },
+    {
+        "word": "reach",
+        "pos": "v.",
+        "meaning": "到達",
+        "theme": "行為動作",
+        "sentence": "He is tall enough to reach the books on the top shelf.",
+        "sentenceZh": "他夠高，可以搆到最上層架子上的書。",
+        "otherForms": "reaches (三單(加es)), reaching (ing型), reached (過去式/分詞)"
+    },
+    {
+        "word": "receive",
+        "pos": "v.",
+        "meaning": "接收",
+        "theme": "行為動作",
+        "sentence": "I received a nice postcard from my friend in Japan today.",
+        "sentenceZh": "我今天收到了一張來自日本朋友寄的漂亮明信片。",
+        "otherForms": "receives (三單), receiving (ing型(去e加ing)), received (過去式/分詞)"
+    },
+    {
+        "word": "recycle",
+        "pos": "v.",
+        "meaning": "回收",
+        "theme": "行為動作",
+        "sentence": "We should always recycle plastic bottles and paper.",
+        "sentenceZh": "我們應該永遠回收塑膠瓶和紙張。",
+        "otherForms": "recycles (三單), recycling (ing型(去e加ing)), recycled (過去式/分詞)"
+    },
+    {
+        "word": "remind",
+        "pos": "v.",
+        "meaning": "提醒",
+        "theme": "行為動作",
+        "sentence": "Please remind me to bring my umbrella tomorrow.",
+        "sentenceZh": "請提醒我明天要帶傘。",
+        "otherForms": "reminds (三單), reminding (ing型), reminded (過去式/分詞)"
+    },
+    {
+        "word": "rent",
+        "pos": "v. / n.",
+        "meaning": "租用",
+        "theme": "行為動作",
+        "sentence": "We rented a small car for our family trip to Kenting.",
+        "sentenceZh": "我們為墾丁家庭旅行租了一輛小車。",
+        "otherForms": "rents (三單), renting (ing型), rented (過去式/分詞)"
+    },
+    {
+        "word": "revise",
+        "pos": "v.",
+        "meaning": "修改",
+        "theme": "行為動作",
+        "sentence": "I need to revise my essay before I hand it to the teacher.",
+        "sentenceZh": "我在交給老師前需要修改我的作文。",
+        "otherForms": "revises (三單), revising (ing型(去e加ing)), revised (過去式/分詞)"
+    },
+    {
+        "word": "rob",
+        "pos": "v.",
+        "meaning": "搶劫",
+        "theme": "行為動作",
+        "sentence": "The bad guy tried to rob the bank but the police caught him.",
+        "sentenceZh": "壞蛋試圖搶銀行但被警察抓住了。",
+        "otherForms": "robs (三單), robbing (ing型(重複字尾)), robbed (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "rub",
+        "pos": "v.",
+        "meaning": "摩擦",
+        "theme": "行為動作",
+        "sentence": "Don't rub your eyes when your hands are dirty.",
+        "sentenceZh": "當你的手很髒時不要揉眼睛。",
+        "otherForms": "rubs (三單), rubbing (ing型(重複字尾)), rubbed (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "save",
+        "pos": "v.",
+        "meaning": "拯救 / 儲存",
+        "theme": "行為動作",
+        "sentence": "Remember to save your file before you close the computer.",
+        "sentenceZh": "關電腦前記得儲存你的檔案。",
+        "otherForms": "saves (三單), saving (ing型(去e加ing)), saved (過去式/分詞)"
+    },
+    {
+        "word": "search",
+        "pos": "v. / n.",
+        "meaning": "搜尋",
+        "theme": "行為動作",
+        "sentence": "I used Google to search for information about badminton history.",
+        "sentenceZh": "我用 Google 搜尋關於羽球歷史的資訊。",
+        "otherForms": "searches (複數型(加es)), searches (三單(加es)), searching (ing型), searched (過去式/分詞)"
+    },
+    {
+        "word": "seek",
+        "pos": "v.",
+        "meaning": "尋求",
+        "theme": "行為動作",
+        "sentence": "You should seek help from the teacher if you don't understand.",
+        "sentenceZh": "如果你不懂，應該尋求老師的幫助。",
+        "otherForms": "seeks (三單), seeking (ing型), sought (過去式(不規則)), sought (過去分詞(不規則))"
+    },
+    {
+        "word": "sell",
+        "pos": "v.",
+        "meaning": "賣",
+        "theme": "行為動作",
+        "sentence": "The bakery sells the most delicious bread in Douliu.",
+        "sentenceZh": "那家麵包店賣斗六最好吃的麵包。",
+        "otherForms": "sells (三單), selling (ing型), sold (過去式(不規則)), sold (過去分詞(不規則))"
+    },
+    {
+        "word": "send",
+        "pos": "v.",
+        "meaning": "傳送",
+        "theme": "行為動作",
+        "sentence": "I will send you an email with the photos tonight.",
+        "sentenceZh": "我今晚會發一封附有照片的電子郵件給你。",
+        "otherForms": "sends (三單), sending (ing型), sent (過去式(不規則)), sent (過去分詞(不規則))"
+    },
+    {
+        "word": "serve",
+        "pos": "v.",
+        "meaning": "服務",
+        "theme": "行為動作",
+        "sentence": "The restaurant serves a very nice hot chicken soup.",
+        "sentenceZh": "這家餐廳供應非常棒的熱雞湯。",
+        "otherForms": "serves (三單), serving (ing型(去e加ing)), served (過去式/分詞)"
+    },
+    {
+        "word": "share",
+        "pos": "v. / n.",
+        "meaning": "分享",
+        "theme": "行為動作",
+        "sentence": "The student kindly shared his umbrella with his classmate.",
+        "sentenceZh": "這位學生好心地和同學分享他的雨傘。",
+        "otherForms": "shares (三單), sharing (ing型(去e加ing)), shared (過去式/分詞)"
+    },
+    {
+        "word": "shoot",
+        "pos": "v.",
+        "meaning": "射擊",
+        "theme": "行為動作",
+        "sentence": "He jumped high to shoot the basketball into the net.",
+        "sentenceZh": "他跳得很高去把籃球投進網內。",
+        "otherForms": "shoots (三單), shooting (ing型), shot (過去式(不規則)), shot (過去分詞(不規則))"
+    },
+    {
+        "word": "show",
+        "pos": "v. / n.",
+        "meaning": "表演 / 展示",
+        "theme": "行為動作",
+        "sentence": "Can you show me how to play this syntax repair game?",
+        "sentenceZh": "你能示範給我看這個語法修復遊戲怎麼玩嗎？",
+        "otherForms": "shows (複數型/ 三單), showing (ing型), showed (過去式(規則)), shown (過去分詞(不規則))"
+    },
+    {
+        "word": "shut",
+        "pos": "v.",
+        "meaning": "關閉",
+        "theme": "行為動作",
+        "sentence": "Please shut the door quietly so you don't wake the baby.",
+        "sentenceZh": "請輕輕關上門以免吵醒小嬰兒。",
+        "otherForms": "shuts (三單), shutting (ing型(重複字尾)), shut (過去式(不規則同型)), shut (過去分詞(不規則同型))"
+    },
+    {
+        "word": "sit",
+        "pos": "v.",
+        "meaning": "坐",
+        "theme": "行為動作",
+        "sentence": "Pull up a chair and sit next to me.",
+        "sentenceZh": "拉把椅子過來坐我旁邊。",
+        "otherForms": "sits (三單), sitting (ing型(重複字尾)), sat (過去式(不規則)), sat (過去分詞(不規則))"
+    },
+    {
+        "word": "sleep",
+        "pos": "v. / n.",
+        "meaning": "睡覺",
+        "theme": "行為動作",
+        "sentence": "I usually sleep for eight hours every night.",
+        "sentenceZh": "我每晚通常睡八小時。",
+        "otherForms": "sleeps (三單), sleeping (ing型), slept (過去式(不規則)), slept (過去分詞(不規則))"
+    },
+    {
+        "word": "smoke",
+        "pos": "v. / n.",
+        "meaning": "抽煙 / 煙",
+        "theme": "行為動作",
+        "sentence": "You are not allowed to smoke inside the hospital.",
+        "sentenceZh": "你不被允許在醫院裡面抽菸。",
+        "otherForms": "smokes (三單), smoking (ing型(去e加ing)), smoked (過去式/分詞)"
+    },
+    {
+        "word": "solve",
+        "pos": "v.",
+        "meaning": "解決",
+        "theme": "行為動作",
+        "sentence": "The smart detective easily solved the difficult mystery.",
+        "sentenceZh": "聰明的偵探輕鬆地解決了這個困難的謎團。",
+        "otherForms": "solves (三單), solving (ing型(去e加ing)), solved (過去式/分詞)"
+    },
+    {
+        "word": "spread",
+        "pos": "v.",
+        "meaning": "塗抹",
+        "theme": "行為動作",
+        "sentence": "She used a knife to spread butter on the warm toast.",
+        "sentenceZh": "她用刀子把奶油塗在溫熱的吐司上。",
+        "otherForms": "spreads (三單), spreading (ing型), spread (過去式(不規則同型)), spread (過去分詞(不規則同型))"
+    },
+    {
+        "word": "steal",
+        "pos": "v.",
+        "meaning": "偷竊",
+        "theme": "行為動作",
+        "sentence": "The thief tried to steal a bicycle but a police officer saw him.",
+        "sentenceZh": "小偷試圖偷腳踏車但被警察看到了。",
+        "otherForms": "steals (三單), stealing (ing型), stole (過去式(不規則)), stolen (過去分詞(不規則))"
+    },
+    {
+        "word": "strike",
+        "pos": "v. / n.",
+        "meaning": "打擊 / 罷工",
+        "theme": "行為動作",
+        "sentence": "The lightning struck the tall tree during the big storm.",
+        "sentenceZh": "閃電在暴風雨中擊中了那棵大樹。",
+        "otherForms": "strikes (複數型/ 三單), striking (ing型(去e加ing)), struck (過去式(不規則)), struck/stricken (過去分詞(不規則))"
+    },
+    {
+        "word": "take",
+        "pos": "v.",
+        "meaning": "拿 / 帶/ 花費(時間)",
+        "theme": "行為動作",
+        "sentence": "It will take us about an hour to get to Taichung by train.",
+        "sentenceZh": "搭火車到台中大約會花我們一小時。",
+        "otherForms": "takes (三單), taking (ing型(去e加ing)), took (過去式(不規則)), taken (過去分詞(不規則))"
+    },
+    {
+        "word": "treat",
+        "pos": "v. / n.",
+        "meaning": "款待 / 對待",
+        "theme": "行為動作",
+        "sentence": "You should always treat your friends with kindness and respect.",
+        "sentenceZh": "你應該永遠以仁慈和尊重來對待你的朋友。",
+        "otherForms": "treats (三單), treating (ing型), treated (過去式/分詞)"
+    },
+    {
+        "word": "upload",
+        "pos": "v.",
+        "meaning": "上傳",
+        "theme": "行為動作",
+        "sentence": "Don't forget to upload your homework to the school website.",
+        "sentenceZh": "別忘了把你的作業上傳到學校網站。",
+        "otherForms": "uploads (三單), uploading (ing型), uploaded (過去式/分詞)"
+    },
+    {
+        "word": "use",
+        "pos": "v. / n.",
+        "meaning": "使用",
+        "theme": "行為動作",
+        "sentence": "I often use an online dictionary to check my spelling.",
+        "sentenceZh": "我經常使用線上字典來檢查我的拼字。",
+        "otherForms": "uses (三單), using (ing型(去e加ing)), used (過去式/分詞)"
+    },
+    {
+        "word": "visit",
+        "pos": "v. / n.",
+        "meaning": "拜訪",
+        "theme": "行為動作",
+        "sentence": "I plan to visit my grandparents in the village next Sunday.",
+        "sentenceZh": "我計畫下星期日去村莊拜訪我祖父母。",
+        "otherForms": "visits (三單), visiting (ing型), visited (過去式/分詞)"
+    },
+    {
+        "word": "vote",
+        "pos": "v. / n.",
+        "meaning": "投票",
+        "theme": "行為動作",
+        "sentence": "The class will vote to choose the best badge design tomorrow.",
+        "sentenceZh": "全班明天將投票選出最好的徽章設計。",
+        "otherForms": "votes (三單), voting (ing型(去e加ing)), voted (過去式/分詞)"
+    },
+    {
+        "word": "wait",
+        "pos": "v.",
+        "meaning": "等待",
+        "theme": "行為動作",
+        "sentence": "I had to wait for the bus for thirty minutes in the rain.",
+        "sentenceZh": "我得在雨中等了三十分鐘的公車。",
+        "otherForms": "waits (三單), waiting (ing型), waited (過去式/分詞)"
+    },
+    {
+        "word": "waste",
+        "pos": "v. / n.",
+        "meaning": "浪費",
+        "theme": "行為動作",
+        "sentence": "Don't waste your time playing too many computer games.",
+        "sentenceZh": "不要浪費你的時間玩太多電腦遊戲。",
+        "otherForms": "wastes (複數型), wastes (三單), wasting (ing型(去e加ing)), wasted (過去式/分詞)"
+    },
+    {
+        "word": "welcome",
+        "pos": "v. / adj.",
+        "meaning": "歡迎",
+        "theme": "行為動作",
+        "sentence": "We are very happy to welcome the new teacher to our school.",
+        "sentenceZh": "我們非常高興能歡迎新老師來到我們學校。",
+        "otherForms": "welcomes (複數型), welcomes (三單), welcoming (ing型(去e加ing)), welcomed (過去式/分詞)"
+    },
+    {
+        "word": "be (is, am, are, was, were)",
+        "pos": "aux. / v.",
+        "meaning": "是 / 當 / 在",
+        "theme": "助動詞",
+        "sentence": "I am a student, and he is a teacher.",
+        "sentenceZh": "我是一名學生，而他是一名老師。",
+        "otherForms": "is/am/are (現在式型態), being (ing型), was/were (過去式(單/複數)), been (過去分詞(不規則))"
+    },
+    {
+        "word": "do (does, did)",
+        "pos": "aux. / v.",
+        "meaning": "做",
+        "theme": "助動詞",
+        "sentence": "What do you usually do on the weekend?",
+        "sentenceZh": "你週末通常做什麼？",
+        "otherForms": "does (三單), doing (ing型), did (過去式(不規則)), done (過去分詞(不規則))"
+    },
+    {
+        "word": "have (has, had)",
+        "pos": "aux. / v.",
+        "meaning": "擁有 / 已經 / 使~(做某事)",
+        "theme": "助動詞",
+        "sentence": "I have a very big collection of 80s music on Spotify.",
+        "sentenceZh": "我的 Spotify 裡有非常大量的 80 年代音樂收藏。",
+        "otherForms": "has (三單), having (ing型(去e加ing)), had (過去式(不規則)), had (過去分詞(不規則))"
+    },
+    {
+        "word": "can",
+        "pos": "aux.",
+        "meaning": "可以 / 可能 / 能夠",
+        "theme": "助動詞",
+        "sentence": "I could run much faster when I was younger.",
+        "sentenceZh": "我年輕的時候可以跑得快很多。",
+        "otherForms": "could (過去式(助動)), 無其他變形"
+    },
+    {
+        "word": "shall",
+        "pos": "aux.",
+        "meaning": "應該 / 將會",
+        "theme": "助動詞",
+        "sentence": "You should review your vocabulary every day to remember them.",
+        "sentenceZh": "你應該每天複習單字以記住它們。",
+        "otherForms": "should (過去式(助動)), 無其他變形"
+    },
+    {
+        "word": "must",
+        "pos": "aux.",
+        "meaning": "一定",
+        "theme": "助動詞",
+        "sentence": "You must finish your homework before watching television.",
+        "sentenceZh": "你看電視前必須寫完作業。",
+        "otherForms": "無變形"
+    },
+    {
+        "word": "may",
+        "pos": "aux.",
+        "meaning": "可能 / 可以",
+        "theme": "助動詞",
+        "sentence": "Take an umbrella with you; it might rain this afternoon.",
+        "sentenceZh": "帶著傘吧，今天下午可能會下雨。",
+        "otherForms": "might (過去式(助動)), 無其他變形"
+    },
+    {
+        "word": "will",
+        "pos": "aux.",
+        "meaning": "將會",
+        "theme": "助動詞",
+        "sentence": "When I get older, will you still love me?",
+        "sentenceZh": "當我變老的時候，你還會愛我嗎?",
+        "otherForms": "would (過去式(助動)), 無其他變形"
+    },
+    {
+        "word": "shock",
+        "pos": "v. / n.",
+        "meaning": "震驚",
+        "theme": "情緒動詞",
+        "sentence": "The bad news was a great shock to everyone.",
+        "sentenceZh": "這個壞消息讓大家非常震驚。",
+        "otherForms": "shocks (三單), shocked (過去/過去分詞), shocking (現在分詞)"
+    },
+    {
+        "word": "bother",
+        "pos": "v.",
+        "meaning": "打擾",
+        "theme": "情緒動詞",
+        "sentence": "Please don't bother me while I am writing the HTML code.",
+        "sentenceZh": "我在寫 HTML 程式碼時請不要打擾我。",
+        "otherForms": "bothers (三單), bothering (ing型), bothered (過去式/分詞)"
+    },
+    {
+        "word": "bore",
+        "pos": "v.",
+        "meaning": "使~無聊",
+        "theme": "情緒動詞",
+        "sentence": "Englisg class bores me.",
+        "sentenceZh": "英語課使我感到無聊。",
+        "otherForms": "bores (三單), boring (ing型(去e加ing)), bored (過去式/分詞)"
+    },
+    {
+        "word": "confuse",
+        "pos": "v.",
+        "meaning": "混淆",
+        "theme": "情緒動詞",
+        "sentence": "The difficult grammar rules often confuse the students.",
+        "sentenceZh": "困難的文法規則經常使學生感到混淆。",
+        "otherForms": "confuses (三單), confusing (ing型(去e加ing)), confused (過去式/分詞)"
+    },
+    {
+        "word": "embarrass",
+        "pos": "v.",
+        "meaning": "使尷尬",
+        "theme": "情緒動詞",
+        "sentence": "Falling down on the badminton court embarrassed him.",
+        "sentenceZh": "在羽球場上跌倒讓他覺得很尷尬。",
+        "otherForms": "embarrasses (三單(加es)), embarrassing (ing型), embarrassed (過去式/分詞)"
+    },
+    {
+        "word": "frighten",
+        "pos": "v.",
+        "meaning": "使~害怕",
+        "theme": "情緒動詞",
+        "sentence": "The loud thunder frightened the little puppy.",
+        "sentenceZh": "巨大的雷聲嚇壞了小狗。",
+        "otherForms": "frightens (三單), frightening (ing型), frightened (過去式/分詞)"
+    },
+    {
+        "word": "surprise",
+        "pos": "v. / n.",
+        "meaning": "使~驚訝",
+        "theme": "情緒動詞",
+        "sentence": "The sudden rain surprised us during the school trip.",
+        "sentenceZh": "校外教學時突如其來的大雨讓我們很驚訝。",
+        "otherForms": "surprises (複數/三單), surprising (ing型(去e加ing)), surprised (過去式/分詞)"
+    },
+    {
+        "word": "worry",
+        "pos": "v. / n.",
+        "meaning": "使~擔心",
+        "theme": "情緒動詞",
+        "sentence": "Don't worry about the test; just do your best.",
+        "sentenceZh": "別擔心考試，盡力就好。",
+        "otherForms": "worries (複數/三單(去y加ies)), worrying (ing型), worried (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "care",
+        "pos": "v. / n.",
+        "meaning": "關心",
+        "theme": "情緒動詞",
+        "sentence": "A good teacher always cares about their students.",
+        "sentenceZh": "一位好老師總是關心他們的學生。",
+        "otherForms": "cares (三單), caring (ing型(去e加ing)), cared (過去式/分詞)"
+    },
+    {
+        "word": "concern",
+        "pos": "v. / n.",
+        "meaning": "關心 / 涉及",
+        "theme": "情緒動詞",
+        "sentence": "The principal is concerned about the safety of the students.",
+        "sentenceZh": "校長很關心學生們的安全。",
+        "otherForms": "concerns (三單), concerning (ing型), concerned (過去式/分詞)"
+    },
+    {
+        "word": "excite",
+        "pos": "v.",
+        "meaning": "使~興奮",
+        "theme": "情緒動詞",
+        "sentence": "Playing the interactive web game excites the whole class.",
+        "sentenceZh": "玩這個互動網頁遊戲讓全班都很興奮。",
+        "otherForms": "excites (三單), exciting (ing型(去e加ing)), excited (過去式/分詞)"
+    },
+    {
+        "word": "satisfy",
+        "pos": "v.",
+        "meaning": "使~滿足",
+        "theme": "情緒動詞",
+        "sentence": "A big bowl of Douliu beef noodles will satisfy your hunger.",
+        "sentenceZh": "一大碗斗六牛肉麵能滿足你的飢餓感。",
+        "otherForms": "satisfies (三單(去y加ies)), satisfying (ing型), satisfied (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "please",
+        "pos": "v. / adv.",
+        "meaning": "使~開心 / 請",
+        "theme": "情緒動詞",
+        "sentence": "The student's good grades pleased his parents.",
+        "sentenceZh": "這位學生的好成績讓他的父母很開心。",
+        "otherForms": "pleases (三單), pleasing (ing型(去e加ing)), pleased (過去式/分詞)"
+    },
+    {
+        "word": "scare",
+        "pos": "v.",
+        "meaning": "使~害怕",
+        "theme": "情緒動詞",
+        "sentence": "The monster in the game scared the little boy.",
+        "sentenceZh": "遊戲裡的怪物嚇到了小男孩。",
+        "otherForms": "scares (三單), scaring (ing型(去e加ing)), scared (過去式/分詞)"
+    },
+    {
+        "word": "tire",
+        "pos": "v.",
+        "meaning": "使~疲累",
+        "theme": "情緒動詞",
+        "sentence": "Running ten laps around the playground will tire you out.",
+        "sentenceZh": "繞著操場跑十圈會讓你累壞的。",
+        "otherForms": "tires (三單), tiring (ing型(去e加ing)), tired (過去式/分詞)"
+    },
+    {
+        "word": "interest",
+        "pos": "v. / n.",
+        "meaning": "使~感到有趣 / 興趣",
+        "theme": "情緒動詞",
+        "sentence": "What she said to you interests me.",
+        "sentenceZh": "他對你說的話讓我感到有趣。",
+        "otherForms": "interests (三單), interesting (ing型), interested (過去式/分詞)"
+    },
+    {
+        "word": "shocked",
+        "pos": "adj.",
+        "meaning": "感到震驚的",
+        "theme": "情緒動詞",
+        "sentence": "Everyong was shocked at the bad news.",
+        "sentenceZh": "大家對於這個壞消息都感到非常震驚。",
+        "otherForms": "more shocked (比較級), most shocked (最高級)"
+    },
+    {
+        "word": "bored",
+        "pos": "adj.",
+        "meaning": "感到無聊的",
+        "theme": "情緒動詞",
+        "sentence": "I am bored with the English class.",
+        "sentenceZh": "我對英語課感到無聊。",
+        "otherForms": "more bored (比較級), most bored (最高級)"
+    },
+    {
+        "word": "bothered",
+        "pos": "adj.",
+        "meaning": "感到厭煩的",
+        "theme": "情緒動詞",
+        "sentence": "I am bothered by the loud noise outside the window.",
+        "sentenceZh": "我對窗外的巨大噪音感到很厭煩。",
+        "otherForms": "more bothered (比較級), most bothered (最高級)"
+    },
+    {
+        "word": "confused",
+        "pos": "adj.",
+        "meaning": "感到困惑的",
+        "theme": "情緒動詞",
+        "sentence": "She was confused by the complicated math problem.",
+        "sentenceZh": "她對這道複雜的數學題感到困惑。",
+        "otherForms": "more confused (比較級), most confused (最高級)"
+    },
+    {
+        "word": "embarrassed",
+        "pos": "adj.",
+        "meaning": "感到尷尬的",
+        "theme": "情緒動詞",
+        "sentence": "I was embarrassed when I forgot my lines in the play.",
+        "sentenceZh": "當我在話劇中忘詞時，我感到很尷尬。",
+        "otherForms": "more embarrassed (比較級), most embarrassed (最高級)"
+    },
+    {
+        "word": "frightened",
+        "pos": "adj.",
+        "meaning": "感到害怕的",
+        "theme": "情緒動詞",
+        "sentence": "The frightened cat hid under the sofa safely.",
+        "sentenceZh": "感到害怕的貓安全地躲在沙發下。",
+        "otherForms": "more frightened (比較級), most frightened (最高級)"
+    },
+    {
+        "word": "surprised",
+        "pos": "adj.",
+        "meaning": "感到驚訝的",
+        "theme": "情緒動詞",
+        "sentence": "I was surprised to see him waiting at the station.",
+        "sentenceZh": "看到他在車站等候讓我很驚訝。",
+        "otherForms": "more surprised (比較級), most surprised (最高級)"
+    },
+    {
+        "word": "worried",
+        "pos": "adj.",
+        "meaning": "感到擔心的",
+        "theme": "情緒動詞",
+        "sentence": "My mom is worried because I have a high fever.",
+        "sentenceZh": "我媽媽很擔心，因為我發高燒了。",
+        "otherForms": "more worried (比較級), most worried (最高級)"
+    },
+    {
+        "word": "concerned",
+        "pos": "adj.",
+        "meaning": "感到擔心的",
+        "theme": "情緒動詞",
+        "sentence": "The concerned teacher asked the student what was wrong.",
+        "sentenceZh": "感到擔心的老師問學生怎麼了。",
+        "otherForms": "more concerned (比較級), most concerned (最高級)"
+    },
+    {
+        "word": "excited",
+        "pos": "adj.",
+        "meaning": "感到興奮的",
+        "theme": "情緒動詞",
+        "sentence": "We are very excited about the school trip to Japan.",
+        "sentenceZh": "我們對去日本的校外教學感到非常興奮。",
+        "otherForms": "more excited (比較級), most excited (最高級), excitedly (副詞)"
+    },
+    {
+        "word": "satisfied",
+        "pos": "adj.",
+        "meaning": "感到滿足的",
+        "theme": "情緒動詞",
+        "sentence": "The coach was satisfied with the badminton team's victory.",
+        "sentenceZh": "教練對羽球隊的勝利感到滿意。",
+        "otherForms": "more satisfied (比較級), most satisfied (最高級)"
+    },
+    {
+        "word": "pleased",
+        "pos": "adj.",
+        "meaning": "感到開心的",
+        "theme": "情緒動詞",
+        "sentence": "I am very pleased to meet your new friend.",
+        "sentenceZh": "我非常高興能認識你的新朋友。",
+        "otherForms": "more pleased (比較級), most pleased (最高級)"
+    },
+    {
+        "word": "scared",
+        "pos": "adj.",
+        "meaning": "感到害怕的",
+        "theme": "情緒動詞",
+        "sentence": "My little sister is scared of big spiders.",
+        "sentenceZh": "我妹妹很害怕大蜘蛛。",
+        "otherForms": "more scared (比較級), most scared (最高級)"
+    },
+    {
+        "word": "tired",
+        "pos": "adj.",
+        "meaning": "感到疲累的",
+        "theme": "情緒動詞",
+        "sentence": "I am very tired after playing badminton for two hours.",
+        "sentenceZh": "打了兩個小時的羽球後我非常累。",
+        "otherForms": "more tired (比較級), most tired (最高級)"
+    },
+    {
+        "word": "interested",
+        "pos": "adj.",
+        "meaning": "感興趣的",
+        "theme": "情緒動詞",
+        "sentence": "I am very interested in learning English.",
+        "sentenceZh": "我對學習英文非常感興趣。",
+        "otherForms": "more interested (比較級), most interested (最高級)"
+    },
+    {
+        "word": "shocking",
+        "pos": "adj.",
+        "meaning": "令人震驚的",
+        "theme": "情緒動詞",
+        "sentence": "The bad news was shocking to everyone.",
+        "sentenceZh": "這個壞消息對於大家來說都是非常令人震驚的。",
+        "otherForms": "more shocking (比較級), most shocking (最高級)"
+    },
+    {
+        "word": "bothering",
+        "pos": "adj.",
+        "meaning": "令人厭煩的",
+        "theme": "情緒動詞",
+        "sentence": "The loud music from the neighbor is very bothering.",
+        "sentenceZh": "鄰居傳來的大聲音樂非常令人厭煩。",
+        "otherForms": "more bothering (比較級), most bothering (最高級)"
+    },
+    {
+        "word": "boring",
+        "pos": "adj.",
+        "meaning": "令人無聊的",
+        "theme": "情緒動詞",
+        "sentence": "Eglish class is boring to me.",
+        "sentenceZh": "英語課對我來說是令人無聊的。",
+        "otherForms": "more boring (比較級), most boring (最高級)"
+    },
+    {
+        "word": "confusing",
+        "pos": "adj.",
+        "meaning": "令人困惑的",
+        "theme": "情緒動詞",
+        "sentence": "The map of the city is too confusing for me to read.",
+        "sentenceZh": "這張城市地圖對我來說太令人困惑了，看不懂。",
+        "otherForms": "more confusing (比較級), most confusing (最高級), confusingly (副詞)"
+    },
+    {
+        "word": "embarrassing",
+        "pos": "adj.",
+        "meaning": "令人尷尬的",
+        "theme": "情緒動詞",
+        "sentence": "It was an embarrassing moment when he called me the wrong name.",
+        "sentenceZh": "當他叫錯我的名字時，是個令人尷尬的時刻。",
+        "otherForms": "more embarrassing (比較級), most embarrassing (最高級)"
+    },
+    {
+        "word": "frightening",
+        "pos": "adj.",
+        "meaning": "令人害怕的",
+        "theme": "情緒動詞",
+        "sentence": "The giant monster in the computer game is frightening.",
+        "sentenceZh": "電腦遊戲裡的巨大怪物很嚇人。",
+        "otherForms": "more frightening (比較級), most frightening (最高級)"
+    },
+    {
+        "word": "surprising",
+        "pos": "adj.",
+        "meaning": "令人驚訝的",
+        "theme": "情緒動詞",
+        "sentence": "The sudden rain during the sunny day was very surprising.",
+        "sentenceZh": "晴天時突如其來的雨非常令人驚訝。",
+        "otherForms": "more surprising (比較級), most surprising (最高級), surprisingly (副詞)"
+    },
+    {
+        "word": "worrying",
+        "pos": "adj.",
+        "meaning": "令人擔心的",
+        "theme": "情緒動詞",
+        "sentence": "His bad health is a very worrying problem.",
+        "sentenceZh": "他糟糕的健康狀況是個令人擔心的問題。",
+        "otherForms": "more worrying (比較級), most worrying (最高級)"
+    },
+    {
+        "word": "caring",
+        "pos": "adj.",
+        "meaning": "有愛的 / 關心的",
+        "theme": "情緒動詞",
+        "sentence": "She is a very caring nurse who helps many sick people.",
+        "sentenceZh": "她是一位非常有愛心、幫助許多病人的護理師。",
+        "otherForms": "more caring (比較級), most caring (最高級)"
+    },
+    {
+        "word": "concerning",
+        "pos": "prep. / adj.",
+        "meaning": "關於 / 令人擔心的",
+        "theme": "情緒動詞",
+        "sentence": "The news about the strong typhoon is quite concerning.",
+        "sentenceZh": "關於強烈颱風的新聞相當令人擔心。",
+        "otherForms": "more concerning (比較級), most concerning (最高級)"
+    },
+    {
+        "word": "exciting",
+        "pos": "adj.",
+        "meaning": "令人興奮的",
+        "theme": "情緒動詞",
+        "sentence": "The Weather Combat game is a very exciting game to play.",
+        "sentenceZh": "「天氣大戰」是一款玩起來非常刺激的遊戲。",
+        "otherForms": "more exciting (比較級), most exciting (最高級)"
+    },
+    {
+        "word": "satisfying",
+        "pos": "adj.",
+        "meaning": "令人滿意的",
+        "theme": "情緒動詞",
+        "sentence": "Drinking cold water after exercise is deeply satisfying.",
+        "sentenceZh": "運動後喝冷水令人感到非常滿足。",
+        "otherForms": "more satisfying (比較級), most satisfying (最高級)"
+    },
+    {
+        "word": "pleasing",
+        "pos": "adj.",
+        "meaning": "令人開心的",
+        "theme": "情緒動詞",
+        "sentence": "The 80s synth-pop music is very pleasing to listen to.",
+        "sentenceZh": "80年代的合成器流行音樂聽起來非常令人愉悅。",
+        "otherForms": "more pleasing (比較級), most pleasing (最高級)"
+    },
+    {
+        "word": "scary",
+        "pos": "adj.",
+        "meaning": "令人害怕的",
+        "theme": "情緒動詞",
+        "sentence": "The old house at the corner of the street looks very scary.",
+        "sentenceZh": "街角的那棟老房子看起來很可怕。",
+        "otherForms": "scarier (比較級(去y加ier)), scariest (最高級(去y加iest))"
+    },
+    {
+        "word": "tiring",
+        "pos": "adj.",
+        "meaning": "令人疲累的",
+        "theme": "情緒動詞",
+        "sentence": "Walking up the high mountain is a very tiring activity.",
+        "sentenceZh": "爬上高山是一項非常令人疲累的活動。",
+        "otherForms": "more tiring (比較級), most tiring (最高級)"
+    },
+    {
+        "word": "interesting",
+        "pos": "adj.",
+        "meaning": "有趣的",
+        "theme": "情緒動詞",
+        "sentence": "This book is so interesting that I read it twice.",
+        "sentenceZh": "這本書太有趣了，我讀了兩次。",
+        "otherForms": "more interesting (比較級), most interesting (最高級)"
+    },
+    {
+        "word": "alive",
+        "pos": "adj.",
+        "meaning": "活著的",
+        "theme": "形容詞(反意)",
+        "sentence": "The small plant is still alive because I watered it.",
+        "sentenceZh": "因為我有澆水，那株小植物還活著。",
+        "otherForms": ""
+    },
+    {
+        "word": "dead",
+        "pos": "adj.",
+        "meaning": "死的",
+        "theme": "形容詞(反意)",
+        "sentence": "The leaves on the ground are brown and dead.",
+        "sentenceZh": "地上的葉子是枯黃且死去的。",
+        "otherForms": ""
+    },
+    {
+        "word": "modern",
+        "pos": "adj.",
+        "meaning": "現代的",
+        "theme": "形容詞(反意)",
+        "sentence": "Taipei is a very modern city with many tall buildings.",
+        "sentenceZh": "台北是一個擁有許多高樓大廈的現代城市。",
+        "otherForms": "more modern (比較級), most modern (最高級)"
+    },
+    {
+        "word": "traditional",
+        "pos": "adj.",
+        "meaning": "傳統的",
+        "theme": "形容詞(反意)",
+        "sentence": "We ate some traditional snacks in the old street of Huwei.",
+        "sentenceZh": "我們在虎尾老街吃了一些傳統小吃。",
+        "otherForms": "more traditional (比較級), most traditional (最高級), traditionally (副詞)"
+    },
+    {
+        "word": "ancient",
+        "pos": "adj.",
+        "meaning": "古代的",
+        "theme": "形容詞(反意)",
+        "sentence": "The museum has many ancient dinosaur bones on display.",
+        "sentenceZh": "博物館裡展示著許多古代的恐龍骨頭。",
+        "otherForms": "more ancient (比較級), most ancient (最高級)"
+    },
+    {
+        "word": "classical",
+        "pos": "adj.",
+        "meaning": "古典的",
+        "theme": "形容詞(反意)",
+        "sentence": "He likes to play classical music on the piano.",
+        "sentenceZh": "他喜歡用鋼琴彈奏古典音樂。",
+        "otherForms": "more classical (比較級), most classical (最高級), classically (副詞)"
+    },
+    {
+        "word": "available",
+        "pos": "adj.",
+        "meaning": "可用的 / 有空的",
+        "theme": "形容詞(反意)",
+        "sentence": "Is the principal available for a meeting this afternoon?",
+        "sentenceZh": "校長今天下午有空開會嗎？",
+        "otherForms": "more available (比較級), most available (最高級)"
+    },
+    {
+        "word": "busy",
+        "pos": "adj.",
+        "meaning": "忙碌的",
+        "theme": "形容詞(反意)",
+        "sentence": "The English teacher is busy marking the test papers.",
+        "sentenceZh": "英文老師正忙著批改考卷。",
+        "otherForms": "busier (比較級(去y加ier)), busiest (最高級(去y加iest))"
+    },
+    {
+        "word": "bright",
+        "pos": "adj.",
+        "meaning": "明亮的 / 聰明的",
+        "theme": "形容詞(反意)",
+        "sentence": "The sun is very bright and warm today.",
+        "sentenceZh": "今天的太陽非常明亮且溫暖。",
+        "otherForms": "brighter (比較級), brightest (最高級), brightly (副詞)"
+    },
+    {
+        "word": "dark",
+        "pos": "adj. / n.",
+        "meaning": "黑暗的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is too dark to read the book in this room.",
+        "sentenceZh": "這房間裡太暗了，沒辦法看書。",
+        "otherForms": "darker (比較級), darkest (最高級), darkly (副詞)"
+    },
+    {
+        "word": "colorful",
+        "pos": "adj.",
+        "meaning": "多彩的",
+        "theme": "形容詞(反意)",
+        "sentence": "The students drew colorful pictures of the vocabulary characters.",
+        "sentenceZh": "學生們畫了色彩繽紛的單字角色圖片。",
+        "otherForms": "more colorful (比較級), most colorful (最高級), colorfully (副詞)"
+    },
+    {
+        "word": "right",
+        "pos": "adj. / n. / adv.",
+        "meaning": "正確的 / 右邊的",
+        "theme": "形容詞(反意)",
+        "sentence": "That is the right answer to the math problem!",
+        "sentenceZh": "那是這道數學題的正確答案！",
+        "otherForms": "rightly (副詞)"
+    },
+    {
+        "word": "correct",
+        "pos": "adj. / v.",
+        "meaning": "正確的 / 改正",
+        "theme": "形容詞(反意)",
+        "sentence": "In the game, both American and British spellings are correct.",
+        "sentenceZh": "在遊戲中，美式和英式的拼寫都是正確的。",
+        "otherForms": "more correct (比較級), most correct (最高級), correctly (副詞)"
+    },
+    {
+        "word": "wrong",
+        "pos": "adj.",
+        "meaning": "錯誤的",
+        "theme": "形容詞(反意)",
+        "sentence": "Don't worry if you give the wrong answer; just try again.",
+        "sentenceZh": "如果給了錯誤的答案別擔心，再試一次就好。",
+        "otherForms": "wrongly/wrong (副詞(wrong可作形副同型))"
+    },
+    {
+        "word": "dirty",
+        "pos": "adj.",
+        "meaning": "骯髒的",
+        "theme": "形容詞(反意)",
+        "sentence": "Take off your dirty shoes before you enter the house.",
+        "sentenceZh": "進屋前脫掉你骯髒的鞋子。",
+        "otherForms": "dirtier (比較級(去y加ier)), dirtiest (最高級(去y加iest))"
+    },
+    {
+        "word": "clean",
+        "pos": "adj. / v.",
+        "meaning": "乾淨的 / 使~乾淨整潔",
+        "theme": "形容詞(反意)",
+        "sentence": "We must keep our classroom clean every day.",
+        "sentenceZh": "我們必須每天保持教室乾淨。",
+        "otherForms": "cleaner (比較級), cleanest (最高級), cleanly (副詞), cleans (三單), cleaning (現在分詞), cleaned (過去/ 過去分詞)"
+    },
+    {
+        "word": "empty",
+        "pos": "adj. / v.",
+        "meaning": "空的",
+        "theme": "形容詞(反意)",
+        "sentence": "The water bottle is empty; I need to refill it.",
+        "sentenceZh": "水壺空了，我需要重新裝水。",
+        "otherForms": "emptier (比較級(去y加ier)), emptiest (最高級(去y加iest))"
+    },
+    {
+        "word": "crowded",
+        "pos": "adj.",
+        "meaning": "擁擠的",
+        "theme": "形容詞(反意)",
+        "sentence": "The night market was very crowded with people last night.",
+        "sentenceZh": "昨晚夜市裡擠滿了人。",
+        "otherForms": "more crowded (比較級), most crowded (最高級)"
+    },
+    {
+        "word": "dangerous",
+        "pos": "adj.",
+        "meaning": "危險的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is dangerous to cross the street without looking.",
+        "sentenceZh": "過馬路不看路是很危險的。",
+        "otherForms": "more dangerous (比較級), most dangerous (最高級), dangerously (副詞)"
+    },
+    {
+        "word": "safe",
+        "pos": "adj.",
+        "meaning": "安全的",
+        "theme": "形容詞(反意)",
+        "sentence": "Always wear a helmet to keep your head safe.",
+        "sentenceZh": "總是戴上安全帽以保護頭部安全。",
+        "otherForms": "safer (比較級), safest (最高級), safely (副詞)"
+    },
+    {
+        "word": "excellent",
+        "pos": "adj.",
+        "meaning": "優秀的",
+        "theme": "形容詞(反意)",
+        "sentence": "She did an excellent job on her English reading report.",
+        "sentenceZh": "她的英文讀書報告做得非常優秀。",
+        "otherForms": "more excellent (比較級), most excellent (最高級), excellently (副詞)"
+    },
+    {
+        "word": "fine",
+        "pos": "adj.",
+        "meaning": "好的 / 罰款",
+        "theme": "形容詞(反意)",
+        "sentence": "I feel completely fine after taking the medicine.",
+        "sentenceZh": "吃完藥後我覺得完全好了。",
+        "otherForms": "finer (比較級), finest (最高級), finely (副詞)"
+    },
+    {
+        "word": "nice",
+        "pos": "adj.",
+        "meaning": "好的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is very nice of you to help me with my homework.",
+        "sentenceZh": "你幫我寫作業真是太好了。",
+        "otherForms": "nicer (比較級), nicest (最高級), nicely (副詞)"
+    },
+    {
+        "word": "good",
+        "pos": "adj.",
+        "meaning": "好的",
+        "theme": "形容詞(反意)",
+        "sentence": "Reading English storybooks is a good habit.",
+        "sentenceZh": "讀英文故事書是個好習慣。",
+        "otherForms": "better (比較級(不規則)), best (最高級(不規則)), well (副詞(不規則))"
+    },
+    {
+        "word": "great",
+        "pos": "adj.",
+        "meaning": "好的",
+        "theme": "形容詞(反意)",
+        "sentence": "We had a great time playing the syntax repair game.",
+        "sentenceZh": "我們玩語法修復遊戲玩得很開心。",
+        "otherForms": "greater (比較級), greatest (最高級), greatly (副詞)"
+    },
+    {
+        "word": "bad",
+        "pos": "adj.",
+        "meaning": "壞的",
+        "theme": "形容詞(反意)",
+        "sentence": "Eating too much candy is bad for your teeth.",
+        "sentenceZh": "吃太多糖果對你的牙齒很壞。",
+        "otherForms": "worse (比較級(不規則)), worst (最高級(不規則)), badly (副詞)"
+    },
+    {
+        "word": "terrific",
+        "pos": "adj.",
+        "meaning": "極好的",
+        "theme": "形容詞(反意)",
+        "sentence": "He is a terrific badminton player who wins many games.",
+        "sentenceZh": "他是個極好的羽球選手，贏得許多比賽。",
+        "otherForms": "terrifically (副詞)"
+    },
+    {
+        "word": "fantastic",
+        "pos": "adj.",
+        "meaning": "極好的",
+        "theme": "形容詞(反意)",
+        "sentence": "The weather today is fantastic for a picnic in the park.",
+        "sentenceZh": "今天的天氣對於在公園野餐來說真是棒極了。",
+        "otherForms": "more fantastic (比較級), most fantastic (最高級), fantastically (副詞)"
+    },
+    {
+        "word": "marvelous",
+        "pos": "adj.",
+        "meaning": "不可思議的 / 極好的",
+        "theme": "形容詞(反意)",
+        "sentence": "The view from the top of the mountain is marvelous.",
+        "sentenceZh": "從山頂看下去的風景真是不可思議的美。",
+        "otherForms": "more marvelous (比較級), most marvelous (最高級), marvelously (副詞)"
+    },
+    {
+        "word": "terrible",
+        "pos": "adj.",
+        "meaning": "糟糕的 / 可怕的",
+        "theme": "形容詞(反意)",
+        "sentence": "I had a terrible headache and couldn't go to school.",
+        "sentenceZh": "我有可怕的頭痛，所以沒辦法上學。",
+        "otherForms": "more terrible (比較級), most terrible (最高級), terribly (副詞(去le加ly))"
+    },
+    {
+        "word": "local",
+        "pos": "adj.",
+        "meaning": "當地的",
+        "theme": "形容詞(反意)",
+        "sentence": "We like to eat at the local restaurants in Dounan.",
+        "sentenceZh": "我們喜歡在斗南當地的餐廳吃飯。",
+        "otherForms": "locally (副詞)"
+    },
+    {
+        "word": "national",
+        "pos": "adj.",
+        "meaning": "國家的",
+        "theme": "形容詞(反意)",
+        "sentence": "The museum is a national treasure of our country.",
+        "sentenceZh": "這座博物館是我們國家的國寶。",
+        "otherForms": "nationally (副詞)"
+    },
+    {
+        "word": "international",
+        "pos": "adj.",
+        "meaning": "國際的",
+        "theme": "形容詞(反意)",
+        "sentence": "English is a very important international language.",
+        "sentenceZh": "英文是非常重要的國際語言。",
+        "otherForms": "internationally (副詞)"
+    },
+    {
+        "word": "foreign",
+        "pos": "adj.",
+        "meaning": "外國的",
+        "theme": "形容詞(反意)",
+        "sentence": "She likes to collect coins from different foreign countries.",
+        "sentenceZh": "她喜歡收集來自不同外國國家的硬幣。",
+        "otherForms": ""
+    },
+    {
+        "word": "overseas",
+        "pos": "adj. / adv.",
+        "meaning": "海外的",
+        "theme": "形容詞(反意)",
+        "sentence": "My uncle works overseas and comes back once a year.",
+        "sentenceZh": "我叔叔在海外工作，一年回來一次。",
+        "otherForms": "overseas (形副同型)"
+    },
+    {
+        "word": "latter",
+        "pos": "adj.",
+        "meaning": "後者的",
+        "theme": "形容詞(反意)",
+        "sentence": "Between the blue shirt and red shirt, I prefer the latter.",
+        "sentenceZh": "藍襯衫和紅襯衫之間，我比較喜歡後者。",
+        "otherForms": ""
+    },
+    {
+        "word": "former",
+        "pos": "adj.",
+        "meaning": "前任的 / 以前的",
+        "theme": "形容詞(反意)",
+        "sentence": "Director Lee is a former teacher at our school.",
+        "sentenceZh": "李主任是我們學校以前的老師。",
+        "otherForms": "formerly (副詞)"
+    },
+    {
+        "word": "possible",
+        "pos": "adj.",
+        "meaning": "可能的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is possible to learn 2000 words if you practice every day.",
+        "sentenceZh": "如果你每天練習，學會兩千個單字是可能的。",
+        "otherForms": "possibly (副詞(去le加ly))"
+    },
+    {
+        "word": "impossible",
+        "pos": "adj.",
+        "meaning": "不可能的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is impossible for a fish to live without water.",
+        "sentenceZh": "魚沒有水是絕對不可能活下去的。",
+        "otherForms": "impossibly (副詞(去le加ly))"
+    },
+    {
+        "word": "quiet",
+        "pos": "adj.",
+        "meaning": "安靜的",
+        "theme": "形容詞(反意)",
+        "sentence": "Please be quiet while the teacher is explaining the rules.",
+        "sentenceZh": "老師在解釋規則時請保持安靜。",
+        "otherForms": "quieter (比較級), quietest (最高級), quietly (副詞)"
+    },
+    {
+        "word": "silent",
+        "pos": "adj.",
+        "meaning": "沉默的",
+        "theme": "形容詞(反意)",
+        "sentence": "The classroom was completely silent during the big test.",
+        "sentenceZh": "大考時教室裡完全寂靜無聲。",
+        "otherForms": "more silent (比較級), most silent (最高級), silently (副詞)"
+    },
+    {
+        "word": "loud",
+        "pos": "adj.",
+        "meaning": "大聲的",
+        "theme": "形容詞(反意)",
+        "sentence": "The 80s pop music is too loud; please turn it down.",
+        "sentenceZh": "80年代流行音樂太大聲了，請關小聲一點。",
+        "otherForms": "louder (比較級), loudest (最高級), loudly (副詞)"
+    },
+    {
+        "word": "noisy",
+        "pos": "adj.",
+        "meaning": "吵鬧的",
+        "theme": "形容詞(反意)",
+        "sentence": "The streets are very noisy during the morning rush hour.",
+        "sentenceZh": "街道在早上尖峰時間非常吵鬧。",
+        "otherForms": "noisier (比較級(去y加ier)), noisiest (最高級(去y加iest)), noisily (副詞(去y加ily))"
+    },
+    {
+        "word": "positive",
+        "pos": "adj.",
+        "meaning": "正面的 / 陽性的",
+        "theme": "形容詞(反意)",
+        "sentence": "Always try to keep a positive attitude when learning.",
+        "sentenceZh": "學習時總是試著保持正面的態度。",
+        "otherForms": "more positive (比較級), most positive (最高級), positively (副詞)"
+    },
+    {
+        "word": "negative",
+        "pos": "adj.",
+        "meaning": "負面的",
+        "theme": "形容詞(反意)",
+        "sentence": "Don't let his negative words affect your mood.",
+        "sentenceZh": "別讓他的負面話語影響你的心情。",
+        "otherForms": "more negative (比較級), most negative (最高級), negatively (副詞)"
+    },
+    {
+        "word": "present",
+        "pos": "adj.",
+        "meaning": "現在的 / 出席的",
+        "theme": "形容詞(反意)",
+        "sentence": "Every student in the class is present today.",
+        "sentenceZh": "班上每個學生今天都出席了。",
+        "otherForms": "presents (複數型/三單), presenting (ing型), presented (過去/過去分詞)"
+    },
+    {
+        "word": "absent",
+        "pos": "adj.",
+        "meaning": "缺席的",
+        "theme": "形容詞(反意)",
+        "sentence": "He was absent from school yesterday because he had a fever.",
+        "sentenceZh": "他昨天因為發燒而缺席沒來上學。",
+        "otherForms": ""
+    },
+    {
+        "word": "private",
+        "pos": "adj.",
+        "meaning": "私人的",
+        "theme": "形容詞(反意)",
+        "sentence": "This is a private garden, so you cannot enter without asking.",
+        "sentenceZh": "這是一座私人花園，所以你沒有詢問不能進入。",
+        "otherForms": "more private (比較級), most private (最高級), privately (副詞)"
+    },
+    {
+        "word": "public",
+        "pos": "adj.",
+        "meaning": "公眾的 / 公共的",
+        "theme": "形容詞(反意)",
+        "sentence": "The public library is a great place to study quietly.",
+        "sentenceZh": "公共圖書館是個安靜讀書的好地方。",
+        "otherForms": "publicly (副詞)"
+    },
+    {
+        "word": "rare",
+        "pos": "adj.",
+        "meaning": "稀有的",
+        "theme": "形容詞(反意)",
+        "sentence": "This kind of blue butterfly is very rare in Taiwan.",
+        "sentenceZh": "這種藍色蝴蝶在台灣非常稀有。",
+        "otherForms": "rarer (比較級), rarest (最高級), rarely (副詞)"
+    },
+    {
+        "word": "precious",
+        "pos": "adj.",
+        "meaning": "珍貴的",
+        "theme": "形容詞(反意)",
+        "sentence": "The memories of our childhood are very precious.",
+        "sentenceZh": "我們童年的回憶非常珍貴。",
+        "otherForms": "more precious (比較級), most precious (最高級), preciously (副詞)"
+    },
+    {
+        "word": "ordinary",
+        "pos": "adj.",
+        "meaning": "普通的",
+        "theme": "形容詞(反意)",
+        "sentence": "It was just an ordinary day at school, nothing special happened.",
+        "sentenceZh": "這只是在學校普通的一天，沒什麼特別的事發生。",
+        "otherForms": "more ordinary (比較級), most ordinary (最高級), ordinarily (副詞(去y加ily))"
+    },
+    {
+        "word": "general",
+        "pos": "adj.",
+        "meaning": "普遍的 / 一般的",
+        "theme": "形容詞(反意)",
+        "sentence": "The general rule is to raise your hand before speaking.",
+        "sentenceZh": "一般的規則是發言前要舉手。",
+        "otherForms": "generally (副詞)"
+    },
+    {
+        "word": "common",
+        "pos": "adj.",
+        "meaning": "普通的 / 常見的",
+        "theme": "形容詞(反意)",
+        "sentence": "Catching a cold is very common during the winter season.",
+        "sentenceZh": "在冬季感冒是非常常見的。",
+        "otherForms": "more common (比較級), most common (最高級), commonly (副詞)"
+    },
+    {
+        "word": "special",
+        "pos": "adj.",
+        "meaning": "特別的",
+        "theme": "形容詞(反意)",
+        "sentence": "I made a special card for my mother's birthday.",
+        "sentenceZh": "我為媽媽的生日做了一張特別的卡片。",
+        "otherForms": "more special (比較級), most special (最高級), specially (副詞)"
+    },
+    {
+        "word": "strange",
+        "pos": "adj.",
+        "meaning": "奇怪的",
+        "theme": "形容詞(反意)",
+        "sentence": "I heard a strange noise coming from the old machine.",
+        "sentenceZh": "我聽到那台舊機器發出奇怪的噪音。",
+        "otherForms": "stranger (比較級), strangest (最高級), strangely (副詞)"
+    },
+    {
+        "word": "unique",
+        "pos": "adj.",
+        "meaning": "獨特的",
+        "theme": "形容詞(反意)",
+        "sentence": "Every student has their own unique talent.",
+        "sentenceZh": "每個學生都有自己獨特的天賦。",
+        "otherForms": "more unique (比較級), most unique (最高級), uniquely (副詞)"
+    },
+    {
+        "word": "same",
+        "pos": "adj.",
+        "meaning": "相同的",
+        "theme": "形容詞(反意)",
+        "sentence": "My cousin and I are exactly the same age.",
+        "sentenceZh": "我表哥和我完全同齡。",
+        "otherForms": ""
+    },
+    {
+        "word": "different",
+        "pos": "adj.",
+        "meaning": "不同的",
+        "theme": "形容詞(反意)",
+        "sentence": "These two English words have very different meanings.",
+        "sentenceZh": "這兩個英文單字有非常不同的意思。",
+        "otherForms": "differently (副詞)"
+    },
+    {
+        "word": "alike",
+        "pos": "adj.",
+        "meaning": "相似的",
+        "theme": "形容詞(反意)",
+        "sentence": "The two brothers look very much alike.",
+        "sentenceZh": "這兩兄弟看起來非常相似。",
+        "otherForms": ""
+    },
+    {
+        "word": "similar",
+        "pos": "adj.",
+        "meaning": "相似的",
+        "theme": "形容詞(反意)",
+        "sentence": "Your new bicycle is very similar to mine.",
+        "sentenceZh": "你的新腳踏車和我的非常相似。",
+        "otherForms": "similarly (副詞)"
+    },
+    {
+        "word": "simple",
+        "pos": "adj.",
+        "meaning": "簡單的",
+        "theme": "形容詞(反意)",
+        "sentence": "Let me explain this rule in a very simple way.",
+        "sentenceZh": "讓我用非常簡單的方式來解釋這個規則。",
+        "otherForms": "simpler (比較級), simplest (最高級), simply (副詞(去le加ly))"
+    },
+    {
+        "word": "easy",
+        "pos": "adj.",
+        "meaning": "容易的",
+        "theme": "形容詞(反意)",
+        "sentence": "The first level of the vocabulary game is quite easy.",
+        "sentenceZh": "單字遊戲的第一關滿容易的。",
+        "otherForms": "easier (比較級(去y加ier)), easiest (最高級(去y加iest)), easily (副詞(去y加ily))"
+    },
+    {
+        "word": "basic",
+        "pos": "adj.",
+        "meaning": "基本的",
+        "theme": "形容詞(反意)",
+        "sentence": "We are learning the basic rules of badminton today.",
+        "sentenceZh": "我們今天在學習羽球的基本規則。",
+        "otherForms": "basically (副詞)"
+    },
+    {
+        "word": "difficult",
+        "pos": "adj.",
+        "meaning": "困難的",
+        "theme": "形容詞(反意)",
+        "sentence": "The math problem was too difficult for me to solve.",
+        "sentenceZh": "這道數學題對我來說太困難了，解不出來。",
+        "otherForms": "more difficult (比較級), most difficult (最高級)"
+    },
+    {
+        "word": "hard",
+        "pos": "adj. / adv.",
+        "meaning": "硬的 / 困難的",
+        "theme": "形容詞(反意)",
+        "sentence": "It is hard to hit the ball if you don't practice your swing.",
+        "sentenceZh": "如果你不練習揮拍，就很難打到球。",
+        "otherForms": "harder (比較級), hardest (最高級), hard (形副同型(hardly為幾乎不))"
+    },
+    {
+        "word": "soft",
+        "pos": "adj.",
+        "meaning": "柔軟的",
+        "theme": "形容詞(反意)",
+        "sentence": "The bed is very soft and comfortable.",
+        "sentenceZh": "這張床非常柔軟舒適。",
+        "otherForms": "softer (比較級), softest (最高級), softly (副詞(溫柔地))"
+    },
+    {
+        "word": "major",
+        "pos": "adj.",
+        "meaning": "主要的",
+        "theme": "形容詞(反意)",
+        "sentence": "The major problem with the car is its broken engine.",
+        "sentenceZh": "這輛車的主要問題是它壞掉的引擎。",
+        "otherForms": ""
+    },
+    {
+        "word": "main",
+        "pos": "adj.",
+        "meaning": "主要的",
+        "theme": "形容詞(反意)",
+        "sentence": "The main character in the story is a brave young boy.",
+        "sentenceZh": "故事裡的主要角色是一位勇敢的小男孩。",
+        "otherForms": "mainly (副詞)"
+    },
+    {
+        "word": "primary",
+        "pos": "adj.",
+        "meaning": "主要的",
+        "theme": "形容詞(反意)",
+        "sentence": "Her primary goal this year is to improve her English.",
+        "sentenceZh": "她今年的主要目標是增進她的英文。",
+        "otherForms": "primarily (副詞)"
+    },
+    {
+        "word": "minor",
+        "pos": "adj.",
+        "meaning": "次要的 / 較小的",
+        "theme": "形容詞(反意)",
+        "sentence": "Don't worry, it is just a minor mistake in the code.",
+        "sentenceZh": "別擔心，那只是程式碼裡一個小小的錯誤。",
+        "otherForms": ""
+    },
+    {
+        "word": "secondary",
+        "pos": "adj.",
+        "meaning": "次要的",
+        "theme": "形容詞(反意)",
+        "sentence": "Winning the game is only of secondary importance; having fun is first.",
+        "sentenceZh": "贏得比賽只是次要的，玩得開心才是第一。",
+        "otherForms": ""
+    },
+    {
+        "word": "maximum",
+        "pos": "adj.",
+        "meaning": "最大的",
+        "theme": "形容詞(反意)",
+        "sentence": "The maximum score you can get on this test is 100.",
+        "sentenceZh": "你在這個考試能得到的最大分數是 100 分。",
+        "otherForms": ""
+    },
+    {
+        "word": "huge",
+        "pos": "adj.",
+        "meaning": "巨大的",
+        "theme": "形容詞(反意)",
+        "sentence": "They bought a huge TV for the living room.",
+        "sentenceZh": "他們買了一台巨大的電視放在客廳。",
+        "otherForms": "huger (比較級), hugest (最高級)"
+    },
+    {
+        "word": "large",
+        "pos": "adj.",
+        "meaning": "大的",
+        "theme": "形容詞(反意)",
+        "sentence": "Elephants are very large and strong animals.",
+        "sentenceZh": "大象是非常巨大且強壯的動物。",
+        "otherForms": "larger (比較級), largest (最高級), largely (副詞)"
+    },
+    {
+        "word": "big",
+        "pos": "adj.",
+        "meaning": "大的",
+        "theme": "形容詞(反意)",
+        "sentence": "My grandfather lives in a big house near the park.",
+        "sentenceZh": "我爺爺住在公園附近的一間大房子裡。",
+        "otherForms": "bigger (比較級(重複字尾)), biggest (最高級(重複字尾))"
+    },
+    {
+        "word": "medium",
+        "pos": "adj.",
+        "meaning": "中等的",
+        "theme": "形容詞(反意)",
+        "sentence": "I would like to order a medium pizza with extra cheese.",
+        "sentenceZh": "我想點一個加起司的中份披薩。",
+        "otherForms": "mediums/media (複數型(不規則))"
+    },
+    {
+        "word": "little",
+        "pos": "adj.",
+        "meaning": "小的",
+        "theme": "形容詞(反意)",
+        "sentence": "The little girl was holding her mother's hand tightly.",
+        "sentenceZh": "小女孩緊緊牽著她媽媽的手。",
+        "otherForms": "less (比較級(不規則)), least (最高級(不規則))"
+    },
+    {
+        "word": "small",
+        "pos": "adj.",
+        "meaning": "小的",
+        "theme": "形容詞(反意)",
+        "sentence": "The mouse is a very small animal that hides easily.",
+        "sentenceZh": "老鼠是一種非常小、容易躲藏的動物。",
+        "otherForms": "smaller (比較級), smallest (最高級)"
+    },
+    {
+        "word": "tiny",
+        "pos": "adj.",
+        "meaning": "微小的",
+        "theme": "形容詞(反意)",
+        "sentence": "Ants are tiny insects, but they are very strong.",
+        "sentenceZh": "螞蟻是微小的昆蟲，但牠們非常強壯。",
+        "otherForms": "tinier (比較級(去y加ier)), tiniest (最高級(去y加iest))"
+    },
+    {
+        "word": "high",
+        "pos": "adj. / adv.",
+        "meaning": "高的",
+        "theme": "形容詞(反意)",
+        "sentence": "The airplane flies very high in the clear blue sky.",
+        "sentenceZh": "飛機在清澈的藍天中飛得非常高。",
+        "otherForms": "higher (比較級), highest (最高級), high/highly (形副同型(highly表高度地))"
+    },
+    {
+        "word": "low",
+        "pos": "adj. / adv.",
+        "meaning": "低的",
+        "theme": "形容詞(反意)",
+        "sentence": "The temperature is very low today, so wear a heavy coat.",
+        "sentenceZh": "今天溫度很低，所以要穿厚外套。",
+        "otherForms": "lower (比較級), lowest (最高級)"
+    },
+    {
+        "word": "heavy",
+        "pos": "adj. / adv.",
+        "meaning": "重的",
+        "theme": "形容詞(反意)",
+        "sentence": "The box full of books is too heavy for me to carry.",
+        "sentenceZh": "這箱裝滿書的箱子對我來說太重了搬不動。",
+        "otherForms": "heavier (比較級(去y加ier)), heaviest (最高級(去y加iest)), heavily (副詞(去y加ily))"
+    },
+    {
+        "word": "light",
+        "pos": "adj. / adv.",
+        "meaning": "輕的",
+        "theme": "形容詞(反意)",
+        "sentence": "A feather is very light and can float in the air.",
+        "sentenceZh": "羽毛非常輕，能在空中漂浮。",
+        "otherForms": "lighter (比較級), lightest (最高級), lightly (副詞)"
+    },
+    {
+        "word": "short",
+        "pos": "adj. / adv.",
+        "meaning": "矮的 / 短的",
+        "theme": "形容詞(反意)",
+        "sentence": "My hair is getting too long; I want to cut it short.",
+        "sentenceZh": "我的頭髮越來越長了，我想把它剪短。",
+        "otherForms": "shorter (比較級), shortest (最高級), shortly (副詞(不久))"
+    },
+    {
+        "word": "long",
+        "pos": "adj. / adv.",
+        "meaning": "長的",
+        "theme": "形容詞(反意)",
+        "sentence": "The river is very long and goes through many cities.",
+        "sentenceZh": "這條河流非常長，穿過許多城市。",
+        "otherForms": "longer (比較級), longest (最高級)"
+    },
+    {
+        "word": "narrow",
+        "pos": "adj.",
+        "meaning": "窄的",
+        "theme": "形容詞(反意)",
+        "sentence": "The car could not pass through the narrow street.",
+        "sentenceZh": "汽車無法通過這條狹窄的街道。",
+        "otherForms": "narrower (比較級), narrowest (最高級), narrowly (副詞)"
+    },
+    {
+        "word": "wide",
+        "pos": "adj.",
+        "meaning": "寬的",
+        "theme": "形容詞(反意)",
+        "sentence": "The river is too wide for us to swim across.",
+        "sentenceZh": "這條河太寬了，我們無法游過去。",
+        "otherForms": "wider (比較級), widest (最高級), widely (副詞)"
+    },
+    {
+        "word": "broad",
+        "pos": "adj.",
+        "meaning": "寬廣的",
+        "theme": "形容詞(反意)",
+        "sentence": "He stood on the hill and looked at the broad green plain.",
+        "sentenceZh": "他站在山丘上看著寬廣的綠色平原。",
+        "otherForms": "broader (比較級), broadest (最高級), broadly (副詞)"
+    },
+    {
+        "word": "old",
+        "pos": "adj.",
+        "meaning": "年老的 / 舊的",
+        "theme": "形容詞(反意)",
+        "sentence": "My grandfather is very old but still very healthy.",
+        "sentenceZh": "我爺爺很老了但還是非常健康。",
+        "otherForms": "older (比較級), oldest (最高級)"
+    },
+    {
+        "word": "new",
+        "pos": "adj.",
+        "meaning": "新的",
+        "theme": "形容詞(反意)",
+        "sentence": "Our school will build a new library next year.",
+        "sentenceZh": "我們學校明年將蓋一座新圖書館。",
+        "otherForms": "newer (比較級), newest (最高級), newly (副詞)"
+    },
+    {
+        "word": "quick",
+        "pos": "adj.",
+        "meaning": "迅速的",
+        "theme": "形容詞(反意)",
+        "sentence": "We had a quick lunch before the afternoon class started.",
+        "sentenceZh": "我們在下午的課開始前迅速吃完了午餐。",
+        "otherForms": "quicker (比較級), quickest (最高級), quickly (副詞)"
+    },
+    {
+        "word": "fast",
+        "pos": "adj. / adv.",
+        "meaning": "快的",
+        "theme": "形容詞(反意)",
+        "sentence": "The cheetah is the fastest animal on land.",
+        "sentenceZh": "獵豹是陸地上最快的動物。",
+        "otherForms": "faster (比較級), fastest (最高級), fast (形副同型)"
+    },
+    {
+        "word": "slow",
+        "pos": "adj.",
+        "meaning": "慢的",
+        "theme": "形容詞(反意)",
+        "sentence": "The turtle walked at a very slow speed across the road.",
+        "sentenceZh": "烏龜以非常慢的速度走過馬路。",
+        "otherForms": "slower (比較級), slowest (最高級), slowly (副詞)"
+    },
+    {
+        "word": "cheap",
+        "pos": "adj.",
+        "meaning": "便宜的",
+        "theme": "形容詞(反意)",
+        "sentence": "You can buy a lot of cheap and delicious food at the night market.",
+        "sentenceZh": "你可以在夜市買到許多便宜又美味的食物。",
+        "otherForms": "cheaper (比較級), cheapest (最高級), cheaply (副詞)"
+    },
+    {
+        "word": "expensive",
+        "pos": "adj.",
+        "meaning": "昂貴的",
+        "theme": "形容詞(反意)",
+        "sentence": "That gold watch is too expensive; I cannot buy it.",
+        "sentenceZh": "那隻金錶太昂貴了，我買不起。",
+        "otherForms": "more expensive (比較級), most expensive (最高級), expensively (副詞)"
+    },
+    {
+        "word": "deaf",
+        "pos": "adj.",
+        "meaning": "失聰的",
+        "theme": "形容人",
+        "sentence": "He uses sign language to talk because he is deaf.",
+        "sentenceZh": "他因為失聰，所以使用手語交談。",
+        "otherForms": "deafer (比較級), deafest (最高級)"
+    },
+    {
+        "word": "blind",
+        "pos": "adj. / v.",
+        "meaning": "失明的",
+        "theme": "形容人",
+        "sentence": "The blind man uses a white cane to help him walk safely.",
+        "sentenceZh": "這位失明男士使用白手杖幫助他安全行走。",
+        "otherForms": "blindly (副詞)"
+    },
+    {
+        "word": "young",
+        "pos": "adj.",
+        "meaning": "年輕的",
+        "theme": "形容人",
+        "sentence": "The young badminton player runs very fast on the court.",
+        "sentenceZh": "年輕的羽球選手在球場上跑得非常快。",
+        "otherForms": "younger (比較級), youngest (最高級)"
+    },
+    {
+        "word": "tall",
+        "pos": "adj.",
+        "meaning": "高的",
+        "theme": "形容人",
+        "sentence": "Yao Ming is a very tall and famous basketball player.",
+        "sentenceZh": "姚明是一位非常高且知名的籃球員。",
+        "otherForms": "taller (比較級), tallest (最高級)"
+    },
+    {
+        "word": "careful",
+        "pos": "adj.",
+        "meaning": "小心的",
+        "theme": "形容人",
+        "sentence": "Please be careful when you cross the busy street.",
+        "sentenceZh": "過繁忙的馬路時請小心。",
+        "otherForms": "more careful (比較級), most careful (最高級), carefully (副詞)"
+    },
+    {
+        "word": "careless",
+        "pos": "adj.",
+        "meaning": "粗心的",
+        "theme": "形容人",
+        "sentence": "He lost his keys because he was being too careless.",
+        "sentenceZh": "他因為太粗心而弄丟了鑰匙。",
+        "otherForms": "more careless (比較級), most careless (最高級), carelessly (副詞)"
+    },
+    {
+        "word": "diligent",
+        "pos": "adj.",
+        "meaning": "勤奮的",
+        "theme": "形容人",
+        "sentence": "A diligent student always finishes their homework on time.",
+        "sentenceZh": "勤奮的學生總是準時完成作業。",
+        "otherForms": "more diligent (比較級), most diligent (最高級), diligently (副詞)"
+    },
+    {
+        "word": "hard-working",
+        "pos": "adj.",
+        "meaning": "努力工作的",
+        "theme": "形容人",
+        "sentence": "Her parents are very hard-working farmers.",
+        "sentenceZh": "她的父母是非常努力工作的農夫。",
+        "otherForms": "more hard-working (比較級), most hard-working (最高級)"
+    },
+    {
+        "word": "lazy",
+        "pos": "adj.",
+        "meaning": "懶惰的",
+        "theme": "形容人",
+        "sentence": "The lazy cat slept on the sofa all afternoon.",
+        "sentenceZh": "懶惰的貓在沙發上睡了整個下午。",
+        "otherForms": "lazier (比較級(去y加ier)), laziest (最高級(去y加iest)), lazily (副詞(去y加ily))"
+    },
+    {
+        "word": "dishonest",
+        "pos": "adj.",
+        "meaning": "不誠實的",
+        "theme": "形容人",
+        "sentence": "It is dishonest to copy answers from other students.",
+        "sentenceZh": "抄襲其他學生的答案是不誠實的。",
+        "otherForms": "more dishonest (比較級), most dishonest (最高級), dishonestly (副詞)"
+    },
+    {
+        "word": "honest",
+        "pos": "adj.",
+        "meaning": "誠實的",
+        "theme": "形容人",
+        "sentence": "An honest person will always tell you the truth.",
+        "sentenceZh": "誠實的人總是會告訴你真相。",
+        "otherForms": "more honest (比較級), most honest (最高級), honestly (副詞)"
+    },
+    {
+        "word": "generous",
+        "pos": "adj.",
+        "meaning": "慷慨的",
+        "theme": "形容人",
+        "sentence": "My uncle is very generous and always buys us gifts.",
+        "sentenceZh": "我叔叔非常慷慨，總是買禮物給我們。",
+        "otherForms": "more generous (比較級), most generous (最高級), generously (副詞)"
+    },
+    {
+        "word": "selfish",
+        "pos": "adj.",
+        "meaning": "自私的",
+        "theme": "形容人",
+        "sentence": "The selfish boy refused to share his toys with others.",
+        "sentenceZh": "那個自私的男孩拒絕和別人分享他的玩具。",
+        "otherForms": "more selfish (比較級), most selfish (最高級), selfishly (副詞)"
+    },
+    {
+        "word": "stingy",
+        "pos": "adj.",
+        "meaning": "小氣的",
+        "theme": "形容人",
+        "sentence": "He is so stingy that he never buys a drink for his friends.",
+        "sentenceZh": "他太小氣了，從來不請朋友喝飲料。",
+        "otherForms": "stingier (比較級(去y加ier)), stingiest (最高級(去y加iest)), stingily (副詞(去y加ily))"
+    },
+    {
+        "word": "greedy",
+        "pos": "adj.",
+        "meaning": "貪心的",
+        "theme": "形容人",
+        "sentence": "The greedy dog tried to eat all the food in the bowl.",
+        "sentenceZh": "貪心的狗試圖吃掉碗裡所有的食物。",
+        "otherForms": "greedier (比較級(去y加ier)), greediest (最高級(去y加iest)), greedily (副詞(去y加ily))"
+    },
+    {
+        "word": "polite",
+        "pos": "adj.",
+        "meaning": "有禮貌的",
+        "theme": "形容人",
+        "sentence": "It is polite to say \"thank you\" when someone helps you.",
+        "sentenceZh": "當別人幫你時，說「謝謝」是有禮貌的。",
+        "otherForms": "politer (比較級), politest (最高級), politely (副詞)"
+    },
+    {
+        "word": "impolite",
+        "pos": "adj.",
+        "meaning": "不禮貌的",
+        "theme": "形容人",
+        "sentence": "It is impolite to talk loudly when the teacher is speaking.",
+        "sentenceZh": "老師說話時大聲講話是不禮貌的。",
+        "otherForms": "more impolite (比較級), most impolite (最高級), impolitely (副詞)"
+    },
+    {
+        "word": "rich",
+        "pos": "adj.",
+        "meaning": "有錢的",
+        "theme": "形容人",
+        "sentence": "The fruit in Taiwan is very rich in vitamin C.",
+        "sentenceZh": "台灣的水果富含維他命C。",
+        "otherForms": "richer (比較級), richest (最高級), richly (副詞)"
+    },
+    {
+        "word": "poor",
+        "pos": "adj.",
+        "meaning": "貧窮的 / 可憐的",
+        "theme": "形容人",
+        "sentence": "The poor little bird hurt its wing and couldn't fly.",
+        "sentenceZh": "可憐的小鳥傷了翅膀沒辦法飛。",
+        "otherForms": "poorer (比較級), poorest (最高級), poorly (副詞)"
+    },
+    {
+        "word": "silly",
+        "pos": "adj.",
+        "meaning": "傻的",
+        "theme": "形容人",
+        "sentence": "Stop asking silly questions and focus on the grammar game.",
+        "sentenceZh": "別再問傻問題了，專心玩文法遊戲吧。",
+        "otherForms": "sillier (比較級(去y加ier)), silliest (最高級(去y加iest))"
+    },
+    {
+        "word": "foolish",
+        "pos": "adj.",
+        "meaning": "愚蠢的",
+        "theme": "形容人",
+        "sentence": "It was a foolish idea to go hiking in the heavy rain.",
+        "sentenceZh": "在大雨中去爬山是個愚蠢的主意。",
+        "otherForms": "more foolish (比較級), most foolish (最高級), foolishly (副詞)"
+    },
+    {
+        "word": "stupid",
+        "pos": "adj.",
+        "meaning": "笨的",
+        "theme": "形容人",
+        "sentence": "I felt stupid when I forgot my good friend's name.",
+        "sentenceZh": "當我忘記好朋友的名字時我覺得自己很笨。",
+        "otherForms": "stupider (比較級), stupidest (最高級), stupidly (副詞)"
+    },
+    {
+        "word": "dumb",
+        "pos": "adj.",
+        "meaning": "啞的",
+        "theme": "形容人",
+        "sentence": "Don't say dumb things; think before you speak.",
+        "sentenceZh": "別說蠢話，三思而後行。",
+        "otherForms": "dumber (比較級), dumbest (最高級), dumbly (副詞)"
+    },
+    {
+        "word": "intelligent",
+        "pos": "adj.",
+        "meaning": "有智慧的",
+        "theme": "形容人",
+        "sentence": "Dolphins are highly intelligent animals in the ocean.",
+        "sentenceZh": "海豚是海洋中高度有智慧的動物。",
+        "otherForms": "more intelligent (比較級), most intelligent (最高級), intelligently (副詞)"
+    },
+    {
+        "word": "smart",
+        "pos": "adj.",
+        "meaning": "聰明的",
+        "theme": "形容人",
+        "sentence": "You have to be smart to solve this difficult puzzle.",
+        "sentenceZh": "你必須很聰明才能解開這個困難的謎題。",
+        "otherForms": "smarter (比較級), smartest (最高級), smartly (副詞)"
+    },
+    {
+        "word": "wise",
+        "pos": "adj.",
+        "meaning": "有智慧的",
+        "theme": "形容人",
+        "sentence": "My grandfather gave me some wise advice about life.",
+        "sentenceZh": "我爺爺給了我一些關於人生的智慧建議。",
+        "otherForms": "wiser (比較級), wisest (最高級), wisely (副詞)"
+    },
+    {
+        "word": "clever",
+        "pos": "adj.",
+        "meaning": "聰明的",
+        "theme": "形容人",
+        "sentence": "The clever monkey found a way to open the box.",
+        "sentenceZh": "聰明的猴子找到了打開盒子的方法。",
+        "otherForms": "cleverer (比較級), cleverest (最高級), cleverly (副詞)"
+    },
+    {
+        "word": "talkative",
+        "pos": "adj.",
+        "meaning": "健談的",
+        "theme": "形容人",
+        "sentence": "She is very talkative and likes to chat with everyone.",
+        "sentenceZh": "她非常健談，喜歡和每個人聊天。",
+        "otherForms": "more talkative (比較級), most talkative (最高級)"
+    },
+    {
+        "word": "shy",
+        "pos": "adj.",
+        "meaning": "害羞的",
+        "theme": "形容人",
+        "sentence": "The shy little boy hid behind his mother's legs.",
+        "sentenceZh": "害羞的小男孩躲在他媽媽的腿後面。",
+        "otherForms": "shyer (比較級), shyest (最高級), shyly (副詞)"
+    },
+    {
+        "word": "beautiful",
+        "pos": "adj.",
+        "meaning": "美麗的",
+        "theme": "形容人",
+        "sentence": "The bride looked beautiful in her white wedding dress.",
+        "sentenceZh": "新娘穿著白紗看起來很美麗。",
+        "otherForms": "more beautiful (比較級), most beautiful (最高級), beautifully (副詞)"
+    },
+    {
+        "word": "pretty",
+        "pos": "adj.",
+        "meaning": "漂亮的",
+        "theme": "形容人",
+        "sentence": "She has a pretty smile that makes everyone happy.",
+        "sentenceZh": "她有一個讓每個人都開心的漂亮笑容。",
+        "otherForms": "prettier (比較級(去y加ier)), prettiest (最高級(去y加iest)), prettily (副詞(去y加ily))"
+    },
+    {
+        "word": "handsome",
+        "pos": "adj.",
+        "meaning": "英俊的",
+        "theme": "形容人",
+        "sentence": "The actor in that movie is very tall and handsome.",
+        "sentenceZh": "那部電影裡的男演員非常高大英俊。",
+        "otherForms": "more handsome (比較級), most handsome (最高級), handsomely (副詞)"
+    },
+    {
+        "word": "nice-looking",
+        "pos": "adj.",
+        "meaning": "好看的",
+        "theme": "形容人",
+        "sentence": "That is a very nice-looking watch you are wearing.",
+        "sentenceZh": "你戴的那隻手錶非常好看。",
+        "otherForms": "better-looking (比較級(不規則)), best-looking (最高級(不規則))"
+    },
+    {
+        "word": "ugly",
+        "pos": "adj.",
+        "meaning": "醜陋的",
+        "theme": "形容人",
+        "sentence": "The monster in the game has an ugly green face.",
+        "sentenceZh": "遊戲裡的怪物有著一張醜陋的綠臉。",
+        "otherForms": "uglier (比較級(去y加ier)), ugliest (最高級(去y加iest))"
+    },
+    {
+        "word": "chubby",
+        "pos": "adj.",
+        "meaning": "圓胖的",
+        "theme": "形容人",
+        "sentence": "The baby has cute, chubby cheeks.",
+        "sentenceZh": "小嬰兒有著可愛圓胖的臉頰。",
+        "otherForms": "chubbier (比較級(去y加ier)), chubbiest (最高級(去y加iest))"
+    },
+    {
+        "word": "fat",
+        "pos": "adj.",
+        "meaning": "胖的",
+        "theme": "形容人",
+        "sentence": "My cat is getting too fat because it eats too much.",
+        "sentenceZh": "我的貓因為吃太多變得太胖了。",
+        "otherForms": "fatter (比較級(重複字尾)), fattest (最高級(重複字尾))"
+    },
+    {
+        "word": "over-weight",
+        "pos": "adj.",
+        "meaning": "過重的",
+        "theme": "形容人",
+        "sentence": "The doctor told him he is slightly over-weight and needs to exercise.",
+        "sentenceZh": "醫生告訴他他稍微過重，需要運動。",
+        "otherForms": ""
+    },
+    {
+        "word": "skinny",
+        "pos": "adj.",
+        "meaning": "極瘦的",
+        "theme": "形容人",
+        "sentence": "The stray dog looked very skinny and hungry.",
+        "sentenceZh": "那隻流浪狗看起來極度瘦弱且飢餓。",
+        "otherForms": "skinnier (比較級(去y加ier)), skinniest (最高級(去y加iest))"
+    },
+    {
+        "word": "slender",
+        "pos": "adj.",
+        "meaning": "苗條的",
+        "theme": "形容人",
+        "sentence": "The dancer has a very long and slender body.",
+        "sentenceZh": "那位舞者有著非常修長苗條的身材。",
+        "otherForms": "slenderer (比較級), slenderest (最高級)"
+    },
+    {
+        "word": "slim",
+        "pos": "adj.",
+        "meaning": "纖細的",
+        "theme": "形容人",
+        "sentence": "She stays slim by doing yoga and eating healthy food.",
+        "sentenceZh": "她靠著做瑜珈和吃健康食物保持纖細。",
+        "otherForms": "slimmer (比較級(重複字尾)), slimmest (最高級(重複字尾))"
+    },
+    {
+        "word": "thin",
+        "pos": "adj.",
+        "meaning": "瘦的",
+        "theme": "形容人",
+        "sentence": "Please cut the cheese into very thin slices.",
+        "sentenceZh": "請把起司切成非常薄的片狀。",
+        "otherForms": "thinner (比較級(重複字尾)), thinnest (最高級(重複字尾))"
+    },
+    {
+        "word": "under-weight",
+        "pos": "adj.",
+        "meaning": "體重不足的",
+        "theme": "形容人",
+        "sentence": "The rescued kitten was under-weight and needed milk.",
+        "sentenceZh": "被救出的小貓體重不足，需要喝牛奶。",
+        "otherForms": ""
+    },
+    {
+        "word": "brave",
+        "pos": "adj.",
+        "meaning": "勇敢的",
+        "theme": "形容人",
+        "sentence": "The brave firefighter saved the family from the burning house.",
+        "sentenceZh": "勇敢的消防員從燃燒的房子裡救出了這家人。",
+        "otherForms": "braver (比較級), bravest (最高級), bravely (副詞)"
+    },
+    {
+        "word": "cute",
+        "pos": "adj.",
+        "meaning": "可愛的",
+        "theme": "形容人",
+        "sentence": "We designed a cute character for the English vocabulary book.",
+        "sentenceZh": "我們為英文單字書設計了一個可愛的角色。",
+        "otherForms": "cuter (比較級), cutest (最高級)"
+    },
+    {
+        "word": "active",
+        "pos": "adj.",
+        "meaning": "活躍的",
+        "theme": "形容人",
+        "sentence": "My grandfather is very active and plays sports every morning.",
+        "sentenceZh": "我爺爺非常活躍，每天早上都做運動。",
+        "otherForms": "more active (比較級), most active (最高級), actively (副詞)"
+    },
+    {
+        "word": "confident",
+        "pos": "adj.",
+        "meaning": "有自信的",
+        "theme": "形容人",
+        "sentence": "You should be confident when you speak English on stage.",
+        "sentenceZh": "當你在台上說英文時應該要有自信。",
+        "otherForms": "more confident (比較級), most confident (最高級), confidently (副詞)"
+    },
+    {
+        "word": "considerate",
+        "pos": "adj.",
+        "meaning": "體貼的",
+        "theme": "形容人",
+        "sentence": "It is very considerate of you to bring me a cup of hot tea.",
+        "sentenceZh": "你帶杯熱茶給我真是太體貼了。",
+        "otherForms": "more considerate (比較級), most considerate (最高級), considerately (副詞)"
+    },
+    {
+        "word": "cool",
+        "pos": "adj. / v.",
+        "meaning": "酷的",
+        "theme": "形容人",
+        "sentence": "Wearing sunglasses makes you look very cool.",
+        "sentenceZh": "戴墨鏡讓你看起來很酷。",
+        "otherForms": "cooler (比較級), coolest (最高級), coolly (副詞)"
+    },
+    {
+        "word": "curious",
+        "pos": "adj.",
+        "meaning": "好奇的",
+        "theme": "形容人",
+        "sentence": "The curious little boy asked a lot of questions about the stars.",
+        "sentenceZh": "那個好奇的小男孩問了許多關於星星的問題。",
+        "otherForms": "more curious (比較級), most curious (最高級), curiously (副詞)"
+    },
+    {
+        "word": "energetic",
+        "pos": "adj.",
+        "meaning": "精力充沛的",
+        "theme": "形容人",
+        "sentence": "The students are very energetic during PE class.",
+        "sentenceZh": "學生們在體育課時精力充沛。",
+        "otherForms": "more energetic (比較級), most energetic (最高級), energetically (副詞)"
+    },
+    {
+        "word": "famous",
+        "pos": "adj.",
+        "meaning": "著名的",
+        "theme": "形容人",
+        "sentence": "Tai Tzu-ying is a very famous badminton player from Taiwan.",
+        "sentenceZh": "戴資穎是一位來自台灣且非常著名的羽球選手。",
+        "otherForms": "more famous (比較級), most famous (最高級), famously (副詞)"
+    },
+    {
+        "word": "frank",
+        "pos": "adj.",
+        "meaning": "坦率的",
+        "theme": "形容人",
+        "sentence": "To be frank with you, I don't really like this movie.",
+        "sentenceZh": "坦率地告訴你，我並不是很喜歡這部電影。",
+        "otherForms": "franker (比較級), frankest (最高級), frankly (副詞)"
+    },
+    {
+        "word": "friendly",
+        "pos": "adj.",
+        "meaning": "友善的",
+        "theme": "形容人",
+        "sentence": "The friendly clerk smiled and helped us find the books.",
+        "sentenceZh": "友善的店員微笑著幫我們找書。",
+        "otherForms": "friendlier (比較級(去y加ier)), friendliest (最高級(去y加iest))"
+    },
+    {
+        "word": "funny",
+        "pos": "adj.",
+        "meaning": "有趣的",
+        "theme": "形容人",
+        "sentence": "The teacher told a very funny story to make us laugh.",
+        "sentenceZh": "老師講了一個非常有趣的故事讓我們大笑。",
+        "otherForms": "funnier (比較級(去y加ier)), funniest (最高級(去y加iest)), funnily (副詞(去y加ily))"
+    },
+    {
+        "word": "gentle",
+        "pos": "adj.",
+        "meaning": "溫和的",
+        "theme": "形容人",
+        "sentence": "She has a very gentle voice when she speaks to babies.",
+        "sentenceZh": "她和嬰兒說話時聲音非常溫和。",
+        "otherForms": "gentler (比較級), gentlest (最高級), gently (副詞(去e加y))"
+    },
+    {
+        "word": "humble",
+        "pos": "adj.",
+        "meaning": "謙虛的",
+        "theme": "形容人",
+        "sentence": "Even though he is a genius, he is still very humble.",
+        "sentenceZh": "儘管他是個天才，他依然非常謙虛。",
+        "otherForms": "humbler (比較級), humblest (最高級), humbly (副詞(去e加y))"
+    },
+    {
+        "word": "humorous",
+        "pos": "adj.",
+        "meaning": "幽默的",
+        "theme": "形容人",
+        "sentence": "My uncle is a humorous man who always tells good jokes.",
+        "sentenceZh": "我叔叔是個幽默的人，總是講好笑的笑話。",
+        "otherForms": "more humorous (比較級), most humorous (最高級), humorously (副詞)"
+    },
+    {
+        "word": "kind",
+        "pos": "adj. / n.",
+        "meaning": "仁慈的 / 親切的 / 種類",
+        "theme": "形容人",
+        "sentence": "It was very kind of you to help the old lady cross the street.",
+        "sentenceZh": "你幫助老太太過馬路真是太仁慈了。",
+        "otherForms": "kinder (比較級), kindest (最高級), kindly (副詞)"
+    },
+    {
+        "word": "lovely",
+        "pos": "adj.",
+        "meaning": "可愛的",
+        "theme": "形容人",
+        "sentence": "We had a lovely picnic in the park yesterday afternoon.",
+        "sentenceZh": "我們昨天下午在公園度過了一場美好的野餐。",
+        "otherForms": "lovelier (比較級(去y加ier)), loveliest (最高級(去y加iest))"
+    },
+    {
+        "word": "patient",
+        "pos": "adj.",
+        "meaning": "有耐心的",
+        "theme": "形容人",
+        "sentence": "You need to be patient when you are teaching beginners.",
+        "sentenceZh": "當你在教初學者時，你需要有耐心。",
+        "otherForms": "more patient (比較級), most patient (最高級), patiently (副詞)"
+    },
+    {
+        "word": "sincere",
+        "pos": "adj.",
+        "meaning": "真誠的",
+        "theme": "形容人",
+        "sentence": "He gave me a sincere apology for his mistake.",
+        "sentenceZh": "他為他的錯誤給了我一個真誠的道歉。",
+        "otherForms": "sincerer (比較級), sincerest (最高級), sincerely (副詞)"
+    },
+    {
+        "word": "successful",
+        "pos": "adj.",
+        "meaning": "成功的",
+        "theme": "形容人",
+        "sentence": "The English teaching seminar was a very successful event.",
+        "sentenceZh": "那場英語教學研討會是個非常成功的活動。",
+        "otherForms": "more successful (比較級), most successful (最高級), successfully (副詞)"
+    },
+    {
+        "word": "married",
+        "pos": "adj.",
+        "meaning": "已婚的",
+        "theme": "形容人",
+        "sentence": "The happy couple got married in a beautiful church.",
+        "sentenceZh": "這對快樂的伴侶在一座美麗的教堂結了婚。",
+        "otherForms": ""
+    },
+    {
+        "word": "childish",
+        "pos": "adj.",
+        "meaning": "幼稚的",
+        "theme": "形容人",
+        "sentence": "Stop acting in such a childish way; you are a junior high student now.",
+        "sentenceZh": "別再表現得這麼幼稚了，你現在是國中生了。",
+        "otherForms": "more childish (比較級), most childish (最高級), childishly (副詞)"
+    },
+    {
+        "word": "childlike",
+        "pos": "adj.",
+        "meaning": "孩子般的",
+        "theme": "形容人",
+        "sentence": "The old man has a childlike wonder for magic tricks.",
+        "sentenceZh": "那位老人對魔術有著孩子般的好奇心。",
+        "otherForms": ""
+    },
+    {
+        "word": "crazy",
+        "pos": "adj.",
+        "meaning": "瘋狂的",
+        "theme": "形容人",
+        "sentence": "The weather is crazy today; it's hot and raining at the same time.",
+        "sentenceZh": "今天天氣很瘋狂，又熱又同時在下雨。",
+        "otherForms": "crazier (比較級(去y加ier)), craziest (最高級(去y加iest)), crazily (副詞(去y加ily))"
+    },
+    {
+        "word": "cruel",
+        "pos": "adj.",
+        "meaning": "殘忍的",
+        "theme": "形容人",
+        "sentence": "It is cruel to keep a large bird in a very small cage.",
+        "sentenceZh": "把大鳥關在極小的籠子裡是很殘忍的。",
+        "otherForms": "crueler (比較級), cruelest (最高級), cruelly (副詞)"
+    },
+    {
+        "word": "evil",
+        "pos": "adj.",
+        "meaning": "邪惡的",
+        "theme": "形容人",
+        "sentence": "The brave prince fought the evil monster to save the princess.",
+        "sentenceZh": "勇敢的王子對抗邪惡怪物以拯救公主。",
+        "otherForms": "eviler (比較級), evilest (最高級), evilly (副詞)"
+    },
+    {
+        "word": "naughty",
+        "pos": "adj.",
+        "meaning": "頑皮的",
+        "theme": "形容人",
+        "sentence": "The naughty boy hid his sister's shoes under the bed.",
+        "sentenceZh": "那個頑皮的男孩把他妹妹的鞋子藏在床下。",
+        "otherForms": "naughtier (比較級(去y加ier)), naughtiest (最高級(去y加iest)), naughtily (副詞(去y加ily))"
+    },
+    {
+        "word": "proud",
+        "pos": "adj.",
+        "meaning": "驕傲的",
+        "theme": "形容人",
+        "sentence": "I am very proud of my students for passing the vocabulary test.",
+        "sentenceZh": "我非常為通過單字測驗的學生們感到驕傲。",
+        "otherForms": "prouder (比較級), proudest (最高級), proudly (副詞)"
+    },
+    {
+        "word": "rude",
+        "pos": "adj.",
+        "meaning": "粗魯的",
+        "theme": "形容人",
+        "sentence": "It is rude to point your finger at someone when talking.",
+        "sentenceZh": "講話時用手指指著別人是很粗魯的。",
+        "otherForms": "ruder (比較級), rudest (最高級), rudely (副詞)"
+    },
+    {
+        "word": "sneaky",
+        "pos": "adj.",
+        "meaning": "鬼鬼祟祟的",
+        "theme": "形容人",
+        "sentence": "The sneaky cat tried to steal the fish from the table.",
+        "sentenceZh": "鬼鬼祟祟的貓試圖從桌上偷走魚。",
+        "otherForms": "sneakier (比較級(去y加ier)), sneakiest (最高級(去y加iest)), sneakily (副詞(去y加ily))"
+    },
+    {
+        "word": "desire",
+        "pos": "n.",
+        "meaning": "慾望",
+        "theme": "情緒",
+        "sentence": "He has a strong desire to win the badminton championship.",
+        "sentenceZh": "他有贏得羽球冠軍的強烈慾望。",
+        "otherForms": "desires (複數型/三單)"
+    },
+    {
+        "word": "emotion",
+        "pos": "n.",
+        "meaning": "情緒",
+        "theme": "情緒",
+        "sentence": "Music is a great way to express your deep emotions.",
+        "sentenceZh": "音樂是表達你深層情緒的好方法。",
+        "otherForms": "emotions (複數型)"
+    },
+    {
+        "word": "fear",
+        "pos": "n.",
+        "meaning": "恐懼",
+        "theme": "情緒",
+        "sentence": "The little girl has a deep fear of the dark.",
+        "sentenceZh": "小女孩對黑暗有著深層的恐懼。",
+        "otherForms": "fears (複數/三單), fearing (ing型), feared (過去式/分詞)"
+    },
+    {
+        "word": "feeling",
+        "pos": "n.",
+        "meaning": "感覺",
+        "theme": "情緒",
+        "sentence": "I have a bad feeling about this upcoming math test.",
+        "sentenceZh": "我對這即將到來的數學考試有種不好的感覺。",
+        "otherForms": "feelings (複數型)"
+    },
+    {
+        "word": "pleasure",
+        "pos": "n.",
+        "meaning": "樂趣",
+        "theme": "情緒",
+        "sentence": "It is my pleasure to help you design the class badge.",
+        "sentenceZh": "能幫你設計班級徽章是我的榮幸（樂趣）。",
+        "otherForms": "pleasures (複數型)"
+    },
+    {
+        "word": "pride",
+        "pos": "n.",
+        "meaning": "驕傲 / 自豪",
+        "theme": "情緒",
+        "sentence": "They take pride in their school.",
+        "sentenceZh": "他們以自己的學校為榮。",
+        "otherForms": "proud (驕傲的 - 形容詞)"
+    },
+    {
+        "word": "anger",
+        "pos": "n.",
+        "meaning": "憤怒",
+        "theme": "情緒",
+        "sentence": "He could not hide his anger when he saw the broken window.",
+        "sentenceZh": "當他看到破掉的窗戶時，他無法隱藏他的憤怒。",
+        "otherForms": "angers (三單)"
+    },
+    {
+        "word": "attention",
+        "pos": "n.",
+        "meaning": "注意力",
+        "theme": "情緒",
+        "sentence": "Please pay attention to the teacher during the class.",
+        "sentenceZh": "上課時請把注意力放在老師身上（專心聽講）。",
+        "otherForms": "attentions (複數型)"
+    },
+    {
+        "word": "hunger",
+        "pos": "n.",
+        "meaning": "飢餓",
+        "theme": "情緒",
+        "sentence": "The stray dog barked loudly out of hunger.",
+        "sentenceZh": "流浪狗因為飢餓而大聲吠叫。",
+        "otherForms": ""
+    },
+    {
+        "word": "joy",
+        "pos": "n.",
+        "meaning": "歡樂",
+        "theme": "情緒",
+        "sentence": "The children jumped up and down with joy when they saw the presents.",
+        "sentenceZh": "孩子們看到禮物時高興地跳上跳下。",
+        "otherForms": "joys (複數型)"
+    },
+    {
+        "word": "sense",
+        "pos": "n.",
+        "meaning": "感覺 / 理智",
+        "theme": "情緒",
+        "sentence": "Dogs have a very strong sense of smell.",
+        "sentenceZh": "狗有非常敏銳的嗅覺（感覺）。",
+        "otherForms": "senses (複數/三單(加es)), sensing (ing型(去e加ing)), sensed (過去式/分詞)"
+    },
+    {
+        "word": "smile",
+        "pos": "n.",
+        "meaning": "微笑",
+        "theme": "情緒",
+        "sentence": "The friendly clerk greeted us with a bright smile.",
+        "sentenceZh": "友善的店員帶著燦爛的微笑問候我們。",
+        "otherForms": "smiles (複數/三單), smiling (ing型(去e加ing)), smiled (過去式/分詞)"
+    },
+    {
+        "word": "tear",
+        "pos": "n. / v.",
+        "meaning": "眼淚 / 撕裂",
+        "theme": "情緒",
+        "sentence": "A single tear rolled down her cheek when she heard the sad news.",
+        "sentenceZh": "當她聽到壞消息時，一滴眼淚滑落了她的臉頰。",
+        "otherForms": "tears (複數/三單), tearing (ing型), tore (過去式(不規則)), torn (過去分詞(不規則))"
+    },
+    {
+        "word": "cheer",
+        "pos": "n.",
+        "meaning": "歡呼",
+        "theme": "情緒",
+        "sentence": "We all cheered loudly when our school badminton team won.",
+        "sentenceZh": "當我們學校羽球隊獲勝時，我們都大聲歡呼。",
+        "otherForms": "cheers (複數/三單), cheering (ing型), cheered (過去式/分詞)"
+    },
+    {
+        "word": "joke",
+        "pos": "n.",
+        "meaning": "笑話",
+        "theme": "情緒",
+        "sentence": "The English teacher told a funny joke to wake us up.",
+        "sentenceZh": "英文老師講了一個好笑的笑話讓我們清醒。",
+        "otherForms": "jokes (複數/三單), joking (ing型(去e加ing)), joked (過去式/分詞)"
+    },
+    {
+        "word": "hate",
+        "pos": "v. / n.",
+        "meaning": "討厭",
+        "theme": "情緒",
+        "sentence": "I hate making the same spelling mistake twice.",
+        "sentenceZh": "我討厭犯兩次一樣的拼字錯誤。",
+        "otherForms": "hates (三單), hating (ing型(去e加ing)), hated (過去式/分詞)"
+    },
+    {
+        "word": "like",
+        "pos": "v. / n.",
+        "meaning": "喜歡",
+        "theme": "情緒",
+        "sentence": "I like listening to 1980s music when I am reading.",
+        "sentenceZh": "我看書時喜歡聽 80 年代的音樂。",
+        "otherForms": "likes (三單), liking (ing型(去e加ing)), liked (過去式/分詞)"
+    },
+    {
+        "word": "love",
+        "pos": "v. / n.",
+        "meaning": "愛",
+        "theme": "情緒",
+        "sentence": "My grandmother loves taking a walk in the park.",
+        "sentenceZh": "我奶奶熱愛在公園散步。",
+        "otherForms": "loves (三單), loving (ing型(去e加ing)), loved (過去式/分詞)"
+    },
+    {
+        "word": "regret",
+        "pos": "v. / n.",
+        "meaning": "後悔",
+        "theme": "情緒",
+        "sentence": "You will regret it if you don't study for the exam.",
+        "sentenceZh": "如果你不為考試讀書，你會後悔的。",
+        "otherForms": "regrets (複數/三單), regretting (ing型(重複字尾)), regretted (過去式/分詞(重複字尾))"
+    },
+    {
+        "word": "laugh",
+        "pos": "v. / n.",
+        "meaning": "大笑",
+        "theme": "情緒",
+        "sentence": "The funny video on YouTube made everyone laugh.",
+        "sentenceZh": "YouTube 上的搞笑影片讓每個人都大笑。",
+        "otherForms": "laughs (複數/三單), laughing (ing型), laughed (過去式/分詞)"
+    },
+    {
+        "word": "calm",
+        "pos": "v. / adj.",
+        "meaning": "使冷靜 / 冷靜的",
+        "theme": "情緒",
+        "sentence": "Take a deep breath to calm yourself down before the test.",
+        "sentenceZh": "考試前深呼吸讓自己冷靜下來。",
+        "otherForms": "calmer (比較級), calmest (最高級), calmly (副詞)"
+    },
+    {
+        "word": "enjoy",
+        "pos": "v.",
+        "meaning": "享受",
+        "theme": "情緒",
+        "sentence": "I really enjoy playing the interactive grammar games.",
+        "sentenceZh": "我真的很享受玩互動文法遊戲。",
+        "otherForms": "enjoys (三單), enjoying (ing型), enjoyed (過去式/分詞)"
+    },
+    {
+        "word": "envy",
+        "pos": "v. / n.",
+        "meaning": "嫉妒",
+        "theme": "情緒",
+        "sentence": "I envy his excellent badminton skills.",
+        "sentenceZh": "我嫉妒他極佳的羽球技巧。",
+        "otherForms": "envies (三單(去y加ies)), envying (ing型), envied (過去式/分詞(去y加ied))"
+    },
+    {
+        "word": "doubt",
+        "pos": "v. / n.",
+        "meaning": "懷疑",
+        "theme": "情緒",
+        "sentence": "I doubt that it will rain this afternoon; the sky is very clear.",
+        "sentenceZh": "我懷疑今天下午會下雨，天空非常晴朗。",
+        "otherForms": "doubts (複數/三單), doubting (ing型), doubted (過去式/分詞)"
+    },
+    {
+        "word": "pleasant",
+        "pos": "adj.",
+        "meaning": "令人愉悅的",
+        "theme": "情緒",
+        "sentence": "We had a pleasant afternoon at the coffee shop in Douliu.",
+        "sentenceZh": "我們在斗六的咖啡廳度過了一個令人愉悅的下午。",
+        "otherForms": "more pleasant (比較級), most pleasant (最高級), pleasantly (副詞)"
+    },
+    {
+        "word": "afraid",
+        "pos": "adj.",
+        "meaning": "害怕的",
+        "theme": "情緒",
+        "sentence": "Don't be afraid to ask questions in class.",
+        "sentenceZh": "在課堂上別害怕問問題。",
+        "otherForms": ""
+    },
+    {
+        "word": "glad",
+        "pos": "adj.",
+        "meaning": "高興的",
+        "theme": "情緒",
+        "sentence": "I am so glad to hear that you passed the English test!",
+        "sentenceZh": "聽到你通過英文考試我真高興！",
+        "otherForms": "gladder (比較級(重複字尾)), gladdest (最高級(重複字尾)), gladly (副詞)"
+    },
+    {
+        "word": "happy",
+        "pos": "adj.",
+        "meaning": "快樂的",
+        "theme": "情緒",
+        "sentence": "She gave me a happy smile when she saw the present.",
+        "sentenceZh": "她看到禮物時給了我一個快樂的微笑。",
+        "otherForms": "happier (比較級(去y加ier)), happiest (最高級(去y加iest)), happily (副詞(去y加ily))"
+    },
+    {
+        "word": "jealous",
+        "pos": "adj.",
+        "meaning": "嫉妒的",
+        "theme": "情緒",
+        "sentence": "He felt a little jealous when his friend bought a new bike.",
+        "sentenceZh": "當他朋友買了新腳踏車時，他覺得有點嫉妒。",
+        "otherForms": "more jealous (比較級), most jealous (最高級), jealously (副詞)"
+    },
+    {
+        "word": "lonely",
+        "pos": "adj.",
+        "meaning": "孤獨的",
+        "theme": "情緒",
+        "sentence": "The old man felt lonely because his children lived far away.",
+        "sentenceZh": "那位老人覺得孤單，因為他的孩子們住得很遠。",
+        "otherForms": "lonelier (比較級(去y加ier)), loneliest (最高級(去y加iest))"
+    },
+    {
+        "word": "mad",
+        "pos": "adj.",
+        "meaning": "瘋狂的",
+        "theme": "情緒",
+        "sentence": "Please don't be mad at me; I didn't mean to break it.",
+        "sentenceZh": "請別對我生氣，我不是故意弄壞它的。",
+        "otherForms": "madder (比較級(重複字尾)), maddest (最高級(重複字尾)), madly (副詞)"
+    },
+    {
+        "word": "nervous",
+        "pos": "adj.",
+        "meaning": "緊張的",
+        "theme": "情緒",
+        "sentence": "I always feel nervous before speaking English on stage.",
+        "sentenceZh": "在台上說英文前我總是覺得緊張。",
+        "otherForms": "more nervous (比較級), most nervous (最高級), nervously (副詞)"
+    },
+    {
+        "word": "sad",
+        "pos": "adj.",
+        "meaning": "難過的",
+        "theme": "情緒",
+        "sentence": "It is a very sad story about a lost little dog.",
+        "sentenceZh": "這是一個關於迷路小狗的難過故事。",
+        "otherForms": "sadder (比較級(重複字尾)), saddest (最高級(重複字尾)), sadly (副詞)"
+    },
+    {
+        "word": "unhappy",
+        "pos": "adj.",
+        "meaning": "不快樂的",
+        "theme": "情緒",
+        "sentence": "The little boy was unhappy because he couldn't go out to play.",
+        "sentenceZh": "小男孩很不快樂，因為他不能出去玩。",
+        "otherForms": "unhappier (比較級(去y加ier)), unhappiest (最高級(去y加iest)), unhappily (副詞(去y加ily))"
+    },
+    {
+        "word": "angry",
+        "pos": "adj.",
+        "meaning": "生氣的",
+        "theme": "情緒",
+        "sentence": "The teacher was angry because someone cheated on the test.",
+        "sentenceZh": "老師很生氣，因為有人在考試作弊。",
+        "otherForms": "angrier (比較級(去y加ier)), angriest (最高級(去y加iest)), angrily (副詞(去y加ily))"
+    },
+    {
+        "word": "black",
+        "pos": "adj. / n.",
+        "meaning": "黑色的 / 黑色",
+        "theme": "顏色",
+        "sentence": "He always uses a black pen to write his homework.",
+        "sentenceZh": "他總是用黑筆寫作業。",
+        "otherForms": "blacks (複數型), blacker (比較級), blackest (最高級)"
+    },
+    {
+        "word": "blue",
+        "pos": "adj. / n.",
+        "meaning": "藍色的 / 藍色",
+        "theme": "顏色",
+        "sentence": "The sky is beautifully blue today.",
+        "sentenceZh": "今天的天空是美麗的藍色。",
+        "otherForms": "blues (複數型), bluer (比較級), bluest (最高級)"
+    },
+    {
+        "word": "brown",
+        "pos": "adj. / n.",
+        "meaning": "棕色的 / 棕色",
+        "theme": "顏色",
+        "sentence": "My cute dog has big brown eyes.",
+        "sentenceZh": "我可愛的狗有一雙棕色的大眼睛。",
+        "otherForms": "browns (複數型), browner (比較級), brownest (最高級)"
+    },
+    {
+        "word": "color",
+        "pos": "n. / v.",
+        "meaning": "顏色 / 著色",
+        "theme": "顏色",
+        "sentence": "What is your favorite color for a badminton racket?",
+        "sentenceZh": "你最喜歡的羽球拍顏色是什麼？",
+        "otherForms": "colors (複數型)"
+    },
+    {
+        "word": "gray",
+        "pos": "adj. / n.",
+        "meaning": "灰色的 / 灰色",
+        "theme": "顏色",
+        "sentence": "The sky turned gray just before the heavy rain started.",
+        "sentenceZh": "就在大雨開始前，天空變成了灰色。",
+        "otherForms": "grays (複數型), grayer (比較級), grayest (最高級)"
+    },
+    {
+        "word": "green",
+        "pos": "adj. / n.",
+        "meaning": "綠色的 / 綠色",
+        "theme": "顏色",
+        "sentence": "Eating green vegetables is very good for your body.",
+        "sentenceZh": "吃綠色蔬菜對你的身體很好。",
+        "otherForms": "greens (複數型), greener (比較級), greenest (最高級)"
+    },
+    {
+        "word": "orange",
+        "pos": "adj. / n.",
+        "meaning": "橙色的 / 橘子",
+        "theme": "顏色",
+        "sentence": "He wore a bright orange T-shirt to the beach.",
+        "sentenceZh": "他穿了一件亮橘色的 T 恤去海灘。",
+        "otherForms": "oranges (複數型)"
+    },
+    {
+        "word": "pink",
+        "pos": "adj. / n.",
+        "meaning": "粉色的 / 粉色",
+        "theme": "顏色",
+        "sentence": "She decorated her bedroom with cute pink flowers.",
+        "sentenceZh": "她用可愛的粉紅花朵裝飾她的臥室。",
+        "otherForms": "pinks (複數型), pinker (比較級), pinkest (最高級)"
+    },
+    {
+        "word": "purple",
+        "pos": "adj. / n.",
+        "meaning": "紫色的 / 紫色",
+        "theme": "顏色",
+        "sentence": "Grapes are usually green or purple.",
+        "sentenceZh": "葡萄通常是綠色或紫色的。",
+        "otherForms": "purples (複數型), purpler (比較級), purplest (最高級)"
+    },
+    {
+        "word": "red",
+        "pos": "adj. / n.",
+        "meaning": "紅色的 / 紅色",
+        "theme": "顏色",
+        "sentence": "The teacher used a red pen to correct the mistakes.",
+        "sentenceZh": "老師用紅筆來改正錯誤。",
+        "otherForms": "reds (複數型), redder (比較級(重複字尾)), reddest (最高級(重複字尾))"
+    },
+    {
+        "word": "white",
+        "pos": "adj. / n.",
+        "meaning": "白色的 / 白色",
+        "theme": "顏色",
+        "sentence": "The nurse wears a clean white uniform at the hospital.",
+        "sentenceZh": "護理師在醫院穿著乾淨的白色制服。",
+        "otherForms": "whites (複數型), whiter (比較級), whitest (最高級)"
+    },
+    {
+        "word": "yellow",
+        "pos": "adj. / n.",
+        "meaning": "黃色的 / 黃色",
+        "theme": "顏色",
+        "sentence": "Bananas and lemons are both yellow fruits.",
+        "sentenceZh": "香蕉和檸檬都是黃色的水果。",
+        "otherForms": "yellows (複數型), yellower (比較級), yellowest (最高級)"
+    },
+    {
+        "word": "golden",
+        "pos": "adj. / n.",
+        "meaning": "金色的 / 金色",
+        "theme": "顏色",
+        "sentence": "The golden sunlight shines warmly in the early morning.",
+        "sentenceZh": "金色的陽光在清晨溫暖地照耀著。",
+        "otherForms": ""
+    },
+    {
+        "word": "able",
+        "pos": "adj.",
+        "meaning": "能夠的",
+        "theme": "其餘形容詞",
+        "sentence": "You will be able to read this book after learning these words.",
+        "sentenceZh": "學完這些單字後你就能夠讀懂這本書了。",
+        "otherForms": ""
+    },
+    {
+        "word": "alone",
+        "pos": "adj.",
+        "meaning": "單獨地 / 獨自",
+        "theme": "其餘形容詞",
+        "sentence": "The old man lives alone in the big house.",
+        "sentenceZh": "那位老人獨自住在大房子裡。",
+        "otherForms": "lonely (形容詞(孤單的))"
+    },
+    {
+        "word": "asleep",
+        "pos": "adj.",
+        "meaning": "睡著的",
+        "theme": "其餘形容詞",
+        "sentence": "The baby fell asleep quickly after drinking warm milk.",
+        "sentenceZh": "嬰兒喝完溫牛奶後很快就睡著了。",
+        "otherForms": ""
+    },
+    {
+        "word": "born",
+        "pos": "adj.",
+        "meaning": "與生俱來的",
+        "theme": "其餘形容詞",
+        "sentence": "I was born in a small town in central Taiwan.",
+        "sentenceZh": "我出生在中台灣的一個小鎮。",
+        "otherForms": ""
+    },
+    {
+        "word": "brief",
+        "pos": "adj.",
+        "meaning": "簡短的",
+        "theme": "其餘形容詞",
+        "sentence": "Let's have a brief meeting after lunch.",
+        "sentenceZh": "我們午餐後開個簡短的會議吧。",
+        "otherForms": "briefer (比較級), briefest (最高級), briefly (簡短地 - 副詞)"
+    },
+    {
+        "word": "certain",
+        "pos": "adj.",
+        "meaning": "確定的",
+        "theme": "其餘形容詞",
+        "sentence": "Are you certain that this is the correct answer?",
+        "sentenceZh": "你確定這是正確答案嗎？",
+        "otherForms": "more certain (比較級), most certain (最高級), certainly (副詞)"
+    },
+    {
+        "word": "classic",
+        "pos": "adj.",
+        "meaning": "經典的",
+        "theme": "其餘形容詞",
+        "sentence": "This is a classic movie that everyone should watch.",
+        "sentenceZh": "這是一部每個人都該看的經典電影。",
+        "otherForms": ""
+    },
+    {
+        "word": "convenient",
+        "pos": "adj.",
+        "meaning": "方便的",
+        "theme": "其餘形容詞",
+        "sentence": "It is very convenient to use a smartphone to study vocabulary.",
+        "sentenceZh": "用智慧型手機學習單字非常方便。",
+        "otherForms": "more convenient (比較級), most convenient (最高級), conveniently (副詞)"
+    },
+    {
+        "word": "dear",
+        "pos": "adj.",
+        "meaning": "親愛的 / 昂貴的",
+        "theme": "其餘形容詞",
+        "sentence": "\"Dear Director Lee, we would like to invite you...\"",
+        "sentenceZh": "「親愛的李主任，我們想邀請您……」",
+        "otherForms": "dearer (比較級), dearest (最高級), dearly (副詞)"
+    },
+    {
+        "word": "deep",
+        "pos": "adj. / adv.",
+        "meaning": "深的",
+        "theme": "其餘形容詞",
+        "sentence": "The little boy was afraid to swim in the deep ocean.",
+        "sentenceZh": "小男孩害怕在深海裡游泳。",
+        "otherForms": "deeper (比較級), deepest (最高級), deeply (副詞)"
+    },
+    {
+        "word": "distant",
+        "pos": "adj.",
+        "meaning": "遙遠的",
+        "theme": "其餘形容詞",
+        "sentence": "We could hear the distant sound of thunder in the mountains.",
+        "sentenceZh": "我們能聽到群山中遙遠的雷聲。",
+        "otherForms": "more distant (比較級), most distant (最高級), distantly (副詞)"
+    },
+    {
+        "word": "double",
+        "pos": "adj.",
+        "meaning": "雙倍的",
+        "theme": "其餘形容詞",
+        "sentence": "Please check your spelling double times before handing in the test.",
+        "sentenceZh": "交卷前請檢查你的拼字兩次。",
+        "otherForms": ""
+    },
+    {
+        "word": "electric",
+        "pos": "adj.",
+        "meaning": "電的",
+        "theme": "其餘形容詞",
+        "sentence": "Turn off the electric fan when you leave the classroom.",
+        "sentenceZh": "離開教室時請關掉電風扇。",
+        "otherForms": "electrically (副詞)"
+    },
+    {
+        "word": "enough",
+        "pos": "adj.",
+        "meaning": "足夠的",
+        "theme": "其餘形容詞",
+        "sentence": "We don't have enough players to start the volleyball game.",
+        "sentenceZh": "我們沒有足夠的球員來開始排球比賽。",
+        "otherForms": ""
+    },
+    {
+        "word": "equal",
+        "pos": "adj.",
+        "meaning": "平等的",
+        "theme": "其餘形容詞",
+        "sentence": "In math, five plus five is equal to ten.",
+        "sentenceZh": "在數學中，五加五等於十。",
+        "otherForms": "equally (副詞)"
+    },
+    {
+        "word": "every",
+        "pos": "adj.",
+        "meaning": "每個的",
+        "theme": "其餘形容詞",
+        "sentence": "I practice reading English for thirty minutes every day.",
+        "sentenceZh": "我每天練習閱讀英文三十分鐘。",
+        "otherForms": ""
+    },
+    {
+        "word": "exact",
+        "pos": "adj.",
+        "meaning": "確切的 / 精確的",
+        "theme": "其餘形容詞",
+        "sentence": "Tell me the exact time you will arrive.",
+        "sentenceZh": "告訴我你抵達的確切時間。",
+        "otherForms": "exactly (精確地 - 副詞)"
+    },
+    {
+        "word": "extra",
+        "pos": "adj.",
+        "meaning": "額外的",
+        "theme": "其餘形容詞",
+        "sentence": "Can I have an extra piece of blank paper, please?",
+        "sentenceZh": "請問我可以多要一張空白紙嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "fair",
+        "pos": "adj.",
+        "meaning": "公平的",
+        "theme": "其餘形容詞",
+        "sentence": "The teacher made a fair decision for both students.",
+        "sentenceZh": "老師為兩位學生做了一個公平的決定。",
+        "otherForms": "fairer (比較級), fairest (最高級), fairly (副詞)"
+    },
+    {
+        "word": "fancy",
+        "pos": "adj.",
+        "meaning": "別緻的 / 鋪張的",
+        "theme": "其餘形容詞",
+        "sentence": "We had dinner at a very fancy restaurant to celebrate.",
+        "sentenceZh": "我們在一家非常高級別緻的餐廳吃晚餐慶祝。",
+        "otherForms": "fancier (比較級(去y加ier)), fanciest (最高級(去y加iest))"
+    },
+    {
+        "word": "far",
+        "pos": "adj. / adv.",
+        "meaning": "遠的",
+        "theme": "其餘形容詞",
+        "sentence": "Is your house very far from the junior high school?",
+        "sentenceZh": "你家離國中很遠嗎？",
+        "otherForms": "farther/further (比較級(不規則)), farthest/furthest (最高級(不規則)), far (形副同型)"
+    },
+    {
+        "word": "fashionable",
+        "pos": "adj.",
+        "meaning": "時尚的",
+        "theme": "其餘形容詞",
+        "sentence": "Wearing large sunglasses was very fashionable in the 1980s.",
+        "sentenceZh": "戴大墨鏡在 80 年代非常時尚。",
+        "otherForms": "more fashionable (比較級), most fashionable (最高級), fashionably (副詞)"
+    },
+    {
+        "word": "favorite",
+        "pos": "adj.",
+        "meaning": "最喜愛的",
+        "theme": "其餘形容詞",
+        "sentence": "PE is my favorite subject because I can play badminton.",
+        "sentenceZh": "體育是我最喜歡的科目，因為可以打羽球。",
+        "otherForms": "favorites (複數型)"
+    },
+    {
+        "word": "final",
+        "pos": "adj.",
+        "meaning": "最終的",
+        "theme": "其餘形容詞",
+        "sentence": "You must study hard for the final exam next week.",
+        "sentenceZh": "你必須為下週的期末考認真讀書。",
+        "otherForms": "finals (複數型), finally (副詞)"
+    },
+    {
+        "word": "formal",
+        "pos": "adj.",
+        "meaning": "正式的",
+        "theme": "其餘形容詞",
+        "sentence": "He wore a formal black suit to the important meeting.",
+        "sentenceZh": "他穿了一套正式的黑西裝去參加重要會議。",
+        "otherForms": "more formal (比較級), most formal (最高級), formally (副詞)"
+    },
+    {
+        "word": "free",
+        "pos": "adj.",
+        "meaning": "免費的 / 自由的 / 有空的",
+        "theme": "其餘形容詞",
+        "sentence": "You can play this English vocabulary game for free.",
+        "sentenceZh": "你可以免費玩這個英文單字遊戲。",
+        "otherForms": "freer (比較級), freest (最高級), freely (副詞)"
+    },
+    {
+        "word": "fresh",
+        "pos": "adj.",
+        "meaning": "新鮮的",
+        "theme": "其餘形容詞",
+        "sentence": "The fresh air in the mountains feels so clean.",
+        "sentenceZh": "山裡的新鮮空氣感覺好乾淨。",
+        "otherForms": "fresher (比較級), freshest (最高級), freshly (副詞)"
+    },
+    {
+        "word": "helpful",
+        "pos": "adj.",
+        "meaning": "有幫助的",
+        "theme": "其餘形容詞",
+        "sentence": "This vocabulary passport is very helpful for learning English.",
+        "sentenceZh": "這本單字護照對學習英文非常有幫助。",
+        "otherForms": "more helpful (比較級), most helpful (最高級), helpfully (副詞)"
+    },
+    {
+        "word": "homesick",
+        "pos": "adj.",
+        "meaning": "想家的",
+        "theme": "其餘形容詞",
+        "sentence": "The student felt very homesick during the summer camp.",
+        "sentenceZh": "這位學生在夏令營期間覺得非常想家。",
+        "otherForms": "more homesick (比較級), most homesick (最高級)"
+    },
+    {
+        "word": "horrible",
+        "pos": "adj.",
+        "meaning": "可怕的",
+        "theme": "其餘形容詞",
+        "sentence": "I had a horrible dream about a giant monster last night.",
+        "sentenceZh": "我昨晚做了一個關於巨大怪物的可怕惡夢。",
+        "otherForms": "more horrible (比較級), most horrible (最高級), horribly (副詞(去le加ly))"
+    },
+    {
+        "word": "important",
+        "pos": "adj.",
+        "meaning": "重要的",
+        "theme": "其餘形容詞",
+        "sentence": "It is very important to eat breakfast every morning.",
+        "sentenceZh": "每天早上吃早餐是非常重要的。",
+        "otherForms": "more important (比較級), most important (最高級), importantly (副詞)"
+    },
+    {
+        "word": "independent",
+        "pos": "adj.",
+        "meaning": "獨立的",
+        "theme": "其餘形容詞",
+        "sentence": "Junior high students should learn to be more independent.",
+        "sentenceZh": "國中生應該學習變得更獨立。",
+        "otherForms": "more independent (比較級), most independent (最高級), independently (副詞)"
+    },
+    {
+        "word": "instant",
+        "pos": "adj.",
+        "meaning": "立即的",
+        "theme": "其餘形容詞",
+        "sentence": "He sent me an instant message on the Internet.",
+        "sentenceZh": "他在網路上傳了一則即時訊息給我。",
+        "otherForms": "instants (複數型), instantly (副詞)"
+    },
+    {
+        "word": "latest",
+        "pos": "adj.",
+        "meaning": "最新的",
+        "theme": "其餘形容詞",
+        "sentence": "Have you listened to their latest pop music album?",
+        "sentenceZh": "你聽過他們最新的流行音樂專輯了嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "lucky",
+        "pos": "adj.",
+        "meaning": "幸運的",
+        "theme": "其餘形容詞",
+        "sentence": "I was very lucky to find my lost keys in the park.",
+        "sentenceZh": "我非常幸運地在公園找到了我弄丟的鑰匙。",
+        "otherForms": "luckier (比較級(去y加ier)), luckiest (最高級(去y加iest)), luckily (副詞(去y加ily))"
+    },
+    {
+        "word": "magic",
+        "pos": "adj.",
+        "meaning": "魔法的",
+        "theme": "其餘形容詞",
+        "sentence": "The magician showed us an amazing magic trick.",
+        "sentenceZh": "魔術師表演了一個驚人的魔術戲法給我們看。",
+        "otherForms": "magically (副詞)"
+    },
+    {
+        "word": "necessary",
+        "pos": "adj.",
+        "meaning": "必要的",
+        "theme": "其餘形容詞",
+        "sentence": "Is it really necessary to buy such an expensive racket?",
+        "sentenceZh": "真的有必要買這麼昂貴的球拍嗎？",
+        "otherForms": "more necessary (比較級), most necessary (最高級), necessarily (副詞(去y加ily))"
+    },
+    {
+        "word": "other",
+        "pos": "adj.",
+        "meaning": "其他的",
+        "theme": "其餘形容詞",
+        "sentence": "Do you have any other questions about the grammar rules?",
+        "sentenceZh": "關於文法規則你還有其他的問題嗎？",
+        "otherForms": "others (複數型)"
+    },
+    {
+        "word": "particular",
+        "pos": "adj.",
+        "meaning": "特定的 / 特別的",
+        "theme": "其餘形容詞",
+        "sentence": "Is there a particular reason why you are late?",
+        "sentenceZh": "你遲到有什麼特別的原因嗎？",
+        "otherForms": "particularly (特別地 - 副詞)"
+    },
+    {
+        "word": "peaceful",
+        "pos": "adj.",
+        "meaning": "和平的",
+        "theme": "其餘形容詞",
+        "sentence": "The small village in the mountains is very quiet and peaceful.",
+        "sentenceZh": "山裡的小村莊非常安靜且寧靜。",
+        "otherForms": "more peaceful (比較級), most peaceful (最高級), peacefully (副詞)"
+    },
+    {
+        "word": "perfect",
+        "pos": "adj.",
+        "meaning": "完美的",
+        "theme": "其餘形容詞",
+        "sentence": "This clear blue sky is just perfect for an outdoor picnic.",
+        "sentenceZh": "這樣晴朗的藍天簡直完美適合戶外野餐。",
+        "otherForms": "more perfect (比較級), most perfect (最高級), perfectly (副詞)"
+    },
+    {
+        "word": "personal",
+        "pos": "adj.",
+        "meaning": "個人的",
+        "theme": "其餘形容詞",
+        "sentence": "You should not read other people's personal letters.",
+        "sentenceZh": "你不應該讀別人私人的信件。",
+        "otherForms": "more personal (比較級), most personal (最高級), personally (副詞)"
+    },
+    {
+        "word": "popular",
+        "pos": "adj.",
+        "meaning": "受歡迎的",
+        "theme": "其餘形容詞",
+        "sentence": "The game \"Weather Combat\" is very popular among students.",
+        "sentenceZh": "「天氣大戰」這款遊戲在學生中非常受歡迎。",
+        "otherForms": "more popular (比較級), most popular (最高級), popularly (副詞)"
+    },
+    {
+        "word": "ready",
+        "pos": "adj.",
+        "meaning": "準備好的",
+        "theme": "其餘形容詞",
+        "sentence": "Are you ready to start the English vocabulary test?",
+        "sentenceZh": "你準備好開始英文單字測驗了嗎？",
+        "otherForms": "readier (比較級(去y加ier)), readiest (最高級(去y加iest)), readily (副詞(去y加ily))"
+    },
+    {
+        "word": "real",
+        "pos": "adj.",
+        "meaning": "真實的",
+        "theme": "其餘形容詞",
+        "sentence": "Is the monster in the movie a real animal or just computer graphics?",
+        "sentenceZh": "電影裡的怪物是真實的動物還是只是電腦繪圖？",
+        "otherForms": "more real (比較級), most real (最高級), really (副詞)"
+    },
+    {
+        "word": "regular",
+        "pos": "adj.",
+        "meaning": "規律的 / 定期的",
+        "theme": "其餘形容詞",
+        "sentence": "Doing regular exercise will keep your body strong and healthy.",
+        "sentenceZh": "做規律的運動能讓你的身體保持強壯健康。",
+        "otherForms": "more regular (比較級), most regular (最高級), regularly (副詞)"
+    },
+    {
+        "word": "responsible",
+        "pos": "adj.",
+        "meaning": "負責的",
+        "theme": "其餘形容詞",
+        "sentence": "The class leader is responsible for keeping the classroom quiet.",
+        "sentenceZh": "班長負責保持教室安靜。",
+        "otherForms": "more responsible (比較級), most responsible (最高級), responsibly (副詞)"
+    },
+    {
         "word": "royal",
+        "pos": "adj.",
         "meaning": "皇家的",
         "theme": "其餘形容詞",
         "sentence": "The castle was the home of the royal family.",
@@ -17408,139 +18252,1506 @@ const DICTIONARY_DATA = [
         "otherForms": "royalty (皇室 - 名詞)"
     },
     {
-        "word": "sauce",
-        "meaning": "醬汁",
-        "theme": "調味料與茶點",
-        "sentence": "I like to eat noodles with some hot sauce.",
-        "sentenceZh": "我喜歡吃麵配一點辣醬。",
-        "otherForms": "sauces (複數型)"
+        "word": "serious",
+        "pos": "adj.",
+        "meaning": "嚴肅的 / 嚴重的",
+        "theme": "其餘形容詞",
+        "sentence": "You need to be serious when preparing for the big exam.",
+        "sentenceZh": "準備大考時你需要認真嚴肅。",
+        "otherForms": "more serious (比較級), most serious (最高級), seriously (副詞)"
     },
     {
-        "word": "shock",
-        "meaning": "震驚",
-        "theme": "情緒",
-        "sentence": "The bad news was a great shock to everyone.",
-        "sentenceZh": "這個壞消息讓大家非常震驚。",
-        "otherForms": "shocks (三單), shocked (過去/過去分詞), shocking (現在分詞)"
+        "word": "sharp",
+        "pos": "adj.",
+        "meaning": "鋒利的 / 尖銳的",
+        "theme": "其餘形容詞",
+        "sentence": "Be careful, the edge of that broken glass is very sharp.",
+        "sentenceZh": "小心，那塊破玻璃的邊緣非常銳利。",
+        "otherForms": "sharper (比較級), sharpest (最高級), sharply (副詞)"
     },
     {
-        "word": "soft",
-        "meaning": "柔軟的",
-        "theme": "形容詞(反意)",
-        "sentence": "The bed is very soft and comfortable.",
-        "sentenceZh": "這張床非常柔軟舒適。",
-        "otherForms": "softer (比較級), softest (最高級), softly (溫柔地 - 副詞)"
-    },
-    {
-        "word": "source",
-        "meaning": "來源",
-        "theme": "抽象概念",
-        "sentence": "The internet is a great source of information.",
-        "sentenceZh": "網路是一個很棒的資訊來源。",
-        "otherForms": "sources (複數型)"
-    },
-    {
-        "word": "soy",
-        "meaning": "大豆",
-        "theme": "蔬果",
-        "sentence": "Soy milk is a very healthy drink.",
-        "sentenceZh": "豆漿是非常健康的飲品。",
-        "otherForms": "soybean (常用名詞)"
-    },
-    {
-        "word": "stage",
-        "meaning": "舞台；階段",
-        "theme": "娛樂",
-        "sentence": "The singer walked onto the stage.",
-        "sentenceZh": "那位歌手走上了舞台。",
-        "otherForms": "stages (複數型)"
-    },
-    {
-        "word": "supply",
-        "meaning": "供應",
-        "theme": "商業",
-        "sentence": "They supply food and water to the people in need.",
-        "sentenceZh": "他們向需要的人供應食物和水。",
-        "otherForms": "supplies (三單), supplied (過去/過去分詞), supplying (現在分詞)"
-    },
-    {
-        "word": "surface",
-        "meaning": "表面",
-        "theme": "抽象概念",
-        "sentence": "The surface of the table is very smooth.",
-        "sentenceZh": "這張桌子的表面非常光滑。",
-        "otherForms": "surfaces (複數型)"
-    },
-    {
-        "word": "tale",
-        "meaning": "故事；傳說",
-        "theme": "娛樂",
-        "sentence": "My grandfather told me an old fairy tale.",
-        "sentenceZh": "我爺爺跟我說了一個古老的童話故事。",
-        "otherForms": "tales (複數型)"
-    },
-    {
-        "word": "task",
-        "meaning": "任務",
-        "theme": "抽象概念",
-        "sentence": "Your task is to finish the homework before 9 PM.",
-        "sentenceZh": "你的任務是在晚上9點前完成作業。",
-        "otherForms": "tasks (複數型)"
-    },
-    {
-        "word": "track",
-        "meaning": "軌道；追蹤",
-        "theme": "交通",
-        "sentence": "The police are trying to track the bad guy.",
-        "sentenceZh": "警察正試圖追蹤那個壞人。",
-        "otherForms": "tracks (三單), tracked (過去/過去分詞), tracking (現在分詞)"
-    },
-    {
-        "word": "user",
-        "meaning": "使用者",
-        "theme": "身分",
-        "sentence": "This app has millions of users worldwide.",
-        "sentenceZh": "這個應用程式在全世界有數百萬的使用者。",
-        "otherForms": "users (複數型), use (使用 - 動詞), useful (形容詞 (有用的))"
-    },
-    {
-        "word": "waterfall",
-        "meaning": "瀑布",
-        "theme": "大自然",
-        "sentence": "We took a picture in front of a beautiful waterfall.",
-        "sentenceZh": "我們在一個美麗的瀑布前拍了照。",
-        "otherForms": "waterfalls (複數型)"
-    },
-    {
-        "word": "weapon",
-        "meaning": "武器",
-        "theme": "社會與媒體",
-        "sentence": "Guns and knives are dangerous weapons.",
-        "sentenceZh": "槍和刀都是危險的武器。",
-        "otherForms": "weapons (複數型)"
-    },
-    {
-        "word": "wine",
-        "meaning": "葡萄酒",
-        "theme": "食物",
-        "sentence": "He had a glass of red wine with his dinner.",
-        "sentenceZh": "他吃晚餐時喝了一杯紅葡萄酒。",
+        "word": "single",
+        "pos": "adj.",
+        "meaning": "單一的 / 單身的",
+        "theme": "其餘形容詞",
+        "sentence": "I didn't make a single mistake in my grammar test!",
+        "sentenceZh": "我的文法考試連一個錯誤都沒犯！",
         "otherForms": ""
     },
     {
-        "word": "wire",
-        "meaning": "電線；金屬線",
-        "theme": "電子產品",
-        "sentence": "Be careful not to touch the broken wire.",
-        "sentenceZh": "小心不要碰到那根斷掉的電線。",
-        "otherForms": "wires (複數型)"
+        "word": "skillful",
+        "pos": "adj.",
+        "meaning": "熟練的",
+        "theme": "其餘形容詞",
+        "sentence": "He is a very skillful player who can hit the ball perfectly.",
+        "sentenceZh": "他是個非常熟練的球員，能完美地擊球。",
+        "otherForms": "more skillful (比較級), most skillful (最高級), skillfully (副詞)"
+    },
+    {
+        "word": "sleepy",
+        "pos": "adj.",
+        "meaning": "想睡的",
+        "theme": "其餘形容詞",
+        "sentence": "I feel very sleepy because I stayed up late last night.",
+        "sentenceZh": "我覺得很想睡，因為我昨晚熬夜了。",
+        "otherForms": "sleepier (比較級(去y加ier)), sleepiest (最高級(去y加iest)), sleepily (副詞(去y加ily))"
+    },
+    {
+        "word": "social",
+        "pos": "adj.",
+        "meaning": "社會的 / 社交的",
+        "theme": "其餘形容詞",
+        "sentence": "Humans are social animals; we like to talk to friends.",
+        "sentenceZh": "人類是社會性動物，我們喜歡和朋友聊天。",
+        "otherForms": "more social (比較級), most social (最高級), socially (副詞)"
+    },
+    {
+        "word": "such",
+        "pos": "adj.",
+        "meaning": "如此的",
+        "theme": "其餘形容詞",
+        "sentence": "It is such a beautiful day to play badminton outside.",
+        "sentenceZh": "這是個如此適合在戶外打羽球的美好日子。",
+        "otherForms": ""
+    },
+    {
+        "word": "sudden",
+        "pos": "adj.",
+        "meaning": "突然的",
+        "theme": "其餘形容詞",
+        "sentence": "We got wet because of a sudden rain shower.",
+        "sentenceZh": "我們因為一場突如其來的陣雨淋濕了。",
+        "otherForms": "more sudden (比較級), most sudden (最高級), suddenly (副詞)"
+    },
+    {
+        "word": "super",
+        "pos": "adj.",
+        "meaning": "超級的",
+        "theme": "其餘形容詞",
+        "sentence": "He ran at a super fast speed to catch the bus.",
+        "sentenceZh": "他以超級快的速度奔跑去趕公車。",
+        "otherForms": ""
+    },
+    {
+        "word": "the",
+        "pos": "art.",
+        "meaning": "那個 / 這個 / 那些 / 這些",
+        "theme": "其餘形容詞",
+        "sentence": "",
+        "sentenceZh": "",
+        "otherForms": ""
+    },
+    {
+        "word": "thick",
+        "pos": "adj.",
+        "meaning": "厚的 / 濃的 / 稠的",
+        "theme": "其餘形容詞",
+        "sentence": "You should wear a thick coat because it is freezing outside.",
+        "sentenceZh": "你應該穿件厚外套，因為外面冷極了。",
+        "otherForms": "thicker (比較級), thickest (最高級), thickly (副詞)"
+    },
+    {
+        "word": "tidy",
+        "pos": "adj.",
+        "meaning": "整潔的",
+        "theme": "其餘形容詞",
+        "sentence": "Please keep your desk clean and tidy before leaving the classroom.",
+        "sentenceZh": "離開教室前請保持你的書桌乾淨整潔。",
+        "otherForms": "tidier (比較級(去y加ier)), tidiest (最高級(去y加iest)), tidily (副詞(去y加ily))"
+    },
+    {
+        "word": "useful",
+        "pos": "adj.",
+        "meaning": "有用的",
+        "theme": "其餘形容詞",
+        "sentence": "This English-Chinese dictionary is a very useful tool.",
+        "sentenceZh": "這本英漢字典是非常有用的工具。",
+        "otherForms": "more useful (比較級), most useful (最高級), usefully (副詞)"
+    },
+    {
+        "word": "usual",
+        "pos": "adj.",
+        "meaning": "通常的",
+        "theme": "其餘形容詞",
+        "sentence": "I woke up at my usual time of 6:30 a.m. this morning.",
+        "sentenceZh": "我今天早上在通常的六點半醒來。",
+        "otherForms": "more usual (比較級), most usual (最高級), usually (副詞)"
+    },
+    {
+        "word": "valuable",
+        "pos": "adj.",
+        "meaning": "有價值的",
+        "theme": "其餘形容詞",
+        "sentence": "Time is very valuable, so don't waste it on playing too many games.",
+        "sentenceZh": "時間非常寶貴，所以不要浪費在玩太多遊戲上。",
+        "otherForms": "more valuable (比較級), most valuable (最高級), valuably (副詞)"
+    },
+    {
+        "word": "whole",
+        "pos": "adj.",
+        "meaning": "整體的",
+        "theme": "其餘形容詞",
+        "sentence": "He ate the whole pizza by himself because he was so hungry.",
+        "sentenceZh": "他因為太餓了，自己吃掉了整份披薩。",
+        "otherForms": "wholly (副詞)"
+    },
+    {
+        "word": "wild",
+        "pos": "adj.",
+        "meaning": "野生的 / 狂野的",
+        "theme": "其餘形容詞",
+        "sentence": "The forest is full of dangerous wild animals.",
+        "sentenceZh": "森林裡充滿了危險的野生動物。",
+        "otherForms": "wilder (比較級), wildest (最高級), wildly (副詞)"
+    },
+    {
+        "word": "wonderful",
+        "pos": "adj.",
+        "meaning": "美妙的",
+        "theme": "其餘形容詞",
+        "sentence": "We had a wonderful time visiting the museum together.",
+        "sentenceZh": "我們一起參觀博物館度過了美妙的時光。",
+        "otherForms": "more wonderful (比較級), most wonderful (最高級), wonderfully (副詞)"
     },
     {
         "word": "worth",
-        "meaning": "值得的；價值",
+        "pos": "adj.",
+        "meaning": "值得的 / 價值",
         "theme": "其餘形容詞",
         "sentence": "This museum is definitely worth visiting.",
         "sentenceZh": "這間博物館絕對值得參觀。",
-        "otherForms": "worthy (值得的 - 形容詞)"
+        "otherForms": "worthy (形容詞(值得的))"
+    },
+    {
+        "word": "especially",
+        "pos": "adv.",
+        "meaning": "尤其",
+        "theme": "副詞",
+        "sentence": "I love eating fruit, especially sweet mangoes in summer.",
+        "sentenceZh": "我熱愛吃水果，尤其是在夏天的甜芒果。",
+        "otherForms": ""
+    },
+    {
+        "word": "finally",
+        "pos": "adv.",
+        "meaning": "最後",
+        "theme": "副詞",
+        "sentence": "After a long game, our team finally won the victory.",
+        "sentenceZh": "經過漫長的比賽，我們的隊伍最後贏得了勝利。",
+        "otherForms": ""
+    },
+    {
+        "word": "least",
+        "pos": "adv.",
+        "meaning": "最少",
+        "theme": "副詞",
+        "sentence": "You should exercise at least three times a week.",
+        "sentenceZh": "你應該一週至少運動三次。",
+        "otherForms": ""
+    },
+    {
+        "word": "then",
+        "pos": "adv.",
+        "meaning": "然後",
+        "theme": "副詞",
+        "sentence": "Finish your homework first, and then you can watch TV.",
+        "sentenceZh": "先寫完你的作業，然後你就可以看電視。",
+        "otherForms": ""
+    },
+    {
+        "word": "yet",
+        "pos": "adv.",
+        "meaning": "尚未 / 但是",
+        "theme": "副詞",
+        "sentence": "Have you finished coding the HTML game yet?",
+        "sentenceZh": "你寫完 HTML 遊戲的程式碼了嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "aloud",
+        "pos": "adv.",
+        "meaning": "大聲地",
+        "theme": "副詞",
+        "sentence": "Please read the English sentence aloud so everyone can hear you.",
+        "sentenceZh": "請大聲朗讀這個英文句子，讓每個人都能聽到。",
+        "otherForms": ""
+    },
+    {
+        "word": "either",
+        "pos": "adv.",
+        "meaning": "也（用於否定句）",
+        "theme": "副詞",
+        "sentence": "I don't like bitter coffee, and he doesn't like it either.",
+        "sentenceZh": "我不喜歡苦咖啡，他也不喜歡。",
+        "otherForms": ""
+    },
+    {
+        "word": "else",
+        "pos": "adv.",
+        "meaning": "其他",
+        "theme": "副詞",
+        "sentence": "Is there anything else I can help you with today?",
+        "sentenceZh": "今天還有其他我可以幫你的事嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "just",
+        "pos": "adv.",
+        "meaning": "就 / 剛剛",
+        "theme": "副詞",
+        "sentence": "The school bus just left the station a minute ago.",
+        "sentenceZh": "校車一分鐘前剛剛離開車站。",
+        "otherForms": ""
+    },
+    {
+        "word": "neither",
+        "pos": "adv.",
+        "meaning": "也不",
+        "theme": "副詞",
+        "sentence": "My brother doesn't play tennis, and neither do I.",
+        "sentenceZh": "我哥哥不打網球，我也不打。",
+        "otherForms": ""
+    },
+    {
+        "word": "not",
+        "pos": "adv.",
+        "meaning": "不",
+        "theme": "副詞",
+        "sentence": "This is not the correct answer; please try again.",
+        "sentenceZh": "這不是正確答案，請再試一次。",
+        "otherForms": ""
+    },
+    {
+        "word": "also",
+        "pos": "adv.",
+        "meaning": "也 / 此外",
+        "theme": "副詞",
+        "sentence": "She speaks English, and she also speaks Japanese.",
+        "sentenceZh": "她會說英文，她也會說日文。",
+        "otherForms": "too (相似詞(也 - 常用於句尾))"
+    },
+    {
+        "word": "only",
+        "pos": "adv.",
+        "meaning": "只有 / 僅",
+        "theme": "副詞",
+        "sentence": "I have only one English class on Wednesday afternoon.",
+        "sentenceZh": "我星期三下午只有一節英文課。",
+        "otherForms": ""
+    },
+    {
+        "word": "almost",
+        "pos": "adv.",
+        "meaning": "幾乎",
+        "theme": "副詞",
+        "sentence": "I have almost finished memorizing all 2,000 words!",
+        "sentenceZh": "我幾乎已經背完這兩千個單字了！",
+        "otherForms": ""
+    },
+    {
+        "word": "even",
+        "pos": "adv.",
+        "meaning": "甚至",
+        "theme": "副詞",
+        "sentence": "He loves the game so much that he even plays it on weekends.",
+        "sentenceZh": "他太愛這個遊戲了，甚至在週末也會玩。",
+        "otherForms": ""
+    },
+    {
+        "word": "really",
+        "pos": "adv.",
+        "meaning": "真地",
+        "theme": "副詞",
+        "sentence": "Is it really true that we have no homework tonight?",
+        "sentenceZh": "今晚沒有回家作業是真的嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "so",
+        "pos": "adv. / conj.",
+        "meaning": "如此；這麼 / 所以",
+        "theme": "副詞",
+        "sentence": "The movie was so funny that I laughed until I cried.",
+        "sentenceZh": "這部電影太好笑了，我笑到流眼淚。",
+        "otherForms": ""
+    },
+    {
+        "word": "still",
+        "pos": "adv.",
+        "meaning": "仍然",
+        "theme": "副詞",
+        "sentence": "Are you still watching that 80s music video on YouTube?",
+        "sentenceZh": "你還在 YouTube 上看那部 80 年代的音樂影片嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "very",
+        "pos": "adv.",
+        "meaning": "非常",
+        "theme": "副詞",
+        "sentence": "Thank you very much for helping me solve the grammar problem.",
+        "sentenceZh": "非常感謝你幫我解決文法問題。",
+        "otherForms": ""
+    },
+    {
+        "word": "nearly",
+        "pos": "adv.",
+        "meaning": "幾乎",
+        "theme": "副詞",
+        "sentence": "It took nearly two hours to drive from Douliu to Taipei.",
+        "sentenceZh": "從斗六開車到台北幾乎花了兩個小時。",
+        "otherForms": ""
+    },
+    {
+        "word": "quite",
+        "pos": "adv.",
+        "meaning": "蠻~",
+        "theme": "副詞",
+        "sentence": "The science test today was quite difficult for me.",
+        "sentenceZh": "今天的科學考試對我來說相當困難。",
+        "otherForms": ""
+    },
+    {
+        "word": "rather",
+        "pos": "adv.",
+        "meaning": "寧願 / 相當地",
+        "theme": "副詞",
+        "sentence": "I would rather play badminton than go running.",
+        "sentenceZh": "我寧願去打羽球也不想去跑步。",
+        "otherForms": ""
+    },
+    {
+        "word": "too",
+        "pos": "adv.",
+        "meaning": "也 / 太",
+        "theme": "副詞",
+        "sentence": "The hot soup is too spicy for the little child to eat.",
+        "sentenceZh": "這碗熱湯對小孩子來說太辣了沒辦法吃。",
+        "otherForms": ""
+    },
+    {
+        "word": "actually",
+        "pos": "adv.",
+        "meaning": "實際上",
+        "theme": "副詞",
+        "sentence": "The grammar rule looks hard, but it is actually quite easy.",
+        "sentenceZh": "這個文法規則看起來很難，但實際上相當簡單。",
+        "otherForms": ""
+    },
+    {
+        "word": "perhaps",
+        "pos": "adv.",
+        "meaning": "可能地",
+        "theme": "副詞",
+        "sentence": "Perhaps we can go to the beach if it doesn't rain tomorrow.",
+        "sentenceZh": "如果明天不下雨，或許我們可以去海灘。",
+        "otherForms": ""
+    },
+    {
+        "word": "probably",
+        "pos": "adv.",
+        "meaning": "有可能地",
+        "theme": "副詞",
+        "sentence": "He will probably be late for school because he missed the bus.",
+        "sentenceZh": "他可能會上學遲到，因為他錯過了公車。",
+        "otherForms": ""
+    },
+    {
+        "word": "likely",
+        "pos": "adv.",
+        "meaning": "可能地",
+        "theme": "副詞",
+        "sentence": "It is highly likely that she will win the first prize.",
+        "sentenceZh": "她非常有贏得第一名。",
+        "otherForms": ""
+    },
+    {
+        "word": "maybe",
+        "pos": "adv.",
+        "meaning": "可能地",
+        "theme": "副詞",
+        "sentence": "Maybe we can ask the teacher to explain it one more time.",
+        "sentenceZh": "也許我們可以請老師再解釋一次。",
+        "otherForms": ""
+    },
+    {
+        "word": "abroad",
+        "pos": "adv.",
+        "meaning": "在國外",
+        "theme": "副詞",
+        "sentence": "My uncle travels abroad many times a year for business.",
+        "sentenceZh": "我叔叔為了生意一年出國好幾次。",
+        "otherForms": ""
+    },
+    {
+        "word": "ahead",
+        "pos": "adv.",
+        "meaning": "在前面",
+        "theme": "副詞",
+        "sentence": "Keep walking straight ahead, and you will see the post office.",
+        "sentenceZh": "繼續直直往前走，你就會看到郵局。",
+        "otherForms": ""
+    },
+    {
+        "word": "everywhere",
+        "pos": "adv.",
+        "meaning": "到處",
+        "theme": "副詞",
+        "sentence": "I have looked everywhere, but I cannot find my cell phone.",
+        "sentenceZh": "我已經到處找過了，但就是找不到我的手機。",
+        "otherForms": ""
+    },
+    {
+        "word": "anywhere",
+        "pos": "adv.",
+        "meaning": "任何地方",
+        "theme": "副詞",
+        "sentence": "You can sit anywhere you like in the cafeteria.",
+        "sentenceZh": "在自助餐廳裡你可以坐在任何你喜歡的地方。",
+        "otherForms": ""
+    },
+    {
+        "word": "somewhere",
+        "pos": "adv.",
+        "meaning": "某個地方",
+        "theme": "副詞",
+        "sentence": "I dropped my keys somewhere near the badminton court.",
+        "sentenceZh": "我把鑰匙掉在羽球場附近的某個地方了。",
+        "otherForms": ""
+    },
+    {
+        "word": "out",
+        "pos": "adv.",
+        "meaning": "出去",
+        "theme": "副詞",
+        "sentence": "Please take the trash out before you go to bed.",
+        "sentenceZh": "睡前請把垃圾拿出去。",
+        "otherForms": ""
+    },
+    {
+        "word": "upon",
+        "pos": "prep. / adv.",
+        "meaning": "在~之上",
+        "theme": "副詞",
+        "sentence": "Once upon a time, there was a brave prince in a castle.",
+        "sentenceZh": "很久很久以前，城堡裡有一位勇敢的王子。",
+        "otherForms": ""
+    },
+    {
+        "word": "away",
+        "pos": "adv.",
+        "meaning": "離開",
+        "theme": "副詞",
+        "sentence": "The scared bird quickly flew away into the blue sky.",
+        "sentenceZh": "受到驚嚇的鳥快速飛走，進入了藍天中。",
+        "otherForms": ""
+    },
+    {
+        "word": "besides",
+        "pos": "adv. / prep.",
+        "meaning": "此外 / 而且",
+        "theme": "副詞",
+        "sentence": "I don't want to go out; besides, it is raining heavily.",
+        "sentenceZh": "我不想出門；而且，現在雨下得很大。",
+        "otherForms": ""
+    },
+    {
+        "word": "therefore",
+        "pos": "adv.",
+        "meaning": "因此",
+        "theme": "副詞",
+        "sentence": "He didn't study hard; therefore, he failed the math test.",
+        "sentenceZh": "他沒有努力讀書；因此，他數學考試不及格。",
+        "otherForms": ""
+    },
+    {
+        "word": "however",
+        "pos": "adv.",
+        "meaning": "然而",
+        "theme": "副詞",
+        "sentence": "He tried his best to hit the ball; however, he missed it.",
+        "sentenceZh": "他盡了全力去擊球；然而，他還是漏接了。",
+        "otherForms": ""
+    },
+    {
+        "word": "always",
+        "pos": "adv.",
+        "meaning": "總是",
+        "theme": "副詞",
+        "sentence": "The sun always rises in the east and sets in the west.",
+        "sentenceZh": "太陽總是從東方升起、西方落下。",
+        "otherForms": ""
+    },
+    {
+        "word": "ever",
+        "pos": "adv.",
+        "meaning": "曾經",
+        "theme": "副詞",
+        "sentence": "Have you ever been to a 1980s pop music concert?",
+        "sentenceZh": "你曾經去過 80 年代流行音樂的演唱會嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "never",
+        "pos": "adv.",
+        "meaning": "從不",
+        "theme": "副詞",
+        "sentence": "You should never open the door for a stranger.",
+        "sentenceZh": "你絕不應該幫陌生人開門。",
+        "otherForms": ""
+    },
+    {
+        "word": "often",
+        "pos": "adv.",
+        "meaning": "經常",
+        "theme": "副詞",
+        "sentence": "I often go jogging in the park on Sunday mornings.",
+        "sentenceZh": "我經常在星期日早上在公園慢跑。",
+        "otherForms": ""
+    },
+    {
+        "word": "seldom",
+        "pos": "adv.",
+        "meaning": "很少",
+        "theme": "副詞",
+        "sentence": "She seldom drinks sweet soda because it is bad for her health.",
+        "sentenceZh": "她很少喝甜汽水，因為那對健康不好。",
+        "otherForms": ""
+    },
+    {
+        "word": "sometimes",
+        "pos": "adv.",
+        "meaning": "有時候",
+        "theme": "副詞",
+        "sentence": "Sometimes learning a new language can be a little frustrating.",
+        "sentenceZh": "有時候學習新語言會有點令人挫折。",
+        "otherForms": ""
+    },
+    {
+        "word": "usually",
+        "pos": "adv.",
+        "meaning": "通常",
+        "theme": "副詞",
+        "sentence": "We usually have rice, meat, and vegetables for dinner.",
+        "sentenceZh": "我們晚餐通常吃米飯、肉和蔬菜。",
+        "otherForms": ""
+    },
+    {
+        "word": "again",
+        "pos": "adv.",
+        "meaning": "再次",
+        "theme": "副詞",
+        "sentence": "Please read the English sentence aloud again.",
+        "sentenceZh": "請再次大聲朗讀這個英文句子。",
+        "otherForms": ""
+    },
+    {
+        "word": "hardly",
+        "pos": "adv.",
+        "meaning": "幾乎不",
+        "theme": "副詞",
+        "sentence": "The fog was so thick that I could hardly see the road.",
+        "sentenceZh": "霧太濃了，我幾乎看不見馬路。",
+        "otherForms": ""
+    },
+    {
+        "word": "together",
+        "pos": "adv.",
+        "meaning": "一起",
+        "theme": "副詞",
+        "sentence": "Let's work together to finish this school science project.",
+        "sentenceZh": "我們一起合作完成這個學校的科學專案吧。",
+        "otherForms": ""
+    },
+    {
+        "word": "twice",
+        "pos": "adv.",
+        "meaning": "兩次",
+        "theme": "副詞",
+        "sentence": "I brush my teeth at least twice a day to keep them healthy.",
+        "sentenceZh": "我一天至少刷兩次牙來保持牙齒健康。",
+        "otherForms": ""
+    },
+    {
+        "word": "this",
+        "pos": "pron. / adj.",
+        "meaning": "這個（近指單數）",
+        "theme": "代名詞",
+        "sentence": "This interactive grammar game is really fun to play!",
+        "sentenceZh": "這個互動文法遊戲玩起來真有趣！",
+        "otherForms": ""
+    },
+    {
+        "word": "that",
+        "pos": "pron. / adj.",
+        "meaning": "那個（遠指單數）",
+        "theme": "代名詞",
+        "sentence": "That tall building over there is the city hospital.",
+        "sentenceZh": "那邊那棟高大的建築物是市立醫院。",
+        "otherForms": ""
+    },
+    {
+        "word": "these",
+        "pos": "pron. / adj.",
+        "meaning": "這些（近指複數）",
+        "theme": "代名詞",
+        "sentence": "Please put these heavy books on the bottom shelf.",
+        "sentenceZh": "請把這些重書放在最底層的架子上。",
+        "otherForms": ""
+    },
+    {
+        "word": "those",
+        "pos": "pron. / adj.",
+        "meaning": "那些（遠指複數）",
+        "theme": "代名詞",
+        "sentence": "Those students playing on the court are my classmates.",
+        "sentenceZh": "那些在球場上打球的學生是我的同班同學。",
+        "otherForms": ""
+    },
+    {
+        "word": "I",
+        "pos": "pron.",
+        "meaning": "我",
+        "theme": "代名詞",
+        "sentence": "I built the webpage by myself, and the design is mine.",
+        "sentenceZh": "我自己建立了這個網頁，而設計是我的。",
+        "otherForms": "me (受格), my (所有格), mine (所有格代名詞), myself (反身代名詞)"
+    },
+    {
+        "word": "you",
+        "pos": "pron.",
+        "meaning": "你 / 你們",
+        "theme": "代名詞",
+        "sentence": "Did you finish the homework by yourself?",
+        "sentenceZh": "你是自己一個人完成作業的嗎？",
+        "otherForms": "your (所有格), yours (所有格代名詞), yourself (反身代名詞), yourselves (反身(複數))"
+    },
+    {
+        "word": "he",
+        "pos": "pron.",
+        "meaning": "他",
+        "theme": "代名詞",
+        "sentence": "He hurt himself when he fell off his new bicycle.",
+        "sentenceZh": "他從新腳踏車上摔下來時傷到了自己。",
+        "otherForms": "him (受格), his (所有格；所有格代名詞), himself (反身代名詞)"
+    },
+    {
+        "word": "she",
+        "pos": "pron.",
+        "meaning": "她",
+        "theme": "代名詞",
+        "sentence": "She made herself a cup of hot tea to feel warm.",
+        "sentenceZh": "她為自己泡了一杯熱茶來保暖。",
+        "otherForms": "her (受格；所有格), hers (所有格代名詞), herself (反身代名詞)"
+    },
+    {
+        "word": "it",
+        "pos": "pron.",
+        "meaning": "它",
+        "theme": "代名詞",
+        "sentence": "The cat is washing itself by licking its paws.",
+        "sentenceZh": "貓正藉由舔爪子來清潔自己。",
+        "otherForms": "its (所有格；所有格代名詞), itself (反身代名詞)"
+    },
+    {
+        "word": "we",
+        "pos": "pron.",
+        "meaning": "我們",
+        "theme": "代名詞",
+        "sentence": "We enjoyed ourselves very much at the Halloween party.",
+        "sentenceZh": "我們在萬聖節派對上玩得非常盡興。",
+        "otherForms": "us (受格), our (所有格), ours (所有格代名詞), ourselves (反身代名詞)"
+    },
+    {
+        "word": "they",
+        "pos": "pron.",
+        "meaning": "他們 / 它們",
+        "theme": "代名詞",
+        "sentence": "They built the big sandcastle by themselves.",
+        "sentenceZh": "他們自己堆起了那座大沙堡。",
+        "otherForms": "them (受格), their (所有格), theirs (所有格代名詞), themselves (反身代名詞)"
+    },
+    {
+        "word": "all",
+        "pos": "pron.",
+        "meaning": "全部 / 所有",
+        "theme": "代名詞",
+        "sentence": "You shouldn't eat all the food.",
+        "sentenceZh": "你不應該吃掉全部的食物",
+        "otherForms": ""
+    },
+    {
+        "word": "another",
+        "pos": "pron.",
+        "meaning": "另一個",
+        "theme": "代名詞",
+        "sentence": "Saying is one thing, while doing is another.",
+        "sentenceZh": "說是一件事，做就是另外一件事了。",
+        "otherForms": ""
+    },
+    {
+        "word": "any",
+        "pos": "pron.",
+        "meaning": "任何",
+        "theme": "代名詞",
+        "sentence": "I don't have any money on me right now.",
+        "sentenceZh": "我現在身上沒任何錢。",
+        "otherForms": ""
+    },
+    {
+        "word": "anyone",
+        "pos": "pron.",
+        "meaning": "任何人",
+        "theme": "代名詞",
+        "sentence": "Did you find anyone to help us?",
+        "sentenceZh": "你有找到可以幫我們的人嗎?",
+        "otherForms": ""
+    },
+    {
+        "word": "anything",
+        "pos": "pron.",
+        "meaning": "任何事",
+        "theme": "代名詞",
+        "sentence": "Is there anything else I can help you with today?",
+        "sentenceZh": "有甚麼我今天可以幫忙的嗎?",
+        "otherForms": ""
+    },
+    {
+        "word": "both",
+        "pos": "pron.",
+        "meaning": "兩者",
+        "theme": "代名詞",
+        "sentence": "English and math are hard, but I am good at both.",
+        "sentenceZh": "英文跟數學很難，但我兩個都很擅長。",
+        "otherForms": ""
+    },
+    {
+        "word": "each",
+        "pos": "pron.",
+        "meaning": "每個",
+        "theme": "代名詞",
+        "sentence": "Each of the students need to take this exam.",
+        "sentenceZh": "這裡每位學生都要考這個考試。",
+        "otherForms": ""
+    },
+    {
+        "word": "everyone (everybody)",
+        "pos": "pron.",
+        "meaning": "每個人",
+        "theme": "代名詞",
+        "sentence": "Everyone needs a vocabulary passport to practice words.",
+        "sentenceZh": "每個人都需要一本單字護照來練習單字。",
+        "otherForms": ""
+    },
+    {
+        "word": "everything",
+        "pos": "pron.",
+        "meaning": "每件事",
+        "theme": "代名詞",
+        "sentence": "I hope everything goes well for your big badminton game tomorrow.",
+        "sentenceZh": "希望你明天的羽球大賽一切順利。",
+        "otherForms": ""
+    },
+    {
+        "word": "many",
+        "pos": "pron.",
+        "meaning": "許多（可數）",
+        "theme": "代名詞",
+        "sentence": "There are many interesting animals in the city zoo.",
+        "sentenceZh": "城市動物園裡有許多有趣的動物。",
+        "otherForms": "more (比較級(不規則)), most (最高級(不規則))"
+    },
+    {
+        "word": "nobody",
+        "pos": "pron.",
+        "meaning": "沒有人",
+        "theme": "代名詞",
+        "sentence": "Nobody knows the secret answer to the magic puzzle.",
+        "sentenceZh": "沒有人知道這個魔法謎題的秘密答案。",
+        "otherForms": ""
+    },
+    {
+        "word": "nothing",
+        "pos": "pron.",
+        "meaning": "沒有東西",
+        "theme": "代名詞",
+        "sentence": "There is nothing inside the empty box.",
+        "sentenceZh": "那個空盒子裡什麼都沒有。",
+        "otherForms": ""
+    },
+    {
+        "word": "part",
+        "pos": "pron. / n.",
+        "meaning": "部分",
+        "theme": "代名詞",
+        "sentence": "Reading is an important part of learning a new language.",
+        "sentenceZh": "閱讀是學習新語言重要的一部分。",
+        "otherForms": ""
+    },
+    {
+        "word": "some",
+        "pos": "pron.",
+        "meaning": "一些",
+        "theme": "代名詞",
+        "sentence": "Can I have some extra ice in my orange juice, please?",
+        "sentenceZh": "請問我的柳橙汁可以多加一些冰塊嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "someone (somebody)",
+        "pos": "pron.",
+        "meaning": "某人",
+        "theme": "代名詞",
+        "sentence": "Someone left a blue umbrella in the classroom yesterday.",
+        "sentenceZh": "昨天有人把一把藍色雨傘忘在教室裡了。",
+        "otherForms": ""
+    },
+    {
+        "word": "something",
+        "pos": "pron.",
+        "meaning": "某事",
+        "theme": "代名詞",
+        "sentence": "I have something important to tell you after class.",
+        "sentenceZh": "下課後我有重要的事情要告訴你。",
+        "otherForms": ""
+    },
+    {
+        "word": "none",
+        "pos": "pron.",
+        "meaning": "無",
+        "theme": "代名詞",
+        "sentence": "I asked my friends for help, but none of them knew the answer.",
+        "sentenceZh": "我向朋友們求助，但他們之中沒有人知道答案。",
+        "otherForms": ""
+    },
+    {
+        "word": "above",
+        "pos": "prep.",
+        "meaning": "在…上面",
+        "theme": "介係詞",
+        "sentence": "The airplane is flying high above the white clouds.",
+        "sentenceZh": "飛機在白雲上方高高地飛著。",
+        "otherForms": ""
+    },
+    {
+        "word": "below",
+        "pos": "prep.",
+        "meaning": "在…下面",
+        "theme": "介係詞",
+        "sentence": "Please sign your name below the line on the contract.",
+        "sentenceZh": "請在合約的線下方簽名。",
+        "otherForms": ""
+    },
+    {
+        "word": "on",
+        "pos": "prep.",
+        "meaning": "在…上面（接觸）",
+        "theme": "介係詞",
+        "sentence": "Your English dictionary is right on the teacher's desk.",
+        "sentenceZh": "你的英文字典就在老師的書桌上。",
+        "otherForms": ""
+    },
+    {
+        "word": "under",
+        "pos": "prep.",
+        "meaning": "在…下面",
+        "theme": "介係詞",
+        "sentence": "The little kitten is sleeping soundly under the sofa.",
+        "sentenceZh": "小貓正在沙發下安穩地睡著。",
+        "otherForms": ""
+    },
+    {
+        "word": "in",
+        "pos": "prep.",
+        "meaning": "在…裡面（較大範圍）",
+        "theme": "介係詞",
+        "sentence": "There are many tall trees in the beautiful park.",
+        "sentenceZh": "美麗的公園裡有許多高大的樹木。",
+        "otherForms": ""
+    },
+    {
+        "word": "inside",
+        "pos": "prep.",
+        "meaning": "在…裡面",
+        "theme": "介係詞",
+        "sentence": "It is too hot outside; let's stay inside the house.",
+        "sentenceZh": "外面太熱了，我們待在屋子裡面吧。",
+        "otherForms": ""
+    },
+    {
+        "word": "outside",
+        "pos": "prep.",
+        "meaning": "在…外面",
+        "theme": "介係詞",
+        "sentence": "The children are playing happily outside the classroom.",
+        "sentenceZh": "孩子們正在教室外面開心地玩耍。",
+        "otherForms": ""
+    },
+    {
+        "word": "at",
+        "pos": "prep.",
+        "meaning": "在（地點、時間點）",
+        "theme": "介係詞",
+        "sentence": "We will have an important meeting at ten o'clock tomorrow.",
+        "sentenceZh": "我們明天十點將有一場重要的會議。",
+        "otherForms": ""
+    },
+    {
+        "word": "behind",
+        "pos": "prep.",
+        "meaning": "在…後面",
+        "theme": "介係詞",
+        "sentence": "The shy boy hid behind his father's tall legs.",
+        "sentenceZh": "害羞的男孩躲在他爸爸長長的腿後面。",
+        "otherForms": ""
+    },
+    {
+        "word": "in back of",
+        "pos": "prep.",
+        "meaning": "在…後面",
+        "theme": "介係詞",
+        "sentence": "The school gym is located in back of the library.",
+        "sentenceZh": "學校體育館位在圖書館的後面。",
+        "otherForms": ""
+    },
+    {
+        "word": "in front of",
+        "pos": "prep.",
+        "meaning": "在…前面",
+        "theme": "介係詞",
+        "sentence": "The teacher stood in front of the blackboard to explain.",
+        "sentenceZh": "老師站在黑板前面講解。",
+        "otherForms": ""
+    },
+    {
+        "word": "across",
+        "pos": "prep.",
+        "meaning": "橫越",
+        "theme": "介係詞",
+        "sentence": "Be careful when you walk across the busy street.",
+        "sentenceZh": "走路穿越繁忙的街道時要小心。",
+        "otherForms": ""
+    },
+    {
+        "word": "beyond",
+        "pos": "prep.",
+        "meaning": "超越 / 在…另一邊",
+        "theme": "介係詞",
+        "sentence": "The beautiful valley lies just beyond those high mountains.",
+        "sentenceZh": "美麗的山谷就坐落於那些高山的另一邊。",
+        "otherForms": ""
+    },
+    {
+        "word": "beside",
+        "pos": "prep.",
+        "meaning": "在…旁邊",
+        "theme": "介係詞",
+        "sentence": "Come sit beside me and let's read the story together.",
+        "sentenceZh": "來坐在我旁邊，我們一起讀這個故事吧。",
+        "otherForms": ""
+    },
+    {
+        "word": "next to",
+        "pos": "prep.",
+        "meaning": "緊鄰 / 在…旁邊",
+        "theme": "介係詞",
+        "sentence": "The convenience store is right next to the post office.",
+        "sentenceZh": "便利商店就在郵局緊鄰的旁邊。",
+        "otherForms": ""
+    },
+    {
+        "word": "by",
+        "pos": "prep.",
+        "meaning": "藉由 / 在…旁邊",
+        "theme": "介係詞",
+        "sentence": "We learned how to build a web game by watching videos online.",
+        "sentenceZh": "我們藉由看網路影片學會了如何建立網頁遊戲。",
+        "otherForms": ""
+    },
+    {
+        "word": "between",
+        "pos": "prep.",
+        "meaning": "在…之間（兩者）",
+        "theme": "介係詞",
+        "sentence": "The letter B is exactly between A and C in the alphabet.",
+        "sentenceZh": "字母 B 在字母表裡剛好在 A 和 C 之間。",
+        "otherForms": ""
+    },
+    {
+        "word": "near",
+        "pos": "adj. / adv.",
+        "meaning": "靠近",
+        "theme": "介係詞",
+        "sentence": "My grandparents live in a small village near the sea.",
+        "sentenceZh": "我祖父母住在靠近海邊的一個小村莊裡。",
+        "otherForms": "nearer (比較級), nearest (最高級), nearly (副詞)"
+    },
+    {
+        "word": "among",
+        "pos": "prep.",
+        "meaning": "在…之中（三者以上）",
+        "theme": "介係詞",
+        "sentence": "The clever rabbit hid among the tall green bushes.",
+        "sentenceZh": "聰明的兔子躲在高高的綠色灌木叢之中。",
+        "otherForms": ""
+    },
+    {
+        "word": "against",
+        "pos": "prep.",
+        "meaning": "反對 / 靠著",
+        "theme": "介係詞",
+        "sentence": "He stood leaning his back against the classroom wall.",
+        "sentenceZh": "他背靠著教室牆壁站著。",
+        "otherForms": ""
+    },
+    {
+        "word": "along",
+        "pos": "prep.",
+        "meaning": "沿著",
+        "theme": "介係詞",
+        "sentence": "We rode our bicycles along the beautiful riverbank.",
+        "sentenceZh": "我們沿著美麗的河岸騎腳踏車。",
+        "otherForms": ""
+    },
+    {
+        "word": "down",
+        "pos": "prep.",
+        "meaning": "沿…而下",
+        "theme": "介係詞",
+        "sentence": "The children rolled quickly down the grassy hill.",
+        "sentenceZh": "孩子們快速地沿著長滿草的山丘滾下來。",
+        "otherForms": ""
+    },
+    {
+        "word": "from",
+        "pos": "prep.",
+        "meaning": "從… / 來自…",
+        "theme": "介係詞",
+        "sentence": "I received a beautiful postcard from my pen pal in Japan.",
+        "sentenceZh": "我收到了一張來自日本筆友的美麗明信片。",
+        "otherForms": ""
+    },
+    {
+        "word": "to",
+        "pos": "prep.",
+        "meaning": "到… / 向…",
+        "theme": "介係詞",
+        "sentence": "Please give this homework paper to your English teacher.",
+        "sentenceZh": "請把這份作業交給你的英文老師。",
+        "otherForms": ""
+    },
+    {
+        "word": "toward",
+        "pos": "prep.",
+        "meaning": "朝向…",
+        "theme": "介係詞",
+        "sentence": "The little dog ran quickly toward its owner.",
+        "sentenceZh": "小狗快速地朝著牠的主人跑去。",
+        "otherForms": ""
+    },
+    {
+        "word": "up",
+        "pos": "prep.",
+        "meaning": "沿…而上",
+        "theme": "介係詞",
+        "sentence": "The brave hikers climbed high up the snowy mountain.",
+        "sentenceZh": "勇敢的登山客爬上了白雪覆蓋的高山。",
+        "otherForms": ""
+    },
+    {
+        "word": "over",
+        "pos": "prep.",
+        "meaning": "在…正上方 / 越過",
+        "theme": "介係詞",
+        "sentence": "I just saw a plane fly over us.",
+        "sentenceZh": "我剛看到一架飛機飛過我們。",
+        "otherForms": ""
+    },
+    {
+        "word": "into",
+        "pos": "prep.",
+        "meaning": "進入",
+        "theme": "介係詞",
+        "sentence": "Never put your finger into a fan.",
+        "sentenceZh": "絕對不要把你的手指放到電扇裡面。",
+        "otherForms": ""
+    },
+    {
+        "word": "out of",
+        "pos": "prep.",
+        "meaning": "從…裡面出來",
+        "theme": "介係詞",
+        "sentence": "No one has come out of the place alive.",
+        "sentenceZh": "沒人活著從那個地方出來過。",
+        "otherForms": ""
+    },
+    {
+        "word": "through",
+        "pos": "prep.",
+        "meaning": "穿過 / 透過",
+        "theme": "介係詞",
+        "sentence": "The train traveled fast through the dark tunnel.",
+        "sentenceZh": "火車快速穿過了黑暗的隧道。",
+        "otherForms": ""
+    },
+    {
+        "word": "off",
+        "pos": "prep.",
+        "meaning": "離開 / 從…下來",
+        "theme": "介係詞",
+        "sentence": "Be careful when you get off the crowded bus.",
+        "sentenceZh": "從擁擠的公車下來時要小心。",
+        "otherForms": ""
+    },
+    {
+        "word": "after",
+        "pos": "prep. / conj.",
+        "meaning": "在…之後",
+        "theme": "介係詞",
+        "sentence": "Let's practice playing badminton after school ends today.",
+        "sentenceZh": "今天放學後我們來練習打羽球吧。",
+        "otherForms": ""
+    },
+    {
+        "word": "before",
+        "pos": "prep. / conj.",
+        "meaning": "在…之前",
+        "theme": "介係詞",
+        "sentence": "You must wash your hands cleanly before eating dinner.",
+        "sentenceZh": "吃晚餐前你必須把手洗乾淨。",
+        "otherForms": ""
+    },
+    {
+        "word": "during",
+        "pos": "prep.",
+        "meaning": "在…期間",
+        "theme": "介係詞",
+        "sentence": "Please don't talk loudly to your friends during the movie.",
+        "sentenceZh": "看電影期間請不要大聲和朋友講話。",
+        "otherForms": ""
+    },
+    {
+        "word": "until",
+        "pos": "prep. / conj.",
+        "meaning": "直到…",
+        "theme": "介係詞",
+        "sentence": "We waited at the station until the train finally arrived.",
+        "sentenceZh": "我們在車站等，直到火車最後抵達。",
+        "otherForms": ""
+    },
+    {
+        "word": "since",
+        "pos": "prep. / conj.",
+        "meaning": "自從… / 既然",
+        "theme": "介係詞",
+        "sentence": "I have been learning HTML coding since last year.",
+        "sentenceZh": "自從去年開始我就一直在學 HTML 寫程式。",
+        "otherForms": ""
+    },
+    {
+        "word": "with",
+        "pos": "prep.",
+        "meaning": "和…一起 / 用…",
+        "theme": "介係詞",
+        "sentence": "I went to the shopping mall with my older sister yesterday.",
+        "sentenceZh": "我昨天和姐姐一起去購物中心。",
+        "otherForms": ""
+    },
+    {
+        "word": "without",
+        "pos": "prep.",
+        "meaning": "沒有…",
+        "theme": "介係詞",
+        "sentence": "You cannot enter the school building without your ID card.",
+        "sentenceZh": "沒有識別證你不能進入學校大樓。",
+        "otherForms": ""
+    },
+    {
+        "word": "like",
+        "pos": "prep. / v.",
+        "meaning": "像… / 喜歡",
+        "theme": "介係詞",
+        "sentence": "The cloud in the sky looks exactly like a white rabbit.",
+        "sentenceZh": "天空中的那朵雲看起來就像一隻白兔。",
+        "otherForms": ""
+    },
+    {
+        "word": "than",
+        "pos": "prep. / conj.",
+        "meaning": "比…",
+        "theme": "介係詞",
+        "sentence": "An airplane travels much faster than a train.",
+        "sentenceZh": "飛機移動的速度比火車快多了。",
+        "otherForms": ""
+    },
+    {
+        "word": "of",
+        "pos": "prep.",
+        "meaning": "…的 / 關於",
+        "theme": "介係詞",
+        "sentence": "The capital city of Taiwan is Taipei.",
+        "sentenceZh": "台灣的首都是台北。",
+        "otherForms": ""
+    },
+    {
+        "word": "except",
+        "pos": "prep.",
+        "meaning": "除了…之外",
+        "theme": "介係詞",
+        "sentence": "Everyone in the class passed the test except for John.",
+        "sentenceZh": "班上每個人都通過了考試，除了約翰之外。",
+        "otherForms": ""
+    },
+    {
+        "word": "for",
+        "pos": "prep. / conj.",
+        "meaning": "為了 / 給 / 因為",
+        "theme": "介係詞",
+        "sentence": "My mother baked a delicious chocolate cake for my birthday.",
+        "sentenceZh": "我媽媽為了我的生日烤了一個美味的巧克力蛋糕。",
+        "otherForms": ""
+    },
+    {
+        "word": "around",
+        "pos": "prep.",
+        "meaning": "四周 / 大約",
+        "theme": "介係詞",
+        "sentence": "Is there any restroom around here. I need to poop.",
+        "sentenceZh": "這附近有廁所嗎?我需要大便。",
+        "otherForms": ""
+    },
+    {
+        "word": "about",
+        "pos": "prep.",
+        "meaning": "關於 / 大約",
+        "theme": "介係詞",
+        "sentence": "The teacher told us a funny story about his childhood.",
+        "sentenceZh": "老師告訴我們一個關於他童年的好笑故事。",
+        "otherForms": ""
+    },
+    {
+        "word": "how",
+        "pos": "adv.",
+        "meaning": "如何",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Do you know how to solve this difficult math problem?",
+        "sentenceZh": "你知道如何解開這道困難的數學題嗎？",
+        "otherForms": ""
+    },
+    {
+        "word": "what",
+        "pos": "pron.",
+        "meaning": "什麼",
+        "theme": "疑問詞&連接詞",
+        "sentence": "What are you planning to do during the winter vacation?",
+        "sentenceZh": "你寒假計畫做什麼？",
+        "otherForms": ""
+    },
+    {
+        "word": "when",
+        "pos": "adv. / conj.",
+        "meaning": "何時",
+        "theme": "疑問詞&連接詞",
+        "sentence": "When is the badminton game going to start?",
+        "sentenceZh": "羽球比賽何時開始？",
+        "otherForms": ""
+    },
+    {
+        "word": "where",
+        "pos": "adv. / conj.",
+        "meaning": "在哪裡",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Where did you put your vocabulary passport?",
+        "sentenceZh": "你把單字護照放在哪裡了？",
+        "otherForms": ""
+    },
+    {
+        "word": "whether",
+        "pos": "conj.",
+        "meaning": "是否",
+        "theme": "疑問詞&連接詞",
+        "sentence": "I don't know whether he likes to play the grammar game.",
+        "sentenceZh": "我不知道他是否喜歡玩文法遊戲。",
+        "otherForms": ""
+    },
+    {
+        "word": "which",
+        "pos": "pron.",
+        "meaning": "哪一個",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Which character do you like more, Batman or Superman?",
+        "sentenceZh": "你比較喜歡哪一個角色，蝙蝠俠還是超人？",
+        "otherForms": ""
+    },
+    {
+        "word": "who",
+        "pos": "pron.",
+        "meaning": "誰(主格)",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Who is the brave hero in this comic book?",
+        "sentenceZh": "這本漫畫書裡勇敢的英雄是誰？",
+        "otherForms": ""
+    },
+    {
+        "word": "why",
+        "pos": "adv.",
+        "meaning": "為什麼",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Why are you late for the English class today?",
+        "sentenceZh": "你今天英文課為什麼遲到？",
+        "otherForms": ""
+    },
+    {
+        "word": "for",
+        "pos": "prep. / conj.",
+        "meaning": "因為",
+        "theme": "疑問詞&連接詞",
+        "sentence": "He went to bed early, for he was very tired after the match.",
+        "sentenceZh": "他很早就上床睡覺了，因為他打完比賽後非常累。",
+        "otherForms": ""
+    },
+    {
+        "word": "and",
+        "pos": "conj.",
+        "meaning": "和 / 並且",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Wonder Woman is strong, and she is very brave.",
+        "sentenceZh": "神力女超人很強壯，並且她非常勇敢。",
+        "otherForms": ""
+    },
+    {
+        "word": "nor",
+        "pos": "conj.",
+        "meaning": "也不",
+        "theme": "疑問詞&連接詞",
+        "sentence": "He doesn't like hot weather, nor does he like cold weather.",
+        "sentenceZh": "他不喜歡炎熱的天氣，也不喜歡寒冷的天氣。",
+        "otherForms": ""
+    },
+    {
+        "word": "but",
+        "pos": "conj.",
+        "meaning": "但是",
+        "theme": "疑問詞&連接詞",
+        "sentence": "The grammar test was hard, but I got a good grade.",
+        "sentenceZh": "文法考試很難，但是我考了個好成績。",
+        "otherForms": ""
+    },
+    {
+        "word": "or",
+        "pos": "conj.",
+        "meaning": "或者 / 否則",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Hurry up, or you will miss the school bus!",
+        "sentenceZh": "快一點，否則你會錯過校車！",
+        "otherForms": ""
+    },
+    {
+        "word": "yet",
+        "pos": "adv. / conj.",
+        "meaning": "但是 / 尚未",
+        "theme": "疑問詞&連接詞",
+        "sentence": "It was raining heavily, yet they still went out to play.",
+        "sentenceZh": "雨下得很大，但他們還是出去玩了。",
+        "otherForms": ""
+    },
+    {
+        "word": "so",
+        "pos": "conj. / adv.",
+        "meaning": "所以 / 非常",
+        "theme": "疑問詞&連接詞",
+        "sentence": "It is raining, so we have to play badminton inside the gym.",
+        "sentenceZh": "現在正在下雨，所以我們必須在體育館裡面打羽球。",
+        "otherForms": ""
+    },
+    {
+        "word": "as",
+        "pos": "prep. / conj.",
+        "meaning": "作為 / 當作",
+        "theme": "疑問詞&連接詞",
+        "sentence": "He works as an English teacher in a junior high school.",
+        "sentenceZh": "他在一所國中擔任英文老師。",
+        "otherForms": ""
+    },
+    {
+        "word": "because",
+        "pos": "conj.",
+        "meaning": "因為",
+        "theme": "疑問詞&連接詞",
+        "sentence": "I am happy because I passed the English test.",
+        "sentenceZh": "我很開心，因為我通過了英文考試。",
+        "otherForms": ""
+    },
+    {
+        "word": "if",
+        "pos": "conj.",
+        "meaning": "如果",
+        "theme": "疑問詞&連接詞",
+        "sentence": "If you finish your homework, you can play the computer game.",
+        "sentenceZh": "如果你寫完作業，你就可以玩電腦遊戲。",
+        "otherForms": ""
+    },
+    {
+        "word": "since",
+        "pos": "prep. / conj.",
+        "meaning": "自從 / 既然",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Since you are already here, let's review the vocabulary together.",
+        "sentenceZh": "既然你已經在這裡了，我們就一起複習單字吧。",
+        "otherForms": ""
+    },
+    {
+        "word": "before",
+        "pos": "prep. / conj.",
+        "meaning": "在~之前",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Please wash your hands before you eat dinner.",
+        "sentenceZh": "吃晚餐前請洗手。",
+        "otherForms": ""
+    },
+    {
+        "word": "after",
+        "pos": "prep. / conj.",
+        "meaning": "在~之後",
+        "theme": "疑問詞&連接詞",
+        "sentence": "We will go to the library after school ends.",
+        "sentenceZh": "放學後我們將會去圖書館。",
+        "otherForms": ""
+    },
+    {
+        "word": "while",
+        "pos": "conj.",
+        "meaning": "當~時 / 然而",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Someone called my name while I was walking down the hall.",
+        "sentenceZh": "當我走在走廊時，有人叫了我的名字。",
+        "otherForms": ""
+    },
+    {
+        "word": "till",
+        "pos": "conj.",
+        "meaning": "直到",
+        "theme": "疑問詞&連接詞",
+        "sentence": "We will stay in the classroom till the rain stops.",
+        "sentenceZh": "我們將會待在教室裡直到雨停。",
+        "otherForms": ""
+    },
+    {
+        "word": "than",
+        "pos": "prep. / conj.",
+        "meaning": "比",
+        "theme": "疑問詞&連接詞",
+        "sentence": "The Flash runs much faster than normal people.",
+        "sentenceZh": "閃電俠跑得比一般人快得多。",
+        "otherForms": ""
+    },
+    {
+        "word": "although (though, even though)",
+        "pos": "conj.",
+        "meaning": "雖然",
+        "theme": "疑問詞&連接詞",
+        "sentence": "Although he is a beginner, he plays badminton very well.",
+        "sentenceZh": "雖然他是個初學者，但他羽球打得非常好。",
+        "otherForms": ""
     }
 ];
