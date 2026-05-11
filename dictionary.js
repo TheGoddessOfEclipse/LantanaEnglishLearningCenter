@@ -16950,5 +16950,597 @@ const DICTIONARY_DATA = [
         "sentence": "Although he is a beginner, he plays badminton very well.",
         "sentenceZh": "雖然他是個初學者，但他羽球打得非常好。",
         "otherForms": ""
+    },
+    {
+        "word": "address",
+        "meaning": "地址；處理",
+        "theme": "地方位置",
+        "sentence": "Please write down your name and address.",
+        "sentenceZh": "請寫下你的名字和地址。",
+        "otherForms": "addresses (複數/三單), addressed (過去/過去分詞), addressing (現在分詞)"
+    },
+    {
+        "word": "alone",
+        "meaning": "單獨地；獨自",
+        "theme": "其餘形容詞",
+        "sentence": "The old man lives alone in the big house.",
+        "sentenceZh": "那位老人獨自住在大房子裡。",
+        "otherForms": "lonely (形容詞(孤單的))"
+    },
+    {
+        "word": "alphabet",
+        "meaning": "字母表",
+        "theme": "學校",
+        "sentence": "There are 26 letters in the English alphabet.",
+        "sentenceZh": "英文字母表有26個字母。",
+        "otherForms": "alphabets (複數型)"
+    },
+    {
+        "word": "also",
+        "meaning": "也；此外",
+        "theme": "副詞",
+        "sentence": "She speaks English, and she also speaks Japanese.",
+        "sentenceZh": "她會說英文，她也會說日文。",
+        "otherForms": "too (相似詞(也 - 常用於句尾))"
+    },
+    {
+        "word": "as",
+        "meaning": "作為；當作",
+        "theme": "疑問詞&連接詞",
+        "sentence": "He works as an English teacher in a junior high school.",
+        "sentenceZh": "他在一所國中擔任英文老師。",
+        "otherForms": ""
+    },
+    {
+        "word": "bag",
+        "meaning": "袋子；包包",
+        "theme": "雜物",
+        "sentence": "Don't forget to take your bag with you.",
+        "sentenceZh": "別忘了帶著你的包包。",
+        "otherForms": "bags (複數型)"
+    },
+    {
+        "word": "brain",
+        "meaning": "大腦",
+        "theme": "身體部位",
+        "sentence": "The human brain is very complex.",
+        "sentenceZh": "人類的大腦非常複雜。",
+        "otherForms": "brains (複數型)"
+    },
+    {
+        "word": "brand",
+        "meaning": "品牌",
+        "theme": "商業",
+        "sentence": "What brand of smartphone do you use?",
+        "sentenceZh": "你用哪個品牌的智慧型手機？",
+        "otherForms": "brands (複數型)"
+    },
+    {
+        "word": "brief",
+        "meaning": "簡短的",
+        "theme": "其餘形容詞",
+        "sentence": "Let's have a brief meeting after lunch.",
+        "sentenceZh": "我們午餐後開個簡短的會議吧。",
+        "otherForms": "briefer (比較級), briefest (最高級), briefly (簡短地 - 副詞)"
+    },
+    {
+        "word": "chemical",
+        "meaning": "化學的；化學物質",
+        "theme": "雜物",
+        "sentence": "Be careful when you use these chemical products.",
+        "sentenceZh": "使用這些化學產品時請小心。",
+        "otherForms": "chemicals (複數型), chemistry (化學 - 名詞)"
+    },
+    {
+        "word": "chief",
+        "meaning": "主要的；首領",
+        "theme": "身分",
+        "sentence": "He is the chief of the police department.",
+        "sentenceZh": "他是警察局的局長。",
+        "otherForms": "chiefs (複數型), chiefly (副詞 (主要地))"
+    },
+    {
+        "word": "claim",
+        "meaning": "宣稱；要求",
+        "theme": "言語動作",
+        "sentence": "He claimed that he didn't break the window.",
+        "sentenceZh": "他宣稱自己沒有打破窗戶。",
+        "otherForms": "claims (三單), claimed (過去/過去分詞), claiming (現在分詞)"
+    },
+    {
+        "word": "class",
+        "meaning": "班級；課程",
+        "theme": "學校",
+        "sentence": "Our class is planning a trip to the zoo.",
+        "sentenceZh": "我們班正在計畫去動物園玩。",
+        "otherForms": "classes (複數型)"
+    },
+    {
+        "word": "classic",
+        "meaning": "經典的",
+        "theme": "其餘形容詞",
+        "sentence": "This is a classic movie that everyone should watch.",
+        "sentenceZh": "這是一部每個人都該看的經典電影。",
+        "otherForms": ""
+    },
+    {
+        "word": "clay",
+        "meaning": "黏土",
+        "theme": "雜物",
+        "sentence": "The students are making cups out of clay.",
+        "sentenceZh": "學生們正在用黏土做杯子。",
+        "otherForms": ""
+    },
+    {
+        "word": "conflict",
+        "meaning": "衝突",
+        "theme": "抽象概念",
+        "sentence": "There is a conflict between the two countries.",
+        "sentenceZh": "這兩個國家之間發生了衝突。",
+        "otherForms": "conflicts (複數/三單), conflicted (過去/過去分詞), conflicting (現在分詞)"
+    },
+    {
+        "word": "contact",
+        "meaning": "接觸；聯絡",
+        "theme": "行為動作",
+        "sentence": "Please contact me if you have any questions.",
+        "sentenceZh": "如果你有任何問題，請聯絡我。",
+        "otherForms": "contacts (三單), contacted (過去/過去分詞), contacting (現在分詞)"
+    },
+    {
+        "word": "data",
+        "meaning": "資料；數據",
+        "theme": "社會與媒體",
+        "sentence": "We need more data to finish the report.",
+        "sentenceZh": "我們需要更多數據來完成報告。",
+        "otherForms": "datum (單數型(較少用))"
+    },
+    {
+        "word": "deny",
+        "meaning": "否認",
+        "theme": "言語動作",
+        "sentence": "The boy denied stealing the money.",
+        "sentenceZh": "那男孩否認偷了錢。",
+        "otherForms": "denies (三單), denied (過去/過去分詞), denying (現在分詞)"
+    },
+    {
+        "word": "dove",
+        "meaning": "鴿子",
+        "theme": "動物",
+        "sentence": "A white dove is a symbol of peace.",
+        "sentenceZh": "白鴿是和平的象徵。",
+        "otherForms": "doves (複數型), pigeon (別稱)"
+    },
+    {
+        "word": "drag",
+        "meaning": "拖拉",
+        "theme": "手部動作",
+        "sentence": "Don't drag the chair on the floor.",
+        "sentenceZh": "不要在地上拖拉椅子。",
+        "otherForms": "drags (三單), dragged (過去/過去分詞), dragging (現在分詞)"
+    },
+    {
+        "word": "effect",
+        "meaning": "效果；影響",
+        "theme": "抽象概念",
+        "sentence": "The medicine had a good effect on her health.",
+        "sentenceZh": "這種藥對她的健康有很好的效果。",
+        "otherForms": "effects (複數型), effective (有效的 - 形容詞), affect (影響 - 動詞)"
+    },
+    {
+        "word": "exact",
+        "meaning": "確切的；精確的",
+        "theme": "其餘形容詞",
+        "sentence": "Tell me the exact time you will arrive.",
+        "sentenceZh": "告訴我你抵達的確切時間。",
+        "otherForms": "exactly (精確地 - 副詞)"
+    },
+    {
+        "word": "eyebrow",
+        "meaning": "眉毛",
+        "theme": "身體部位",
+        "sentence": "He raised his left eyebrow in surprise.",
+        "sentenceZh": "他驚訝地挑起左眉。",
+        "otherForms": "eyebrows (複數型)"
+    },
+    {
+        "word": "fashion",
+        "meaning": "時尚；流行",
+        "theme": "穿搭配件",
+        "sentence": "Short skirts are back in fashion this summer.",
+        "sentenceZh": "短裙在今年夏天又重新流行起來了。",
+        "otherForms": "fashions (複數型), fashionable (流行的 - 形容詞)"
+    },
+    {
+        "word": "flash",
+        "meaning": "閃光；閃爍",
+        "theme": "狀態動作",
+        "sentence": "Did you see a flash of lightning?",
+        "sentenceZh": "你有看到閃電的閃光嗎？",
+        "otherForms": "flashes (複數/三單), flashed (過去/過去分詞), flashing (現在分詞)"
+    },
+    {
+        "word": "flood",
+        "meaning": "洪水；淹水",
+        "theme": "天氣",
+        "sentence": "The heavy rain caused a terrible flood.",
+        "sentenceZh": "大雨造成了可怕的洪水。",
+        "otherForms": "floods (複數/三單), flooded (過去/過去分詞), flooding (現在分詞)"
+    },
+    {
+        "word": "force",
+        "meaning": "力量；強迫",
+        "theme": "行為動作",
+        "sentence": "You can't force her to do something she hates.",
+        "sentenceZh": "你不能強迫她做她討厭的事。",
+        "otherForms": "forces (複數/三單), forced (過去/過去分詞), forcing (現在分詞)"
+    },
+    {
+        "word": "function",
+        "meaning": "功能",
+        "theme": "抽象概念",
+        "sentence": "What is the function of this button?",
+        "sentenceZh": "這個按鈕的功能是什麼？",
+        "otherForms": "functions (複數/三單), functioned (過去/過去分詞), functioning (現在分詞)"
+    },
+    {
+        "word": "huge",
+        "meaning": "巨大的",
+        "theme": "形容詞(反意)",
+        "sentence": "They bought a huge TV for the living room.",
+        "sentenceZh": "他們買了一台巨大的電視放在客廳。",
+        "otherForms": "huger (比較級), hugest (最高級)"
+    },
+    {
+        "word": "interested",
+        "meaning": "感興趣的",
+        "theme": "情緒動詞",
+        "sentence": "I am very interested in learning English.",
+        "sentenceZh": "我對學習英文非常感興趣。",
+        "otherForms": ""
+    },
+    {
+        "word": "interesting",
+        "meaning": "有趣的",
+        "theme": "情緒動詞",
+        "sentence": "This book is so interesting that I read it twice.",
+        "sentenceZh": "這本書太有趣了，我讀了兩次。",
+        "otherForms": ""
+    },
+    {
+        "word": "legal",
+        "meaning": "合法的",
+        "theme": "社會與媒體",
+        "sentence": "It is not legal to drive without a license.",
+        "sentenceZh": "無照駕駛是不合法的。",
+        "otherForms": "legally (合法地 - 副詞), illegal (反義詞 (非法的))"
+    },
+    {
+        "word": "lover",
+        "meaning": "愛人；愛好者",
+        "theme": "身分",
+        "sentence": "She is a great animal lover.",
+        "sentenceZh": "她是一個熱愛動物的人。",
+        "otherForms": "lovers (複數型)"
+    },
+    {
+        "word": "luck",
+        "meaning": "運氣",
+        "theme": "抽象概念",
+        "sentence": "Wish me luck on my test tomorrow!",
+        "sentenceZh": "祝我明天的考試好運！",
+        "otherForms": "lucky (幸運的 - 形容詞), luckily (幸運地 - 副詞)"
+    },
+    {
+        "word": "maintain",
+        "meaning": "維持；保養",
+        "theme": "狀態動作",
+        "sentence": "It's important to maintain a healthy weight.",
+        "sentenceZh": "維持健康的體重很重要。",
+        "otherForms": "maintains (三單), maintained (過去/過去分詞), maintaining (現在分詞)"
+    },
+    {
+        "word": "material",
+        "meaning": "材料；物質",
+        "theme": "雜物",
+        "sentence": "Cotton is a soft material.",
+        "sentenceZh": "棉花是一種柔軟的材料。",
+        "otherForms": "materials (複數型)"
+    },
+    {
+        "word": "media",
+        "meaning": "媒體",
+        "theme": "社會與媒體",
+        "sentence": "The news was all over the mass media.",
+        "sentenceZh": "這則新聞在各大媒體上廣為流傳。",
+        "otherForms": "medium (單數型 - 媒介)"
+    },
+    {
+        "word": "operate",
+        "meaning": "操作；運作",
+        "theme": "手部動作",
+        "sentence": "Do you know how to operate this machine?",
+        "sentenceZh": "你知道如何操作這台機器嗎？",
+        "otherForms": "operates (三單), operated (過去/過去分詞), operating (現在分詞)"
+    },
+    {
+        "word": "organ",
+        "meaning": "器官",
+        "theme": "身體部位",
+        "sentence": "The heart is an important organ in our body.",
+        "sentenceZh": "心臟是我們體內一個重要的器官。",
+        "otherForms": "organs (複數型)"
+    },
+    {
+        "word": "organization",
+        "meaning": "組織；機構",
+        "theme": "社會與媒體",
+        "sentence": "She works for a charity organization.",
+        "sentenceZh": "她在一家慈善機構工作。",
+        "otherForms": "organizations (複數型), organize (組織 - 動詞)"
+    },
+    {
+        "word": "particular",
+        "meaning": "特定的；特別的",
+        "theme": "其餘形容詞",
+        "sentence": "Is there a particular reason why you are late?",
+        "sentenceZh": "你遲到有什麼特別的原因嗎？",
+        "otherForms": "particularly (特別地 - 副詞)"
+    },
+    {
+        "word": "peanut",
+        "meaning": "花生",
+        "theme": "食物",
+        "sentence": "My little brother loves peanut butter.",
+        "sentenceZh": "我弟弟很喜歡花生醬。",
+        "otherForms": "peanuts (複數型)"
+    },
+    {
+        "word": "poet",
+        "meaning": "詩人",
+        "theme": "職業",
+        "sentence": "Li Bai is a famous poet in Chinese history.",
+        "sentenceZh": "李白是中國歷史上著名的詩人。",
+        "otherForms": "poets (複數型), poem (詩 - 名詞)"
+    },
+    {
+        "word": "pose",
+        "meaning": "擺姿勢；造成",
+        "theme": "行為動作",
+        "sentence": "Everyone posed for a group photo.",
+        "sentenceZh": "大家擺好姿勢拍了一張大合照。",
+        "otherForms": "poses (三單), posed (過去/過去分詞), posing (現在分詞)"
+    },
+    {
+        "word": "post",
+        "meaning": "張貼；郵件",
+        "theme": "社會與媒體",
+        "sentence": "She posted a picture of her dog on Facebook.",
+        "sentenceZh": "她在臉書上張貼了她愛犬的照片。",
+        "otherForms": "posts (三單), posted (過去/過去分詞), posting (現在分詞)"
+    },
+    {
+        "word": "prefer",
+        "meaning": "偏好；更喜歡",
+        "theme": "心智動作",
+        "sentence": "I prefer tea to coffee.",
+        "sentenceZh": "比起咖啡，我更喜歡茶。",
+        "otherForms": "prefers (三單), preferred (過去/過去分詞), preferring (現在分詞)"
+    },
+    {
+        "word": "pride",
+        "meaning": "驕傲；自豪",
+        "theme": "情緒",
+        "sentence": "They take pride in their school.",
+        "sentenceZh": "他們以自己的學校為榮。",
+        "otherForms": "proud (驕傲的 - 形容詞)"
+    },
+    {
+        "word": "prison",
+        "meaning": "監獄",
+        "theme": "城鎮",
+        "sentence": "The bad guy was sent to prison for ten years.",
+        "sentenceZh": "那個壞人被送進監獄十年。",
+        "otherForms": "prisons (複數型), prisoner (囚犯 - 名詞)"
+    },
+    {
+        "word": "prove",
+        "meaning": "證明",
+        "theme": "言語動作",
+        "sentence": "He can prove that he was at home last night.",
+        "sentenceZh": "他能證明昨晚他在家。",
+        "otherForms": "proves (三單), proved (過去式), proven (過去分詞), proving (現在分詞)"
+    },
+    {
+        "word": "quality",
+        "meaning": "品質",
+        "theme": "抽象概念",
+        "sentence": "This pair of shoes is of very high quality.",
+        "sentenceZh": "這雙鞋的品質非常高。",
+        "otherForms": "qualities (複數型)"
+    },
+    {
+        "word": "quantity",
+        "meaning": "數量",
+        "theme": "數量數字",
+        "sentence": "We need a large quantity of food for the party.",
+        "sentenceZh": "派對需要大量的食物。",
+        "otherForms": "quantities (複數型)"
+    },
+    {
+        "word": "range",
+        "meaning": "範圍",
+        "theme": "單位與度量",
+        "sentence": "The price range for these phones is quite wide.",
+        "sentenceZh": "這些手機的價格範圍相當廣。",
+        "otherForms": "ranges (複數)"
+    },
+    {
+        "word": "relation",
+        "meaning": "關係",
+        "theme": "抽象概念",
+        "sentence": "They have a good relation with their neighbors.",
+        "sentenceZh": "他們和鄰居關係良好。",
+        "otherForms": "relations (複數型)"
+    },
+    {
+        "word": "reply",
+        "meaning": "回覆",
+        "theme": "言語動作",
+        "sentence": "I sent him an email, but he hasn't replied yet.",
+        "sentenceZh": "我寄了一封電子郵件給他，但他還沒回覆。",
+        "otherForms": "replies (三單), replied (過去/過去分詞), replying (現在分詞)"
+    },
+    {
+        "word": "require",
+        "meaning": "需要；要求",
+        "theme": "言語動作",
+        "sentence": "This job requires good English skills.",
+        "sentenceZh": "這份工作需要良好的英文能力。",
+        "otherForms": "requires (三單), required (過去/過去分詞), requiring (現在分詞)"
+    },
+    {
+        "word": "royal",
+        "meaning": "皇家的",
+        "theme": "其餘形容詞",
+        "sentence": "The castle was the home of the royal family.",
+        "sentenceZh": "那座城堡曾是皇室的住所。",
+        "otherForms": "royalty (皇室 - 名詞)"
+    },
+    {
+        "word": "sauce",
+        "meaning": "醬汁",
+        "theme": "調味料與茶點",
+        "sentence": "I like to eat noodles with some hot sauce.",
+        "sentenceZh": "我喜歡吃麵配一點辣醬。",
+        "otherForms": "sauces (複數型)"
+    },
+    {
+        "word": "shock",
+        "meaning": "震驚",
+        "theme": "情緒",
+        "sentence": "The bad news was a great shock to everyone.",
+        "sentenceZh": "這個壞消息讓大家非常震驚。",
+        "otherForms": "shocks (三單), shocked (過去/過去分詞), shocking (現在分詞)"
+    },
+    {
+        "word": "soft",
+        "meaning": "柔軟的",
+        "theme": "形容詞(反意)",
+        "sentence": "The bed is very soft and comfortable.",
+        "sentenceZh": "這張床非常柔軟舒適。",
+        "otherForms": "softer (比較級), softest (最高級), softly (溫柔地 - 副詞)"
+    },
+    {
+        "word": "source",
+        "meaning": "來源",
+        "theme": "抽象概念",
+        "sentence": "The internet is a great source of information.",
+        "sentenceZh": "網路是一個很棒的資訊來源。",
+        "otherForms": "sources (複數型)"
+    },
+    {
+        "word": "soy",
+        "meaning": "大豆",
+        "theme": "蔬果",
+        "sentence": "Soy milk is a very healthy drink.",
+        "sentenceZh": "豆漿是非常健康的飲品。",
+        "otherForms": "soybean (常用名詞)"
+    },
+    {
+        "word": "stage",
+        "meaning": "舞台；階段",
+        "theme": "娛樂",
+        "sentence": "The singer walked onto the stage.",
+        "sentenceZh": "那位歌手走上了舞台。",
+        "otherForms": "stages (複數型)"
+    },
+    {
+        "word": "supply",
+        "meaning": "供應",
+        "theme": "商業",
+        "sentence": "They supply food and water to the people in need.",
+        "sentenceZh": "他們向需要的人供應食物和水。",
+        "otherForms": "supplies (三單), supplied (過去/過去分詞), supplying (現在分詞)"
+    },
+    {
+        "word": "surface",
+        "meaning": "表面",
+        "theme": "抽象概念",
+        "sentence": "The surface of the table is very smooth.",
+        "sentenceZh": "這張桌子的表面非常光滑。",
+        "otherForms": "surfaces (複數型)"
+    },
+    {
+        "word": "tale",
+        "meaning": "故事；傳說",
+        "theme": "娛樂",
+        "sentence": "My grandfather told me an old fairy tale.",
+        "sentenceZh": "我爺爺跟我說了一個古老的童話故事。",
+        "otherForms": "tales (複數型)"
+    },
+    {
+        "word": "task",
+        "meaning": "任務",
+        "theme": "抽象概念",
+        "sentence": "Your task is to finish the homework before 9 PM.",
+        "sentenceZh": "你的任務是在晚上9點前完成作業。",
+        "otherForms": "tasks (複數型)"
+    },
+    {
+        "word": "track",
+        "meaning": "軌道；追蹤",
+        "theme": "交通",
+        "sentence": "The police are trying to track the bad guy.",
+        "sentenceZh": "警察正試圖追蹤那個壞人。",
+        "otherForms": "tracks (三單), tracked (過去/過去分詞), tracking (現在分詞)"
+    },
+    {
+        "word": "user",
+        "meaning": "使用者",
+        "theme": "身分",
+        "sentence": "This app has millions of users worldwide.",
+        "sentenceZh": "這個應用程式在全世界有數百萬的使用者。",
+        "otherForms": "users (複數型), use (使用 - 動詞), useful (形容詞 (有用的))"
+    },
+    {
+        "word": "waterfall",
+        "meaning": "瀑布",
+        "theme": "大自然",
+        "sentence": "We took a picture in front of a beautiful waterfall.",
+        "sentenceZh": "我們在一個美麗的瀑布前拍了照。",
+        "otherForms": "waterfalls (複數型)"
+    },
+    {
+        "word": "weapon",
+        "meaning": "武器",
+        "theme": "社會與媒體",
+        "sentence": "Guns and knives are dangerous weapons.",
+        "sentenceZh": "槍和刀都是危險的武器。",
+        "otherForms": "weapons (複數型)"
+    },
+    {
+        "word": "wine",
+        "meaning": "葡萄酒",
+        "theme": "食物",
+        "sentence": "He had a glass of red wine with his dinner.",
+        "sentenceZh": "他吃晚餐時喝了一杯紅葡萄酒。",
+        "otherForms": ""
+    },
+    {
+        "word": "wire",
+        "meaning": "電線；金屬線",
+        "theme": "電子產品",
+        "sentence": "Be careful not to touch the broken wire.",
+        "sentenceZh": "小心不要碰到那根斷掉的電線。",
+        "otherForms": "wires (複數型)"
+    },
+    {
+        "word": "worth",
+        "meaning": "值得的；價值",
+        "theme": "其餘形容詞",
+        "sentence": "This museum is definitely worth visiting.",
+        "sentenceZh": "這間博物館絕對值得參觀。",
+        "otherForms": "worthy (值得的 - 形容詞)"
     }
 ];
