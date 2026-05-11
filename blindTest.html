@@ -123,7 +123,7 @@
 
         <div v-if="view === 'playing'" class="fade-in max-w-2xl mx-auto w-full mt-4">
             <div class="flex justify-between items-center mb-4 border-b border-yellow-500/30 pb-2">
-                <div class="text-yellow-400 tracking-widest font-bold text-sm flex items-center gap-2">> 🧠 字義盲測 <span v-if="isRetrySession" class="text-black font-black text-xs bg-yellow-500 px-1 ml-2">錯題重測</span></div>
+                <div class="text-yellow-400 text-sm tracking-widest mb-2 border border-yellow-500 px-3 py-1 inline-block font-bold" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red' : ''">{{ isRetrySession ? '🎯 錯題再測完成' : '✅ 盲測完成' }}</div>
                 <div class="text-white font-bold">進度：{{ currentIndex + 1 }} / {{ questions.length }}</div>
             </div>
             
@@ -149,9 +149,16 @@
 
         <div v-if="view === 'result'" class="fade-in max-w-3xl mx-auto w-full text-center pb-10 mt-4">
             <div class="cyber-box-yellow p-8 md:p-12 relative overflow-hidden bg-black/90 rounded-xl" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red' : ''">
-                <div class="text-yellow-400 text-sm tracking-widest mb-2 border border-yellow-500 px-3 py-1 inline-block font-bold" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red' : ''">盲測完成</div>
+                
+                <div class="text-yellow-400 text-sm tracking-widest mb-2 border border-yellow-500 px-3 py-1 inline-block font-bold" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'border-neon-red text-neon-red' : ''">
+                    {{ isRetrySession ? '🎯 錯題再測完成' : '✅ 盲測完成' }}
+                </div>
+                
                 <h2 class="text-4xl md:text-5xl font-black mb-4 text-white tracking-widest" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'neon-text-red text-neon-red' : 'neon-text-yellow'">結算報告</h2>
-                <p class="text-yellow-300/70 text-sm mb-8 tracking-widest font-bold max-w-md mx-auto line-clamp-2" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-red-500' : ''">主題：{{ selectedThemes.join(', ') }} <span v-if="isRetrySession" class="text-neon-yellow font-black ml-2">(再測結果)</span></p>
+                
+                <p class="text-yellow-300/70 text-sm mb-8 tracking-widest font-bold max-w-2xl mx-auto break-words leading-relaxed" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'text-red-500' : ''">
+                    主題：{{ safeThemeName }}
+                </p>
                 
                 <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-8 bg-yellow-950/30 border border-yellow-900/50 py-8 px-12 w-full rounded-lg" :class="selectedThemes.includes('🔥 2000單大魔王') ? 'bg-red-950/30 border-red-900/50' : ''">
                     <div class="flex flex-col items-center w-full md:w-1/2">
@@ -247,10 +254,20 @@
                 const highlights = ref({ modes: {}, themes: {} });
                 const locks = ref({ modes: {}, themes: {} });
 
-                // --- 🌟 紀錄上傳引擎 (Keepalive 非同步版) ---
+                // 🌟 新增防禦護盾：過濾所有非字串的異常事件物件
+                const safeThemeName = computed(() => {
+                    if (selectedThemes.value.includes('🔥 2000單大魔王')) return '🔥 2000單大魔王';
+                    if (Array.isArray(selectedThemes.value)) {
+                        const valid = selectedThemes.value.filter(t => typeof t === 'string' && !t.includes('PointerEvent'));
+                        return valid.length > 0 ? valid.join(' + ') : '自選主題';
+                    }
+                    return '自選主題';
+                });
+
+                // --- 🌟 紀錄上傳引擎 ---
                 const submitScore = () => { 
                     if (hasSubmittedScore.value) return; 
-                    let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+'); 
+                    let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + safeThemeName.value; 
                     let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); 
                     fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(timeStr.value)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`, { keepalive: true }).catch(e => console.log(e)); 
                     hasSubmittedScore.value = true; 
@@ -261,7 +278,7 @@
                         const diff = Math.floor((Date.now() - startTime.value) / 1000); 
                         if (diff < 3) return; 
                         const tStr = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; 
-                        let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + selectedThemes.value.join('+') + ' (中離)'; 
+                        let tName = '🧠字義盲測 : ' + (isRetrySession.value ? "(再測) " : "") + safeThemeName.value + ' (中離)'; 
                         let actuallyWrong = wrongItems.value.map(q => q.word).join(', '); 
                         try {
                             fetch(`${GOOGLE_API_URL}?action=add&name=${encodeURIComponent(playerName.value.trim())}&theme=${encodeURIComponent(tName)}&score=${score.value}&total=${questions.value.length}&timeStr=${encodeURIComponent(tStr)}&answered=${currentIndex.value}&wrongWords=${encodeURIComponent(actuallyWrong || '無')}`, { keepalive: true });
@@ -270,15 +287,12 @@
                     } 
                 };
 
-                // --- 🌟 階層式無縫秒退邏輯 ---
+                // --- 🌟 階層式無縫秒退邏輯 (整合歷史紀錄攔截) ---
                 const goBack = () => {
                     if (view.value === 'playing') {
-                        logPartialSession();
-                        view.value = 'setup';
-                        window.scrollTo(0,0);
+                        history.back(); // 觸發 popstate
                     } else if (view.value === 'result') {
-                        view.value = 'setup';
-                        window.scrollTo(0,0);
+                        history.back(); // 返回 setup 畫面
                     } else {
                         logPartialSession();
                         window.location.href = 'vocab.html';
@@ -390,6 +404,16 @@
                         }
                     });
 
+                    // 🌟 攔截手機實體返回鍵或滑動手勢
+                    window.addEventListener('popstate', (e) => {
+                        if (view.value === 'playing') {
+                            finishTest();
+                            history.pushState({ view: 'result' }, ''); 
+                        } else if (view.value === 'result') {
+                            view.value = 'setup';
+                        }
+                    });
+
                     db.ref('app_state/realtime_msg').on('value', snap => {
                         const val = snap.val();
                         if (val && val.timestamp > lastMsgTimestamp.value) { realtimeMsg.value = val.text; showRealtimeMsg.value = true; lastMsgTimestamp.value = val.timestamp; }
@@ -403,16 +427,19 @@
                         } 
                     });
 
-                    // 🌟 終極斷線保護網 (天眼機制)
                     document.addEventListener("visibilitychange", () => {
                         if (document.visibilityState === 'hidden') { logPartialSession(); }
                     });
                 });
 
-                const startBossTest = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); let pool = allWords.sort(() => 0.5 - Math.random()).slice(0, 50); selectedThemes.value = ["🔥 2000單大魔王"]; questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
-                const startTest = () => { if(selectedThemes.value.length === 0) return alert('請至少選擇一個主題！'); let pool = []; themes.value.forEach(t => { if(selectedThemes.value.includes(t.name)) pool = pool.concat(t.words); }); pool = pool.sort(() => 0.5 - Math.random()); questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
-                const revealMeaning = () => { isMeaningRevealed.value = true; };
+                // 🌟 推入歷史紀錄，當作返回鍵攔截的陷阱
+                const startBossTest = () => { let allWords = []; themes.value.forEach(t => allWords = allWords.concat(t.words)); let pool = allWords.sort(() => 0.5 - Math.random()).slice(0, 50); selectedThemes.value = ["🔥 2000單大魔王"]; questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; history.pushState({ view: 'playing' }, ''); window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+                const startTest = () => { if(selectedThemes.value.length === 0) return alert('請至少選擇一個主題！'); let pool = []; themes.value.forEach(t => { if(selectedThemes.value.includes(t.name)) pool = pool.concat(t.words); }); pool = pool.sort(() => 0.5 - Math.random()); questions.value = pool.map(w => ({ word: w.word, correct: w.meaning, isSkipped: false })); currentIndex.value = 0; score.value = 0; wrongItems.value = []; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); isRetrySession.value = false; view.value = 'playing'; history.pushState({ view: 'playing' }, ''); window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+                const retryWrongQuestions = () => { isRetrySession.value = true; questions.value = [...wrongItems.value].map(q => ({...q, isSkipped: false})).sort(() => 0.5 - Math.random()); score.value = 0; wrongItems.value = []; currentIndex.value = 0; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); view.value = 'playing'; history.pushState({ view: 'playing' }, ''); window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
                 
+                // 🌟 補齊點擊顯示中文的函式
+                const revealMeaning = () => { isMeaningRevealed.value = true; };
+
                 const markAnswer = (isCorrect) => { 
                     const q = questions.value[currentIndex.value]; 
                     if(isCorrect) { 
@@ -422,9 +449,17 @@
                     if(currentIndex.value < questions.value.length - 1) { currentIndex.value++; isMeaningRevealed.value = false; setTimeout(() => playAudio(questions.value[currentIndex.value].word), 200); } else { finishTest(); } 
                 };
 
-                const finishTest = () => { for (let i = currentIndex.value; i < questions.value.length; i++) { if (i === currentIndex.value && isMeaningRevealed.value) continue; wrongItems.value.push({ ...questions.value[i], isSkipped: true }); } const diff = Math.floor((Date.now() - startTime.value) / 1000); timeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; view.value = 'result'; window.scrollTo(0,0); submitScore(); };
-                
-                const retryWrongQuestions = () => { isRetrySession.value = true; questions.value = [...wrongItems.value].map(q => ({...q, isSkipped: false})).sort(() => 0.5 - Math.random()); score.value = 0; wrongItems.value = []; currentIndex.value = 0; isMeaningRevealed.value = false; hasSubmittedScore.value = false; startTime.value = Date.now(); view.value = 'playing'; window.scrollTo(0,0); setTimeout(() => playAudio(questions.value[0].word), 200); };
+                // 🌟 結算邏輯升級：保證中斷時未作答的題目全數標記為「未答」
+                const finishTest = () => { 
+                    for (let i = currentIndex.value; i < questions.value.length; i++) { 
+                        wrongItems.value.push({ ...questions.value[i], isSkipped: true }); 
+                    } 
+                    const diff = Math.floor((Date.now() - startTime.value) / 1000); 
+                    timeStr.value = Math.floor(diff / 60) > 0 ? `${Math.floor(diff / 60)} 分 ${diff % 60} 秒` : `${diff % 60} 秒`; 
+                    view.value = 'result'; 
+                    window.scrollTo(0,0); 
+                    submitScore(); 
+                };
 
                 onUnmounted(() => { logPartialSession(); });
 
@@ -432,7 +467,7 @@
                     isConfigMissing, view, playerName, themes, selectedThemes, questions, currentIndex, isMeaningRevealed, score, wrongItems, timeStr, hasSubmittedScore, isRetrySession, 
                     playAudio, startTest, revealMeaning, markAnswer, finishTest, retryWrongQuestions, goBack, navigateHome,
                     highlights, locks, startBossTest, realtimeMsg, showRealtimeMsg, getThemeMastery, bossMastery,
-                    showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig
+                    showGlobalNav, portalPos, isDraggingPortal, startDragPortal, togglePortal, menuConfig, safeThemeName
                 };
             }
         }).mount('#app');
